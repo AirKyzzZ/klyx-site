@@ -13,6 +13,7 @@ import {
   type OfferId,
 } from "@/lib/offers";
 import type { AppPathname } from "@/lib/seo";
+import { teamRoster } from "@/lib/team-roster";
 
 import {
   internalPathname,
@@ -196,6 +197,20 @@ describe.each(routing.locales)("pageMarkdown (%s)", (locale) => {
       }),
     ).toBeNull();
     expect(resolveMachinePage(locale, ["nope"])).toBeNull();
+  });
+
+  it("lists the team roster on home and about", async () => {
+    const roster = teamRoster(
+      getStaticTranslator(locale, "home.founder"),
+      "roster",
+    );
+    for (const pathname of ["/", "/a-propos"] as const) {
+      const markdown = await pageMarkdown(locale, { pathname });
+      for (const item of roster.items) {
+        expect(markdown, pathname).toContain(item.who);
+        expect(markdown, pathname).toContain(item.scope);
+      }
+    }
   });
 
   it("resolves every page from its own markdown href", async () => {

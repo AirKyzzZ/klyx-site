@@ -27,6 +27,7 @@ import { type AppPathname, absoluteUrl } from "@/lib/seo";
 import { getSiteShot } from "@/lib/proof";
 import { scenarios } from "@/lib/scenarios";
 import { site, socialLinks } from "@/lib/site";
+import { type TeamRoster, teamRoster } from "@/lib/team-roster";
 
 import type { MachinePage } from "./markdown-href";
 
@@ -183,6 +184,7 @@ async function home(locale: Locale): Promise<string> {
     ...processBlocks(locale, t),
     `## ${sectionTitle(t, "founder")}`,
     t("founder.body"),
+    rosterList(locale, teamRoster(t, "founder.roster")),
     t("founder.experience"),
     list([
       link(t("founder.github"), site.socials.github),
@@ -195,6 +197,14 @@ async function home(locale: Locale): Promise<string> {
     ),
     ...ctaBlocks(locale, t, "finalCta", ["book", "quote"]),
   ]);
+}
+
+function rosterList(locale: Locale, roster: TeamRoster): string {
+  return list(
+    roster.items.map((item) =>
+      labelled(locale, `**${item.role}**`, `${item.who} · ${item.scope}`),
+    ),
+  );
 }
 
 function hasChild(t: Translate, key: string, child: string): boolean {
@@ -452,8 +462,11 @@ async function caseStudy(
 
 async function about(locale: Locale): Promise<string> {
   const t = getStaticTranslator(locale, "about");
-  const facts = messageList(t, "facts.items", ["label", "value"], {
+  const founder = getStaticTranslator(locale, "home.founder");
+  const facts = messageList(t, "facts.items", ["label", "value"]);
+  const trust = messageList(t, "trust.items", ["label", "value"], {
     siret: site.siret,
+    github: site.socials.github.replace("https://", ""),
   });
   const sisterText = {
     "Klyx Studio": t("lines.studio"),
@@ -464,19 +477,22 @@ async function about(locale: Locale): Promise<string> {
   return doc([
     ...intro(locale, "/a-propos", heroTitle(t)),
     t("hero.subtitle"),
-    `## ${t("facts.title")}`,
     list(facts.map((fact) => labelled(locale, fact.label, fact.value))),
-    `## ${t("story.title")}`,
+    `## ${sectionTitle(t, "team")}`,
+    rosterList(locale, teamRoster(founder, "roster")),
+    t("team.intro"),
+    t("team.agents"),
+    t("team.partners"),
+    t("team.handover"),
+    `## ${sectionTitle(t, "story")}`,
     t("story.intro"),
     t("story.work"),
     t("story.citeme"),
     list([
-      link(t("links.github"), site.socials.github),
-      link(t("links.linkedin"), site.socials.linkedinFounder),
+      link(founder("github"), site.socials.github),
+      link(founder("linkedin"), site.socials.linkedinFounder),
     ]),
-    `## ${t("trust.title")}`,
-    t("trust.body"),
-    citeme && `## ${getStaticTranslator(locale, "home.founder")("products")}`,
+    citeme && `## ${founder("products")}`,
     citeme && link("CiteMe", citeme.url),
     `## ${t("lines.title")}`,
     list(
@@ -485,6 +501,9 @@ async function about(locale: Locale): Promise<string> {
           `${sisterText[sister.name]} ${link(new URL(sister.url).host, sister.url)}`,
       ),
     ),
+    `## ${sectionTitle(t, "trust")}`,
+    t("trust.body"),
+    list(trust.map((item) => labelled(locale, item.label, item.value))),
     ...ctaBlocks(locale, t, "cta", ["book", "quote"]),
   ]);
 }

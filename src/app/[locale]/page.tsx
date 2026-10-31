@@ -30,6 +30,7 @@ import {
 import { getSiteShot, getVerifiedProof } from "@/lib/proof";
 import { buildMetadata } from "@/lib/seo";
 import { site } from "@/lib/site";
+import { teamRoster } from "@/lib/team-roster";
 
 type SectionId =
   "proof" | "offers" | "cases" | "process" | "founder" | "testimonials" | "faq";
@@ -139,15 +140,7 @@ export default async function HomePage({ params }: LocaleParams) {
         body={t("founder.body")}
         experience={t("founder.experience")}
         caption={t("founder.caption")}
-        identity={[
-          { key: t("founder.card.name"), value: site.founder },
-          { key: t("founder.card.base"), value: t("founder.card.city") },
-          { key: t("founder.card.siret"), value: site.siret },
-          {
-            key: t("founder.card.github"),
-            value: site.socials.github.replace("https://", ""),
-          },
-        ]}
+        roster={teamRoster(t, "founder.roster")}
         products={{
           label: t("founder.products"),
           items: citeme ? [{ name: "CiteMe", url: citeme.url }] : [],

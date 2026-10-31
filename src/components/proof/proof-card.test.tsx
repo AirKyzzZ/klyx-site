@@ -77,7 +77,7 @@ describe("ProofCard", () => {
 });
 
 describe("ProofStrip", () => {
-  const heading = { title: "Ce que j'ai livré,", emphasis: "vérifiable." };
+  const heading = { title: "Ce qu'on a livré,", emphasis: "vérifiable." };
 
   it("renders nothing with fewer than 2 sources", () => {
     const { container } = render(
@@ -102,7 +102,7 @@ describe("ProofStrip", () => {
       <ProofStrip sources={[shot, lighthouse]} locale="fr" {...heading} />,
     );
     expect(screen.getByRole("heading", { level: 2 })).toHaveTextContent(
-      "Ce que j'ai livré, vérifiable.",
+      "Ce qu'on a livré, vérifiable.",
     );
     expect(screen.getAllByRole("listitem")).toHaveLength(2);
   });

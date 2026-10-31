@@ -1,21 +1,27 @@
 import type { Metadata } from "next";
 
-import { ArrowUpRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 
 import { JsonLd } from "@/components/json-ld";
 import { BrowserFrame, hostOf } from "@/components/proof/browser-frame";
 import { Section, SectionHeading } from "@/components/section";
 import { Cta } from "@/components/sections/cta";
-import { IdentityWindow } from "@/components/sections/founder";
+import {
+  FactRows,
+  RosterWindow,
+  TerminalWindow,
+} from "@/components/sections/founder";
 import { Hero } from "@/components/sections/hero";
 import { Button } from "@/components/ui/button";
-import { messageList } from "@/i18n/message-list";
+import { messageKeys, messageList } from "@/i18n/message-list";
+import { Link } from "@/i18n/navigation";
 import { type LocaleParams, resolvePageLocale } from "@/i18n/page-locale";
 import { personJsonLd } from "@/lib/json-ld";
 import { getSiteShot } from "@/lib/proof";
 import { buildMetadata } from "@/lib/seo";
 import { site } from "@/lib/site";
+import { teamRoster } from "@/lib/team-roster";
 
 export async function generateMetadata({
   params,
@@ -34,9 +40,12 @@ export default async function AboutPage({ params }: LocaleParams) {
   const locale = await resolvePageLocale(params);
   const t = await getTranslations({ locale, namespace: "about" });
   const founder = await getTranslations({ locale, namespace: "home.founder" });
-  const facts = messageList(t, "facts.items", ["label", "value"], {
+  const facts = messageList(t, "facts.items", ["label", "value"]);
+  const trustValues = {
     siret: site.siret,
-  });
+    github: site.socials.github.replace("https://", ""),
+  };
+  const trustKeys = messageKeys(t.raw("trust.items"));
   const sisterText = {
     "Klyx Studio": t("lines.studio"),
     "Klyx Estate": t("lines.estate"),
@@ -55,54 +64,77 @@ export default async function AboutPage({ params }: LocaleParams) {
         secondary={{ action: "quote", label: t("cta.ctaSecondary") }}
         aside={
           <figure>
-            <IdentityWindow
-              rows={[
-                { key: founder("card.name"), value: site.founder },
-                { key: founder("card.base"), value: founder("card.city") },
-                { key: founder("card.siret"), value: site.siret },
-                {
-                  key: founder("card.github"),
-                  value: site.socials.github.replace("https://", ""),
-                },
-              ]}
-            />
+            <TerminalWindow
+              title={t("info.window")}
+              command={t("info.command")}
+            >
+              <FactRows
+                rows={facts.map((fact) => ({
+                  key: fact.label,
+                  value: fact.value,
+                }))}
+              />
+            </TerminalWindow>
             <figcaption className="type-label text-text-3 mt-4">
-              {founder("caption")}
+              {t("info.caption")}
             </figcaption>
           </figure>
         }
       />
 
-      <Section index="01" eyebrow={t("eyebrows.story")}>
+      <Section index="01" eyebrow={t("eyebrows.team")}>
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-6">
-          <div className="reveal lg:col-span-7">
-            <SectionHeading lead={t("story.title")} />
+          <div className="reveal lg:col-span-5 lg:pt-3">
+            <RosterWindow {...teamRoster(founder, "roster")} />
+          </div>
+          <div className="reveal lg:col-span-6 lg:col-start-7">
+            <SectionHeading
+              lead={t("team.title")}
+              rest={t("team.titleEmphasis")}
+            />
+            <div className="mt-8 max-w-[58ch] space-y-5">
+              <p className="type-lead text-text">{t("team.intro")}</p>
+              <p className="text-text-2">{t("team.agents")}</p>
+              <p className="text-text-2">{t("team.partners")}</p>
+              <p className="text-text-2">{t("team.handover")}</p>
+            </div>
+          </div>
+        </div>
+      </Section>
+
+      <Section index="02" eyebrow={t("eyebrows.story")}>
+        <div className="reveal grid gap-8 lg:grid-cols-12 lg:items-end lg:gap-6">
+          <div className="lg:col-span-7">
+            <SectionHeading
+              lead={t("story.title")}
+              rest={t("story.titleEmphasis")}
+            />
             <div className="mt-8 max-w-[62ch] space-y-5">
               <p className="type-lead text-text">{t("story.intro")}</p>
               <p className="text-text-2">{t("story.work")}</p>
               <p className="text-text-2">{t("story.citeme")}</p>
             </div>
           </div>
-          <div className="reveal lg:col-span-4 lg:col-start-9 lg:pt-3">
-            <div className="border-line bg-surface-1 shadow-card rounded-md border p-5 lg:p-7">
-              <h3 className="type-label text-text-3">{t("facts.title")}</h3>
-              <dl className="mt-5 space-y-4">
-                {facts.map((fact) => (
-                  <div
-                    key={fact.label}
-                    className="border-line border-t pt-4 first:border-t-0 first:pt-0"
-                  >
-                    <dt className="type-label text-text-3">{fact.label}</dt>
-                    <dd className="type-data text-text mt-1.5">{fact.value}</dd>
-                  </div>
-                ))}
-              </dl>
-            </div>
+          <div className="flex flex-wrap gap-3 lg:col-span-4 lg:col-start-9">
+            <Button variant="secondary" size="lg" asChild>
+              <a href={site.socials.github} target="_blank" rel="noopener">
+                {founder("github")} <ArrowUpRight />
+              </a>
+            </Button>
+            <Button variant="secondary" size="lg" asChild>
+              <a
+                href={site.socials.linkedinFounder}
+                target="_blank"
+                rel="noopener"
+              >
+                {founder("linkedin")} <ArrowUpRight />
+              </a>
+            </Button>
           </div>
         </div>
       </Section>
 
-      <Section index="02" eyebrow={t("eyebrows.products")}>
+      <Section index="03" eyebrow={t("eyebrows.products")}>
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-6">
           <div className="reveal lg:col-span-7">
             <SectionHeading lead={founder("products")} />
@@ -147,27 +179,57 @@ export default async function AboutPage({ params }: LocaleParams) {
         </div>
       </Section>
 
-      <Section index="03" eyebrow={t("eyebrows.trust")}>
-        <div className="reveal grid gap-8 lg:grid-cols-12 lg:items-end lg:gap-6">
-          <div className="lg:col-span-7">
-            <SectionHeading lead={t("trust.title")} />
+      <Section index="04" eyebrow={t("eyebrows.trust")}>
+        <div className="grid gap-12 lg:grid-cols-12 lg:gap-6">
+          <div className="reveal lg:col-span-7">
+            <SectionHeading
+              lead={t("trust.title")}
+              rest={t("trust.titleEmphasis")}
+            />
             <p className="text-text-2 mt-6 max-w-[62ch]">{t("trust.body")}</p>
           </div>
-          <div className="flex flex-wrap gap-3 lg:col-span-4 lg:col-start-9">
-            <Button variant="secondary" size="lg" asChild>
-              <a href={site.socials.github} target="_blank" rel="noopener">
-                {t("links.github")} <ArrowUpRight />
-              </a>
-            </Button>
-            <Button variant="secondary" size="lg" asChild>
-              <a
-                href={site.socials.linkedinFounder}
-                target="_blank"
-                rel="noopener"
-              >
-                {t("links.linkedin")} <ArrowUpRight />
-              </a>
-            </Button>
+          <div className="reveal lg:col-span-4 lg:col-start-9 lg:pt-3">
+            <dl className="border-line bg-surface-1 shadow-card rounded-md border p-5 lg:p-7">
+              {trustKeys.map((key) => {
+                const value = t(`trust.items.${key}.value`, trustValues);
+                return (
+                  <div
+                    key={key}
+                    className="border-line border-t pt-4 not-first:mt-4 first:border-t-0 first:pt-0"
+                  >
+                    <dt className="type-label text-text-3">
+                      {t(`trust.items.${key}.label`)}
+                    </dt>
+                    <dd className="type-data text-text mt-1.5">
+                      {key === "code" && (
+                        <a
+                          href={site.socials.github}
+                          target="_blank"
+                          rel="noopener"
+                          className="hover:text-text-2 inline-flex items-center gap-1.5 transition-colors"
+                        >
+                          {value}
+                          <ArrowUpRight
+                            aria-hidden="true"
+                            className="size-3.5"
+                          />
+                        </a>
+                      )}
+                      {key === "prices" && (
+                        <Link
+                          href="/tarifs"
+                          className="hover:text-text-2 inline-flex items-center gap-1.5 transition-colors"
+                        >
+                          {value}
+                          <ArrowRight aria-hidden="true" className="size-3.5" />
+                        </Link>
+                      )}
+                      {key !== "code" && key !== "prices" && value}
+                    </dd>
+                  </div>
+                );
+              })}
+            </dl>
           </div>
         </div>
       </Section>

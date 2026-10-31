@@ -6,7 +6,10 @@ Every `TODO(maxime)` in `messages/fr.json` and `messages/en.json` (same keys in 
 
 | Page | Key | Claim | What to confirm |
 |---|---|---|---|
-| Home | `home.founder.experience` | Builds Verana's MCP server and AI agents at 2060.io; co-founded CiteMe | Can Verana and 2060.io be named, and with what role wording? « cofondé CiteMe » is fine as written? |
+| Home | `home.founder.experience` | Maxime builds Verana's MCP server and AI agents at 2060.io; co-founded CiteMe (now third person, agency voice) | Can Verana and 2060.io be named, and with what role wording? « cofondé CiteMe » is fine as written? |
+| Home, À propos | `home.founder.roster.items.partners.who` | Team roster lists « partenaires : design, spécialités » | Which specialties partners actually cover (design, motion, legal, data?) and whether you can name any of them |
+| Home, À propos | `home.faq.items.team.answer`, `about.team.partners` | Partners are brought in when a project needs design or a specialty, and the client is told before signing | How partners are engaged (subcontracted by Klyx, or contracted directly by the client), and whether « partenaires de confiance » holds today |
+| Home, À propos | `home.founder.roster.items.agents`, `about.team.agents` | Claude Code agents take scoped tasks and every change is reviewed by Maxime before production | Still how you work; OK to name Claude Code on the site? |
 | À propos | `about.story.work` | Same Verana / 2060.io sentence | Same as above |
 | À propos | `about.story.citeme` | Co-founded CiteMe, tracks brand citations in ChatGPT, Gemini, Perplexity | Wording OK? |
 | Home | `home.proof.body` | Proof artefact next to the hero | Pick a real one: CiteMe PR list (count on GitHub first), Lighthouse score of a live client site, or a real agent run log |
@@ -75,8 +78,9 @@ These are not flagged inline because they come from your own sales assets or the
 
 - Discovery call is 20 minutes everywhere (matches `docs/sales/offer-one-pager.md`). Make the Cal.com event match.
 - Sprint IA deliverables: human approval step, agent action log, test set, runbook, onboarding (from the strategy ladder, no numbers kept).
-- FDE: max 3 days a week per client, « je vise une première PR dès la première semaine », remote by default with on-site possible in Bordeaux.
+- FDE: max 3 days a week per client, « on vise une première PR dès la première semaine », remote by default with on-site possible in Bordeaux. The FDE pages now say « notre lead engineer rejoint votre équipe »: the FDE is you.
+- Voice: the site now speaks as an agency (« on » / « nous », « we »). The only named person is Maxime Mansiet, lead engineer. No headcount, photos or partner names anywhere.
 - Home FAQ: OpenAI and Anthropic don't train on API data by default (reused from the live FAQ).
 - Réalisations copy (`home.cases.subtitle`, `cases.hero.subtitle`, `meta.cases.description`) now only says « sites et produits livrés », with no AI-in-production claim. AI wording only appears where it is flagged (`agents.proof.body`, the Hoppy case study).
-- Sprint IA vs FDE answer (`pricing.faq.items.sprintVsFde`) says you reuse building blocks you've already built. True?
+- Sprint IA vs FDE answer (`pricing.faq.items.sprintVsFde`) says Klyx reuses building blocks already built. True?
 - Bordeaux page: France Num 2026 figures (40% of TPE-PME use AI, 11% automate a task), sourced in `docs/KLYX_STRATEGY.md`.
