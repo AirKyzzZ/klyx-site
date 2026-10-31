@@ -6,7 +6,7 @@ Source du PDF `offer-one-pager.pdf`. Les `TODO(maxime)` apparaissent aussi dans 
 
 Sites, agents et automatisations livrés au forfait pour startups et agences. Devis gratuit, prix publics.
 
-Je suis Maxime Mansiet, ingénieur à Bordeaux. Je travaille seul, avec le code dans votre repo dès le premier jour.
+Je suis Maxime Mansiet, développeur fullstack à Bordeaux. Je travaille seul, avec le code dans votre repo dès le premier jour.
 
 ## Les offres
 

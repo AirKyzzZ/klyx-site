@@ -21,7 +21,7 @@ Avant l'appel, 5 minutes : site de la boîte, LinkedIn de la personne, dernière
 
 Je ne présente pas Klyx en long ici. S'ils demandent, une phrase :
 
-> « Je suis Maxime, je suis ingénieur à Bordeaux. Je livre des sites et des agents IA au forfait pour des startups et des agences, avec le code dans votre repo. »
+> « Je suis Maxime, je suis développeur fullstack à Bordeaux. Je livre des sites et des agents IA au forfait pour des startups et des agences, avec le code dans votre repo. »
 
 ## 2. Leur situation (3-15 min)
 
