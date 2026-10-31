@@ -128,7 +128,17 @@ for p in /agence-web-bordeaux /agence-web-bordeaux/ /category/non-classe/ /autho
 done
 ```
 
-Redirects are two-step for slash URLs: run with `-L` to see the chain, e.g. `curl -sIL https://klyx.fr/agence-web-bordeaux/` should show a 308 to the slash-less URL then a 301/308 to `/`, ending in 200. Without `-L`, expect 308 with these destinations: `/`, `/` (or slash-less hop), `/`, `/`, `/blog/rss.xml`, `/sitemap.xml` x3, the lead-magnet PDF.
+Run the loop with `-L` off first (single hop), then `curl -sIL` on each (full chain). Expected, per old URL:
+
+| Old URL | Final status | Final target |
+|---|---|---|
+| `/agence-web-bordeaux` | 308 | `/` then 200 (or `/fr` per next-intl default, then 200) |
+| `/agence-web-bordeaux/` | 308 to slash-less, then 308 | `/`, 200 |
+| `/category/non-classe/` | 308 | `/`, 200 |
+| `/author/x` | 308 | `/`, 200 |
+| `/feed` | 308 | `/blog/rss.xml`, 200 |
+| `/sitemap_index.xml`, `/wp-sitemap.xml`, `/page-sitemap.xml` | 308 | `/sitemap.xml`, 200 |
+| `/?attachment_id=425` | 308 | `/wp-content/uploads/2025/07/guide_vitrine_essentiels.pdf?attachment_id=425`, 200 `application/pdf` |
 
 ```sh
 for p in /wp-admin/ /wp-login.php /xmlrpc.php /wp-json/wp/v2/posts /wp-content/uploads/2024/01/x.jpg; do
@@ -136,7 +146,7 @@ for p in /wp-admin/ /wp-login.php /xmlrpc.php /wp-json/wp/v2/posts /wp-content/u
 curl -sI $H/wp-content/uploads/2025/07/guide_vitrine_essentiels.pdf | head -5
 ```
 
-Expect 410 for the first five, 200 `application/pdf` for the lead magnet. If any `/agence-web-bordeaux` check returns a redirect to `/fr/...` instead of `/`, apply the `netlify.toml` redirect workaround from section 3.
+Expect 410 for the first five, 200 `application/pdf` for the lead magnet. If any `/agence-web-bordeaux` check returns a redirect to `/fr/...` instead of `/`, apply the fallback order from section 3: `proxy.ts` handling or matcher exclusion first, `netlify.toml` only as a last option.
 
 ## 7. Cutover runbook
 
@@ -158,7 +168,7 @@ curl -sI https://<site>.netlify.app | head -5
 **At T:** apply the three OVH changes from section 4. HTTPS is not valid until Netlify issues the certificate after DNS resolves; start the 30 minute rollback clock now, and run the HTTPS curls below once the certificate is issued. Then:
 
 ```sh
-dig +short A klyx.fr @ns20.ovh.net          # 75.2.60.5
+dig +short A klyx.fr @ns20.ovh.net          # A case: 75.2.60.5. ALIAS case: Netlify load balancer IP(s), not 188.165.53.185 and not necessarily 75.2.60.5; also run: dig +short ALIAS/ANAME is not visible, so confirm in the OVH zone view
 dig +short AAAA klyx.fr                      # empty
 dig +short CNAME www.klyx.fr                 # <site>.netlify.app.
 curl -sI https://klyx.fr | head -8           # 200, valid TLS, server: Netlify
@@ -174,7 +184,7 @@ curl -sI https://klyx.fr | grep -iE "strict-transport|x-content-type|x-frame|ref
 
 Run section 6 curls. Submit the contact form in FR and EN.
 
-**Mail (the one that matters):** external address to `contact@klyx.fr` arrives in Zoho; Zoho to an external address shows SPF, DKIM, DMARC pass in the headers; re-run the pre-flight `dig` block and diff: only A, AAAA, `www` differ.
+**Mail (the one that matters):** external address to `contact@klyx.fr` arrives in Zoho; Zoho to an external address shows SPF, DKIM, DMARC pass in the headers; re-run the pre-flight `dig` block and diff: only the apex address record (A, or the ALIAS/ANAME record chosen in section 4, replacing the old A), the removed AAAA and the new `www` CNAME differ.
 
 **Monitoring, 14 days:** daily for the first 3 days then every 2 to 3 days: contact form test, Netlify deploy and function logs, Search Console (submit `https://klyx.fr/sitemap.xml`, watch coverage and crawl errors for the old WordPress URLs), credit usage in the Netlify billing page, Resend dashboard delivery and bounces, a Zoho inbound test. Keep TTL at 300 for these 14 days, raise to 3600 after.
 
