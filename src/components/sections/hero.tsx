@@ -1,10 +1,15 @@
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 
 import { ArrowRight } from "lucide-react";
+import { getTranslations } from "next-intl/server";
 
 import { ActionButton } from "@/components/action-button";
 import { DashedLine } from "@/components/dashed-line";
 import { EmphasisTitle } from "@/components/emphasis-title";
+import { FoldStrip } from "@/components/fold-strip";
+import { LiveSystem } from "@/components/live-system/live-system";
+import { Tag } from "@/components/tag";
+import type { Locale } from "@/i18n/routing";
 
 export type HeroAction = { action: "book" | "quote"; label: string };
 
@@ -116,5 +121,74 @@ export function HeroList({ items }: { items: HeroListItem[] }) {
         </li>
       ))}
     </ul>
+  );
+}
+
+const HOME_SCENARIOS = ["agents", "sites", "fde"] as const;
+
+const delay = (seconds: number) => ({ "--d": `${seconds}s` }) as CSSProperties;
+
+export async function HomeHero({ locale }: { locale: Locale }) {
+  const t = await getTranslations({ locale, namespace: "home.hero" });
+  const tabs = await getTranslations({ locale, namespace: "liveSystem.tabs" });
+
+  return (
+    <section className="relative pt-24 pb-16 md:pt-28 md:pb-24">
+      <div className="container">
+        <div className="max-w-[52rem]">
+          <p className="hero-in type-label text-text-3" style={delay(0)}>
+            {t("eyebrow")}
+          </p>
+          <h1 className="type-display mt-4 max-w-[22ch]">
+            <EmphasisTitle
+              title={t("title")}
+              emphasis={t("titleEmphasis")}
+              serif={t("serif")}
+            />
+          </h1>
+          <p
+            className="hero-in type-lead text-text-2 mt-5 max-w-[58ch]"
+            style={delay(0.15)}
+          >
+            {t("subtitle")}{" "}
+            <span className="inline-flex flex-wrap gap-1.5 align-middle">
+              {HOME_SCENARIOS.map((id) => (
+                <Tag key={id}>{tabs(id)}</Tag>
+              ))}
+            </span>
+          </p>
+          <div
+            className="hero-in mt-7 flex flex-col gap-3 sm:flex-row sm:items-center"
+            style={delay(0.3)}
+          >
+            <ActionButton action="book" size="lg" className="w-full sm:w-auto">
+              {t("ctaPrimary")}
+            </ActionButton>
+            <ActionButton
+              action="quote"
+              variant="secondary"
+              size="lg"
+              className="w-full sm:w-auto"
+            >
+              {t("ctaSecondary")}
+              <ArrowRight />
+            </ActionButton>
+          </div>
+        </div>
+        <FoldStrip
+          locale={locale}
+          className="hero-in mt-8"
+          style={delay(0.5)}
+        />
+        <div className="hero-in mt-10 md:mt-12" style={delay(0.6)}>
+          <LiveSystem
+            scenarioIds={[...HOME_SCENARIOS]}
+            initial="agents"
+            priority
+            locale={locale}
+          />
+        </div>
+      </div>
+    </section>
   );
 }

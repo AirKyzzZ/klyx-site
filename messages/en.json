@@ -38,7 +38,9 @@
       "titleEmphasis": "not demos.",
       "subtitle": "Websites, agents and automations delivered at a fixed price for startups and agencies. Free quote, public prices.",
       "ctaPrimary": "Book a call",
-      "ctaSecondary": "Get a free quote"
+      "ctaSecondary": "Get a free quote",
+      "eyebrow": "AI agency · Bordeaux",
+      "serif": "demos"
     },
     "proof": {
       "label": "Real deliverable",
@@ -158,6 +160,12 @@
       "body": "Book a 20-minute call. You'll come away with a clear view of what's worth doing, whether or not we end up working together.",
       "ctaPrimary": "Book a call",
       "ctaSecondary": "Get a free quote"
+    },
+    "fold": {
+      "label": "Verifiable commitments",
+      "repo": "Code in your repo from day 1",
+      "prices": "Public prices, excl. VAT",
+      "siret": "Bordeaux · SIRET {siret}"
     }
   },
   "offers": {
@@ -939,5 +947,161 @@
     "title": "Page not found",
     "body": "This page doesn't exist or has moved.",
     "home": "Back to home"
+  },
+  "liveSystem": {
+    "label": "Illustration · sample run",
+    "caption": "Example of a workflow I build. Names and values are fictional.",
+    "tablist": "Scenarios",
+    "trace": "trace",
+    "status": {
+      "idle": "queued",
+      "active": "running",
+      "done": "done"
+    },
+    "run": {
+      "active": "running",
+      "done": "complete"
+    },
+    "tabs": {
+      "agents": "AI agents",
+      "sites": "Websites",
+      "fde": "FDE",
+      "audit": "AI audit",
+      "automation": "AI automation",
+      "geo": "AI search"
+    },
+    "scenarios": {
+      "agents": {
+        "title": "lead-router",
+        "nodes": {
+          "inbox": "Inbox",
+          "classifier": "Classifier",
+          "crm": "CRM",
+          "slack": "Slack",
+          "archive": "Archive"
+        },
+        "trace": {
+          "watch": "inbox.watch · 1 new email",
+          "think": "Thought 0.3s",
+          "classify": "classify(email_3891)",
+          "score": "→ lead · score 0.86",
+          "update": "crm.contacts.update",
+          "retry": "429 rate limit · retry 1/3",
+          "updated": "contact updated · c_2207",
+          "post": "slack.post #sales",
+          "done": "lead routed in 1.8s"
+        },
+        "chip": "Lead routed · 1.8s"
+      },
+      "sites": {
+        "title": "klyx.fr · deploy",
+        "nodes": {
+          "commit": "Commit",
+          "build": "Build",
+          "lighthouse": "Lighthouse",
+          "deploy": "Deploy",
+          "llms": "llms.txt"
+        },
+        "trace": {
+          "push": "git push · main",
+          "build": "next build",
+          "built": "build ok · static pages",
+          "lighthouse": "lighthouse --preset=mobile",
+          "deploy": "deploy · klyx.fr",
+          "retry": "edge timeout · retrying",
+          "deployed": "live · klyx.fr",
+          "sitemap": "sitemap.xml generated",
+          "llms": "llms.txt generated"
+        },
+        "chip": "Lighthouse {score} · klyx.fr",
+        "chipPending": "Lighthouse · measuring"
+      },
+      "fde": {
+        "title": "ENG-142 · export-csv",
+        "nodes": {
+          "ticket": "Ticket",
+          "repo": "Repo",
+          "engineer": "Dev + agent",
+          "pr": "Pull request",
+          "review": "Review",
+          "deploy": "Deploy"
+        },
+        "trace": {
+          "ticket": "ticket ENG-142 · slow CSV export",
+          "branch": "git checkout -b fix/export-csv",
+          "read": "agent · read 14 files",
+          "testFail": "pnpm test · 1 failed",
+          "fix": "fix · paginated query",
+          "testPass": "pnpm test · 128 passed",
+          "pr": "gh pr create · #87",
+          "review": "review · 1 comment, resolved",
+          "merged": "merged · deployed to prod"
+        },
+        "chip": "PR merged · tests ✓"
+      },
+      "audit": {
+        "title": "audit · sample-sme",
+        "nodes": {
+          "interviews": "Interviews",
+          "mapping": "Mapping",
+          "scoring": "Scoring",
+          "roadmap": "Roadmap"
+        },
+        "trace": {
+          "interviews": "interviews · 4 people",
+          "mapping": "mapping · 9 processes",
+          "quotes": "quote follow-ups · ~6 h/week",
+          "invoices": "invoice entry · ~4 h/week",
+          "missing": "missing data · email triage",
+          "emails": "email triage · ~3 h/week",
+          "scoring": "scoring · gain × feasibility",
+          "roadmap": "roadmap · 3 workflows ranked"
+        },
+        "chip": "Roadmap · 3 workflows ranked"
+      },
+      "automation": {
+        "title": "supplier-invoices",
+        "nodes": {
+          "email": "Email + file",
+          "extract": "Extraction",
+          "erp": "ERP",
+          "validation": "Human review",
+          "send": "Send"
+        },
+        "trace": {
+          "email": "email · invoice_0412.pdf",
+          "extract": "extract · 14 fields",
+          "vat": "VAT mismatch · line 3",
+          "recompute": "recompute · 20% VAT ok",
+          "draft": "erp.invoices.create · draft",
+          "waiting": "human approval · pending",
+          "approved": "approved by accounting",
+          "sent": "invoice entered and sent"
+        },
+        "chip": "Invoice entered and approved"
+      },
+      "geo": {
+        "title": "ai-visibility · weekly",
+        "nodes": {
+          "prompts": "Prompts",
+          "chatgpt": "ChatGPT",
+          "perplexity": "Perplexity",
+          "gemini": "Gemini",
+          "citation": "Citations",
+          "report": "Report"
+        },
+        "trace": {
+          "prompts": "prompts · 20 target queries",
+          "chatgpt": "chatgpt · 20/20 answers",
+          "perplexity": "perplexity · 20/20 answers",
+          "geminiRetry": "gemini · timeout, retrying",
+          "gemini": "gemini · 20/20 answers",
+          "citations": "citations · domain lookup",
+          "sources": "sources · 31 domains cited",
+          "report": "report · 20 prompts tracked"
+        },
+        "chip": "Report · 20 prompts tracked"
+      }
+    }
   }
 }

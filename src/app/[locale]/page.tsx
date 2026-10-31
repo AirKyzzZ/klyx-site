@@ -7,10 +7,9 @@ import { CaseGrid } from "@/components/sections/case-grid";
 import { Cta } from "@/components/sections/cta";
 import { Faq } from "@/components/sections/faq";
 import { Founder } from "@/components/sections/founder";
-import { Hero } from "@/components/sections/hero";
+import { HomeHero } from "@/components/sections/hero";
 import { OfferCards } from "@/components/sections/offer-cards";
 import { ProcessSteps } from "@/components/sections/process-steps";
-import { ProofCard } from "@/components/sections/proof-card";
 import { Testimonials } from "@/components/sections/testimonials";
 import { messageList } from "@/i18n/message-list";
 import { type LocaleParams, resolvePageLocale } from "@/i18n/page-locale";
@@ -50,20 +49,7 @@ export default async function HomePage({ params }: LocaleParams) {
     <>
       <JsonLd data={organizationJsonLd(meta("description"))} />
       <Background className="via-muted to-muted/80">
-        <Hero
-          title={t("hero.title")}
-          emphasis={t("hero.titleEmphasis")}
-          subtitle={t("hero.subtitle")}
-          primary={{ action: "book", label: t("hero.ctaPrimary") }}
-          secondary={{ action: "quote", label: t("hero.ctaSecondary") }}
-          aside={
-            <ProofCard
-              label={t("proof.label")}
-              title={t("proof.title")}
-              body={t("proof.body")}
-            />
-          }
-        />
+        <HomeHero locale={locale} />
         <OfferCards
           label={offersT("vatNote")}
           title={t("offers.title")}

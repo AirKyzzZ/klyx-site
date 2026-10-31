@@ -1,0 +1,204 @@
+import {
+  Database,
+  FileText,
+  Funnel,
+  Gauge,
+  GitBranch,
+  Inbox,
+  type LucideIcon,
+  MessageSquare,
+  Rocket,
+  Search,
+  UserCheck,
+} from "lucide-react";
+import type { CSSProperties } from "react";
+
+import {
+  edgeKey,
+  type GraphNode,
+  type NodeIcon,
+  type Scenario,
+  type ScenarioFinalState,
+} from "@/lib/scenarios";
+
+const ICONS: Record<NodeIcon, LucideIcon> = {
+  inbox: Inbox,
+  filter: Funnel,
+  database: Database,
+  message: MessageSquare,
+  git: GitBranch,
+  gauge: Gauge,
+  rocket: Rocket,
+  file: FileText,
+  "user-check": UserCheck,
+  search: Search,
+};
+
+const DESKTOP = {
+  width: 720,
+  height: 360,
+  x: "x",
+  y: "y",
+  halfWidth: 68,
+  halfHeight: 26,
+  vertical: false,
+} as const;
+const MOBILE = {
+  width: 340,
+  height: 408,
+  x: "mx",
+  y: "my",
+  halfWidth: 71,
+  halfHeight: 18,
+  vertical: true,
+} as const;
+type Layout = typeof DESKTOP | typeof MOBILE;
+
+const round = (value: number) => Math.round(value * 10) / 10;
+
+function edgePath(layout: Layout, from: GraphNode, to: GraphNode) {
+  let x1 = (from[layout.x] / 100) * layout.width;
+  let y1 = (from[layout.y] / 100) * layout.height;
+  let x2 = (to[layout.x] / 100) * layout.width;
+  let y2 = (to[layout.y] / 100) * layout.height;
+  const horizontal = !layout.vertical && Math.abs(x2 - x1) >= Math.abs(y2 - y1);
+  if (horizontal) {
+    const direction = Math.sign(x2 - x1);
+    x1 += direction * layout.halfWidth;
+    x2 -= direction * layout.halfWidth;
+  } else {
+    const direction = Math.sign(y2 - y1);
+    y1 += direction * layout.halfHeight;
+    y2 -= direction * layout.halfHeight;
+  }
+  const midX = (x1 + x2) / 2;
+  const midY = (y1 + y2) / 2;
+  const [c1, c2] = horizontal
+    ? [`${round(midX)} ${round(y1)}`, `${round(midX)} ${round(y2)}`]
+    : [`${round(x1)} ${round(midY)}`, `${round(x2)} ${round(midY)}`];
+  return `M${round(x1)} ${round(y1)}C${c1} ${c2} ${round(x2)} ${round(y2)}`;
+}
+
+function Edges({
+  scenario,
+  layout,
+  done,
+  className,
+}: {
+  scenario: Scenario;
+  layout: Layout;
+  done: Set<string>;
+  className: string;
+}) {
+  const byId = new Map(scenario.nodes.map((node) => [node.id, node]));
+  return (
+    <svg
+      className={`ls-edges ${className}`}
+      viewBox={`0 0 ${layout.width} ${layout.height}`}
+      aria-hidden="true"
+      focusable="false"
+    >
+      {scenario.edges.map(({ from, to }) => {
+        const start = byId.get(from);
+        const end = byId.get(to);
+        if (!start || !end) return null;
+        const key = edgeKey(from, to);
+        const d = edgePath(layout, start, end);
+        return (
+          <g
+            key={key}
+            data-edge={key}
+            data-state={done.has(key) ? "done" : "idle"}
+          >
+            <path className="ls-edge" d={d} />
+            <path className="ls-packet-glow" d={d} pathLength={100} />
+            <path className="ls-packet" d={d} pathLength={100} />
+          </g>
+        );
+      })}
+    </svg>
+  );
+}
+
+export type NodeStatusLabels = { idle: string; active: string; done: string };
+
+function StatusStack({ labels }: { labels: Record<string, string> }) {
+  return (
+    <span className="ls-status">
+      {Object.entries(labels).map(([state, label]) => (
+        <span key={state} data-for={state}>
+          {label}
+        </span>
+      ))}
+    </span>
+  );
+}
+
+export function AgentGraph({
+  scenario,
+  state,
+  title,
+  labels,
+  status,
+  run,
+}: {
+  scenario: Scenario;
+  state: ScenarioFinalState;
+  title: string;
+  labels: Record<string, string>;
+  status: NodeStatusLabels;
+  run: { active: string; done: string };
+}) {
+  return (
+    <div className="ls-window ls-graph">
+      <div className="ls-chrome">
+        <span>{title}</span>
+        <span className="ls-run">
+          <StatusStack labels={run} />
+        </span>
+      </div>
+      <div className="ls-graph-box">
+        <Edges
+          scenario={scenario}
+          layout={DESKTOP}
+          done={state.doneEdges}
+          className="ls-edges-d"
+        />
+        <Edges
+          scenario={scenario}
+          layout={MOBILE}
+          done={state.doneEdges}
+          className="ls-edges-m"
+        />
+        <ul className="ls-nodes">
+          {scenario.nodes.map((node) => {
+            const Icon = ICONS[node.icon];
+            const position = {
+              "--x": `${node.x}%`,
+              "--y": `${node.y}%`,
+              "--mx": `${node.mx}%`,
+              "--my": `${node.my}%`,
+            } as CSSProperties;
+            return (
+              <li
+                key={node.id}
+                className="ls-node"
+                data-node={node.id}
+                data-state={state.doneNodes.has(node.id) ? "done" : "idle"}
+                style={position}
+              >
+                <span className="ls-node-icon" aria-hidden="true">
+                  <Icon strokeWidth={1.5} />
+                </span>
+                <span className="ls-node-text">
+                  <span className="ls-node-label">{labels[node.id]}</span>
+                  <StatusStack labels={status} />
+                </span>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    </div>
+  );
+}

@@ -38,7 +38,9 @@
       "titleEmphasis": "pas des démos.",
       "subtitle": "Sites, agents et automatisations livrés au forfait pour startups et agences. Devis gratuit, prix publics.",
       "ctaPrimary": "Réserver un appel",
-      "ctaSecondary": "Demander un devis gratuit"
+      "ctaSecondary": "Demander un devis gratuit",
+      "eyebrow": "Agence IA · Bordeaux",
+      "serif": "démos"
     },
     "proof": {
       "label": "Livrable réel",
@@ -158,6 +160,12 @@
       "body": "Réservez un appel de 20 minutes. Vous repartez avec un avis clair sur ce qui vaut le coup, même si on ne travaille pas ensemble.",
       "ctaPrimary": "Réserver un appel",
       "ctaSecondary": "Demander un devis gratuit"
+    },
+    "fold": {
+      "label": "Engagements vérifiables",
+      "repo": "Code dans votre repo dès le jour 1",
+      "prices": "Prix publics, en € HT",
+      "siret": "Bordeaux · SIRET {siret}"
     }
   },
   "offers": {
@@ -939,5 +947,161 @@
     "title": "Page introuvable",
     "body": "Cette page n'existe pas ou a été déplacée.",
     "home": "Retour à l'accueil"
+  },
+  "liveSystem": {
+    "label": "Illustration · scénario type",
+    "caption": "Exemple de workflow que je construis. Noms et valeurs fictifs.",
+    "tablist": "Scénarios",
+    "trace": "trace",
+    "status": {
+      "idle": "en attente",
+      "active": "en cours",
+      "done": "ok"
+    },
+    "run": {
+      "active": "en cours",
+      "done": "terminé"
+    },
+    "tabs": {
+      "agents": "Agents IA",
+      "sites": "Sites",
+      "fde": "FDE",
+      "audit": "Audit IA",
+      "automation": "Automatisation IA",
+      "geo": "Référencement IA"
+    },
+    "scenarios": {
+      "agents": {
+        "title": "lead-router",
+        "nodes": {
+          "inbox": "Inbox",
+          "classifier": "Classifieur",
+          "crm": "CRM",
+          "slack": "Slack",
+          "archive": "Archive"
+        },
+        "trace": {
+          "watch": "inbox.watch · 1 nouvel email",
+          "think": "Réflexion 0,3 s",
+          "classify": "classify(email_3891)",
+          "score": "→ lead · score 0,86",
+          "update": "crm.contacts.update",
+          "retry": "429 rate limit · nouvel essai 1/3",
+          "updated": "contact mis à jour · c_2207",
+          "post": "slack.post #sales",
+          "done": "lead routé en 1,8 s"
+        },
+        "chip": "Lead routé · 1,8 s"
+      },
+      "sites": {
+        "title": "klyx.fr · deploy",
+        "nodes": {
+          "commit": "Commit",
+          "build": "Build",
+          "lighthouse": "Lighthouse",
+          "deploy": "Deploy",
+          "llms": "llms.txt"
+        },
+        "trace": {
+          "push": "git push · main",
+          "build": "next build",
+          "built": "build ok · pages statiques",
+          "lighthouse": "lighthouse --preset=mobile",
+          "deploy": "deploy · klyx.fr",
+          "retry": "edge timeout · nouvel essai",
+          "deployed": "en ligne · klyx.fr",
+          "sitemap": "sitemap.xml généré",
+          "llms": "llms.txt généré"
+        },
+        "chip": "Lighthouse {score} · klyx.fr",
+        "chipPending": "Lighthouse · mesure en cours"
+      },
+      "fde": {
+        "title": "ENG-142 · export-csv",
+        "nodes": {
+          "ticket": "Ticket",
+          "repo": "Repo",
+          "engineer": "Dev + agent",
+          "pr": "Pull request",
+          "review": "Review",
+          "deploy": "Deploy"
+        },
+        "trace": {
+          "ticket": "ticket ENG-142 · export CSV lent",
+          "branch": "git checkout -b fix/export-csv",
+          "read": "agent · lecture de 14 fichiers",
+          "testFail": "pnpm test · 1 échec",
+          "fix": "fix · requête paginée",
+          "testPass": "pnpm test · 128 passés",
+          "pr": "gh pr create · #87",
+          "review": "review · 1 commentaire, résolu",
+          "merged": "mergée · déployée en prod"
+        },
+        "chip": "PR mergée · tests ✓"
+      },
+      "audit": {
+        "title": "audit · pme-exemple",
+        "nodes": {
+          "interviews": "Entretiens",
+          "mapping": "Cartographie",
+          "scoring": "Scoring",
+          "roadmap": "Roadmap"
+        },
+        "trace": {
+          "interviews": "entretiens · 4 personnes",
+          "mapping": "cartographie · 9 processus",
+          "quotes": "relance devis · 6 h/sem estimées",
+          "invoices": "saisie factures · 4 h/sem estimées",
+          "missing": "données manquantes · tri des emails",
+          "emails": "tri des emails · 3 h/sem estimées",
+          "scoring": "scoring · gain × faisabilité",
+          "roadmap": "roadmap · 3 workflows priorisés"
+        },
+        "chip": "Roadmap · 3 workflows priorisés"
+      },
+      "automation": {
+        "title": "factures-fournisseurs",
+        "nodes": {
+          "email": "Email + PJ",
+          "extract": "Extraction",
+          "erp": "ERP",
+          "validation": "Revue humaine",
+          "send": "Envoi"
+        },
+        "trace": {
+          "email": "email · facture_0412.pdf",
+          "extract": "extraction · 14 champs",
+          "vat": "TVA incohérente · ligne 3",
+          "recompute": "recalcul · TVA 20 % ok",
+          "draft": "erp.invoices.create · brouillon",
+          "waiting": "validation humaine · en attente",
+          "approved": "approuvée par la compta",
+          "sent": "facture saisie et envoyée"
+        },
+        "chip": "Facture saisie et validée"
+      },
+      "geo": {
+        "title": "visibilite-ia · hebdo",
+        "nodes": {
+          "prompts": "Prompts",
+          "chatgpt": "ChatGPT",
+          "perplexity": "Perplexity",
+          "gemini": "Gemini",
+          "citation": "Citations",
+          "report": "Rapport"
+        },
+        "trace": {
+          "prompts": "prompts · 20 requêtes cibles",
+          "chatgpt": "chatgpt · 20/20 réponses",
+          "perplexity": "perplexity · 20/20 réponses",
+          "geminiRetry": "gemini · timeout, nouvel essai",
+          "gemini": "gemini · 20/20 réponses",
+          "citations": "citations · recherche du domaine",
+          "sources": "sources · 31 domaines cités",
+          "report": "rapport · 20 prompts suivis"
+        },
+        "chip": "Rapport · 20 prompts suivis"
+      }
+    }
   }
 }
