@@ -56,7 +56,6 @@ export function Hero({
                   action={secondary.action}
                   variant="secondary"
                   size="lg"
-                  className="from-background bg-linear-to-r to-transparent shadow-md"
                 >
                   {secondary.label}
                   <ArrowRight className="stroke-3" />

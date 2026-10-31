@@ -24,11 +24,7 @@ export function Faq({ title, items, bookLabel, className }: FaqProps) {
               {title}
             </h2>
             {bookLabel && (
-              <ActionButton
-                action="book"
-                variant="secondary"
-                className="shadow-md"
-              >
+              <ActionButton action="book" variant="secondary">
                 {bookLabel}
               </ActionButton>
             )}

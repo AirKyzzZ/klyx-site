@@ -41,7 +41,7 @@ export function CaseGrid({
               )}
             </div>
             {viewAllLabel && (
-              <Button variant="secondary" className="w-fit shadow-md" asChild>
+              <Button variant="secondary" className="w-fit" asChild>
                 <Link href="/realisations">
                   {viewAllLabel} <ArrowRight className="size-4" />
                 </Link>

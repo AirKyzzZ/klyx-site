@@ -25,12 +25,7 @@ export function Cta({ title, body, primary, secondary }: CtaProps) {
           <ActionButton action={primary.action} size="lg">
             {primary.label}
           </ActionButton>
-          <ActionButton
-            action={secondary.action}
-            variant="secondary"
-            size="lg"
-            className="shadow-md"
-          >
+          <ActionButton action={secondary.action} variant="secondary" size="lg">
             {secondary.label}
             <ArrowRight className="stroke-3" />
           </ActionButton>

@@ -90,3 +90,12 @@ test("responses carry the security headers", async ({ request }) => {
   );
   expect(headers["x-powered-by"]).toBeUndefined();
 });
+
+test("home has no horizontal overflow at 390px", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/");
+  const scrollWidth = await page.evaluate(
+    () => document.documentElement.scrollWidth,
+  );
+  expect(scrollWidth).toBeLessThanOrEqual(390);
+});

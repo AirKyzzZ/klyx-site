@@ -76,12 +76,12 @@ export default async function AboutPage({ params }: LocaleParams) {
             paragraphs: [t("story.intro"), t("story.work"), t("story.citeme")],
             children: (
               <div className="flex flex-wrap gap-3 pt-2">
-                <Button variant="secondary" className="shadow-md" asChild>
+                <Button variant="secondary" asChild>
                   <a href={site.socials.github} target="_blank" rel="noopener">
                     {t("links.github")} <ArrowUpRight className="size-4" />
                   </a>
                 </Button>
-                <Button variant="secondary" className="shadow-md" asChild>
+                <Button variant="secondary" asChild>
                   <a
                     href={site.socials.linkedinFounder}
                     target="_blank"
