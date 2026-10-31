@@ -127,7 +127,7 @@ export async function HomeHero({ locale }: { locale: Locale }) {
   const tabs = await getTranslations({ locale, namespace: "liveSystem.tabs" });
 
   return (
-    <section className="relative pt-24 pb-16 md:pt-20 md:pb-24">
+    <section data-home-hero className="relative pt-24 pb-16 md:pt-20 md:pb-24">
       <div className="container">
         <div>
           <p className="hero-in type-label text-text-3" style={delay(0)}>

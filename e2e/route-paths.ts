@@ -1,6 +1,7 @@
 import { type Locale, routing } from "../src/i18n/routing";
 
 export const SAMPLE_SLUG = "hop-hop-immo";
+export const NOT_FOUND_PATH = "/page-introuvable";
 
 function localize(locale: Locale, localized: string) {
   const path = localized.replace("[slug]", SAMPLE_SLUG);

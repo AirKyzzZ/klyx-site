@@ -15,6 +15,7 @@ export function BrowserFrame({
   sizes,
   className,
   imageClassName,
+  compact = false,
 }: {
   url: string;
   image: string;
@@ -22,6 +23,7 @@ export function BrowserFrame({
   sizes: string;
   className?: string;
   imageClassName?: string;
+  compact?: boolean;
 }) {
   return (
     <figure
@@ -30,8 +32,16 @@ export function BrowserFrame({
         className,
       )}
     >
-      <figcaption className="border-line text-text-3 grid h-9 grid-cols-[1fr_auto_1fr] items-center gap-3 border-b px-3 font-mono text-xs">
-        <span className="flex gap-1.5" aria-hidden="true">
+      <figcaption
+        className={cn(
+          "border-line text-text-3 grid h-9 items-center gap-3 border-b px-3 font-mono text-xs",
+          compact ? "justify-center px-2" : "grid-cols-[1fr_auto_1fr]",
+        )}
+      >
+        <span
+          className={cn("flex gap-1.5", compact && "hidden")}
+          aria-hidden="true"
+        >
           {[0, 1, 2].map((dot) => (
             <i
               key={dot}

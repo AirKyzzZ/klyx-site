@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { getFormatter, getTranslations } from "next-intl/server";
 
 import { LegalArticle, LegalSection } from "@/components/legal-section";
-import { Hero } from "@/components/sections/hero";
 import { type LocaleParams, resolvePageLocale } from "@/i18n/page-locale";
 import { buildMetadata } from "@/lib/seo";
 import { site } from "@/lib/site";
@@ -45,32 +44,26 @@ export default async function PrivacyPage({ params }: LocaleParams) {
   });
 
   return (
-    <>
-      <Hero
-        title={t("title")}
-        subtitle={t("intro", values)}
-        meta={t("updated", { date: updated })}
-      />
-      <LegalArticle>
-        {SECTIONS.map(({ key, id }) => (
-          <LegalSection key={key} id={id} title={t(`${key}.title`)}>
-            <p>{t(`${key}.body`)}</p>
-          </LegalSection>
+    <LegalArticle
+      title={t("title")}
+      updated={t("updated", { date: updated })}
+      intro={t("intro", values)}
+    >
+      {SECTIONS.map(({ key, id }) => (
+        <LegalSection key={key} id={id} title={t(`${key}.title`)}>
+          <p>{t(`${key}.body`)}</p>
+        </LegalSection>
+      ))}
+
+      <LegalSection id={t("prospection.anchor")} title={t("prospection.title")}>
+        {PROSPECTION_PARAGRAPHS.map((key) => (
+          <p key={key}>{t(`prospection.${key}`, values)}</p>
         ))}
+      </LegalSection>
 
-        <LegalSection
-          id={t("prospection.anchor")}
-          title={t("prospection.title")}
-        >
-          {PROSPECTION_PARAGRAPHS.map((key) => (
-            <p key={key}>{t(`prospection.${key}`, values)}</p>
-          ))}
-        </LegalSection>
-
-        <LegalSection id="droits" title={t("rights.title")}>
-          <p>{t("rights.body", values)}</p>
-        </LegalSection>
-      </LegalArticle>
-    </>
+      <LegalSection id="droits" title={t("rights.title")}>
+        <p>{t("rights.body", values)}</p>
+      </LegalSection>
+    </LegalArticle>
   );
 }

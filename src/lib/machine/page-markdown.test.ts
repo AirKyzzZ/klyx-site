@@ -106,6 +106,7 @@ const EXPECTATIONS: Record<AppPathname, Expectation> = {
   "/a-propos": { h1: heroTitle("about") },
   "/agence-ia-bordeaux": {
     h1: heroTitle("bordeaux"),
+    prices: ["audit-ia", "automation"],
     faqNamespace: "bordeaux",
   },
   "/contact": { h1: heroTitle("contact") },

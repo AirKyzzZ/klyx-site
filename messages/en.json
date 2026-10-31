@@ -1454,7 +1454,7 @@
       "items": {
         "price": {
           "question": "How much does it cost?",
-          "answer": "The audit starts at {auditPrice}. Setting up an automation starts at {sprintPrice}. You know the exact price before you sign."
+          "answer": "The audit starts at {auditPrice}. Setting up an automation starts at {automationPrice}. You know the exact price before you sign."
         },
         "it": {
           "question": "Do we need an IT department?",

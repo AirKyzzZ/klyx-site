@@ -2,7 +2,7 @@ import { mkdirSync } from "node:fs";
 
 import { expect, test } from "@playwright/test";
 
-import { routePaths } from "./route-paths";
+import { NOT_FOUND_PATH, routePaths } from "./route-paths";
 
 const OUTPUT_DIR = "docs/screenshots/redesign";
 const VIEWPORTS = [
@@ -13,9 +13,10 @@ const VIEWPORTS = [
 const requested = process.env.SCREENSHOT_ROUTES?.split(",").map((route) =>
   route.trim(),
 );
-const routes = requested ?? routePaths;
+const routes = requested ?? [...routePaths, NOT_FOUND_PATH];
 
 function fileStem(path: string) {
+  if (path === NOT_FOUND_PATH) return "404";
   return path === "/" ? "home" : path.slice(1).replaceAll("/", "-");
 }
 
@@ -30,6 +31,7 @@ test.describe("redesign screenshots", () => {
   for (const route of routes) {
     for (const viewport of VIEWPORTS) {
       test(`${route} at ${viewport.width}`, async ({ page }) => {
+        test.setTimeout(60_000);
         await page.setViewportSize(viewport);
         await page.goto(route);
         await page.evaluate(async () => {
@@ -39,7 +41,12 @@ test.describe("redesign screenshots", () => {
           }
           scrollTo(0, 0);
         });
-        await page.waitForLoadState("networkidle");
+        await page.waitForLoadState("load");
+        await page.waitForFunction(() =>
+          Array.from(document.images).every(
+            (img) => img.complete || img.getClientRects().length === 0,
+          ),
+        );
         await page.evaluate(() => document.fonts.ready);
         if (viewport.width === 390) {
           const scrollWidth = await page.evaluate(

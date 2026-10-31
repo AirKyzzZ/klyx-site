@@ -95,7 +95,7 @@ export default async function CasePage({ params }: CasePageProps) {
             style={{ "--band-x": "38%" } as CSSProperties}
           >
             <BandPicture />
-            <div className="absolute inset-x-[6%] top-[8%] lg:right-[24%] lg:left-[6%]">
+            <div className="absolute inset-x-[6%] top-[8%] lg:right-[16%] lg:left-[6%]">
               <BrowserFrame
                 url={meta.url}
                 image={shot?.image ?? meta.image}
@@ -104,13 +104,14 @@ export default async function CasePage({ params }: CasePageProps) {
               />
             </div>
             {shot && (
-              <div className="absolute top-[18%] right-[5%] hidden w-[17%] lg:block">
+              <div className="absolute top-[34%] right-[5%] z-1 hidden w-[19%] lg:block">
                 <BrowserFrame
                   url={meta.url}
                   image={`/realisations/${meta.slug}-390.png`}
                   alt=""
                   sizes="200px"
                   imageClassName="aspect-[390/844]"
+                  compact
                 />
               </div>
             )}

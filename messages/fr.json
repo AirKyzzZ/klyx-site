@@ -1454,7 +1454,7 @@
       "items": {
         "price": {
           "question": "Combien ça coûte ?",
-          "answer": "L'audit démarre à {auditPrice}. La mise en place d'une automatisation démarre à {sprintPrice}. Vous connaissez le prix exact avant de signer."
+          "answer": "L'audit démarre à {auditPrice}. La mise en place d'une automatisation démarre à {automationPrice}. Vous connaissez le prix exact avant de signer."
         },
         "it": {
           "question": "Faut-il un service informatique ?",

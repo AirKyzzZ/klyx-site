@@ -63,11 +63,11 @@ export function PriceLedger({
               return (
                 <tr
                   key={id}
-                  className="group/row border-line hover:bg-surface-3 relative border-t transition-colors duration-(--d-fast) max-md:grid max-md:grid-cols-[1fr_auto] max-md:gap-x-4 max-md:gap-y-1 max-md:px-5 max-md:py-4"
+                  className="group/row border-line hover:bg-surface-3 relative border-t transition-colors duration-(--d-fast) max-md:grid max-md:grid-cols-1 max-md:gap-y-1 max-md:px-5 max-md:py-4"
                 >
                   <th
                     scope="row"
-                    className="py-4 pr-4 align-top font-medium max-md:p-0 md:pl-7"
+                    className="min-w-0 py-4 pr-4 align-top font-medium max-md:p-0 md:pl-7"
                   >
                     <Link
                       href={row.href}
@@ -76,18 +76,18 @@ export function PriceLedger({
                       {row.name}
                     </Link>
                   </th>
-                  <td className="text-text-2 py-4 pr-4 align-top text-[0.9375rem] leading-snug max-md:order-3 max-md:col-span-2 max-md:mt-1 max-md:p-0">
+                  <td className="text-text-2 py-4 pr-4 align-top text-[0.9375rem] leading-snug max-md:order-3 max-md:mt-1 max-md:min-w-0 max-md:p-0">
                     {row.summary}
                   </td>
-                  <td className="type-data text-text-3 py-4 pr-4 align-top max-md:order-4 max-md:col-span-2 max-md:p-0 md:whitespace-nowrap">
+                  <td className="type-data text-text-3 py-4 pr-4 align-top max-md:order-4 max-md:min-w-0 max-md:p-0 md:whitespace-nowrap">
                     {row.duration}
                   </td>
                   <td
                     className={cn(
-                      "type-data py-4 text-right align-top max-md:order-2 max-md:p-0 md:pr-7",
+                      "type-data py-4 text-right align-top max-md:order-2 max-md:min-w-0 max-md:p-0 max-md:text-left md:pr-7",
                       todo
-                        ? "text-text-3 max-w-[22ch] text-xs max-md:max-w-[14ch]"
-                        : "text-text whitespace-nowrap",
+                        ? "text-text-3 text-xs md:max-w-[22ch]"
+                        : "text-text md:whitespace-nowrap",
                     )}
                   >
                     <span className="inline-flex items-start gap-2">

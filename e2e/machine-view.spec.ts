@@ -137,6 +137,17 @@ test("the floating toggle stays out of the hero until the page scrolls", async (
   await expect(toggle).toHaveCSS("opacity", "1");
 });
 
+test("outside the home the floating toggle is usable without scrolling", async ({
+  page,
+}) => {
+  await page.setViewportSize(DESKTOP);
+  await page.goto("/blog");
+  const toggle = page.locator(".view-toggle--floating");
+  await expect(toggle).toHaveCSS("opacity", "1");
+  await toggle.click();
+  await expect(page.locator(".machine-view")).toBeVisible();
+});
+
 test("a modified click on the toggle is left to the browser", async ({
   page,
   context,
@@ -148,7 +159,9 @@ test("a modified click on the toggle is left to the browser", async ({
   await page
     .locator(".view-toggle--floating")
     .click({ modifiers: ["ControlOrMeta"] });
-  expect(new URL((await popup).url()).pathname).toBe("/md/fr");
+  const opened = await popup;
+  await opened.waitForURL(/\/md\/fr$/);
+  expect(new URL(opened.url()).pathname).toBe("/md/fr");
   await expect(page.locator(".machine-view")).toBeHidden();
   await expect(page).not.toHaveURL(/#machine/);
 });

@@ -85,7 +85,8 @@
 
 @supports (animation-timeline: scroll()) {
   @media (prefers-reduced-motion: no-preference) {
-    .view-toggle--floating[data-state="human"]:not(:focus-visible) {
+    :root:has([data-home-hero])
+      .view-toggle--floating[data-state="human"]:not(:focus-visible) {
       animation: view-toggle-in linear both;
       animation-timeline: scroll(root);
       animation-range: 50vh 80vh;

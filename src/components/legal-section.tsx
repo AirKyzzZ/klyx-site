@@ -34,10 +34,27 @@ export function LegalSection({
   );
 }
 
-export function LegalArticle({ children }: { children: ReactNode }) {
+export function LegalArticle({
+  title,
+  updated,
+  intro,
+  children,
+}: {
+  title: string;
+  updated: string;
+  intro?: string;
+  children: ReactNode;
+}) {
   return (
-    <div className="container pb-24 md:pb-32">
-      <article className="max-w-[66ch] space-y-12">{children}</article>
+    <div className="container pt-24 pb-24 md:pt-28 md:pb-32">
+      <article className="max-w-[66ch] space-y-12">
+        <header>
+          <h1 className="type-h1">{title}</h1>
+          <p className="type-label text-text-3 mt-5">{updated}</p>
+          {intro && <p className="type-lead text-text-2 mt-6">{intro}</p>}
+        </header>
+        {children}
+      </article>
     </div>
   );
 }

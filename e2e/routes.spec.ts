@@ -1,6 +1,6 @@
 import { expect, test } from "@playwright/test";
 
-import { routePaths } from "./route-paths";
+import { NOT_FOUND_PATH, routePaths } from "./route-paths";
 
 for (const path of routePaths) {
   test(`${path} renders with one h1`, async ({ page }) => {
@@ -91,7 +91,29 @@ test("responses carry the security headers", async ({ request }) => {
   expect(headers["x-powered-by"]).toBeUndefined();
 });
 
-for (const path of routePaths) {
+test("an unknown path renders the localized 404 page", async ({ page }) => {
+  const response = await page.goto(NOT_FOUND_PATH);
+  expect(response?.status()).toBe(404);
+  await expect(page.locator("h1")).toHaveCount(1);
+  await expect(page.locator("main a[href='/realisations']")).toHaveCount(1);
+});
+
+test("/tarifs ledger cells never clip at 390px", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/tarifs");
+  const clipped = await page
+    .locator("main table")
+    .first()
+    .locator("tbody th, tbody td")
+    .evaluateAll((cells) =>
+      cells
+        .filter((cell) => cell.scrollWidth > cell.clientWidth)
+        .map((cell) => cell.textContent),
+    );
+  expect(clipped).toEqual([]);
+});
+
+for (const path of [...routePaths, NOT_FOUND_PATH]) {
   test(`${path} has no horizontal overflow at 390px`, async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 844 });
     await page.goto(path);
