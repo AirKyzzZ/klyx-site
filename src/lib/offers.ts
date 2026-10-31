@@ -80,3 +80,34 @@ export function formatPrice(amount: number, locale: Locale): string {
   }).format(amount);
   return locale === "fr" ? `${formatted} HT` : `${formatted} excl. VAT`;
 }
+
+export const FDE_MIN_DAYS_PER_WEEK = 2;
+export const FDE_MIN_WEEKS = 4;
+
+export function getOffer(id: OfferId): Offer {
+  const offer = offers.find((o) => o.id === id);
+  if (!offer) throw new Error(`Unknown offer: ${id}`);
+  return offer;
+}
+
+export function getOfferPrice(id: OfferId): number {
+  const { priceFrom } = getOffer(id);
+  if (priceFrom === null) throw new Error(`Offer ${id} has no public price`);
+  return priceFrom;
+}
+
+export function getPriceValues(locale: Locale) {
+  const price = (id: OfferId) => formatPrice(getOfferPrice(id), locale);
+  return {
+    landingPrice: price("landing"),
+    siteIaPrice: price("site-ia"),
+    siteCustomPrice: price("site-custom"),
+    auditPrice: price("audit-ia"),
+    sprintPrice: price("sprint-ia"),
+    fdeDayPrice: price("fde"),
+    fdeMinimum: formatPrice(
+      getOfferPrice("fde") * FDE_MIN_DAYS_PER_WEEK * FDE_MIN_WEEKS,
+      locale,
+    ),
+  };
+}

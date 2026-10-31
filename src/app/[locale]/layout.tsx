@@ -3,6 +3,8 @@ import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 
+import { SiteFooter } from "@/components/site-footer";
+import { SiteHeader } from "@/components/site-header";
 import { routing } from "@/i18n/routing";
 
 import { dmSans, inter, mono, serif } from "../fonts";
@@ -36,7 +38,11 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
       className={`${dmSans.variable} ${inter.variable} ${serif.variable} ${mono.variable}`}
     >
       <body className="antialiased">
-        <NextIntlClientProvider>{children}</NextIntlClientProvider>
+        <NextIntlClientProvider>
+          <SiteHeader />
+          <main>{children}</main>
+          <SiteFooter />
+        </NextIntlClientProvider>
       </body>
     </html>
   );

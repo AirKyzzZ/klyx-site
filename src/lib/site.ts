@@ -6,6 +6,7 @@ export const site = {
   siret: "941 572 364 00029",
   city: "Bordeaux",
   calUrl: process.env.NEXT_PUBLIC_CAL_URL,
+  legalUpdatedAt: "2026-10-31",
   socials: {
     linkedinCompany: "https://www.linkedin.com/company/klyx-studio",
     linkedinFounder: "https://www.linkedin.com/in/maxime-mansiet",

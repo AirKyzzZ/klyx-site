@@ -799,7 +799,8 @@
         "required": "Ce champ est obligatoire.",
         "email": "Cette adresse e-mail n'est pas valide.",
         "generic": "L'envoi a échoué. Réessayez, ou écrivez-moi à {email}."
-      }
+      },
+      "pending": "Le formulaire sera actif très bientôt. D'ici là, réservez un appel : c'est le plus rapide."
     },
     "direct": {
       "title": "Ou par e-mail",
@@ -929,5 +930,10 @@
       "title": "Politique de confidentialité | Klyx",
       "description": "Quelles données Klyx collecte, pourquoi, combien de temps, et comment vous opposer à la prospection par e-mail."
     }
+  },
+  "notFound": {
+    "title": "Page introuvable",
+    "body": "Cette page n'existe pas ou a été déplacée.",
+    "home": "Retour à l'accueil"
   }
 }

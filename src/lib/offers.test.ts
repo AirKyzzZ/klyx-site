@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { formatPrice, offers } from "./offers";
+import { formatPrice, getPriceValues, offers } from "./offers";
 
 const normalize = (value: string) => value.replace(/[\s  ]/g, " ");
 
@@ -25,5 +25,23 @@ describe("formatPrice", () => {
 
   it("formats english prices excl. VAT", () => {
     expect(formatPrice(2900, "en")).toBe("€2,900 excl. VAT");
+  });
+});
+
+describe("getPriceValues", () => {
+  it("derives the FDE minimum from 700 x 2 days x 4 weeks", () => {
+    expect(normalize(getPriceValues("fr").fdeMinimum)).toBe("5 600 € HT");
+  });
+
+  it("exposes every price placeholder used in the copy", () => {
+    expect(Object.keys(getPriceValues("en")).sort()).toEqual([
+      "auditPrice",
+      "fdeDayPrice",
+      "fdeMinimum",
+      "landingPrice",
+      "siteCustomPrice",
+      "siteIaPrice",
+      "sprintPrice",
+    ]);
   });
 });
