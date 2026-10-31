@@ -132,7 +132,7 @@ Run the loop with `-L` off first (single hop), then `curl -sIL` on each (full ch
 
 | Old URL | Final status | Final target |
 |---|---|---|
-| `/agence-web-bordeaux` | 308 | `/` then 200 (or `/fr` per next-intl default, then 200) |
+| `/agence-web-bordeaux` | 308 | `/`, 200 |
 | `/agence-web-bordeaux/` | 308 to slash-less, then 308 | `/`, 200 |
 | `/category/non-classe/` | 308 | `/`, 200 |
 | `/author/x` | 308 | `/`, 200 |
@@ -168,7 +168,7 @@ curl -sI https://<site>.netlify.app | head -5
 **At T:** apply the three OVH changes from section 4. HTTPS is not valid until Netlify issues the certificate after DNS resolves; start the 30 minute rollback clock now, and run the HTTPS curls below once the certificate is issued. Then:
 
 ```sh
-dig +short A klyx.fr @ns20.ovh.net          # A case: 75.2.60.5. ALIAS case: Netlify load balancer IP(s), not 188.165.53.185 and not necessarily 75.2.60.5; also run: dig +short ALIAS/ANAME is not visible, so confirm in the OVH zone view
+dig +short A klyx.fr @ns20.ovh.net          # A case: 75.2.60.5. ALIAS case: Netlify load balancer IP(s), not 188.165.53.185 and not necessarily 75.2.60.5
 dig +short AAAA klyx.fr                      # empty
 dig +short CNAME www.klyx.fr                 # <site>.netlify.app.
 curl -sI https://klyx.fr | head -8           # 200, valid TLS, server: Netlify
