@@ -49,7 +49,8 @@ Prices come from market research (`pricing-automation-geo.md`, 2026-10-31), not 
 | Référencement IA | `geo.block.realData` | Sample report uses fictional values | Swap in Hop Hop Immo numbers only with their consent |
 | Audit IA | `audit.block.credit.body`, `audit.faq.items.next.answer` | Audit credited against what follows | Exact terms (suggested: 100% within 60 days) |
 | Audit IA | `audit.block.bpifrance.body`, `audit.faq.items.bpifrance.answer` | Diagnostic Data IA: 10 000 € HT, 40% covered, 10 to 2 000 staff (from les-aides.fr, not checked on bpifrance.fr) | Check on bpifrance.fr; Klyx is never presented as an accredited provider |
-| Audit IA, Automatisation IA | `audit.proof.body`, `automation.proof.body` | Hoppy (Hop Hop Immo) shown as proof | What can be said about Hoppy |
+| Audit IA, Automatisation IA | `offer-pages.ts` `proofLink: null` | No proof section on these two pages: Hoppy is a chatbot, not an audit or automation outcome | Add a real audit/automation case (consented, with numbers), then set `proofSlugs` and `proofLink` and write `audit.proof` / `automation.proof` |
+| Audit IA | `audit.block.credit.body`, `audit.deliverables.tiers.automation` | Audit credited against an Automatisation IA: 1 500 € HT deducted from 2 400 € HT, so the client pays 900 € HT for the workflow | Do you credit the full audit against the small offer too, or only against the Sprint IA (4 500)? |
 | Audit IA | `audit.faq.items.duration.answer` | Interviews about one hour per person | Matches how you run it? |
 
 ## Local and legal

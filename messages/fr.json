@@ -866,12 +866,6 @@
         "source": "Source : les-aides.fr, consulté le 31 octobre 2026. Non vérifié sur bpifrance.fr."
       }
     },
-    "proof": {
-      "title": "Ce que je construis",
-      "titleEmphasis": "après un audit.",
-      "body": "Hoppy, l'assistant IA de Hop Hop Immo, est le genre de projet qui sort d'une roadmap. TODO(maxime): confirmer ce qui peut être dit du projet.",
-      "link": "Voir les réalisations"
-    },
     "pricing": {
       "title": "Combien coûte",
       "titleEmphasis": "un audit IA ?",
@@ -1029,12 +1023,6 @@
       },
       "limit": "Un agent autonome, un jeu de tests ou une intégration entre plusieurs outils sortent du forfait : c'est le Sprint IA."
     },
-    "proof": {
-      "title": "Déjà construit",
-      "titleEmphasis": "pour un client.",
-      "body": "Hoppy, l'assistant IA de Hop Hop Immo, répond aux questions des visiteurs à partir des données du site. TODO(maxime): confirmer ce qui peut être dit du projet.",
-      "link": "Voir les réalisations"
-    },
     "pricing": {
       "title": "Combien coûte",
       "titleEmphasis": "une automatisation IA ?",
@@ -1082,8 +1070,8 @@
   "geo": {
     "hero": {
       "eyebrow": "Référencement IA (GEO)",
-      "title": "Référencement ChatGPT :",
-      "titleEmphasis": "soyez cité par les IA.",
+      "title": "Référencement ChatGPT,",
+      "titleEmphasis": "pour être cité par les IA.",
       "serif": "cité",
       "subtitle": "À partir de {geoPrice}, en 2 semaines, pour un site existant. Je pose 30 questions de vos clients à 4 moteurs IA, je corrige 5 pages clés de votre site, puis je refais le test à J+30.",
       "ctaPrimary": "Réserver un appel",
@@ -1784,7 +1772,8 @@
           "scoring": "scoring · gain × faisabilité",
           "roadmap": "roadmap · 3 workflows"
         },
-        "chip": "Roadmap · 3 workflows priorisés"
+        "chip": "Roadmap · 3 workflows priorisés",
+        "caption": "Exemple de déroulé d'audit. Noms et valeurs fictifs."
       },
       "automation": {
         "title": "factures-fournisseurs",
@@ -1822,7 +1811,8 @@
           "perplexity": "Perplexity",
           "gemini": "Gemini",
           "citation": "Citations",
-          "report": "Rapport"
+          "report": "Rapport",
+          "aio": "AI Overview"
         },
         "meta": {
           "prompts": "30 prompts",
@@ -1830,7 +1820,8 @@
           "perplexity": "moteur",
           "gemini": "moteur",
           "citation": "llm · match",
-          "report": "mensuel"
+          "report": "mensuel",
+          "aio": "moteur"
         },
         "trace": {
           "prompts": "prompts · 30 requêtes cibles",
@@ -1840,7 +1831,8 @@
           "gemini": "gemini · 30/30 réponses",
           "citations": "citations · recherche du domaine",
           "sources": "sources · 31 domaines cités",
-          "report": "rapport · 30 prompts suivis"
+          "report": "rapport · 30 prompts suivis",
+          "aio": "ai overviews · 30/30 réponses"
         },
         "chip": "Rapport · 30 prompts suivis"
       }
@@ -1858,7 +1850,7 @@
     "breadcrumb": "Fil d'Ariane",
     "symptoms": "Symptômes",
     "seeOffer": "Voir l'offre",
-    "moreFeatures": "{count} autres éléments inclus",
+    "moreFeatures": "{count, plural, one {# autre élément inclus} other {# autres éléments inclus}}",
     "eyebrows": {
       "problem": "Le problème",
       "deliverables": "Offres",

@@ -141,7 +141,6 @@ export async function OfferPage({
   const problem = heading(t, "problem");
   const deliverables = heading(t, "deliverables");
   const process = heading(t, "process");
-  const proof = heading(t, "proof");
   const pricing = heading(t, "pricing");
   const faqHeading = heading(t, "faq");
   const cta = heading(t, "cta");
@@ -149,8 +148,10 @@ export async function OfferPage({
   const proofCases = cases.slice(0, 2);
   const singleProof = proofCases.length === 1;
 
+  const hasProof = config.proofLink !== null;
+  const sections = SECTIONS.filter((id) => hasProof || id !== "proof");
   const section = (id: SectionId) => ({
-    index: String(SECTIONS.indexOf(id) + 1).padStart(2, "0"),
+    index: String(sections.indexOf(id) + 1).padStart(2, "0"),
     eyebrow:
       id === "block"
         ? page(`eyebrows.block.${config.block}`)
@@ -323,74 +324,76 @@ export async function OfferPage({
 
       <Block locale={locale} {...section("block")} />
 
-      <Section {...section("proof")}>
-        <div className="reveal tone-sand relative grid gap-10 rounded-xl p-6 md:p-10 lg:grid-cols-12 lg:gap-6 lg:p-12">
-          <div
-            className={cn(
-              "grid gap-6",
-              singleProof
-                ? "content-start lg:col-span-5"
-                : "lg:col-span-12 lg:grid-cols-12 lg:items-end",
-            )}
-          >
-            <SectionHeading
-              lead={proof.lead}
-              rest={proof.rest}
-              className={singleProof ? undefined : "lg:col-span-7"}
-            />
+      {hasProof && (
+        <Section {...section("proof")}>
+          <div className="reveal tone-sand relative grid gap-10 rounded-xl p-6 md:p-10 lg:grid-cols-12 lg:gap-6 lg:p-12">
             <div
               className={cn(
-                "space-y-5",
-                !singleProof && "lg:col-span-4 lg:col-start-9",
-              )}
-            >
-              <p className="text-text-2 max-w-[44ch]">{t("proof.body")}</p>
-              {config.proofLink === "github" ? (
-                <a
-                  href={site.socials.github}
-                  target="_blank"
-                  rel="noopener"
-                  className="group border-ink/20 text-text hover:bg-sand-200 inline-flex h-11 items-center gap-2 rounded-sm border px-4.5 text-[0.9375rem] font-medium transition-colors duration-(--d-fast)"
-                >
-                  {t("proof.link")}
-                  <ArrowUpRight aria-hidden="true" className="size-4" />
-                </a>
-              ) : (
-                <Link
-                  href="/realisations"
-                  className="group border-ink/20 text-text hover:bg-sand-200 inline-flex h-11 items-center gap-2 rounded-sm border px-4.5 text-[0.9375rem] font-medium transition-colors duration-(--d-fast)"
-                >
-                  {t("proof.link")}
-                  <ArrowRight
-                    aria-hidden="true"
-                    className="size-4 transition-transform duration-(--d-fast) group-hover:translate-x-0.5"
-                  />
-                </Link>
-              )}
-            </div>
-          </div>
-          {proofCases.length > 0 && (
-            <ul
-              className={cn(
-                "grid gap-x-6 gap-y-12",
+                "grid gap-6",
                 singleProof
-                  ? "lg:col-span-6 lg:col-start-7"
-                  : "md:grid-cols-2 lg:col-span-12",
+                  ? "content-start lg:col-span-5"
+                  : "lg:col-span-12 lg:grid-cols-12 lg:items-end",
               )}
             >
-              {proofCases.map((study) => (
-                <li key={study.slug}>
-                  <CaseCard
-                    item={study}
-                    readLabel={casesT("read")}
-                    sizes="(min-width: 1024px) 540px, 90vw"
-                  />
-                </li>
-              ))}
-            </ul>
-          )}
-        </div>
-      </Section>
+              <SectionHeading
+                lead={heading(t, "proof").lead}
+                rest={heading(t, "proof").rest}
+                className={singleProof ? undefined : "lg:col-span-7"}
+              />
+              <div
+                className={cn(
+                  "space-y-5",
+                  !singleProof && "lg:col-span-4 lg:col-start-9",
+                )}
+              >
+                <p className="text-text-2 max-w-[44ch]">{t("proof.body")}</p>
+                {config.proofLink === "github" ? (
+                  <a
+                    href={site.socials.github}
+                    target="_blank"
+                    rel="noopener"
+                    className="group border-ink/20 text-text hover:bg-sand-200 inline-flex h-11 items-center gap-2 rounded-sm border px-4.5 text-[0.9375rem] font-medium transition-colors duration-(--d-fast)"
+                  >
+                    {t("proof.link")}
+                    <ArrowUpRight aria-hidden="true" className="size-4" />
+                  </a>
+                ) : (
+                  <Link
+                    href="/realisations"
+                    className="group border-ink/20 text-text hover:bg-sand-200 inline-flex h-11 items-center gap-2 rounded-sm border px-4.5 text-[0.9375rem] font-medium transition-colors duration-(--d-fast)"
+                  >
+                    {t("proof.link")}
+                    <ArrowRight
+                      aria-hidden="true"
+                      className="size-4 transition-transform duration-(--d-fast) group-hover:translate-x-0.5"
+                    />
+                  </Link>
+                )}
+              </div>
+            </div>
+            {proofCases.length > 0 && (
+              <ul
+                className={cn(
+                  "grid gap-x-6 gap-y-12",
+                  singleProof
+                    ? "lg:col-span-6 lg:col-start-7"
+                    : "md:grid-cols-2 lg:col-span-12",
+                )}
+              >
+                {proofCases.map((study) => (
+                  <li key={study.slug}>
+                    <CaseCard
+                      item={study}
+                      readLabel={casesT("read")}
+                      sizes="(min-width: 1024px) 540px, 90vw"
+                    />
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        </Section>
+      )}
 
       <Section {...section("pricing")}>
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-6">

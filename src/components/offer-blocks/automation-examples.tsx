@@ -80,7 +80,7 @@ export async function AutomationExamples({
                       >
                         <Icon aria-hidden="true" className="size-3.5" />
                       </span>
-                      <span className="text-text min-w-0 flex-1 truncate font-mono text-[0.8125rem]">
+                      <span className="text-text min-w-0 flex-1 font-mono text-[0.8125rem] leading-snug">
                         {t(`examples.${example}.steps.${id}`)}
                       </span>
                       {human && (

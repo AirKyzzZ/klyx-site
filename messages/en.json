@@ -866,12 +866,6 @@
         "source": "Source: les-aides.fr, accessed 31 October 2026. Not checked on bpifrance.fr."
       }
     },
-    "proof": {
-      "title": "What I build",
-      "titleEmphasis": "after an audit.",
-      "body": "Hoppy, Hop Hop Immo's AI assistant, is the kind of project that comes out of a roadmap. TODO(maxime): confirm what can be said about the project.",
-      "link": "See the work"
-    },
     "pricing": {
       "title": "How much does",
       "titleEmphasis": "an AI audit cost?",
@@ -1029,12 +1023,6 @@
       },
       "limit": "An autonomous agent, a test set or an integration across several tools are outside the package: that is the AI Sprint."
     },
-    "proof": {
-      "title": "Already built",
-      "titleEmphasis": "for a client.",
-      "body": "Hoppy, Hop Hop Immo's AI assistant, answers visitors' questions from the site's data. TODO(maxime): confirm what can be said about the project.",
-      "link": "See the work"
-    },
     "pricing": {
       "title": "How much does",
       "titleEmphasis": "an AI automation cost?",
@@ -1082,9 +1070,9 @@
   "geo": {
     "hero": {
       "eyebrow": "AI search visibility (GEO)",
-      "title": "Get found in ChatGPT:",
-      "titleEmphasis": "be cited by AI engines.",
-      "serif": "cited",
+      "title": "ChatGPT search visibility,",
+      "titleEmphasis": "so AI engines can cite you.",
+      "serif": "cite",
       "subtitle": "From {geoPrice}, in 2 weeks, for an existing site. I ask 4 AI engines 30 of your clients' questions, fix 5 key pages on your site, then run the test again at day 30.",
       "ctaPrimary": "Book a call",
       "ctaSecondary": "Get a free quote"
@@ -1784,7 +1772,8 @@
           "scoring": "scoring · gain × feasibility",
           "roadmap": "roadmap · 3 workflows ranked"
         },
-        "chip": "Roadmap · 3 workflows ranked"
+        "chip": "Roadmap · 3 workflows ranked",
+        "caption": "Sample audit run. Names and values are fictional."
       },
       "automation": {
         "title": "supplier-invoices",
@@ -1822,7 +1811,8 @@
           "perplexity": "Perplexity",
           "gemini": "Gemini",
           "citation": "Citations",
-          "report": "Report"
+          "report": "Report",
+          "aio": "AI Overview"
         },
         "meta": {
           "prompts": "30 prompts",
@@ -1830,7 +1820,8 @@
           "perplexity": "engine",
           "gemini": "engine",
           "citation": "llm · match",
-          "report": "monthly"
+          "report": "monthly",
+          "aio": "engine"
         },
         "trace": {
           "prompts": "prompts · 30 target queries",
@@ -1840,7 +1831,8 @@
           "gemini": "gemini · 30/30 answers",
           "citations": "citations · domain lookup",
           "sources": "sources · 31 domains cited",
-          "report": "report · 30 prompts tracked"
+          "report": "report · 30 prompts tracked",
+          "aio": "ai overviews · 30/30 answers"
         },
         "chip": "Report · 30 prompts tracked"
       }
@@ -1858,7 +1850,7 @@
     "breadcrumb": "Breadcrumb",
     "symptoms": "Symptoms",
     "seeOffer": "See the offer",
-    "moreFeatures": "{count} more included",
+    "moreFeatures": "{count, plural, one {# more item included} other {# more items included}}",
     "eyebrows": {
       "problem": "The problem",
       "deliverables": "Packages",

@@ -54,6 +54,9 @@ export async function LiveSystem({
   const t = await getTranslations({ locale });
   const list = scenarioIds.map((id) => scenarios[id]);
   const withTabs = list.length > 1;
+  const ownCaption = `liveSystem.scenarios.${initial}.caption`;
+  const captionKey =
+    !withTabs && t.has(ownCaption) ? ownCaption : "liveSystem.caption";
   const steps: Partial<Record<string, ScenarioStep[]>> = Object.fromEntries(
     list.map((scenario) => [scenario.id, scenario.steps]),
   );
@@ -120,7 +123,7 @@ export async function LiveSystem({
             }))}
           />
         )}
-        <p className="ls-caption">{t("liveSystem.caption")}</p>
+        <p className="ls-caption">{t(captionKey)}</p>
       </div>
     </LiveSystemPlayer>
   );

@@ -32,7 +32,7 @@ export type OfferPageConfig = {
   anchor: OfferId;
   block: OfferBlock;
   proofSlugs: string[];
-  proofLink: "cases" | "github";
+  proofLink: "cases" | "github" | null;
   cta: [OfferAction, OfferAction];
 };
 
@@ -84,8 +84,8 @@ export const offerPages: Record<OfferPageKey, OfferPageConfig> = {
     highlighted: "audit-ia",
     anchor: "audit-ia",
     block: "audit-document",
-    proofSlugs: ["hop-hop-immo"],
-    proofLink: "cases",
+    proofSlugs: [],
+    proofLink: null,
     cta: ["book", "quote"],
   },
   automation: {
@@ -97,8 +97,8 @@ export const offerPages: Record<OfferPageKey, OfferPageConfig> = {
     highlighted: "automation",
     anchor: "automation",
     block: "automation-examples",
-    proofSlugs: ["hop-hop-immo"],
-    proofLink: "cases",
+    proofSlugs: [],
+    proofLink: null,
     cta: ["book", "quote"],
   },
   geo: {

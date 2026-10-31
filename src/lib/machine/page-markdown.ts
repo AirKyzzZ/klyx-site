@@ -321,10 +321,14 @@ async function offerPageMarkdown(
     offersT("vatNote"),
     ...processBlocks(locale, t),
     ...blockMarkdown(locale, config, t),
-    `## ${sectionTitle(t, "proof")}`,
-    t("proof.body"),
-    link(t("proof.link"), proofUrl),
-    caseList(locale, cases),
+    ...(config.proofLink === null
+      ? []
+      : [
+          `## ${sectionTitle(t, "proof")}`,
+          t("proof.body"),
+          link(t("proof.link"), proofUrl),
+          caseList(locale, cases),
+        ]),
     `## ${sectionTitle(t, "pricing")}`,
     t("pricing.body", prices),
     list(

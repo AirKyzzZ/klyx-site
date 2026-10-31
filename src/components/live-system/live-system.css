@@ -694,6 +694,28 @@
   }
 }
 
+[data-layout="compact"] .ls-terminal {
+  margin-top: 12px;
+}
+
+@container graph (width >= 600px) {
+  [data-layout="compact"] {
+    & .ls-graph-box {
+      aspect-ratio: 2 / 1;
+    }
+
+    & .ls-node {
+      width: max-content;
+      max-width: 24%;
+    }
+
+    & .ls-node[data-agent] {
+      width: max-content;
+      max-width: 32%;
+    }
+  }
+}
+
 @media (width >= 1200px) {
   [data-layout="wide"] {
     & .ls-frame {

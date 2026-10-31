@@ -67,7 +67,21 @@ describe("offerPages", () => {
     }
   });
 
+  it("shows no proof slot on audit and automation until a real case exists", () => {
+    for (const key of ["audit", "automation"] as const) {
+      expect(offerPages[key].proofLink, key).toBeNull();
+      expect(offerPages[key].proofSlugs, key).toEqual([]);
+    }
+  });
+
   describe.each(["fr", "en"] as const)("messages (%s)", (locale) => {
+    it("has proof copy exactly where a proof slot renders", () => {
+      for (const key of OFFER_PAGE_KEYS) {
+        const hasProof = offerPages[key].proofLink !== null;
+        expect("proof" in namespace(locale, key), key).toBe(hasProof);
+      }
+    });
+
     it("has every template section for every page", () => {
       for (const key of OFFER_PAGE_KEYS) {
         const messages = namespace(locale, key);
