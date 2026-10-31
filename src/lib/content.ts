@@ -21,7 +21,9 @@ export type PostMeta = {
   slug: string;
   title: string;
   date: string;
+  updated?: string;
   summary: string;
+  sources?: { title: string; url: string }[];
 };
 
 type MdxModule<Meta> = { default: MdxContent; metadata: Omit<Meta, "slug"> };
@@ -77,4 +79,18 @@ export async function getPosts(locale: Locale): Promise<PostMeta[]> {
   const slugs = await listSlugs("blog", locale);
   const posts = await Promise.all(slugs.map((slug) => getPost(slug, locale)));
   return posts.map((p) => p.meta).sort((a, b) => b.date.localeCompare(a.date));
+}
+
+export function caseYears(cases: CaseStudyMeta[]): string {
+  const years = cases.map((c) => c.year);
+  const first = Math.min(...years);
+  const last = Math.max(...years);
+  return first === last ? String(first) : `${first}-${last}`;
+}
+
+const WORDS_PER_MINUTE = 200;
+
+export function readingMinutes(body: string): number {
+  const words = body.split(/\s+/).filter(Boolean).length;
+  return Math.max(1, Math.round(words / WORDS_PER_MINUTE));
 }

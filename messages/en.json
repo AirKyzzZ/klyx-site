@@ -1221,7 +1221,8 @@
     "hero": {
       "title": "Every price,",
       "titleEmphasis": "in the open.",
-      "subtitle": "Prices exclude VAT and are starting prices. The final price depends on scope, written into the free quote before work starts."
+      "subtitle": "Prices exclude VAT and are starting prices. The final price depends on scope, written into the free quote before work starts.",
+      "serif": "open"
     },
     "table": {
       "offer": "Offer",
@@ -1243,7 +1244,30 @@
     },
     "market": {
       "title": "How these prices compare",
-      "body": "Most AI agencies in France don't publish their prices. Published ranges for a freelance AI developer usually run from €650 to €900 a day, and a quick AI audit often sells for €1,500 to €2,500. TODO(maxime): add dated sources for these ranges or drop the sentence."
+      "body": "Most AI agencies in France don't publish their prices. Published ranges for a freelance AI developer usually run from €650 to €900 a day, and a quick AI audit often sells for €1,500 to €2,500. TODO(maxime): add dated sources for these ranges or drop the sentence.",
+      "card": {
+        "title": "market.csv",
+        "columns": {
+          "item": "Service",
+          "market": "Market",
+          "klyx": "Klyx",
+          "source": "Source"
+        },
+        "rows": {
+          "tjm": {
+            "label": "Freelance AI developer, per day",
+            "range": "€650-900",
+            "source": "Studeria",
+            "url": "https://www.studeria.fr/articles-de-blog/tjm-consultant-ia-2026-tarifs-grille"
+          },
+          "audit": {
+            "label": "Quick AI audit",
+            "range": "€1,500-2,500",
+            "source": "Malt, TODO(maxime): source link"
+          }
+        },
+        "note": "Ranges collected on 31 October 2026. TODO(maxime): check the ranges and sources before publishing."
+      }
     },
     "faq": {
       "title": "Pricing questions",
@@ -1263,13 +1287,18 @@
       "body": "Tell me about your project and I'll send a free quote.",
       "ctaPrimary": "Get a free quote",
       "ctaSecondary": "Book a call"
+    },
+    "eyebrows": {
+      "market": "Market",
+      "faq": "Questions"
     }
   },
   "cases": {
     "hero": {
       "title": "What I've",
       "titleEmphasis": "built.",
-      "subtitle": "Sites shipped for clients and products I've worked on. For each project, exactly what I did."
+      "subtitle": "Sites shipped for clients and products I've worked on. For each project, exactly what I did.",
+      "serif": "built"
     },
     "labels": {
       "client": "Client",
@@ -1277,20 +1306,25 @@
       "stack": "Stack",
       "visit": "Visit the site",
       "read": "Read the case study",
-      "back": "All work"
+      "back": "All work",
+      "url": "URL",
+      "next": "Next project"
     },
     "cta": {
       "title": "Your project could be next on this list.",
       "body": "Book a call or ask for a free quote.",
       "ctaPrimary": "Book a call",
       "ctaSecondary": "Get a free quote"
-    }
+    },
+    "count": "{count, plural, one {# project} other {# projects}} · {years}",
+    "eyebrow": "Projects"
   },
   "about": {
     "hero": {
       "title": "Maxime Mansiet,",
       "titleEmphasis": "founder of Klyx.",
-      "subtitle": "Fullstack developer in Bordeaux. I build websites, AI agents and automations for startups, agencies and small businesses."
+      "subtitle": "Fullstack developer in Bordeaux. I build websites, AI agents and automations for startups, agencies and small businesses.",
+      "serif": "founder"
     },
     "story": {
       "title": "Who I am",
@@ -1341,6 +1375,11 @@
       "body": "A 20-minute call is enough to know whether I can help.",
       "ctaPrimary": "Book a call",
       "ctaSecondary": "Get a free quote"
+    },
+    "eyebrows": {
+      "story": "Story",
+      "products": "Products",
+      "trust": "Trust"
     }
   },
   "bordeaux": {
@@ -1350,7 +1389,8 @@
       "titleEmphasis": "without the jargon.",
       "subtitle": "I help small and mid-sized companies in Bordeaux and Gironde automate repetitive work: quotes, invoices, emails, reporting. The price is fixed before work starts.",
       "ctaPrimary": "Book a call",
-      "ctaSecondary": "Get a free quote"
+      "ctaSecondary": "Get a free quote",
+      "serif": "jargon"
     },
     "problem": {
       "title": "Tried ChatGPT, but nothing changed in how you work?",
@@ -1388,7 +1428,22 @@
     },
     "local": {
       "title": "Based in Bordeaux",
-      "body": "I work from Bordeaux and can meet you in person across the metro area and Gironde for scoping. TODO(maxime): exact address or area to show, and confirm travel."
+      "body": "I work from Bordeaux and can meet you in person across the metro area and Gironde for scoping. TODO(maxime): exact address or area to show, and confirm travel.",
+      "card": {
+        "city": {
+          "label": "City",
+          "value": "Bordeaux (33)"
+        },
+        "zone": {
+          "label": "Area served",
+          "value": "Bordeaux metro area and Gironde"
+        },
+        "travel": {
+          "label": "Travel",
+          "value": "For scoping. TODO(maxime): confirm"
+        }
+      },
+      "map": "Map of Gironde with Bordeaux"
     },
     "trust": {
       "title": "Why trust me",
@@ -1424,17 +1479,29 @@
       "body": "Let's talk for 20 minutes. It's free, and you'll know whether it's worth automating.",
       "ctaPrimary": "Book a call",
       "ctaSecondary": "Get a free quote"
+    },
+    "eyebrows": {
+      "problem": "The problem",
+      "examples": "Examples",
+      "process": "Method",
+      "local": "Local",
+      "trust": "Trust",
+      "faq": "Questions"
     }
   },
   "contact": {
     "hero": {
       "title": "Let's talk about",
       "titleEmphasis": "your project.",
-      "subtitle": "Book a 20-minute call or describe what you need below. I answer every message myself."
+      "subtitle": "Book a 20-minute call or describe what you need below. I answer every message myself.",
+      "serif": "project"
     },
     "booking": {
       "title": "Book a call",
-      "body": "Pick a slot. The call is free."
+      "body": "Pick a slot. The call is free.",
+      "duration": "20 min",
+      "next": "Next, a free written quote before any work starts.",
+      "frame": "Booking calendar"
     },
     "form": {
       "title": "Get a free quote",
@@ -1510,7 +1577,10 @@
     "published": "Published {date}",
     "updated": "Updated {date}",
     "back": "All posts",
-    "rss": "RSS feed"
+    "rss": "RSS feed",
+    "readingTime": "{minutes} min",
+    "emptyCount": "0 posts published",
+    "sources": "Sources"
   },
   "legal": {
     "title": "Legal notice",
@@ -1638,7 +1708,8 @@
   "notFound": {
     "title": "Page not found",
     "body": "This page doesn't exist or has moved.",
-    "home": "Back to home"
+    "home": "Back to home",
+    "cases": "See the work"
   },
   "liveSystem": {
     "label": "Illustration · sample run",

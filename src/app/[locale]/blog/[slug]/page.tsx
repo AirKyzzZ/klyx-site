@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import { hasLocale } from "next-intl";
-import { getFormatter, getTranslations } from "next-intl/server";
+import { getTranslations } from "next-intl/server";
 
-import { Background } from "@/components/background";
+import { Cta } from "@/components/sections/cta";
+import { Hero } from "@/components/sections/hero";
 import { Link } from "@/i18n/navigation";
 import { resolvePageLocale } from "@/i18n/page-locale";
 import { type Locale, routing } from "@/i18n/routing";
-import { getPost, getPosts } from "@/lib/content";
+import { getMdxBody, getPost, getPosts, readingMinutes } from "@/lib/content";
 import { brandedTitle, buildMetadata } from "@/lib/seo";
 import { site } from "@/lib/site";
 
@@ -53,31 +54,86 @@ export default async function PostPage({ params }: PostPageProps) {
   const { slug } = await params;
   const { meta, Content } = await loadPost(locale, slug);
   const t = await getTranslations({ locale, namespace: "blog" });
-  const format = await getFormatter({ locale });
+  const cta = await getTranslations({ locale, namespace: "home.finalCta" });
+  const minutes = readingMinutes(await getMdxBody("blog", slug, locale));
 
   return (
-    <Background>
-      <article className="container max-w-2xl pt-36 pb-28 lg:pt-48 lg:pb-32">
-        <Link
-          href="/blog"
-          className="text-muted-foreground hover:text-foreground mb-8 inline-flex items-center gap-1.5 text-sm"
-        >
-          <ArrowLeft className="size-4" />
-          {t("back")}
-        </Link>
-        <h1 className="text-4xl leading-[1.05] tracking-tight text-balance md:text-5xl">
-          {meta.title}
-        </h1>
-        <p className="text-muted-foreground mt-6 font-mono text-xs">
-          {t("byline", { author: site.founder })} ·{" "}
-          {t("published", {
-            date: format.dateTime(new Date(meta.date), { dateStyle: "long" }),
-          })}
-        </p>
-        <div className="[&_p]:text-muted-foreground mt-12 space-y-5 leading-relaxed [&_a]:underline [&_a]:underline-offset-4 [&_h2]:pt-6 [&_h2]:text-2xl [&_h2]:tracking-tight [&_li]:ms-5 [&_li]:list-disc">
-          <Content />
+    <>
+      <Hero
+        eyebrow={
+          <Link
+            href="/blog"
+            className="hover:text-text inline-flex items-center gap-1.5 transition-colors"
+          >
+            <ArrowLeft aria-hidden="true" className="size-3.5" />
+            {t("back")}
+          </Link>
+        }
+        title={meta.title}
+        meta={
+          <ul className="flex flex-wrap gap-x-3 gap-y-1">
+            <li>{t("published", { date: meta.date })}</li>
+            {meta.updated && (
+              <li>
+                <span aria-hidden="true">· </span>
+                {t("updated", { date: meta.updated })}
+              </li>
+            )}
+            <li>
+              <span aria-hidden="true">· </span>
+              {t("readingTime", { minutes })}
+            </li>
+            <li>
+              <span aria-hidden="true">· </span>
+              <Link
+                href="/a-propos"
+                className="hover:text-text underline underline-offset-4 transition-colors"
+              >
+                {t("byline", { author: site.founder })}
+              </Link>
+            </li>
+          </ul>
+        }
+      />
+
+      <section className="relative z-1">
+        <div className="container pb-16 md:pb-24">
+          <article className="max-w-[66ch] space-y-6 text-[1.125rem] leading-[1.7]">
+            <Content />
+          </article>
+          {meta.sources && meta.sources.length > 0 && (
+            <aside className="border-line mt-16 max-w-[66ch] border-t pt-6">
+              <h2 className="type-label text-text-3">{t("sources")}</h2>
+              <ol className="type-data mt-4 space-y-2">
+                {meta.sources.map((source, i) => (
+                  <li key={source.url} className="flex gap-3">
+                    <span className="text-text-3">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <a
+                      href={source.url}
+                      target="_blank"
+                      rel="noopener"
+                      className="text-text-2 hover:text-text inline-flex items-center gap-1 underline underline-offset-4 transition-colors"
+                    >
+                      {source.title}
+                      <ArrowUpRight aria-hidden="true" className="size-3.5" />
+                    </a>
+                  </li>
+                ))}
+              </ol>
+            </aside>
+          )}
         </div>
-      </article>
-    </Background>
+      </section>
+
+      <Cta
+        title={cta("title")}
+        emphasis={cta("titleEmphasis")}
+        body={cta("body")}
+        primary={{ action: "book", label: cta("ctaPrimary") }}
+        secondary={{ action: "quote", label: cta("ctaSecondary") }}
+      />
+    </>
   );
 }

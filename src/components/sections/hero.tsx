@@ -4,83 +4,115 @@ import { ArrowRight } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 
 import { ActionButton } from "@/components/action-button";
-import { DashedLine } from "@/components/dashed-line";
 import { EmphasisTitle } from "@/components/emphasis-title";
 import { FoldStrip } from "@/components/fold-strip";
 import { LiveSystem } from "@/components/live-system/live-system";
 import { Tag } from "@/components/tag";
 import type { Locale } from "@/i18n/routing";
+import { cn } from "@/lib/utils";
+
+const delay = (seconds: number) => ({ "--d": `${seconds}s` }) as CSSProperties;
 
 export type HeroAction = { action: "book" | "quote"; label: string };
 
 type HeroProps = {
-  eyebrow?: string;
+  eyebrow?: ReactNode;
   title: string;
   emphasis?: string;
-  subtitle: string;
+  serif?: string;
+  subtitle?: string;
+  meta?: ReactNode;
   primary?: HeroAction;
   secondary?: HeroAction;
   aside?: ReactNode;
+  children?: ReactNode;
+  className?: string;
 };
 
 export function Hero({
   eyebrow,
   title,
   emphasis,
+  serif,
   subtitle,
+  meta,
   primary,
   secondary,
   aside,
+  children,
+  className,
 }: HeroProps) {
   return (
-    <section className="pt-36 pb-20 lg:pt-48 lg:pb-28">
-      <div className="container flex flex-col justify-between gap-10 md:gap-14 lg:flex-row lg:gap-20">
-        <div className="flex-[1.5]">
-          {eyebrow && (
-            <p className="text-muted-foreground mb-5 font-mono text-xs tracking-wider uppercase">
-              {eyebrow}
-            </p>
-          )}
-          <h1 className="text-foreground max-w-3xl text-4xl leading-[1.05] tracking-tight text-balance md:text-5xl lg:text-6xl">
-            <EmphasisTitle title={title} emphasis={emphasis} />
-          </h1>
-
-          <p className="text-muted-foreground mt-6 max-w-2xl text-lg leading-snug text-balance md:text-xl lg:text-2xl">
-            {subtitle}
-          </p>
-
-          {(primary || secondary) && (
-            <div className="mt-8 flex flex-wrap items-center gap-4">
-              {primary && (
-                <ActionButton action={primary.action} size="lg">
-                  {primary.label}
-                </ActionButton>
-              )}
-              {secondary && (
-                <ActionButton
-                  action={secondary.action}
-                  variant="secondary"
-                  size="lg"
-                >
-                  {secondary.label}
-                  <ArrowRight className="stroke-3" />
-                </ActionButton>
-              )}
+    <section
+      className={cn("relative pt-24 pb-16 md:pt-28 md:pb-20", className)}
+    >
+      <div className="container">
+        <div className="grid gap-10 lg:grid-cols-12 lg:items-end lg:gap-6">
+          <div className={aside ? "lg:col-span-7" : "lg:col-span-10"}>
+            {eyebrow && (
+              <div className="hero-in type-label text-text-3" style={delay(0)}>
+                {eyebrow}
+              </div>
+            )}
+            <h1 className={cn("type-h1 max-w-[20ch]", eyebrow && "mt-4")}>
+              <EmphasisTitle title={title} emphasis={emphasis} serif={serif} />
+            </h1>
+            {subtitle && (
+              <p
+                className="hero-in type-lead text-text-2 mt-5 max-w-[56ch]"
+                style={delay(0.15)}
+              >
+                {subtitle}
+              </p>
+            )}
+            {meta && (
+              <div
+                className="hero-in type-label text-text-3 mt-5"
+                style={delay(0.22)}
+              >
+                {meta}
+              </div>
+            )}
+            {(primary || secondary) && (
+              <div
+                className="hero-in mt-7 flex flex-col gap-3 sm:flex-row sm:items-center"
+                style={delay(0.3)}
+              >
+                {primary && (
+                  <ActionButton
+                    action={primary.action}
+                    size="lg"
+                    className="w-full sm:w-auto"
+                  >
+                    {primary.label}
+                  </ActionButton>
+                )}
+                {secondary && (
+                  <ActionButton
+                    action={secondary.action}
+                    variant="secondary"
+                    size="lg"
+                    className="w-full sm:w-auto"
+                  >
+                    {secondary.label}
+                    <ArrowRight />
+                  </ActionButton>
+                )}
+              </div>
+            )}
+          </div>
+          {aside && (
+            <div
+              className="hero-in lg:col-span-4 lg:col-start-9"
+              style={delay(0.38)}
+            >
+              {aside}
             </div>
           )}
         </div>
-
-        {aside && (
-          <div className="relative flex flex-1 flex-col justify-center max-lg:pt-10 lg:pl-10">
-            <DashedLine
-              orientation="vertical"
-              className="absolute top-0 left-0 max-lg:hidden"
-            />
-            <DashedLine
-              orientation="horizontal"
-              className="absolute top-0 lg:hidden"
-            />
-            {aside}
+        {children && (
+          <div className="hero-in mt-12 md:mt-16" style={delay(0.45)}>
+            {children}
           </div>
         )}
       </div>
@@ -88,45 +120,7 @@ export function Hero({
   );
 }
 
-type HeroListItem = {
-  title: string;
-  body?: string;
-  meta?: string;
-};
-
-export function HeroList({ items }: { items: HeroListItem[] }) {
-  return (
-    <ul className="space-y-6">
-      {items.map((item) => (
-        <li key={item.title} className="flex gap-3 lg:gap-5">
-          <span
-            aria-hidden="true"
-            className="bg-foreground mt-2 size-1.5 shrink-0 rounded-full"
-          />
-          <div>
-            <p className="font-text text-foreground font-semibold">
-              {item.title}
-            </p>
-            {item.meta && (
-              <p className="text-foreground mt-0.5 font-mono text-sm">
-                {item.meta}
-              </p>
-            )}
-            {item.body && (
-              <p className="text-muted-foreground mt-0.5 max-w-80 text-sm">
-                {item.body}
-              </p>
-            )}
-          </div>
-        </li>
-      ))}
-    </ul>
-  );
-}
-
 const HOME_SCENARIOS = ["agents", "sites", "fde"] as const;
-
-const delay = (seconds: number) => ({ "--d": `${seconds}s` }) as CSSProperties;
 
 export async function HomeHero({ locale }: { locale: Locale }) {
   const t = await getTranslations({ locale, namespace: "home.hero" });

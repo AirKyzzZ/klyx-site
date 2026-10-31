@@ -1,6 +1,6 @@
 import { mkdirSync } from "node:fs";
 
-import { test } from "@playwright/test";
+import { expect, test } from "@playwright/test";
 
 import { routePaths } from "./route-paths";
 
@@ -41,6 +41,12 @@ test.describe("redesign screenshots", () => {
         });
         await page.waitForLoadState("networkidle");
         await page.evaluate(() => document.fonts.ready);
+        if (viewport.width === 390) {
+          const scrollWidth = await page.evaluate(
+            () => document.documentElement.scrollWidth,
+          );
+          expect(scrollWidth, route).toBeLessThanOrEqual(390);
+        }
         await page.screenshot({
           path: `${OUTPUT_DIR}/${fileStem(route)}-${viewport.width}.png`,
           fullPage: true,

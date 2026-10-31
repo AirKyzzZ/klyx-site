@@ -9,6 +9,21 @@ import { site } from "./site";
 export type AppPathname = keyof typeof routing.pathnames;
 type PathParams = Record<string, string>;
 
+const OG_IMAGE_PATHNAMES: AppPathname[] = [
+  "/services/creation-site-web",
+  "/services/agents-ia",
+  "/services/audit-ia",
+  "/services/automatisation-ia",
+  "/services/geo-referencement-ia",
+  "/forward-deployed-engineer",
+  "/tarifs",
+];
+
+export function ogImageUrl(locale: Locale, pathname: AppPathname): string {
+  const segment = OG_IMAGE_PATHNAMES.includes(pathname) ? pathname : "";
+  return `${site.url}/${locale}${segment}/opengraph-image`;
+}
+
 const OG_LOCALES: Record<Locale, string> = { fr: "fr_FR", en: "en_GB" };
 const TITLE_MAX = 60;
 const BRAND_SUFFIX = ` | ${site.name}`;
@@ -75,7 +90,7 @@ export function buildMetadata({
       type: "website",
       images: [
         {
-          url: `${site.url}/${locale}/opengraph-image`,
+          url: ogImageUrl(locale, pathname),
           width: 1200,
           height: 630,
           alt: site.name,

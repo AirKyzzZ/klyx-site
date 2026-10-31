@@ -22,7 +22,7 @@ type FounderProps = {
   aboutLabel: string;
 };
 
-function IdentityWindow({ rows }: { rows: FounderProps["identity"] }) {
+export function IdentityWindow({ rows }: { rows: FounderProps["identity"] }) {
   return (
     <div className="border-line-strong bg-surface-2 shadow-window overflow-hidden rounded-lg border">
       <div className="border-line text-text-3 flex h-9 items-center gap-2 border-b px-3 font-mono text-xs">

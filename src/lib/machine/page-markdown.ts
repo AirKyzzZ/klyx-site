@@ -6,7 +6,7 @@ import {
 } from "@/i18n/message-list";
 import { type Locale, routing } from "@/i18n/routing";
 import { getStaticTranslator } from "@/i18n/static-translator";
-import { getCaseStudies, getMdxBody, getPosts } from "@/lib/content";
+import { caseYears, getCaseStudies, getMdxBody, getPosts } from "@/lib/content";
 import type { CaseStudyMeta } from "@/lib/content";
 import {
   ALSO_OFFERS,
@@ -19,9 +19,12 @@ import {
   formatPrice,
   getOfferPrice,
   getPriceValues,
+  MARKET_KLYX_OFFER,
   type OfferId,
+  PRICE_GROUPS,
 } from "@/lib/offers";
 import { type AppPathname, absoluteUrl } from "@/lib/seo";
+import { getSiteShot } from "@/lib/proof";
 import { scenarios } from "@/lib/scenarios";
 import { site, socialLinks } from "@/lib/site";
 
@@ -205,6 +208,21 @@ function card(t: Translate, key: string, values?: Prices): Block[] {
 
 type Prices = ReturnType<typeof getPriceValues>;
 
+function automationExampleBlocks(t: Translate): Block[] {
+  return [
+    `## ${sectionTitle(t, "block")}`,
+    t("block.body"),
+    ...messageKeys(t.raw("block.examples")).flatMap((id) => [
+      `### ${t(`block.examples.${id}.title`)}`,
+      ["trigger", "ai", "human", "action"]
+        .map((step) => t(`block.examples.${id}.steps.${step}`))
+        .join(" → "),
+      t(`block.examples.${id}.body`),
+    ]),
+    t("block.limit"),
+  ];
+}
+
 function blockMarkdown(
   locale: Locale,
   config: OfferPageConfig,
@@ -257,18 +275,7 @@ function blockMarkdown(
       ];
     }
     case "automation-examples":
-      return [
-        `## ${sectionTitle(t, "block")}`,
-        t("block.body"),
-        ...messageKeys(t.raw("block.examples")).flatMap((id) => [
-          `### ${t(`block.examples.${id}.title`)}`,
-          ["trigger", "ai", "human", "action"]
-            .map((step) => t(`block.examples.${id}.steps.${step}`))
-            .join(" → "),
-          t(`block.examples.${id}.body`),
-        ]),
-        t("block.limit"),
-      ];
+      return automationExampleBlocks(t);
     case "geo-visibility":
       return [
         `## ${sectionTitle(t, "block")}`,
@@ -349,23 +356,23 @@ async function offerPageMarkdown(
   ]);
 }
 
-const PRICE_GROUPS: { key: "sites" | "ai" | "fde"; offers: OfferId[] }[] = [
-  {
-    key: "sites",
-    offers: ["landing", "site-ia", "site-custom", "geo", "geo-care"],
-  },
-  {
-    key: "ai",
-    offers: [
-      "audit-ia",
-      "automation",
-      "automation-care",
-      "sprint-ia",
-      "retainer",
-    ],
-  },
-  { key: "fde", offers: ["fde"] },
-];
+function marketTable(locale: Locale, t: Translate, offersT: Translate) {
+  const columns = ["item", "market", "klyx", "source"].map((column) =>
+    t(`market.card.columns.${column}`),
+  );
+  return [
+    `| ${columns.join(" | ")} |`,
+    `| ${columns.map(() => "---").join(" | ")} |`,
+    ...messageKeys(t.raw("market.card.rows")).map((key) => {
+      const row = `market.card.rows.${key}`;
+      const source = hasChild(t, row, "url")
+        ? link(t(`${row}.source`), t(`${row}.url`))
+        : t(`${row}.source`);
+      const klyx = getOfferCopy(offersT, locale, MARKET_KLYX_OFFER[key]).price;
+      return `| ${[t(`${row}.label`), t(`${row}.range`), klyx, source].map(cell).join(" | ")} |`;
+    }),
+  ].join("\n");
+}
 
 async function pricing(locale: Locale): Promise<string> {
   const t = getStaticTranslator(locale, "pricing");
@@ -397,6 +404,8 @@ async function pricing(locale: Locale): Promise<string> {
     ]),
     `## ${t("market.title")}`,
     t("market.body"),
+    marketTable(locale, t, offersT),
+    t("market.card.note"),
     ...faqBlocks(
       t("faq.title"),
       messageList(t, "faq.items", ["question", "answer"]),
@@ -407,10 +416,12 @@ async function pricing(locale: Locale): Promise<string> {
 
 async function cases(locale: Locale): Promise<string> {
   const t = getStaticTranslator(locale, "cases");
+  const studies = await getCaseStudies(locale);
   return doc([
     ...intro(locale, "/realisations", heroTitle(t)),
     t("hero.subtitle"),
-    caseList(locale, await getCaseStudies(locale)),
+    t("count", { count: studies.length, years: caseYears(studies) }),
+    caseList(locale, studies),
     ...ctaBlocks(locale, t, "cta", ["book", "quote"]),
   ]);
 }
@@ -448,6 +459,7 @@ async function about(locale: Locale): Promise<string> {
     "Klyx Studio": t("lines.studio"),
     "Klyx Estate": t("lines.estate"),
   };
+  const citeme = getSiteShot("citeme");
 
   return doc([
     ...intro(locale, "/a-propos", heroTitle(t)),
@@ -464,6 +476,8 @@ async function about(locale: Locale): Promise<string> {
     ]),
     `## ${t("trust.title")}`,
     t("trust.body"),
+    citeme && `## ${getStaticTranslator(locale, "home.founder")("products")}`,
+    citeme && link("CiteMe", citeme.url),
     `## ${t("lines.title")}`,
     list(
       site.sisterSites.map(
@@ -477,16 +491,27 @@ async function about(locale: Locale): Promise<string> {
 
 async function bordeaux(locale: Locale): Promise<string> {
   const t = getStaticTranslator(locale, "bordeaux");
+  const automation = getStaticTranslator(locale, "automation");
   return doc([
     ...intro(locale, "/agence-ia-bordeaux", heroTitle(t)),
     t("hero.subtitle"),
-    `## ${t("examples.title")}`,
-    list(messageStrings(t, "examples.items")),
     `## ${t("problem.title")}`,
     t("problem.body"),
+    `### ${t("examples.title")}`,
+    list(messageStrings(t, "examples.items")),
+    ...automationExampleBlocks(automation),
     ...processBlocks(locale, t),
     `## ${t("local.title")}`,
     t("local.body"),
+    list(
+      ["city", "zone", "travel"].map((key) =>
+        labelled(
+          locale,
+          t(`local.card.${key}.label`),
+          t(`local.card.${key}.value`),
+        ),
+      ),
+    ),
     `## ${t("trust.title")}`,
     t("trust.body"),
     ...faqBlocks(
@@ -508,7 +533,8 @@ async function contact(locale: Locale): Promise<string> {
     ...intro(locale, "/contact", heroTitle(t)),
     t("hero.subtitle"),
     `## ${t("booking.title")}`,
-    t("booking.body"),
+    `${t("booking.duration")} · ${t("booking.body")}`,
+    t("booking.next"),
     link(t("booking.title"), actionUrl(locale, "book")),
     `## ${t("direct.title")}`,
     list([link(site.email, `mailto:${site.email}`), t("direct.location")]),
@@ -526,7 +552,7 @@ async function blog(locale: Locale): Promise<string> {
     ...intro(locale, "/blog", t("hero.title")),
     t("hero.subtitle"),
     posts.length === 0
-      ? t("empty")
+      ? `${t("emptyCount")}. ${t("empty")}`
       : list(
           posts.map((post) =>
             labelled(

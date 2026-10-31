@@ -40,6 +40,27 @@ describe("buildMetadata", () => {
     });
   });
 
+  it("points offer and pricing pages at their own OpenGraph image", () => {
+    const pricing = buildMetadata({
+      locale: "en",
+      pathname: "/tarifs",
+      title: "Pricing",
+      description: "Prices.",
+    });
+    expect(pricing.openGraph).toMatchObject({
+      images: [{ url: "https://klyx.fr/en/tarifs/opengraph-image" }],
+    });
+    const cases = buildMetadata({
+      locale: "fr",
+      pathname: "/realisations",
+      title: "Réalisations",
+      description: "Projets.",
+    });
+    expect(cases.openGraph).toMatchObject({
+      images: [{ url: "https://klyx.fr/fr/opengraph-image" }],
+    });
+  });
+
   it("fills dynamic segments", () => {
     const metadata = buildMetadata({
       locale: "fr",

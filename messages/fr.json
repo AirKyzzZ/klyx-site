@@ -1221,7 +1221,8 @@
     "hero": {
       "title": "Tous mes tarifs,",
       "titleEmphasis": "affichés.",
-      "subtitle": "Prix en € HT, « à partir de ». Le prix final dépend du périmètre, écrit dans le devis gratuit avant de commencer."
+      "subtitle": "Prix en € HT, « à partir de ». Le prix final dépend du périmètre, écrit dans le devis gratuit avant de commencer.",
+      "serif": "affichés"
     },
     "table": {
       "offer": "Offre",
@@ -1243,7 +1244,30 @@
     },
     "market": {
       "title": "Comment ces prix se situent",
-      "body": "La plupart des agences IA en France ne publient pas leurs prix. Les fourchettes publiées pour un développeur IA freelance vont en général de 650 à 900 € par jour, et un audit IA express se vend souvent entre 1 500 et 2 500 €. TODO(maxime): ajouter les sources datées de ces fourchettes ou retirer la phrase."
+      "body": "La plupart des agences IA en France ne publient pas leurs prix. Les fourchettes publiées pour un développeur IA freelance vont en général de 650 à 900 € par jour, et un audit IA express se vend souvent entre 1 500 et 2 500 €. TODO(maxime): ajouter les sources datées de ces fourchettes ou retirer la phrase.",
+      "card": {
+        "title": "marche.csv",
+        "columns": {
+          "item": "Prestation",
+          "market": "Marché",
+          "klyx": "Klyx",
+          "source": "Source"
+        },
+        "rows": {
+          "tjm": {
+            "label": "Développeur IA freelance, par jour",
+            "range": "650-900 €",
+            "source": "Studeria",
+            "url": "https://www.studeria.fr/articles-de-blog/tjm-consultant-ia-2026-tarifs-grille"
+          },
+          "audit": {
+            "label": "Audit IA express",
+            "range": "1 500-2 500 €",
+            "source": "Malt, TODO(maxime): lien de la source"
+          }
+        },
+        "note": "Fourchettes relevées le 31 octobre 2026. TODO(maxime): vérifier les fourchettes et les sources avant publication."
+      }
     },
     "faq": {
       "title": "Questions sur les prix",
@@ -1263,13 +1287,18 @@
       "body": "Décrivez votre projet, je vous envoie un devis gratuit.",
       "ctaPrimary": "Demander un devis gratuit",
       "ctaSecondary": "Réserver un appel"
+    },
+    "eyebrows": {
+      "market": "Marché",
+      "faq": "Questions"
     }
   },
   "cases": {
     "hero": {
       "title": "Ce que j'ai",
       "titleEmphasis": "construit.",
-      "subtitle": "Des sites livrés pour des clients et des produits sur lesquels j'ai travaillé. Pour chaque projet, ce que j'ai fait exactement."
+      "subtitle": "Des sites livrés pour des clients et des produits sur lesquels j'ai travaillé. Pour chaque projet, ce que j'ai fait exactement.",
+      "serif": "construit"
     },
     "labels": {
       "client": "Client",
@@ -1277,20 +1306,25 @@
       "stack": "Stack",
       "visit": "Voir le site",
       "read": "Lire l'étude de cas",
-      "back": "Toutes les réalisations"
+      "back": "Toutes les réalisations",
+      "url": "URL",
+      "next": "Projet suivant"
     },
     "cta": {
       "title": "Votre projet peut rejoindre cette liste.",
       "body": "Réservez un appel ou demandez un devis gratuit.",
       "ctaPrimary": "Réserver un appel",
       "ctaSecondary": "Demander un devis gratuit"
-    }
+    },
+    "count": "{count, plural, one {# projet} other {# projets}} · {years}",
+    "eyebrow": "Projets"
   },
   "about": {
     "hero": {
       "title": "Maxime Mansiet,",
       "titleEmphasis": "fondateur de Klyx.",
-      "subtitle": "Développeur fullstack à Bordeaux. Je construis des sites, des agents IA et des automatisations pour des startups, des agences et des PME."
+      "subtitle": "Développeur fullstack à Bordeaux. Je construis des sites, des agents IA et des automatisations pour des startups, des agences et des PME.",
+      "serif": "fondateur"
     },
     "story": {
       "title": "Qui je suis",
@@ -1341,6 +1375,11 @@
       "body": "Un appel de 20 minutes suffit pour savoir si je peux vous aider.",
       "ctaPrimary": "Réserver un appel",
       "ctaSecondary": "Demander un devis gratuit"
+    },
+    "eyebrows": {
+      "story": "Parcours",
+      "products": "Produits",
+      "trust": "Confiance"
     }
   },
   "bordeaux": {
@@ -1350,7 +1389,8 @@
       "titleEmphasis": "sans jargon.",
       "subtitle": "J'aide les PME de Bordeaux et de Gironde à automatiser les tâches répétitives : devis, factures, e-mails, reporting. Le prix est fixé avant de commencer.",
       "ctaPrimary": "Réserver un appel",
-      "ctaSecondary": "Demander un devis gratuit"
+      "ctaSecondary": "Demander un devis gratuit",
+      "serif": "jargon"
     },
     "problem": {
       "title": "Vous avez essayé ChatGPT, mais rien n'a changé dans votre façon de travailler ?",
@@ -1388,7 +1428,22 @@
     },
     "local": {
       "title": "Basé à Bordeaux",
-      "body": "Je travaille depuis Bordeaux et je peux venir vous voir dans la métropole et en Gironde pour le cadrage. TODO(maxime): adresse ou zone exacte à afficher, et confirmer les déplacements."
+      "body": "Je travaille depuis Bordeaux et je peux venir vous voir dans la métropole et en Gironde pour le cadrage. TODO(maxime): adresse ou zone exacte à afficher, et confirmer les déplacements.",
+      "card": {
+        "city": {
+          "label": "Ville",
+          "value": "Bordeaux (33)"
+        },
+        "zone": {
+          "label": "Zone servie",
+          "value": "Bordeaux Métropole et Gironde"
+        },
+        "travel": {
+          "label": "Déplacements",
+          "value": "Pour le cadrage. TODO(maxime): confirmer"
+        }
+      },
+      "map": "Carte de la Gironde avec Bordeaux"
     },
     "trust": {
       "title": "Pourquoi me faire confiance",
@@ -1424,17 +1479,29 @@
       "body": "Parlons-en 20 minutes. C'est gratuit, et vous saurez si elle vaut la peine d'être automatisée.",
       "ctaPrimary": "Réserver un appel",
       "ctaSecondary": "Demander un devis gratuit"
+    },
+    "eyebrows": {
+      "problem": "Le problème",
+      "examples": "Exemples",
+      "process": "Méthode",
+      "local": "Local",
+      "trust": "Confiance",
+      "faq": "Questions"
     }
   },
   "contact": {
     "hero": {
       "title": "Parlons de",
       "titleEmphasis": "votre projet.",
-      "subtitle": "Réservez un appel de 20 minutes ou décrivez votre besoin ci-dessous. C'est moi qui vous réponds."
+      "subtitle": "Réservez un appel de 20 minutes ou décrivez votre besoin ci-dessous. C'est moi qui vous réponds.",
+      "serif": "projet"
     },
     "booking": {
       "title": "Réserver un appel",
-      "body": "Choisissez un créneau. L'appel est gratuit."
+      "body": "Choisissez un créneau. L'appel est gratuit.",
+      "duration": "20 min",
+      "next": "Ensuite, un devis écrit et gratuit avant de commencer.",
+      "frame": "Calendrier de réservation"
     },
     "form": {
       "title": "Demander un devis gratuit",
@@ -1510,7 +1577,10 @@
     "published": "Publié le {date}",
     "updated": "Mis à jour le {date}",
     "back": "Tous les articles",
-    "rss": "Flux RSS"
+    "rss": "Flux RSS",
+    "readingTime": "{minutes} min",
+    "emptyCount": "0 article publié",
+    "sources": "Sources"
   },
   "legal": {
     "title": "Mentions légales",
@@ -1638,7 +1708,8 @@
   "notFound": {
     "title": "Page introuvable",
     "body": "Cette page n'existe pas ou a été déplacée.",
-    "home": "Retour à l'accueil"
+    "home": "Retour à l'accueil",
+    "cases": "Voir les réalisations"
   },
   "liveSystem": {
     "label": "Illustration · scénario type",

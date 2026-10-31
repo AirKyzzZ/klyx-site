@@ -3,11 +3,9 @@ import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa6";
 
-import { ActionButton } from "@/components/action-button";
-import { Background } from "@/components/background";
+import { CalBooking } from "@/components/cal-booking";
 import { ContactForm } from "@/components/contact-form";
-import { DashedLine } from "@/components/dashed-line";
-import { EmphasisTitle } from "@/components/emphasis-title";
+import { Hero } from "@/components/sections/hero";
 import { messageKeys } from "@/i18n/message-list";
 import { type LocaleParams, resolvePageLocale } from "@/i18n/page-locale";
 import { buildMetadata } from "@/lib/seo";
@@ -48,85 +46,100 @@ export default async function ContactPage({ params }: LocaleParams) {
   });
 
   return (
-    <Background>
-      <section className="pt-36 pb-28 lg:pt-48 lg:pb-32">
-        <div className="container max-w-2xl">
-          <h1 className="text-center text-4xl tracking-tight text-balance md:text-5xl">
-            <EmphasisTitle
-              title={t("hero.title")}
-              emphasis={t("hero.titleEmphasis")}
+    <Hero
+      title={t("hero.title")}
+      emphasis={t("hero.titleEmphasis")}
+      serif={t("hero.serif")}
+      subtitle={t("hero.subtitle")}
+      className="pb-24 md:pb-32"
+    >
+      <div className="grid gap-6 lg:grid-cols-12 lg:items-start">
+        <section
+          id="contact-form"
+          aria-labelledby="contact-form-title"
+          className="border-line bg-surface-1 shadow-card order-2 scroll-mt-28 rounded-md border p-5 sm:p-7 lg:order-1 lg:col-span-7 lg:p-8"
+        >
+          <h2 id="contact-form-title" className="type-h3">
+            {t("form.title")}
+          </h2>
+          <div className="mt-8">
+            <ContactForm
+              copy={{
+                name: field("name"),
+                email: field("email"),
+                company: field("company"),
+                need: selectField("need"),
+                budget: selectField("budget"),
+                message: field("message"),
+                honeypot: t("form.fields.honeypot.label"),
+                consent: t("form.consent"),
+                privacyLink: t("form.privacyLink"),
+                submit: t("form.submit"),
+                sending: t("form.sending"),
+                success: t("form.success"),
+              }}
+              locale={locale}
             />
-          </h1>
-          <p className="text-muted-foreground mx-auto mt-4 max-w-lg text-center leading-snug">
-            {t("hero.subtitle")}
-          </p>
+          </div>
+        </section>
 
-          <div className="mt-10 grid gap-8 sm:grid-cols-3 md:mt-14 lg:mt-20">
-            <div>
-              <h2 className="font-medium">{t("booking.title")}</h2>
-              <p className="text-muted-foreground mt-3 text-sm">
-                {t("booking.body")}
-              </p>
-              <ActionButton action="book" size="md" className="mt-4">
-                {t("booking.title")}
-              </ActionButton>
+        <aside className="order-1 space-y-6 lg:sticky lg:top-28 lg:order-2 lg:col-span-5">
+          <section
+            id="booking"
+            aria-labelledby="booking-title"
+            className="border-line-strong bg-surface-2 shadow-window rounded-lg border p-5 sm:p-7"
+          >
+            <p className="type-label text-text-3 flex items-center gap-2">
+              <span
+                aria-hidden="true"
+                className="bg-accent size-1.5 rounded-full"
+              />
+              {t("booking.duration")}
+            </p>
+            <h2 id="booking-title" className="type-h3 mt-4">
+              {t("booking.title")}
+            </h2>
+            <p className="text-text-2 mt-2">{t("booking.body")}</p>
+            <p className="type-data text-text-3 mt-4">{t("booking.next")}</p>
+            <div className="mt-6">
+              <CalBooking
+                calUrl={site.calUrl}
+                label={t("booking.title")}
+                title={t("booking.frame")}
+              />
             </div>
-            <div>
-              <h2 className="font-medium">{t("direct.title")}</h2>
-              <a
-                href={`mailto:${site.email}`}
-                className="text-muted-foreground hover:text-foreground mt-3 block text-sm"
-              >
-                {site.email}
-              </a>
-              <p className="text-muted-foreground mt-1 text-sm">
-                {t("direct.location")}
-              </p>
-            </div>
-            <div>
-              <h2 className="font-medium">Klyx</h2>
-              <div className="mt-3 flex gap-6">
-                {socialLinks.map(({ name, href }) => {
-                  const Icon = SOCIAL_ICONS[name];
-                  return (
+          </section>
+
+          <div className="border-line border-t pt-6">
+            <p className="type-label text-text-3">{t("direct.title")}</p>
+            <a
+              href={`mailto:${site.email}`}
+              className="type-data text-text hover:text-text-2 mt-2 inline-block underline underline-offset-4 transition-colors"
+            >
+              {site.email}
+            </a>
+            <p className="type-data text-text-3 mt-1">{t("direct.location")}</p>
+            <ul className="mt-5 flex gap-5">
+              {socialLinks.map(({ name, href }) => {
+                const Icon = SOCIAL_ICONS[name];
+                return (
+                  <li key={name}>
                     <a
-                      key={name}
                       href={href}
                       target="_blank"
                       rel="noopener"
                       aria-label={name}
-                      className="text-muted-foreground hover:text-foreground"
+                      className="text-text-3 hover:text-text transition-colors"
                     >
                       <Icon className="size-5" />
                     </a>
-                  );
-                })}
-              </div>
-            </div>
+                  </li>
+                );
+              })}
+            </ul>
           </div>
-
-          <DashedLine className="my-12" />
-
-          <h2 className="mb-6 text-lg font-semibold">{t("form.title")}</h2>
-          <ContactForm
-            copy={{
-              name: field("name"),
-              email: field("email"),
-              company: field("company"),
-              need: selectField("need"),
-              budget: selectField("budget"),
-              message: field("message"),
-              honeypot: t("form.fields.honeypot.label"),
-              consent: t("form.consent"),
-              privacyLink: t("form.privacyLink"),
-              submit: t("form.submit"),
-              sending: t("form.sending"),
-              success: t("form.success"),
-            }}
-            locale={locale}
-          />
-        </div>
-      </section>
-    </Background>
+        </aside>
+      </div>
+    </Hero>
   );
 }

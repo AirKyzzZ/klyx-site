@@ -15,9 +15,9 @@ import { cn } from "@/lib/utils";
 type CaseCardLayout = "stack" | "wide";
 type CaseDevice = "desktop" | "mobile";
 
-const BAND_X = ["14%", "64%", "38%", "86%"];
+export const BAND_X = ["14%", "64%", "38%", "86%"];
 
-function BandPicture() {
+export function BandPicture() {
   return (
     <picture>
       <source type="image/avif" srcSet="/backdrop/band-1600.avif" />

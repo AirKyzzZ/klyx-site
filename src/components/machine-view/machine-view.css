@@ -75,6 +75,24 @@
   }
 }
 
+@keyframes view-toggle-in {
+  from {
+    opacity: 0;
+    pointer-events: none;
+    translate: -50% 12px;
+  }
+}
+
+@supports (animation-timeline: scroll()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .view-toggle--floating[data-state="human"]:not(:focus-visible) {
+      animation: view-toggle-in linear both;
+      animation-timeline: scroll(root);
+      animation-range: 50vh 80vh;
+    }
+  }
+}
+
 .machine-view {
   position: fixed;
   inset: 0;

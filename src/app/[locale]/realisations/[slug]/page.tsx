@@ -1,19 +1,23 @@
+import type { CSSProperties } from "react";
+
 import type { Metadata } from "next";
-import Image from "next/image";
 import { notFound } from "next/navigation";
 
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import { hasLocale } from "next-intl";
 import { getTranslations } from "next-intl/server";
 
-import { Background } from "@/components/background";
-import { DashedLine } from "@/components/dashed-line";
+import { ChamferBreak } from "@/components/chamfer-break";
+import { BrowserFrame, hostOf } from "@/components/proof/browser-frame";
+import { Section } from "@/components/section";
+import { BandPicture, CaseCard } from "@/components/sections/case-grid";
 import { Cta } from "@/components/sections/cta";
-import { Button } from "@/components/ui/button";
+import { Hero } from "@/components/sections/hero";
 import { Link } from "@/i18n/navigation";
 import { resolvePageLocale } from "@/i18n/page-locale";
 import { type Locale, routing } from "@/i18n/routing";
 import { getCaseStudies, getCaseStudy } from "@/lib/content";
+import { getSiteShot } from "@/lib/proof";
 import { brandedTitle, buildMetadata } from "@/lib/seo";
 
 type CasePageProps = {
@@ -32,8 +36,11 @@ export async function generateStaticParams({
 
 async function loadCase(locale: Locale, slug: string) {
   const cases = await getCaseStudies(locale);
-  if (!cases.some((c) => c.slug === slug)) notFound();
-  return getCaseStudy(slug, locale);
+  const index = cases.findIndex((c) => c.slug === slug);
+  if (index === -1) notFound();
+  const study = await getCaseStudy(slug, locale);
+  const next = cases.length > 1 ? cases[(index + 1) % cases.length] : null;
+  return { ...study, next };
 }
 
 export async function generateMetadata({
@@ -54,8 +61,9 @@ export async function generateMetadata({
 export default async function CasePage({ params }: CasePageProps) {
   const locale = await resolvePageLocale(params);
   const { slug } = await params;
-  const { meta, Content } = await loadCase(locale, slug);
+  const { meta, Content, next } = await loadCase(locale, slug);
   const t = await getTranslations({ locale, namespace: "cases" });
+  const shot = getSiteShot(meta.slug);
 
   const facts = [
     { label: t("labels.client"), value: meta.client },
@@ -65,66 +73,103 @@ export default async function CasePage({ params }: CasePageProps) {
 
   return (
     <>
-      <Background className="via-muted to-muted/80">
-        <section className="container max-w-5xl pt-36 pb-16 lg:pt-48 lg:pb-20">
+      <Hero
+        eyebrow={
           <Link
             href="/realisations"
-            className="text-muted-foreground hover:text-foreground mb-8 inline-flex items-center gap-1.5 text-sm"
+            className="hover:text-text inline-flex items-center gap-1.5 transition-colors"
           >
-            <ArrowLeft className="size-4" />
+            <ArrowLeft aria-hidden="true" className="size-3.5" />
             {t("labels.back")}
           </Link>
-          <h1 className="max-w-3xl text-4xl leading-[1.05] tracking-tight text-balance md:text-5xl lg:text-6xl">
-            {meta.title}
-          </h1>
-          <p className="text-muted-foreground mt-6 max-w-2xl text-lg leading-snug md:text-xl">
-            {meta.summary}
-          </p>
+        }
+        title={meta.title}
+        subtitle={meta.summary}
+      />
 
-          <dl className="mt-10 grid gap-6 sm:grid-cols-3">
+      <ChamferBreak edge="top" />
+      <section data-tone="sand" className="tone-sand relative z-1">
+        <div className="relative container pt-6 pb-12 md:pt-10 md:pb-16">
+          <div
+            className="case-cover tone-dark border-line-strong aspect-[4/3] rounded-xl border shadow-[0_0_0_1px_var(--line),0_40px_160px_-40px_var(--glow)] sm:aspect-[16/10] lg:aspect-[16/8]"
+            style={{ "--band-x": "38%" } as CSSProperties}
+          >
+            <BandPicture />
+            <div className="absolute inset-x-[6%] top-[8%] lg:right-[24%] lg:left-[6%]">
+              <BrowserFrame
+                url={meta.url}
+                image={shot?.image ?? meta.image}
+                alt={meta.client}
+                sizes="(min-width: 1024px) 820px, 90vw"
+              />
+            </div>
+            {shot && (
+              <div className="absolute top-[18%] right-[5%] hidden w-[17%] lg:block">
+                <BrowserFrame
+                  url={meta.url}
+                  image={`/realisations/${meta.slug}-390.png`}
+                  alt=""
+                  sizes="200px"
+                  imageClassName="aspect-[390/844]"
+                />
+              </div>
+            )}
+          </div>
+
+          <dl className="border-ink/15 mt-10 grid grid-cols-2 gap-x-6 gap-y-6 border-t pt-6 lg:grid-cols-4">
             {facts.map((fact) => (
-              <div key={fact.label} className="space-y-1">
-                <dt className="text-muted-foreground font-mono text-xs tracking-wider uppercase">
-                  {fact.label}
-                </dt>
-                <dd className="font-medium">{fact.value}</dd>
+              <div key={fact.label}>
+                <dt className="type-label text-text-3">{fact.label}</dt>
+                <dd className="type-data text-text mt-2">{fact.value}</dd>
               </div>
             ))}
+            <div>
+              <dt className="type-label text-text-3">{t("labels.url")}</dt>
+              <dd className="type-data mt-2">
+                <a
+                  href={meta.url}
+                  target="_blank"
+                  rel="noopener"
+                  aria-label={`${t("labels.visit")} ${hostOf(meta.url)}`}
+                  className="text-text hover:text-text-2 inline-flex items-center gap-1 underline underline-offset-4 transition-colors"
+                >
+                  {hostOf(meta.url)}
+                  <ArrowUpRight aria-hidden="true" className="size-3.5" />
+                </a>
+              </dd>
+            </div>
           </dl>
-
-          <Button variant="secondary" className="mt-8" asChild>
-            <a href={meta.url} target="_blank" rel="noopener">
-              {t("labels.visit")} <ArrowUpRight className="size-4" />
-            </a>
-          </Button>
-        </section>
-      </Background>
-
-      <section className="container max-w-5xl py-16 lg:py-20">
-        <div className="bg-muted relative aspect-[16/10] overflow-hidden rounded-2xl border shadow-lg">
-          <Image
-            src={meta.image}
-            alt={meta.client}
-            fill
-            priority
-            sizes="(min-width: 1024px) 976px, 100vw"
-            className="object-cover object-top"
-          />
         </div>
-        <DashedLine className="my-12 lg:my-16" />
-        <article className="[&_p]:text-muted-foreground mx-auto max-w-2xl space-y-5 leading-relaxed [&_a]:underline [&_a]:underline-offset-4 [&_h2]:pt-6 [&_h2]:text-2xl [&_h2]:tracking-tight [&_li]:ms-5 [&_li]:list-disc">
-          <Content />
-        </article>
+      </section>
+      <ChamferBreak edge="bottom" />
+
+      <section className="relative z-1">
+        <div className="container py-16 md:py-24">
+          <article className="max-w-[64ch] space-y-5">
+            <Content />
+          </article>
+        </div>
       </section>
 
-      <Background variant="bottom">
-        <Cta
-          title={t("cta.title")}
-          body={t("cta.body")}
-          primary={{ action: "book", label: t("cta.ctaPrimary") }}
-          secondary={{ action: "quote", label: t("cta.ctaSecondary") }}
-        />
-      </Background>
+      {next && (
+        <Section index="01" eyebrow={t("labels.next")}>
+          <div className="reveal">
+            <CaseCard
+              item={next}
+              readLabel={t("labels.read")}
+              layout="wide"
+              sizes="(min-width: 1024px) 680px, 90vw"
+            />
+          </div>
+        </Section>
+      )}
+
+      <Cta
+        title={t("cta.title")}
+        body={t("cta.body")}
+        primary={{ action: "book", label: t("cta.ctaPrimary") }}
+        secondary={{ action: "quote", label: t("cta.ctaSecondary") }}
+      />
     </>
   );
 }

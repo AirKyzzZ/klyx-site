@@ -103,6 +103,32 @@ export const offers: Offer[] = [
   },
 ];
 
+export const PRICE_GROUPS: {
+  key: "sites" | "ai" | "fde";
+  offers: OfferId[];
+}[] = [
+  {
+    key: "sites",
+    offers: ["landing", "site-ia", "site-custom", "geo", "geo-care"],
+  },
+  {
+    key: "ai",
+    offers: [
+      "audit-ia",
+      "automation",
+      "automation-care",
+      "sprint-ia",
+      "retainer",
+    ],
+  },
+  { key: "fde", offers: ["fde"] },
+];
+
+export const MARKET_KLYX_OFFER: Record<string, OfferId> = {
+  tjm: "fde",
+  audit: "audit-ia",
+};
+
 export function formatPrice(amount: number, locale: Locale): string {
   const formatted = new Intl.NumberFormat(locale === "fr" ? "fr-FR" : "en-GB", {
     style: "currency",

@@ -59,7 +59,10 @@ export function ContactForm({
 
   if (state.status === "success") {
     return (
-      <p role="status" className="text-lg leading-snug">
+      <p
+        role="status"
+        className="border-line-strong bg-surface-2 type-lead text-text rounded-sm border px-5 py-6"
+      >
         {copy.success}
       </p>
     );
@@ -75,7 +78,7 @@ export function ContactForm({
     <form
       action={formAction}
       onSubmit={handleSubmit}
-      className="flex w-full flex-col gap-2 space-y-4 rounded-md"
+      className="flex w-full flex-col gap-6"
     >
       <input type="hidden" name="locale" value={locale} />
       <div className="grid gap-6 sm:grid-cols-2">
@@ -120,7 +123,7 @@ export function ContactForm({
           {...errorProps("contact-company", errors.company)}
         />
       </Field>
-      <div className="grid gap-6 sm:grid-cols-2">
+      <div className="grid gap-6">
         <SelectField
           id="contact-need"
           name="need"
@@ -128,13 +131,13 @@ export function ContactForm({
           error={errors.need}
           required
         />
-        <SelectField
-          id="contact-budget"
-          name="budget"
-          copy={copy.budget}
-          error={errors.budget}
-        />
       </div>
+      <BudgetPills
+        id="contact-budget"
+        name="budget"
+        copy={copy.budget}
+        error={errors.budget}
+      />
       <Field
         id="contact-message"
         label={copy.message.label}
@@ -147,7 +150,7 @@ export function ContactForm({
           minLength={10}
           maxLength={5000}
           placeholder={copy.message.placeholder}
-          className="min-h-32 resize-none"
+          className="min-h-36 resize-none"
           {...errorProps("contact-message", errors.message)}
         />
       </Field>
@@ -162,19 +165,22 @@ export function ContactForm({
         />
       </div>
       <div className="grid gap-2">
-        <div className="flex items-start gap-2">
+        <div className="flex items-start gap-3">
           <Checkbox
             id="contact-consent"
             name="consent"
             required
             {...errorProps("contact-consent", errors.consent)}
           />
-          <Label htmlFor="contact-consent" className="leading-snug font-normal">
+          <Label
+            htmlFor="contact-consent"
+            className="text-text-2 text-sm leading-snug font-normal"
+          >
             <span>
               {copy.consent}{" "}
               <Link
                 href="/confidentialite"
-                className="underline underline-offset-4"
+                className="text-text underline underline-offset-4"
               >
                 {copy.privacyLink}
               </Link>
@@ -183,12 +189,17 @@ export function ContactForm({
         </div>
         <FieldError id="contact-consent" error={errors.consent} />
       </div>
-      <div className="flex w-full flex-col items-end gap-3 pt-3">
-        <Button type="submit" className="rounded-lg" disabled={pending}>
+      <div className="flex w-full flex-col gap-3 sm:items-end">
+        <Button
+          type="submit"
+          size="lg"
+          className="w-full sm:w-auto"
+          disabled={pending}
+        >
           {pending ? copy.sending : copy.submit}
         </Button>
         {state.message ? (
-          <p role="alert" className="text-destructive text-end text-sm">
+          <p role="alert" className="text-destructive text-sm sm:text-end">
             {state.message}
           </p>
         ) : null}
@@ -233,6 +244,41 @@ function SelectField({
   );
 }
 
+function BudgetPills({
+  id,
+  name,
+  copy,
+  error,
+}: {
+  id: string;
+  name: string;
+  copy: SelectCopy;
+  error: string | undefined;
+}) {
+  return (
+    <fieldset className="grid gap-2" {...errorProps(id, error)}>
+      <legend className="type-label text-text-3 mb-2">{copy.label}</legend>
+      <div className="flex flex-wrap gap-2">
+        {copy.options.map((option) => (
+          <label
+            key={option.value}
+            className="border-line-strong bg-surface-2 text-text-2 hover:border-text-3 hover:text-text has-checked:border-accent has-checked:bg-accent-soft has-checked:text-text has-focus-visible:outline-accent inline-flex h-9 cursor-pointer items-center rounded-full border px-3.5 font-mono text-[0.8125rem] transition-colors duration-(--d-fast) has-focus-visible:outline-2 has-focus-visible:outline-offset-2"
+          >
+            <input
+              type="radio"
+              name={name}
+              value={option.value}
+              className="sr-only"
+            />
+            {option.label}
+          </label>
+        ))}
+      </div>
+      <FieldError id={id} error={error} />
+    </fieldset>
+  );
+}
+
 function Field({
   id,
   label,
@@ -246,7 +292,9 @@ function Field({
 }) {
   return (
     <div className="grid w-full gap-2">
-      <Label htmlFor={id}>{label}</Label>
+      <Label htmlFor={id} className="type-label text-text-3">
+        {label}
+      </Label>
       {children}
       <FieldError id={id} error={error} />
     </div>

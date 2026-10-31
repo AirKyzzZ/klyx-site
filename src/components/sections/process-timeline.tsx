@@ -29,7 +29,7 @@ export function SampleWindow({
   children,
 }: {
   file: string;
-  sample: string;
+  sample?: string;
   children: ReactNode;
 }) {
   return (
@@ -44,9 +44,11 @@ export function SampleWindow({
           ))}
         </span>
         <span className="ml-1 truncate">{file}</span>
-        <span className="border-line-strong type-label ml-auto rounded-xs border px-1.5 py-0.5">
-          {sample}
-        </span>
+        {sample && (
+          <span className="border-line-strong type-label ml-auto rounded-xs border px-1.5 py-0.5">
+            {sample}
+          </span>
+        )}
       </div>
       <div className="type-data p-4 text-[0.8125rem] sm:p-5">{children}</div>
     </div>

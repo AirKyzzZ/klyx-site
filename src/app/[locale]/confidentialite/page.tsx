@@ -1,13 +1,18 @@
 import type { Metadata } from "next";
 import { getFormatter, getTranslations } from "next-intl/server";
 
-import { Background } from "@/components/background";
-import { LegalSection } from "@/components/legal-section";
+import { LegalArticle, LegalSection } from "@/components/legal-section";
+import { Hero } from "@/components/sections/hero";
 import { type LocaleParams, resolvePageLocale } from "@/i18n/page-locale";
 import { buildMetadata } from "@/lib/seo";
 import { site } from "@/lib/site";
 
-const SECTIONS = ["contactForm", "booking", "analytics", "hosting"] as const;
+const SECTIONS = [
+  { key: "contactForm", id: "formulaire" },
+  { key: "booking", id: "rendez-vous" },
+  { key: "analytics", id: "cookies" },
+  { key: "hosting", id: "hebergement" },
+] as const;
 
 const PROSPECTION_PARAGRAPHS = [
   "intro",
@@ -40,20 +45,15 @@ export default async function PrivacyPage({ params }: LocaleParams) {
   });
 
   return (
-    <Background>
-      <article className="container max-w-2xl space-y-12 pt-36 pb-28 lg:pt-48 lg:pb-32">
-        <header className="space-y-4">
-          <h1 className="text-4xl tracking-tight md:text-5xl">{t("title")}</h1>
-          <p className="text-muted-foreground font-mono text-xs">
-            {t("updated", { date: updated })}
-          </p>
-          <p className="text-muted-foreground leading-relaxed">
-            {t("intro", values)}
-          </p>
-        </header>
-
-        {SECTIONS.map((key) => (
-          <LegalSection key={key} title={t(`${key}.title`)}>
+    <>
+      <Hero
+        title={t("title")}
+        subtitle={t("intro", values)}
+        meta={t("updated", { date: updated })}
+      />
+      <LegalArticle>
+        {SECTIONS.map(({ key, id }) => (
+          <LegalSection key={key} id={id} title={t(`${key}.title`)}>
             <p>{t(`${key}.body`)}</p>
           </LegalSection>
         ))}
@@ -67,10 +67,10 @@ export default async function PrivacyPage({ params }: LocaleParams) {
           ))}
         </LegalSection>
 
-        <LegalSection title={t("rights.title")}>
+        <LegalSection id="droits" title={t("rights.title")}>
           <p>{t("rights.body", values)}</p>
         </LegalSection>
-      </article>
-    </Background>
+      </LegalArticle>
+    </>
   );
 }

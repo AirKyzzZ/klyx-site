@@ -27,16 +27,25 @@ test("/en/pricing declares canonical and hreflang alternates", async ({
   ).toHaveAttribute("href", "https://klyx.fr/tarifs");
   await expect(
     page.locator('meta[property="og:image"]').first(),
-  ).toHaveAttribute("content", "https://klyx.fr/en/opengraph-image");
+  ).toHaveAttribute("content", "https://klyx.fr/en/tarifs/opengraph-image");
 });
 
 test("OpenGraph images render in both locales without redirect", async ({
   request,
 }) => {
-  for (const path of ["/fr/opengraph-image", "/en/opengraph-image"]) {
+  for (const path of [
+    "/fr/opengraph-image",
+    "/en/opengraph-image",
+    "/fr/tarifs/opengraph-image",
+    "/en/services/agents-ia/opengraph-image",
+    "/fr/services/geo-referencement-ia/opengraph-image",
+  ]) {
     const response = await request.get(path, { maxRedirects: 0 });
     expect(response.status(), path).toBe(200);
     expect(response.headers()["content-type"]).toBe("image/png");
+    const png = Buffer.from(await response.body());
+    expect(png.readUInt32BE(16), `${path} width`).toBe(1200);
+    expect(png.readUInt32BE(20), `${path} height`).toBe(630);
   }
 });
 

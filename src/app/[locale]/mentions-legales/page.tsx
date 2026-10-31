@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { getFormatter, getTranslations } from "next-intl/server";
 
-import { Background } from "@/components/background";
-import { LegalSection } from "@/components/legal-section";
+import { LegalArticle, LegalSection } from "@/components/legal-section";
+import { Hero } from "@/components/sections/hero";
 import { Link } from "@/i18n/navigation";
 import { type LocaleParams, resolvePageLocale } from "@/i18n/page-locale";
 import { buildMetadata } from "@/lib/seo";
@@ -30,40 +30,34 @@ export default async function LegalPage({ params }: LocaleParams) {
   });
 
   return (
-    <Background>
-      <article className="container max-w-2xl space-y-12 pt-36 pb-28 lg:pt-48 lg:pb-32">
-        <header className="space-y-4">
-          <h1 className="text-4xl tracking-tight md:text-5xl">{t("title")}</h1>
-          <p className="text-muted-foreground font-mono text-xs">
-            {t("updated", { date: updated })}
-          </p>
-        </header>
-
-        <LegalSection title={t("publisher.title")}>
+    <>
+      <Hero title={t("title")} meta={t("updated", { date: updated })} />
+      <LegalArticle>
+        <LegalSection id="editeur" title={t("publisher.title")}>
           <p>{t("publisher.body")}</p>
           <p>{t("publisher.siret", { siret: site.siret })}</p>
           <p>{t("publisher.vat")}</p>
           <p>{t("publisher.email", { email: site.email })}</p>
           <p>{t("publisher.director")}</p>
         </LegalSection>
-        <LegalSection title={t("hosting.title")}>
+        <LegalSection id="hebergement" title={t("hosting.title")}>
           <p>{t("hosting.body")}</p>
         </LegalSection>
-        <LegalSection title={t("ip.title")}>
+        <LegalSection id="propriete-intellectuelle" title={t("ip.title")}>
           <p>{t("ip.body")}</p>
         </LegalSection>
-        <LegalSection title={t("data.title")}>
+        <LegalSection id="donnees-personnelles" title={t("data.title")}>
           <p>{t("data.body")}</p>
           <p>
             <Link
               href="/confidentialite"
-              className="text-foreground underline underline-offset-4"
+              className="text-text underline underline-offset-4"
             >
               {t("data.link")}
             </Link>
           </p>
         </LegalSection>
-      </article>
-    </Background>
+      </LegalArticle>
+    </>
   );
 }

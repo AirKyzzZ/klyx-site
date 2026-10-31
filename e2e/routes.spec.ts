@@ -91,23 +91,7 @@ test("responses carry the security headers", async ({ request }) => {
   expect(headers["x-powered-by"]).toBeUndefined();
 });
 
-test("home has no horizontal overflow at 390px", async ({ page }) => {
-  await page.setViewportSize({ width: 390, height: 844 });
-  await page.goto("/");
-  const scrollWidth = await page.evaluate(
-    () => document.documentElement.scrollWidth,
-  );
-  expect(scrollWidth).toBeLessThanOrEqual(390);
-});
-
-for (const path of [
-  "/services/creation-site-web",
-  "/services/agents-ia",
-  "/forward-deployed-engineer",
-  "/services/audit-ia",
-  "/services/automatisation-ia",
-  "/services/geo-referencement-ia",
-]) {
+for (const path of routePaths) {
   test(`${path} has no horizontal overflow at 390px`, async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 844 });
     await page.goto(path);

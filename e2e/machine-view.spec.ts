@@ -9,6 +9,11 @@ const MOBILE = { width: 390, height: 844 };
 
 const squash = (text: string) => text.replace(/\s+/g, " ").trim();
 
+async function scrollPastHero(page: Page) {
+  await page.evaluate(() => window.scrollTo(0, window.innerHeight));
+  await page.waitForFunction(() => window.scrollY > 0);
+}
+
 async function h1Text(page: Page) {
   return squash(await page.locator("main h1").first().innerText());
 }
@@ -32,6 +37,7 @@ for (const { route, price, md } of CASES) {
     await expect(toggle).toHaveAttribute("role", "switch");
     await expect(toggle).toHaveAttribute("aria-checked", "false");
 
+    await scrollPastHero(page);
     await toggle.click();
     const layer = page.locator(".machine-view");
     await expect(layer).toBeVisible();
@@ -108,6 +114,7 @@ test("switching from the nav sheet closes the sheet", async ({ page }) => {
 test("hidden page content is inert while MACHINE is open", async ({ page }) => {
   await page.setViewportSize(DESKTOP);
   await page.goto("/");
+  await scrollPastHero(page);
   await page.locator(".view-toggle--floating").click();
   await expect(page.locator("main")).toHaveAttribute("inert", "");
   await expect(page.locator("body > div > footer")).toHaveAttribute(
@@ -118,12 +125,25 @@ test("hidden page content is inert while MACHINE is open", async ({ page }) => {
   await expect(page.locator("main")).not.toHaveAttribute("inert", /.*/);
 });
 
+test("the floating toggle stays out of the hero until the page scrolls", async ({
+  page,
+}) => {
+  await page.setViewportSize(DESKTOP);
+  await page.goto("/");
+  const toggle = page.locator(".view-toggle--floating");
+  await expect(toggle).toHaveCSS("opacity", "0");
+  await scrollPastHero(page);
+  await page.evaluate(() => window.scrollTo(0, window.innerHeight * 2));
+  await expect(toggle).toHaveCSS("opacity", "1");
+});
+
 test("a modified click on the toggle is left to the browser", async ({
   page,
   context,
 }) => {
   await page.setViewportSize(DESKTOP);
   await page.goto("/");
+  await scrollPastHero(page);
   const popup = context.waitForEvent("page");
   await page
     .locator(".view-toggle--floating")
