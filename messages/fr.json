@@ -66,7 +66,7 @@
     },
     "cases": {
       "title": "Réalisations",
-      "subtitle": "Des sites livrés pour des clients et des produits IA en production. Chaque carte mène au projet en ligne.",
+      "subtitle": "Des sites livrés pour des clients et des produits sur lesquels j'ai travaillé. Pour chaque projet, ce que j'ai construit.",
       "visit": "Voir le projet",
       "readCase": "Lire l'étude de cas",
       "viewAll": "Toutes les réalisations"
@@ -83,12 +83,12 @@
           "body": "Je passe en revue votre site ou vos process, puis je vous envoie un périmètre écrit et un prix fixe."
         },
         "build": {
-          "title": "Build en sprints",
-          "body": "Je livre par sprints de deux semaines, testés sur vos vraies données. Le code est dans votre repo dès le premier jour."
+          "title": "Build",
+          "body": "Je construis par étapes courtes, avec un point chaque semaine et des tests sur vos vraies données. Le code est dans votre repo dès le premier jour."
         },
         "measure": {
-          "title": "Mesure et itération",
-          "body": "Après la mise en ligne, je suis les chiffres et je corrige ce qui ne marche pas. La passation est écrite."
+          "title": "Mesure et passation",
+          "body": "Après la mise en ligne, je vérifie avec vous que tout tourne et je vous remets une passation écrite. Si vous voulez que je continue à suivre et à améliorer, c'est le suivi mensuel."
         }
       }
     },
@@ -130,7 +130,7 @@
         },
         "solo": {
           "question": "Vous travaillez seul. Que se passe-t-il si vous n'êtes plus disponible ?",
-          "answer": "Le code est dans votre repo dès le premier jour, et chaque projet se termine par une passation écrite pour qu'un autre développeur puisse reprendre. Je prends deux clients au plus en même temps, et je ne propose pas d'astreinte 24 h/24."
+          "answer": "Le code est dans votre repo dès le premier jour, et chaque projet se termine par une passation écrite pour qu'un autre développeur puisse reprendre. En Forward Deployed Engineer à temps partagé, je prends deux clients au plus en même temps. Je ne propose pas d'astreinte 24 h/24."
         },
         "production": {
           "question": "Que veut dire « en production » ?",
@@ -138,7 +138,7 @@
         },
         "data": {
           "question": "Que deviennent nos données ?",
-          "answer": "Elles restent sur vos comptes. Je passe par les API d'OpenAI ou d'Anthropic, qui n'utilisent pas par défaut les données envoyées par API pour entraîner leurs modèles. Si vous avez besoin d'un hébergement dans l'UE ou d'un modèle local, on le prévoit dans le devis."
+          "answer": "Vos comptes et vos outils restent à votre nom. Pour que l'IA traite une demande, les données passent par l'API d'un fournisseur de modèle, comme OpenAI ou Anthropic, qui par défaut ne les utilise pas pour entraîner ses modèles. Si vous avez besoin d'un hébergement dans l'UE ou d'un modèle local, on le prévoit dans le devis. TODO(maxime): fournisseurs de modèles utilisés par défaut."
         },
         "remote": {
           "question": "Travaillez-vous avec des équipes hors de Bordeaux ?",
@@ -151,7 +151,7 @@
       }
     },
     "finalCta": {
-      "title": "Un process à automatiser, un site à refaire ?",
+      "title": "Parlons de votre prochain workflow ou de votre prochain site.",
       "body": "Réservez un appel de 20 minutes. Vous repartez avec un avis clair sur ce qui vaut le coup, même si on ne travaille pas ensemble.",
       "ctaPrimary": "Réserver un appel",
       "ctaSecondary": "Demander un devis gratuit"
@@ -306,7 +306,7 @@
       }
     },
     "cta": {
-      "title": "Un site à lancer ou à refaire ?",
+      "title": "Votre site, livré au prix annoncé.",
       "body": "Décrivez votre projet, je vous envoie un devis gratuit avec un prix fixe.",
       "ctaPrimary": "Demander un devis gratuit",
       "ctaSecondary": "Réserver un appel"
@@ -327,7 +327,7 @@
     },
     "deliverables": {
       "title": "Trois étapes, chacune payée à part",
-      "subtitle": "Vous pouvez vous arrêter après chaque étape.",
+      "subtitle": "Vous pouvez vous arrêter après chaque étape, ou commencer directement par le Sprint si le périmètre est déjà clair. TODO(maxime): confirmer qu'un Sprint se vend sans audit.",
       "tiers": {
         "auditIa": {
           "items": {
@@ -375,7 +375,7 @@
         },
         "sprint": {
           "title": "Sprint",
-          "body": "Deux semaines pour mettre un workflow en production, avec une démo à la fin de chaque semaine."
+          "body": "Deux semaines pour mettre un workflow en production, avec une revue à la fin de chaque semaine."
         },
         "run": {
           "title": "Suivi",
@@ -414,7 +414,7 @@
         },
         "data": {
           "question": "Nos données sont-elles en sécurité ?",
-          "answer": "Elles restent sur vos comptes, et je cartographie les données avant d'écrire le code. Si vous avez besoin d'un hébergement dans l'UE ou d'un modèle local, on le prévoit dans le devis."
+          "answer": "Vos comptes et vos outils restent à votre nom, et je cartographie les données avant d'écrire le code. Les données traitées par l'agent passent par l'API du fournisseur de modèle, qui par défaut ne les utilise pas pour entraîner ses modèles. Si vous avez besoin d'un hébergement dans l'UE ou d'un modèle local, on le prévoit dans le devis. TODO(maxime): fournisseurs de modèles utilisés par défaut."
         },
         "maintenance": {
           "question": "Qui maintient l'agent après le sprint ?",
@@ -423,7 +423,7 @@
       }
     },
     "cta": {
-      "title": "Un processus vous prend des heures chaque semaine ?",
+      "title": "Commencez par le processus qui vous coûte le plus d'heures.",
       "body": "Réservez un appel de 20 minutes. On regarde ensemble s'il vaut la peine d'être automatisé.",
       "ctaPrimary": "Réserver un appel",
       "ctaSecondary": "Demander un devis gratuit"
@@ -559,7 +559,7 @@
       "items": {
         "sprintVsFde": {
           "question": "Pourquoi le Sprint IA coûte-t-il moins cher que 10 jours de FDE ?",
-          "answer": "Le Sprint IA est un livrable au forfait : un workflow, avec un périmètre fixé avant de commencer. Le FDE, c'est du temps passé dans votre équipe sur votre backlog, quel qu'il soit."
+          "answer": "Le Sprint IA est vendu au résultat : un seul workflow, avec un périmètre que je fixe avant de commencer. Je réutilise des briques que j'ai déjà construites, et les deux semaines servent à ce seul livrable. En FDE, vous payez du temps passé dans votre équipe sur un backlog ouvert, qui change d'une semaine à l'autre."
         },
         "final": {
           "question": "Le prix peut-il augmenter en cours de projet ?",
@@ -568,7 +568,7 @@
       }
     },
     "cta": {
-      "title": "Besoin d'un prix précis ?",
+      "title": "Pour un prix précis, demandez un devis.",
       "body": "Décrivez votre projet, je vous envoie un devis gratuit.",
       "ctaPrimary": "Demander un devis gratuit",
       "ctaSecondary": "Réserver un appel"
@@ -578,7 +578,7 @@
     "hero": {
       "title": "Ce que j'ai",
       "titleEmphasis": "construit.",
-      "subtitle": "Des sites livrés pour des clients et des produits IA en production. Pour chaque projet, ce que j'ai fait exactement."
+      "subtitle": "Des sites livrés pour des clients et des produits sur lesquels j'ai travaillé. Pour chaque projet, ce que j'ai fait exactement."
     },
     "labels": {
       "client": "Client",
@@ -589,7 +589,7 @@
       "back": "Toutes les réalisations"
     },
     "cta": {
-      "title": "Votre projet ici ?",
+      "title": "Votre projet peut rejoindre cette liste.",
       "body": "Réservez un appel ou demandez un devis gratuit.",
       "ctaPrimary": "Réserver un appel",
       "ctaSecondary": "Demander un devis gratuit"
@@ -603,7 +603,7 @@
     },
     "story": {
       "title": "Qui je suis",
-      "intro": "J'ai 20 ans. J'ai fondé Klyx à Bordeaux pour livrer moi-même ce que je vends : des sites rapides et des agents IA qui tournent chez de vrais clients.",
+      "intro": "J'ai 20 ans. J'ai fondé Klyx à Bordeaux pour livrer moi-même ce que je vends : des sites rapides, des agents IA et des automatisations.",
       "work": "TODO(maxime): Chez 2060.io, je développe le serveur MCP et des agents IA de Verana, une infrastructure de confiance pour l'identité numérique européenne.",
       "citeme": "TODO(maxime): J'ai cofondé CiteMe, un outil qui suit les citations des marques dans ChatGPT, Gemini et Perplexity."
     },
@@ -716,7 +716,7 @@
         },
         "data": {
           "question": "Nos données clients restent-elles confidentielles ?",
-          "answer": "Oui. Elles restent sur vos comptes, et je vérifie ce que chaque outil fait de vos données avant de l'utiliser. Un hébergement en Europe est possible."
+          "answer": "Vos comptes et vos outils restent à votre nom. Pour que l'IA traite une demande, les données passent par le service d'un fournisseur de modèle, qui par défaut ne les utilise pas pour entraîner ses modèles. Je vérifie ce que chaque outil fait de vos données avant de l'utiliser, et un hébergement en Europe est possible. TODO(maxime): fournisseurs de modèles utilisés par défaut."
         },
         "subsidy": {
           "question": "Est-ce subventionné ?",
@@ -903,7 +903,7 @@
     },
     "cases": {
       "title": "Réalisations : sites et agents IA livrés | Klyx",
-      "description": "Les sites et produits IA construits par Klyx : Hop Hop Immo, CiteMe, Kenzi Events, PKBA, VertiFlow. Ce qui a été fait, projet par projet."
+      "description": "Les sites et produits livrés par Klyx : Hop Hop Immo, CiteMe, Kenzi Events, PKBA, VertiFlow. Ce qui a été fait, projet par projet."
     },
     "about": {
       "title": "Maxime Mansiet, fondateur de Klyx | Klyx",

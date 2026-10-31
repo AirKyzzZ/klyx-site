@@ -66,7 +66,7 @@
     },
     "cases": {
       "title": "Work",
-      "subtitle": "Sites shipped for clients and AI products running in production. Every card links to the live project.",
+      "subtitle": "Sites shipped for clients and products I've worked on. For each project, what I built.",
       "visit": "See the project",
       "readCase": "Read the case study",
       "viewAll": "All work"
@@ -83,12 +83,12 @@
           "body": "I review your site or your processes, then send you a written scope and a fixed price."
         },
         "build": {
-          "title": "Build in sprints",
-          "body": "I ship in two-week sprints, tested on your real data. The code lives in your repo from day one."
+          "title": "Build",
+          "body": "I build in short steps, with a check-in every week and tests on your real data. The code lives in your repo from day one."
         },
         "measure": {
-          "title": "Measure and iterate",
-          "body": "After launch I watch the numbers and fix what doesn't work. The handover is written down."
+          "title": "Measure and hand over",
+          "body": "After launch, we check together that everything runs and I give you a written handover. If you want me to keep monitoring and improving it, that's the monthly run."
         }
       }
     },
@@ -130,7 +130,7 @@
         },
         "solo": {
           "question": "You work alone. What happens if you're unavailable?",
-          "answer": "The code is in your repo from day one, and every project ends with a written handover so another developer can pick it up. I take on two clients at most at a time, and I don't offer 24/7 on-call."
+          "answer": "The code is in your repo from day one, and every project ends with a written handover so another developer can pick it up. For fractional Forward Deployed Engineer work, I take on two clients at most at a time. I don't offer 24/7 on-call."
         },
         "production": {
           "question": "What do you mean by \"in production\"?",
@@ -138,7 +138,7 @@
         },
         "data": {
           "question": "What happens to our data?",
-          "answer": "It stays in your accounts. I use the OpenAI or Anthropic APIs, which by default don't train their models on data sent through the API. If you need EU hosting or a local model, we plan for it in the quote."
+          "answer": "Your accounts and tools stay in your name. For the AI to handle a request, data goes through a model provider's API, such as OpenAI or Anthropic, which by default doesn't use it to train its models. If you need EU hosting or a local model, we plan for it in the quote. TODO(maxime): default model providers."
         },
         "remote": {
           "question": "Do you work with teams outside Bordeaux?",
@@ -151,7 +151,7 @@
       }
     },
     "finalCta": {
-      "title": "A process to automate, or a site to rebuild?",
+      "title": "Let's talk about your next workflow or site.",
       "body": "Book a 20-minute call. You'll come away with a clear view of what's worth doing, whether or not we end up working together.",
       "ctaPrimary": "Book a call",
       "ctaSecondary": "Get a free quote"
@@ -196,7 +196,7 @@
       },
       "fde": {
         "name": "Forward Deployed Engineer",
-        "summary": "2 to 3 days a week inside your team, on shared time.",
+        "summary": "2 to 3 days a week inside your team, on a fractional basis.",
         "duration": "4 weeks minimum"
       }
     }
@@ -306,7 +306,7 @@
       }
     },
     "cta": {
-      "title": "A site to launch or rebuild?",
+      "title": "Your site, delivered at the quoted price.",
       "body": "Tell me about your project and I'll send a free quote with a fixed price.",
       "ctaPrimary": "Get a free quote",
       "ctaSecondary": "Book a call"
@@ -327,7 +327,7 @@
     },
     "deliverables": {
       "title": "Three steps, each paid separately",
-      "subtitle": "You can stop after any of them.",
+      "subtitle": "You can stop after any step, or start straight with the Sprint if the scope is already clear. TODO(maxime): confirm a Sprint can be sold without an audit.",
       "tiers": {
         "auditIa": {
           "items": {
@@ -375,7 +375,7 @@
         },
         "sprint": {
           "title": "Sprint",
-          "body": "Two weeks to put one workflow into production, with a demo at the end of each week."
+          "body": "Two weeks to put one workflow into production, with a review at the end of each week."
         },
         "run": {
           "title": "Run",
@@ -414,7 +414,7 @@
         },
         "data": {
           "question": "Is our data safe?",
-          "answer": "It stays in your accounts, and I map the data before writing any code. If you need EU hosting or a local model, we plan for it in the quote."
+          "answer": "Your accounts and tools stay in your name, and I map the data before writing any code. Data the agent handles goes through the model provider's API, which by default doesn't use it to train its models. If you need EU hosting or a local model, we plan for it in the quote. TODO(maxime): default model providers."
         },
         "maintenance": {
           "question": "Who maintains the agent after the sprint?",
@@ -423,7 +423,7 @@
       }
     },
     "cta": {
-      "title": "Is one process eating hours every week?",
+      "title": "Start with the process that costs you the most hours.",
       "body": "Book a 20-minute call. We'll work out together whether it's worth automating.",
       "ctaPrimary": "Book a call",
       "ctaSecondary": "Get a free quote"
@@ -432,15 +432,15 @@
   "fde": {
     "hero": {
       "eyebrow": "Forward Deployed Engineer",
-      "title": "A Forward Deployed Engineer",
-      "titleEmphasis": "on shared time.",
+      "title": "A fractional",
+      "titleEmphasis": "Forward Deployed Engineer.",
       "subtitle": "I join your team 2 to 3 days a week to ship your AI features. {fdeDayPrice} per day, 4 weeks minimum, two clients at most at any time.",
       "ctaPrimary": "Book a call",
       "ctaSecondary": "Get a free quote"
     },
     "definition": {
       "title": "What is a Forward Deployed Engineer?",
-      "body": "A Forward Deployed Engineer (FDE) is a developer who works directly with a customer's team, on their codebase, to get a product into production. The role comes from software companies like Palantir, and AI labs now use it to deploy their models with customers. As a freelancer it's the same work on shared time: I join your team a few days a week, without you making a full-time hire."
+      "body": "A Forward Deployed Engineer (FDE) is a developer who works directly with a customer's team, on their codebase, to get a product into production. The role comes from software companies like Palantir, and AI labs now use it to deploy their models with customers. As a freelancer I do the same work on a fractional basis: I join your team a few days a week, without you making a full-time hire."
     },
     "audience": {
       "title": "Who it's for",
@@ -559,7 +559,7 @@
       "items": {
         "sprintVsFde": {
           "question": "Why does an AI Sprint cost less than 10 FDE days?",
-          "answer": "The AI Sprint is a fixed-price deliverable: one workflow, with the scope set before work starts. FDE time is time spent inside your team on whatever your backlog holds."
+          "answer": "The AI Sprint is sold on the outcome: one workflow, with a scope I fix before work starts. I reuse building blocks I've already made, and the two weeks go into that single deliverable. With an FDE you pay for time inside your team on an open backlog that changes from week to week."
         },
         "final": {
           "question": "Can the price go up during the project?",
@@ -568,7 +568,7 @@
       }
     },
     "cta": {
-      "title": "Need an exact price?",
+      "title": "For an exact price, ask for a quote.",
       "body": "Tell me about your project and I'll send a free quote.",
       "ctaPrimary": "Get a free quote",
       "ctaSecondary": "Book a call"
@@ -578,7 +578,7 @@
     "hero": {
       "title": "What I've",
       "titleEmphasis": "built.",
-      "subtitle": "Sites shipped for clients and AI products running in production. For each project, exactly what I did."
+      "subtitle": "Sites shipped for clients and products I've worked on. For each project, exactly what I did."
     },
     "labels": {
       "client": "Client",
@@ -589,7 +589,7 @@
       "back": "All work"
     },
     "cta": {
-      "title": "Your project next?",
+      "title": "Your project could be next on this list.",
       "body": "Book a call or ask for a free quote.",
       "ctaPrimary": "Book a call",
       "ctaSecondary": "Get a free quote"
@@ -603,7 +603,7 @@
     },
     "story": {
       "title": "Who I am",
-      "intro": "I'm 20. I started Klyx in Bordeaux to deliver what I sell myself: fast websites and AI agents that run for real clients.",
+      "intro": "I'm 20. I started Klyx in Bordeaux to deliver what I sell myself: fast websites, AI agents and automations.",
       "work": "TODO(maxime): At 2060.io I build the MCP server and AI agents for Verana, a trust infrastructure for European digital identity.",
       "citeme": "TODO(maxime): I co-founded CiteMe, a tool that tracks how brands get cited in ChatGPT, Gemini and Perplexity."
     },
@@ -716,7 +716,7 @@
         },
         "data": {
           "question": "Does our customer data stay confidential?",
-          "answer": "Yes. It stays in your accounts, and I check what each tool does with your data before using it. Hosting in Europe is possible."
+          "answer": "Your accounts and tools stay in your name. For the AI to handle a request, data goes through a model provider's service, which by default doesn't use it to train its models. I check what each tool does with your data before using it, and hosting in Europe is possible. TODO(maxime): default model providers."
         },
         "subsidy": {
           "question": "Is it subsidised?",
@@ -894,7 +894,7 @@
       "description": "AI audits from {auditPrice}, AI Sprints from {sprintPrice}: one workflow in production in two weeks, with the code in your repo."
     },
     "fde": {
-      "title": "Forward Deployed Engineer on shared time | Klyx",
+      "title": "Fractional Forward Deployed Engineer | Klyx",
       "description": "What is a Forward Deployed Engineer? An AI developer inside your team 2 to 3 days a week, from {fdeDayPrice} per day."
     },
     "pricing": {
@@ -903,7 +903,7 @@
     },
     "cases": {
       "title": "Work: websites and AI agents shipped | Klyx",
-      "description": "Sites and AI products built by Klyx: Hop Hop Immo, CiteMe, Kenzi Events, PKBA, VertiFlow. What was built, project by project."
+      "description": "Sites and products shipped by Klyx: Hop Hop Immo, CiteMe, Kenzi Events, PKBA, VertiFlow. What was built, project by project."
     },
     "about": {
       "title": "Maxime Mansiet, founder of Klyx | Klyx",
