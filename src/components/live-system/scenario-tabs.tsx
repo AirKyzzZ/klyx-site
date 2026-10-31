@@ -24,7 +24,6 @@ export function ScenarioTabs({
             role="tab"
             aria-selected={isSelected}
             aria-controls={`ls-stage-${tab.id}`}
-            tabIndex={isSelected ? 0 : -1}
             className="ls-tab"
             data-ls-tab={tab.id}
           >

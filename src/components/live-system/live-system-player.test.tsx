@@ -109,10 +109,11 @@ describe("LiveSystemPlayer", () => {
 
     advance(500);
     expect(state('[data-edge="a>b"]')).toBe("active");
-    expect(state('[data-node="a"]')).toBe("done");
+    expect(state('[data-node="a"]')).toBe("active");
     expect(state('[data-node="b"]')).toBe("idle");
 
     advance(500);
+    expect(state('[data-node="a"]')).toBe("done");
     expect(state('[data-node="b"]')).toBe("active");
     expect(state('[data-edge="a>b"]')).toBe("done");
     expect(state('[data-line="1"]')).toBe("true");
@@ -155,6 +156,14 @@ describe("LiveSystemPlayer", () => {
     expect(state('[data-edge="a>b"]')).toBe("done");
     expect(state('[data-line="1"]')).toBe("true");
     expect(state("[data-chip]")).toBe("true");
+  });
+
+  it("applies a roving tabindex to the tabs after mount", () => {
+    const { container } = renderPlayer();
+    const tab = (id: string) =>
+      container.querySelector<HTMLElement>(`[data-ls-tab="${id}"]`)!;
+    expect(tab("agents").tabIndex).toBe(0);
+    expect(tab("sites").tabIndex).toBe(-1);
   });
 
   it("swaps the scenario on a plain tab click", () => {

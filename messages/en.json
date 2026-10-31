@@ -953,11 +953,6 @@
     "caption": "Example of a workflow I build. Names and values are fictional.",
     "tablist": "Scenarios",
     "trace": "trace",
-    "status": {
-      "idle": "queued",
-      "active": "running",
-      "done": "done"
-    },
     "run": {
       "active": "running",
       "done": "complete"
@@ -980,13 +975,20 @@
           "slack": "Slack",
           "archive": "Archive"
         },
+        "meta": {
+          "inbox": "gmail",
+          "classifier": "llm · classify",
+          "crm": "hubspot",
+          "slack": "#sales",
+          "archive": "non-lead"
+        },
         "trace": {
           "watch": "inbox.watch · 1 new email",
           "think": "Thought 0.3s",
           "classify": "classify(email_3891)",
           "score": "→ lead · score 0.86",
           "update": "crm.contacts.update",
-          "retry": "429 rate limit · retry 1/3",
+          "retry": "429 · retry 1/3",
           "updated": "contact updated · c_2207",
           "post": "slack.post #sales",
           "done": "lead routed in 1.8s"
@@ -1001,6 +1003,13 @@
           "lighthouse": "Lighthouse",
           "deploy": "Deploy",
           "llms": "llms.txt"
+        },
+        "meta": {
+          "commit": "main",
+          "build": "next build",
+          "lighthouse": "mobile",
+          "deploy": "prod",
+          "llms": "+ sitemap"
         },
         "trace": {
           "push": "git push · main",
@@ -1022,12 +1031,20 @@
           "ticket": "Ticket",
           "repo": "Repo",
           "engineer": "Dev + agent",
-          "pr": "Pull request",
+          "pr": "PR",
           "review": "Review",
           "deploy": "Deploy"
         },
+        "meta": {
+          "ticket": "ENG-142",
+          "repo": "branch",
+          "engineer": "pair · ci",
+          "pr": "#87",
+          "review": "1 comment",
+          "deploy": "prod"
+        },
         "trace": {
-          "ticket": "ticket ENG-142 · slow CSV export",
+          "ticket": "ENG-142 · slow CSV export",
           "branch": "git checkout -b fix/export-csv",
           "read": "agent · read 14 files",
           "testFail": "pnpm test · 1 failed",
@@ -1047,6 +1064,12 @@
           "scoring": "Scoring",
           "roadmap": "Roadmap"
         },
+        "meta": {
+          "interviews": "4 people",
+          "mapping": "9 process",
+          "scoring": "llm · score",
+          "roadmap": "top 3"
+        },
         "trace": {
           "interviews": "interviews · 4 people",
           "mapping": "mapping · 9 processes",
@@ -1062,18 +1085,25 @@
       "automation": {
         "title": "supplier-invoices",
         "nodes": {
-          "email": "Email + file",
+          "email": "Email + PDF",
           "extract": "Extraction",
           "erp": "ERP",
-          "validation": "Human review",
+          "validation": "Approval",
           "send": "Send"
+        },
+        "meta": {
+          "email": "pdf",
+          "extract": "llm · extract",
+          "erp": "draft",
+          "validation": "human",
+          "send": "email"
         },
         "trace": {
           "email": "email · invoice_0412.pdf",
           "extract": "extract · 14 fields",
           "vat": "VAT mismatch · line 3",
           "recompute": "recompute · 20% VAT ok",
-          "draft": "erp.invoices.create · draft",
+          "draft": "erp · draft created",
           "waiting": "human approval · pending",
           "approved": "approved by accounting",
           "sent": "invoice entered and sent"
@@ -1089,6 +1119,14 @@
           "gemini": "Gemini",
           "citation": "Citations",
           "report": "Report"
+        },
+        "meta": {
+          "prompts": "20 prompts",
+          "chatgpt": "engine",
+          "perplexity": "engine",
+          "gemini": "engine",
+          "citation": "llm · match",
+          "report": "weekly"
         },
         "trace": {
           "prompts": "prompts · 20 target queries",

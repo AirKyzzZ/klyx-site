@@ -19,6 +19,8 @@ import {
   type NodeIcon,
   type Scenario,
   type ScenarioFinalState,
+  lastEdge,
+  terminalNode,
 } from "@/lib/scenarios";
 
 const ICONS: Record<NodeIcon, LucideIcon> = {
@@ -36,11 +38,11 @@ const ICONS: Record<NodeIcon, LucideIcon> = {
 
 const DESKTOP = {
   width: 720,
-  height: 360,
+  height: 300,
   x: "x",
   y: "y",
-  halfWidth: 68,
-  halfHeight: 26,
+  halfWidth: { node: 76, agent: 94 },
+  halfHeight: { node: 26, agent: 30 },
   vertical: false,
 } as const;
 const MOBILE = {
@@ -48,15 +50,16 @@ const MOBILE = {
   height: 408,
   x: "mx",
   y: "my",
-  halfWidth: 71,
-  halfHeight: 18,
+  halfWidth: { node: 78, agent: 78 },
+  halfHeight: { node: 24, agent: 27 },
   vertical: true,
 } as const;
 type Layout = typeof DESKTOP | typeof MOBILE;
 
 const round = (value: number) => Math.round(value * 10) / 10;
+const size = (node: GraphNode) => (node.agent ? "agent" : "node");
 
-function edgePath(layout: Layout, from: GraphNode, to: GraphNode) {
+function edgeGeometry(layout: Layout, from: GraphNode, to: GraphNode) {
   let x1 = (from[layout.x] / 100) * layout.width;
   let y1 = (from[layout.y] / 100) * layout.height;
   let x2 = (to[layout.x] / 100) * layout.width;
@@ -64,30 +67,35 @@ function edgePath(layout: Layout, from: GraphNode, to: GraphNode) {
   const horizontal = !layout.vertical && Math.abs(x2 - x1) >= Math.abs(y2 - y1);
   if (horizontal) {
     const direction = Math.sign(x2 - x1);
-    x1 += direction * layout.halfWidth;
-    x2 -= direction * layout.halfWidth;
+    x1 += direction * layout.halfWidth[size(from)];
+    x2 -= direction * layout.halfWidth[size(to)];
   } else {
     const direction = Math.sign(y2 - y1);
-    y1 += direction * layout.halfHeight;
-    y2 -= direction * layout.halfHeight;
+    y1 += direction * layout.halfHeight[size(from)];
+    y2 -= direction * layout.halfHeight[size(to)];
   }
   const midX = (x1 + x2) / 2;
   const midY = (y1 + y2) / 2;
   const [c1, c2] = horizontal
     ? [`${round(midX)} ${round(y1)}`, `${round(midX)} ${round(y2)}`]
     : [`${round(x1)} ${round(midY)}`, `${round(x2)} ${round(midY)}`];
-  return `M${round(x1)} ${round(y1)}C${c1} ${c2} ${round(x2)} ${round(y2)}`;
+  return {
+    d: `M${round(x1)} ${round(y1)}C${c1} ${c2} ${round(x2)} ${round(y2)}`,
+    end: { x: round(x2), y: round(y2) },
+  };
 }
 
 function Edges({
   scenario,
   layout,
   done,
+  parkedOn,
   className,
 }: {
   scenario: Scenario;
   layout: Layout;
   done: Set<string>;
+  parkedOn?: string;
   className: string;
 }) {
   const byId = new Map(scenario.nodes.map((node) => [node.id, node]));
@@ -100,10 +108,10 @@ function Edges({
     >
       {scenario.edges.map(({ from, to }) => {
         const start = byId.get(from);
-        const end = byId.get(to);
-        if (!start || !end) return null;
+        const target = byId.get(to);
+        if (!start || !target) return null;
         const key = edgeKey(from, to);
-        const d = edgePath(layout, start, end);
+        const { d, end } = edgeGeometry(layout, start, target);
         return (
           <g
             key={key}
@@ -113,6 +121,12 @@ function Edges({
             <path className="ls-edge" d={d} />
             <path className="ls-packet-glow" d={d} pathLength={100} />
             <path className="ls-packet" d={d} pathLength={100} />
+            {key === parkedOn && (
+              <g className="ls-parked">
+                <circle cx={end.x} cy={end.y} r={7} />
+                <circle cx={end.x} cy={end.y} r={3} />
+              </g>
+            )}
           </g>
         );
       })}
@@ -120,16 +134,13 @@ function Edges({
   );
 }
 
-export type NodeStatusLabels = { idle: string; active: string; done: string };
-
-function StatusStack({ labels }: { labels: Record<string, string> }) {
+function RunStatus({ active, done }: { active: string; done: string }) {
   return (
-    <span className="ls-status">
-      {Object.entries(labels).map(([state, label]) => (
-        <span key={state} data-for={state}>
-          {label}
-        </span>
-      ))}
+    <span className="ls-run">
+      <span className="ls-run-stack">
+        <span data-for="active">{active}</span>
+        <span data-for="done">{done}</span>
+      </span>
     </span>
   );
 }
@@ -139,35 +150,37 @@ export function AgentGraph({
   state,
   title,
   labels,
-  status,
+  metas,
   run,
 }: {
   scenario: Scenario;
   state: ScenarioFinalState;
   title: string;
   labels: Record<string, string>;
-  status: NodeStatusLabels;
+  metas: Record<string, string>;
   run: { active: string; done: string };
 }) {
+  const terminal = terminalNode(scenario);
+  const parkedOn = lastEdge(scenario);
   return (
     <div className="ls-window ls-graph">
       <div className="ls-chrome">
         <span>{title}</span>
-        <span className="ls-run">
-          <StatusStack labels={run} />
-        </span>
+        <RunStatus {...run} />
       </div>
       <div className="ls-graph-box">
         <Edges
           scenario={scenario}
           layout={DESKTOP}
           done={state.doneEdges}
+          parkedOn={parkedOn}
           className="ls-edges-d"
         />
         <Edges
           scenario={scenario}
           layout={MOBILE}
           done={state.doneEdges}
+          parkedOn={parkedOn}
           className="ls-edges-m"
         />
         <ul className="ls-nodes">
@@ -185,6 +198,8 @@ export function AgentGraph({
                 className="ls-node"
                 data-node={node.id}
                 data-state={state.doneNodes.has(node.id) ? "done" : "idle"}
+                data-agent={node.agent || undefined}
+                data-terminal={node.id === terminal || undefined}
                 style={position}
               >
                 <span className="ls-node-icon" aria-hidden="true">
@@ -192,8 +207,9 @@ export function AgentGraph({
                 </span>
                 <span className="ls-node-text">
                   <span className="ls-node-label">{labels[node.id]}</span>
-                  <StatusStack labels={status} />
+                  <span className="ls-node-meta">{metas[node.id]}</span>
                 </span>
+                <span className="ls-dot" aria-hidden="true" />
               </li>
             );
           })}

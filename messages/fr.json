@@ -953,11 +953,6 @@
     "caption": "Exemple de workflow que je construis. Noms et valeurs fictifs.",
     "tablist": "Scénarios",
     "trace": "trace",
-    "status": {
-      "idle": "en attente",
-      "active": "en cours",
-      "done": "ok"
-    },
     "run": {
       "active": "en cours",
       "done": "terminé"
@@ -980,13 +975,20 @@
           "slack": "Slack",
           "archive": "Archive"
         },
+        "meta": {
+          "inbox": "gmail",
+          "classifier": "llm · classify",
+          "crm": "hubspot",
+          "slack": "#sales",
+          "archive": "hors lead"
+        },
         "trace": {
           "watch": "inbox.watch · 1 nouvel email",
           "think": "Réflexion 0,3 s",
           "classify": "classify(email_3891)",
           "score": "→ lead · score 0,86",
           "update": "crm.contacts.update",
-          "retry": "429 rate limit · nouvel essai 1/3",
+          "retry": "429 · nouvel essai 1/3",
           "updated": "contact mis à jour · c_2207",
           "post": "slack.post #sales",
           "done": "lead routé en 1,8 s"
@@ -1001,6 +1003,13 @@
           "lighthouse": "Lighthouse",
           "deploy": "Deploy",
           "llms": "llms.txt"
+        },
+        "meta": {
+          "commit": "main",
+          "build": "next build",
+          "lighthouse": "mobile",
+          "deploy": "prod",
+          "llms": "+ sitemap"
         },
         "trace": {
           "push": "git push · main",
@@ -1022,12 +1031,20 @@
           "ticket": "Ticket",
           "repo": "Repo",
           "engineer": "Dev + agent",
-          "pr": "Pull request",
+          "pr": "PR",
           "review": "Review",
           "deploy": "Deploy"
         },
+        "meta": {
+          "ticket": "ENG-142",
+          "repo": "branch",
+          "engineer": "pair · ci",
+          "pr": "#87",
+          "review": "1 comment.",
+          "deploy": "prod"
+        },
         "trace": {
-          "ticket": "ticket ENG-142 · export CSV lent",
+          "ticket": "ENG-142 · export CSV lent",
           "branch": "git checkout -b fix/export-csv",
           "read": "agent · lecture de 14 fichiers",
           "testFail": "pnpm test · 1 échec",
@@ -1043,19 +1060,25 @@
         "title": "audit · pme-exemple",
         "nodes": {
           "interviews": "Entretiens",
-          "mapping": "Cartographie",
+          "mapping": "Processus",
           "scoring": "Scoring",
           "roadmap": "Roadmap"
+        },
+        "meta": {
+          "interviews": "4 pers.",
+          "mapping": "9 process",
+          "scoring": "llm · score",
+          "roadmap": "top 3"
         },
         "trace": {
           "interviews": "entretiens · 4 personnes",
           "mapping": "cartographie · 9 processus",
-          "quotes": "relance devis · 6 h/sem estimées",
-          "invoices": "saisie factures · 4 h/sem estimées",
-          "missing": "données manquantes · tri des emails",
-          "emails": "tri des emails · 3 h/sem estimées",
+          "quotes": "relance devis · ~6 h/sem",
+          "invoices": "saisie factures · ~4 h/sem",
+          "missing": "données manquantes · emails",
+          "emails": "tri des emails · ~3 h/sem",
           "scoring": "scoring · gain × faisabilité",
-          "roadmap": "roadmap · 3 workflows priorisés"
+          "roadmap": "roadmap · 3 workflows"
         },
         "chip": "Roadmap · 3 workflows priorisés"
       },
@@ -1065,15 +1088,22 @@
           "email": "Email + PJ",
           "extract": "Extraction",
           "erp": "ERP",
-          "validation": "Revue humaine",
+          "validation": "Validation",
           "send": "Envoi"
+        },
+        "meta": {
+          "email": "pdf",
+          "extract": "llm · extract",
+          "erp": "draft",
+          "validation": "humain",
+          "send": "email"
         },
         "trace": {
           "email": "email · facture_0412.pdf",
           "extract": "extraction · 14 champs",
           "vat": "TVA incohérente · ligne 3",
           "recompute": "recalcul · TVA 20 % ok",
-          "draft": "erp.invoices.create · brouillon",
+          "draft": "erp · brouillon créé",
           "waiting": "validation humaine · en attente",
           "approved": "approuvée par la compta",
           "sent": "facture saisie et envoyée"
@@ -1089,6 +1119,14 @@
           "gemini": "Gemini",
           "citation": "Citations",
           "report": "Rapport"
+        },
+        "meta": {
+          "prompts": "20 prompts",
+          "chatgpt": "moteur",
+          "perplexity": "moteur",
+          "gemini": "moteur",
+          "citation": "llm · match",
+          "report": "hebdo"
         },
         "trace": {
           "prompts": "prompts · 20 requêtes cibles",

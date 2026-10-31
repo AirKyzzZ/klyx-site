@@ -3,7 +3,13 @@ import { describe, expect, it } from "vitest";
 import en from "../../messages/en.json";
 import fr from "../../messages/fr.json";
 
-import { edgeKey, finalState, scenarios } from "./scenarios";
+import {
+  edgeKey,
+  finalState,
+  lastEdge,
+  scenarios,
+  terminalNode,
+} from "./scenarios";
 
 function lookup(messages: unknown, key: string): unknown {
   return key.split(".").reduce<unknown>((node, part) => {
@@ -69,6 +75,7 @@ describe("scenarios", () => {
       scenario.chipKey,
       `liveSystem.tabs.${scenario.id}`,
       ...scenario.nodes.map((node) => node.labelKey),
+      ...scenario.nodes.map((node) => node.metaKey),
       ...scenario.trace.map((line) => line.key),
     ];
     for (const key of keys) {
@@ -89,4 +96,53 @@ describe("scenarios", () => {
     expect(doneEdges.has(edgeKey("classifier", "archive"))).toBe(false);
     expect(doneEdges.has(edgeKey("crm", "slack"))).toBe(true);
   });
+});
+
+const MOBILE_LINES = 7;
+const DESKTOP_LINES = 11;
+const MOBILE_LINE_CHARS = 30;
+
+function text(messages: unknown, key: string) {
+  const value = lookup(messages, key);
+  return typeof value === "string" ? value : "";
+}
+
+describe("scenario fit", () => {
+  it.each(all)("$id trace fits the terminal on both layouts", (scenario) => {
+    expect(scenario.trace.length).toBeLessThanOrEqual(DESKTOP_LINES);
+    const mobile = scenario.trace.filter((line) => line.mobile);
+    expect(mobile.length).toBeLessThanOrEqual(MOBILE_LINES);
+    for (const line of mobile) {
+      for (const messages of [fr, en]) {
+        expect(
+          text(messages, line.key).length,
+          text(messages, line.key),
+        ).toBeLessThanOrEqual(MOBILE_LINE_CHARS);
+      }
+    }
+  });
+
+  it.each(all)("$id has one agent node and short node strings", (scenario) => {
+    expect(scenario.nodes.filter((node) => node.agent)).toHaveLength(1);
+    for (const node of scenario.nodes) {
+      for (const messages of [fr, en]) {
+        expect(text(messages, node.labelKey).length).toBeLessThanOrEqual(11);
+        expect(
+          text(messages, node.metaKey).length,
+          text(messages, node.metaKey),
+        ).toBeLessThanOrEqual(node.agent ? 16 : 10);
+      }
+    }
+  });
+
+  it.each(all)(
+    "$id ends on the top-right node next to the chip",
+    (scenario) => {
+      const terminal = scenario.nodes.find(
+        (node) => node.id === terminalNode(scenario),
+      );
+      expect(terminal).toMatchObject({ x: 87, y: 28 });
+      expect(lastEdge(scenario)?.endsWith(`>${terminal?.id}`)).toBe(true);
+    },
+  );
 });

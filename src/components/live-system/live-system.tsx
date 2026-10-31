@@ -81,15 +81,13 @@ export async function LiveSystem({
                   scenario={scenario}
                   state={finalState(scenario)}
                   title={title}
-                  status={{
-                    idle: t("liveSystem.status.idle"),
-                    active: t("liveSystem.status.active"),
-                    done: t("liveSystem.status.done"),
-                  }}
                   run={{
                     active: t("liveSystem.run.active"),
                     done: t("liveSystem.run.done"),
                   }}
+                  metas={Object.fromEntries(
+                    scenario.nodes.map((node) => [node.id, t(node.metaKey)]),
+                  )}
                   labels={Object.fromEntries(
                     scenario.nodes.map((node) => [node.id, t(node.labelKey)]),
                   )}
@@ -101,7 +99,12 @@ export async function LiveSystem({
                     text: t(line.key),
                   }))}
                 />
-                {chip && <ResultChip>{chip}</ResultChip>}
+                {chip && (
+                  <>
+                    <span className="ls-link" aria-hidden="true" />
+                    <ResultChip>{chip}</ResultChip>
+                  </>
+                )}
               </div>
             );
           })}

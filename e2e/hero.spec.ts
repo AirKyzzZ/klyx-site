@@ -23,26 +23,59 @@ test.describe("home hero", () => {
   test.describe("without JavaScript", () => {
     test.use({ javaScriptEnabled: false });
 
-    test("shows the full trace, the chip and the tab links", async ({
-      page,
-    }) => {
-      await page.goto("/");
-      const stage = page.locator('[data-ls-stage="agents"]');
-      const lines = stage.locator("[data-line]");
-      await expect(lines).toHaveCount(Object.keys(agents.trace).length);
-      for (const line of await lines.all()) {
-        await expect(line).toBeVisible();
-        await expect(line).toHaveAttribute("data-shown", "true");
-      }
-      await expect(stage.locator("[data-chip]")).toHaveText(agents.chip);
-      await expect(stage.locator("[data-chip]")).toBeVisible();
-      for (const id of HOME_TABS) {
-        const tab = page.getByRole("tab", { name: fr.liveSystem.tabs[id] });
-        await expect(tab).toBeVisible();
-        await expect(tab).toHaveAttribute("href", /\/.+/);
-      }
-      await expect(page.getByText(fr.liveSystem.caption)).toBeVisible();
-    });
+    for (const viewport of [
+      { width: 1440, height: 900 },
+      { width: 390, height: 844 },
+    ]) {
+      test(`shows the whole trace, the chip and the tab links at ${viewport.width}`, async ({
+        page,
+      }) => {
+        await page.setViewportSize(viewport);
+        await page.goto("/");
+        const stage = page.locator('[data-ls-stage="agents"]');
+        await expect(stage.locator("[data-line]")).toHaveCount(
+          Object.keys(agents.trace).length,
+        );
+        const fit = await stage.evaluate((el) => {
+          const clip = el
+            .querySelector(".ls-term-clip")!
+            .getBoundingClientRect();
+          return [...el.querySelectorAll<HTMLElement>("[data-line]")]
+            .filter((line) => getComputedStyle(line).display !== "none")
+            .map((line) => {
+              const box = line.getBoundingClientRect();
+              const text = line.querySelector<HTMLElement>(".ls-text")!;
+              return {
+                line: line.textContent,
+                shown: line.dataset.shown,
+                inside:
+                  box.top >= clip.top - 0.5 &&
+                  box.bottom <= clip.bottom + 0.5 &&
+                  box.left >= clip.left - 0.5 &&
+                  box.right <= clip.right + 0.5,
+                truncated: text.scrollWidth > text.clientWidth,
+              };
+            });
+        });
+        expect(fit.length).toBeGreaterThanOrEqual(7);
+        for (const row of fit) {
+          expect(row, row.line ?? "").toMatchObject({
+            shown: "true",
+            inside: true,
+            truncated: false,
+          });
+        }
+        await expect(stage.locator("[data-chip]")).toHaveText(agents.chip);
+        await expect(stage.locator("[data-chip]")).toBeVisible();
+        for (const id of HOME_TABS) {
+          const tab = page.getByRole("tab", { name: fr.liveSystem.tabs[id] });
+          await expect(tab).toBeVisible();
+          await expect(tab).toHaveAttribute("href", /\/.+/);
+          await expect(tab).not.toHaveAttribute("tabindex", /.*/);
+        }
+        await expect(page.getByText(fr.liveSystem.caption)).toBeVisible();
+      });
+    }
   });
 
   test.describe("with reduced motion", () => {

@@ -41,9 +41,6 @@ function setAll(
 function reset(stage: HTMLElement) {
   setAll(stage, "[data-node], [data-edge]", "data-state", "idle");
   setAll(stage, "[data-line], [data-chip]", "data-shown", "false");
-  stage
-    .querySelector<HTMLElement>("[data-trace]")
-    ?.style.setProperty("--shown", "0");
 }
 
 function settle(stage: HTMLElement) {
@@ -52,24 +49,26 @@ function settle(stage: HTMLElement) {
 
 function applyStep(stage: HTMLElement, step: ScenarioStep) {
   if (step.edge) {
-    const [from, to] = step.edge;
-    setAll(stage, `[data-node="${from}"]${ACTIVE}`, "data-state", "done");
-    setAll(stage, `[data-edge="${from}>${to}"]`, "data-state", "active");
-  }
-  if (step.node) {
     setAll(
       stage,
-      `[data-edge$=">${step.node}"]${ACTIVE}`,
+      `[data-edge="${step.edge.join(">")}"]`,
       "data-state",
-      "done",
+      "active",
     );
+  }
+  if (step.node) {
+    const arriving = stage.querySelectorAll<SVGElement>(
+      `[data-edge$=">${step.node}"]${ACTIVE}`,
+    );
+    for (const edge of arriving) {
+      edge.setAttribute("data-state", "done");
+      const from = edge.dataset.edge?.split(">")[0];
+      setAll(stage, `[data-node="${from}"]${ACTIVE}`, "data-state", "done");
+    }
     setAll(stage, `[data-node="${step.node}"]`, "data-state", "active");
   }
   if (step.line !== undefined) {
     setAll(stage, `[data-line="${step.line}"]`, "data-shown", "true");
-    stage
-      .querySelector<HTMLElement>("[data-trace]")
-      ?.style.setProperty("--shown", String(step.line + 1));
   }
   if (step.chip) setAll(stage, "[data-chip]", "data-shown", "true");
 }
@@ -201,6 +200,14 @@ export function LiveSystemPlayer({
     let visible = false;
     let run: Run | undefined;
 
+    const markTabs = () => {
+      for (const tab of root.querySelectorAll<HTMLElement>("[data-ls-tab]")) {
+        const selected = tab.dataset.lsTab === current;
+        tab.setAttribute("aria-selected", String(selected));
+        tab.tabIndex = selected ? 0 : -1;
+      }
+    };
+
     const stageOf = (id: string) =>
       root.querySelector<HTMLElement>(`[data-ls-stage="${id}"]`);
 
@@ -222,12 +229,8 @@ export function LiveSystemPlayer({
         )) {
           stage.hidden = stage.dataset.lsStage !== id;
         }
-        for (const tab of root.querySelectorAll<HTMLElement>("[data-ls-tab]")) {
-          const selected = tab.dataset.lsTab === id;
-          tab.setAttribute("aria-selected", String(selected));
-          tab.tabIndex = selected ? 0 : -1;
-        }
         current = id;
+        markTabs();
         start(id);
       };
       if (reduced || !document.startViewTransition) swap();
@@ -273,6 +276,7 @@ export function LiveSystemPlayer({
       ["focusout", onFocusOut],
     ] as const;
 
+    markTabs();
     start(current);
     const unsubscribe = (subscribeVisibility ?? subscribeViewport(root))(
       (next) => {

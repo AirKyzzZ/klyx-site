@@ -18,6 +18,8 @@ export type NodeIcon =
 export type GraphNode = {
   id: string;
   labelKey: string;
+  metaKey: string;
+  agent: boolean;
   icon: NodeIcon;
   x: number;
   y: number;
@@ -35,7 +37,12 @@ export type ScenarioStep = {
   chip?: true;
 };
 
-export type TraceLine = { t: string; key: string; tone?: "ok" | "err" | "dim" };
+export type TraceLine = {
+  t: string;
+  key: string;
+  tone?: "ok" | "err" | "dim";
+  mobile: boolean;
+};
 
 export type StaticPathname = Exclude<AppPathname, `${string}[${string}`>;
 
@@ -65,9 +72,11 @@ function scenario(
   id: ScenarioId,
   config: {
     href: StaticPathname;
+    agent: string;
     nodes: NodeSpec[];
     edges: [string, string][];
     trace: TraceSpec[];
+    desktopOnly: string[];
     steps: ScenarioStep[];
     illustration?: boolean;
   },
@@ -80,6 +89,8 @@ function scenario(
     nodes: config.nodes.map(([nodeId, icon, x, y, mx, my]) => ({
       id: nodeId,
       labelKey: `${base}.nodes.${nodeId}`,
+      metaKey: `${base}.meta.${nodeId}`,
+      agent: nodeId === config.agent,
       icon,
       x,
       y,
@@ -91,6 +102,7 @@ function scenario(
       t,
       key: `${base}.trace.${key}`,
       ...(tone && { tone }),
+      mobile: !config.desktopOnly.includes(key),
     })),
     steps: config.steps,
     chipKey: `${base}.chip`,
@@ -100,15 +112,26 @@ function scenario(
 
 export const edgeKey = (from: string, to: string) => `${from}>${to}`;
 
+export function terminalNode(scenario: Scenario): string | undefined {
+  return scenario.steps.findLast((step) => step.node)?.node;
+}
+
+export function lastEdge(scenario: Scenario): string | undefined {
+  const edge = scenario.steps.findLast((step) => step.edge)?.edge;
+  return edge && edgeKey(...edge);
+}
+
 export const scenarios: Record<ScenarioId, Scenario> = {
   agents: scenario("agents", {
     href: "/services/agents-ia",
+    agent: "classifier",
+    desktopOnly: ["think", "update"],
     nodes: [
-      ["inbox", "inbox", 12, 28, 26, 8],
-      ["classifier", "filter", 42, 28, 26, 30],
-      ["crm", "database", 72, 28, 26, 52],
-      ["slack", "message", 72, 74, 26, 74],
-      ["archive", "file", 42, 74, 74, 30],
+      ["inbox", "inbox", 11, 28, 28, 8],
+      ["classifier", "filter", 38, 28, 28, 30],
+      ["crm", "database", 62, 72, 28, 52],
+      ["slack", "message", 87, 28, 28, 74],
+      ["archive", "file", 38, 72, 77, 30],
     ],
     edges: [
       ["inbox", "classifier"],
@@ -145,12 +168,14 @@ export const scenarios: Record<ScenarioId, Scenario> = {
   sites: scenario("sites", {
     href: "/services/creation-site-web",
     illustration: false,
+    agent: "build",
+    desktopOnly: ["build", "sitemap"],
     nodes: [
-      ["commit", "git", 12, 28, 50, 8],
-      ["build", "filter", 42, 28, 50, 27],
-      ["lighthouse", "gauge", 72, 28, 50, 46],
-      ["deploy", "rocket", 72, 74, 50, 65],
-      ["llms", "file", 42, 74, 50, 84],
+      ["commit", "git", 11, 28, 50, 8],
+      ["build", "filter", 38, 28, 50, 27],
+      ["lighthouse", "gauge", 38, 72, 50, 46],
+      ["deploy", "rocket", 62, 72, 50, 65],
+      ["llms", "file", 87, 28, 50, 84],
     ],
     edges: [
       ["commit", "build"],
@@ -187,13 +212,15 @@ export const scenarios: Record<ScenarioId, Scenario> = {
   }),
   fde: scenario("fde", {
     href: "/forward-deployed-engineer",
+    agent: "engineer",
+    desktopOnly: ["read", "branch"],
     nodes: [
-      ["ticket", "inbox", 12, 28, 50, 7],
-      ["repo", "git", 42, 28, 50, 23],
-      ["engineer", "user-check", 72, 28, 50, 38],
-      ["pr", "git", 72, 74, 50, 54],
-      ["review", "search", 42, 74, 50, 69],
-      ["deploy", "rocket", 12, 74, 50, 85],
+      ["ticket", "inbox", 11, 72, 50, 7],
+      ["repo", "git", 11, 28, 50, 23],
+      ["engineer", "user-check", 38, 28, 50, 38],
+      ["pr", "git", 38, 72, 50, 54],
+      ["review", "search", 62, 72, 50, 69],
+      ["deploy", "rocket", 87, 28, 50, 85],
     ],
     edges: [
       ["ticket", "repo"],
@@ -232,11 +259,13 @@ export const scenarios: Record<ScenarioId, Scenario> = {
   }),
   audit: scenario("audit", {
     href: "/services/agents-ia",
+    agent: "scoring",
+    desktopOnly: ["scoring"],
     nodes: [
-      ["interviews", "message", 12, 28, 50, 8],
-      ["mapping", "search", 42, 28, 50, 30],
-      ["scoring", "gauge", 72, 28, 50, 52],
-      ["roadmap", "file", 72, 74, 50, 74],
+      ["interviews", "message", 11, 28, 50, 8],
+      ["mapping", "search", 30, 72, 50, 30],
+      ["scoring", "gauge", 60, 72, 50, 52],
+      ["roadmap", "file", 87, 28, 50, 74],
     ],
     edges: [
       ["interviews", "mapping"],
@@ -269,12 +298,14 @@ export const scenarios: Record<ScenarioId, Scenario> = {
   }),
   automation: scenario("automation", {
     href: "/services/agents-ia",
+    agent: "extract",
+    desktopOnly: ["waiting"],
     nodes: [
-      ["email", "inbox", 12, 28, 50, 8],
-      ["extract", "filter", 42, 28, 50, 27],
-      ["erp", "database", 72, 28, 50, 46],
-      ["validation", "user-check", 72, 74, 50, 65],
-      ["send", "message", 42, 74, 50, 84],
+      ["email", "inbox", 11, 28, 50, 8],
+      ["extract", "filter", 38, 28, 50, 27],
+      ["erp", "database", 38, 72, 50, 46],
+      ["validation", "user-check", 62, 72, 50, 65],
+      ["send", "message", 87, 28, 50, 84],
     ],
     edges: [
       ["email", "extract"],
@@ -283,14 +314,14 @@ export const scenarios: Record<ScenarioId, Scenario> = {
       ["validation", "send"],
     ],
     trace: [
-      ["00.0", "email"],
-      ["00.9", "extract"],
-      ["01.2", "vat", "err"],
-      ["01.6", "recompute", "ok"],
-      ["02.1", "draft"],
-      ["02.2", "waiting", "dim"],
-      ["14:05", "approved", "ok"],
-      ["14:05", "sent", "ok"],
+      ["00:00", "email"],
+      ["00:01", "extract"],
+      ["00:01", "vat", "err"],
+      ["00:02", "recompute", "ok"],
+      ["00:02", "draft"],
+      ["00:02", "waiting", "dim"],
+      ["12:05", "approved", "ok"],
+      ["12:06", "sent", "ok"],
     ],
     steps: [
       { at: 0, node: "email", line: 0 },
@@ -309,13 +340,15 @@ export const scenarios: Record<ScenarioId, Scenario> = {
   }),
   geo: scenario("geo", {
     href: "/services/creation-site-web",
+    agent: "citation",
+    desktopOnly: ["citations"],
     nodes: [
-      ["prompts", "message", 12, 46, 26, 8],
-      ["chatgpt", "search", 38, 16, 74, 26],
-      ["perplexity", "search", 38, 46, 74, 44],
-      ["gemini", "search", 38, 76, 74, 62],
-      ["citation", "filter", 62, 28, 26, 66],
-      ["report", "file", 84, 28, 26, 85],
+      ["prompts", "message", 11, 50, 26, 8],
+      ["chatgpt", "search", 37, 16, 74, 26],
+      ["perplexity", "search", 37, 50, 74, 44],
+      ["gemini", "search", 37, 84, 74, 62],
+      ["citation", "filter", 63, 50, 26, 66],
+      ["report", "file", 87, 28, 26, 85],
     ],
     edges: [
       ["prompts", "chatgpt"],

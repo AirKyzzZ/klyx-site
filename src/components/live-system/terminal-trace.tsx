@@ -1,5 +1,3 @@
-import type { CSSProperties } from "react";
-
 import type { TraceLine } from "@/lib/scenarios";
 
 const MARKS: Record<NonNullable<TraceLine["tone"]> | "default", string> = {
@@ -28,11 +26,7 @@ export function TerminalTrace({
       </div>
       <div className="ls-term-body">
         <div className="ls-term-clip">
-          <ol
-            className="ls-trace"
-            data-trace=""
-            style={{ "--shown": lines.length } as CSSProperties}
-          >
+          <ol className="ls-trace">
             {lines.map((line, index) => (
               <li
                 key={line.key}
@@ -40,6 +34,7 @@ export function TerminalTrace({
                 data-line={index}
                 data-shown="true"
                 data-tone={line.tone ?? "default"}
+                data-mobile={line.mobile}
               >
                 <span className="ls-time">{line.t}</span>
                 <span className="ls-mark" aria-hidden="true">
