@@ -39,8 +39,8 @@ All must be true before touching DNS.
 
 ## 2. GitHub
 
-- Repo `AirKyzzZ/klyx-site` exists, private, empty. **Do not push yet.**
-- After Maxime reviews: push `feature/redesign-live-system` (and this docs branch) and open a PR into `main`. Because the remote is empty, the first push must create `main` (for example push the current `main` first, then the feature branch as a PR). Maxime decides the exact sequence.
+- Repo `AirKyzzZ/klyx-site` exists, private, created 2026-10-31. Before any push, confirm it is still empty: `gh repo view AirKyzzZ/klyx-site --json isEmpty,defaultBranchRef,pushedAt`. **Do not push yet.**
+- After Maxime reviews: an empty remote has no `main` to open a PR against. Push the base `main` first (the current local `main`, which holds only docs), then push `feature/redesign-live-system` and open a PR into `main` with the merged site. Squash-merge it so `main` ends up with the site. Push the docs branch the same way if wanted. Maxime approves each push.
 - Squash-merge so the PR title is the commit. Title suggestion: `feat: klyx.fr redesign`.
 - Branch protection on `main` (GitHub Settings > Branches, available on private repos only on paid plans; if unavailable, rely on Netlify deploying only `main`): require a PR, require the Netlify deploy-preview check, block force push and deletion. Solo repo, so no required reviewer count.
 - Do not merge `docs/deploy-plan` automatically; it carries only this file.
@@ -66,7 +66,7 @@ Sources: https://docs.netlify.com/build/frameworks/framework-setup-guides/nextjs
 **Workarounds if a check fails** (add `netlify.toml`, ask Maxime before adding since it is a new config file):
 
 - Headers: `[[headers]] for = "/*"` with the same five values as `securityHeaders`.
-- Legacy redirects: `[[redirects]]` entries in `netlify.toml` with `status = 301`/`308` and `force = true`; Netlify evaluates its own redirects before functions, which restores the old order. Keep `src/lib/legacy-urls.ts` as the source of truth and mirror it.
+- Legacy redirects: Netlify's docs say redirects run after middleware, so test the list in section 6 on a deploy preview first. Preferred fallback: handle the legacy redirects inside `src/proxy.ts` before the next-intl handler (reuse `legacyRedirects` from `src/lib/legacy-urls.ts`), or exclude `/agence-web-bordeaux`, `/category`, `/author` and `/feed` from the proxy matcher so Next's config redirects apply. Last option only: mirror them as `[[redirects]]` in `netlify.toml`; whether those run ahead of middleware is not confirmed by the docs read here, so it needs its own preview test.
 - OG images: if not generated, pre-render to static PNG in `public/` and point metadata at them.
 - If `proxy.ts` fails to build or run on the adapter: the `NETLIFY`-specific docs link above plus the adapter's e2e report (https://runtime-e2e-report.netlify.app/) is the first place to look; last resort is renaming to `middleware.ts` (deprecated in Next 16, still works).
 
@@ -107,15 +107,15 @@ Source: https://docs.netlify.com/manage/domains/configure-domains/configure-exte
 | `klyx.fr` | AAAA | **delete** | was `2001:41d0:301::21`, would keep IPv6 visitors on OVH |
 | `www` | CNAME | add | `<site>.netlify.app.` |
 
-   Netlify recommends `ALIAS`/`ANAME` to `apex-loadbalancer.netlify.com` for the apex, A `75.2.60.5` only if the provider lacks it. OVH's zone editor does not offer ALIAS to my knowledge (unverified, check the record type list), so the A record is the plan. The Netlify docs note an apex on external DNS cannot use direct CDN routing and recommend a subdomain as primary; accepted tradeoff, the brand domain is the apex.
-4. HTTPS: Netlify provisions a Let's Encrypt certificate once DNS resolves (Domain management > HTTPS > Verify DNS, then Provision). If it does not issue in about 1 hour see https://docs.netlify.com/manage/domains/troubleshooting/troubleshoot-ssl-and-https/ . Enable "Force HTTPS".
+   Pre-cutover (T minus 48 h, with the TTL change): open the OVH manager > Domains > klyx.fr > DNS zone > Add an entry and note which record types exist. If ALIAS/ANAME is offered, use it for the apex (`apex-loadbalancer.netlify.com`, Netlify's recommended option) and skip the A record. If only A is offered, use A `75.2.60.5`. Write the decision in the cutover notes. OVH's editor not offering ALIAS is unverified. The Netlify docs note an apex on external DNS cannot use direct CDN routing and recommend a subdomain as primary; accepted tradeoff, the brand domain is the apex.
+4. HTTPS: Netlify can only issue the Let's Encrypt certificate **after** DNS points to Netlify, so expect HTTPS errors or the old OVH certificate for a few minutes after T (allow up to about 15 minutes for DNS plus issuance). Domain management > HTTPS > Verify DNS, then Provision; enable "Force HTTPS" once issued. If no valid certificate after 30 minutes, roll back (section 8). Troubleshooting: https://docs.netlify.com/manage/domains/troubleshooting/troubleshoot-ssl-and-https/
 5. Do not enable Netlify DNS for the zone; the zone stays at OVH.
 
 ## 5. Records
 
 **Untouched** (never edit, never delete): MX x3 (Zoho EU), root SPF TXT (do not add Resend to it), `zmail._domainkey`, `brevo1/2._domainkey`, `_dmarc` (stays `p=none`; tightening is a separate task after Resend alignment is confirmed), `brevo-code`, `lemlist-verif`, `66a9581d...` TXT, `blog`/`studio`/`estate` CNAMEs. Only root `A`, root `AAAA` and new `www` change.
 
-**Add only, Resend** (do now, independent of the cutover): add `send.klyx.fr` in the Resend dashboard and paste exactly the names and values it shows; do not guess them. Expected shape: `send` MX (priority 10), `send` TXT SPF (`include:amazonses.com`), `resend._domainkey` TXT DKIM. Skip Resend's optional `_dmarc` record, one exists. Wait for "Verified", then test from the form.
+**Add only, Resend** (do now, independent of the cutover): add `send.klyx.fr` in the Resend dashboard and paste exactly the names and values it shows; do not guess them. Expected shape: `send` MX (priority 10), `send` TXT SPF (`include:amazonses.com`), `resend._domainkey` TXT DKIM. Skip Resend's optional `_dmarc` record, one exists. Wait for "Verified", then send a test from the form and from the Resend dashboard to a Gmail address and a Zoho address; in the received headers check SPF and DKIM pass and align with `send.klyx.fr` (From domain), and that `contact@send.klyx.fr` does not land in spam.
 
 ## 6. Redirects from the old WordPress site
 
@@ -128,7 +128,7 @@ for p in /agence-web-bordeaux /agence-web-bordeaux/ /category/non-classe/ /autho
 done
 ```
 
-Expect 308 with these destinations: `/`, `/`, `/`, `/`, `/blog/rss.xml`, `/sitemap.xml` x3, the lead-magnet PDF.
+Redirects are two-step for slash URLs: run with `-L` to see the chain, e.g. `curl -sIL https://klyx.fr/agence-web-bordeaux/` should show a 308 to the slash-less URL then a 301/308 to `/`, ending in 200. Without `-L`, expect 308 with these destinations: `/`, `/` (or slash-less hop), `/`, `/`, `/blog/rss.xml`, `/sitemap.xml` x3, the lead-magnet PDF.
 
 ```sh
 for p in /wp-admin/ /wp-login.php /xmlrpc.php /wp-json/wp/v2/posts /wp-content/uploads/2024/01/x.jpg; do
@@ -155,7 +155,7 @@ dig +short A www.klyx.fr; dig +short TXT send.klyx.fr
 curl -sI https://<site>.netlify.app | head -5
 ```
 
-**At T:** apply the three OVH changes from section 4. Then:
+**At T:** apply the three OVH changes from section 4. HTTPS is not valid until Netlify issues the certificate after DNS resolves; start the 30 minute rollback clock now, and run the HTTPS curls below once the certificate is issued. Then:
 
 ```sh
 dig +short A klyx.fr @ns20.ovh.net          # 75.2.60.5
@@ -180,7 +180,7 @@ Run section 6 curls. Submit the contact form in FR and EN.
 
 ## 8. Rollback
 
-Trigger: site down, TLS unfixable in about 1 hour, broken form with no quick fix, any mail anomaly.
+Trigger: site down, **no valid TLS certificate within 30 minutes of T**, broken form with no quick fix, any mail anomaly.
 
 1. OVH DNS: root `A` back to `188.165.53.185`, re-add root `AAAA` `2001:41d0:301::21`. `www` did not exist before; delete it or leave it.
 2. Wait at most 300 s (TTL). Check `dig +short A klyx.fr`, `dig +short AAAA klyx.fr`, `curl -sI https://klyx.fr` (old WordPress, OVH).
