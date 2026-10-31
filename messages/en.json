@@ -1141,5 +1141,13 @@
         "chip": "Report · 20 prompts tracked"
       }
     }
+  },
+  "machine": {
+    "human": "HUMAN",
+    "machine": "MACHINE",
+    "copy": "Copy",
+    "copied": "Copied",
+    "openRaw": "Open the .md",
+    "tokensApprox": "≈{count} tokens"
   }
 }

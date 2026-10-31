@@ -8,6 +8,7 @@ import { ArrowRight } from "lucide-react";
 
 import { ActionButton } from "@/components/action-button";
 import { LanguageSwitcher } from "@/components/language-switcher";
+import { PageViewToggle } from "@/components/machine-view/view-toggle";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -212,6 +213,9 @@ export function SiteNav({
                   {link.label}
                 </Link>
               ))}
+            </div>
+            <div className="border-line flex border-t px-3 py-3">
+              <PageViewToggle variant="inline" />
             </div>
             <div className="border-line flex items-center justify-between gap-4 border-t px-3 pt-3 pb-1">
               <LanguageSwitcher />

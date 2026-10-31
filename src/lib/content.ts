@@ -1,4 +1,4 @@
-import { readdir } from "node:fs/promises";
+import { readFile, readdir } from "node:fs/promises";
 import path from "node:path";
 import type { ComponentType } from "react";
 import type { Locale } from "@/i18n/routing";
@@ -48,6 +48,21 @@ export async function getPost(slug: string, locale: Locale) {
     `../../content/blog/${slug}.${locale}.mdx`
   );
   return { meta: { slug, ...mod.metadata }, Content: mod.default };
+}
+
+const METADATA_EXPORT = /^export const metadata = \{[\s\S]*?^\};?$/m;
+const MDX_COMMENT = /\{\/\*[\s\S]*?\*\/\}/g;
+
+export async function getMdxBody(
+  dir: "realisations" | "blog",
+  slug: string,
+  locale: Locale,
+): Promise<string> {
+  const source = await readFile(
+    path.join(CONTENT_ROOT, dir, `${slug}.${locale}.mdx`),
+    "utf8",
+  );
+  return source.replace(METADATA_EXPORT, "").replace(MDX_COMMENT, "").trim();
 }
 
 export async function getCaseStudies(locale: Locale): Promise<CaseStudyMeta[]> {

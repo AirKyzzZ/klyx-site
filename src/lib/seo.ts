@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { getLocaleHref } from "@/i18n/locale-href";
 import { type Locale, routing } from "@/i18n/routing";
 
+import { MARKDOWN_TYPE, pageMarkdownHref } from "./machine/markdown-href";
 import { site } from "./site";
 
 export type AppPathname = keyof typeof routing.pathnames;
@@ -55,7 +56,13 @@ export function buildMetadata({
   return {
     title: { absolute: title },
     description,
-    alternates: { canonical, languages: languageAlternates(pathname, params) },
+    alternates: {
+      canonical,
+      languages: languageAlternates(pathname, params),
+      types: {
+        [MARKDOWN_TYPE]: `${site.url}${pageMarkdownHref(locale, { pathname, params })}`,
+      },
+    },
     openGraph: {
       title,
       description,

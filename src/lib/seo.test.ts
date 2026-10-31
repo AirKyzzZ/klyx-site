@@ -17,6 +17,7 @@ describe("buildMetadata", () => {
         en: "https://klyx.fr/en/pricing",
         "x-default": "https://klyx.fr/tarifs",
       },
+      types: { "text/markdown": "https://klyx.fr/md/en/pricing" },
     });
   });
 

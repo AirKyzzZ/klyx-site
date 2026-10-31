@@ -17,4 +17,14 @@ describe("llms.txt", () => {
     expect(body).toContain("contact@klyx.fr");
     expect(body).not.toContain("TODO");
   });
+
+  it("links the markdown alternate of the home and every key page", async () => {
+    const body = await GET().text();
+    expect(body).toContain("Markdown : https://klyx.fr/md/fr\n");
+    expect(body).toContain("(Markdown : https://klyx.fr/md/fr/tarifs)");
+    expect(body).toContain(
+      "(Markdown : https://klyx.fr/md/fr/services/agents-ia)",
+    );
+    expect(body).toContain("(Markdown : https://klyx.fr/md/fr/contact)");
+  });
 });

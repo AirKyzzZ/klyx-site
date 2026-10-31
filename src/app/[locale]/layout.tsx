@@ -3,6 +3,7 @@ import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 
+import { MachineView } from "@/components/machine-view/machine-view";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { routing } from "@/i18n/routing";
@@ -56,6 +57,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
             <SiteHeader />
             <main className="relative">{children}</main>
             <SiteFooter />
+            <MachineView />
           </div>
         </NextIntlClientProvider>
       </body>

@@ -1,6 +1,7 @@
 import { getStaticTranslator } from "@/i18n/static-translator";
 import { getOfferCopy } from "@/lib/offer-copy";
 import { offers } from "@/lib/offers";
+import { pageMarkdownHref } from "@/lib/machine/markdown-href";
 import { type AppPathname, absoluteUrl } from "@/lib/seo";
 import { site } from "@/lib/site";
 
@@ -15,6 +16,10 @@ const KEY_PAGES: { pathname: AppPathname; metaKey: string }[] = [
   { pathname: "/contact", metaKey: "contact" },
 ];
 
+function markdownUrl(pathname: AppPathname) {
+  return `${site.url}${pageMarkdownHref("fr", { pathname })}`;
+}
+
 export function GET() {
   const offersT = getStaticTranslator("fr", "offers");
   const meta = getStaticTranslator("fr", "meta");
@@ -28,13 +33,15 @@ export function GET() {
 
   const pageLines = KEY_PAGES.map(
     ({ pathname, metaKey }) =>
-      `- [${meta(`${metaKey}.title`)}](${absoluteUrl("fr", pathname)}) (English: ${absoluteUrl("en", pathname)})`,
+      `- [${meta(`${metaKey}.title`)}](${absoluteUrl("fr", pathname)}) (English: ${absoluteUrl("en", pathname)}) (Markdown : ${markdownUrl(pathname)})`,
   );
 
   const lines = [
     `# ${site.name}`,
     "",
     `> ${meta("home.description")}`,
+    "",
+    `Markdown : ${markdownUrl("/")}`,
     "",
     "## Offres",
     "",

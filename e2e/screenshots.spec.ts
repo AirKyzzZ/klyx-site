@@ -42,3 +42,25 @@ test.describe("redesign screenshots", () => {
     }
   }
 });
+
+const MACHINE_ROUTES = ["/", "/services/agents-ia"];
+
+test.describe("machine view screenshots", () => {
+  test.skip(process.env.SCREENSHOTS !== "1", "set SCREENSHOTS=1 to capture");
+  test.use({ reducedMotion: "reduce" });
+
+  for (const route of MACHINE_ROUTES) {
+    for (const viewport of VIEWPORTS) {
+      test(`${route} machine view at ${viewport.width}`, async ({ page }) => {
+        await page.setViewportSize(viewport);
+        await page.goto(`${route}#machine`);
+        await page.locator(".mv-line").first().waitFor();
+        await page.evaluate(() => document.fonts.ready);
+        await page.screenshot({
+          path: `${OUTPUT_DIR}/machine-${fileStem(route)}-${viewport.width}.png`,
+          animations: "disabled",
+        });
+      });
+    }
+  }
+});

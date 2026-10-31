@@ -3,6 +3,7 @@ import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 
+import { PageViewToggle } from "@/components/machine-view/view-toggle";
 import { Hr } from "@/components/section";
 import { Link } from "@/i18n/navigation";
 import { site, socialLinks } from "@/lib/site";
@@ -68,6 +69,9 @@ export async function SiteFooter() {
               </li>
             ))}
           </ul>
+          <div className="lg:hidden">
+            <PageViewToggle variant="inline" />
+          </div>
         </div>
 
         <nav
