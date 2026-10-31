@@ -1,0 +1,51 @@
+{
+  "nav": {
+    "home": "Home"
+  },
+  "footer": {
+    "title": "TODO footer (en)"
+  },
+  "home": {
+    "title": "TODO home (en)"
+  },
+  "offers": {
+    "title": "TODO offers (en)"
+  },
+  "sites": {
+    "title": "TODO sites (en)"
+  },
+  "agents": {
+    "title": "TODO agents (en)"
+  },
+  "fde": {
+    "title": "TODO fde (en)"
+  },
+  "pricing": {
+    "title": "TODO pricing (en)"
+  },
+  "cases": {
+    "title": "TODO cases (en)"
+  },
+  "about": {
+    "title": "TODO about (en)"
+  },
+  "bordeaux": {
+    "title": "TODO bordeaux (en)"
+  },
+  "contact": {
+    "title": "TODO contact (en)"
+  },
+  "blog": {
+    "title": "TODO blog (en)"
+  },
+  "legal": {
+    "title": "TODO legal (en)"
+  },
+  "privacy": {
+    "title": "TODO privacy (en)"
+  },
+  "meta": {
+    "title": "Klyx",
+    "description": "TODO description (en)"
+  }
+}
