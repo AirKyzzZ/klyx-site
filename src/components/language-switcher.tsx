@@ -5,13 +5,14 @@ import NextLink from "next/link";
 import { useParams } from "next/navigation";
 
 import { getLocaleHref } from "@/i18n/locale-href";
+import { internalPathname } from "@/lib/machine/markdown-href";
 import { usePathname } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
 
 export function LanguageSwitcher() {
   const current = useLocale();
-  const pathname = usePathname();
   const params = useParams();
+  const pathname = internalPathname(usePathname(), params);
 
   return (
     <nav

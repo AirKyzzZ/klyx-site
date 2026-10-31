@@ -69,9 +69,14 @@ export function useMarkdownHref(): string {
 type ViewToggleProps = {
   markdownHref: string;
   variant: "floating" | "inline";
+  onToggle?: (machine: boolean) => void;
 };
 
-export function ViewToggle({ markdownHref, variant }: ViewToggleProps) {
+export function ViewToggle({
+  markdownHref,
+  variant,
+  onToggle,
+}: ViewToggleProps) {
   const t = useTranslations("machine");
   const machine = useMachineMode();
   const hydrated = useHydrated();
@@ -79,11 +84,16 @@ export function ViewToggle({ markdownHref, variant }: ViewToggleProps) {
   const toggle = (
     event: MouseEvent<HTMLElement> | KeyboardEvent<HTMLElement>,
   ) => {
+    if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
+      return;
+    }
+    if ("button" in event && event.button !== 0) return;
     event.preventDefault();
     const rect = event.currentTarget.getBoundingClientRect();
     wipeOrigin.x = `${rect.left + rect.width / 2}px`;
     wipeOrigin.y = `${rect.top + rect.height / 2}px`;
     setMachineMode(!machine);
+    onToggle?.(!machine);
   };
 
   return (
@@ -109,6 +119,15 @@ export function ViewToggle({ markdownHref, variant }: ViewToggleProps) {
   );
 }
 
-export function PageViewToggle({ variant }: Pick<ViewToggleProps, "variant">) {
-  return <ViewToggle markdownHref={useMarkdownHref()} variant={variant} />;
+export function PageViewToggle({
+  variant,
+  onToggle,
+}: Omit<ViewToggleProps, "markdownHref">) {
+  return (
+    <ViewToggle
+      markdownHref={useMarkdownHref()}
+      variant={variant}
+      onToggle={onToggle}
+    />
+  );
 }

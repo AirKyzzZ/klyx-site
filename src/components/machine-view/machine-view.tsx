@@ -67,7 +67,10 @@ export function MachineView() {
   const href = useMarkdownHref();
   const machine = useMachineMode();
   const [, setLoadedCount] = useState(0);
-  const [failure, setFailure] = useState<string | null>(null);
+  const [failure, setFailure] = useState<{
+    href: string;
+    message: string;
+  } | null>(null);
   const [copied, setCopied] = useState(false);
   const layerRef = useRef<HTMLElement>(null);
   const restore = useRef<{ scrollY: number; focus: Element | null } | null>(
@@ -91,11 +94,20 @@ export function MachineView() {
       })
       .catch((error: unknown) => {
         if (controller.signal.aborted) return;
-        setFailure(error instanceof Error ? error.message : String(error));
-        throw error;
+        const message = error instanceof Error ? error.message : String(error);
+        console.error(error);
+        setFailure({ href, message });
       });
     return () => controller.abort();
   }, [machine, href]);
+
+  useEffect(() => {
+    const covered = document.querySelectorAll<HTMLElement>("main, footer");
+    for (const element of covered) element.inert = machine;
+    return () => {
+      for (const element of covered) element.inert = false;
+    };
+  }, [machine]);
 
   useEffect(() => {
     if (machine) {
@@ -193,7 +205,9 @@ export function MachineView() {
               </div>
               <div className="mv-hatch" aria-hidden="true" />
             </header>
-            {failure && !markdown && <p className="mv-failure">{failure}</p>}
+            {failure?.href === href && !markdown && (
+              <p className="mv-failure">{failure.message}</p>
+            )}
             <ol className="mv-lines">
               {lines.map((line, i) => (
                 <li key={i} className="mv-line">

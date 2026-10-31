@@ -96,6 +96,43 @@ test("on mobile the toggle lives in the nav sheet and the footer", async ({
   await expect(page.locator(".machine-view")).toBeHidden();
 });
 
+test("switching from the nav sheet closes the sheet", async ({ page }) => {
+  await page.setViewportSize(MOBILE);
+  await page.goto("/");
+  await page.getByRole("button", { name: fr.nav.openMenu }).click();
+  await page.locator("#site-mobile-menu .view-toggle").click();
+  await expect(page.locator(".machine-view")).toBeVisible();
+  await expect(page.locator("#site-mobile-menu")).toBeHidden();
+});
+
+test("hidden page content is inert while MACHINE is open", async ({ page }) => {
+  await page.setViewportSize(DESKTOP);
+  await page.goto("/");
+  await page.locator(".view-toggle--floating").click();
+  await expect(page.locator("main")).toHaveAttribute("inert", "");
+  await expect(page.locator("body > div > footer")).toHaveAttribute(
+    "inert",
+    "",
+  );
+  await page.keyboard.press("Escape");
+  await expect(page.locator("main")).not.toHaveAttribute("inert", /.*/);
+});
+
+test("a modified click on the toggle is left to the browser", async ({
+  page,
+  context,
+}) => {
+  await page.setViewportSize(DESKTOP);
+  await page.goto("/");
+  const popup = context.waitForEvent("page");
+  await page
+    .locator(".view-toggle--floating")
+    .click({ modifiers: ["ControlOrMeta"] });
+  expect(new URL((await popup).url()).pathname).toBe("/md/fr");
+  await expect(page.locator(".machine-view")).toBeHidden();
+  await expect(page).not.toHaveURL(/#machine/);
+});
+
 for (const viewport of [DESKTOP, MOBILE]) {
   test(`toggling shifts no layout at ${viewport.width}`, async ({ page }) => {
     await page.setViewportSize(viewport);

@@ -215,7 +215,12 @@ export function SiteNav({
               ))}
             </div>
             <div className="border-line flex border-t px-3 py-3">
-              <PageViewToggle variant="inline" />
+              <PageViewToggle
+                variant="inline"
+                onToggle={(machine) => {
+                  if (machine) closeMenu();
+                }}
+              />
             </div>
             <div className="border-line flex items-center justify-between gap-4 border-t px-3 pt-3 pb-1">
               <LanguageSwitcher />

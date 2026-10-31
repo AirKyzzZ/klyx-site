@@ -3,7 +3,7 @@ import { describe, expect, it } from "vitest";
 import { messageList } from "@/i18n/message-list";
 import { type Locale, routing } from "@/i18n/routing";
 import { getStaticTranslator } from "@/i18n/static-translator";
-import { getCaseStudies } from "@/lib/content";
+import { getCaseStudies, getPosts } from "@/lib/content";
 import {
   FDE_MIN_DAYS_PER_WEEK,
   FDE_MIN_WEEKS,
@@ -91,7 +91,14 @@ const EXPECTATIONS: Record<AppPathname, Expectation> = {
   },
   "/contact": { h1: heroTitle("contact") },
   "/blog": { h1: plainTitle("blog", "hero.title") },
-  "/blog/[slug]": { h1: () => "" },
+  "/blog/[slug]": {
+    h1: async (locale, page) => {
+      const posts = await getPosts(locale);
+      const post = posts.find((p) => p.slug === page.params?.slug);
+      if (!post) throw new Error(`No post ${page.params?.slug}`);
+      return post.title;
+    },
+  },
   "/mentions-legales": { h1: plainTitle("legal", "title") },
   "/confidentialite": { h1: plainTitle("privacy", "title") },
 };

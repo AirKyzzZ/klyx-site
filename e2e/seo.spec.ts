@@ -72,3 +72,24 @@ test("contact form is enabled and its honeypot is unreachable", async ({
   await page.keyboard.press("Tab");
   await expect(page.locator("#contact-website")).not.toBeFocused();
 });
+
+for (const javaScriptEnabled of [false, true]) {
+  test.describe(`language switcher on dynamic pages (JS ${javaScriptEnabled ? "on" : "off"})`, () => {
+    test.use({ javaScriptEnabled });
+
+    test("maps case study slugs between locales", async ({ page }) => {
+      await page.goto("/en/work/citeme");
+      await expect(
+        page.locator('nav[aria-label="Language"] a[hreflang="fr"]').first(),
+      ).toHaveAttribute("href", "/realisations/citeme");
+      await expect(
+        page.locator('nav[aria-label="Language"] a[hreflang="en"]').first(),
+      ).toHaveAttribute("href", "/en/work/citeme");
+
+      await page.goto("/realisations/citeme");
+      await expect(
+        page.locator('nav[aria-label="Language"] a[hreflang="en"]').first(),
+      ).toHaveAttribute("href", "/en/work/citeme");
+    });
+  });
+}
