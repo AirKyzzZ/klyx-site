@@ -1,51 +1,933 @@
 {
   "nav": {
-    "home": "Accueil"
+    "home": "Accueil",
+    "offers": "Offres",
+    "sites": "Sites et landing pages",
+    "agents": "IA et agents",
+    "fde": "Forward Deployed Engineer",
+    "cases": "Réalisations",
+    "pricing": "Tarifs",
+    "about": "À propos",
+    "bordeaux": "Agence IA Bordeaux",
+    "blog": "Blog",
+    "contact": "Contact",
+    "book": "Réserver un appel",
+    "quote": "Demander un devis gratuit",
+    "openMenu": "Ouvrir le menu",
+    "closeMenu": "Fermer le menu",
+    "switchLanguage": "English"
   },
   "footer": {
-    "title": "TODO footer (fr)"
+    "tagline": "Sites, agents IA et automatisations au forfait. Basé à Bordeaux, je travaille à distance partout en France et en Europe.",
+    "offersTitle": "Offres",
+    "companyTitle": "Klyx",
+    "legalTitle": "Informations",
+    "sisterSitesTitle": "Les autres activités Klyx",
+    "studio": "Klyx Studio : TODO(maxime) une phrase sur ce que fait studio.klyx.fr.",
+    "estate": "Klyx Estate : des films et des visuels pour lancer les mandats immobiliers de prestige.",
+    "legal": "Mentions légales",
+    "privacy": "Confidentialité",
+    "copyright": "© {year} Klyx, par Maxime Mansiet. Prix en € HT."
   },
   "home": {
-    "title": "TODO home (fr)"
+    "hero": {
+      "title": "Des agents IA qui tournent en production,",
+      "titleEmphasis": "pas des démos.",
+      "subtitle": "Sites, agents et automatisations livrés au forfait pour startups et agences. Devis gratuit, prix publics.",
+      "ctaPrimary": "Réserver un appel",
+      "ctaSecondary": "Demander un devis gratuit"
+    },
+    "proof": {
+      "label": "Livrable réel",
+      "title": "Ce que j'ai livré récemment",
+      "body": "TODO(maxime): choisir l'artefact affiché ici (liste de PR CiteMe, score Lighthouse d'un site client en ligne ou journal d'exécution d'un agent). Rien ne s'affiche tant que ce n'est pas un vrai livrable."
+    },
+    "offers": {
+      "title": "Trois façons de travailler ensemble",
+      "subtitle": "Les prix sont publics et en € HT. Le devis est gratuit, et le périmètre est écrit avant de commencer.",
+      "link": "Voir l'offre",
+      "cards": {
+        "sites": {
+          "name": "Sites et landing pages",
+          "outcome": "Un site rapide que Google et les IA savent lire, en ligne en 1 à 4 semaines.",
+          "price": "À partir de {price}"
+        },
+        "agents": {
+          "name": "IA et agents",
+          "outcome": "Un workflow automatisé en production en 2 semaines, avec le code dans votre repo.",
+          "price": "À partir de {price}"
+        },
+        "fde": {
+          "name": "Forward Deployed Engineer",
+          "outcome": "Un développeur IA dans votre équipe 2 à 3 jours par semaine, pendant 4 semaines ou plus.",
+          "price": "À partir de {price} / jour"
+        }
+      }
+    },
+    "cases": {
+      "title": "Réalisations",
+      "subtitle": "Des sites livrés pour des clients et des produits IA en production. Chaque carte mène au projet en ligne.",
+      "visit": "Voir le projet",
+      "readCase": "Lire l'étude de cas",
+      "viewAll": "Toutes les réalisations"
+    },
+    "process": {
+      "title": "Comment ça se passe",
+      "steps": {
+        "call": {
+          "title": "Un appel pour cadrer",
+          "body": "20 minutes pour comprendre votre produit, votre stack et votre échéance, et voir où l'IA peut vous faire gagner du temps."
+        },
+        "scope": {
+          "title": "Audit ou devis",
+          "body": "Je passe en revue votre site ou vos process, puis je vous envoie un périmètre écrit et un prix fixe."
+        },
+        "build": {
+          "title": "Build en sprints",
+          "body": "Je livre par sprints de deux semaines, testés sur vos vraies données. Le code est dans votre repo dès le premier jour."
+        },
+        "measure": {
+          "title": "Mesure et itération",
+          "body": "Après la mise en ligne, je suis les chiffres et je corrige ce qui ne marche pas. La passation est écrite."
+        }
+      }
+    },
+    "founder": {
+      "title": "Vous parlez à la personne qui code",
+      "body": "Je suis Maxime Mansiet, développeur fullstack à Bordeaux et fondateur de Klyx. Je travaille seul, donc la personne que vous avez au téléphone est celle qui écrit votre code.",
+      "experience": "TODO(maxime): Chez 2060.io, je développe le serveur MCP et des agents IA de Verana, une infrastructure de confiance pour l'identité numérique européenne. J'ai aussi cofondé CiteMe, qui mesure la visibilité des marques dans ChatGPT et Perplexity.",
+      "github": "Mon GitHub",
+      "linkedin": "Mon LinkedIn",
+      "about": "Mon parcours"
+    },
+    "testimonials": {
+      "title": "Ce qu'en disent mes clients",
+      "note": "TODO(maxime): accord de chaque client pour réutiliser sa citation sur le nouveau site.",
+      "items": {
+        "david": {
+          "quote": "Service impeccable. Le site reflète enfin la qualité de nos services et nos prospects le remarquent. Communication transparente, respect des délais, rien à redire.",
+          "author": "David A.",
+          "company": "PKBA"
+        },
+        "antoni": {
+          "quote": "Collaboration fluide du début à la fin. Le site est clair, rapide et bien structuré. Klyx a parfaitement compris nos besoins sans jamais perdre de temps, une équipe jeune mais déjà très pro.",
+          "author": "Antoni V.",
+          "company": "Kenzi"
+        },
+        "clement": {
+          "quote": "Je recommande Klyx sans hésiter. Le suivi a été top, le design est moderne et adapté à notre activité. On sent une vraie passion derrière chaque détail.",
+          "author": "Clément D.",
+          "company": "Reciproq"
+        }
+      }
+    },
+    "faq": {
+      "title": "Questions fréquentes",
+      "items": {
+        "price": {
+          "question": "Combien coûte un projet ?",
+          "answer": "Une landing page démarre à {landingPrice}, un site IA à {siteIaPrice}, un audit IA à {auditPrice} et un Sprint IA à {sprintPrice}. Le prix final dépend du périmètre, fixé par écrit avant de commencer. Tous les prix sont sur la page Tarifs."
+        },
+        "solo": {
+          "question": "Vous travaillez seul. Que se passe-t-il si vous n'êtes plus disponible ?",
+          "answer": "Le code est dans votre repo dès le premier jour, et chaque projet se termine par une passation écrite pour qu'un autre développeur puisse reprendre. Je prends deux clients au plus en même temps, et je ne propose pas d'astreinte 24 h/24."
+        },
+        "production": {
+          "question": "Que veut dire « en production » ?",
+          "answer": "Un agent ou une automatisation branché sur vos vrais outils et vos vraies données, que votre équipe utilise au quotidien, avec un journal de ce que fait l'agent. Une démo sur un jeu de test ne compte pas."
+        },
+        "data": {
+          "question": "Que deviennent nos données ?",
+          "answer": "Elles restent sur vos comptes. Je passe par les API d'OpenAI ou d'Anthropic, qui n'utilisent pas par défaut les données envoyées par API pour entraîner leurs modèles. Si vous avez besoin d'un hébergement dans l'UE ou d'un modèle local, on le prévoit dans le devis."
+        },
+        "remote": {
+          "question": "Travaillez-vous avec des équipes hors de Bordeaux ?",
+          "answer": "Oui. Klyx est basé à Bordeaux et je travaille à distance avec des équipes partout en France et en Europe, en français ou en anglais."
+        },
+        "stack": {
+          "question": "Quelle stack utilisez-vous ?",
+          "answer": "Next.js, TypeScript et Supabase pour les produits, WordPress quand votre équipe veut éditer seule. Côté IA : OpenAI, Anthropic et Gemini, des serveurs MCP et des agents branchés sur vos outils."
+        }
+      }
+    },
+    "finalCta": {
+      "title": "Un process à automatiser, un site à refaire ?",
+      "body": "Réservez un appel de 20 minutes. Vous repartez avec un avis clair sur ce qui vaut le coup, même si on ne travaille pas ensemble.",
+      "ctaPrimary": "Réserver un appel",
+      "ctaSecondary": "Demander un devis gratuit"
+    }
   },
   "offers": {
-    "title": "TODO offers (fr)"
+    "priceFrom": "À partir de {price}",
+    "perDay": "{price} / jour",
+    "perMonth": "{price} / mois",
+    "vatNote": "Tous les prix sont en € HT.",
+    "items": {
+      "landing": {
+        "name": "Landing page",
+        "summary": "Une page qui présente une offre et donne envie de vous contacter.",
+        "duration": "1 à 2 semaines"
+      },
+      "siteIa": {
+        "name": "Site IA",
+        "summary": "5 à 8 pages, référencées sur Google et lisibles par les moteurs IA (GEO).",
+        "duration": "3 à 4 semaines"
+      },
+      "siteCustom": {
+        "name": "Site sur mesure",
+        "summary": "Un site construit autour de votre besoin, avec vos intégrations.",
+        "duration": "TODO(maxime): durée du site sur mesure"
+      },
+      "auditIa": {
+        "name": "Audit IA + roadmap",
+        "summary": "Vos process passés en revue, les automatisations classées, une roadmap sur 90 jours.",
+        "duration": "1 à 2 semaines"
+      },
+      "sprintIa": {
+        "name": "Sprint IA",
+        "summary": "Un workflow en production, au périmètre fixé avant de commencer.",
+        "duration": "2 semaines"
+      },
+      "retainer": {
+        "name": "Suivi mensuel",
+        "summary": "Le workflow surveillé et amélioré chaque mois.",
+        "duration": "Mensuel",
+        "price": "TODO(maxime): prix du suivi mensuel"
+      },
+      "fde": {
+        "name": "Forward Deployed Engineer",
+        "summary": "2 à 3 jours par semaine dans votre équipe, à temps partagé.",
+        "duration": "4 semaines minimum"
+      }
+    }
   },
   "sites": {
-    "title": "TODO sites (fr)"
+    "hero": {
+      "eyebrow": "Sites et landing pages",
+      "title": "Création de site web à Bordeaux,",
+      "titleEmphasis": "au prix affiché.",
+      "subtitle": "Landing page à partir de {landingPrice}, site de 5 à 8 pages à partir de {siteIaPrice}. Des sites rapides, référencés sur Google et lisibles par ChatGPT ou Perplexity.",
+      "ctaPrimary": "Réserver un appel",
+      "ctaSecondary": "Demander un devis gratuit"
+    },
+    "problem": {
+      "title": "Pourquoi refaire votre site",
+      "body": "Un site lent ou mal structuré perd ses visiteurs avant qu'ils aient lu votre offre. Et une partie de vos clients pose maintenant ses questions à ChatGPT ou Perplexity, qui citent surtout les sites qu'ils arrivent à lire. Je construis des sites pensés pour les deux."
+    },
+    "deliverables": {
+      "title": "Ce que vous recevez",
+      "subtitle": "Trois formules. Le prix de départ est affiché, le périmètre exact est écrit dans le devis.",
+      "tiers": {
+        "landing": {
+          "items": {
+            "page": "Une page, avec une structure et des textes travaillés avec vous",
+            "contact": "Un formulaire de contact ou une prise de rendez-vous",
+            "seo": "Le SEO de base : titres, descriptions, données structurées",
+            "launch": "La mise en ligne sur votre nom de domaine"
+          }
+        },
+        "siteIa": {
+          "items": {
+            "pages": "5 à 8 pages, design sur mesure",
+            "stack": "Next.js ou WordPress, selon qui modifie le site au quotidien",
+            "geo": "SEO et GEO : données structurées, llms.txt, pages écrites pour être citées",
+            "speed": "Les Core Web Vitals vérifiés avant la mise en ligne",
+            "handover": "Une passation pour que vous sachiez modifier vos contenus"
+          }
+        },
+        "siteCustom": {
+          "items": {
+            "scope": "Pages et fonctionnalités définies ensemble",
+            "integrations": "Intégrations : CRM, paiement, prise de rendez-vous, API",
+            "assistant": "Un assistant IA qui répond à partir de vos contenus, en option",
+            "todo": "TODO(maxime): confirmer le périmètre type de cette formule"
+          }
+        }
+      }
+    },
+    "process": {
+      "title": "Les étapes",
+      "steps": {
+        "brief": {
+          "title": "Brief",
+          "body": "Un appel pour cadrer vos objectifs, vos pages et vos contenus."
+        },
+        "design": {
+          "title": "Structure et design",
+          "body": "Je vous montre la structure et le design avant d'écrire le code. Vous validez."
+        },
+        "build": {
+          "title": "Développement",
+          "body": "Je construis le site, et vous suivez l'avancement sur une adresse de test."
+        },
+        "launch": {
+          "title": "Mise en ligne",
+          "body": "Je branche le domaine, je vérifie les performances et je vous montre comment modifier vos contenus."
+        }
+      }
+    },
+    "pricing": {
+      "title": "Combien coûte un site ?",
+      "body": "Une landing page démarre à {landingPrice}, un site IA à {siteIaPrice} et un site sur mesure à {siteCustomPrice}. Le devis est gratuit, et le prix ne bouge pas une fois le périmètre signé.",
+      "link": "Voir tous les tarifs"
+    },
+    "proof": {
+      "title": "Sites livrés",
+      "body": "Kenzi Events, PKBA et VertiFlow : le site d'une activité événementielle, celui d'un club de parkour et celui d'une marque de vêtements de parkour.",
+      "link": "Voir les réalisations"
+    },
+    "faq": {
+      "title": "Questions fréquentes",
+      "items": {
+        "delay": {
+          "question": "Combien de temps faut-il pour créer un site ?",
+          "answer": "Comptez 1 à 2 semaines pour une landing page et 3 à 4 semaines pour un site IA de 5 à 8 pages. Le calendrier est écrit dans le devis."
+        },
+        "stack": {
+          "question": "Next.js ou WordPress ?",
+          "answer": "WordPress si votre équipe veut modifier les pages seule, sans passer par moi. Next.js si vous voulez le site le plus rapide possible ou des fonctionnalités sur mesure. On tranche ensemble pendant le brief."
+        },
+        "geo": {
+          "question": "Qu'est-ce que le GEO ?",
+          "answer": "Le GEO (Generative Engine Optimization) consiste à rendre un site lisible et citable par les moteurs IA comme ChatGPT, Perplexity ou Gemini : contenus structurés, données structurées, réponses claires aux questions que posent vos clients."
+        },
+        "content": {
+          "question": "Qui écrit les textes ?",
+          "answer": "Je vous envoie un brief de contenu, puis je structure et je retravaille vos textes avec vous. Vous validez tout avant la mise en ligne."
+        },
+        "ownership": {
+          "question": "Le site m'appartient-il ?",
+          "answer": "Oui. Le code, le nom de domaine et les comptes d'hébergement sont à votre nom."
+        },
+        "after": {
+          "question": "Et après la mise en ligne ?",
+          "answer": "Vous modifiez vos contenus seul. Pour une nouvelle page ou une fonctionnalité, je vous envoie un devis."
+        }
+      }
+    },
+    "cta": {
+      "title": "Un site à lancer ou à refaire ?",
+      "body": "Décrivez votre projet, je vous envoie un devis gratuit avec un prix fixe.",
+      "ctaPrimary": "Demander un devis gratuit",
+      "ctaSecondary": "Réserver un appel"
+    }
   },
   "agents": {
-    "title": "TODO agents (fr)"
+    "hero": {
+      "eyebrow": "IA et agents",
+      "title": "Un agent IA en production",
+      "titleEmphasis": "en deux semaines.",
+      "subtitle": "Audit à partir de {auditPrice}, Sprint IA à partir de {sprintPrice}. Un workflow branché sur vos outils, avec le code dans votre repo et un journal de chaque action de l'agent.",
+      "ctaPrimary": "Réserver un appel",
+      "ctaSecondary": "Demander un devis gratuit"
+    },
+    "problem": {
+      "title": "Pourquoi les projets IA restent au stade de la démo",
+      "body": "Votre équipe utilise déjà ChatGPT, mais rien n'est branché sur vos outils. Le prototype a marché en réunion, puis personne n'a eu le temps de le fiabiliser. Je prends cette partie en charge : on choisit un processus qui rapporte, je le branche sur vos vraies données et il tourne sous surveillance."
+    },
+    "deliverables": {
+      "title": "Trois étapes, chacune payée à part",
+      "subtitle": "Vous pouvez vous arrêter après chaque étape.",
+      "tiers": {
+        "auditIa": {
+          "items": {
+            "interviews": "Des entretiens avec votre équipe",
+            "map": "Une cartographie de vos process",
+            "ranking": "Les 3 automatisations les plus rentables, classées par temps gagné et par risque",
+            "gdpr": "Les points RGPD à traiter",
+            "roadmap": "Une roadmap sur 90 jours, présentée en restitution"
+          }
+        },
+        "sprintIa": {
+          "items": {
+            "workflow": "Un workflow en production : agent, assistant ou automatisation",
+            "human": "Une validation humaine quand l'agent touche à des données sensibles",
+            "log": "Un journal de chaque action de l'agent",
+            "evals": "Un jeu de tests pour vérifier les réponses",
+            "runbook": "Un runbook et une prise en main pour votre équipe",
+            "repo": "Le code dans votre repo"
+          }
+        },
+        "retainer": {
+          "items": {
+            "monitoring": "La surveillance du workflow",
+            "updates": "Les mises à jour des modèles et des prompts",
+            "evals": "Les tests relancés après chaque changement",
+            "report": "Un point chaque mois sur ce qui tourne"
+          }
+        }
+      }
+    },
+    "credit": {
+      "title": "L'audit est déduit du Sprint",
+      "body": "Si vous enchaînez sur un Sprint IA, le prix de l'audit est déduit. TODO(maxime): conditions exactes (piste : 100 % si le Sprint est signé sous 60 jours)."
+    },
+    "process": {
+      "title": "Les étapes",
+      "steps": {
+        "call": {
+          "title": "Appel",
+          "body": "20 minutes pour repérer le processus qui vous coûte le plus de temps."
+        },
+        "audit": {
+          "title": "Audit",
+          "body": "J'analyse vos process et je classe les automatisations possibles par gain et par risque."
+        },
+        "sprint": {
+          "title": "Sprint",
+          "body": "Deux semaines pour mettre un workflow en production, avec une démo à la fin de chaque semaine."
+        },
+        "run": {
+          "title": "Suivi",
+          "body": "Je surveille le workflow et je l'améliore, ou votre équipe reprend la main avec le runbook."
+        }
+      }
+    },
+    "pricing": {
+      "title": "Combien coûte un agent IA ?",
+      "body": "Un audit IA démarre à {auditPrice}. Un Sprint IA, qui met un workflow en production en deux semaines, démarre à {sprintPrice}. Les projets plus larges, avec plusieurs intégrations ou une recherche dans vos documents, font l'objet d'un devis.",
+      "link": "Voir tous les tarifs"
+    },
+    "proof": {
+      "title": "Déjà en production",
+      "body": "Hoppy, l'assistant IA de Hop Hop Immo, et CiteMe, que j'ai cofondé. TODO(maxime): confirmer ce qui peut être dit de chaque projet.",
+      "link": "Voir les réalisations"
+    },
+    "faq": {
+      "title": "Questions fréquentes",
+      "items": {
+        "agentVsAutomation": {
+          "question": "Quelle différence entre un agent IA et une automatisation ?",
+          "answer": "Une automatisation suit des règles fixes : quand un e-mail arrive, elle crée une ligne dans le CRM. Un agent IA lit, décide et agit dans un cadre que vous fixez, par exemple trier une demande client et rédiger une réponse. Beaucoup de projets combinent les deux."
+        },
+        "tools": {
+          "question": "n8n, Make ou du code sur mesure ?",
+          "answer": "Ça dépend du processus et de qui le maintiendra. n8n ou Make conviennent quand votre équipe veut modifier les étapes elle-même. Le code sur mesure s'impose quand il faut des contrôles fins, des tests ou beaucoup de volume."
+        },
+        "nothingFound": {
+          "question": "Et si l'audit ne trouve rien d'utile ?",
+          "answer": "Vous repartez avec la cartographie de vos process et la roadmap, même si vous n'allez pas plus loin."
+        },
+        "bpifrance": {
+          "question": "Cet audit est-il un Diag Data IA de Bpifrance ?",
+          "answer": "Non. Le Diag Data IA est réalisé par des experts référencés par Bpifrance, ce que Klyx n'est pas. Mon audit est un audit privé, au forfait, avec un prix affiché."
+        },
+        "data": {
+          "question": "Nos données sont-elles en sécurité ?",
+          "answer": "Elles restent sur vos comptes, et je cartographie les données avant d'écrire le code. Si vous avez besoin d'un hébergement dans l'UE ou d'un modèle local, on le prévoit dans le devis."
+        },
+        "maintenance": {
+          "question": "Qui maintient l'agent après le sprint ?",
+          "answer": "Votre équipe, avec le runbook et la prise en main prévus dans le sprint, ou moi avec le suivi mensuel."
+        }
+      }
+    },
+    "cta": {
+      "title": "Un processus vous prend des heures chaque semaine ?",
+      "body": "Réservez un appel de 20 minutes. On regarde ensemble s'il vaut la peine d'être automatisé.",
+      "ctaPrimary": "Réserver un appel",
+      "ctaSecondary": "Demander un devis gratuit"
+    }
   },
   "fde": {
-    "title": "TODO fde (fr)"
+    "hero": {
+      "eyebrow": "Forward Deployed Engineer",
+      "title": "Un Forward Deployed Engineer",
+      "titleEmphasis": "à temps partagé.",
+      "subtitle": "Je rejoins votre équipe 2 à 3 jours par semaine pour livrer vos fonctionnalités IA. {fdeDayPrice} par jour, 4 semaines minimum, deux clients au plus en même temps.",
+      "ctaPrimary": "Réserver un appel",
+      "ctaSecondary": "Demander un devis gratuit"
+    },
+    "definition": {
+      "title": "Qu'est-ce qu'un Forward Deployed Engineer ?",
+      "body": "Un Forward Deployed Engineer (FDE) est un développeur qui travaille directement avec l'équipe du client, sur son code, pour mettre un produit en production. Le rôle vient d'éditeurs comme Palantir, et les labos d'IA l'utilisent aujourd'hui pour déployer leurs modèles chez leurs clients. En freelance, c'est le même travail à temps partagé : je m'intègre à votre équipe quelques jours par semaine, sans recrutement à temps plein."
+    },
+    "audience": {
+      "title": "Pour qui",
+      "body": "Une startup de 2 à 4 personnes qui doit livrer une fonctionnalité IA avant sa prochaine levée et n'a pas le temps de recruter. Ou une agence qui a signé un projet IA et n'a personne pour le coder."
+    },
+    "deliverables": {
+      "title": "Ce que je fais dans votre équipe",
+      "items": {
+        "tools": "Je travaille dans votre Slack, votre repo et vos points d'équipe",
+        "backlog": "Je prends en charge une partie du backlog, de la conception à la mise en production",
+        "weekly": "Chaque semaine, un point écrit avec la liste des PR livrées",
+        "handover": "Une documentation de passation à la fin de la mission"
+      }
+    },
+    "terms": {
+      "title": "Les conditions",
+      "items": {
+        "rate": "{fdeDayPrice} par jour",
+        "rhythm": "2 à 3 jours par semaine",
+        "minimum": "4 semaines minimum, soit environ {fdeMinimum}",
+        "capacity": "Deux clients au plus en même temps"
+      }
+    },
+    "limits": {
+      "title": "Ce que je ne propose pas",
+      "body": "Je travaille seul : pas d'astreinte 24 h/24, pas de certification SOC 2. Si votre projet en a besoin, je vous le dis dès le premier appel."
+    },
+    "process": {
+      "title": "Les étapes",
+      "steps": {
+        "call": {
+          "title": "Appel",
+          "body": "On parle de votre produit, de votre équipe et de ce qui doit sortir."
+        },
+        "scope": {
+          "title": "Périmètre",
+          "body": "Je vous envoie par écrit les objectifs des 4 premières semaines et le nombre de jours par semaine."
+        },
+        "onboarding": {
+          "title": "Arrivée",
+          "body": "Accès au repo, à Slack et à vos outils. Je vise une première PR livrée dès la première semaine."
+        },
+        "weekly": {
+          "title": "Chaque semaine",
+          "body": "Un point écrit avec les PR livrées et la suite. On ajuste le rythme si besoin."
+        }
+      }
+    },
+    "proof": {
+      "title": "Du code que vous pouvez lire avant de signer",
+      "body": "Mon historique de commits est public. TODO(maxime): lier le profil GitHub et les PR à montrer (Credo-ts, CiteMe) une fois vérifiées.",
+      "link": "Voir mon GitHub"
+    },
+    "faq": {
+      "title": "Questions fréquentes",
+      "items": {
+        "vsFreelance": {
+          "question": "Quelle différence avec un freelance classique ?",
+          "answer": "Un freelance livre souvent une mission définie à l'avance. En FDE, je travaille dans votre équipe sur vos priorités du moment, je participe à vos points et je livre chaque semaine."
+        },
+        "minimum": {
+          "question": "Pourquoi 4 semaines minimum ?",
+          "answer": "Il faut une à deux semaines pour bien connaître votre code et votre équipe. En dessous de quatre semaines, vous payez surtout cette mise en route."
+        },
+        "days": {
+          "question": "Peut-on passer à plus de 3 jours par semaine ?",
+          "answer": "Non. Trois jours par semaine est mon maximum par client, pour garder le même niveau de travail sur chaque mission."
+        },
+        "remote": {
+          "question": "Travaillez-vous sur place ?",
+          "answer": "À distance par défaut. Si votre équipe est à Bordeaux, je peux venir dans vos locaux."
+        },
+        "vsSprint": {
+          "question": "FDE ou Sprint IA ?",
+          "answer": "Le Sprint IA livre un workflow précis au forfait, en deux semaines. Le FDE convient quand votre backlog bouge et que vous avez besoin de quelqu'un dans l'équipe pendant plusieurs semaines."
+        }
+      }
+    },
+    "cta": {
+      "title": "Une fonctionnalité IA à livrer ce trimestre ?",
+      "body": "Réservez un appel. Je vous dis vite si je peux prendre la mission et sur quel rythme.",
+      "ctaPrimary": "Réserver un appel",
+      "ctaSecondary": "Demander un devis gratuit"
+    }
   },
   "pricing": {
-    "title": "TODO pricing (fr)"
+    "hero": {
+      "title": "Tous mes tarifs,",
+      "titleEmphasis": "affichés.",
+      "subtitle": "Prix en € HT, « à partir de ». Le prix final dépend du périmètre, écrit dans le devis gratuit avant de commencer."
+    },
+    "table": {
+      "offer": "Offre",
+      "includes": "Ce que vous avez",
+      "duration": "Durée",
+      "price": "Prix",
+      "groups": {
+        "sites": "Sites",
+        "ai": "IA et agents",
+        "fde": "Forward Deployed Engineer"
+      }
+    },
+    "guarantees": {
+      "title": "Ce qui est garanti",
+      "items": {
+        "quote": "Le devis est gratuit.",
+        "credit": "L'audit IA est déduit du prix du Sprint si vous continuez. TODO(maxime): conditions exactes."
+      }
+    },
+    "market": {
+      "title": "Comment ces prix se situent",
+      "body": "La plupart des agences IA en France ne publient pas leurs prix. Les fourchettes publiées pour un développeur IA freelance vont en général de 650 à 900 € par jour, et un audit IA express se vend souvent entre 1 500 et 2 500 €. TODO(maxime): ajouter les sources datées de ces fourchettes ou retirer la phrase."
+    },
+    "faq": {
+      "title": "Questions sur les prix",
+      "items": {
+        "sprintVsFde": {
+          "question": "Pourquoi le Sprint IA coûte-t-il moins cher que 10 jours de FDE ?",
+          "answer": "Le Sprint IA est un livrable au forfait : un workflow, avec un périmètre fixé avant de commencer. Le FDE, c'est du temps passé dans votre équipe sur votre backlog, quel qu'il soit."
+        },
+        "final": {
+          "question": "Le prix peut-il augmenter en cours de projet ?",
+          "answer": "Pas sans votre accord. Le prix couvre le périmètre écrit dans le devis. Si vous ajoutez quelque chose, je vous envoie un devis complémentaire avant de le faire."
+        }
+      }
+    },
+    "cta": {
+      "title": "Besoin d'un prix précis ?",
+      "body": "Décrivez votre projet, je vous envoie un devis gratuit.",
+      "ctaPrimary": "Demander un devis gratuit",
+      "ctaSecondary": "Réserver un appel"
+    }
   },
   "cases": {
-    "title": "TODO cases (fr)"
+    "hero": {
+      "title": "Ce que j'ai",
+      "titleEmphasis": "construit.",
+      "subtitle": "Des sites livrés pour des clients et des produits IA en production. Pour chaque projet, ce que j'ai fait exactement."
+    },
+    "labels": {
+      "client": "Client",
+      "year": "Année",
+      "stack": "Stack",
+      "visit": "Voir le site",
+      "read": "Lire l'étude de cas",
+      "back": "Toutes les réalisations"
+    },
+    "cta": {
+      "title": "Votre projet ici ?",
+      "body": "Réservez un appel ou demandez un devis gratuit.",
+      "ctaPrimary": "Réserver un appel",
+      "ctaSecondary": "Demander un devis gratuit"
+    }
   },
   "about": {
-    "title": "TODO about (fr)"
+    "hero": {
+      "title": "Maxime Mansiet,",
+      "titleEmphasis": "fondateur de Klyx.",
+      "subtitle": "Développeur fullstack à Bordeaux. Je construis des sites, des agents IA et des automatisations pour des startups, des agences et des PME."
+    },
+    "story": {
+      "title": "Qui je suis",
+      "intro": "J'ai 20 ans. J'ai fondé Klyx à Bordeaux pour livrer moi-même ce que je vends : des sites rapides et des agents IA qui tournent chez de vrais clients.",
+      "work": "TODO(maxime): Chez 2060.io, je développe le serveur MCP et des agents IA de Verana, une infrastructure de confiance pour l'identité numérique européenne.",
+      "citeme": "TODO(maxime): J'ai cofondé CiteMe, un outil qui suit les citations des marques dans ChatGPT, Gemini et Perplexity."
+    },
+    "facts": {
+      "title": "En bref",
+      "items": {
+        "role": {
+          "label": "Rôle",
+          "value": "Fondateur de Klyx, développeur fullstack"
+        },
+        "location": {
+          "label": "Basé à",
+          "value": "Bordeaux, France"
+        },
+        "languages": {
+          "label": "Langues",
+          "value": "Français, anglais"
+        },
+        "focus": {
+          "label": "Spécialités",
+          "value": "Next.js, TypeScript, agents IA, serveurs MCP"
+        },
+        "siret": {
+          "label": "SIRET",
+          "value": "{siret} TODO(maxime): confirmer"
+        }
+      }
+    },
+    "trust": {
+      "title": "Pourquoi me faire confiance",
+      "body": "Je ne vous demande pas de me croire sur parole. Mon code est public sur GitHub. Chaque projet se termine avec le code dans votre repo et une passation écrite, et je vous dis dès le premier appel ce que je ne fais pas."
+    },
+    "lines": {
+      "title": "Les autres activités Klyx",
+      "studio": "Klyx Studio : TODO(maxime) une phrase sur ce que fait studio.klyx.fr.",
+      "estate": "Klyx Estate : des films et des visuels pour lancer les mandats immobiliers de prestige."
+    },
+    "links": {
+      "github": "GitHub",
+      "linkedin": "LinkedIn"
+    },
+    "cta": {
+      "title": "On en parle ?",
+      "body": "Un appel de 20 minutes suffit pour savoir si je peux vous aider.",
+      "ctaPrimary": "Réserver un appel",
+      "ctaSecondary": "Demander un devis gratuit"
+    }
   },
   "bordeaux": {
-    "title": "TODO bordeaux (fr)"
+    "hero": {
+      "eyebrow": "Agence IA à Bordeaux",
+      "title": "L'IA pour les PME de Bordeaux,",
+      "titleEmphasis": "sans jargon.",
+      "subtitle": "J'aide les PME de Bordeaux et de Gironde à automatiser les tâches répétitives : devis, factures, e-mails, reporting. Le prix est fixé avant de commencer.",
+      "ctaPrimary": "Réserver un appel",
+      "ctaSecondary": "Demander un devis gratuit"
+    },
+    "problem": {
+      "title": "Vous avez essayé ChatGPT, mais rien n'a changé dans votre façon de travailler ?",
+      "body": "C'est le cas de la plupart des entreprises. En 2026, 40 % des TPE-PME françaises utilisent l'IA, mais seulement 11 % s'en servent pour automatiser une tâche (baromètre France Num 2026). L'outil est là, mais personne n'a eu le temps de le brancher sur les devis, les factures ou le suivi client. Je m'en occupe : on choisit ensemble une tâche qui vous prend du temps chaque semaine, je l'automatise, et votre équipe garde la main sur ce qui part chez vos clients."
+    },
+    "examples": {
+      "title": "Ce qu'on peut automatiser",
+      "items": {
+        "quotes": "Préparer un devis à partir d'une demande client",
+        "invoices": "Relancer les factures impayées",
+        "emails": "Trier les e-mails et préparer les réponses",
+        "reporting": "Assembler le reporting de la semaine"
+      }
+    },
+    "process": {
+      "title": "Comment ça se passe",
+      "steps": {
+        "call": {
+          "title": "Un premier échange gratuit",
+          "body": "Par téléphone ou en visio, vous m'expliquez votre activité et ce qui vous prend du temps."
+        },
+        "audit": {
+          "title": "Un audit à prix fixe",
+          "body": "J'observe comment vous travaillez et je vous dis ce qui vaut la peine d'être automatisé, chiffres à l'appui."
+        },
+        "build": {
+          "title": "La mise en place",
+          "body": "J'installe l'automatisation sur vos outils et je forme votre équipe à l'utiliser."
+        },
+        "followUp": {
+          "title": "Le suivi",
+          "body": "Je vérifie que tout tourne et je corrige si besoin, avec un suivi mensuel si vous le souhaitez."
+        }
+      }
+    },
+    "local": {
+      "title": "Basé à Bordeaux",
+      "body": "Je travaille depuis Bordeaux et je peux venir vous voir dans la métropole et en Gironde pour le cadrage. TODO(maxime): adresse ou zone exacte à afficher, et confirmer les déplacements."
+    },
+    "trust": {
+      "title": "Pourquoi me faire confiance",
+      "body": "Le prix et le périmètre sont écrits avant de commencer. Si vous payez l'audit, vous repartez avec le plan, même si vous n'allez pas plus loin. Les outils et les comptes sont à votre nom, et un suivi mensuel couvre la continuité."
+    },
+    "faq": {
+      "title": "Questions fréquentes",
+      "items": {
+        "price": {
+          "question": "Combien ça coûte ?",
+          "answer": "L'audit démarre à {auditPrice}. La mise en place d'une automatisation démarre à {sprintPrice}. Vous connaissez le prix exact avant de signer."
+        },
+        "it": {
+          "question": "Faut-il un service informatique ?",
+          "answer": "Non. Je m'occupe de la technique, et votre équipe apprend à utiliser l'outil. Vous n'avez rien à installer vous-même."
+        },
+        "data": {
+          "question": "Nos données clients restent-elles confidentielles ?",
+          "answer": "Oui. Elles restent sur vos comptes, et je vérifie ce que chaque outil fait de vos données avant de l'utiliser. Un hébergement en Europe est possible."
+        },
+        "subsidy": {
+          "question": "Est-ce subventionné ?",
+          "answer": "Mes prix sont affichés sans aide publique. Klyx n'est pas référencé par Bpifrance, donc mon audit n'est pas un Diag Data IA."
+        },
+        "delay": {
+          "question": "Combien de temps faut-il ?",
+          "answer": "1 à 2 semaines pour l'audit, puis environ 2 semaines pour mettre une première automatisation en place."
+        }
+      }
+    },
+    "cta": {
+      "title": "Une tâche vous prend trop de temps ?",
+      "body": "Parlons-en 20 minutes. C'est gratuit, et vous saurez si elle vaut la peine d'être automatisée.",
+      "ctaPrimary": "Réserver un appel",
+      "ctaSecondary": "Demander un devis gratuit"
+    }
   },
   "contact": {
-    "title": "TODO contact (fr)"
+    "hero": {
+      "title": "Parlons de",
+      "titleEmphasis": "votre projet.",
+      "subtitle": "Réservez un appel de 20 minutes ou décrivez votre besoin ci-dessous. C'est moi qui vous réponds."
+    },
+    "booking": {
+      "title": "Réserver un appel",
+      "body": "Choisissez un créneau. L'appel est gratuit."
+    },
+    "form": {
+      "title": "Demander un devis gratuit",
+      "fields": {
+        "name": {
+          "label": "Nom *",
+          "placeholder": "Prénom et nom"
+        },
+        "email": {
+          "label": "E-mail *",
+          "placeholder": "vous@entreprise.fr"
+        },
+        "company": {
+          "label": "Entreprise",
+          "placeholder": "Nom de l'entreprise"
+        },
+        "need": {
+          "label": "Votre besoin *",
+          "placeholder": "Choisissez une option",
+          "options": {
+            "site": "Un site ou une landing page",
+            "agents": "Un agent IA ou une automatisation",
+            "audit": "Un audit IA",
+            "fde": "Un Forward Deployed Engineer",
+            "other": "Autre chose"
+          }
+        },
+        "budget": {
+          "label": "Budget",
+          "placeholder": "Choisissez une fourchette",
+          "options": {
+            "under3k": "< 3 k€",
+            "from3to10k": "3-10 k€",
+            "from10to30k": "10-30 k€",
+            "over30k": "> 30 k€",
+            "unknown": "Je ne sais pas encore"
+          }
+        },
+        "message": {
+          "label": "Votre message *",
+          "placeholder": "Décrivez votre produit et ce que vous voulez construire."
+        },
+        "honeypot": {
+          "label": "Laissez ce champ vide"
+        }
+      },
+      "consent": "J'accepte que ces informations servent à répondre à ma demande.",
+      "privacyLink": "Politique de confidentialité",
+      "submit": "Envoyer la demande",
+      "sending": "Envoi en cours…",
+      "success": "Merci, votre demande est partie. Je vous réponds par e-mail.",
+      "errors": {
+        "required": "Ce champ est obligatoire.",
+        "email": "Cette adresse e-mail n'est pas valide.",
+        "generic": "L'envoi a échoué. Réessayez, ou écrivez-moi à {email}."
+      }
+    },
+    "direct": {
+      "title": "Ou par e-mail",
+      "location": "Klyx, Bordeaux"
+    }
   },
   "blog": {
-    "title": "TODO blog (fr)"
+    "hero": {
+      "title": "Blog",
+      "subtitle": "Des notes sur les agents IA, le GEO et la construction de sites rapides."
+    },
+    "empty": "Les premiers articles arrivent.",
+    "readMore": "Lire l'article",
+    "byline": "Par {author}",
+    "published": "Publié le {date}",
+    "updated": "Mis à jour le {date}",
+    "back": "Tous les articles",
+    "rss": "Flux RSS"
   },
   "legal": {
-    "title": "TODO legal (fr)"
+    "title": "Mentions légales",
+    "publisher": {
+      "title": "Éditeur du site",
+      "body": "Klyx, activité de Maxime Mansiet, entrepreneur individuel, Bordeaux, France. TODO(maxime): adresse du siège.",
+      "siret": "SIRET : {siret} TODO(maxime): confirmer",
+      "vat": "TODO(maxime): mention TVA (numéro de TVA intracommunautaire, ou « TVA non applicable, art. 293 B du CGI »).",
+      "email": "Contact : {email}",
+      "director": "Directeur de la publication : Maxime Mansiet"
+    },
+    "hosting": {
+      "title": "Hébergement",
+      "body": "Vercel Inc., 440 N Barranca Ave #4133, Covina, CA 91723, États-Unis. vercel.com. TODO(maxime): confirmer l'hébergeur retenu."
+    },
+    "ip": {
+      "title": "Propriété intellectuelle",
+      "body": "Les textes, les visuels et le code de ce site appartiennent à Klyx, sauf mention contraire. Toute reproduction sans accord préalable est interdite."
+    },
+    "data": {
+      "title": "Données personnelles",
+      "body": "La collecte et l'usage de vos données sont décrits dans la politique de confidentialité.",
+      "link": "Politique de confidentialité"
+    },
+    "updated": "Dernière mise à jour : {date}"
   },
   "privacy": {
-    "title": "TODO privacy (fr)"
+    "title": "Politique de confidentialité",
+    "intro": "Cette page explique quelles données Klyx collecte, pourquoi, et comment exercer vos droits. Le responsable du traitement est Maxime Mansiet, entrepreneur individuel (Klyx), joignable à {email}.",
+    "contactForm": {
+      "title": "Formulaire de contact",
+      "body": "Quand vous remplissez le formulaire, je reçois votre nom, votre e-mail, votre entreprise, votre besoin, votre budget et votre message. Ces données servent uniquement à vous répondre. L'envoi passe par Resend, qui traite les e-mails pour mon compte. TODO(maxime): durée de conservation (piste : 3 ans après le dernier échange)."
+    },
+    "booking": {
+      "title": "Prise de rendez-vous",
+      "body": "La réservation d'un appel passe par Cal.com, qui reçoit les informations que vous saisissez (nom, e-mail, créneau). La politique de confidentialité de Cal.com s'applique à ce service."
+    },
+    "analytics": {
+      "title": "Mesure d'audience et cookies",
+      "body": "Ce site n'utilise ni outil de mesure d'audience ni cookie publicitaire. TODO(maxime): mettre à jour cette section si un outil d'analytics est ajouté."
+    },
+    "hosting": {
+      "title": "Hébergement et transferts",
+      "body": "Le site est hébergé par Vercel Inc. Vercel, Resend et Cal.com sont des prestataires américains. Les transferts de données vers les États-Unis reposent sur le Data Privacy Framework UE-États-Unis ou sur les clauses contractuelles types de la Commission européenne. TODO(maxime): vérifier l'hébergeur et le mécanisme de transfert de chaque prestataire."
+    },
+    "prospection": {
+      "anchor": "prospection",
+      "title": "Prospection commerciale par e-mail",
+      "intro": "Il m'arrive de contacter des entreprises par e-mail pour leur présenter mes services. Ces messages s'adressent à des professionnels, sur leur adresse professionnelle, et portent sur une offre liée à leur activité.",
+      "legalBasis": "Base légale : l'intérêt légitime de Klyx à faire connaître ses services (article 6.1.f du RGPD). Entre professionnels, la CNIL admet ces envois sans consentement préalable, à condition que le message concerne la profession de la personne et qu'elle puisse s'opposer facilement aux envois suivants.",
+      "sources": "Les coordonnées viennent de sources professionnelles publiques, comme le site de l'entreprise ou LinkedIn. TODO(maxime): confirmer les sources réellement utilisées par le système de prospection.",
+      "retention": "Je conserve ces données 3 ans au plus après votre dernier contact. TODO(maxime): confirmer la durée.",
+      "optOut": "Pour ne plus recevoir de messages, répondez à l'e-mail en le demandant, ou écrivez à {email}. Votre adresse passe alors sur une liste d'opposition et je ne vous recontacte plus."
+    },
+    "rights": {
+      "title": "Vos droits",
+      "body": "Vous pouvez demander l'accès à vos données, leur rectification ou leur suppression, vous opposer à leur traitement ou demander leur portabilité en écrivant à {email}. Je réponds sous un mois. Si vous estimez que vos droits ne sont pas respectés, vous pouvez saisir la CNIL (cnil.fr)."
+    },
+    "updated": "Dernière mise à jour : {date}"
   },
   "meta": {
     "title": "Klyx",
-    "description": "TODO description (fr)"
+    "description": "Sites, agents IA et automatisations livrés au forfait pour startups et agences, depuis Bordeaux. Devis gratuit, prix publics.",
+    "home": {
+      "title": "Klyx | Agents IA et sites au forfait, Bordeaux",
+      "description": "Des agents IA qui tournent en production, pas des démos. Sites, agents et automatisations au forfait pour startups et agences. Devis gratuit, prix publics."
+    },
+    "sites": {
+      "title": "Création de site web à Bordeaux, prix affichés | Klyx",
+      "description": "Landing page dès {landingPrice}, site de 5 à 8 pages dès {siteIaPrice}. Des sites rapides, référencés sur Google et lisibles par ChatGPT."
+    },
+    "agents": {
+      "title": "Agents IA et automatisation pour entreprises | Klyx",
+      "description": "Audit IA dès {auditPrice}, Sprint IA dès {sprintPrice} : un workflow en production en deux semaines, avec le code dans votre repo."
+    },
+    "fde": {
+      "title": "Forward Deployed Engineer à temps partagé | Klyx",
+      "description": "Qu'est-ce qu'un Forward Deployed Engineer ? Un développeur IA dans votre équipe 2 à 3 jours par semaine, dès {fdeDayPrice} par jour."
+    },
+    "pricing": {
+      "title": "Tarifs : prix d'un site et d'un agent IA | Klyx",
+      "description": "Tous les prix Klyx en € HT : landing page, site IA, audit IA, Sprint IA et Forward Deployed Engineer. Devis gratuit."
+    },
+    "cases": {
+      "title": "Réalisations : sites et agents IA livrés | Klyx",
+      "description": "Les sites et produits IA construits par Klyx : Hop Hop Immo, CiteMe, Kenzi Events, PKBA, VertiFlow. Ce qui a été fait, projet par projet."
+    },
+    "about": {
+      "title": "Maxime Mansiet, fondateur de Klyx | Klyx",
+      "description": "Maxime Mansiet, développeur fullstack à Bordeaux, fondateur de Klyx. Sites, agents IA et automatisations pour startups, agences et PME."
+    },
+    "bordeaux": {
+      "title": "Agence IA à Bordeaux pour les PME | Klyx",
+      "description": "Automatiser devis, factures, e-mails et reporting dans votre PME à Bordeaux et en Gironde. Prix fixe annoncé avant de commencer."
+    },
+    "contact": {
+      "title": "Contact et devis gratuit | Klyx",
+      "description": "Réservez un appel de 20 minutes ou demandez un devis gratuit pour un site, un agent IA ou une mission de Forward Deployed Engineer."
+    },
+    "blog": {
+      "title": "Blog : agents IA, GEO et sites rapides | Klyx",
+      "description": "Des notes de Maxime Mansiet sur les agents IA en production, le référencement dans les moteurs IA et la construction de sites rapides."
+    },
+    "legal": {
+      "title": "Mentions légales | Klyx",
+      "description": "Mentions légales du site klyx.fr : éditeur, hébergeur et propriété intellectuelle."
+    },
+    "privacy": {
+      "title": "Politique de confidentialité | Klyx",
+      "description": "Quelles données Klyx collecte, pourquoi, combien de temps, et comment vous opposer à la prospection par e-mail."
+    }
   }
 }
