@@ -1,5 +1,7 @@
 import type { Locale } from "@/i18n/routing";
 
+import type { OfferPathname } from "./offer-pages";
+
 export type OfferId =
   | "landing"
   | "site-ia"
@@ -7,14 +9,15 @@ export type OfferId =
   | "audit-ia"
   | "sprint-ia"
   | "retainer"
-  | "fde";
+  | "fde"
+  | "automation"
+  | "automation-care"
+  | "geo"
+  | "geo-care";
 
 export type Offer = {
   id: OfferId;
-  page:
-    | "/services/creation-site-web"
-    | "/services/agents-ia"
-    | "/forward-deployed-engineer";
+  page: OfferPathname;
   priceFrom: number | null;
   unit: "project" | "day" | "month";
   durationKey: string;
@@ -44,7 +47,7 @@ export const offers: Offer[] = [
   },
   {
     id: "audit-ia",
-    page: "/services/agents-ia",
+    page: "/services/audit-ia",
     priceFrom: 1500,
     unit: "project",
     durationKey: "auditIa",
@@ -69,6 +72,34 @@ export const offers: Offer[] = [
     priceFrom: 700,
     unit: "day",
     durationKey: "fde",
+  },
+  {
+    id: "automation",
+    page: "/services/automatisation-ia",
+    priceFrom: 2400,
+    unit: "project",
+    durationKey: "automation",
+  },
+  {
+    id: "automation-care",
+    page: "/services/automatisation-ia",
+    priceFrom: 190,
+    unit: "month",
+    durationKey: "automationCare",
+  },
+  {
+    id: "geo",
+    page: "/services/geo-referencement-ia",
+    priceFrom: 1200,
+    unit: "project",
+    durationKey: "geo",
+  },
+  {
+    id: "geo-care",
+    page: "/services/geo-referencement-ia",
+    priceFrom: 590,
+    unit: "month",
+    durationKey: "geoCare",
   },
 ];
 
@@ -104,6 +135,10 @@ export function getPriceValues(locale: Locale) {
     siteCustomPrice: price("site-custom"),
     auditPrice: price("audit-ia"),
     sprintPrice: price("sprint-ia"),
+    automationPrice: price("automation"),
+    automationCarePrice: price("automation-care"),
+    geoPrice: price("geo"),
+    geoCarePrice: price("geo-care"),
     fdeDayPrice: price("fde"),
     fdeMinimum: formatPrice(
       getOfferPrice("fde") * FDE_MIN_DAYS_PER_WEEK * FDE_MIN_WEEKS,

@@ -22,6 +22,9 @@ export async function SiteFooter() {
   const offerLinks = [
     { href: "/services/creation-site-web", label: nav("sites") },
     { href: "/services/agents-ia", label: nav("agents") },
+    { href: "/services/automatisation-ia", label: nav("automation") },
+    { href: "/services/audit-ia", label: nav("audit") },
+    { href: "/services/geo-referencement-ia", label: nav("geo") },
     { href: "/forward-deployed-engineer", label: nav("fde") },
   ] as const;
 

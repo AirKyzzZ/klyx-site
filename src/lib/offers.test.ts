@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { formatPrice, getPriceValues, offers } from "./offers";
+import { formatPrice, getOffer, getPriceValues, offers } from "./offers";
 
 const normalize = (value: string) => value.replace(/[\s  ]/g, " ");
 
@@ -14,7 +14,26 @@ describe("offers", () => {
       "sprint-ia": 4500,
       retainer: null,
       fde: 700,
+      automation: 2400,
+      "automation-care": 190,
+      geo: 1200,
+      "geo-care": 590,
     });
+  });
+
+  it("bills the follow-up options per month", () => {
+    expect(getOffer("automation-care").unit).toBe("month");
+    expect(getOffer("geo-care").unit).toBe("month");
+  });
+
+  it("links each offer to its own service page", () => {
+    expect(getOffer("audit-ia").page).toBe("/services/audit-ia");
+    expect(getOffer("automation").page).toBe("/services/automatisation-ia");
+    expect(getOffer("automation-care").page).toBe(
+      "/services/automatisation-ia",
+    );
+    expect(getOffer("geo").page).toBe("/services/geo-referencement-ia");
+    expect(getOffer("geo-care").page).toBe("/services/geo-referencement-ia");
   });
 });
 
@@ -36,8 +55,12 @@ describe("getPriceValues", () => {
   it("exposes every price placeholder used in the copy", () => {
     expect(Object.keys(getPriceValues("en")).sort()).toEqual([
       "auditPrice",
+      "automationCarePrice",
+      "automationPrice",
       "fdeDayPrice",
       "fdeMinimum",
+      "geoCarePrice",
+      "geoPrice",
       "landingPrice",
       "siteCustomPrice",
       "siteIaPrice",

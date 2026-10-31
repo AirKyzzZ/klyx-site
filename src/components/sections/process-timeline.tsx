@@ -23,7 +23,7 @@ const SAMPLE_SLOTS = [
 ];
 const PICKED = { day: 1, slot: 0 };
 
-function SampleWindow({
+export function SampleWindow({
   file,
   sample,
   children,

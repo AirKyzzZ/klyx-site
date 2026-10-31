@@ -15,6 +15,18 @@ export const routing = defineRouting({
       fr: "/services/agents-ia",
       en: "/services/ai-agents",
     },
+    "/services/audit-ia": {
+      fr: "/services/audit-ia",
+      en: "/services/ai-audit",
+    },
+    "/services/automatisation-ia": {
+      fr: "/services/automatisation-ia",
+      en: "/services/ai-automation",
+    },
+    "/services/geo-referencement-ia": {
+      fr: "/services/geo-referencement-ia",
+      en: "/services/ai-search-visibility",
+    },
     "/forward-deployed-engineer": "/forward-deployed-engineer",
     "/tarifs": { fr: "/tarifs", en: "/pricing" },
     "/realisations": { fr: "/realisations", en: "/work" },

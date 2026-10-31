@@ -38,6 +38,25 @@ describe("serviceJsonLd", () => {
     });
   });
 
+  it("points the new offers at their own pages", () => {
+    const [audit, automation, geoCare] = serviceJsonLd(
+      ["audit-ia", "automation", "geo-care"],
+      "en",
+    );
+    expect(audit).toMatchObject({
+      url: "https://klyx.fr/en/services/ai-audit",
+      offers: { price: 1500 },
+    });
+    expect(automation).toMatchObject({
+      url: "https://klyx.fr/en/services/ai-automation",
+      offers: { price: 2400 },
+    });
+    expect(geoCare).toMatchObject({
+      url: "https://klyx.fr/en/services/ai-search-visibility",
+      offers: { price: 590, priceSpecification: { unitCode: "MON" } },
+    });
+  });
+
   it("omits the price of offers without a public price", () => {
     const [service] = serviceJsonLd(["retainer"], "fr");
     expect(service.offers).not.toHaveProperty("price");

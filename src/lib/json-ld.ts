@@ -2,6 +2,7 @@ import { getStaticTranslator } from "@/i18n/static-translator";
 import type { Locale } from "@/i18n/routing";
 
 import { getOfferCopy } from "./offer-copy";
+import type { OfferPageKey } from "./offer-pages";
 import { getOffer, type OfferId } from "./offers";
 import { type AppPathname, absoluteUrl } from "./seo";
 import { site, socialLinks } from "./site";
@@ -143,7 +144,7 @@ export function offerPageJsonLd({
 }: {
   locale: Locale;
   pathname: AppPathname;
-  navKey: "sites" | "agents" | "fde";
+  navKey: OfferPageKey;
   offerIds: readonly OfferId[];
   faq: { question: string; answer: string }[];
 }): JsonLdObject[] {

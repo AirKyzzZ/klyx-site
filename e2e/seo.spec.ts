@@ -57,6 +57,55 @@ test("home and offer pages embed JSON-LD", async ({ page }) => {
   expect(joined).toContain('"price":4500');
 });
 
+const NEW_SERVICES = [
+  { fr: "/services/audit-ia", en: "/en/services/ai-audit", price: 1500 },
+  {
+    fr: "/services/automatisation-ia",
+    en: "/en/services/ai-automation",
+    price: 2400,
+  },
+  {
+    fr: "/services/geo-referencement-ia",
+    en: "/en/services/ai-search-visibility",
+    price: 1200,
+  },
+];
+
+for (const service of NEW_SERVICES) {
+  test(`${service.fr} declares Service JSON-LD and hreflang`, async ({
+    page,
+  }) => {
+    for (const path of [service.fr, service.en]) {
+      await page.goto(path);
+      const jsonLd = (
+        await page
+          .locator('script[type="application/ld+json"]')
+          .allTextContents()
+      ).join();
+      expect(jsonLd, path).toContain('"Service"');
+      expect(jsonLd, path).toContain('"FAQPage"');
+      expect(jsonLd, path).toContain(`"price":${service.price}`);
+      await expect(
+        page.locator('link[rel="alternate"][hreflang="fr"]'),
+      ).toHaveAttribute("href", `https://klyx.fr${service.fr}`);
+      await expect(
+        page.locator('link[rel="alternate"][hreflang="en"]'),
+      ).toHaveAttribute("href", `https://klyx.fr${service.en}`);
+    }
+  });
+}
+
+test("llms.txt and the sitemap list the new service pages", async ({
+  request,
+}) => {
+  const llms = await (await request.get("/llms.txt")).text();
+  const sitemap = await (await request.get("/sitemap.xml")).text();
+  for (const service of NEW_SERVICES) {
+    expect(llms).toContain(`https://klyx.fr${service.fr}`);
+    expect(sitemap).toContain(`https://klyx.fr${service.en}`);
+  }
+});
+
 test("contact form is enabled and its honeypot is unreachable", async ({
   page,
 }) => {

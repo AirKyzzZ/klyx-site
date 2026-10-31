@@ -14,8 +14,20 @@ import type { OfferId } from "@/lib/offers";
 import { buildMetadata } from "@/lib/seo";
 
 const GROUPS: { key: "sites" | "ai" | "fde"; offers: OfferId[] }[] = [
-  { key: "sites", offers: ["landing", "site-ia", "site-custom"] },
-  { key: "ai", offers: ["audit-ia", "sprint-ia", "retainer"] },
+  {
+    key: "sites",
+    offers: ["landing", "site-ia", "site-custom", "geo", "geo-care"],
+  },
+  {
+    key: "ai",
+    offers: [
+      "audit-ia",
+      "automation",
+      "automation-care",
+      "sprint-ia",
+      "retainer",
+    ],
+  },
   { key: "fde", offers: ["fde"] },
 ];
 

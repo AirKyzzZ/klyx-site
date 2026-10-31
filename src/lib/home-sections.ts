@@ -10,9 +10,9 @@ export const HOME_OFFER_CARDS = [
 ] as const;
 
 export const ALSO_OFFERS = [
-  { key: "audit", href: "/services/agents-ia" },
-  { key: "automation", href: "/services/agents-ia" },
-  { key: "geo", href: "/services/creation-site-web" },
+  { key: "audit", href: "/services/audit-ia" },
+  { key: "automation", href: "/services/automatisation-ia" },
+  { key: "geo", href: "/services/geo-referencement-ia" },
 ] as const;
 
 export function selectHomeCases(cases: CaseStudyMeta[]): CaseStudyMeta[] {

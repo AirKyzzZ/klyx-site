@@ -26,6 +26,22 @@ describe("sitemap", () => {
     }
   });
 
+  it("lists the new service pages with their hreflang pairs", async () => {
+    const entries = await sitemap();
+    const pairs = [
+      ["/services/audit-ia", "/en/services/ai-audit"],
+      ["/services/automatisation-ia", "/en/services/ai-automation"],
+      ["/services/geo-referencement-ia", "/en/services/ai-search-visibility"],
+    ];
+    for (const [fr, en] of pairs) {
+      const entry = entries.find((e) => e.url === `https://klyx.fr${fr}`);
+      expect(entry?.alternates?.languages).toMatchObject({
+        fr: `https://klyx.fr${fr}`,
+        en: `https://klyx.fr${en}`,
+      });
+    }
+  });
+
   it("lists every case study in both locales", async () => {
     const urls = (await sitemap()).map((entry) => entry.url);
     for (const study of await getCaseStudies("fr")) {

@@ -1,4 +1,5 @@
 import {
+  messageKeys,
   messageList,
   messageStrings,
   type Translate,
@@ -13,6 +14,7 @@ import {
   selectHomeCases,
 } from "@/lib/home-sections";
 import { getOfferCopy } from "@/lib/offer-copy";
+import { type OfferPageConfig, offerPages } from "@/lib/offer-pages";
 import {
   formatPrice,
   getOfferPrice,
@@ -20,6 +22,7 @@ import {
   type OfferId,
 } from "@/lib/offers";
 import { type AppPathname, absoluteUrl } from "@/lib/seo";
+import { scenarios } from "@/lib/scenarios";
 import { site, socialLinks } from "@/lib/site";
 
 import type { MachinePage } from "./markdown-href";
@@ -191,18 +194,94 @@ async function home(locale: Locale): Promise<string> {
   ]);
 }
 
-type ServicePageConfig = {
-  namespace: "sites" | "agents";
-  pathname: "/services/creation-site-web" | "/services/agents-ia";
-  tiers: OfferId[];
-  proofSlugs: string[];
-  statements: string[];
-  cta: [Action, Action];
-};
+function hasChild(t: Translate, key: string, child: string): boolean {
+  const raw = t.raw(key);
+  return typeof raw === "object" && raw !== null && child in raw;
+}
 
-async function servicePage(
+function card(t: Translate, key: string, values?: Prices): Block[] {
+  return [`### ${t(`${key}.title`)}`, t(`${key}.body`, values)];
+}
+
+type Prices = ReturnType<typeof getPriceValues>;
+
+function blockMarkdown(
   locale: Locale,
-  config: ServicePageConfig,
+  config: OfferPageConfig,
+  t: Translate,
+): Block[] {
+  const root = getStaticTranslator(locale, "");
+  switch (config.block) {
+    case "trace": {
+      const scenario = scenarios[config.scenario];
+      return [
+        `## ${sectionTitle(t, "block")}`,
+        t("block.body"),
+        ...card(t, "credit"),
+        list(scenario.trace.map((line) => `${line.t} s · ${root(line.key)}`)),
+      ];
+    }
+    case "lighthouse":
+      return [`## ${sectionTitle(t, "block")}`, t("block.body")];
+    case "fde-definition":
+      return [
+        `## ${sectionTitle(t, "definition")}`,
+        `*${t("definition.term")}*`,
+        t("definition.body"),
+        `## ${t("audience.title")}`,
+        t("audience.body"),
+        `## ${t("limits.title")}`,
+        t("limits.body"),
+        list(messageStrings(t, "limits.items")),
+      ];
+    case "audit-document": {
+      const columns = ["process", "hours", "offer", "risk", "when"];
+      const rows = messageKeys(t.raw("block.document.rows"));
+      return [
+        `## ${sectionTitle(t, "block")}`,
+        t("block.body"),
+        `### ${t("block.document.heading")} (${t("block.document.sample")})`,
+        t("block.document.company"),
+        [
+          `| ${columns.map((c) => cell(t(`block.document.columns.${c}`))).join(" | ")} |`,
+          `| ${columns.map(() => "---").join(" | ")} |`,
+          ...rows.map(
+            (row) =>
+              `| ${columns.map((c) => cell(t(`block.document.rows.${row}.${c}`))).join(" | ")} |`,
+          ),
+        ].join("\n"),
+        t("block.document.note"),
+        ...card(t, "block.credit"),
+        ...card(t, "block.bpifrance"),
+        t("block.bpifrance.source"),
+      ];
+    }
+    case "automation-examples":
+      return [
+        `## ${sectionTitle(t, "block")}`,
+        t("block.body"),
+        ...messageKeys(t.raw("block.examples")).flatMap((id) => [
+          `### ${t(`block.examples.${id}.title`)}`,
+          ["trigger", "ai", "human", "action"]
+            .map((step) => t(`block.examples.${id}.steps.${step}`))
+            .join(" → "),
+          t(`block.examples.${id}.body`),
+        ]),
+        t("block.limit"),
+      ];
+    case "geo-visibility":
+      return [
+        `## ${sectionTitle(t, "block")}`,
+        t("block.body"),
+        `### ${t("block.disclosure.label")}`,
+        t("block.disclosure.body"),
+      ];
+  }
+}
+
+async function offerPageMarkdown(
+  locale: Locale,
+  config: OfferPageConfig,
 ): Promise<string> {
   const t = getStaticTranslator(locale, config.namespace);
   const offersT = getStaticTranslator(locale, "offers");
@@ -211,71 +290,76 @@ async function servicePage(
   const cases = (await getCaseStudies(locale)).filter((c) =>
     config.proofSlugs.includes(c.slug),
   );
-  const statementLinks: Record<string, Block> = {
-    pricing: link(t("pricing.link"), absoluteUrl(locale, "/tarifs")),
-    proof: link(t("proof.link"), absoluteUrl(locale, "/realisations")),
-  };
+  const proofUrl =
+    config.proofLink === "github"
+      ? site.socials.github
+      : absoluteUrl(locale, "/realisations");
+  const deliverables: Block[] =
+    config.key === "fde"
+      ? [
+          list(messageStrings(t, "deliverables.items")),
+          `### ${t("terms.title")}`,
+          list(messageStrings(t, "terms.items", prices)),
+        ]
+      : tiers.flatMap((tier) => [
+          `### ${tier.name}`,
+          `${tier.price} · ${tier.duration}`,
+          tier.summary,
+          list(messageStrings(t, `deliverables.tiers.${tier.key}.items`)),
+        ]);
 
   return doc([
     ...intro(locale, config.pathname, heroTitle(t)),
+    getOfferCopy(offersT, locale, config.anchor).price,
     t("hero.subtitle", prices),
-    `## ${t("problem.title")}`,
+    `## ${sectionTitle(t, "problem")}`,
     t("problem.body"),
-    `## ${t("deliverables.title")}`,
-    t("deliverables.subtitle"),
-    ...tiers.flatMap((tier) => [
-      `### ${tier.name}`,
-      `${tier.price} · ${tier.duration}`,
-      tier.summary,
-      list(messageStrings(t, `deliverables.tiers.${tier.key}.items`)),
-    ]),
+    list(messageStrings(t, "problem.symptoms")),
+    `## ${sectionTitle(t, "deliverables")}`,
+    hasChild(t, "deliverables", "subtitle") && t("deliverables.subtitle"),
+    ...deliverables,
     offersT("vatNote"),
     ...processBlocks(locale, t),
-    ...config.statements.flatMap((key) => [
-      `## ${t(`${key}.title`)}`,
-      t(`${key}.body`, prices),
-      statementLinks[key],
-    ]),
+    ...blockMarkdown(locale, config, t),
+    `## ${sectionTitle(t, "proof")}`,
+    t("proof.body"),
+    link(t("proof.link"), proofUrl),
     caseList(locale, cases),
+    `## ${sectionTitle(t, "pricing")}`,
+    t("pricing.body", prices),
+    list(
+      tiers.map((tier) =>
+        labelled(
+          locale,
+          link(tier.name, absoluteUrl(locale, tier.href)),
+          `${tier.price} · ${tier.duration}`,
+        ),
+      ),
+    ),
+    link(t("pricing.link"), absoluteUrl(locale, "/tarifs")),
     ...faqBlocks(
-      t("faq.title"),
+      sectionTitle(t, "faq"),
       messageList(t, "faq.items", ["question", "answer"], prices),
     ),
     ...ctaBlocks(locale, t, "cta", config.cta),
   ]);
 }
 
-async function fde(locale: Locale): Promise<string> {
-  const t = getStaticTranslator(locale, "fde");
-  const prices = getPriceValues(locale);
-
-  return doc([
-    ...intro(locale, "/forward-deployed-engineer", heroTitle(t)),
-    t("hero.subtitle", prices),
-    list(messageStrings(t, "terms.items", prices)),
-    `## ${t("definition.title")}`,
-    t("definition.body"),
-    `## ${t("audience.title")}`,
-    t("audience.body"),
-    `## ${t("deliverables.title")}`,
-    list(messageStrings(t, "deliverables.items")),
-    `## ${t("limits.title")}`,
-    t("limits.body"),
-    ...processBlocks(locale, t),
-    `## ${t("proof.title")}`,
-    t("proof.body"),
-    link(t("proof.link"), site.socials.github),
-    ...faqBlocks(
-      t("faq.title"),
-      messageList(t, "faq.items", ["question", "answer"], prices),
-    ),
-    ...ctaBlocks(locale, t, "cta", ["book", "quote"]),
-  ]);
-}
-
 const PRICE_GROUPS: { key: "sites" | "ai" | "fde"; offers: OfferId[] }[] = [
-  { key: "sites", offers: ["landing", "site-ia", "site-custom"] },
-  { key: "ai", offers: ["audit-ia", "sprint-ia", "retainer"] },
+  {
+    key: "sites",
+    offers: ["landing", "site-ia", "site-custom", "geo", "geo-care"],
+  },
+  {
+    key: "ai",
+    offers: [
+      "audit-ia",
+      "automation",
+      "automation-care",
+      "sprint-ia",
+      "retainer",
+    ],
+  },
   { key: "fde", offers: ["fde"] },
 ];
 
@@ -521,24 +605,16 @@ async function privacy(locale: Locale): Promise<string> {
 const BUILDERS = {
   "/": home,
   "/services/creation-site-web": (locale) =>
-    servicePage(locale, {
-      namespace: "sites",
-      pathname: "/services/creation-site-web",
-      tiers: ["landing", "site-ia", "site-custom"],
-      proofSlugs: ["kenzi", "pkba", "vertiflow"],
-      statements: ["pricing", "proof"],
-      cta: ["quote", "book"],
-    }),
+    offerPageMarkdown(locale, offerPages.sites),
   "/services/agents-ia": (locale) =>
-    servicePage(locale, {
-      namespace: "agents",
-      pathname: "/services/agents-ia",
-      tiers: ["audit-ia", "sprint-ia", "retainer"],
-      proofSlugs: ["hop-hop-immo", "citeme"],
-      statements: ["credit", "pricing", "proof"],
-      cta: ["book", "quote"],
-    }),
-  "/forward-deployed-engineer": fde,
+    offerPageMarkdown(locale, offerPages.agents),
+  "/services/audit-ia": (locale) => offerPageMarkdown(locale, offerPages.audit),
+  "/services/automatisation-ia": (locale) =>
+    offerPageMarkdown(locale, offerPages.automation),
+  "/services/geo-referencement-ia": (locale) =>
+    offerPageMarkdown(locale, offerPages.geo),
+  "/forward-deployed-engineer": (locale) =>
+    offerPageMarkdown(locale, offerPages.fde),
   "/tarifs": pricing,
   "/realisations": cases,
   "/realisations/[slug]": caseStudy,

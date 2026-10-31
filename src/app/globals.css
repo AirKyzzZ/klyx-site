@@ -491,12 +491,56 @@
   }
 }
 
+.beam {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: 1px;
+  border-radius: var(--r-md);
+  background-color: var(--line-strong);
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: -1;
+    width: 300%;
+    aspect-ratio: 1;
+    translate: -50% -50%;
+    background: conic-gradient(
+      transparent 0 72%,
+      var(--accent) 86%,
+      transparent 100%
+    );
+    animation: beam-spin 8s linear infinite;
+  }
+}
+
+@keyframes beam-spin {
+  to {
+    rotate: 1turn;
+  }
+}
+
+@keyframes process-fill {
+  from {
+    transform: scaleX(0);
+  }
+}
+
 @supports (animation-timeline: view()) {
   @media (prefers-reduced-motion: no-preference) {
     .reveal {
       animation: reveal-rise auto var(--ease-out) both;
       animation-timeline: view();
       animation-range: entry 0% entry 40%;
+    }
+
+    .process-fill {
+      animation: process-fill auto linear both;
+      animation-timeline: view();
+      animation-range: entry 60% cover 55%;
     }
   }
 }

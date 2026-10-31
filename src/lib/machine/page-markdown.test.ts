@@ -57,6 +57,21 @@ const EXPECTATIONS: Record<AppPathname, Expectation> = {
     prices: ["audit-ia", "sprint-ia"],
     faqNamespace: "agents",
   },
+  "/services/audit-ia": {
+    h1: heroTitle("audit"),
+    prices: ["audit-ia", "automation", "sprint-ia"],
+    faqNamespace: "audit",
+  },
+  "/services/automatisation-ia": {
+    h1: heroTitle("automation"),
+    prices: ["automation", "automation-care", "sprint-ia"],
+    faqNamespace: "automation",
+  },
+  "/services/geo-referencement-ia": {
+    h1: heroTitle("geo"),
+    prices: ["geo", "geo-care", "site-ia"],
+    faqNamespace: "geo",
+  },
   "/forward-deployed-engineer": {
     h1: heroTitle("fde"),
     prices: ["fde"],
@@ -69,7 +84,11 @@ const EXPECTATIONS: Record<AppPathname, Expectation> = {
       "landing",
       "site-ia",
       "site-custom",
+      "geo",
+      "geo-care",
       "audit-ia",
+      "automation",
+      "automation-care",
       "sprint-ia",
       "fde",
     ],
@@ -104,7 +123,7 @@ const EXPECTATIONS: Record<AppPathname, Expectation> = {
 };
 
 const RAW_KEY =
-  /\b(nav|footer|home|offers|sites|agents|fde|pricing|cases|about|bordeaux|contact|blog|legal|privacy|meta|machine)\.[a-z][A-Za-z]*(\.[A-Za-z]+)*\b/;
+  /\b(nav|footer|home|offers|offerPage|sites|agents|fde|audit|automation|geo|liveSystem|pricing|cases|about|bordeaux|contact|blog|legal|privacy|meta|machine)\.[a-z][A-Za-z]*(\.[A-Za-z]+)*\b/;
 
 describe.each(routing.locales)("pageMarkdown (%s)", (locale) => {
   it("covers every route pathname", async () => {

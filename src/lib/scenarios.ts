@@ -258,7 +258,7 @@ export const scenarios: Record<ScenarioId, Scenario> = {
     ],
   }),
   audit: scenario("audit", {
-    href: "/services/agents-ia",
+    href: "/services/audit-ia",
     agent: "scoring",
     desktopOnly: ["scoring"],
     nodes: [
@@ -297,7 +297,7 @@ export const scenarios: Record<ScenarioId, Scenario> = {
     ],
   }),
   automation: scenario("automation", {
-    href: "/services/agents-ia",
+    href: "/services/automatisation-ia",
     agent: "extract",
     desktopOnly: ["waiting"],
     nodes: [
@@ -339,7 +339,7 @@ export const scenarios: Record<ScenarioId, Scenario> = {
     ],
   }),
   geo: scenario("geo", {
-    href: "/services/creation-site-web",
+    href: "/services/geo-referencement-ia",
     agent: "citation",
     desktopOnly: ["citations"],
     nodes: [

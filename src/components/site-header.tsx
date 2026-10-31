@@ -38,11 +38,29 @@ export async function SiteHeader() {
                 description: cards("agents.outcome"),
                 price: from(getOfferPrice("audit-ia")),
               },
+              {
+                href: "/services/automatisation-ia",
+                title: t("automation"),
+                description: t("hints.automation"),
+                price: from(getOfferPrice("automation")),
+              },
             ],
           },
           {
             label: t("groupAdvise"),
             items: [
+              {
+                href: "/services/audit-ia",
+                title: t("audit"),
+                description: t("hints.audit"),
+                price: from(getOfferPrice("audit-ia")),
+              },
+              {
+                href: "/services/geo-referencement-ia",
+                title: t("geo"),
+                description: t("hints.geo"),
+                price: from(getOfferPrice("geo")),
+              },
               {
                 href: "/forward-deployed-engineer",
                 title: t("fde"),

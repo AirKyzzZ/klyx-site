@@ -17,7 +17,15 @@
     "quote": "Get a free quote",
     "openMenu": "Open menu",
     "closeMenu": "Close menu",
-    "switchLanguage": "Français"
+    "switchLanguage": "Français",
+    "audit": "AI audit",
+    "automation": "AI automation",
+    "geo": "AI search visibility",
+    "hints": {
+      "audit": "Your processes reviewed and a 90-day roadmap.",
+      "automation": "One AI workflow wired into your tools in a week.",
+      "geo": "Get cited by ChatGPT and Perplexity, measured before and after."
+    }
   },
   "footer": {
     "tagline": "Websites, AI agents and automations at a fixed price. Based in Bordeaux, working remotely across France and Europe.",
@@ -324,6 +332,26 @@
         "name": "Forward Deployed Engineer",
         "summary": "2 to 3 days a week inside your team, on a fractional basis.",
         "duration": "4 weeks minimum"
+      },
+      "automation": {
+        "name": "AI automation",
+        "summary": "One linear workflow wired into your tools: trigger, AI step, action.",
+        "duration": "4 to 5 working days"
+      },
+      "automationCare": {
+        "name": "Automation monitoring",
+        "summary": "The workflow monitored, with 1 hour of changes per month.",
+        "duration": "Monthly, 3 months minimum"
+      },
+      "geo": {
+        "name": "AI search visibility (GEO)",
+        "summary": "30 questions tested on 4 AI engines, 5 pages fixed, re-test at day 30.",
+        "duration": "2 weeks"
+      },
+      "geoCare": {
+        "name": "GEO monitoring",
+        "summary": "The 30 questions run again every month, 2 pieces of content and a report.",
+        "duration": "Monthly, 3 months minimum"
       }
     }
   },
@@ -334,14 +362,21 @@
       "titleEmphasis": "at the listed price.",
       "subtitle": "Landing pages from {landingPrice}, 5 to 8 page sites from {siteIaPrice}. Fast sites that rank on Google and that ChatGPT or Perplexity can read.",
       "ctaPrimary": "Book a call",
-      "ctaSecondary": "Get a free quote"
+      "ctaSecondary": "Get a free quote",
+      "serif": "listed"
     },
     "problem": {
-      "title": "Why rebuild your site",
-      "body": "A slow or badly structured site loses visitors before they've read your offer. And some of your customers now ask ChatGPT or Perplexity instead of searching, and those tools mostly cite sites they can parse. I build sites that work for both."
+      "title": "Why rebuild",
+      "body": "A slow or badly structured site loses visitors before they've read your offer. And some of your customers now ask ChatGPT or Perplexity instead of searching, and those tools mostly cite sites they can parse. I build sites that work for both.",
+      "titleEmphasis": "your site",
+      "symptoms": {
+        "slow": "A site that takes over 3 seconds to show on mobile",
+        "noPrice": "Pages that state neither price nor timeline",
+        "invisible": "Missing from ChatGPT and Perplexity answers"
+      }
     },
     "deliverables": {
-      "title": "What you get",
+      "title": "What",
       "subtitle": "Three packages. The starting price is public, and the exact scope goes in the quote.",
       "tiers": {
         "landing": {
@@ -369,7 +404,8 @@
             "todo": "TODO(maxime): confirm the typical scope of this package"
           }
         }
-      }
+      },
+      "titleEmphasis": "you get"
     },
     "process": {
       "title": "The steps",
@@ -393,17 +429,19 @@
       }
     },
     "pricing": {
-      "title": "How much does a website cost?",
+      "title": "How much does",
       "body": "A landing page starts at {landingPrice}, an AI-ready site at {siteIaPrice} and a custom site at {siteCustomPrice}. The quote is free, and the price doesn't move once the scope is signed.",
-      "link": "See all prices"
+      "link": "See all prices",
+      "titleEmphasis": "a website cost?"
     },
     "proof": {
-      "title": "Sites shipped",
+      "title": "Sites",
       "body": "Kenzi Events, PKBA and VertiFlow: a site for an events business, one for a parkour club and one for a parkour clothing brand.",
-      "link": "See the work"
+      "link": "See the work",
+      "titleEmphasis": "shipped"
     },
     "faq": {
-      "title": "Frequently asked questions",
+      "title": "Frequently asked",
       "items": {
         "delay": {
           "question": "How long does it take to build a site?",
@@ -429,13 +467,20 @@
           "question": "What happens after launch?",
           "answer": "You edit your content yourself. For a new page or feature, I send you a quote."
         }
-      }
+      },
+      "titleEmphasis": "questions"
     },
     "cta": {
-      "title": "Your site, delivered at the quoted price.",
+      "title": "Your site,",
       "body": "Tell me about your project and I'll send a free quote with a fixed price.",
       "ctaPrimary": "Get a free quote",
-      "ctaSecondary": "Book a call"
+      "ctaSecondary": "Book a call",
+      "titleEmphasis": "delivered at the quoted price."
+    },
+    "block": {
+      "title": "Live sites,",
+      "titleEmphasis": "open them yourself.",
+      "body": "Sites shipped for clients, with their address. Open them and check the speed yourself."
     }
   },
   "agents": {
@@ -445,14 +490,21 @@
       "titleEmphasis": "in two weeks.",
       "subtitle": "Audits from {auditPrice}, AI Sprints from {sprintPrice}. One workflow wired into your tools, with the code in your repo and a log of every action the agent takes.",
       "ctaPrimary": "Book a call",
-      "ctaSecondary": "Get a free quote"
+      "ctaSecondary": "Get a free quote",
+      "serif": "production"
     },
     "problem": {
-      "title": "Why AI projects get stuck at the demo stage",
-      "body": "Your team already uses ChatGPT, but nothing is connected to your tools. The prototype worked in the meeting, then nobody had time to make it reliable. That's the part I take on: we pick one process worth automating, I connect it to your real data, and it runs under monitoring."
+      "title": "Why AI projects",
+      "body": "Your team already uses ChatGPT, but nothing is connected to your tools. The prototype worked in the meeting, then nobody had time to make it reliable. That's the part I take on: we pick one process worth automating, I connect it to your real data, and it runs under monitoring.",
+      "titleEmphasis": "get stuck at the demo stage",
+      "symptoms": {
+        "demo": "A prototype that worked in a meeting, then nothing",
+        "copy": "ChatGPT open in a tab, nothing wired into your tools",
+        "owner": "Nobody to harden it or watch it"
+      }
     },
     "deliverables": {
-      "title": "Three steps, each paid separately",
+      "title": "Three steps,",
       "subtitle": "You can stop after any step, or start straight with the Sprint if the scope is already clear. TODO(maxime): confirm a Sprint can be sold without an audit.",
       "tiers": {
         "auditIa": {
@@ -482,7 +534,8 @@
             "report": "A monthly check-in on what's running"
           }
         }
-      }
+      },
+      "titleEmphasis": "each paid separately"
     },
     "credit": {
       "title": "The audit is credited against the Sprint",
@@ -510,17 +563,19 @@
       }
     },
     "pricing": {
-      "title": "How much does an AI agent cost?",
+      "title": "How much does",
       "body": "An AI audit starts at {auditPrice}. An AI Sprint, which puts one workflow into production in two weeks, starts at {sprintPrice}. Larger projects, with several integrations or search over your documents, are quoted separately.",
-      "link": "See all prices"
+      "link": "See all prices",
+      "titleEmphasis": "an AI agent cost?"
     },
     "proof": {
-      "title": "Already in production",
+      "title": "Already",
       "body": "Hoppy, the AI assistant for Hop Hop Immo, and CiteMe, which I co-founded. TODO(maxime): confirm what can be said about each project.",
-      "link": "See the work"
+      "link": "See the work",
+      "titleEmphasis": "in production"
     },
     "faq": {
-      "title": "Frequently asked questions",
+      "title": "Frequently asked",
       "items": {
         "agentVsAutomation": {
           "question": "What's the difference between an AI agent and an automation?",
@@ -546,13 +601,20 @@
           "question": "Who maintains the agent after the sprint?",
           "answer": "Your team, using the runbook and onboarding included in the sprint, or me through the monthly run."
         }
-      }
+      },
+      "titleEmphasis": "questions"
     },
     "cta": {
-      "title": "Start with the process that costs you the most hours.",
+      "title": "Start with the process",
       "body": "Book a 20-minute call. We'll work out together whether it's worth automating.",
       "ctaPrimary": "Book a call",
-      "ctaSecondary": "Get a free quote"
+      "ctaSecondary": "Get a free quote",
+      "titleEmphasis": "that costs you the most hours."
+    },
+    "block": {
+      "title": "Every agent action,",
+      "titleEmphasis": "in the log.",
+      "body": "The view you get with the Sprint: every step, its duration, and the errors it recovered from. Shown here on a fictional example."
     }
   },
   "fde": {
@@ -562,24 +624,28 @@
       "titleEmphasis": "Forward Deployed Engineer.",
       "subtitle": "I join your team 2 to 3 days a week to ship your AI features. {fdeDayPrice} per day, 4 weeks minimum, two clients at most at any time.",
       "ctaPrimary": "Book a call",
-      "ctaSecondary": "Get a free quote"
+      "ctaSecondary": "Get a free quote",
+      "serif": "fractional"
     },
     "definition": {
-      "title": "What is a Forward Deployed Engineer?",
-      "body": "A Forward Deployed Engineer (FDE) is a developer who works directly with a customer's team, on their codebase, to get a product into production. The role comes from software companies like Palantir, and AI labs now use it to deploy their models with customers. As a freelancer I do the same work on a fractional basis: I join your team a few days a week, without you making a full-time hire."
+      "title": "What is a",
+      "body": "A Forward Deployed Engineer (FDE) is a developer who works directly with a customer's team, on their codebase, to get a product into production. The role comes from software companies like Palantir, and AI labs now use it to deploy their models with customers. As a freelancer I do the same work on a fractional basis: I join your team a few days a week, without you making a full-time hire.",
+      "titleEmphasis": "Forward Deployed Engineer?",
+      "term": "forward deployed engineer · noun · FDE"
     },
     "audience": {
       "title": "Who it's for",
       "body": "A 2 to 4 person startup that has to ship an AI feature before its next round and has no time to hire. Or an agency that signed an AI project and has nobody to build it."
     },
     "deliverables": {
-      "title": "What I do inside your team",
+      "title": "What I do",
       "items": {
         "tools": "I work in your Slack, your repo and your stand-ups",
         "backlog": "I own part of the backlog, from design to production",
         "weekly": "A written update every week with the list of merged PRs",
         "handover": "Handover documentation at the end of the engagement"
-      }
+      },
+      "titleEmphasis": "inside your team"
     },
     "terms": {
       "title": "Terms",
@@ -592,7 +658,12 @@
     },
     "limits": {
       "title": "What I don't offer",
-      "body": "I work alone, so there's no 24/7 on-call and no SOC 2 certification. If your project needs either, I'll tell you on the first call."
+      "body": "I work alone, so there's no 24/7 on-call and no SOC 2 certification. If your project needs either, I'll tell you on the first call.",
+      "items": {
+        "capacity": "Two clients at most at any time",
+        "oncall": "No 24/7 on-call",
+        "soc2": "No SOC 2 certification"
+      }
     },
     "process": {
       "title": "The steps",
@@ -616,12 +687,13 @@
       }
     },
     "proof": {
-      "title": "Code you can read before you sign",
+      "title": "Code you can read",
       "body": "My commit history is public. TODO(maxime): link the GitHub profile and the PRs to show (Credo-ts, CiteMe) once verified.",
-      "link": "See my GitHub"
+      "link": "See my GitHub",
+      "titleEmphasis": "before you sign"
     },
     "faq": {
-      "title": "Frequently asked questions",
+      "title": "Frequently asked",
       "items": {
         "vsFreelance": {
           "question": "How is this different from a regular freelancer?",
@@ -643,11 +715,516 @@
           "question": "FDE or AI Sprint?",
           "answer": "The AI Sprint delivers one defined workflow at a fixed price in two weeks. The FDE fits when your backlog keeps changing and you need someone inside the team for several weeks."
         }
+      },
+      "titleEmphasis": "questions"
+    },
+    "cta": {
+      "title": "An AI feature",
+      "body": "Book a call. I'll tell you quickly whether I can take it on, and at what pace.",
+      "ctaPrimary": "Book a call",
+      "ctaSecondary": "Get a free quote",
+      "titleEmphasis": "to ship this quarter?"
+    },
+    "problem": {
+      "title": "Your AI feature has to ship,",
+      "titleEmphasis": "hiring will take months.",
+      "body": "Hiring an AI developer takes time, and the feature has to ship before that. A classic freelancer delivers a ticket and leaves. You need someone who works with your team, reads your code and puts it in production.",
+      "symptoms": {
+        "hiring": "A role open for months",
+        "backlog": "AI tickets slipping from sprint to sprint",
+        "deadline": "A demo promised to investors"
+      }
+    },
+    "pricing": {
+      "title": "How much does",
+      "titleEmphasis": "a Forward Deployed Engineer cost?",
+      "body": "{fdeDayPrice} per day, 2 to 3 days a week, 4 weeks minimum, so about {fdeMinimum} to start.",
+      "link": "See all prices"
+    }
+  },
+  "audit": {
+    "hero": {
+      "eyebrow": "AI audit",
+      "title": "An AI audit of your business,",
+      "titleEmphasis": "with a 90-day roadmap.",
+      "serif": "roadmap",
+      "subtitle": "From {auditPrice}, in 1 to 2 weeks. I interview your team, map your processes and rank the possible automations by hours saved and by risk. You keep the roadmap, even if you stop there.",
+      "ctaPrimary": "Book a call",
+      "ctaSecondary": "Get a free quote"
+    },
+    "problem": {
+      "title": "Everyone talks about AI,",
+      "titleEmphasis": "nobody tells you where to start.",
+      "body": "You know your team loses hours on quotes, invoices and follow-ups. Between the tools, the vendors and the promises, it is hard to tell which process to automate first, for what budget and at what risk. The audit answers those questions before you commit to any build.",
+      "symptoms": {
+        "quotes": "Quotes typed by hand into two different tools",
+        "trial": "A ChatGPT trial that never left a browser tab",
+        "quotesCompared": "Three agency quotes you cannot compare"
+      }
+    },
+    "deliverables": {
+      "title": "What you get,",
+      "titleEmphasis": "and what can follow.",
+      "subtitle": "The audit is sold on its own. If a project comes out of it, you pick the next step: a simple automation or an AI Sprint.",
+      "tiers": {
+        "auditIa": {
+          "items": {
+            "interviews": "Interviews with the people who do the work",
+            "map": "A map of your processes and the tools they run through",
+            "score": "Every possible automation scored: hours saved per week, cost, risk",
+            "gdpr": "The GDPR and security points to settle before any code",
+            "roadmap": "A 90-day roadmap, walked through in a review meeting"
+          }
+        },
+        "automation": {
+          "items": {
+            "workflow": "One linear workflow: a trigger, an AI step, an action",
+            "speed": "Live in 4 to 5 working days",
+            "fit": "For the first process on the roadmap, when it is a simple one"
+          }
+        },
+        "sprintIa": {
+          "items": {
+            "agent": "An agent or a multi-step workflow that makes decisions",
+            "log": "Human approval and a log of every action",
+            "repo": "The code in your repo, in 2 weeks"
+          }
+        }
+      }
+    },
+    "process": {
+      "title": "How it works,",
+      "titleEmphasis": "in four steps.",
+      "steps": {
+        "call": {
+          "title": "Call",
+          "body": "20 minutes to check an audit will be useful to you. If it won't, I tell you."
+        },
+        "interviews": {
+          "title": "Interviews",
+          "body": "I meet the people who do the work, in Bordeaux or on video, and look at their tools."
+        },
+        "analysis": {
+          "title": "Analysis",
+          "body": "I map your processes and score every possible automation."
+        },
+        "restitution": {
+          "title": "Review",
+          "body": "I walk you through the roadmap. You decide what comes next, with me or with someone else."
+        }
+      }
+    },
+    "block": {
+      "title": "The deliverable,",
+      "titleEmphasis": "and what it looks like.",
+      "body": "A written document you can pass to your management or to another provider. Below, a roadmap excerpt for a fictional company.",
+      "document": {
+        "file": "ai-audit-roadmap.md",
+        "sample": "Sample",
+        "heading": "Roadmap · 90 days",
+        "company": "Fictional SME · 25 people · 9 processes reviewed",
+        "columns": {
+          "process": "Process",
+          "hours": "Time lost",
+          "offer": "Answer",
+          "risk": "Risk",
+          "when": "When"
+        },
+        "rows": {
+          "quotes": {
+            "process": "Quote follow-ups",
+            "hours": "~6 h / wk",
+            "offer": "AI automation",
+            "risk": "Low",
+            "when": "Month 1"
+          },
+          "invoices": {
+            "process": "Supplier invoice entry",
+            "hours": "~4 h / wk",
+            "offer": "AI automation",
+            "risk": "Medium",
+            "when": "Month 2"
+          },
+          "emails": {
+            "process": "Customer email triage",
+            "hours": "~3 h / wk",
+            "offer": "AI Sprint",
+            "risk": "Medium",
+            "when": "Month 3"
+          }
+        },
+        "note": "Hours are estimated during the interviews, then checked once the workflow is live."
+      },
+      "credit": {
+        "title": "The audit is credited against what follows",
+        "body": "If you move on to an AI automation or an AI Sprint, the audit price is deducted. TODO(maxime): exact terms (suggestion: 100% if the next project is signed within 60 days)."
+      },
+      "bpifrance": {
+        "label": "Context",
+        "title": "What about Bpifrance's Diagnostic Data IA?",
+        "body": "Bpifrance funds a Diagnostic Data IA, delivered by experts it accredits. According to les-aides.fr, it costs €10,000 excl. VAT and Bpifrance covers 40%, for companies with 10 to 2,000 employees. I am not accredited: my audit is private, shorter, and its price is public. TODO(maxime): check these figures on bpifrance.fr before publishing.",
+        "source": "Source: les-aides.fr, accessed 31 October 2026. Not checked on bpifrance.fr."
+      }
+    },
+    "proof": {
+      "title": "What I build",
+      "titleEmphasis": "after an audit.",
+      "body": "Hoppy, Hop Hop Immo's AI assistant, is the kind of project that comes out of a roadmap. TODO(maxime): confirm what can be said about the project.",
+      "link": "See the work"
+    },
+    "pricing": {
+      "title": "How much does",
+      "titleEmphasis": "an AI audit cost?",
+      "body": "The AI audit starts at {auditPrice}, for 1 to 2 weeks. If an automation comes out of it, an AI automation starts at {automationPrice} and an AI Sprint at {sprintPrice}.",
+      "link": "See all prices"
+    },
+    "faq": {
+      "title": "Questions",
+      "titleEmphasis": "about the audit.",
+      "items": {
+        "pme": {
+          "question": "Is an AI audit useful for a 15-person company?",
+          "answer": "Yes, that is often where it pays back fastest. In a company of 10 to 50 people, a few repetitive tasks (quotes, invoices, follow-ups, email triage) take one or two people several hours a week. The audit finds them, puts a number on that time and checks that an automation costs less than what it saves."
+        },
+        "duration": {
+          "question": "How long does the audit take?",
+          "answer": "One to two weeks between the first interview and the review. Interviews take about an hour per person, and I ask your team to show me their tools the way they really use them. The rest happens on my side: mapping, scoring the possible automations and writing the roadmap. You have nothing to prepare beforehand."
+        },
+        "deliverable": {
+          "question": "What do I get at the end?",
+          "answer": "A written document, not a slide deck: the map of your processes, the possible automations scored by hours saved, cost and risk, the GDPR points to settle and a 90-day roadmap. We go through it together in the review meeting. It belongs to you, and you can hand it to another provider if you prefer."
+        },
+        "bpifrance": {
+          "question": "Can my audit be funded by Bpifrance?",
+          "answer": "Not this one. Bpifrance's Diagnostic Data IA goes through experts it accredits, and I am not one of them. If that funding matters to you, talk to an accredited expert. If you want an answer within two weeks, at a fixed price and with no application to file, my private audit is built for that. TODO(maxime): check the terms on bpifrance.fr."
+        },
+        "noTech": {
+          "question": "Do I need a tech team to follow the roadmap?",
+          "answer": "No. Most of the small companies I work with have no in-house developer. I write the roadmap for the person who decides, without jargon, and each recommendation says who can carry it out: you with a tool like Make or n8n, me, or another provider. When a point needs real technical skills, I say so."
+        },
+        "next": {
+          "question": "Do I have to hire you for what comes next?",
+          "answer": "No. The audit is paid separately and the roadmap is yours. Part of the recommendations can often be done with the tools you already have. If you hire me for the next step, the audit price is deducted from the AI automation or the AI Sprint, depending on the project you choose. TODO(maxime): confirm the credit terms."
+        }
       }
     },
     "cta": {
-      "title": "An AI feature to ship this quarter?",
-      "body": "Book a call. I'll tell you quickly whether I can take it on, and at what pace.",
+      "title": "A 20-minute call",
+      "titleEmphasis": "to see if the audit is worth it.",
+      "body": "We look at your processes together. If an audit would not help you, I tell you.",
+      "ctaPrimary": "Book a call",
+      "ctaSecondary": "Get a free quote"
+    }
+  },
+  "automation": {
+    "hero": {
+      "eyebrow": "AI automation",
+      "title": "AI automation for small businesses:",
+      "titleEmphasis": "one workflow in one week.",
+      "serif": "week",
+      "subtitle": "From {automationPrice}. I wire one workflow into your tools: a trigger, an AI step, an action. Invoices, quotes or follow-ups, live in 4 to 5 working days, with a human approval step wherever a mistake is costly.",
+      "ctaPrimary": "Book a call",
+      "ctaSecondary": "Get a free quote"
+    },
+    "problem": {
+      "title": "Your team retypes",
+      "titleEmphasis": "what a machine can read.",
+      "body": "An invoice arrives by email. Someone opens the PDF, copies the amount and the VAT into the accounting tool, then files it. Quotes and follow-ups take the same path. Each task takes two minutes, but it comes back all day long. An automation with an AI step does this work well, as long as its scope is clear.",
+      "symptoms": {
+        "pdf": "PDFs retyped by hand into the ERP",
+        "reminders": "Follow-ups sent whenever someone remembers",
+        "zapier": "A Zap built two years ago that nobody dares to touch"
+      }
+    },
+    "deliverables": {
+      "title": "What you get,",
+      "titleEmphasis": "at a fixed price.",
+      "subtitle": "One simple workflow at a fixed price, light monitoring if you want it, and the AI Sprint when the need goes beyond one workflow. TODO(maxime): confirm prices and package contents.",
+      "tiers": {
+        "automation": {
+          "items": {
+            "kickoff": "A 45-minute scoping call",
+            "workflow": "One linear workflow in your n8n or Make account: trigger, AI step, action",
+            "tests": "The AI step tested on 10 of your real documents",
+            "alert": "An email alert if a run fails",
+            "doc": "A one-page doc and a 30-minute handover",
+            "fixes": "14 days of fixes after launch"
+          }
+        },
+        "automationCare": {
+          "items": {
+            "monitoring": "Run monitoring",
+            "hour": "1 hour of changes per month",
+            "costs": "A monthly API cost report",
+            "minimum": "3 months minimum, then 30 days' notice"
+          }
+        },
+        "sprintIa": {
+          "items": {
+            "agent": "An agent that makes decisions, or a flow across several tools",
+            "evals": "A test set of 20 to 50 cases and an action log",
+            "credit": "The AI automation price credited 100% if the Sprint is signed within 60 days"
+          }
+        }
+      }
+    },
+    "process": {
+      "title": "How it works,",
+      "titleEmphasis": "in one week.",
+      "steps": {
+        "call": {
+          "title": "Call",
+          "body": "20 minutes to pick the workflow and check it fits the package."
+        },
+        "scope": {
+          "title": "Scoping",
+          "body": "45 minutes to list the tools, the access and 10 real documents for testing."
+        },
+        "build": {
+          "title": "Build",
+          "body": "4 to 5 working days. I test the AI step on your documents before wiring the action."
+        },
+        "launch": {
+          "title": "Launch",
+          "body": "The workflow runs. You get the doc and a 30-minute handover."
+        }
+      }
+    },
+    "block": {
+      "title": "Three examples,",
+      "titleEmphasis": "with a person in the loop.",
+      "body": "Each workflow keeps a human approval step wherever a mistake is costly. These are typical examples, not client projects.",
+      "human": "human approval",
+      "examples": {
+        "invoices": {
+          "title": "Supplier invoices",
+          "body": "The PDF received by email becomes a draft in the accounting tool.",
+          "steps": {
+            "trigger": "Email + PDF",
+            "ai": "AI extraction",
+            "human": "Accounts check",
+            "action": "ERP entry"
+          }
+        },
+        "quotes": {
+          "title": "Quotes",
+          "body": "The form request becomes a prefilled quote, reviewed before it goes out.",
+          "steps": {
+            "trigger": "Form",
+            "ai": "AI draft",
+            "human": "Review",
+            "action": "Sent to client"
+          }
+        },
+        "reminders": {
+          "title": "Payment reminders",
+          "body": "An overdue invoice triggers a reminder written from the client's history.",
+          "steps": {
+            "trigger": "Due date",
+            "ai": "Drafted reminder",
+            "human": "Owner sign-off",
+            "action": "Email sent"
+          }
+        }
+      },
+      "limit": "An autonomous agent, a test set or an integration across several tools are outside the package: that is the AI Sprint."
+    },
+    "proof": {
+      "title": "Already built",
+      "titleEmphasis": "for a client.",
+      "body": "Hoppy, Hop Hop Immo's AI assistant, answers visitors' questions from the site's data. TODO(maxime): confirm what can be said about the project.",
+      "link": "See the work"
+    },
+    "pricing": {
+      "title": "How much does",
+      "titleEmphasis": "an AI automation cost?",
+      "body": "One simple workflow starts at {automationPrice}. Monitoring costs {automationCarePrice} per month, 3 months minimum. Tool subscriptions (n8n, Make, model API) are in your name and billed directly by the vendors.",
+      "link": "See all prices"
+    },
+    "faq": {
+      "title": "Questions",
+      "titleEmphasis": "about automation.",
+      "items": {
+        "vsSprint": {
+          "question": "What is the difference between AI automation and the AI Sprint?",
+          "answer": "AI automation is one linear workflow: a trigger, an AI step that reads or drafts, an action. The AI makes no decision on its own and the workflow does not connect five tools. As soon as the process needs to choose between several actions, or act across several tools with a test set, it is an AI Sprint, delivered in two weeks."
+        },
+        "tools": {
+          "question": "Which tool does the workflow run in?",
+          "answer": "In your own n8n or Make account, in your name, so you stay in control. If you don't have a tool yet, I help you open an account, or I install n8n on a server in your name. I also hand over the workflow export, which you can give to another provider. TODO(maxime): confirm the self-hosted n8n option."
+        },
+        "runCost": {
+          "question": "How much does the workflow cost once it is live?",
+          "answer": "You pay the vendors directly. Based on prices checked in October 2026, expect about €10 to €25 a month for an n8n server, around €30 for Make, and €20 to €80 of model API for a small volume. I give you an estimate for your case during scoping, before we start. TODO(maxime): check these ranges."
+        },
+        "errors": {
+          "question": "What if the AI gets an invoice wrong?",
+          "answer": "That is planned for. I add a human approval step wherever a mistake is costly: the person sees the extracted fields, fixes them if needed and approves. The workflow also emails you when a run fails. Before launch, I test the AI step on 10 of your real documents to see where it gets things wrong."
+        },
+        "data": {
+          "question": "Do my documents end up at OpenAI?",
+          "answer": "The AI step sends the document's content to a model provider's API. By default, these business APIs are not used to train models. If your documents are sensitive, we pick a provider hosted in the EU or mask some fields before sending. We settle this during scoping, before the first step is written. TODO(maxime): default providers."
+        },
+        "upgrade": {
+          "question": "What if I need more later?",
+          "answer": "The AI automation price is credited 100% against an AI Sprint signed within 60 days. So you can start small, watch the workflow run on your real documents, then move to a fuller agent without paying twice for the discovery of your processes. After 60 days, the two stay separate fixed-price packages."
+        }
+      }
+    },
+    "cta": {
+      "title": "Which process",
+      "titleEmphasis": "do you still retype by hand?",
+      "body": "Book a 20-minute call. I tell you whether it fits in one simple workflow, and at what price.",
+      "ctaPrimary": "Book a call",
+      "ctaSecondary": "Get a free quote"
+    }
+  },
+  "geo": {
+    "hero": {
+      "eyebrow": "AI search visibility (GEO)",
+      "title": "Get found in ChatGPT:",
+      "titleEmphasis": "be cited by AI engines.",
+      "serif": "cited",
+      "subtitle": "From {geoPrice}, in 2 weeks, for an existing site. I ask 4 AI engines 30 of your clients' questions, fix 5 key pages on your site, then run the test again at day 30.",
+      "ctaPrimary": "Book a call",
+      "ctaSecondary": "Get a free quote"
+    },
+    "problem": {
+      "title": "Your clients ask ChatGPT.",
+      "titleEmphasis": "You don't know what it answers.",
+      "body": "Part of search now goes through ChatGPT, Perplexity, Gemini or Google's AI Overviews. These engines answer with a few sources, not ten links. If your site is poorly structured or silent on prices, it does not show up in the answer, and no classic SEO tool shows you that.",
+      "symptoms": {
+        "competitor": "A smaller competitor cited instead of you",
+        "pages": "Service pages with no price and no clear answer",
+        "blind": "No idea what ChatGPT says about you"
+      }
+    },
+    "deliverables": {
+      "title": "What you get,",
+      "titleEmphasis": "measured before and after.",
+      "subtitle": "For an existing site. If you are rebuilding your site, the AI-ready site already includes GEO. TODO(maxime): confirm prices and package contents.",
+      "tiers": {
+        "geo": {
+          "items": {
+            "baseline": "30 questions tested on ChatGPT, Perplexity, Gemini and Google AI Overviews",
+            "technical": "The technical review: robots, AI crawlers, sitemap, structured data, llms.txt",
+            "pages": "5 key pages rewritten and marked up (Schema.org, FAQ)",
+            "article": "One article written to be cited",
+            "retest": "The same test run again at day 30, with a report"
+          }
+        },
+        "geoCare": {
+          "items": {
+            "content": "2 pieces of content or page updates per month",
+            "rerun": "The 30 questions run again every month",
+            "report": "A citation report and a monthly call",
+            "minimum": "3 months minimum"
+          }
+        },
+        "siteIa": {
+          "items": {
+            "rebuild": "A 5 to 8 page site built for AI engines",
+            "included": "GEO included from launch",
+            "when": "When the site needs rebuilding rather than fixing"
+          }
+        }
+      }
+    },
+    "process": {
+      "title": "How it works,",
+      "titleEmphasis": "in two weeks.",
+      "steps": {
+        "call": {
+          "title": "Call",
+          "body": "20 minutes to pick the questions your clients really ask."
+        },
+        "baseline": {
+          "title": "Baseline",
+          "body": "I ask 4 AI engines 30 questions and note who gets cited: you, or the others."
+        },
+        "fix": {
+          "title": "Fixes",
+          "body": "I fix 5 key pages and write one article, directly in your site if access allows."
+        },
+        "retest": {
+          "title": "Re-test",
+          "body": "At day 30, I ask the same questions again and show you what moved."
+        }
+      }
+    },
+    "block": {
+      "title": "How I measure",
+      "titleEmphasis": "a citation.",
+      "body": "A citation is your site listed as a source in an AI engine's answer. I ask the same questions before and after, on the same engines, and count. Sample report below, with fictional values.",
+      "card": {
+        "file": "geo-report.md",
+        "sample": "Sample",
+        "site": "example-firm.com",
+        "promptsLabel": "Question",
+        "prompts": {
+          "a": "accountant for startups in Bordeaux",
+          "b": "how much does an accountant cost for a small company",
+          "c": "online accountant or local firm"
+        },
+        "states": {
+          "cited": "Cited",
+          "competitor": "Competitor",
+          "absent": "Absent"
+        },
+        "summary": "{cited} of {total} answers cite the site"
+      },
+      "realData": "TODO(maxime): replace with real Hop Hop Immo figures if the client agrees.",
+      "disclosure": {
+        "label": "Disclosure",
+        "body": "I co-founded CiteMe, a tool that measures a brand's visibility in AI engines. I use it for the measurements in this offer. You don't need a CiteMe subscription, and the report belongs to you. TODO(maxime): confirm how CiteMe is used in the offer."
+      }
+    },
+    "proof": {
+      "title": "A GEO tool",
+      "titleEmphasis": "I co-founded.",
+      "body": "CiteMe tracks a brand's citations in ChatGPT, Gemini and Perplexity. The measurement method in this offer comes from there.",
+      "link": "See the work"
+    },
+    "pricing": {
+      "title": "How much does",
+      "titleEmphasis": "AI search visibility cost?",
+      "body": "The audit and the fixes start at {geoPrice}, in 2 weeks. GEO monitoring costs {geoCarePrice} per month, 3 months minimum. For a new site, the AI-ready site from {siteIaPrice} already includes GEO.",
+      "link": "See all prices"
+    },
+    "faq": {
+      "title": "Questions",
+      "titleEmphasis": "about GEO.",
+      "items": {
+        "whatIs": {
+          "question": "Is GEO just SEO for ChatGPT?",
+          "answer": "Partly. GEO stands for Generative Engine Optimization: the work that makes a site readable and citable by AI engines such as ChatGPT, Perplexity, Gemini or Google's AI Overviews. SEO aims for a rank in a list of links. GEO aims for a place among the few sources an AI engine cites in its answer. The two overlap a lot."
+        },
+        "guarantee": {
+          "question": "Can you guarantee ChatGPT will cite me?",
+          "answer": "No, and nobody can honestly promise that. AI engines change their answers from one week to the next and do not publish their rules. What I commit to is the method: a baseline, documented fixes on your pages, and the same measurement at day 30 on the same questions. You see what moved, with the numbers to back it."
+        },
+        "vsSeo": {
+          "question": "Should I stop doing classic SEO?",
+          "answer": "No. AI engines rely largely on the same signals as Google: fast, well-structured pages with clear answers and verifiable facts. Good SEO is still the base. GEO adds direct answers at the top of the page, structured data, an llms.txt file and tracking of what AI engines say about you, question by question."
+        },
+        "platforms": {
+          "question": "My site runs on WordPress or Webflow. Does that work?",
+          "answer": "Yes. The offer is built for existing sites: WordPress, Webflow, Shopify or Next.js. I need editor access to change the 5 key pages and add the structured data. If your tool does not allow it, I hand over the copy and the markup ready to paste, and you publish them yourself. TODO(maxime): confirm the supported platforms."
+        },
+        "citeme": {
+          "question": "How is this offer related to CiteMe?",
+          "answer": "I co-founded CiteMe, a tool that measures how often a brand appears in AI engines' answers. I mention it because I use it for the measurements in this offer. You don't have to subscribe: the report, the tracked questions and the fixed pages belong to you, and you can run the tests yourself. TODO(maxime): confirm how CiteMe is used."
+        },
+        "delay": {
+          "question": "How long before I see an effect?",
+          "answer": "The fixes are live within 2 weeks. Engines that search the web live, like Perplexity, can pick them up within days. Others rely on older data and take longer. That is why I run the test again at day 30, then every month if you take the GEO monitoring package."
+        }
+      }
+    },
+    "cta": {
+      "title": "What does ChatGPT answer",
+      "titleEmphasis": "when asked about your trade?",
+      "body": "Book a 20-minute call. We ask three of your clients' questions together, live.",
       "ctaPrimary": "Book a call",
       "ctaSecondary": "Get a free quote"
     }
@@ -1056,6 +1633,18 @@
     "privacy": {
       "title": "Privacy policy | Klyx",
       "description": "What data Klyx collects, why, for how long, and how to opt out of prospecting emails."
+    },
+    "audit": {
+      "title": "AI audit for small businesses, fixed price | Klyx",
+      "description": "An AI audit of your business from {auditPrice}: processes mapped, automations ranked by time saved and a 90-day roadmap. Public price."
+    },
+    "automation": {
+      "title": "AI automation for small businesses | Klyx",
+      "description": "One AI workflow wired into your tools from {automationPrice}: invoices, quotes, reminders. Live in 4 to 5 days, with human approval."
+    },
+    "geo": {
+      "title": "AI search visibility for ChatGPT and Perplexity | Klyx",
+      "description": "Get cited by ChatGPT, Perplexity and Gemini: 30 questions tested and 5 pages fixed from {geoPrice}, re-test at day 30. For existing sites."
     }
   },
   "notFound": {
@@ -1226,7 +1815,7 @@
         "chip": "Invoice entered and approved"
       },
       "geo": {
-        "title": "ai-visibility · weekly",
+        "title": "ai-visibility · monthly",
         "nodes": {
           "prompts": "Prompts",
           "chatgpt": "ChatGPT",
@@ -1236,24 +1825,24 @@
           "report": "Report"
         },
         "meta": {
-          "prompts": "20 prompts",
+          "prompts": "30 prompts",
           "chatgpt": "engine",
           "perplexity": "engine",
           "gemini": "engine",
           "citation": "llm · match",
-          "report": "weekly"
+          "report": "monthly"
         },
         "trace": {
-          "prompts": "prompts · 20 target queries",
-          "chatgpt": "chatgpt · 20/20 answers",
-          "perplexity": "perplexity · 20/20 answers",
+          "prompts": "prompts · 30 target queries",
+          "chatgpt": "chatgpt · 30/30 answers",
+          "perplexity": "perplexity · 30/30 answers",
           "geminiRetry": "gemini · timeout, retrying",
-          "gemini": "gemini · 20/20 answers",
+          "gemini": "gemini · 30/30 answers",
           "citations": "citations · domain lookup",
           "sources": "sources · 31 domains cited",
-          "report": "report · 20 prompts tracked"
+          "report": "report · 30 prompts tracked"
         },
-        "chip": "Report · 20 prompts tracked"
+        "chip": "Report · 30 prompts tracked"
       }
     }
   },
@@ -1264,5 +1853,37 @@
     "copied": "Copied",
     "openRaw": "Open the .md",
     "tokensApprox": "≈{count} tokens"
+  },
+  "offerPage": {
+    "breadcrumb": "Breadcrumb",
+    "symptoms": "Symptoms",
+    "seeOffer": "See the offer",
+    "moreFeatures": "{count} more included",
+    "eyebrows": {
+      "problem": "The problem",
+      "deliverables": "Packages",
+      "process": "Method",
+      "proof": "Work",
+      "pricing": "Pricing",
+      "faq": "Questions",
+      "block": {
+        "trace": "Log",
+        "lighthouse": "Proof",
+        "fde-definition": "Definition",
+        "audit-document": "Deliverable",
+        "automation-examples": "Examples",
+        "geo-visibility": "Measurement"
+      }
+    },
+    "ledger": {
+      "offer": "Package",
+      "duration": "Duration",
+      "price": "Price"
+    },
+    "trace": {
+      "file": "trace · {title}",
+      "total": "total",
+      "steps": "{count} steps"
+    }
   }
 }

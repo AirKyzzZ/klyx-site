@@ -1,106 +1,178 @@
-import { Check } from "lucide-react";
+import type { ReactNode } from "react";
+
+import { ArrowRight, Plus } from "lucide-react";
 
 import { ActionButton } from "@/components/action-button";
-import { Card, CardContent } from "@/components/ui/card";
+import { Section, SectionHeading } from "@/components/section";
+import { Link } from "@/i18n/navigation";
+import type { OfferPathname } from "@/lib/offer-pages";
 import { cn } from "@/lib/utils";
 
-import { SectionHeader } from "./section-header";
+const VISIBLE_FEATURES = 4;
 
-type Tier = {
+export type Tier = {
+  id: string;
   name: string;
-  price?: string;
-  duration?: string;
-  summary?: string;
+  price: string;
+  duration: string;
+  summary: string;
   features: string[];
-  highlighted?: boolean;
+  highlighted: boolean;
+  href?: OfferPathname;
 };
 
 type TierCardsProps = {
+  index: string;
+  eyebrow: string;
   title: string;
+  emphasis?: string;
   subtitle?: string;
   tiers: Tier[];
   quoteLabel: string;
-  footnote?: string;
+  seeOfferLabel: string;
+  moreLabel: (count: number) => string;
+  footnote: string;
+  children?: ReactNode;
 };
 
+export function FeatureList({ items }: { items: string[] }) {
+  return (
+    <ul className="space-y-2.5">
+      {items.map((feature) => (
+        <li key={feature} className="flex gap-2.5 text-[0.9375rem]">
+          <Plus
+            aria-hidden="true"
+            className="text-text-3 mt-1 size-3.5 shrink-0"
+          />
+          <span className="text-text-2 leading-snug">{feature}</span>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+function TierCard({
+  tier,
+  position,
+  quoteLabel,
+  seeOfferLabel,
+  moreLabel,
+}: {
+  tier: Tier;
+  position: number;
+  quoteLabel: string;
+  seeOfferLabel: string;
+  moreLabel: (count: number) => string;
+}) {
+  const visible = tier.features.slice(0, VISIBLE_FEATURES);
+  const rest = tier.features.slice(VISIBLE_FEATURES);
+  return (
+    <div
+      className={cn(
+        "h-full",
+        tier.highlighted ? "beam" : "border-line rounded-md border",
+      )}
+    >
+      <article className="bg-surface-1 shadow-card flex h-full flex-col rounded-[calc(var(--r-md)-1px)] p-5 lg:p-7">
+        <p className="type-label text-text-3">
+          <span className={tier.highlighted ? "text-accent" : "text-text-2"}>
+            {String(position).padStart(2, "0")}
+          </span>{" "}
+          / {tier.duration}
+        </p>
+        <h3 className="type-h3 mt-6">{tier.name}</h3>
+        <p className="text-text-2 mt-2 max-w-[40ch] text-[0.9375rem] leading-normal">
+          {tier.summary}
+        </p>
+        <p className="border-line type-data text-text mt-6 border-y py-4 text-[0.9375rem]">
+          {tier.price}
+        </p>
+        <div className="mt-6 flex-1">
+          <FeatureList items={visible} />
+          {rest.length > 0 && (
+            <>
+              <div className="mt-2.5 hidden md:block">
+                <FeatureList items={rest} />
+              </div>
+              <details className="mt-3 md:hidden">
+                <summary className="type-label text-text-3 hover:text-text cursor-pointer list-none">
+                  + {moreLabel(rest.length)}
+                </summary>
+                <div className="mt-2.5">
+                  <FeatureList items={rest} />
+                </div>
+              </details>
+            </>
+          )}
+        </div>
+        <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-3">
+          <ActionButton
+            action="quote"
+            variant={tier.highlighted ? "primary" : "secondary"}
+          >
+            {quoteLabel}
+          </ActionButton>
+          {tier.href && (
+            <Link
+              href={tier.href}
+              className="group text-text-2 hover:text-text inline-flex items-center gap-1.5 text-sm transition-colors duration-(--d-fast)"
+            >
+              {seeOfferLabel}
+              <ArrowRight
+                aria-hidden="true"
+                className="size-3.5 transition-transform duration-(--d-fast) group-hover:translate-x-0.5"
+              />
+            </Link>
+          )}
+        </div>
+      </article>
+    </div>
+  );
+}
+
 export function TierCards({
+  index,
+  eyebrow,
   title,
+  emphasis,
   subtitle,
   tiers,
   quoteLabel,
+  seeOfferLabel,
+  moreLabel,
   footnote,
+  children,
 }: TierCardsProps) {
   return (
-    <section className="py-28 lg:py-32">
-      <div className="container">
-        <SectionHeader title={title} subtitle={subtitle} />
-
-        <div
-          className={cn(
-            "mx-auto mt-8 grid items-start gap-5 text-start md:mt-12 lg:mt-20",
-            tiers.length === 2
-              ? "max-w-4xl md:grid-cols-2"
-              : "max-w-5xl md:grid-cols-3",
-          )}
-        >
-          {tiers.map((tier) => (
-            <Card
-              key={tier.name}
-              className={cn(
-                "h-full",
-                tier.highlighted && "outline-primary origin-top outline-4",
-              )}
-            >
-              <CardContent className="flex h-full flex-col gap-7 px-6 py-6">
-                <div className="space-y-2">
-                  <h3 className="text-foreground font-semibold">{tier.name}</h3>
-                  {tier.price && (
-                    <p className="text-foreground font-mono text-lg">
-                      {tier.price}
-                    </p>
-                  )}
-                  {tier.duration && (
-                    <p className="text-muted-foreground font-mono text-xs">
-                      {tier.duration}
-                    </p>
-                  )}
-                  {tier.summary && (
-                    <p className="text-muted-foreground pt-1 text-sm leading-snug">
-                      {tier.summary}
-                    </p>
-                  )}
-                </div>
-
-                <ul className="flex-1 space-y-3">
-                  {tier.features.map((feature) => (
-                    <li
-                      key={feature}
-                      className="text-muted-foreground flex items-start gap-2"
-                    >
-                      <Check className="text-foreground mt-0.5 size-4 shrink-0" />
-                      <span className="text-sm">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <ActionButton
-                  action="quote"
-                  className="w-fit"
-                  variant={tier.highlighted ? "primary" : "secondary"}
-                >
-                  {quoteLabel}
-                </ActionButton>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-
-        {footnote && (
-          <p className="text-muted-foreground mx-auto mt-8 max-w-3xl text-center text-sm leading-relaxed">
-            {footnote}
+    <Section index={index} eyebrow={eyebrow}>
+      <div className="reveal grid gap-6 lg:grid-cols-12 lg:items-end">
+        <SectionHeading
+          lead={title}
+          rest={emphasis}
+          className="lg:col-span-7"
+        />
+        {subtitle && (
+          <p className="text-text-2 max-w-[44ch] lg:col-span-4 lg:col-start-9">
+            {subtitle}
           </p>
         )}
       </div>
-    </section>
+      {children ?? (
+        <ul className="reveal mt-12 grid items-stretch gap-4 md:mt-16 lg:grid-cols-3">
+          {tiers.map((tier, i) => (
+            <li key={tier.id}>
+              <TierCard
+                tier={tier}
+                position={i + 1}
+                quoteLabel={quoteLabel}
+                seeOfferLabel={seeOfferLabel}
+                moreLabel={moreLabel}
+              />
+            </li>
+          ))}
+        </ul>
+      )}
+      <p className="type-label text-text-3 mt-6">{footnote}</p>
+    </Section>
   );
 }

@@ -28,6 +28,30 @@ Every `TODO(maxime)` in `messages/fr.json` and `messages/en.json` (same keys in 
 | Tarifs | `pricing.guarantees.items.credit` | Same credit rule | Same |
 | Tarifs | `pricing.market.body` | Freelance AI developer 650-900 €/day, express audit 1 500-2 500 € | Add dated source links (Studeria, Plateya, Malt) or drop the sentence. Sources are secondary and conflicting |
 
+## New service pages (audit, automation, GEO)
+
+Prices come from market research (`pricing-automation-geo.md`, 2026-10-31), not from you. Confirm each price before launch; they live in `src/lib/offers.ts`.
+
+| Page | Key | Claim | What to confirm |
+|---|---|---|---|
+| Automatisation IA, Tarifs | `offers.ts` `automation` | Confirm price: from 2 400 € HT, one linear workflow (trigger, LLM step, action), 4 to 5 working days | Price and scope |
+| Automatisation IA, Tarifs | `offers.ts` `automation-care` | Confirm price: « Suivi » 190 €/month, 3 months minimum, then 30 days' notice | Price, minimum, notice |
+| Automatisation IA | `automation.deliverables.subtitle`, `automation.deliverables.tiers.automation.items` | 45-min kickoff, prompt tested on 10 real documents, email alert, 1-page doc + 30-min handover, 14 days of fixes | Package contents (research estimates) |
+| Automatisation IA | `automation.deliverables.tiers.sprintIa.items.credit`, `automation.faq.items.upgrade` | Automation price credited 100% against a Sprint IA signed within 60 days | Credit rule (controller ruling) |
+| Automatisation IA | `automation.faq.items.tools` | Workflow in the client's n8n/Make account, or n8n self-hosted on a server in the client's name | Hosting option you offer |
+| Automatisation IA | `automation.faq.items.runCost` | n8n server 10 to 25 €/month, Make about 30 €, model API 20 to 80 € for small volume (vendor figures, Oct 2026) | Ranges, or drop |
+| Automatisation IA | `automation.faq.items.data` | Default model providers | Same question as the agents/home data answers |
+| Référencement IA, Tarifs | `offers.ts` `geo` | Confirm price: from 1 200 € HT, 30 queries on 4 AI engines, 5 key pages, 1 article, re-test at D+30, 2 weeks, existing sites only | Price and scope |
+| Référencement IA, Tarifs | `offers.ts` `geo-care` | Confirm price: « Suivi GEO » 590 €/month, 3 months minimum | Price, minimum |
+| Référencement IA | `geo.deliverables.subtitle` | Same as above | Same |
+| Référencement IA | `geo.block.disclosure.body`, `geo.faq.items.citeme.answer` | You co-founded CiteMe and use it for the measurements in this offer | Wording, and that CiteMe is used |
+| Référencement IA | `geo.faq.items.platforms.answer` | WordPress, Webflow, Shopify, Next.js supported | Platforms you accept |
+| Référencement IA | `geo.block.realData` | Sample report uses fictional values | Swap in Hop Hop Immo numbers only with their consent |
+| Audit IA | `audit.block.credit.body`, `audit.faq.items.next.answer` | Audit credited against what follows | Exact terms (suggested: 100% within 60 days) |
+| Audit IA | `audit.block.bpifrance.body`, `audit.faq.items.bpifrance.answer` | Diagnostic Data IA: 10 000 € HT, 40% covered, 10 to 2 000 staff (from les-aides.fr, not checked on bpifrance.fr) | Check on bpifrance.fr; Klyx is never presented as an accredited provider |
+| Audit IA, Automatisation IA | `audit.proof.body`, `automation.proof.body` | Hoppy (Hop Hop Immo) shown as proof | What can be said about Hoppy |
+| Audit IA | `audit.faq.items.duration.answer` | Interviews about one hour per person | Matches how you run it? |
+
 ## Local and legal
 
 | Page | Key | Claim | What to confirm |
