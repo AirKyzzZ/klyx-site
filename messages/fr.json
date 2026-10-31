@@ -48,7 +48,7 @@
       "body": "TODO(maxime): choisir l'artefact affiché ici (liste de PR CiteMe, score Lighthouse d'un site client en ligne ou journal d'exécution d'un agent). Rien ne s'affiche tant que ce n'est pas un vrai livrable."
     },
     "offers": {
-      "title": "Trois façons de travailler ensemble",
+      "title": "Trois façons",
       "subtitle": "Les prix sont publics et en € HT. Le devis est gratuit, et le périmètre est écrit avant de commencer.",
       "link": "Voir l'offre",
       "cards": {
@@ -67,6 +67,30 @@
           "outcome": "Un développeur IA dans votre équipe 2 à 3 jours par semaine, pendant 4 semaines ou plus.",
           "price": "À partir de {price} / jour"
         }
+      },
+      "titleEmphasis": "de travailler ensemble.",
+      "also": {
+        "label": "Aussi",
+        "audit": "Audit IA",
+        "automation": "Automatisation IA",
+        "geo": "Référencement IA"
+      },
+      "steps": {
+        "sites": {
+          "a": "Brief",
+          "b": "Build",
+          "c": "En ligne"
+        },
+        "agents": {
+          "a": "Outils",
+          "b": "Agent",
+          "c": "En prod"
+        },
+        "fde": {
+          "a": "Ticket",
+          "b": "PR",
+          "c": "Merge"
+        }
       }
     },
     "cases": {
@@ -77,7 +101,7 @@
       "viewAll": "Toutes les réalisations"
     },
     "process": {
-      "title": "Comment ça se passe",
+      "title": "Comment ça se passe,",
       "steps": {
         "call": {
           "title": "Un appel pour cadrer",
@@ -95,18 +119,73 @@
           "title": "Mesure et passation",
           "body": "Après la mise en ligne, je vérifie avec vous que tout tourne et je vous remets une passation écrite. Si vous voulez que je continue à suivre et à améliorer, c'est le suivi mensuel."
         }
+      },
+      "titleEmphasis": "en quatre étapes.",
+      "sample": "Exemple",
+      "call": {
+        "file": "agenda",
+        "title": "Appel de cadrage",
+        "meta": "20 min · visio",
+        "pick": "Choisir un créneau"
+      },
+      "scope": {
+        "file": "perimetre.md",
+        "title": "Sprint IA · tri des demandes entrantes",
+        "inLabel": "Inclus",
+        "in": {
+          "a": "lecture de la boîte contact@",
+          "b": "classement lead, support ou spam",
+          "c": "fiche CRM mise à jour"
+        },
+        "outLabel": "Hors périmètre",
+        "out": {
+          "a": "réponse automatique au client"
+        },
+        "price": "Prix fixe"
+      },
+      "build": {
+        "file": "point-hebdo.md",
+        "title": "Point hebdo · semaine 1",
+        "items": {
+          "a": "Connexion à la boîte mail",
+          "b": "Classifieur testé sur de vrais emails",
+          "c": "Mise à jour du CRM"
+        },
+        "done": "fait",
+        "doing": "en cours",
+        "next": "Démo vendredi, sur vos données"
+      },
+      "measure": {
+        "file": "PASSATION.md",
+        "title": "Passation",
+        "items": {
+          "a": "Code et accès à votre nom",
+          "b": "Runbook : relancer, surveiller, couper",
+          "c": "Jeu de tests dans le repo",
+          "d": "Suivi mensuel, si vous le voulez"
+        }
       }
     },
     "founder": {
-      "title": "Vous parlez à la personne qui code",
+      "title": "Vous parlez à la personne",
       "body": "Je suis Maxime Mansiet, développeur fullstack à Bordeaux et fondateur de Klyx. Je travaille seul, donc la personne que vous avez au téléphone est celle qui écrit votre code.",
       "experience": "TODO(maxime): Chez 2060.io, je développe le serveur MCP et des agents IA de Verana, une infrastructure de confiance pour l'identité numérique européenne. J'ai aussi cofondé CiteMe, qui mesure la visibilité des marques dans ChatGPT et Perplexity.",
       "github": "Mon GitHub",
       "linkedin": "Mon LinkedIn",
-      "about": "Mon parcours"
+      "about": "Mon parcours",
+      "titleEmphasis": "qui code.",
+      "card": {
+        "name": "nom",
+        "base": "base",
+        "siret": "siret",
+        "github": "github",
+        "city": "Bordeaux, France"
+      },
+      "products": "Construit par les mêmes mains",
+      "caption": "Maxime Mansiet · Bordeaux"
     },
     "testimonials": {
-      "title": "Ce qu'en disent mes clients",
+      "title": "Ce qu'en disent",
       "note": "TODO(maxime): accord de chaque client pour réutiliser sa citation sur le nouveau site.",
       "items": {
         "david": {
@@ -124,10 +203,11 @@
           "author": "Clément D.",
           "company": "Reciproq"
         }
-      }
+      },
+      "titleEmphasis": "mes clients."
     },
     "faq": {
-      "title": "Questions fréquentes",
+      "title": "Questions",
       "items": {
         "price": {
           "question": "Combien coûte un projet ?",
@@ -153,19 +233,51 @@
           "question": "Quelle stack utilisez-vous ?",
           "answer": "Next.js, TypeScript et Supabase pour les produits, WordPress quand votre équipe veut éditer seule. Côté IA : OpenAI, Anthropic et Gemini, des serveurs MCP et des agents branchés sur vos outils."
         }
-      }
+      },
+      "titleEmphasis": "fréquentes."
     },
     "finalCta": {
-      "title": "Parlons de votre prochain workflow ou de votre prochain site.",
+      "title": "Parlons de votre prochain workflow",
       "body": "Réservez un appel de 20 minutes. Vous repartez avec un avis clair sur ce qui vaut le coup, même si on ne travaille pas ensemble.",
       "ctaPrimary": "Réserver un appel",
-      "ctaSecondary": "Demander un devis gratuit"
+      "ctaSecondary": "Demander un devis gratuit",
+      "titleEmphasis": "ou de votre prochain site."
     },
     "fold": {
       "label": "Engagements vérifiables",
       "repo": "Code dans votre repo dès le jour 1",
       "prices": "Prix publics, en € HT",
       "siret": "Bordeaux · SIRET {siret}"
+    },
+    "eyebrows": {
+      "proof": "Preuves",
+      "offers": "Offres",
+      "cases": "Réalisations",
+      "process": "Méthode",
+      "founder": "Qui code",
+      "testimonials": "Clients",
+      "faq": "Questions"
+    },
+    "proofStrip": {
+      "title": "Ce que j'ai livré,",
+      "titleEmphasis": "vérifiable en un clic.",
+      "kinds": {
+        "lighthouse": "Lighthouse",
+        "prList": "Pull requests",
+        "runLog": "Journal d'exécution",
+        "siteShot": "Site en ligne"
+      },
+      "scores": {
+        "performance": "Performance",
+        "accessibility": "Accessibilité",
+        "bestPractices": "Bonnes pratiques",
+        "seo": "SEO"
+      },
+      "measured": "Mesuré le {date}",
+      "merged": "fusionnée le {date}",
+      "anonymised": "Anonymisé",
+      "live": "En ligne",
+      "open": "Ouvrir {host}"
     }
   },
   "offers": {

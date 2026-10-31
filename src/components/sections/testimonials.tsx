@@ -1,44 +1,41 @@
-import { Card, CardContent } from "@/components/ui/card";
+import { Section, SectionHeading } from "@/components/section";
+import { site } from "@/lib/site";
 
 type TestimonialsProps = {
+  index?: string;
+  eyebrow?: string;
   title: string;
-  note?: string;
+  emphasis?: string;
   items: { quote: string; author: string; company: string }[];
 };
 
-export function Testimonials({ title, note, items }: TestimonialsProps) {
-  return (
-    <section className="py-28 lg:py-32">
-      <div className="container">
-        <div className="space-y-4">
-          <h2 className="text-3xl tracking-tight md:text-4xl lg:text-5xl">
-            {title}
-          </h2>
-          {note && (
-            <p className="text-muted-foreground font-mono text-xs">{note}</p>
-          )}
-        </div>
+export function Testimonials({
+  index,
+  eyebrow,
+  title,
+  emphasis,
+  items,
+}: TestimonialsProps) {
+  if (!site.flags.testimonialsConsented) return null;
 
-        <ul className="mt-8 grid gap-5 md:mt-12 md:grid-cols-3 lg:mt-16">
-          {items.map((item) => (
-            <li key={item.author}>
-              <Card className="bg-muted h-full border-none shadow-none">
-                <CardContent className="flex h-full flex-col justify-between gap-10 p-6">
-                  <blockquote className="font-display text-lg leading-snug font-medium md:text-xl">
-                    {item.quote}
-                  </blockquote>
-                  <div className="space-y-0.5">
-                    <div className="font-semibold">{item.author}</div>
-                    <div className="text-muted-foreground text-sm">
-                      {item.company}
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </section>
+  return (
+    <Section index={index} eyebrow={eyebrow}>
+      <SectionHeading lead={title} rest={emphasis} className="reveal" />
+      <ul className="reveal mt-12 grid gap-4 md:mt-16 md:grid-cols-3 md:gap-6">
+        {items.map((item) => (
+          <li key={item.author}>
+            <figure className="border-line bg-surface-1 shadow-card flex h-full flex-col justify-between gap-10 rounded-md border p-5 lg:p-7">
+              <blockquote className="text-text text-[1.0625rem] leading-normal">
+                {item.quote}
+              </blockquote>
+              <figcaption className="type-label text-text-3">
+                <span className="text-text-2">{item.author}</span> ·{" "}
+                {item.company}
+              </figcaption>
+            </figure>
+          </li>
+        ))}
+      </ul>
+    </Section>
   );
 }

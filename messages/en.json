@@ -48,7 +48,7 @@
       "body": "TODO(maxime): pick the artefact shown here (a CiteMe PR list, the Lighthouse score of a live client site, or an agent run log). Nothing shows until it is a real deliverable."
     },
     "offers": {
-      "title": "Three ways to work together",
+      "title": "Three ways",
       "subtitle": "Prices are public and exclude VAT. The quote is free, and the scope is in writing before any work starts.",
       "link": "See the offer",
       "cards": {
@@ -67,6 +67,30 @@
           "outcome": "An AI developer inside your team 2 to 3 days a week, for 4 weeks or more.",
           "price": "From {price} / day"
         }
+      },
+      "titleEmphasis": "to work together.",
+      "also": {
+        "label": "Also",
+        "audit": "AI audit",
+        "automation": "AI automation",
+        "geo": "AI search (GEO)"
+      },
+      "steps": {
+        "sites": {
+          "a": "Brief",
+          "b": "Build",
+          "c": "Live"
+        },
+        "agents": {
+          "a": "Tools",
+          "b": "Agent",
+          "c": "In prod"
+        },
+        "fde": {
+          "a": "Ticket",
+          "b": "PR",
+          "c": "Merge"
+        }
       }
     },
     "cases": {
@@ -77,7 +101,7 @@
       "viewAll": "All work"
     },
     "process": {
-      "title": "How it works",
+      "title": "How it works,",
       "steps": {
         "call": {
           "title": "A scoping call",
@@ -95,18 +119,73 @@
           "title": "Measure and hand over",
           "body": "After launch, we check together that everything runs and I give you a written handover. If you want me to keep monitoring and improving it, that's the monthly run."
         }
+      },
+      "titleEmphasis": "in four steps.",
+      "sample": "Sample",
+      "call": {
+        "file": "calendar",
+        "title": "Scoping call",
+        "meta": "20 min · video",
+        "pick": "Pick a slot"
+      },
+      "scope": {
+        "file": "scope.md",
+        "title": "AI Sprint · inbound request triage",
+        "inLabel": "In scope",
+        "in": {
+          "a": "read the contact@ inbox",
+          "b": "sort into lead, support or spam",
+          "c": "update the CRM record"
+        },
+        "outLabel": "Out of scope",
+        "out": {
+          "a": "automatic reply to the customer"
+        },
+        "price": "Fixed price"
+      },
+      "build": {
+        "file": "weekly-update.md",
+        "title": "Weekly update · week 1",
+        "items": {
+          "a": "Inbox connected",
+          "b": "Classifier tested on real emails",
+          "c": "CRM update"
+        },
+        "done": "done",
+        "doing": "in progress",
+        "next": "Demo on Friday, on your data"
+      },
+      "measure": {
+        "file": "HANDOVER.md",
+        "title": "Handover",
+        "items": {
+          "a": "Code and accounts in your name",
+          "b": "Runbook: restart, monitor, switch off",
+          "c": "Test set in the repo",
+          "d": "Monthly follow-up, if you want it"
+        }
       }
     },
     "founder": {
-      "title": "You talk to the person who writes the code",
+      "title": "You talk to the person",
       "body": "I'm Maxime Mansiet, a fullstack developer in Bordeaux and the founder of Klyx. I work alone, so the person on the call is the person writing your code.",
       "experience": "TODO(maxime): At 2060.io I build the MCP server and AI agents for Verana, a trust infrastructure for European digital identity. I also co-founded CiteMe, which tracks how often brands get cited in ChatGPT and Perplexity.",
       "github": "My GitHub",
       "linkedin": "My LinkedIn",
-      "about": "More about me"
+      "about": "More about me",
+      "titleEmphasis": "who writes the code.",
+      "card": {
+        "name": "name",
+        "base": "base",
+        "siret": "siret",
+        "github": "github",
+        "city": "Bordeaux, France"
+      },
+      "products": "Built by the same hands",
+      "caption": "Maxime Mansiet · Bordeaux"
     },
     "testimonials": {
-      "title": "What clients say",
+      "title": "What clients",
       "note": "TODO(maxime): each client's consent to reuse their quote on the new site. Quotes are translated from French.",
       "items": {
         "david": {
@@ -124,10 +203,11 @@
           "author": "Clément D.",
           "company": "Reciproq"
         }
-      }
+      },
+      "titleEmphasis": "say."
     },
     "faq": {
-      "title": "Frequently asked questions",
+      "title": "Frequently",
       "items": {
         "price": {
           "question": "How much does a project cost?",
@@ -153,19 +233,51 @@
           "question": "What stack do you use?",
           "answer": "Next.js, TypeScript and Supabase for products, WordPress when your team wants to edit on its own. On the AI side: OpenAI, Anthropic and Gemini, MCP servers, and agents connected to your tools."
         }
-      }
+      },
+      "titleEmphasis": "asked questions."
     },
     "finalCta": {
-      "title": "Let's talk about your next workflow or site.",
+      "title": "Let's talk about your next workflow",
       "body": "Book a 20-minute call. You'll come away with a clear view of what's worth doing, whether or not we end up working together.",
       "ctaPrimary": "Book a call",
-      "ctaSecondary": "Get a free quote"
+      "ctaSecondary": "Get a free quote",
+      "titleEmphasis": "or site."
     },
     "fold": {
       "label": "Verifiable commitments",
       "repo": "Code in your repo from day 1",
       "prices": "Public prices, excl. VAT",
       "siret": "Bordeaux · SIRET {siret}"
+    },
+    "eyebrows": {
+      "proof": "Proof",
+      "offers": "Offers",
+      "cases": "Work",
+      "process": "Method",
+      "founder": "Who codes",
+      "testimonials": "Clients",
+      "faq": "Questions"
+    },
+    "proofStrip": {
+      "title": "What I've shipped,",
+      "titleEmphasis": "verifiable in one click.",
+      "kinds": {
+        "lighthouse": "Lighthouse",
+        "prList": "Pull requests",
+        "runLog": "Run log",
+        "siteShot": "Live site"
+      },
+      "scores": {
+        "performance": "Performance",
+        "accessibility": "Accessibility",
+        "bestPractices": "Best practices",
+        "seo": "SEO"
+      },
+      "measured": "Measured on {date}",
+      "merged": "merged {date}",
+      "anonymised": "Anonymised",
+      "live": "Live",
+      "open": "Open {host}"
     }
   },
   "offers": {

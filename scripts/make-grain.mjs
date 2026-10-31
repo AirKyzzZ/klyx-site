@@ -23,16 +23,21 @@ const values = Array.from(
   (_, i) => data[i * info.channels],
 );
 const sorted = [...values].sort((a, b) => a - b);
-const lightAbove = sorted[Math.floor(sorted.length * 0.5)];
+const lightAbove = sorted[Math.floor(sorted.length * 0.78)];
+const darkBelow = sorted[Math.floor(sorted.length * 0.1)];
 
-const rgba = Buffer.alloc(SIZE * SIZE * 4, 255);
+const rgba = Buffer.alloc(SIZE * SIZE * 4, 0);
 values.forEach((value, i) => {
-  rgba[i * 4 + 3] = value > lightAbove ? 12 : 0;
+  if (value > lightAbove) {
+    rgba.fill(255, i * 4, i * 4 + 3);
+    rgba[i * 4 + 3] = 14;
+  }
+  if (value < darkBelow) rgba[i * 4 + 3] = 40;
 });
 
 mkdirSync(new URL(".", OUTPUT), { recursive: true });
 await sharp(rgba, { raw: { width: SIZE, height: SIZE, channels: 4 } })
-  .png({ palette: true, colours: 2, compressionLevel: 9, effort: 10 })
+  .png({ palette: true, colours: 3, compressionLevel: 9, effort: 10 })
   .toFile(OUTPUT.pathname);
 
 const bytes = statSync(OUTPUT).size;

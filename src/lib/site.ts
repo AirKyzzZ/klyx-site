@@ -7,6 +7,9 @@ export const site = {
   city: "Bordeaux",
   calUrl: process.env.NEXT_PUBLIC_CAL_URL,
   legalUpdatedAt: "2026-10-31",
+  flags: {
+    testimonialsConsented: false,
+  },
   socials: {
     linkedinCompany: "https://www.linkedin.com/company/klyx-studio",
     linkedinFounder: "https://www.linkedin.com/in/maxime-mansiet",

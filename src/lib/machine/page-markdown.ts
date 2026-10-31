@@ -7,6 +7,7 @@ import { type Locale, routing } from "@/i18n/routing";
 import { getStaticTranslator } from "@/i18n/static-translator";
 import { getCaseStudies, getMdxBody, getPosts } from "@/lib/content";
 import type { CaseStudyMeta } from "@/lib/content";
+import { ALSO_OFFERS, selectHomeCases } from "@/lib/home-sections";
 import { getOfferCopy } from "@/lib/offer-copy";
 import {
   formatPrice,
@@ -26,8 +27,6 @@ type Builder = (locale: Locale, params: Params) => Promise<string | null>;
 type Block = string | null | undefined | false;
 type Action = "book" | "quote";
 type Faq = { question: string; answer: string };
-
-const HOME_CASE_COUNT = 3;
 
 function doc(blocks: Block[]): string {
   return `${blocks.filter((block): block is string => Boolean(block)).join("\n\n")}\n`;
@@ -56,6 +55,15 @@ function heroTitle(t: Translate): string {
   return `${t("hero.title")} ${t("hero.titleEmphasis")}`;
 }
 
+function sectionTitle(t: Translate, key: string): string {
+  const raw = t.raw(key);
+  const split =
+    typeof raw === "object" && raw !== null && "titleEmphasis" in raw;
+  return split
+    ? `${t(`${key}.title`)} ${t(`${key}.titleEmphasis`)}`
+    : t(`${key}.title`);
+}
+
 function intro(
   locale: Locale,
   pathname: AppPathname,
@@ -80,7 +88,7 @@ function faqBlocks(title: string, items: Faq[]): Block[] {
 function processBlocks(locale: Locale, t: Translate): Block[] {
   const steps = messageList(t, "process.steps", ["title", "body"]);
   return [
-    `## ${t("process.title")}`,
+    `## ${sectionTitle(t, "process")}`,
     steps
       .map(
         (step, i) =>
@@ -97,7 +105,7 @@ function ctaBlocks(
   actions: [Action, Action],
 ): Block[] {
   return [
-    `## ${t(`${key}.title`)}`,
+    `## ${sectionTitle(t, key)}`,
     t(`${key}.body`),
     list([
       link(t(`${key}.ctaPrimary`), actionUrl(locale, actions[0])),
@@ -132,6 +140,7 @@ function formatDate(locale: Locale, date: string): string {
 async function home(locale: Locale): Promise<string> {
   const t = getStaticTranslator(locale, "home");
   const offersT = getStaticTranslator(locale, "offers");
+  const casesT = getStaticTranslator(locale, "cases");
   const prices = getPriceValues(locale);
   const price = (id: OfferId) => formatPrice(getOfferPrice(id), locale);
   const cards = [
@@ -139,7 +148,7 @@ async function home(locale: Locale): Promise<string> {
     { key: "agents", href: "/services/agents-ia", offer: "audit-ia" },
     { key: "fde", href: "/forward-deployed-engineer", offer: "fde" },
   ] as const;
-  const cases = (await getCaseStudies(locale)).slice(0, HOME_CASE_COUNT);
+  const cases = selectHomeCases(await getCaseStudies(locale));
 
   return doc([
     ...intro(locale, "/", heroTitle(t)),
@@ -149,7 +158,7 @@ async function home(locale: Locale): Promise<string> {
       t("fold.prices"),
       t("fold.siret", { siret: site.siret }),
     ]),
-    `## ${t("offers.title")}`,
+    `## ${sectionTitle(t, "offers")}`,
     t("offers.subtitle"),
     offersT("vatNote"),
     ...cards.flatMap((card) => [
@@ -158,11 +167,18 @@ async function home(locale: Locale): Promise<string> {
       t(`offers.cards.${card.key}.outcome`),
       link(t("offers.link"), absoluteUrl(locale, card.href)),
     ]),
-    cases.length > 0 && `## ${t("cases.title")}`,
+    labelled(
+      locale,
+      t("offers.also.label"),
+      ALSO_OFFERS.map(({ key, href }) =>
+        link(t(`offers.also.${key}`), absoluteUrl(locale, href)),
+      ).join(" · "),
+    ),
+    cases.length > 0 && `## ${heroTitle(casesT)}`,
     cases.length > 0 && t("cases.subtitle"),
     caseList(locale, cases),
     ...processBlocks(locale, t),
-    `## ${t("founder.title")}`,
+    `## ${sectionTitle(t, "founder")}`,
     t("founder.body"),
     t("founder.experience"),
     list([
@@ -171,7 +187,7 @@ async function home(locale: Locale): Promise<string> {
       link(t("founder.about"), absoluteUrl(locale, "/a-propos")),
     ]),
     ...faqBlocks(
-      t("faq.title"),
+      sectionTitle(t, "faq"),
       messageList(t, "faq.items", ["question", "answer"], prices),
     ),
     ...ctaBlocks(locale, t, "finalCta", ["book", "quote"]),
