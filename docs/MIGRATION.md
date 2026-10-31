@@ -13,7 +13,7 @@ Why Vercel over the alternatives:
 - Next.js 16 with Server Actions and `next/image` work with no adapter or workaround.
 - `blog.klyx.fr`, `studio.klyx.fr` and `estate.klyx.fr` already CNAME to Vercel, so the tooling, domains and habits are the same.
 - A `cdg1` (Paris) compute region exists. Functions default to `iad1` (Washington), so set the function region to `cdg1` in the project settings, otherwise Server Actions and dynamic routes run in the US. Static pages are served from the nearest PoP regardless.
-- Web Analytics is built in (Pro: 50K events/month included, then $3 per 100K).
+- Web Analytics is built in (Pro: $3 per 100K events, inclusion not stated on the pricing page).
 
 Cloudflare Workers is the credible cheaper option ($5/month paid plan, no bandwidth charges, static assets free) but it means running Next 16 through the OpenNext adapter with its own limits (Node middleware unsupported, 10 MiB Worker size cap on paid, image optimization through Cloudflare Images config). Worth it only if cost becomes a real constraint. If Vercel Pro is a problem later, this is the fallback.
 
@@ -25,8 +25,8 @@ Cloudflare Workers is the credible cheaper option ($5/month paid plan, no bandwi
 | Commercial use | Forbidden by the terms | Allowed | Not restricted on the pricing page | Free plan wording not stated on the pricing page, check the ToS before use |
 | FR latency | Global PoPs, `cdg1` region | Same, `cdg1` region selectable | Global network | Global CDN |
 | Server Actions | Native | Native | Next 16 supported by the adapter, Server Actions not mentioned on the adapter page (the Workers guide says they work) | Supported via the Next runtime, not verified here |
-| Image optimization | 5K transformations/month | 5K included, then $0.05 per 1K | Supported, configured through Cloudflare Images | Not listed on the pricing page |
-| Analytics | 50K events | 50K events, then $3 per 100K | Separate product | Personal: 1 day, Pro: 30 days |
+| Image optimization | 5K transformations/month | $0.05 per 1K transformations, Pro inclusion not stated on the pricing page | Supported, configured through Cloudflare Images | Not listed on the pricing page |
+| Analytics | 50K events | $3 per 100K events, Pro inclusion not stated on the pricing page | Separate product | Personal: 1 day, Pro: 30 days |
 | Forms | None built in | None built in | None built in | Not mentioned on the pricing page |
 
 Forms are not a differentiator: the contact form goes through a Server Action and Resend (`send.klyx.fr`), not a host feature.
