@@ -27,7 +27,7 @@ export function Cta({ title, body, primary, secondary }: CtaProps) {
           </ActionButton>
           <ActionButton
             action={secondary.action}
-            variant="outline"
+            variant="secondary"
             size="lg"
             className="shadow-md"
           >

@@ -35,7 +35,7 @@ All tokens live in `src/app/globals.css` as custom properties on `:root`, mapped
 | `--highlight` | `rgb(255 255 255 / 0.06)` | 1px inset top highlight on raised surfaces |
 | `--text` | `#EDEAE3` | primary text |
 | `--text-2` | `#A8A29A` | sand grey: heading continuations, secondary body (about 7.3:1 on `--bg`) |
-| `--text-3` | `#8A847B` | captions, mono labels, timestamps (about 4.9:1, never under 12px) |
+| `--text-3` | `#948E85` | captions, mono labels, timestamps (5.7:1 on `--bg`, 4.5:1 on `--surface-3`, never under 12px; was `#8A847B`, which failed on `--surface-2` and `--surface-3`) |
 | `--sand-50` | `#F3EFE7` | inverted sand surface (réalisations band, case covers) |
 | `--sand-200` | `#E3DCCF` | lines on sand |
 | `--ink` | `#1A1917` | text on sand |
@@ -53,7 +53,7 @@ Rules:
 - No gradient text. No purple, blue or teal light.
 - Accent covers at most about 3% of any viewport: CTA, active tab, packets, one chip.
 - Focus ring on every interactive element: `2px solid var(--accent)`, `outline-offset: 2px`.
-- Contrast ratios above are estimates; R1 verifies each pair with a script and adjusts the hex if a pair is under 4.5:1.
+- Contrast is checked by `node scripts/check-contrast.mjs` (every text token on every dark surface, ink on sand, `--accent-ink` on accent). `--accent` as text (active labels) only on `--bg` to `--surface-2` (4.67:1 minimum); on `--surface-3` it is 4.18:1, so an active label there uses `--text`.
 
 ### 1.2 Typography
 

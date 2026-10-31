@@ -86,7 +86,7 @@ export function TierCards({
                 <ActionButton
                   action="quote"
                   className="w-fit"
-                  variant={tier.highlighted ? "default" : "outline"}
+                  variant={tier.highlighted ? "primary" : "secondary"}
                 >
                   {quoteLabel}
                 </ActionButton>

@@ -112,7 +112,7 @@ export default async function SitesPage({ params }: LocaleParams) {
             title: t("pricing.title"),
             paragraphs: [t("pricing.body", prices)],
             children: (
-              <Button variant="outline" className="shadow-md" asChild>
+              <Button variant="secondary" className="shadow-md" asChild>
                 <Link href="/tarifs">{t("pricing.link")}</Link>
               </Button>
             ),
@@ -121,7 +121,7 @@ export default async function SitesPage({ params }: LocaleParams) {
             title: t("proof.title"),
             paragraphs: [t("proof.body")],
             children: (
-              <Button variant="outline" className="shadow-md" asChild>
+              <Button variant="secondary" className="shadow-md" asChild>
                 <Link href="/realisations">{t("proof.link")}</Link>
               </Button>
             ),

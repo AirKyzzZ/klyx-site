@@ -26,7 +26,7 @@ export function Faq({ title, items, bookLabel, className }: FaqProps) {
             {bookLabel && (
               <ActionButton
                 action="book"
-                variant="outline"
+                variant="secondary"
                 className="shadow-md"
               >
                 {bookLabel}

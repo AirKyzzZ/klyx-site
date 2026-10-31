@@ -2,6 +2,8 @@
   "nav": {
     "home": "Accueil",
     "offers": "Offres",
+    "groupBuild": "Construire",
+    "groupAdvise": "Conseiller",
     "sites": "Sites et landing pages",
     "agents": "IA et agents",
     "fde": "Forward Deployed Engineer",
@@ -27,7 +29,8 @@
     "estate": "Klyx Estate : des films et des visuels pour lancer les mandats immobiliers de prestige.",
     "legal": "Mentions légales",
     "privacy": "Confidentialité",
-    "copyright": "© {year} Klyx, par Maxime Mansiet. Prix en € HT."
+    "copyright": "© {year} Klyx, par Maxime Mansiet. Prix en € HT.",
+    "siret": "SIRET {siret}"
   },
   "home": {
     "hero": {

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
@@ -8,12 +8,17 @@ import { SiteHeader } from "@/components/site-header";
 import { routing } from "@/i18n/routing";
 import { site } from "@/lib/site";
 
-import { dmSans, inter, mono, serif } from "../fonts";
+import { mono, sans, serif } from "../fonts";
 import "../globals.css";
 
 type LayoutProps = {
   children: React.ReactNode;
   params: Promise<{ locale: string }>;
+};
+
+export const viewport: Viewport = {
+  colorScheme: "dark",
+  themeColor: "#141414",
 };
 
 export function generateStaticParams() {
@@ -40,13 +45,18 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
   return (
     <html
       lang={locale}
-      className={`${dmSans.variable} ${inter.variable} ${serif.variable} ${mono.variable}`}
+      className={`${sans.variable} ${mono.variable} ${serif.variable}`}
     >
-      <body className="antialiased">
+      <body>
         <NextIntlClientProvider>
-          <SiteHeader />
-          <main>{children}</main>
-          <SiteFooter />
+          <div className="relative isolate">
+            <div className="rails" aria-hidden="true">
+              <div className="container" />
+            </div>
+            <SiteHeader />
+            <main className="relative">{children}</main>
+            <SiteFooter />
+          </div>
         </NextIntlClientProvider>
       </body>
     </html>

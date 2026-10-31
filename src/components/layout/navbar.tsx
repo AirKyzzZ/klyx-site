@@ -111,7 +111,7 @@ export const Navbar = () => {
         </NavigationMenu>
 
         <div className="flex items-center gap-2.5">
-          <Button variant="outline" className="max-lg:hidden" asChild>
+          <Button variant="secondary" className="max-lg:hidden" asChild>
             <Link href="#">Login</Link>
           </Button>
 

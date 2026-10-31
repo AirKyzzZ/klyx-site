@@ -67,7 +67,7 @@ export default async function ContactPage({ params }: LocaleParams) {
               <p className="text-muted-foreground mt-3 text-sm">
                 {t("booking.body")}
               </p>
-              <ActionButton action="book" size="sm" className="mt-4">
+              <ActionButton action="book" size="md" className="mt-4">
                 {t("booking.title")}
               </ActionButton>
             </div>

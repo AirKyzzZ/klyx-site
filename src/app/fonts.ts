@@ -1,25 +1,24 @@
-import { DM_Sans, Geist_Mono, Inter, Instrument_Serif } from "next/font/google";
+import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
 
-export const dmSans = DM_Sans({
+export const sans = Geist({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  style: ["normal", "italic"],
-  variable: "--font-dm-sans",
+  variable: "--font-geist-sans",
 });
 
-export const inter = Inter({
+export const mono = Geist_Mono({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-geist-mono",
+  display: "swap",
+  preload: false,
+  adjustFontFallback: true,
 });
 
 export const serif = Instrument_Serif({
   subsets: ["latin"],
   weight: "400",
   style: "italic",
-  variable: "--font-serif",
-});
-
-export const mono = Geist_Mono({
-  subsets: ["latin"],
-  variable: "--font-mono",
+  variable: "--font-instrument-serif",
+  display: "swap",
+  preload: false,
+  adjustFontFallback: true,
 });

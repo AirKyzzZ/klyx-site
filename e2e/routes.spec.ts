@@ -1,28 +1,8 @@
 import { expect, test } from "@playwright/test";
 
-import { type Locale, routing } from "../src/i18n/routing";
+import { routePaths } from "./route-paths";
 
-const SAMPLE_SLUG = "hop-hop-immo";
-
-function localize(locale: Locale, pathname: string, localized: string) {
-  const path = localized.replace("[slug]", SAMPLE_SLUG);
-  if (locale === routing.defaultLocale) return path;
-  return path === "/" ? `/${locale}` : `/${locale}${path}`;
-}
-
-const paths = routing.locales.flatMap((locale) =>
-  Object.entries(routing.pathnames)
-    .filter(([pathname]) => pathname !== "/blog/[slug]")
-    .map(([pathname, value]) =>
-      localize(
-        locale,
-        pathname,
-        typeof value === "string" ? value : value[locale],
-      ),
-    ),
-);
-
-for (const path of paths) {
+for (const path of routePaths) {
   test(`${path} renders with one h1`, async ({ page }) => {
     const response = await page.goto(path);
     expect(response?.status()).toBe(200);

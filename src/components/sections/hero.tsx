@@ -54,7 +54,7 @@ export function Hero({
               {secondary && (
                 <ActionButton
                   action={secondary.action}
-                  variant="outline"
+                  variant="secondary"
                   size="lg"
                   className="from-background bg-linear-to-r to-transparent shadow-md"
                 >

@@ -83,7 +83,7 @@ export default async function FdePage({ params }: LocaleParams) {
             title: t("proof.title"),
             paragraphs: [t("proof.body")],
             children: (
-              <Button variant="outline" className="shadow-md" asChild>
+              <Button variant="secondary" className="shadow-md" asChild>
                 <a href={site.socials.github} target="_blank" rel="noopener">
                   {t("proof.link")}
                 </a>

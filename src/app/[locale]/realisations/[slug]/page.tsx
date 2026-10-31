@@ -92,7 +92,7 @@ export default async function CasePage({ params }: CasePageProps) {
             ))}
           </dl>
 
-          <Button variant="outline" className="mt-8 shadow-md" asChild>
+          <Button variant="secondary" className="mt-8 shadow-md" asChild>
             <a href={meta.url} target="_blank" rel="noopener">
               {t("labels.visit")} <ArrowUpRight className="size-4" />
             </a>

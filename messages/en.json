@@ -2,6 +2,8 @@
   "nav": {
     "home": "Home",
     "offers": "Services",
+    "groupBuild": "Build",
+    "groupAdvise": "Advise",
     "sites": "Websites and landing pages",
     "agents": "AI and agents",
     "fde": "Forward Deployed Engineer",
@@ -27,7 +29,8 @@
     "estate": "Klyx Estate: films and visuals to launch high-end property listings.",
     "legal": "Legal notice",
     "privacy": "Privacy",
-    "copyright": "© {year} Klyx, by Maxime Mansiet. Prices exclude VAT."
+    "copyright": "© {year} Klyx, by Maxime Mansiet. Prices exclude VAT.",
+    "siret": "SIRET {siret}"
   },
   "home": {
     "hero": {

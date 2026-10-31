@@ -14,14 +14,21 @@ export function LanguageSwitcher() {
   const params = useParams();
 
   return (
-    <nav aria-label="Language" className="flex gap-2">
+    <nav
+      aria-label="Language"
+      className="flex gap-2 font-mono text-xs tracking-[0.06em]"
+    >
       {routing.locales.map((locale) => (
         <NextLink
           key={locale}
           href={getLocaleHref(locale, pathname, params)}
           hrefLang={locale}
           aria-current={locale === current ? "true" : undefined}
-          className={locale === current ? "font-medium" : "opacity-60"}
+          className={
+            locale === current
+              ? "text-text"
+              : "text-text-3 hover:text-text transition-colors"
+          }
         >
           {locale.toUpperCase()}
         </NextLink>
