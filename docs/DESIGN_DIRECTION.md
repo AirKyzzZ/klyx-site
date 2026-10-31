@@ -445,7 +445,7 @@ Centred terminal window: `GET /chemin → 404` and two links (home, réalisation
 | Node icons | lucide-react (already installed), 14px, stroke 1.5 | | tree-shaken |
 | OG images | `ImageResponse` | | |
 
-No stock photos of people, no AI-generated imagery, no hero video.
+No stock photos of people, no hero video. AI-generated imagery only for the painted backdrop and texture band, which Maxime chose to generate with Gemini (2026-10-31, see `docs/ASSETS.md`); never for proof, people or client work.
 
 ---
 
