@@ -11,6 +11,7 @@ import { messageList, messageStrings } from "@/i18n/message-list";
 import { type LocaleParams, resolvePageLocale } from "@/i18n/page-locale";
 import { getOfferCopy } from "@/lib/offer-copy";
 import type { OfferId } from "@/lib/offers";
+import { buildMetadata } from "@/lib/seo";
 
 const GROUPS: { key: "sites" | "ai" | "fde"; offers: OfferId[] }[] = [
   { key: "sites", offers: ["landing", "site-ia", "site-custom"] },
@@ -23,7 +24,12 @@ export async function generateMetadata({
 }: LocaleParams): Promise<Metadata> {
   const locale = await resolvePageLocale(params);
   const t = await getTranslations({ locale, namespace: "meta.pricing" });
-  return { title: { absolute: t("title") }, description: t("description") };
+  return buildMetadata({
+    locale,
+    pathname: "/tarifs",
+    title: t("title"),
+    description: t("description"),
+  });
 }
 
 export default async function PricingPage({ params }: LocaleParams) {

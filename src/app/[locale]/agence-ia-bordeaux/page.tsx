@@ -10,13 +10,19 @@ import { Statement } from "@/components/sections/statement";
 import { messageList, messageStrings } from "@/i18n/message-list";
 import { type LocaleParams, resolvePageLocale } from "@/i18n/page-locale";
 import { getPriceValues } from "@/lib/offers";
+import { buildMetadata } from "@/lib/seo";
 
 export async function generateMetadata({
   params,
 }: LocaleParams): Promise<Metadata> {
   const locale = await resolvePageLocale(params);
   const t = await getTranslations({ locale, namespace: "meta.bordeaux" });
-  return { title: { absolute: t("title") }, description: t("description") };
+  return buildMetadata({
+    locale,
+    pathname: "/agence-ia-bordeaux",
+    title: t("title"),
+    description: t("description"),
+  });
 }
 
 export default async function BordeauxPage({ params }: LocaleParams) {

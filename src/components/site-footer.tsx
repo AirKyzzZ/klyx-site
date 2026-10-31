@@ -2,7 +2,7 @@ import { ArrowUpRight } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 
 import { Link } from "@/i18n/navigation";
-import { site } from "@/lib/site";
+import { site, socialLinks } from "@/lib/site";
 
 const linkClass = "font-medium transition-opacity hover:opacity-75";
 const externalClass =
@@ -12,11 +12,6 @@ export async function SiteFooter() {
   const t = await getTranslations("footer");
   const nav = await getTranslations("nav");
 
-  const socials = [
-    { name: "LinkedIn", href: site.socials.linkedinCompany },
-    { name: "GitHub", href: site.socials.github },
-    { name: "Instagram", href: site.socials.instagram },
-  ];
   const sisterText: Record<(typeof site.sisterSites)[number]["name"], string> =
     { "Klyx Studio": t("studio"), "Klyx Estate": t("estate") };
 
@@ -75,7 +70,7 @@ export async function SiteFooter() {
               {nav("contact")}
             </Link>
           </li>
-          {socials.map((item) => (
+          {socialLinks.map((item) => (
             <li key={item.name}>
               <a
                 href={item.href}

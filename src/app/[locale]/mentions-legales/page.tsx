@@ -5,6 +5,7 @@ import { Background } from "@/components/background";
 import { LegalSection } from "@/components/legal-section";
 import { Link } from "@/i18n/navigation";
 import { type LocaleParams, resolvePageLocale } from "@/i18n/page-locale";
+import { buildMetadata } from "@/lib/seo";
 import { site } from "@/lib/site";
 
 export async function generateMetadata({
@@ -12,7 +13,12 @@ export async function generateMetadata({
 }: LocaleParams): Promise<Metadata> {
   const locale = await resolvePageLocale(params);
   const t = await getTranslations({ locale, namespace: "meta.legal" });
-  return { title: { absolute: t("title") }, description: t("description") };
+  return buildMetadata({
+    locale,
+    pathname: "/mentions-legales",
+    title: t("title"),
+    description: t("description"),
+  });
 }
 
 export default async function LegalPage({ params }: LocaleParams) {

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 
 import { Background } from "@/components/background";
+import { JsonLd } from "@/components/json-ld";
 import { CaseGrid } from "@/components/sections/case-grid";
 import { Cta } from "@/components/sections/cta";
 import { Faq } from "@/components/sections/faq";
@@ -14,7 +15,9 @@ import { Testimonials } from "@/components/sections/testimonials";
 import { messageList } from "@/i18n/message-list";
 import { type LocaleParams, resolvePageLocale } from "@/i18n/page-locale";
 import { getCaseStudies } from "@/lib/content";
+import { organizationJsonLd } from "@/lib/json-ld";
 import { formatPrice, getOfferPrice, getPriceValues } from "@/lib/offers";
+import { buildMetadata } from "@/lib/seo";
 import { site } from "@/lib/site";
 
 const HOME_CASE_COUNT = 3;
@@ -24,7 +27,12 @@ export async function generateMetadata({
 }: LocaleParams): Promise<Metadata> {
   const locale = await resolvePageLocale(params);
   const t = await getTranslations({ locale, namespace: "meta.home" });
-  return { title: { absolute: t("title") }, description: t("description") };
+  return buildMetadata({
+    locale,
+    pathname: "/",
+    title: t("title"),
+    description: t("description"),
+  });
 }
 
 export default async function HomePage({ params }: LocaleParams) {
@@ -32,6 +40,7 @@ export default async function HomePage({ params }: LocaleParams) {
   const t = await getTranslations({ locale, namespace: "home" });
   const nav = await getTranslations({ locale, namespace: "nav" });
   const offersT = await getTranslations({ locale, namespace: "offers" });
+  const meta = await getTranslations({ locale, namespace: "meta.home" });
   const cases = await getCaseStudies(locale);
   const prices = getPriceValues(locale);
   const price = (id: Parameters<typeof getOfferPrice>[0]) =>
@@ -39,6 +48,7 @@ export default async function HomePage({ params }: LocaleParams) {
 
   return (
     <>
+      <JsonLd data={organizationJsonLd(meta("description"))} />
       <Background className="via-muted to-muted/80">
         <Hero
           title={t("hero.title")}

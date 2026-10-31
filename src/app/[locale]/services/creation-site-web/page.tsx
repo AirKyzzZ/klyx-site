@@ -5,6 +5,7 @@ import { Background } from "@/components/background";
 import { Button } from "@/components/ui/button";
 import { CaseGrid } from "@/components/sections/case-grid";
 import { Cta } from "@/components/sections/cta";
+import { JsonLd } from "@/components/json-ld";
 import { Faq } from "@/components/sections/faq";
 import { Hero, HeroList } from "@/components/sections/hero";
 import { ProcessSteps } from "@/components/sections/process-steps";
@@ -16,6 +17,8 @@ import { type LocaleParams, resolvePageLocale } from "@/i18n/page-locale";
 import { getCaseStudies } from "@/lib/content";
 import { getOfferCopy } from "@/lib/offer-copy";
 import { getPriceValues } from "@/lib/offers";
+import { offerPageJsonLd } from "@/lib/json-ld";
+import { buildMetadata } from "@/lib/seo";
 
 const TIERS = ["landing", "site-ia", "site-custom"] as const;
 const HIGHLIGHTED_TIER = "site-ia";
@@ -27,10 +30,12 @@ export async function generateMetadata({
   const locale = await resolvePageLocale(params);
   const t = await getTranslations({ locale, namespace: "meta.sites" });
   const prices = getPriceValues(locale);
-  return {
-    title: { absolute: t("title") },
+  return buildMetadata({
+    locale,
+    pathname: "/services/creation-site-web",
+    title: t("title"),
     description: t("description", prices),
-  };
+  });
 }
 
 export default async function SitesPage({ params }: LocaleParams) {
@@ -39,6 +44,7 @@ export default async function SitesPage({ params }: LocaleParams) {
   const offersT = await getTranslations({ locale, namespace: "offers" });
   const casesT = await getTranslations({ locale, namespace: "cases.labels" });
   const prices = getPriceValues(locale);
+  const faq = messageList(t, "faq.items", ["question", "answer"], prices);
   const tiers = TIERS.map((id) => getOfferCopy(offersT, locale, id));
   const cases = (await getCaseStudies(locale)).filter((c) =>
     PROOF_SLUGS.includes(c.slug),
@@ -46,6 +52,15 @@ export default async function SitesPage({ params }: LocaleParams) {
 
   return (
     <>
+      <JsonLd
+        data={offerPageJsonLd({
+          locale,
+          pathname: "/services/creation-site-web",
+          navKey: "sites",
+          offerIds: TIERS,
+          faq,
+        })}
+      />
       <Background>
         <Hero
           eyebrow={t("hero.eyebrow")}
@@ -122,7 +137,7 @@ export default async function SitesPage({ params }: LocaleParams) {
       <Background variant="bottom">
         <Faq
           title={t("faq.title")}
-          items={messageList(t, "faq.items", ["question", "answer"], prices)}
+          items={faq}
           bookLabel={t("cta.ctaSecondary")}
         />
         <Cta

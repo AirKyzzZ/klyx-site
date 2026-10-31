@@ -7,13 +7,19 @@ import { Cta } from "@/components/sections/cta";
 import { Hero } from "@/components/sections/hero";
 import { type LocaleParams, resolvePageLocale } from "@/i18n/page-locale";
 import { getCaseStudies } from "@/lib/content";
+import { buildMetadata } from "@/lib/seo";
 
 export async function generateMetadata({
   params,
 }: LocaleParams): Promise<Metadata> {
   const locale = await resolvePageLocale(params);
   const t = await getTranslations({ locale, namespace: "meta.cases" });
-  return { title: { absolute: t("title") }, description: t("description") };
+  return buildMetadata({
+    locale,
+    pathname: "/realisations",
+    title: t("title"),
+    description: t("description"),
+  });
 }
 
 export default async function CasesPage({ params }: LocaleParams) {

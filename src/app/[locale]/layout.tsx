@@ -6,6 +6,7 @@ import { notFound } from "next/navigation";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { routing } from "@/i18n/routing";
+import { site } from "@/lib/site";
 
 import { dmSans, inter, mono, serif } from "../fonts";
 import "../globals.css";
@@ -24,7 +25,11 @@ export async function generateMetadata({
 }: Pick<LayoutProps, "params">): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "meta" });
-  return { title: t("title"), description: t("description") };
+  return {
+    metadataBase: new URL(site.url),
+    title: t("title"),
+    description: t("description"),
+  };
 }
 
 export default async function LocaleLayout({ children, params }: LayoutProps) {

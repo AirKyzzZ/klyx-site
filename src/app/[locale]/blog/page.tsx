@@ -8,13 +8,19 @@ import { Hero } from "@/components/sections/hero";
 import { Link } from "@/i18n/navigation";
 import { type LocaleParams, resolvePageLocale } from "@/i18n/page-locale";
 import { getPosts } from "@/lib/content";
+import { buildMetadata } from "@/lib/seo";
 
 export async function generateMetadata({
   params,
 }: LocaleParams): Promise<Metadata> {
   const locale = await resolvePageLocale(params);
   const t = await getTranslations({ locale, namespace: "meta.blog" });
-  return { title: { absolute: t("title") }, description: t("description") };
+  return buildMetadata({
+    locale,
+    pathname: "/blog",
+    title: t("title"),
+    description: t("description"),
+  });
 }
 
 export default async function BlogPage({ params }: LocaleParams) {

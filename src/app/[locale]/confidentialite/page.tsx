@@ -4,6 +4,7 @@ import { getFormatter, getTranslations } from "next-intl/server";
 import { Background } from "@/components/background";
 import { LegalSection } from "@/components/legal-section";
 import { type LocaleParams, resolvePageLocale } from "@/i18n/page-locale";
+import { buildMetadata } from "@/lib/seo";
 import { site } from "@/lib/site";
 
 const SECTIONS = ["contactForm", "booking", "analytics", "hosting"] as const;
@@ -21,7 +22,12 @@ export async function generateMetadata({
 }: LocaleParams): Promise<Metadata> {
   const locale = await resolvePageLocale(params);
   const t = await getTranslations({ locale, namespace: "meta.privacy" });
-  return { title: { absolute: t("title") }, description: t("description") };
+  return buildMetadata({
+    locale,
+    pathname: "/confidentialite",
+    title: t("title"),
+    description: t("description"),
+  });
 }
 
 export default async function PrivacyPage({ params }: LocaleParams) {

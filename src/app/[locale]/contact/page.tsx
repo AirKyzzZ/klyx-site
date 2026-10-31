@@ -10,20 +10,26 @@ import { DashedLine } from "@/components/dashed-line";
 import { EmphasisTitle } from "@/components/emphasis-title";
 import { messageKeys } from "@/i18n/message-list";
 import { type LocaleParams, resolvePageLocale } from "@/i18n/page-locale";
-import { site } from "@/lib/site";
+import { buildMetadata } from "@/lib/seo";
+import { site, socialLinks } from "@/lib/site";
 
-const socials = [
-  { name: "LinkedIn", href: site.socials.linkedinCompany, icon: FaLinkedin },
-  { name: "GitHub", href: site.socials.github, icon: FaGithub },
-  { name: "Instagram", href: site.socials.instagram, icon: FaInstagram },
-];
+const SOCIAL_ICONS = {
+  LinkedIn: FaLinkedin,
+  GitHub: FaGithub,
+  Instagram: FaInstagram,
+} as const;
 
 export async function generateMetadata({
   params,
 }: LocaleParams): Promise<Metadata> {
   const locale = await resolvePageLocale(params);
   const t = await getTranslations({ locale, namespace: "meta.contact" });
-  return { title: { absolute: t("title") }, description: t("description") };
+  return buildMetadata({
+    locale,
+    pathname: "/contact",
+    title: t("title"),
+    description: t("description"),
+  });
 }
 
 export default async function ContactPage({ params }: LocaleParams) {
@@ -80,18 +86,21 @@ export default async function ContactPage({ params }: LocaleParams) {
             <div>
               <h2 className="font-medium">Klyx</h2>
               <div className="mt-3 flex gap-6">
-                {socials.map(({ name, href, icon: Icon }) => (
-                  <a
-                    key={name}
-                    href={href}
-                    target="_blank"
-                    rel="noopener"
-                    aria-label={name}
-                    className="text-muted-foreground hover:text-foreground"
-                  >
-                    <Icon className="size-5" />
-                  </a>
-                ))}
+                {socialLinks.map(({ name, href }) => {
+                  const Icon = SOCIAL_ICONS[name];
+                  return (
+                    <a
+                      key={name}
+                      href={href}
+                      target="_blank"
+                      rel="noopener"
+                      aria-label={name}
+                      className="text-muted-foreground hover:text-foreground"
+                    >
+                      <Icon className="size-5" />
+                    </a>
+                  );
+                })}
               </div>
             </div>
           </div>
@@ -111,8 +120,10 @@ export default async function ContactPage({ params }: LocaleParams) {
               consent: t("form.consent"),
               privacyLink: t("form.privacyLink"),
               submit: t("form.submit"),
-              pending: t("form.pending"),
+              sending: t("form.sending"),
+              success: t("form.success"),
             }}
+            locale={locale}
           />
         </div>
       </section>

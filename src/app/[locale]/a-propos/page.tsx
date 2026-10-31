@@ -4,12 +4,15 @@ import { ArrowUpRight } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 
 import { Background } from "@/components/background";
+import { JsonLd } from "@/components/json-ld";
 import { Cta } from "@/components/sections/cta";
 import { Hero } from "@/components/sections/hero";
 import { Statement } from "@/components/sections/statement";
 import { Button } from "@/components/ui/button";
 import { messageList } from "@/i18n/message-list";
 import { type LocaleParams, resolvePageLocale } from "@/i18n/page-locale";
+import { personJsonLd } from "@/lib/json-ld";
+import { buildMetadata } from "@/lib/seo";
 import { site } from "@/lib/site";
 
 export async function generateMetadata({
@@ -17,7 +20,12 @@ export async function generateMetadata({
 }: LocaleParams): Promise<Metadata> {
   const locale = await resolvePageLocale(params);
   const t = await getTranslations({ locale, namespace: "meta.about" });
-  return { title: { absolute: t("title") }, description: t("description") };
+  return buildMetadata({
+    locale,
+    pathname: "/a-propos",
+    title: t("title"),
+    description: t("description"),
+  });
 }
 
 export default async function AboutPage({ params }: LocaleParams) {
@@ -33,6 +41,7 @@ export default async function AboutPage({ params }: LocaleParams) {
 
   return (
     <>
+      <JsonLd data={personJsonLd()} />
       <Background>
         <Hero
           title={t("hero.title")}

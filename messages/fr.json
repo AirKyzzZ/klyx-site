@@ -798,9 +798,10 @@
       "errors": {
         "required": "Ce champ est obligatoire.",
         "email": "Cette adresse e-mail n'est pas valide.",
-        "generic": "L'envoi a échoué. Réessayez, ou écrivez-moi à {email}."
-      },
-      "pending": "Le formulaire sera actif très bientôt. D'ici là, réservez un appel : c'est le plus rapide."
+        "generic": "L'envoi a échoué. Réessayez, ou écrivez-moi à {email}.",
+        "invalid": "Vérifiez ce champ : il est trop court, trop long ou invalide.",
+        "unavailable": "Le formulaire est indisponible pour le moment. Écrivez-moi à {email}, ou réservez un appel."
+      }
     },
     "direct": {
       "title": "Ou par e-mail",

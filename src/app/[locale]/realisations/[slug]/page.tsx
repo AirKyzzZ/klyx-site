@@ -14,6 +14,7 @@ import { Link } from "@/i18n/navigation";
 import { resolvePageLocale } from "@/i18n/page-locale";
 import { type Locale, routing } from "@/i18n/routing";
 import { getCaseStudies, getCaseStudy } from "@/lib/content";
+import { brandedTitle, buildMetadata } from "@/lib/seo";
 
 type CasePageProps = {
   params: Promise<{ locale: string; slug: string }>;
@@ -41,7 +42,13 @@ export async function generateMetadata({
   const locale = await resolvePageLocale(params);
   const { slug } = await params;
   const { meta } = await loadCase(locale, slug);
-  return { title: `${meta.title} | Klyx`, description: meta.summary };
+  return buildMetadata({
+    locale,
+    pathname: "/realisations/[slug]",
+    params: { slug },
+    title: brandedTitle(meta.title),
+    description: meta.summary,
+  });
 }
 
 export default async function CasePage({ params }: CasePageProps) {

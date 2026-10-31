@@ -798,9 +798,10 @@
       "errors": {
         "required": "This field is required.",
         "email": "This email address isn't valid.",
-        "generic": "Sending failed. Try again, or email me at {email}."
-      },
-      "pending": "The form goes live very soon. Until then, book a call: it's the fastest way."
+        "generic": "Sending failed. Try again, or email me at {email}.",
+        "invalid": "Check this field: it's too short, too long or invalid.",
+        "unavailable": "The form is unavailable right now. Email me at {email}, or book a call."
+      }
     },
     "direct": {
       "title": "Or by email",

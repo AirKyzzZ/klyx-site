@@ -4,6 +4,7 @@ import { getTranslations } from "next-intl/server";
 import { Background } from "@/components/background";
 import { Button } from "@/components/ui/button";
 import { Cta } from "@/components/sections/cta";
+import { JsonLd } from "@/components/json-ld";
 import { Faq } from "@/components/sections/faq";
 import { Hero, HeroList } from "@/components/sections/hero";
 import { ProcessSteps } from "@/components/sections/process-steps";
@@ -11,6 +12,8 @@ import { Statement } from "@/components/sections/statement";
 import { messageList, messageStrings } from "@/i18n/message-list";
 import { type LocaleParams, resolvePageLocale } from "@/i18n/page-locale";
 import { getPriceValues } from "@/lib/offers";
+import { offerPageJsonLd } from "@/lib/json-ld";
+import { buildMetadata } from "@/lib/seo";
 import { site } from "@/lib/site";
 
 export async function generateMetadata({
@@ -18,20 +21,32 @@ export async function generateMetadata({
 }: LocaleParams): Promise<Metadata> {
   const locale = await resolvePageLocale(params);
   const t = await getTranslations({ locale, namespace: "meta.fde" });
-  return {
-    title: { absolute: t("title") },
+  return buildMetadata({
+    locale,
+    pathname: "/forward-deployed-engineer",
+    title: t("title"),
     description: t("description", getPriceValues(locale)),
-  };
+  });
 }
 
 export default async function FdePage({ params }: LocaleParams) {
   const locale = await resolvePageLocale(params);
   const t = await getTranslations({ locale, namespace: "fde" });
   const prices = getPriceValues(locale);
+  const faq = messageList(t, "faq.items", ["question", "answer"], prices);
   const terms = messageStrings(t, "terms.items", prices);
 
   return (
     <>
+      <JsonLd
+        data={offerPageJsonLd({
+          locale,
+          pathname: "/forward-deployed-engineer",
+          navKey: "fde",
+          offerIds: ["fde"],
+          faq,
+        })}
+      />
       <Background>
         <Hero
           eyebrow={t("hero.eyebrow")}
@@ -81,7 +96,7 @@ export default async function FdePage({ params }: LocaleParams) {
       <Background variant="bottom">
         <Faq
           title={t("faq.title")}
-          items={messageList(t, "faq.items", ["question", "answer"], prices)}
+          items={faq}
           bookLabel={t("cta.ctaPrimary")}
         />
         <Cta

@@ -18,3 +18,9 @@ export const site = {
     { name: "Klyx Estate", url: "https://estate.klyx.fr" },
   ],
 } as const;
+
+export const socialLinks = [
+  { name: "LinkedIn", href: site.socials.linkedinCompany },
+  { name: "GitHub", href: site.socials.github },
+  { name: "Instagram", href: site.socials.instagram },
+] as const;

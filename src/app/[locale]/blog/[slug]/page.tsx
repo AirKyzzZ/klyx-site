@@ -10,6 +10,7 @@ import { Link } from "@/i18n/navigation";
 import { resolvePageLocale } from "@/i18n/page-locale";
 import { type Locale, routing } from "@/i18n/routing";
 import { getPost, getPosts } from "@/lib/content";
+import { brandedTitle, buildMetadata } from "@/lib/seo";
 import { site } from "@/lib/site";
 
 type PostPageProps = {
@@ -38,7 +39,13 @@ export async function generateMetadata({
   const locale = await resolvePageLocale(params);
   const { slug } = await params;
   const { meta } = await loadPost(locale, slug);
-  return { title: `${meta.title} | Klyx`, description: meta.summary };
+  return buildMetadata({
+    locale,
+    pathname: "/blog/[slug]",
+    params: { slug },
+    title: brandedTitle(meta.title),
+    description: meta.summary,
+  });
 }
 
 export default async function PostPage({ params }: PostPageProps) {
