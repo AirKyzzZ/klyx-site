@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { mono, sans, serif } from "./fonts";
+import { dmSans, inter, mono, serif } from "./fonts";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -14,9 +14,9 @@ export default function RootLayout({
   return (
     <html
       lang="fr"
-      className={`${sans.variable} ${serif.variable} ${mono.variable}`}
+      className={`${dmSans.variable} ${inter.variable} ${serif.variable} ${mono.variable}`}
     >
-      <body className="font-sans antialiased">{children}</body>
+      <body className="antialiased">{children}</body>
     </html>
   );
 }
