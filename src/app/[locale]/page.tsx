@@ -15,7 +15,11 @@ import { SpotlightPointer } from "@/components/spotlight-pointer";
 import { messageList } from "@/i18n/message-list";
 import { type LocaleParams, resolvePageLocale } from "@/i18n/page-locale";
 import { getCaseStudies } from "@/lib/content";
-import { ALSO_OFFERS, selectHomeCases } from "@/lib/home-sections";
+import {
+  ALSO_OFFERS,
+  HOME_OFFER_CARDS,
+  selectHomeCases,
+} from "@/lib/home-sections";
 import { organizationJsonLd } from "@/lib/json-ld";
 import {
   formatPrice,
@@ -47,7 +51,6 @@ export default async function HomePage({ params }: LocaleParams) {
   const locale = await resolvePageLocale(params);
   const t = await getTranslations({ locale, namespace: "home" });
   const nav = await getTranslations({ locale, namespace: "nav" });
-  const offersT = await getTranslations({ locale, namespace: "offers" });
   const casesT = await getTranslations({ locale, namespace: "cases" });
   const tabs = await getTranslations({ locale, namespace: "liveSystem.tabs" });
   const meta = await getTranslations({ locale, namespace: "meta.home" });
@@ -92,53 +95,20 @@ export default async function HomePage({ params }: LocaleParams) {
         title={t("offers.title")}
         emphasis={t("offers.titleEmphasis")}
         subtitle={t("offers.subtitle")}
-        note={offersT("vatNote")}
-        items={[
-          {
-            href: "/services/creation-site-web",
-            glyph: "sites",
-            tag: tabs("sites"),
-            name: t("offers.cards.sites.name"),
-            outcome: t("offers.cards.sites.outcome"),
-            price: t("offers.cards.sites.price", { price: price("landing") }),
-            duration: offersT("items.landing.duration"),
-            steps: [
-              t("offers.steps.sites.a"),
-              t("offers.steps.sites.b"),
-              t("offers.steps.sites.c"),
-            ],
-          },
-          {
-            href: "/services/agents-ia",
-            glyph: "agents",
-            tag: tabs("agents"),
-            name: t("offers.cards.agents.name"),
-            outcome: t("offers.cards.agents.outcome"),
-            price: t("offers.cards.agents.price", {
-              price: price("audit-ia"),
-            }),
-            duration: offersT("items.auditIa.duration"),
-            steps: [
-              t("offers.steps.agents.a"),
-              t("offers.steps.agents.b"),
-              t("offers.steps.agents.c"),
-            ],
-          },
-          {
-            href: "/forward-deployed-engineer",
-            glyph: "fde",
-            tag: tabs("fde"),
-            name: t("offers.cards.fde.name"),
-            outcome: t("offers.cards.fde.outcome"),
-            price: t("offers.cards.fde.price", { price: price("fde") }),
-            duration: offersT("items.fde.duration"),
-            steps: [
-              t("offers.steps.fde.a"),
-              t("offers.steps.fde.b"),
-              t("offers.steps.fde.c"),
-            ],
-          },
-        ]}
+        items={HOME_OFFER_CARDS.map(({ key, href, offer }) => ({
+          href,
+          glyph: key,
+          tag: tabs(key),
+          name: t(`offers.cards.${key}.name`),
+          outcome: t(`offers.cards.${key}.outcome`),
+          price: t(`offers.cards.${key}.price`, { price: price(offer) }),
+          duration: t(`offers.cards.${key}.duration`),
+          steps: [
+            t(`offers.steps.${key}.a`),
+            t(`offers.steps.${key}.b`),
+            t(`offers.steps.${key}.c`),
+          ],
+        }))}
         also={{
           label: t("offers.also.label"),
           items: ALSO_OFFERS.map(({ key, href }) => ({
@@ -207,6 +177,7 @@ export default async function HomePage({ params }: LocaleParams) {
         emphasis={t("faq.titleEmphasis")}
         items={messageList(t, "faq.items", ["question", "answer"], prices)}
         bookLabel={nav("book")}
+        openFirst
       />
 
       <Cta

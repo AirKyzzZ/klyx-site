@@ -41,6 +41,18 @@ function hideConsentBanners() {
   }
 }
 
+function hidePromoBars() {
+  const promo = /offer|offre|promo|%|before|avant le/i;
+  for (const element of document.querySelectorAll<HTMLElement>("body *")) {
+    const { top, width, height } = element.getBoundingClientRect();
+    if (top > 2 || height === 0 || height > 80) continue;
+    if (width < 0.9 * innerWidth || element.querySelector("nav")) continue;
+    if (!promo.test(element.textContent ?? "")) continue;
+    element.style.display = "none";
+    return;
+  }
+}
+
 async function capture(target: Target): Promise<Shot> {
   const browser = await chromium.launch();
   try {
@@ -60,6 +72,8 @@ async function capture(target: Target): Promise<Shot> {
       }
       await page.waitForTimeout(SETTLE_MS);
       await page.evaluate(hideConsentBanners);
+      await page.evaluate(hidePromoBars);
+      await page.waitForTimeout(300);
       await page.screenshot({
         path: path.join(OUTPUT_DIR, `${target.slug}-${viewport.width}.png`),
       });

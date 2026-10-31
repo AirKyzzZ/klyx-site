@@ -36,7 +36,6 @@ type OfferCardsProps = {
   title: string;
   emphasis?: string;
   subtitle: string;
-  note: string;
   items: OfferCard[];
   also?: { label: string; items: { label: string; href: StaticPathname }[] };
 };
@@ -113,7 +112,6 @@ export function OfferCards({
   title,
   emphasis,
   subtitle,
-  note,
   items,
   also,
 }: OfferCardsProps) {
@@ -125,10 +123,9 @@ export function OfferCards({
           rest={emphasis}
           className="lg:col-span-7"
         />
-        <div className="text-text-2 space-y-2 lg:col-span-4 lg:col-start-9">
-          <p className="max-w-[44ch]">{subtitle}</p>
-          <p className="type-label text-text-3">{note}</p>
-        </div>
+        <p className="text-text-2 max-w-[44ch] lg:col-span-4 lg:col-start-9">
+          {subtitle}
+        </p>
       </div>
 
       <ul className="reveal border-line bg-line mt-12 grid gap-px overflow-hidden rounded-md border md:mt-16 lg:grid-cols-3">

@@ -7,7 +7,11 @@ import { type Locale, routing } from "@/i18n/routing";
 import { getStaticTranslator } from "@/i18n/static-translator";
 import { getCaseStudies, getMdxBody, getPosts } from "@/lib/content";
 import type { CaseStudyMeta } from "@/lib/content";
-import { ALSO_OFFERS, selectHomeCases } from "@/lib/home-sections";
+import {
+  ALSO_OFFERS,
+  HOME_OFFER_CARDS,
+  selectHomeCases,
+} from "@/lib/home-sections";
 import { getOfferCopy } from "@/lib/offer-copy";
 import {
   formatPrice,
@@ -139,15 +143,9 @@ function formatDate(locale: Locale, date: string): string {
 
 async function home(locale: Locale): Promise<string> {
   const t = getStaticTranslator(locale, "home");
-  const offersT = getStaticTranslator(locale, "offers");
   const casesT = getStaticTranslator(locale, "cases");
   const prices = getPriceValues(locale);
   const price = (id: OfferId) => formatPrice(getOfferPrice(id), locale);
-  const cards = [
-    { key: "sites", href: "/services/creation-site-web", offer: "landing" },
-    { key: "agents", href: "/services/agents-ia", offer: "audit-ia" },
-    { key: "fde", href: "/forward-deployed-engineer", offer: "fde" },
-  ] as const;
   const cases = selectHomeCases(await getCaseStudies(locale));
 
   return doc([
@@ -160,10 +158,9 @@ async function home(locale: Locale): Promise<string> {
     ]),
     `## ${sectionTitle(t, "offers")}`,
     t("offers.subtitle"),
-    offersT("vatNote"),
-    ...cards.flatMap((card) => [
+    ...HOME_OFFER_CARDS.flatMap((card) => [
       `### ${t(`offers.cards.${card.key}.name`)}`,
-      t(`offers.cards.${card.key}.price`, { price: price(card.offer) }),
+      `${t(`offers.cards.${card.key}.price`, { price: price(card.offer) })} · ${t(`offers.cards.${card.key}.duration`)}`,
       t(`offers.cards.${card.key}.outcome`),
       link(t("offers.link"), absoluteUrl(locale, card.href)),
     ]),

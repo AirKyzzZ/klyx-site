@@ -357,9 +357,8 @@
     inset: 0;
     z-index: -1;
     pointer-events: none;
-    background: url("/textures/grain.png") 0 0 / 128px 128px;
+    background: url("/textures/grain-sand.png") 0 0 / 128px 128px;
     mix-blend-mode: multiply;
-    opacity: 0.4;
   }
 }
 

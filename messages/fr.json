@@ -55,17 +55,20 @@
         "sites": {
           "name": "Sites et landing pages",
           "outcome": "Un site rapide que Google et les IA savent lire, en ligne en 1 à 4 semaines.",
-          "price": "À partir de {price}"
+          "price": "À partir de {price}",
+          "duration": "1 à 4 semaines"
         },
         "agents": {
           "name": "IA et agents",
           "outcome": "Un workflow automatisé en production en 2 semaines, avec le code dans votre repo.",
-          "price": "À partir de {price}"
+          "price": "À partir de {price}",
+          "duration": "2 semaines"
         },
         "fde": {
           "name": "Forward Deployed Engineer",
           "outcome": "Un développeur IA dans votre équipe 2 à 3 jours par semaine, pendant 4 semaines ou plus.",
-          "price": "À partir de {price} / jour"
+          "price": "À partir de {price} / jour",
+          "duration": "4 semaines minimum"
         }
       },
       "titleEmphasis": "de travailler ensemble.",

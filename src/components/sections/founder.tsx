@@ -98,29 +98,33 @@ export function Founder({
             <p className="type-lead text-text mt-6 max-w-[52ch]">{body}</p>
             <p className="text-text-2 mt-4 max-w-[58ch]">{experience}</p>
 
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4">
-              <p className="type-label text-text-3">{products.label}</p>
-              <ul className="flex flex-wrap gap-2">
-                {products.items.map((product) => (
-                  <li key={product.url}>
-                    <a
-                      href={product.url}
-                      target="_blank"
-                      rel="noopener"
-                      className="border-line-strong bg-surface-1 text-text-2 hover:text-text hover:bg-surface-2 inline-flex h-8 items-center gap-2 rounded-sm border px-2.5 font-mono text-xs transition-colors duration-(--d-fast)"
-                    >
-                      <span
-                        aria-hidden="true"
-                        className="bg-text-3 size-1.5 rounded-full"
-                      />
-                      {product.name}
-                      <span className="text-text-3">{hostOf(product.url)}</span>
-                      <ArrowUpRight aria-hidden="true" className="size-3.5" />
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            {products.items.length > 0 && (
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4">
+                <p className="type-label text-text-3">{products.label}</p>
+                <ul className="flex flex-wrap gap-2">
+                  {products.items.map((product) => (
+                    <li key={product.url}>
+                      <a
+                        href={product.url}
+                        target="_blank"
+                        rel="noopener"
+                        className="border-line-strong bg-surface-1 text-text-2 hover:text-text hover:bg-surface-2 inline-flex h-8 items-center gap-2 rounded-sm border px-2.5 font-mono text-xs transition-colors duration-(--d-fast)"
+                      >
+                        <span
+                          aria-hidden="true"
+                          className="bg-text-3 size-1.5 rounded-full"
+                        />
+                        {product.name}
+                        <span className="text-text-3">
+                          {hostOf(product.url)}
+                        </span>
+                        <ArrowUpRight aria-hidden="true" className="size-3.5" />
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
 
             <ul className="border-line mt-8 flex flex-wrap gap-x-6 gap-y-3 border-t pt-6">
               {links.map((link) => (

@@ -55,17 +55,20 @@
         "sites": {
           "name": "Websites and landing pages",
           "outcome": "A fast site that Google and AI engines can read, live in 1 to 4 weeks.",
-          "price": "From {price}"
+          "price": "From {price}",
+          "duration": "1 to 4 weeks"
         },
         "agents": {
           "name": "AI and agents",
           "outcome": "One automated workflow in production in 2 weeks, with the code in your repo.",
-          "price": "From {price}"
+          "price": "From {price}",
+          "duration": "2 weeks"
         },
         "fde": {
           "name": "Forward Deployed Engineer",
           "outcome": "An AI developer inside your team 2 to 3 days a week, for 4 weeks or more.",
-          "price": "From {price} / day"
+          "price": "From {price} / day",
+          "duration": "4 weeks minimum"
         }
       },
       "titleEmphasis": "to work together.",

@@ -10,6 +10,7 @@ type FaqProps = {
   emphasis?: string;
   items: { question: string; answer: string }[];
   bookLabel?: string;
+  openFirst?: boolean;
   className?: string;
 };
 
@@ -20,6 +21,7 @@ export function Faq({
   emphasis,
   items,
   bookLabel,
+  openFirst = false,
   className,
 }: FaqProps) {
   return (
@@ -35,9 +37,10 @@ export function Faq({
         </div>
 
         <div className="reveal border-line border-t lg:col-span-7 lg:col-start-6">
-          {items.map((item) => (
+          {items.map((item, i) => (
             <details
               key={item.question}
+              open={openFirst && i === 0}
               className="faq-item border-line group border-b"
             >
               <summary className="text-text hover:text-text-2 flex items-start justify-between gap-6 py-5 text-[1.0625rem] font-medium tracking-[-0.01em] transition-colors duration-(--d-fast)">
