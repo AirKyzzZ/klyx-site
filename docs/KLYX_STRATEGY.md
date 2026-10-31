@@ -282,3 +282,93 @@ Nothing below goes on the site until checked. Add `TODO(maxime)` in copy whereve
 3. **Sprint vs FDE pricing.** Live Sprint IA 4 500 for 2 weeks sits below the proposed 3 500-4 000/week FDE rate. **Recommend:** keep Sprint IA 4 500 as a fixed-scope deliverable (one workflow, not time), publish FDE as « à partir de 700 €/jour » with a 4-week minimum, publish every price on `/tarifs`.
 4. **Guarantees.** Options: audit credit, audit refund if nothing found, « en production en fin de sprint ou je continue ». **Recommend:** launch with audit credit (100% express within 60 days) and FDE week-1 trial only; add the delivery guarantee after 2-3 sprints prove the timeline.
 5. **Blog and language.** Migrate blog.klyx.fr to `/blog` and decide FR-only vs FR/EN. **Recommend:** migrate with 301s for on-topic posts, noindex or drop the off-topic 2025 posts; launch FR-only but set up next-intl `[locale]` routing from day one (no kit ships i18n).
+
+## 10. Refined angle, query map and outreach pages (2026-10-31)
+
+Second pass on top of sections 6 and 7. Design rules and the `/pour/*` template live in `docs/DESIGN_DIRECTION.md`. Volumes and KD are estimates (no GSC/Ahrefs; autocomplete hl=fr gl=fr run today, SERP via a US-index WebSearch, so directional).
+
+### Refined angle
+
+1. Home sells one outcome to startups and agencies: an AI workflow running in production, proved by artefacts a buyer can open (live sites, run logs, PRs, Lighthouse scores), not by logos or counters.
+2. Two products, never blended: Sprint IA 4 500 € HT is a fixed-scope deliverable, FDE 700 €/day is time. Bordeaux SMEs enter through Audit IA 1 500 € HT on `/agence-ia-bordeaux` and `/pour/pme-bordeaux`.
+3. Search and AI citation are won on pricing, the French FDE definition, the Bpifrance audit explainer and the local page, because no neutral source owns them yet.
+
+### Query map (14)
+
+| # | Query | Intent | Est. KD | Target page |
+|---|---|---|---|---|
+| 1 | agence ia bordeaux | local / transactional | M | `/agence-ia-bordeaux` |
+| 2 | consultant ia bordeaux / expert ia bordeaux | local / transactional | L-M | `/agence-ia-bordeaux` (H2 + FAQ) |
+| 3 | automatisation ia pme | commercial | M | `/services/automatisation-ia` (new) |
+| 4 | intégration agent ia pme (agent ia pme, agent ia entreprise) | commercial / info | M | `/services/agents-ia` + pillar 3 |
+| 5 | prix agent ia / tarif agent ia | commercial | L-M | `/tarifs` + pillar 1 |
+| 6 | audit ia entreprise / audit ia pme | commercial | M | `/services/audit-ia` (new) |
+| 7 | audit ia bpi / audit ia bpifrance | info / commercial | M | pillar 2 + section on `/services/audit-ia` |
+| 8 | forward deployed engineer (en français, salaire, freelance) | info (jobs) | M | `/forward-deployed-engineer` + pillar 4 |
+| 9 | freelance forward deployed engineer | commercial / niche | L | `/services/developpeur-ia-freelance` + `/forward-deployed-engineer` |
+| 10 | développeur ia freelance / ingénieur ia freelance | transactional | M | `/services/developpeur-ia-freelance` |
+| 11 | prix landing page (création, freelance) | commercial | L-M | `/services/creation-site-web` + `/tarifs` + article 10 |
+| 12 | création landing page | transactional | M | `/services/creation-site-web` |
+| 13 | référencement chatgpt / agence référencement chatgpt | commercial | M | `/services/geo-referencement-ia` (new) + pillar 5 |
+| 14 | subvention ia entreprise / aide financement ia pme | info | M | pillar 2 (linked from `/services/audit-ia`) |
+
+Realistic: top 3 on #1, #2, #5, #9, #11; top 10 on #3, #6, #7, #8; #4, #10, #12, #13 are 6-12 month plays. "intégration agent ia pme bordeaux", "automatisation ia pme nouvelle-aquitaine" and "agence automatisation ia bordeaux" have zero autocomplete: use them as H2/FAQ phrasing and CiteMe tracking prompts, not page targets. GEO benchmark competitors: Althoce, IGK Digital, Mink, Tensoria.
+
+### Route additions vs `src/i18n/routing.ts`
+
+Present today: `/`, `/services/creation-site-web`, `/services/agents-ia`, `/forward-deployed-engineer`, `/tarifs`, `/realisations(/[slug])`, `/a-propos`, `/agence-ia-bordeaux`, `/contact`, `/blog(/[slug])`, `/mentions-legales`, `/confidentialite`.
+
+| Route (FR) | EN pathname | Indexed | When |
+|---|---|---|---|
+| `/services/audit-ia` | `/services/ai-audit` | yes | later per spec (needs audit credit terms) |
+| `/services/automatisation-ia` | `/services/ai-automation` | yes | later per spec |
+| `/services/geo-referencement-ia` | `/services/ai-search-optimization` | yes | later per spec (needs Hop Hop Immo consent) |
+| `/services/developpeur-ia-freelance` | `/services/freelance-ai-developer` | yes | not in spec; overlaps `/forward-deployed-engineer`, see decisions |
+| `/pour/agences` | FR only | noindex | with outreach |
+| `/pour/startups-sprint-ia` | FR only | noindex | with outreach, first |
+| `/pour/equipe-tech-temps-partage` | FR only | noindex | with outreach |
+| `/pour/pme-bordeaux` | FR only | noindex | after Google reviews exist |
+
+Pillar slugs fit the existing `/blog/[slug]`; no route change.
+
+### Pillar articles
+
+| # | Title | Slug | Target |
+|---|---|---|---|
+| 1 | Combien coûte un agent IA pour une PME en 2026 ? (grille de prix réelle) | `/blog/cout-agent-ia-pme` | #5, #4 |
+| 2 | Audit IA Bpifrance (Diagnostic Data IA) : éligibilité, prix, démarche | `/blog/audit-ia-bpifrance-diagnostic-data-ia` | #7, #14, #6 |
+| 3 | Comment intégrer l'IA dans une PME : méthode en 4 étapes | `/blog/integrer-ia-pme-methode` | #4, #3 |
+| 4 | Forward Deployed Engineer : définition, rôle, et version freelance pour les PME | `/blog/forward-deployed-engineer-definition` | #8, #9, #10 |
+| 5 | Être cité par ChatGPT et Perplexity : ce que montrent les données | `/blog/etre-cite-par-chatgpt-perplexity` | #13 |
+
+Pillar 2 facts (10 000 € HT, 40 % covered, up to 8 days, 10-2 000 FTE, >= 1 M€ revenue) come from les-aides.fr; an older sheet says 50 % and 3 000-10 000 € HT. Not checked against the official Bpifrance page. Pillar 5 needs Hop Hop Immo consent. Every pillar: byline to `/a-propos`, H2s as real questions, answer first, dated source after every number.
+
+### GEO checklist mapped to files (condensed)
+
+From CiteMe's own rules (`docs-citeme/docs/plateforme/geo-score.md`, `concept-geo/*`, `app-citeme/src/services/lite-audit/*`): be found (crawlable, fast, server-rendered) and be citable (standalone passages, at least 5 verifiable facts per 200-300 words, numbers > entities > dates > comparisons).
+
+- [ ] `src/app/robots.ts`: allow GPTBot, OAI-SearchBot, ChatGPT-User, PerplexityBot, ClaudeBot, Claude-SearchBot, Google-Extended, Bingbot; sitemap line; one canonical host.
+- [ ] `src/app/sitemap.ts`: every pathname from `routing.ts` with fr/en `alternates.languages` and real `lastModified`; `/pour/*` excluded.
+- [ ] `src/app/llms.txt/route.ts`: generated from `src/lib/offers.ts` + `src/lib/site.ts` so prices never drift (ships because CiteMe checks it; zero expected lift).
+- [ ] `src/lib/seo/json-ld.tsx`: one server helper, stable `@id`s (`https://klyx.fr/#organization`), values from `src/lib/site.ts`. Layout: Organization + ProfessionalService + WebSite. Services: Service + Offer (`valueAddedTaxIncluded: false`) + FAQPage + BreadcrumbList. `/tarifs`: OfferCatalog. `/a-propos`: Person + AboutPage. `/agence-ia-bordeaux`: LocalBusiness with address, geo, areaServed, hasMap. Blog: BlogPosting with author Person and honest `dateModified`. Review only for visible consented testimonials.
+- [ ] `src/components/sections/faq.tsx`: answers in initial HTML, same array feeds FAQPage, 5-8 per page, 40-80 words, no duplicates across pages.
+- [ ] `generateMetadata` on every page: title under 60 chars, description 100-160, canonical, hreflang, OG image; one H1, at least 2 H2, alt on every image.
+- [ ] TTFB under 500 ms on key pages; no price or FAQ text behind client JS.
+- [ ] Entity: one canonical description sentence reused in JSON-LD, meta description of `/`, llms.txt, GBP, LinkedIn, Malt, Pappers. sameAs only for live profiles.
+- [ ] Off-site: GBP with reviews, directory listings (La Fabrique du Net, Sortlist, Codeur, Malt), French Tech Bordeaux, client footers.
+- [ ] Measure: Klyx project in CiteMe with 20-30 French prompts built from the 14 queries, baseline before launch, re-audit after each batch; log AI referrers; target CiteMe technique score 80+.
+
+### Sources
+
+- Query map, architecture, GEO rules: session research `query-map-geo.md`; CiteMe docs and code read-only under `/Users/samsepiol/Downloads/GithubRepos/Work/Citeme`.
+- [1] [La Fabrique du Net IGK Digital](https://www.lafabriquedunet.fr/agences/agence/igk-digital), [Sortlist Althoce](https://www.sortlist.co.uk/agency/althoce), [Tensoria](https://tensoria.fr/agence-ia-bordeaux), [AgentImpact](https://www.lafabriquedunet.fr/agences/agence/agentimpact), [category page](https://www.lafabriquedunet.fr/agences/pages/agences-automatisation-ia)
+- [2] [The Intelligence Academy cost guide](https://www.the-intelligence-academy.com/blog/cout-agent-ia-pme-budget-roi), [PME guide](https://www.the-intelligence-academy.com/blog/agent-ia-pour-pme-guide-complet-2026), [JDN](https://www.journaldunet.com/intelligence-artificielle/1538971-les-agents-ia-nouveaux-superpouvoirs-des-pme-et-eti-francaises) (vendor figures, unverified)
+- [3] [The Intelligence Academy audit](https://www.the-intelligence-academy.com/blog/audit-intelligence-artificielle-entreprise), [Aktantis](https://aktantis.com/wp-content/uploads/2025/04/fiches_DIAGNOSTIC_FLASH_IA_AKTANTIS_2025.pdf)
+- [4] [les-aides.fr Diagnostic Data IA](https://les-aides.fr/aide/aVkf3w/bpifrance/diagnostic-data-intelligence-artificielle.html), [Bpifrance cahier des charges](https://diaginno.bpifrance.fr/storage/sites/2/2023/07/Diagnostic-Data-IA-Cahier-des-charges.pdf), [IA Booster France 2030](https://www.entreprises.gouv.fr/la-dge/actualites/lancement-du-programme-ia-booster-france-2030) (official Bpifrance page not fetched)
+- [5] [OpenAI FDE Paris](https://openai.com/careers/forward-deployed-engineer-paris-paris-france/), [Anthropic France FDE](https://agentic-engineering-jobs.com/jobs/anthropic-forward-deployed-engineer-applied-ai-france-dWwfS3), [Indeed](https://fr.indeed.com/q-forward-deployed-engineer-emplois.html)
+- [6] [La Fabrique du Net TJM](https://www.lafabriquedunet.fr/agences/tendances/tarifs-des-developpeurs-freelances-dans-les-grandes-villes-de-france), [lefreelance.fr](https://lefreelance.fr/articles/devenir-consultant-ia-freelance/), [studeria](https://www.studeria.fr/articles-de-blog/tjm-consultant-ia-2026-tarifs-grille), [Codeur](https://www.codeur.com/developpeur/ia/tarif)
+- [7] [GetResponse](https://www.getresponse.com/fr/blog/combien-coute-landing-page), [Codeur](https://www.codeur.com/pages/prix-landing-page), [ComeUp](https://comeup.com/fr/experts/observatoire-prix-freelances-2026-t3)
+- [8] [INSEE Première 2120](https://www.insee.fr/fr/statistiques/9025878), [Eurostat](https://ec.europa.eu/eurostat/statistics-explained/index.php/Use_of_artificial_intelligence_in_enterprises)
+- [9] [SE Ranking llms.txt](https://seranking.com/blog/llms-txt/), [Search Atlas](https://searchatlas.com/blog/limits-of-llms-txt-for-ai-search-citation-study/)
+- [10] [Aggarwal et al., GEO](https://arxiv.org/abs/2311.09735)
+- Outreach page practices (message match, single CTA, above-the-fold attention, 5-second test): NN/g, Unbounce, CXL, Wynter, cited from memory and not re-fetched. Re-check before quoting any figure.
