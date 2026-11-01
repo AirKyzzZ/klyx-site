@@ -24,6 +24,8 @@ const nextConfig: NextConfig = {
   redirects: async () => legacyRedirects,
   headers: async () => [{ source: "/:path*", headers: securityHeaders }],
   pageExtensions: ["ts", "tsx", "mdx"],
+  // Optimistic routing predicts as-needed locale URLs wrong and refetches them in a loop.
+  experimental: { optimisticRouting: false },
   turbopack: {
     rules: {
       "*.css": {

@@ -41,7 +41,7 @@ test.describe("redesign screenshots", () => {
           }
           scrollTo(0, 0);
         });
-        await page.waitForLoadState("load");
+        await page.waitForLoadState("networkidle");
         await page.waitForFunction(() =>
           Array.from(document.images).every(
             (img) => img.complete || img.getClientRects().length === 0,
