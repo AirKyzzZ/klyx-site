@@ -120,7 +120,7 @@ test("offer pages outside agents and automation carry no stack strip", async ({
 });
 
 for (const path of ["/", "/services/automatisation-ia"]) {
-  test(`${path} hero logos are decorative and the AI step names the models`, async ({
+  test(`${path} hero logos are decorative and the AI step shows the model marks`, async ({
     page,
   }) => {
     await page.goto(path);
@@ -143,7 +143,7 @@ for (const path of ["/", "/services/automatisation-ia"]) {
       expect(node.iconHidden, node.text).toBe("true");
       expect(node.text.trim(), node.text).not.toBe("");
       if (node.models) {
-        expect(node.logos).toEqual([]);
+        expect(node.logos).toEqual(AI_MODELS.map((tool) => tool.logo));
         for (const { name } of AI_MODELS) expect(node.text).toContain(name);
       } else expect(node.logos).toHaveLength(1);
     }
