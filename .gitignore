@@ -24,3 +24,10 @@ yarn-error.log*
 next-env.d.ts
 /test-results/
 /playwright-report/
+
+/docs/screenshots/redesign/
+/docs/screenshots/pages/en-*
+/docs/screenshots/design-base/*
+!/docs/screenshots/design-base/mainline-demo-1440.png
+/docs/lighthouse/*.json
+!/docs/lighthouse/summary.json

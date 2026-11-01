@@ -1,10 +1,12 @@
-import { mkdirSync } from "node:fs";
+import { mkdirSync, writeFileSync } from "node:fs";
 
 import { expect, test } from "@playwright/test";
 
 import { NOT_FOUND_PATH, pagePaths } from "./route-paths";
 
 const OUTPUT_DIR = "docs/screenshots/redesign";
+const PAGES_DIR = "docs/screenshots/pages";
+const PAGE_WIDTHS = [1440, 390];
 const VIEWPORTS = [
   { width: 1440, height: 900 },
   { width: 768, height: 1024 },
@@ -36,6 +38,7 @@ test.describe("redesign screenshots", () => {
 
   test.beforeAll(() => {
     mkdirSync(OUTPUT_DIR, { recursive: true });
+    mkdirSync(PAGES_DIR, { recursive: true });
   });
 
   for (const route of routes) {
@@ -62,11 +65,17 @@ test.describe("redesign screenshots", () => {
           () => document.documentElement.scrollWidth,
         );
         expect(scrollWidth, route).toBeLessThanOrEqual(viewport.width);
-        await page.screenshot({
+        const shot = await page.screenshot({
           path: `${OUTPUT_DIR}/${fileStem(route)}-${viewport.width}.png`,
           fullPage: true,
           animations: "disabled",
         });
+        if (!route.startsWith("/en") && PAGE_WIDTHS.includes(viewport.width)) {
+          writeFileSync(
+            `${PAGES_DIR}/${fileStem(route)}-${viewport.width}.png`,
+            shot,
+          );
+        }
 
         const dir = `${OUTPUT_DIR}/${fileStem(route)}`;
         mkdirSync(dir, { recursive: true });

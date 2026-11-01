@@ -91,11 +91,25 @@ test("responses carry the security headers", async ({ request }) => {
   expect(headers["x-powered-by"]).toBeUndefined();
 });
 
-test("an unknown path renders the localized 404 page", async ({ page }) => {
-  const response = await page.goto(NOT_FOUND_PATH);
+test.describe("an unknown path without JavaScript", () => {
+  test.use({ javaScriptEnabled: false });
+
+  test("renders the global 404 with links to both homes", async ({ page }) => {
+    const response = await page.goto(NOT_FOUND_PATH);
+    expect(response?.status()).toBe(404);
+    await expect(page.locator("h1")).toHaveText("Page introuvable");
+    await expect(page.locator("main a[href='/']")).toHaveCount(1);
+    await expect(page.locator("main a[href='/en']")).toHaveCount(1);
+  });
+});
+
+test("an unknown case study renders the localized 404 page", async ({
+  page,
+}) => {
+  const response = await page.goto("/en/work/does-not-exist");
   expect(response?.status()).toBe(404);
-  await expect(page.locator("h1")).toHaveCount(1);
-  await expect(page.locator("main a[href='/realisations']")).toHaveCount(1);
+  await expect(page.locator("h1")).toHaveText("Page not found");
+  await expect(page.locator("main a[href='/en/work']")).toHaveCount(1);
 });
 
 test("/tarifs ledger cells never clip at 390px", async ({ page }) => {
@@ -131,6 +145,7 @@ for (const path of ["/realisations/kenzi", "/en/work/kenzi"]) {
   }) => {
     await page.goto(path);
     await expect(page.locator('a[href*="kenzievents.com"]')).toHaveCount(0);
+    await expect(page.getByText("kenzievents.com")).toHaveCount(0);
     const locale = path.startsWith("/en") ? "" : "/fr";
     const markdown = await request.get(`/md${locale}${path}`);
     expect(markdown.status()).toBe(200);

@@ -71,6 +71,8 @@ export default async function CasePage({ params }: CasePageProps) {
     { label: t("labels.stack"), value: meta.stack.join(", ") },
   ];
 
+  const liveUrl = meta.live === false ? null : meta.url;
+
   return (
     <>
       <Hero
@@ -101,7 +103,7 @@ export default async function CasePage({ params }: CasePageProps) {
             <BandPicture />
             <div className="absolute inset-x-[6%] top-[8%] lg:right-[16%] lg:left-[6%]">
               <BrowserFrame
-                url={meta.url}
+                url={liveUrl}
                 image={shot?.image ?? meta.image}
                 alt={meta.client}
                 sizes="(min-width: 1024px) 820px, 90vw"
@@ -110,7 +112,7 @@ export default async function CasePage({ params }: CasePageProps) {
             {shot && (
               <div className="absolute top-[34%] right-[5%] z-1 hidden w-[19%] lg:block">
                 <BrowserFrame
-                  url={meta.url}
+                  url={liveUrl}
                   image={`/realisations/${meta.slug}-390.png`}
                   alt=""
                   sizes="200px"

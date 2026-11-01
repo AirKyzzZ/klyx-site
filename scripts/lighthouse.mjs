@@ -8,6 +8,7 @@ const PATHS = ["/", "/services/agents-ia", "/tarifs", "/cas-usage/immobilier"];
 const LIVE_ORIGIN = "https://klyx.fr";
 const REPORT_DIR = "docs/lighthouse";
 const PROOF_FILE = "src/lib/proof/klyx-lighthouse.json";
+const SUMMARY_FILE = join(REPORT_DIR, "summary.json");
 const CATEGORIES = {
   performance: "performance",
   accessibility: "accessibility",
@@ -88,8 +89,22 @@ const results = PATHS.map((path) => {
   console.log(
     `${path}: ${JSON.stringify(scores)} LCP ${lcp} TBT ${tbt} CLS ${cls}`,
   );
-  return { path, scores };
+  return { path, scores, lcp, tbt, cls };
 });
+
+writeFileSync(
+  SUMMARY_FILE,
+  `${JSON.stringify(
+    {
+      base,
+      date,
+      tool: `${LIGHTHOUSE}, mobile preset, median of ${runs}`,
+      pages: results,
+    },
+    null,
+    2,
+  )}\n`,
+);
 
 const home = results.find((result) => result.path === "/");
 const live = base === LIVE_ORIGIN;

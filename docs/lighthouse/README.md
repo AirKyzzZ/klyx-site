@@ -9,7 +9,7 @@ node scripts/lighthouse.mjs --base https://klyx.fr   # after deploy
 node scripts/scroll-trace.mjs                  # 60fps scroll trace on /
 ```
 
-`scripts/lighthouse.mjs` runs `lighthouse@12.8.2` with the mobile preset, an odd number of times per page (`--runs`, default 3), and keeps the median run (by performance) as `docs/lighthouse/<page>.json`. It writes the home scores and the origin it measured to `src/lib/proof/klyx-lighthouse.json`.
+`scripts/lighthouse.mjs` runs `lighthouse@12.8.2` with the mobile preset, an odd number of times per page (`--runs`, default 3), and keeps the median run (by performance) as `docs/lighthouse/<page>.json` (gitignored, full reports stay local). The scores, LCP, TBT and CLS per page go to `docs/lighthouse/summary.json`, which is tracked. It writes the home scores and the origin it measured to `src/lib/proof/klyx-lighthouse.json`.
 
 Only a run with `--base https://klyx.fr` writes `status: "measured"`. Any other origin writes `status: "local"`, and `verifyLighthouse` ignores it: the Sites scenario chip, its « Score Lighthouse réel » caption and the Lighthouse proof card stay hidden until the post-deploy run (see `docs/copy/TODO-maxime.md`, launch blockers). Rebuild after a run so the pages pick up the file.
 

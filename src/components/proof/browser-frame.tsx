@@ -17,7 +17,7 @@ export function BrowserFrame({
   imageClassName,
   compact = false,
 }: {
-  url: string;
+  url: string | null;
   image: string;
   alt: string;
   sizes: string;
@@ -49,9 +49,18 @@ export function BrowserFrame({
             />
           ))}
         </span>
-        <span className="bg-bg-sunken/60 flex h-6 max-w-full min-w-0 items-center gap-1.5 truncate rounded-xs px-2.5">
-          <Lock aria-hidden="true" className="size-3 shrink-0" />
-          {hostOf(url)}
+        <span
+          className={cn(
+            "bg-bg-sunken/60 flex h-6 max-w-full min-w-0 items-center gap-1.5 truncate rounded-xs px-2.5",
+            !url && "w-32",
+          )}
+        >
+          {url && (
+            <>
+              <Lock aria-hidden="true" className="size-3 shrink-0" />
+              {hostOf(url)}
+            </>
+          )}
         </span>
       </figcaption>
       <div className={cn("relative aspect-[16/10]", imageClassName)}>

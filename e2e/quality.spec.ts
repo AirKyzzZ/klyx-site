@@ -1,6 +1,6 @@
 import { expect, type Page, test } from "@playwright/test";
 
-import { NOT_FOUND_PATH, pagePaths } from "./route-paths";
+import { pagePaths } from "./route-paths";
 
 const WIDTHS = [390, 768, 1440];
 const MAX_CLS = 0.02;
@@ -89,10 +89,6 @@ for (const route of pagePaths) {
         test.use({ javaScriptEnabled: false });
 
         test("h1, prices and FAQ answers are visible", async ({ page }) => {
-          test.fixme(
-            route === NOT_FOUND_PATH,
-            "Next renders notFound() with an empty body before hydration; needs experimental.globalNotFound (Maxime to approve)",
-          );
           await page.goto(route);
           const h1 = page.locator("h1");
           await expect(h1).toBeVisible();
