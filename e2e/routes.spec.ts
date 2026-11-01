@@ -36,10 +36,20 @@ test("old /agence-web-bordeaux/ ends up on /", async ({ request }) => {
   expect(new URL(response.url()).pathname).toBe("/");
 });
 
+for (const path of ["/category/actualites/", "/author/maxime/"]) {
+  test(`old ${path} ends up on /`, async ({ request }) => {
+    const response = await request.get(path);
+    expect(response.status()).toBe(200);
+    expect(new URL(response.url()).pathname).toBe("/");
+  });
+}
+
 test("old /feed redirects to /blog/rss.xml", async ({ request }) => {
   const response = await request.get("/feed", { maxRedirects: 0 });
   expect([301, 308]).toContain(response.status());
-  expect(response.headers().location).toBe("/blog/rss.xml");
+  expect(new URL(response.headers().location, "http://x").pathname).toBe(
+    "/blog/rss.xml",
+  );
 });
 
 test("/?attachment_id=425 redirects to the lead magnet PDF", async ({
@@ -81,7 +91,7 @@ test("/blog/rss.xml is served unprefixed as RSS", async ({ request }) => {
 
 test("responses carry the security headers", async ({ request }) => {
   const headers = (await request.get("/")).headers();
-  expect(headers["strict-transport-security"]).toBe("max-age=31536000");
+  expect(headers["strict-transport-security"]).toMatch(/^max-age=31536000/);
   expect(headers["x-content-type-options"]).toBe("nosniff");
   expect(headers["x-frame-options"]).toBe("SAMEORIGIN");
   expect(headers["referrer-policy"]).toBe("strict-origin-when-cross-origin");

@@ -28,6 +28,28 @@ export const legacyRedirects: LegacyRedirect[] = [
   },
 ];
 
+function matchesSource(source: string, pathname: string): boolean {
+  if (!source.endsWith("/:path*")) return pathname === source;
+  const base = source.slice(0, -"/:path*".length);
+  return pathname === base || pathname.startsWith(`${base}/`);
+}
+
+export function findLegacyRedirect(
+  pathname: string,
+  searchParams: URLSearchParams,
+): string | null {
+  const path =
+    pathname.length > 1 && pathname.endsWith("/")
+      ? pathname.slice(0, -1)
+      : pathname;
+  const rule = legacyRedirects.find(
+    ({ source, has = [] }) =>
+      matchesSource(source, path) &&
+      has.every(({ key, value }) => searchParams.get(key) === value),
+  );
+  return rule?.destination ?? null;
+}
+
 const GONE_PATTERN =
   /^\/(wp-admin|wp-json|wp-content)(\/|$)|^\/(wp-login|xmlrpc)\.php$/;
 
