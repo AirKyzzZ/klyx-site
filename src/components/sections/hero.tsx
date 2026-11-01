@@ -127,7 +127,7 @@ export async function HomeHero({ locale }: { locale: Locale }) {
   const tabs = await getTranslations({ locale, namespace: "liveSystem.tabs" });
 
   return (
-    <section data-home-hero className="relative pt-24 pb-16 md:pt-20 md:pb-24">
+    <section data-home-hero className="relative pt-28 pb-16 md:pb-24">
       <div className="container">
         <div>
           <p className="hero-in type-label text-text-3" style={delay(0)}>
@@ -174,7 +174,7 @@ export async function HomeHero({ locale }: { locale: Locale }) {
           className="hero-in mt-6"
           style={delay(0.45)}
         />
-        <div className="hero-in mt-10 md:mt-8" style={delay(0.6)}>
+        <div className="hero-in mt-10 md:mt-6" style={delay(0.6)}>
           <LiveSystem
             scenarioIds={[...HOME_SCENARIOS]}
             initial="agents"

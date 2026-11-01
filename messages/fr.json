@@ -33,7 +33,7 @@
     "companyTitle": "Klyx",
     "legalTitle": "Informations",
     "sisterSitesTitle": "Les autres activités Klyx",
-    "studio": "Klyx Studio : TODO(maxime) une phrase sur ce que fait studio.klyx.fr.",
+    "studio": "Klyx Studio",
     "estate": "Klyx Estate : des films et des visuels pour lancer les mandats immobiliers de prestige.",
     "legal": "Mentions légales",
     "privacy": "Confidentialité",
@@ -57,24 +57,24 @@
     },
     "offers": {
       "title": "Trois façons",
-      "subtitle": "Les prix sont publics et en € HT. Le devis est gratuit, et le périmètre est écrit avant de commencer.",
+      "subtitle": "Les prix sont affichés, en € HT. Le devis est gratuit, et on fixe le périmètre par écrit avant de commencer.",
       "link": "Voir l'offre",
       "cards": {
         "sites": {
           "name": "Sites et landing pages",
-          "outcome": "Un site rapide que Google et les IA savent lire, en ligne en 1 à 4 semaines.",
+          "outcome": "Un site rapide et clair, que Google et ChatGPT savent lire. En ligne en 1 à 4 semaines.",
           "price": "À partir de {price}",
           "duration": "1 à 4 semaines"
         },
         "agents": {
-          "name": "IA et agents",
-          "outcome": "Un workflow automatisé en production en 2 semaines, avec le code dans votre repo.",
+          "name": "Agents IA",
+          "outcome": "On branche l'IA sur vos outils pour qu'une tâche répétitive se fasse seule. En production en 2 semaines, et le code reste chez vous.",
           "price": "À partir de {price}",
           "duration": "2 semaines"
         },
         "fde": {
           "name": "Forward Deployed Engineer",
-          "outcome": "Un développeur IA dans votre équipe 2 à 3 jours par semaine, pendant 4 semaines ou plus.",
+          "outcome": "Un développeur de l'agence intégré à votre équipe 2 à 3 jours par semaine, pendant 4 semaines ou plus. Il livre vos fonctionnalités IA dans votre propre code.",
           "price": "À partir de {price} / jour",
           "duration": "4 semaines minimum"
         }
@@ -89,7 +89,7 @@
       "steps": {
         "sites": {
           "a": "Brief",
-          "b": "Build",
+          "b": "Site",
           "c": "En ligne"
         },
         "agents": {
@@ -98,9 +98,9 @@
           "c": "En prod"
         },
         "fde": {
-          "a": "Ticket",
-          "b": "PR",
-          "c": "Merge"
+          "a": "Demande",
+          "b": "Code",
+          "c": "Livré"
         }
       }
     },
@@ -178,15 +178,15 @@
       }
     },
     "founder": {
-      "title": "Qui construit",
-      "body": "Klyx est une agence IA basée à Bordeaux. Maxime Mansiet, notre lead engineer, est votre interlocuteur direct du premier appel à la passation : il cadre le projet, relit chaque changement et le met en production.",
-      "experience": "TODO(maxime): Chez 2060.io, Maxime développe le serveur MCP et des agents IA de Verana, une infrastructure de confiance pour l'identité numérique européenne. Il a aussi cofondé CiteMe, qui mesure la visibilité des marques dans ChatGPT et Perplexity.",
+      "title": "Qui est derrière",
+      "body": "Klyx est une agence IA basée à Bordeaux. Maxime Mansiet, notre lead engineer, est votre interlocuteur direct du premier appel à la passation : il cadre le projet et le suit jusqu'à la mise en production.",
+      "experience": "Maxime a aussi cofondé CiteMe, un outil qui mesure la visibilité des marques dans ChatGPT et Perplexity.",
       "github": "GitHub de Maxime",
       "linkedin": "LinkedIn de Maxime",
       "about": "Voir l'équipe",
-      "titleEmphasis": "vos agents.",
+      "titleEmphasis": "votre projet.",
       "products": "Cofondé par Maxime",
-      "caption": "Des rôles, pas des photos de stock · Bordeaux",
+      "caption": "Klyx · Bordeaux",
       "roster": {
         "window": "klyx: ~/équipe",
         "file": "team.yml",
@@ -203,13 +203,13 @@
           },
           "agents": {
             "role": "agents",
-            "who": "Claude Code",
-            "scope": "tâches cadrées, chaque changement relu"
+            "who": "agents de code IA",
+            "scope": "tâches cadrées, code relu avant la mise en prod"
           },
           "partners": {
-            "role": "partenaires",
-            "who": "design, spécialités · TODO(maxime)",
-            "scope": "si le projet le demande"
+            "role": "spécialistes",
+            "who": "au cas par cas",
+            "scope": "si le projet le demande, on vous le dit avant"
           }
         }
       }
@@ -245,7 +245,7 @@
         },
         "team": {
           "question": "Qui travaille sur notre projet ?",
-          "answer": "Maxime Mansiet, notre lead engineer, du premier appel à la passation. Il confie des tâches cadrées à des agents Claude Code et relit chaque changement avant la mise en production. Si le projet demande du design ou une spécialité, on fait appel à un partenaire et on vous le dit avant. TODO(maxime): préciser les spécialités couvertes par les partenaires et comment ils interviennent. Le code est dans votre repo dès le premier jour, et chaque projet se termine par une passation écrite pour qu'un autre développeur puisse reprendre. En Forward Deployed Engineer, on prend deux clients au plus en même temps, et on ne propose pas d'astreinte 24 h/24."
+          "answer": "Maxime Mansiet, notre lead engineer, du premier appel à la passation. Il confie des tâches bien délimitées à des agents de code IA, et le code qu'ils produisent est relu avant la mise en production. Si le projet demande du design ou une spécialité, on s'associe à un spécialiste et on vous le dit avant. Le code est dans votre repo dès le premier jour, et chaque projet se termine par une passation écrite pour qu'un autre développeur puisse reprendre. En Forward Deployed Engineer, on prend deux clients au plus en même temps, et on ne propose pas d'astreinte 24 h/24."
         },
         "production": {
           "question": "Que veut dire « en production » ?",
@@ -253,7 +253,7 @@
         },
         "data": {
           "question": "Que deviennent nos données ?",
-          "answer": "Vos comptes et vos outils restent à votre nom. Pour que l'IA traite une demande, les données passent par l'API d'un fournisseur de modèle, comme OpenAI ou Anthropic, qui par défaut ne les utilise pas pour entraîner ses modèles. Si vous avez besoin d'un hébergement dans l'UE ou d'un modèle local, on le prévoit dans le devis. TODO(maxime): fournisseurs de modèles utilisés par défaut."
+          "answer": "Vos comptes et vos outils restent à votre nom. Pour que l'IA traite une demande, les données passent par l'API d'un fournisseur de modèle, comme OpenAI ou Anthropic, qui par défaut ne les utilise pas pour entraîner ses modèles. Si vous avez besoin d'un hébergement dans l'UE ou d'un modèle local, on le prévoit dans le devis."
         },
         "remote": {
           "question": "Travaillez-vous avec des équipes hors de Bordeaux ?",
@@ -277,7 +277,7 @@
       "label": "Engagements vérifiables",
       "repo": "Code dans votre repo dès le jour 1",
       "prices": "Prix publics, en € HT",
-      "siret": "Bordeaux · SIRET {siret}"
+      "base": "Basés à Bordeaux, à distance partout en France"
     },
     "eyebrows": {
       "proof": "Preuves",
@@ -901,7 +901,7 @@
         },
         "duration": {
           "question": "Combien de temps dure l'audit ?",
-          "answer": "Une à deux semaines entre le premier entretien et la restitution. Les entretiens prennent environ une heure par personne, et on demande à votre équipe de nous montrer ses outils tels qu'elle les utilise. Le reste se fait de notre côté : cartographie, notation des automatisations possibles et rédaction de la roadmap. Vous n'avez rien à préparer avant."
+          "answer": "Une à deux semaines entre le premier entretien et la restitution. Les entretiens prennent environ une heure par personne, et nous demandons à votre équipe de nous montrer ses outils tels qu'elle les utilise. Le reste se fait de notre côté : cartographie, notation des automatisations possibles et rédaction de la roadmap. Vous n'avez rien à préparer avant."
         },
         "deliverable": {
           "question": "Qu'est-ce que je reçois à la fin ?",
@@ -913,7 +913,7 @@
         },
         "noTech": {
           "question": "Faut-il une équipe technique pour suivre la roadmap ?",
-          "answer": "Non. La plupart des PME qu'on accompagne n'ont pas de développeur en interne. On écrit la roadmap pour la personne qui décide, sans jargon, et chaque recommandation dit qui peut la réaliser : vous avec un outil comme Make ou n8n, nous, ou un autre prestataire. Quand un point demande une vraie compétence technique, on le précise."
+          "answer": "Non. La plupart des PME qu'on accompagne n'ont pas de développeur en interne. Nous écrivons la roadmap pour la personne qui décide, sans jargon, et chaque recommandation dit qui peut la réaliser : vous avec un outil comme Make ou n8n, nous, ou un autre prestataire. Quand un point demande une vraie compétence technique, on le précise."
         },
         "next": {
           "question": "Dois-je vous confier la suite ?",
@@ -1347,9 +1347,9 @@
     },
     "story": {
       "title": "Maxime Mansiet,",
-      "intro": "Maxime a 20 ans. Il a fondé Klyx à Bordeaux pour livrer lui-même ce que l'agence vend : des sites rapides, des agents IA et des automatisations.",
-      "work": "TODO(maxime): Chez 2060.io, Maxime développe le serveur MCP et des agents IA de Verana, une infrastructure de confiance pour l'identité numérique européenne.",
-      "citeme": "TODO(maxime): Il a cofondé CiteMe, un outil qui suit les citations des marques dans ChatGPT, Gemini et Perplexity.",
+      "intro": "Maxime a fondé Klyx à Bordeaux. Il suit chaque projet en lead engineer, du premier appel à la mise en production.",
+      "work": "En parallèle, il développe des serveurs MCP et des agents IA pour une infrastructure européenne d'identité numérique.",
+      "citeme": "Il a cofondé CiteMe, un outil qui suit les citations des marques dans ChatGPT, Gemini et Perplexity.",
       "titleEmphasis": "lead engineer."
     },
     "facts": {
@@ -1374,16 +1374,12 @@
     },
     "trust": {
       "title": "Pourquoi nous",
-      "body": "On ne vous demande pas de nous croire sur parole. Tout ce qui suit se vérifie avant de signer, et on vous dit dès le premier appel ce qu'on ne fait pas.",
+      "body": "Vous n'avez pas à nous croire sur parole. Tout ce qui suit se vérifie avant de signer, et dès le premier appel, nous vous disons ce que nous ne faisons pas.",
       "titleEmphasis": "faire confiance",
       "items": {
         "code": {
           "label": "Code public",
           "value": "{github}"
-        },
-        "siret": {
-          "label": "SIRET",
-          "value": "{siret} TODO(maxime): confirmer"
         },
         "prices": {
           "label": "Prix publics",
@@ -1397,7 +1393,7 @@
     },
     "lines": {
       "title": "Les autres activités Klyx",
-      "studio": "Klyx Studio : TODO(maxime) une phrase sur ce que fait studio.klyx.fr.",
+      "studio": "Klyx Studio",
       "estate": "Klyx Estate : des films et des visuels pour lancer les mandats immobiliers de prestige."
     },
     "cta": {
@@ -1421,8 +1417,8 @@
       "title": "Qui travaille",
       "titleEmphasis": "sur votre projet.",
       "intro": "Chaque projet a un lead engineer, Maxime Mansiet. Il fait le premier appel, écrit le périmètre, et c'est lui que vous avez au téléphone jusqu'à la passation.",
-      "agents": "Des agents Claude Code prennent les tâches bien délimitées : un composant, un test, une migration. Rien ne part en production sans la relecture de Maxime.",
-      "partners": "Pour le design ou une spécialité hors de notre cœur de métier, nous faisons appel à des partenaires de confiance, et vous le savez avant de signer. TODO(maxime): préciser les spécialités couvertes par les partenaires et comment ils interviennent.",
+      "agents": "Des agents de code IA prennent les tâches bien délimitées : un composant, un test, une migration. Le code qu'ils produisent est relu avant la mise en production.",
+      "partners": "Si le projet le demande, on s'associe à un spécialiste, et on vous le dit avant.",
       "handover": "Le code est dans votre repo dès le premier jour. À la fin, une passation écrite permet à n'importe quel développeur de reprendre."
     }
   },
@@ -1714,7 +1710,7 @@
     },
     "about": {
       "title": "L'équipe Klyx, agence IA à Bordeaux | Klyx",
-      "description": "Qui travaille sur votre projet chez Klyx : un lead engineer, Maxime Mansiet, des agents relus à chaque changement et des partenaires quand le projet le demande."
+      "description": "Qui travaille sur votre projet chez Klyx : un lead engineer, Maxime Mansiet, des agents IA dont le code est relu avant la mise en production, et un spécialiste si le projet le demande."
     },
     "bordeaux": {
       "title": "Agence IA à Bordeaux pour les PME | Klyx",
@@ -1757,9 +1753,9 @@
   },
   "liveSystem": {
     "label": "Illustration · scénario type",
-    "caption": "Exemple de workflow qu'on construit. Noms et valeurs fictifs.",
+    "caption": "Exemples de ce qu'on construit : le travail répétitif se fait tout seul, et votre équipe garde son temps pour ses clients. Noms et valeurs fictifs.",
     "tablist": "Scénarios",
-    "trace": "trace",
+    "trace": "journal",
     "run": {
       "active": "en cours",
       "done": "terminé"
@@ -1774,182 +1770,186 @@
     },
     "scenarios": {
       "agents": {
-        "title": "lead-router",
+        "title": "tri des demandes",
         "nodes": {
-          "inbox": "Inbox",
-          "classifier": "Classifieur",
-          "crm": "CRM",
-          "slack": "Slack",
-          "archive": "Archive"
+          "inbox": "Email reçu",
+          "classifier": "L'IA le trie",
+          "crm": "CRM à jour",
+          "slack": "Équipe avertie",
+          "archive": "Mis de côté"
         },
         "meta": {
           "inbox": "gmail",
-          "classifier": "llm · classify",
+          "classifier": "modèle IA · tri",
           "crm": "hubspot",
-          "slack": "#sales",
+          "slack": "#ventes",
           "archive": "hors lead"
         },
         "trace": {
-          "watch": "inbox.watch · 1 nouvel email",
-          "think": "Réflexion 0,3 s",
-          "classify": "classify(email_3891)",
-          "score": "→ lead · score 0,86",
-          "update": "crm.contacts.update",
-          "retry": "429 · nouvel essai 1/3",
-          "updated": "contact mis à jour · c_2207",
-          "post": "slack.post #sales",
-          "done": "lead routé en 1,8 s"
+          "watch": "Email reçu : demande de devis",
+          "think": "modèle IA · lecture 0,3 s",
+          "classify": "L'IA le lit : c'est un lead",
+          "score": "Lead sérieux, note 86/100",
+          "update": "Création de la fiche CRM",
+          "retry": "CRM lent, nouvel essai",
+          "updated": "Fiche ajoutée au CRM",
+          "post": "Message à l'équipe sur Slack",
+          "done": "Lead traité en 1,8 s"
         },
-        "chip": "Lead routé · 1,8 s"
+        "chip": "Lead transmis · 1,8 s",
+        "caption": "Exemple d'agent qu'on construit : chaque demande est triée et transmise en quelques secondes, sans qu'il faille surveiller la boîte mail. Noms et valeurs fictifs."
       },
       "sites": {
-        "title": "klyx.fr · deploy",
+        "title": "klyx.fr · mise en ligne",
         "nodes": {
-          "commit": "Commit",
-          "build": "Build",
-          "lighthouse": "Lighthouse",
-          "deploy": "Deploy",
-          "llms": "llms.txt"
+          "commit": "Mise à jour",
+          "build": "Site compilé",
+          "lighthouse": "Vitesse testée",
+          "deploy": "Mis en ligne",
+          "llms": "Prêt pour l'IA"
         },
         "meta": {
-          "commit": "main",
+          "commit": "git push",
           "build": "next build",
-          "lighthouse": "mobile",
-          "deploy": "prod",
-          "llms": "+ sitemap"
+          "lighthouse": "lighthouse",
+          "deploy": "klyx.fr",
+          "llms": "llms.txt"
         },
         "trace": {
-          "push": "git push · main",
-          "build": "next build",
-          "built": "build ok · pages statiques",
-          "lighthouse": "lighthouse --preset=mobile",
-          "deploy": "deploy · klyx.fr",
-          "retry": "edge timeout · nouvel essai",
-          "deployed": "en ligne · klyx.fr",
-          "sitemap": "sitemap.xml généré",
-          "llms": "llms.txt généré"
+          "push": "Modification envoyée",
+          "build": "Compilation du site",
+          "built": "Site compilé, pages statiques",
+          "lighthouse": "Test de vitesse sur mobile",
+          "deploy": "Mise en ligne sur klyx.fr",
+          "retry": "Serveur lent, nouvel essai",
+          "deployed": "En ligne sur klyx.fr",
+          "sitemap": "sitemap.xml à jour",
+          "llms": "llms.txt prêt pour les IA"
         },
         "chip": "Lighthouse {score} · klyx.fr",
         "chipPending": "Lighthouse · mesure en cours"
       },
       "fde": {
-        "title": "ENG-142 · export-csv",
+        "title": "ENG-142 · export CSV",
         "nodes": {
-          "ticket": "Ticket",
-          "repo": "Repo",
-          "engineer": "Dev + agent",
-          "pr": "PR",
-          "review": "Review",
-          "deploy": "Deploy"
+          "ticket": "Demande",
+          "repo": "Votre code",
+          "engineer": "Dev + agent IA",
+          "pr": "Correctif",
+          "review": "Relecture",
+          "deploy": "Livré"
         },
         "meta": {
           "ticket": "ENG-142",
-          "repo": "branch",
-          "engineer": "pair · ci",
-          "pr": "#87",
-          "review": "1 comment.",
+          "repo": "dépôt git",
+          "engineer": "en binôme",
+          "pr": "PR #87",
+          "review": "1 remarque",
           "deploy": "prod"
         },
         "trace": {
-          "ticket": "ENG-142 · export CSV lent",
-          "branch": "git checkout -b fix/export-csv",
-          "read": "agent · lecture de 14 fichiers",
-          "testFail": "pnpm test · 1 échec",
-          "fix": "fix · requête paginée",
-          "testPass": "pnpm test · 128 passés",
-          "pr": "gh pr create · #87",
-          "review": "review · 1 commentaire, résolu",
-          "merged": "mergée · déployée en prod"
+          "ticket": "Ticket : l'export CSV est lent",
+          "branch": "Branche fix/export-csv créée",
+          "read": "agent IA · lit 14 fichiers",
+          "testFail": "Un test échoue, on corrige",
+          "fix": "Requête découpée en pages",
+          "testPass": "128 tests passent",
+          "pr": "Correctif proposé (PR #87)",
+          "review": "Relu, 1 remarque traitée",
+          "merged": "Validé et mis en prod"
         },
-        "chip": "PR mergée · tests ✓"
+        "chip": "Correctif en prod · tests ✓",
+        "caption": "Exemple de journée en FDE : un développeur de l'agence corrige un problème dans votre code, et le correctif part en production l'après-midi même. Noms et valeurs fictifs."
       },
       "audit": {
         "title": "audit · pme-exemple",
         "nodes": {
           "interviews": "Entretiens",
-          "mapping": "Processus",
-          "scoring": "Scoring",
-          "roadmap": "Roadmap"
+          "mapping": "Vos process",
+          "scoring": "Tri par gain",
+          "roadmap": "Plan d'action"
         },
         "meta": {
           "interviews": "4 pers.",
-          "mapping": "9 process",
-          "scoring": "llm · score",
+          "mapping": "9 repérés",
+          "scoring": "gain × effort",
           "roadmap": "top 3"
         },
         "trace": {
-          "interviews": "entretiens · 4 personnes",
-          "mapping": "cartographie · 9 processus",
-          "quotes": "relance devis · ~6 h/sem",
-          "invoices": "saisie factures · ~4 h/sem",
-          "missing": "données manquantes · emails",
-          "emails": "tri des emails · ~3 h/sem",
-          "scoring": "scoring · gain × faisabilité",
-          "roadmap": "roadmap · 3 workflows"
+          "interviews": "Entretiens avec 4 personnes",
+          "mapping": "9 tâches répétitives repérées",
+          "quotes": "Relance des devis : ~6 h/sem",
+          "invoices": "Saisie factures : ~4 h/sem",
+          "missing": "Données manquantes, on relance",
+          "emails": "Tri des emails : ~3 h/sem",
+          "scoring": "classement · gain × faisabilité",
+          "roadmap": "Plan d'action : 3 priorités"
         },
-        "chip": "Roadmap · 3 workflows priorisés",
-        "caption": "Exemple de déroulé d'audit. Noms et valeurs fictifs."
+        "chip": "Plan d'action · 3 priorités",
+        "caption": "Exemple de déroulé d'audit : vous repartez avec les tâches qui vous prennent le plus de temps, chiffrées et classées. Noms et valeurs fictifs."
       },
       "automation": {
-        "title": "factures-fournisseurs",
+        "title": "factures fournisseurs",
         "nodes": {
-          "email": "Email + PJ",
-          "extract": "Extraction",
-          "erp": "ERP",
-          "validation": "Validation",
-          "send": "Envoi"
+          "email": "Facture reçue",
+          "extract": "L'IA la lit",
+          "erp": "Brouillon ERP",
+          "validation": "Votre accord",
+          "send": "Envoyée"
         },
         "meta": {
-          "email": "pdf",
-          "extract": "llm · extract",
-          "erp": "draft",
-          "validation": "humain",
+          "email": "pdf joint",
+          "extract": "14 champs",
+          "erp": "à valider",
+          "validation": "compta",
           "send": "email"
         },
         "trace": {
-          "email": "email · facture_0412.pdf",
-          "extract": "extraction · 14 champs",
-          "vat": "TVA incohérente · ligne 3",
-          "recompute": "recalcul · TVA 20 % ok",
-          "draft": "erp · brouillon créé",
-          "waiting": "validation humaine · en attente",
-          "approved": "approuvée par la compta",
-          "sent": "facture saisie et envoyée"
+          "email": "Facture reçue par email (PDF)",
+          "extract": "L'IA relève 14 champs",
+          "vat": "TVA incohérente ligne 3",
+          "recompute": "TVA recalculée : 20 %, ok",
+          "draft": "Brouillon créé dans l'ERP",
+          "waiting": "en attente de validation",
+          "approved": "Validée par la compta",
+          "sent": "Facture saisie et envoyée"
         },
-        "chip": "Facture saisie et validée"
+        "chip": "Facture saisie et validée",
+        "caption": "Exemple d'automatisation : les factures fournisseurs se saisissent toutes seules, il ne vous reste qu'à valider. Noms et valeurs fictifs."
       },
       "geo": {
-        "title": "visibilite-ia · mensuel",
+        "title": "visibilité IA · mensuel",
         "nodes": {
-          "prompts": "Prompts",
+          "prompts": "Questions",
           "chatgpt": "ChatGPT",
           "perplexity": "Perplexity",
           "gemini": "Gemini",
-          "citation": "Citations",
+          "citation": "Cité ou pas ?",
           "report": "Rapport",
           "aio": "AI Overview"
         },
         "meta": {
-          "prompts": "30 prompts",
-          "chatgpt": "moteur",
-          "perplexity": "moteur",
-          "gemini": "moteur",
-          "citation": "llm · match",
+          "prompts": "30 testées",
+          "chatgpt": "moteur IA",
+          "perplexity": "moteur IA",
+          "gemini": "moteur IA",
+          "citation": "votre domaine",
           "report": "mensuel",
-          "aio": "moteur"
+          "aio": "moteur IA"
         },
         "trace": {
-          "prompts": "prompts · 30 requêtes cibles",
-          "chatgpt": "chatgpt · 30/30 réponses",
-          "perplexity": "perplexity · 30/30 réponses",
-          "geminiRetry": "gemini · timeout, nouvel essai",
-          "gemini": "gemini · 30/30 réponses",
-          "citations": "citations · recherche du domaine",
-          "sources": "sources · 31 domaines cités",
-          "report": "rapport · 30 prompts suivis",
-          "aio": "ai overviews · 30/30 réponses"
+          "prompts": "30 questions de vos clients",
+          "chatgpt": "ChatGPT : 30 réponses sur 30",
+          "perplexity": "Perplexity : 30 réponses",
+          "geminiRetry": "Gemini lent, nouvel essai",
+          "gemini": "Gemini : 30 réponses",
+          "citations": "recherche de votre domaine",
+          "sources": "31 sites cités en source",
+          "report": "Rapport : 30 questions suivies",
+          "aio": "AI Overviews : 30 réponses"
         },
-        "chip": "Rapport · 30 prompts suivis"
+        "chip": "Rapport · 30 questions suivies",
+        "caption": "Exemple de suivi mensuel : chaque mois, vous savez si ChatGPT et les autres moteurs IA citent votre site. Noms et valeurs fictifs."
       }
     }
   },

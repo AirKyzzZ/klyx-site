@@ -290,7 +290,7 @@
   align-items: center;
   gap: 7px;
   width: 44%;
-  padding: 5px 8px 5px 5px;
+  padding: 5px 14px 5px 5px;
   border: 1px solid var(--line-strong);
   border-radius: var(--r-md);
   background: var(--surface-2);
@@ -354,7 +354,10 @@
 
 .ls-node-label {
   color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
   font-weight: 500;
+  letter-spacing: -0.005em;
 }
 
 .ls-node-meta {
@@ -362,11 +365,11 @@
 }
 
 .ls-dot {
+  position: absolute;
+  top: 5px;
+  right: 5px;
   width: 6px;
   height: 6px;
-  flex: none;
-  align-self: flex-start;
-  margin-top: 4px;
   border: 1px solid var(--text-3);
   border-radius: 50%;
 }
@@ -669,9 +672,9 @@
   .ls-node {
     --nx: var(--x);
     --ny: var(--y);
-    width: 21%;
+    width: 23%;
     gap: 7px;
-    padding: 6px 8px 6px 6px;
+    padding: 6px 14px 6px 6px;
   }
 
   .ls-node-icon {
@@ -689,7 +692,7 @@
     }
 
     & .ls-node-label {
-      font-size: 0.8125rem;
+      font-size: 0.875rem;
     }
   }
 }

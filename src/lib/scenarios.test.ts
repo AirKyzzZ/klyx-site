@@ -101,6 +101,7 @@ describe("scenarios", () => {
 const MOBILE_LINES = 7;
 const DESKTOP_LINES = 11;
 const MOBILE_LINE_CHARS = 30;
+const NODE_LABEL_CHARS = 14;
 
 function text(messages: unknown, key: string) {
   const value = lookup(messages, key);
@@ -126,7 +127,10 @@ describe("scenario fit", () => {
     expect(scenario.nodes.filter((node) => node.agent)).toHaveLength(1);
     for (const node of scenario.nodes) {
       for (const messages of [fr, en]) {
-        expect(text(messages, node.labelKey).length).toBeLessThanOrEqual(11);
+        expect(
+          text(messages, node.labelKey).length,
+          text(messages, node.labelKey),
+        ).toBeLessThanOrEqual(NODE_LABEL_CHARS);
         expect(
           text(messages, node.metaKey).length,
           text(messages, node.metaKey),

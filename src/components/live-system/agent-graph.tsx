@@ -41,7 +41,7 @@ const DESKTOP = {
   height: 300,
   x: "x",
   y: "y",
-  halfWidth: { node: 76, agent: 94 },
+  halfWidth: { node: 83, agent: 94 },
   halfHeight: { node: 26, agent: 30 },
   vertical: false,
 } as const;

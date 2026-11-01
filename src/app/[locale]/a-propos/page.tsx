@@ -42,7 +42,6 @@ export default async function AboutPage({ params }: LocaleParams) {
   const founder = await getTranslations({ locale, namespace: "home.founder" });
   const facts = messageList(t, "facts.items", ["label", "value"]);
   const trustValues = {
-    siret: site.siret,
     github: site.socials.github.replace("https://", ""),
   };
   const trustKeys = messageKeys(t.raw("trust.items"));

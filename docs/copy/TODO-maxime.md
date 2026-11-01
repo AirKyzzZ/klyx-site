@@ -2,22 +2,24 @@
 
 Every `TODO(maxime)` in `messages/fr.json` and `messages/en.json` (same keys in both files). Each one renders visibly on the site until you resolve it: confirm and delete the marker, rewrite, or drop the sentence.
 
+Exception: the home page and À propos show no `TODO(maxime)` marker (review of 2026-11-01). There, the visible sentence was softened to what is true today or removed; the rows below marked « softened » still need your answer before the stronger wording can come back.
+
 ## Proof and identity
 
 | Page | Key | Claim | What to confirm |
 |---|---|---|---|
-| Home | `home.founder.experience` | Maxime builds Verana's MCP server and AI agents at 2060.io; co-founded CiteMe (now third person, agency voice) | Can Verana and 2060.io be named, and with what role wording? « cofondé CiteMe » is fine as written? |
-| Home, À propos | `home.founder.roster.items.partners.who` | Team roster lists « partenaires : design, spécialités » | Which specialties partners actually cover (design, motion, legal, data?) and whether you can name any of them |
-| Home, À propos | `home.faq.items.team.answer`, `about.team.partners` | Partners are brought in when a project needs design or a specialty, and the client is told before signing | How partners are engaged (subcontracted by Klyx, or contracted directly by the client), and whether « partenaires de confiance » holds today |
-| Home, À propos | `home.founder.roster.items.agents`, `about.team.agents` | Claude Code agents take scoped tasks and every change is reviewed by Maxime before production | Still how you work; OK to name Claude Code on the site? |
-| À propos | `about.story.work` | Same Verana / 2060.io sentence | Same as above |
-| À propos | `about.story.citeme` | Co-founded CiteMe, tracks brand citations in ChatGPT, Gemini, Perplexity | Wording OK? |
+| Home | `home.founder.experience` | Maxime builds Verana's MCP server and AI agents at 2060.io; co-founded CiteMe (now third person, agency voice) | Can Verana and 2060.io be named, and with what role wording? « cofondé CiteMe » is fine as written? Softened: the home now only says Maxime co-founded CiteMe |
+| Home, À propos | `home.founder.roster.items.partners.who` | Team roster lists « partenaires : design, spécialités » | Which specialties partners actually cover (design, motion, legal, data?) and whether you can name any of them. Softened: roster row is now « spécialistes · au cas par cas · si le projet le demande, on vous le dit avant » |
+| Home, À propos | `home.faq.items.team.answer`, `about.team.partners` | Partners are brought in when a project needs design or a specialty, and the client is told before signing | How partners are engaged (subcontracted by Klyx, or contracted directly by the client), and whether « partenaires de confiance » holds today. Softened: visible copy is now « si le projet le demande, on s'associe à un spécialiste, et on vous le dit avant » |
+| Home, À propos | `home.founder.roster.items.agents`, `about.team.agents`, `home.faq.items.team.answer`, `meta.about.description` | Claude Code agents take scoped tasks and every change is reviewed by Maxime before production | Still how you work; OK to name Claude Code on the site? Softened: visible copy now says « agents de code IA » and « le code qu'ils produisent est relu avant la mise en production », without naming Claude Code or Maxime as the reviewer |
+| À propos | `about.story.work` | Same Verana / 2060.io sentence | Same as above. Softened: visible text names neither Verana nor 2060.io (« une infrastructure européenne d'identité numérique ») |
+| À propos | `about.story.citeme` | Co-founded CiteMe, tracks brand citations in ChatGPT, Gemini, Perplexity | Wording OK? Marker removed (CiteMe co-founding is already shown on the home products row) |
 | Home | `home.proof.body` | Proof artefact next to the hero | Pick a real one: CiteMe PR list (count on GitHub first), Lighthouse score of a live client site, or a real agent run log |
 | Home | `home.testimonials.note` | 3 quotes reused verbatim (David A./PKBA, Antoni V./Kenzi, Clément D./Reciproq) | Consent from each client, initials vs full names, willing to take a reference call? Antoni's quote had an em dash, replaced with a comma: OK with him? EN versions are translations: OK? |
-| Home, Offres IA, Bordeaux | `home.faq.items.data.answer`, `agents.faq.items.data.answer`, `bordeaux.faq.items.data.answer` | Data goes through a model provider's API (e.g. OpenAI, Anthropic), which by default does not train on API data | Which providers you use by default, and that their API terms still say this |
+| Home, Offres IA, Bordeaux | `home.faq.items.data.answer`, `agents.faq.items.data.answer`, `bordeaux.faq.items.data.answer` | Data goes through a model provider's API (e.g. OpenAI, Anthropic), which by default does not train on API data | Which providers you use by default, and that their API terms still say this. Marker removed from the home FAQ (the sentence only states the providers' public API defaults) |
 | Offres IA | `agents.proof.body` | Hoppy (Hop Hop Immo) and CiteMe are "already in production" | What exactly was built on Hoppy, and can Hop Hop Immo be named this way? |
 | FDE | `fde.proof.body` | Public commit history, PRs to show | GitHub profile to link; Credo-ts PRs merged under your handle (do not say « contributeur » unless merged); CiteMe PR links |
-| Footer, À propos | `footer.studio`, `about.lines.studio` | One sentence on studio.klyx.fr | What studio.klyx.fr sells, in one line |
+| Footer, À propos | `footer.studio`, `about.lines.studio` | One sentence on studio.klyx.fr | What studio.klyx.fr sells, in one line. Softened: the line now just reads « Klyx Studio » next to the link |
 
 ## Offers and prices
 
@@ -61,7 +63,7 @@ Prices come from market research (`pricing-automation-geo.md`, 2026-10-31), not 
 | Page | Key | Claim | What to confirm |
 |---|---|---|---|
 | Agence IA Bordeaux | `bordeaux.local.body` | Can meet in person across the metro area and Gironde | Address or area to show (match Google Business Profile), and whether you travel |
-| À propos | `about.facts.items.siret.value` | SIRET 941 572 364 00029 (from `site.ts`) | Still correct for Klyx |
+| Footer, Mentions légales | `footer.siret` | SIRET 941 572 364 00029 (from `site.ts`), now shown only in the footer and legal pages (removed from the hero and À propos) | Still correct for Klyx |
 | Mentions légales | `legal.publisher.siret` | Same SIRET | Same |
 | Mentions légales | `legal.publisher.body` | Registered address | Address to publish |
 | Mentions légales | `legal.publisher.vat` | VAT statement | Your VAT status. Prices are shown « HT » everywhere: if you are on franchise en base (art. 293 B), the « HT » wording needs rethinking too |

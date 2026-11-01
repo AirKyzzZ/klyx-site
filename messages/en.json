@@ -33,7 +33,7 @@
     "companyTitle": "Klyx",
     "legalTitle": "Legal",
     "sisterSitesTitle": "Other Klyx lines",
-    "studio": "Klyx Studio: TODO(maxime) one sentence on what studio.klyx.fr does.",
+    "studio": "Klyx Studio",
     "estate": "Klyx Estate: films and visuals to launch high-end property listings.",
     "legal": "Legal notice",
     "privacy": "Privacy",
@@ -57,24 +57,24 @@
     },
     "offers": {
       "title": "Three ways",
-      "subtitle": "Prices are public and exclude VAT. The quote is free, and the scope is in writing before any work starts.",
+      "subtitle": "Prices are on the site, excl. VAT. The quote is free, and we agree the scope in writing before we start.",
       "link": "See the offer",
       "cards": {
         "sites": {
           "name": "Websites and landing pages",
-          "outcome": "A fast site that Google and AI engines can read, live in 1 to 4 weeks.",
+          "outcome": "A fast, clear site that Google and ChatGPT can read. Live in 1 to 4 weeks.",
           "price": "From {price}",
           "duration": "1 to 4 weeks"
         },
         "agents": {
-          "name": "AI and agents",
-          "outcome": "One automated workflow in production in 2 weeks, with the code in your repo.",
+          "name": "AI agents",
+          "outcome": "We plug AI into your tools so a repetitive task runs on its own. In production in 2 weeks, and the code stays yours.",
           "price": "From {price}",
           "duration": "2 weeks"
         },
         "fde": {
           "name": "Forward Deployed Engineer",
-          "outcome": "An AI developer inside your team 2 to 3 days a week, for 4 weeks or more.",
+          "outcome": "A developer from the agency inside your team 2 to 3 days a week, for 4 weeks or more, shipping your AI features in your own code.",
           "price": "From {price} / day",
           "duration": "4 weeks minimum"
         }
@@ -98,9 +98,9 @@
           "c": "In prod"
         },
         "fde": {
-          "a": "Ticket",
-          "b": "PR",
-          "c": "Merge"
+          "a": "Request",
+          "b": "Code",
+          "c": "Shipped"
         }
       }
     },
@@ -178,15 +178,15 @@
       }
     },
     "founder": {
-      "title": "Who builds",
-      "body": "Klyx is an AI agency based in Bordeaux. Maxime Mansiet, our lead engineer, is your direct contact from the first call to the handover: he scopes the project, reviews every change and ships it to production.",
-      "experience": "TODO(maxime): At 2060.io, Maxime builds the MCP server and AI agents for Verana, a trust infrastructure for European digital identity. He also co-founded CiteMe, which tracks how often brands get cited in ChatGPT and Perplexity.",
+      "title": "Who's behind",
+      "body": "Klyx is an AI agency based in Bordeaux. Maxime Mansiet, our lead engineer, is your direct contact from the first call to the handover: he scopes the project and follows it through to production.",
+      "experience": "Maxime also co-founded CiteMe, a tool that tracks how often brands get cited in ChatGPT and Perplexity.",
       "github": "Maxime's GitHub",
       "linkedin": "Maxime's LinkedIn",
       "about": "Meet the team",
-      "titleEmphasis": "your agents.",
+      "titleEmphasis": "your project.",
       "products": "Co-founded by Maxime",
-      "caption": "Roles, not stock photos · Bordeaux",
+      "caption": "Klyx · Bordeaux",
       "roster": {
         "window": "klyx: ~/team",
         "file": "team.yml",
@@ -203,13 +203,13 @@
           },
           "agents": {
             "role": "agents",
-            "who": "Claude Code",
-            "scope": "scoped tasks, every change reviewed"
+            "who": "AI coding agents",
+            "scope": "scoped tasks, code reviewed before release"
           },
           "partners": {
-            "role": "partners",
-            "who": "design, specialties · TODO(maxime)",
-            "scope": "when the project needs it"
+            "role": "specialists",
+            "who": "case by case",
+            "scope": "if the project needs one, we tell you first"
           }
         }
       }
@@ -245,7 +245,7 @@
         },
         "team": {
           "question": "Who works on our project?",
-          "answer": "Maxime Mansiet, our lead engineer, from the first call to the handover. He hands scoped tasks to Claude Code agents and reviews every change before it goes to production. If the project needs design or a specialty, we bring in a partner and tell you first. TODO(maxime): say which specialties partners cover and how they are brought in. The code is in your repo from day one, and every project ends with a written handover so another developer can pick it up. For Forward Deployed Engineer work, we take on two clients at most at a time, and we don't offer 24/7 on-call."
+          "answer": "Maxime Mansiet, our lead engineer, from the first call to the handover. He hands well-bounded tasks to AI coding agents, and the code they write is reviewed before it goes to production. If the project needs design or a specialty, we team up with a specialist and tell you first. The code is in your repo from day one, and every project ends with a written handover so another developer can pick it up. For Forward Deployed Engineer work, we take on two clients at most at a time, and we don't offer 24/7 on-call."
         },
         "production": {
           "question": "What do you mean by \"in production\"?",
@@ -253,7 +253,7 @@
         },
         "data": {
           "question": "What happens to our data?",
-          "answer": "Your accounts and tools stay in your name. For the AI to handle a request, data goes through a model provider's API, such as OpenAI or Anthropic, which by default doesn't use it to train its models. If you need EU hosting or a local model, we plan for it in the quote. TODO(maxime): default model providers."
+          "answer": "Your accounts and tools stay in your name. For the AI to handle a request, data goes through a model provider's API, such as OpenAI or Anthropic, which by default doesn't use it to train its models. If you need EU hosting or a local model, we plan for it in the quote."
         },
         "remote": {
           "question": "Do you work with teams outside Bordeaux?",
@@ -277,7 +277,7 @@
       "label": "Verifiable commitments",
       "repo": "Code in your repo from day 1",
       "prices": "Public prices, excl. VAT",
-      "siret": "Bordeaux · SIRET {siret}"
+      "base": "Based in Bordeaux, remote across France"
     },
     "eyebrows": {
       "proof": "Proof",
@@ -1347,9 +1347,9 @@
     },
     "story": {
       "title": "Maxime Mansiet,",
-      "intro": "Maxime is 20. He started Klyx in Bordeaux to deliver what the agency sells himself: fast websites, AI agents and automations.",
-      "work": "TODO(maxime): At 2060.io, Maxime builds the MCP server and AI agents for Verana, a trust infrastructure for European digital identity.",
-      "citeme": "TODO(maxime): He co-founded CiteMe, a tool that tracks how brands get cited in ChatGPT, Gemini and Perplexity.",
+      "intro": "Maxime founded Klyx in Bordeaux. He leads every project as lead engineer, from the first call to production.",
+      "work": "Alongside Klyx, he builds MCP servers and AI agents for a European digital identity infrastructure.",
+      "citeme": "He co-founded CiteMe, a tool that tracks how brands get cited in ChatGPT, Gemini and Perplexity.",
       "titleEmphasis": "lead engineer."
     },
     "facts": {
@@ -1381,10 +1381,6 @@
           "label": "Public code",
           "value": "{github}"
         },
-        "siret": {
-          "label": "SIRET",
-          "value": "{siret} TODO(maxime): confirm"
-        },
         "prices": {
           "label": "Public prices",
           "value": "Every price, excl. VAT"
@@ -1397,7 +1393,7 @@
     },
     "lines": {
       "title": "Other Klyx lines",
-      "studio": "Klyx Studio: TODO(maxime) one sentence on what studio.klyx.fr does.",
+      "studio": "Klyx Studio",
       "estate": "Klyx Estate: films and visuals to launch high-end property listings."
     },
     "cta": {
@@ -1421,8 +1417,8 @@
       "title": "Who works",
       "titleEmphasis": "on your project.",
       "intro": "Every project has one lead engineer, Maxime Mansiet. He takes the first call, writes the scope, and he is the person you talk to until the handover.",
-      "agents": "Claude Code agents take well-bounded tasks: a component, a test, a migration. Nothing reaches production until Maxime has reviewed it.",
-      "partners": "For design, or a specialty outside our core work, we bring in trusted partners, and you know before you sign. TODO(maxime): say which specialties partners cover and how they are brought in.",
+      "agents": "AI coding agents take well-bounded tasks: a component, a test, a migration. The code they write is reviewed before it goes to production.",
+      "partners": "If the project needs it, we team up with a specialist, and we tell you first.",
       "handover": "The code is in your repo from day one. At the end, a written handover lets any developer pick it up."
     }
   },
@@ -1714,7 +1710,7 @@
     },
     "about": {
       "title": "The Klyx team, AI agency in Bordeaux | Klyx",
-      "description": "Who works on your project at Klyx: one lead engineer, Maxime Mansiet, agents whose every change is reviewed, and partners when a project needs them."
+      "description": "Who works on your project at Klyx: one lead engineer, Maxime Mansiet, AI agents whose code is reviewed before release, and a specialist when a project needs one."
     },
     "bordeaux": {
       "title": "AI agency in Bordeaux for small businesses | Klyx",
@@ -1757,9 +1753,9 @@
   },
   "liveSystem": {
     "label": "Illustration · sample run",
-    "caption": "Example of a workflow we build. Names and values are fictional.",
+    "caption": "Examples of what we build: the repetitive work runs on its own, and your team keeps its time for clients. Names and values are fictional.",
     "tablist": "Scenarios",
-    "trace": "trace",
+    "trace": "log",
     "run": {
       "active": "running",
       "done": "complete"
@@ -1774,182 +1770,186 @@
     },
     "scenarios": {
       "agents": {
-        "title": "lead-router",
+        "title": "lead sorting",
         "nodes": {
-          "inbox": "Inbox",
-          "classifier": "Classifier",
-          "crm": "CRM",
-          "slack": "Slack",
-          "archive": "Archive"
+          "inbox": "Email in",
+          "classifier": "AI sorts it",
+          "crm": "CRM updated",
+          "slack": "Team notified",
+          "archive": "Set aside"
         },
         "meta": {
           "inbox": "gmail",
-          "classifier": "llm · classify",
+          "classifier": "AI model · sort",
           "crm": "hubspot",
           "slack": "#sales",
           "archive": "non-lead"
         },
         "trace": {
-          "watch": "inbox.watch · 1 new email",
-          "think": "Thought 0.3s",
-          "classify": "classify(email_3891)",
-          "score": "→ lead · score 0.86",
-          "update": "crm.contacts.update",
-          "retry": "429 · retry 1/3",
-          "updated": "contact updated · c_2207",
-          "post": "slack.post #sales",
-          "done": "lead routed in 1.8s"
+          "watch": "Email in: quote request",
+          "think": "AI model · read in 0.3s",
+          "classify": "AI reads it: it's a lead",
+          "score": "Serious lead, rated 86/100",
+          "update": "Creating the CRM record",
+          "retry": "CRM slow, trying again",
+          "updated": "Contact added to the CRM",
+          "post": "Team pinged on Slack",
+          "done": "Lead handled in 1.8s"
         },
-        "chip": "Lead routed · 1.8s"
+        "chip": "Lead handed off · 1.8s",
+        "caption": "Sample agent we build: every request is sorted and passed on in seconds, so nobody has to watch the inbox. Names and values are fictional."
       },
       "sites": {
-        "title": "klyx.fr · deploy",
+        "title": "klyx.fr · release",
         "nodes": {
-          "commit": "Commit",
-          "build": "Build",
-          "lighthouse": "Lighthouse",
-          "deploy": "Deploy",
-          "llms": "llms.txt"
+          "commit": "Update",
+          "build": "Site built",
+          "lighthouse": "Speed tested",
+          "deploy": "Live",
+          "llms": "AI-ready"
         },
         "meta": {
-          "commit": "main",
+          "commit": "git push",
           "build": "next build",
-          "lighthouse": "mobile",
-          "deploy": "prod",
-          "llms": "+ sitemap"
+          "lighthouse": "lighthouse",
+          "deploy": "klyx.fr",
+          "llms": "llms.txt"
         },
         "trace": {
-          "push": "git push · main",
-          "build": "next build",
-          "built": "build ok · static pages",
-          "lighthouse": "lighthouse --preset=mobile",
-          "deploy": "deploy · klyx.fr",
-          "retry": "edge timeout · retrying",
-          "deployed": "live · klyx.fr",
-          "sitemap": "sitemap.xml generated",
-          "llms": "llms.txt generated"
+          "push": "Change pushed",
+          "build": "Building the site",
+          "built": "Site built, static pages",
+          "lighthouse": "Mobile speed test",
+          "deploy": "Publishing to klyx.fr",
+          "retry": "Server slow, trying again",
+          "deployed": "Live on klyx.fr",
+          "sitemap": "sitemap.xml updated",
+          "llms": "llms.txt ready for AI"
         },
         "chip": "Lighthouse {score} · klyx.fr",
         "chipPending": "Lighthouse · measuring"
       },
       "fde": {
-        "title": "ENG-142 · export-csv",
+        "title": "ENG-142 · CSV export",
         "nodes": {
-          "ticket": "Ticket",
-          "repo": "Repo",
-          "engineer": "Dev + agent",
-          "pr": "PR",
+          "ticket": "Request",
+          "repo": "Your code",
+          "engineer": "Dev + AI agent",
+          "pr": "Fix",
           "review": "Review",
-          "deploy": "Deploy"
+          "deploy": "Shipped"
         },
         "meta": {
           "ticket": "ENG-142",
-          "repo": "branch",
-          "engineer": "pair · ci",
-          "pr": "#87",
+          "repo": "git repo",
+          "engineer": "paired",
+          "pr": "PR #87",
           "review": "1 comment",
           "deploy": "prod"
         },
         "trace": {
-          "ticket": "ENG-142 · slow CSV export",
-          "branch": "git checkout -b fix/export-csv",
-          "read": "agent · read 14 files",
-          "testFail": "pnpm test · 1 failed",
-          "fix": "fix · paginated query",
-          "testPass": "pnpm test · 128 passed",
-          "pr": "gh pr create · #87",
-          "review": "review · 1 comment, resolved",
-          "merged": "merged · deployed to prod"
+          "ticket": "Ticket: CSV export is slow",
+          "branch": "Branch fix/export-csv created",
+          "read": "AI agent · reads 14 files",
+          "testFail": "A test fails, we fix it",
+          "fix": "Query split into pages",
+          "testPass": "128 tests pass",
+          "pr": "Fix proposed (PR #87)",
+          "review": "Reviewed, 1 comment handled",
+          "merged": "Approved and shipped"
         },
-        "chip": "PR merged · tests ✓"
+        "chip": "Fix shipped · tests ✓",
+        "caption": "Sample FDE day: a developer from the agency fixes a problem in your code, and the fix ships the same afternoon. Names and values are fictional."
       },
       "audit": {
         "title": "audit · sample-sme",
         "nodes": {
           "interviews": "Interviews",
-          "mapping": "Mapping",
-          "scoring": "Scoring",
-          "roadmap": "Roadmap"
+          "mapping": "Your processes",
+          "scoring": "Ranked by gain",
+          "roadmap": "Action plan"
         },
         "meta": {
           "interviews": "4 people",
-          "mapping": "9 process",
-          "scoring": "llm · score",
+          "mapping": "9 found",
+          "scoring": "gain × effort",
           "roadmap": "top 3"
         },
         "trace": {
-          "interviews": "interviews · 4 people",
-          "mapping": "mapping · 9 processes",
-          "quotes": "quote follow-ups · ~6 h/week",
-          "invoices": "invoice entry · ~4 h/week",
-          "missing": "missing data · email triage",
-          "emails": "email triage · ~3 h/week",
-          "scoring": "scoring · gain × feasibility",
-          "roadmap": "roadmap · 3 workflows ranked"
+          "interviews": "Interviews with 4 people",
+          "mapping": "9 repetitive tasks found",
+          "quotes": "Quote follow-ups: ~6 h/week",
+          "invoices": "Invoice entry: ~4 h/week",
+          "missing": "Missing data, we follow up",
+          "emails": "Email triage: ~3 h/week",
+          "scoring": "ranking · gain × feasibility",
+          "roadmap": "Action plan: 3 priorities"
         },
-        "chip": "Roadmap · 3 workflows ranked",
-        "caption": "Sample audit run. Names and values are fictional."
+        "chip": "Action plan · 3 priorities",
+        "caption": "Sample audit run: you leave with the tasks that take up most of your time, costed and ranked. Names and values are fictional."
       },
       "automation": {
-        "title": "supplier-invoices",
+        "title": "supplier invoices",
         "nodes": {
-          "email": "Email + PDF",
-          "extract": "Extraction",
-          "erp": "ERP",
-          "validation": "Approval",
-          "send": "Send"
+          "email": "Invoice in",
+          "extract": "AI reads it",
+          "erp": "ERP draft",
+          "validation": "Your approval",
+          "send": "Sent"
         },
         "meta": {
           "email": "pdf",
-          "extract": "llm · extract",
-          "erp": "draft",
-          "validation": "human",
+          "extract": "14 fields",
+          "erp": "to approve",
+          "validation": "accounting",
           "send": "email"
         },
         "trace": {
-          "email": "email · invoice_0412.pdf",
-          "extract": "extract · 14 fields",
-          "vat": "VAT mismatch · line 3",
-          "recompute": "recompute · 20% VAT ok",
-          "draft": "erp · draft created",
-          "waiting": "human approval · pending",
-          "approved": "approved by accounting",
-          "sent": "invoice entered and sent"
+          "email": "Invoice in by email (PDF)",
+          "extract": "AI picks out 14 fields",
+          "vat": "VAT mismatch on line 3",
+          "recompute": "VAT recomputed: 20%, ok",
+          "draft": "Draft created in the ERP",
+          "waiting": "waiting for approval",
+          "approved": "Approved by accounting",
+          "sent": "Invoice entered and sent"
         },
-        "chip": "Invoice entered and approved"
+        "chip": "Invoice entered and approved",
+        "caption": "Sample automation: supplier invoices get entered on their own, and all you do is approve them. Names and values are fictional."
       },
       "geo": {
-        "title": "ai-visibility · monthly",
+        "title": "AI visibility · monthly",
         "nodes": {
-          "prompts": "Prompts",
+          "prompts": "Questions",
           "chatgpt": "ChatGPT",
           "perplexity": "Perplexity",
           "gemini": "Gemini",
-          "citation": "Citations",
+          "citation": "Cited or not?",
           "report": "Report",
           "aio": "AI Overview"
         },
         "meta": {
-          "prompts": "30 prompts",
-          "chatgpt": "engine",
-          "perplexity": "engine",
-          "gemini": "engine",
-          "citation": "llm · match",
+          "prompts": "30 tested",
+          "chatgpt": "AI engine",
+          "perplexity": "AI engine",
+          "gemini": "AI engine",
+          "citation": "your domain",
           "report": "monthly",
-          "aio": "engine"
+          "aio": "AI engine"
         },
         "trace": {
-          "prompts": "prompts · 30 target queries",
-          "chatgpt": "chatgpt · 30/30 answers",
-          "perplexity": "perplexity · 30/30 answers",
-          "geminiRetry": "gemini · timeout, retrying",
-          "gemini": "gemini · 30/30 answers",
-          "citations": "citations · domain lookup",
-          "sources": "sources · 31 domains cited",
-          "report": "report · 30 prompts tracked",
-          "aio": "ai overviews · 30/30 answers"
+          "prompts": "30 questions your clients ask",
+          "chatgpt": "ChatGPT: 30 of 30 answers",
+          "perplexity": "Perplexity: 30 answers",
+          "geminiRetry": "Gemini slow, trying again",
+          "gemini": "Gemini: 30 answers",
+          "citations": "looking for your domain",
+          "sources": "31 sites cited as sources",
+          "report": "Report: 30 questions tracked",
+          "aio": "AI Overviews: 30 answers"
         },
-        "chip": "Report · 30 prompts tracked"
+        "chip": "Report · 30 questions tracked",
+        "caption": "Sample monthly report: every month you know whether ChatGPT and the other AI engines cite your site. Names and values are fictional."
       }
     }
   },

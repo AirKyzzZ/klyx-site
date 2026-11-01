@@ -4,7 +4,6 @@ import { getTranslations } from "next-intl/server";
 
 import type { Locale } from "@/i18n/routing";
 import { cn } from "@/lib/utils";
-import { site } from "@/lib/site";
 
 export async function FoldStrip({
   locale,
@@ -19,7 +18,7 @@ export async function FoldStrip({
   const items = [
     { icon: GitBranch, text: t("repo") },
     { icon: Receipt, text: t("prices") },
-    { icon: MapPin, text: t("siret", { siret: site.siret }) },
+    { icon: MapPin, text: t("base") },
   ];
 
   return (

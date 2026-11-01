@@ -1,6 +1,10 @@
 import type { Metadata, Viewport } from "next";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
-import { getTranslations, setRequestLocale } from "next-intl/server";
+import {
+  getMessages,
+  getTranslations,
+  setRequestLocale,
+} from "next-intl/server";
 import { notFound } from "next/navigation";
 
 import { MachineView } from "@/components/machine-view/machine-view";
@@ -42,6 +46,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
   const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) notFound();
   setRequestLocale(locale);
+  const { machine } = await getMessages();
 
   return (
     <html
@@ -49,7 +54,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
       className={`${sans.variable} ${mono.variable} ${serif.variable}`}
     >
       <body>
-        <NextIntlClientProvider>
+        <NextIntlClientProvider messages={{ machine }}>
           <div className="relative isolate">
             <div className="rails" aria-hidden="true">
               <div className="container" />

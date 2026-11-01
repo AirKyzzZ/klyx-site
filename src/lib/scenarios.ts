@@ -127,7 +127,7 @@ export const scenarios: Record<ScenarioId, Scenario> = {
     agent: "classifier",
     desktopOnly: ["think", "update"],
     nodes: [
-      ["inbox", "inbox", 11, 28, 28, 8],
+      ["inbox", "inbox", 12.5, 28, 28, 8],
       ["classifier", "filter", 38, 28, 28, 30],
       ["crm", "database", 62, 72, 28, 52],
       ["slack", "message", 87, 28, 28, 74],
@@ -171,7 +171,7 @@ export const scenarios: Record<ScenarioId, Scenario> = {
     agent: "build",
     desktopOnly: ["build", "sitemap"],
     nodes: [
-      ["commit", "git", 11, 28, 50, 8],
+      ["commit", "git", 12.5, 28, 50, 8],
       ["build", "filter", 38, 28, 50, 27],
       ["lighthouse", "gauge", 38, 72, 50, 46],
       ["deploy", "rocket", 62, 72, 50, 65],
@@ -215,8 +215,8 @@ export const scenarios: Record<ScenarioId, Scenario> = {
     agent: "engineer",
     desktopOnly: ["read", "branch"],
     nodes: [
-      ["ticket", "inbox", 11, 72, 50, 7],
-      ["repo", "git", 11, 28, 50, 23],
+      ["ticket", "inbox", 12.5, 72, 50, 7],
+      ["repo", "git", 12.5, 28, 50, 23],
       ["engineer", "user-check", 38, 28, 50, 38],
       ["pr", "git", 38, 72, 50, 54],
       ["review", "search", 62, 72, 50, 69],
@@ -262,7 +262,7 @@ export const scenarios: Record<ScenarioId, Scenario> = {
     agent: "scoring",
     desktopOnly: ["scoring"],
     nodes: [
-      ["interviews", "message", 11, 28, 50, 8],
+      ["interviews", "message", 12.5, 28, 50, 8],
       ["mapping", "search", 30, 72, 50, 30],
       ["scoring", "gauge", 60, 72, 50, 52],
       ["roadmap", "file", 87, 28, 50, 74],
@@ -301,7 +301,7 @@ export const scenarios: Record<ScenarioId, Scenario> = {
     agent: "extract",
     desktopOnly: ["waiting"],
     nodes: [
-      ["email", "inbox", 11, 28, 50, 8],
+      ["email", "inbox", 12.5, 28, 50, 8],
       ["extract", "filter", 38, 28, 50, 27],
       ["erp", "database", 38, 72, 50, 46],
       ["validation", "user-check", 62, 72, 50, 65],
@@ -343,7 +343,7 @@ export const scenarios: Record<ScenarioId, Scenario> = {
     agent: "citation",
     desktopOnly: ["citations", "sources"],
     nodes: [
-      ["prompts", "message", 11, 50, 26, 8],
+      ["prompts", "message", 12.5, 50, 26, 8],
       ["chatgpt", "search", 37, 12, 74, 22],
       ["perplexity", "search", 37, 37, 74, 38],
       ["gemini", "search", 37, 63, 74, 54],

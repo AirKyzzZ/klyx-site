@@ -161,7 +161,7 @@ async function home(locale: Locale): Promise<string> {
     list([
       t("fold.repo"),
       t("fold.prices"),
-      t("fold.siret", { siret: site.siret }),
+      t("fold.base"),
     ]),
     `## ${sectionTitle(t, "offers")}`,
     t("offers.subtitle"),
@@ -465,7 +465,6 @@ async function about(locale: Locale): Promise<string> {
   const founder = getStaticTranslator(locale, "home.founder");
   const facts = messageList(t, "facts.items", ["label", "value"]);
   const trust = messageList(t, "trust.items", ["label", "value"], {
-    siret: site.siret,
     github: site.socials.github.replace("https://", ""),
   });
   const sisterText = {
