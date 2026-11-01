@@ -1734,9 +1734,15 @@
       "license": "license",
       "items": {
         "mcp": "Model Context Protocol logo © Model Context Protocol contributors, licensed under CC BY 4.0. Changed: symbol only, recoloured to monochrome.",
-        "simpleIcons": "Logo paths for Gmail, Google Sheets, Notion, Airtable, HubSpot, Slack, WhatsApp, Shopify, WordPress, Stripe, Make, n8n and Mistral AI: Simple Icons, CC0.",
+        "simpleIcons": "Logo paths for Gmail, Google Sheets, Notion, Airtable, HubSpot, Slack, WhatsApp, Shopify, WordPress, Stripe, Make, n8n, Mistral AI, Claude, Claude Code, OpenAI, Google, Gemini, Perplexity, Zendesk, Next.js, Lighthouse, Figma and GitHub: Simple Icons, CC0.",
+        "microsoft": "Outlook, Excel and Microsoft Teams icons © Microsoft, Fluent UI paths taken from Simple Icons 12.4.0, rendered in monochrome.",
+        "git": "Git logo by Jason Long, licensed under CC BY 3.0.",
+        "pipedrive": "Pipedrive symbol taken from the logo published on pipedrive.com, rendered in monochrome.",
+        "pennylane": "Pennylane symbol taken from the logo published on pennylane.com, rendered in monochrome.",
+        "qonto": "Qonto symbol taken from the logo published on qonto.com, rendered in monochrome.",
         "hermes": "Hermes Agent icon © Nous Research, white version from the MIT-licensed repository.",
-        "openclaw": "OpenClaw mascot, MIT-licensed repository, rendered in monochrome."
+        "openclaw": "OpenClaw mascot, MIT-licensed repository, rendered in monochrome.",
+        "nanoclaw": "NanoClaw mascot, MIT-licensed repository, vectorised in monochrome from the official icon."
       }
     },
     "updated": "Last updated: {date}"

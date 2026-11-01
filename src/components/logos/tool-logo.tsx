@@ -4,6 +4,25 @@ import type { ToolLogoId } from "@/lib/tools";
 import { cn } from "@/lib/utils";
 
 import { AirtableLogo } from "./airtable-logo";
+import { ClaudeCodeLogo } from "./claude-code-logo";
+import { ClaudeLogo } from "./claude-logo";
+import { ExcelLogo } from "./excel-logo";
+import { FigmaLogo } from "./figma-logo";
+import { GitLogo } from "./git-logo";
+import { GitHubLogo } from "./github-logo";
+import { GoogleGeminiLogo } from "./google-gemini-logo";
+import { GoogleLogo } from "./google-logo";
+import { LighthouseLogo } from "./lighthouse-logo";
+import { MicrosoftTeamsLogo } from "./microsoft-teams-logo";
+import { NanoClawLogo } from "./nanoclaw-logo";
+import { NextJsLogo } from "./nextjs-logo";
+import { OpenAiLogo } from "./openai-logo";
+import { OutlookLogo } from "./outlook-logo";
+import { PennylaneLogo } from "./pennylane-logo";
+import { PerplexityLogo } from "./perplexity-logo";
+import { PipedriveLogo } from "./pipedrive-logo";
+import { QontoLogo } from "./qonto-logo";
+import { ZendeskLogo } from "./zendesk-logo";
 import { GmailLogo } from "./gmail-logo";
 import { GoogleSheetsLogo } from "./google-sheets-logo";
 import { HubSpotLogo } from "./hubspot-logo";
@@ -39,6 +58,25 @@ const SVG_LOGOS: Record<
   "mistral-ai": MistralAiLogo,
   mcp: McpLogo,
   openclaw: OpenClawLogo,
+  outlook: OutlookLogo,
+  excel: ExcelLogo,
+  "microsoft-teams": MicrosoftTeamsLogo,
+  pipedrive: PipedriveLogo,
+  pennylane: PennylaneLogo,
+  qonto: QontoLogo,
+  claude: ClaudeLogo,
+  "claude-code": ClaudeCodeLogo,
+  openai: OpenAiLogo,
+  nanoclaw: NanoClawLogo,
+  "google-gemini": GoogleGeminiLogo,
+  perplexity: PerplexityLogo,
+  google: GoogleLogo,
+  zendesk: ZendeskLogo,
+  git: GitLogo,
+  nextjs: NextJsLogo,
+  lighthouse: LighthouseLogo,
+  figma: FigmaLogo,
+  github: GitHubLogo,
 };
 
 export function ToolLogo({

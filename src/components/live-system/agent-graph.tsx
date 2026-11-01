@@ -24,6 +24,7 @@ import {
   lastEdge,
   terminalNode,
 } from "@/lib/scenarios";
+import { AI_MODEL_LOGOS } from "@/lib/tools";
 
 const ICONS: Record<NodeIcon, LucideIcon> = {
   inbox: Inbox,
@@ -136,6 +137,21 @@ function Edges({
   );
 }
 
+function NodeGlyph({ node }: { node: GraphNode }) {
+  if (node.models) {
+    return (
+      <span className="ls-models">
+        {AI_MODEL_LOGOS.map((logo) => (
+          <ToolLogo key={logo} logo={logo} size={9} />
+        ))}
+      </span>
+    );
+  }
+  if (node.tool) return <ToolLogo logo={node.tool} size={14} />;
+  const Icon = ICONS[node.icon];
+  return <Icon strokeWidth={1.5} />;
+}
+
 function RunStatus({ active, done }: { active: string; done: string }) {
   return (
     <span className="ls-run">
@@ -187,7 +203,6 @@ export function AgentGraph({
         />
         <ul className="ls-nodes">
           {scenario.nodes.map((node) => {
-            const Icon = ICONS[node.icon];
             const position = {
               "--x": `${node.x}%`,
               "--y": `${node.y}%`,
@@ -203,14 +218,11 @@ export function AgentGraph({
                 data-agent={node.agent || undefined}
                 data-terminal={node.id === terminal || undefined}
                 data-tool={node.tool}
+                data-models={node.models}
                 style={position}
               >
                 <span className="ls-node-icon" aria-hidden="true">
-                  {node.tool ? (
-                    <ToolLogo logo={node.tool} size={14} />
-                  ) : (
-                    <Icon strokeWidth={1.5} />
-                  )}
+                  <NodeGlyph node={node} />
                 </span>
                 <span className="ls-node-text">
                   <span className="ls-node-label">{labels[node.id]}</span>

@@ -336,6 +336,17 @@
   }
 }
 
+.ls-models {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2px;
+
+  & svg {
+    width: 9px;
+    height: 9px;
+  }
+}
+
 .ls-node-icon [data-logo] {
   color: var(--text-2);
   transition: color var(--d-ui) var(--ease-out);
@@ -702,6 +713,11 @@
     & .ls-node-icon {
       width: 28px;
       height: 28px;
+    }
+
+    & .ls-models svg {
+      width: 11px;
+      height: 11px;
     }
 
     & .ls-node-label {

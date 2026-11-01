@@ -10,7 +10,7 @@ import {
   scenarios,
   terminalNode,
 } from "./scenarios";
-import { TOOLS } from "./tools";
+import { TOOLS, type ToolLogoId } from "./tools";
 
 function lookup(messages: unknown, key: string): unknown {
   return key.split(".").reduce<unknown>((node, part) => {
@@ -20,6 +20,17 @@ function lookup(messages: unknown, key: string): unknown {
 }
 
 const all = Object.values(scenarios);
+
+const LOGO_TEXT: Partial<Record<ToolLogoId, string[]>> = {
+  zendesk: ["Zendesk"],
+  git: ["git"],
+  nextjs: ["Next.js", "next build"],
+  lighthouse: ["Lighthouse"],
+  perplexity: ["Perplexity"],
+  "google-gemini": ["Gemini"],
+  google: ["AI Overview"],
+  openai: ["ChatGPT"],
+};
 
 describe("scenarios", () => {
   it("keys every scenario by its id", () => {
@@ -87,13 +98,29 @@ describe("scenarios", () => {
 
   it.each(all)("$id names every node logo in its text", (scenario) => {
     for (const node of scenario.nodes.filter((n) => n.tool)) {
-      const tool = Object.values(TOOLS).find(
-        (candidate) => "logo" in candidate && candidate.logo === node.tool,
-      );
-      expect(tool, node.id).toBeDefined();
+      const names = [
+        ...Object.values(TOOLS)
+          .filter((candidate) => candidate.logo === node.tool)
+          .map((candidate) => candidate.name),
+        ...(node.tool ? (LOGO_TEXT[node.tool] ?? []) : []),
+      ];
+      expect(names, node.id).not.toHaveLength(0);
       for (const messages of [fr, en]) {
         const text = `${String(lookup(messages, node.labelKey))} ${String(lookup(messages, node.metaKey))}`;
-        expect(text, node.id).toContain(tool?.name);
+        expect(
+          names.some((name) => text.toLowerCase().includes(name.toLowerCase())),
+          `${node.id}: ${text}`,
+        ).toBe(true);
+      }
+    }
+  });
+
+  it.each(all)("$id marks AI steps with the model logos", (scenario) => {
+    for (const node of scenario.nodes.filter((n) => n.models)) {
+      expect(node.tool, node.id).toBeUndefined();
+      for (const messages of [fr, en]) {
+        const text = `${String(lookup(messages, node.labelKey))} ${String(lookup(messages, node.metaKey))}`;
+        expect(text, node.id).toMatch(/\b(IA|AI)\b/);
       }
     }
   });

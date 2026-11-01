@@ -3,9 +3,9 @@ import { expect, type Page, test } from "@playwright/test";
 import en from "../messages/en.json";
 import fr from "../messages/fr.json";
 import {
+  AI_MODEL_LOGOS,
   CONNECTED_TOOLS,
   DEPLOYED_TECH,
-  TOOLS,
   type ToolGroup,
 } from "../src/lib/tools";
 
@@ -46,7 +46,7 @@ async function expectStrip(
       };
     }),
   );
-  expect(logos.length).toBeGreaterThan(0);
+  expect(logos).toHaveLength(expected.length);
   for (const logo of logos) {
     expect(logo, logo.logo ?? "").toMatchObject({
       hidden: "true",
@@ -110,29 +110,30 @@ test("offer pages outside agents and automation carry no stack strip", async ({
 });
 
 for (const path of ["/", "/services/automatisation-ia"]) {
-  test(`${path} hero logos are decorative and named in text`, async ({
+  test(`${path} hero logos are decorative and the AI step shows the model marks`, async ({
     page,
   }) => {
     await page.goto(path);
-    const nodes = await page.locator(".ls-node[data-tool]").evaluateAll((els) =>
-      els.map((el) => ({
-        tool: el.getAttribute("data-tool"),
-        text: el.querySelector(".ls-node-text")?.textContent ?? "",
-        iconHidden: el
-          .querySelector(".ls-node-icon")
-          ?.getAttribute("aria-hidden"),
-        logoHidden: el
-          .querySelector("[data-logo]")
-          ?.getAttribute("aria-hidden"),
-      })),
-    );
-    expect(nodes.length).toBeGreaterThan(0);
-    for (const node of nodes) {
-      const tool = Object.values(TOOLS).find(
-        (candidate) => "logo" in candidate && candidate.logo === node.tool,
+    const nodes = await page
+      .locator(".ls-node:is([data-tool], [data-models])")
+      .evaluateAll((els) =>
+        els.map((el) => ({
+          text: el.querySelector(".ls-node-text")?.textContent ?? "",
+          models: el.hasAttribute("data-models"),
+          iconHidden: el
+            .querySelector(".ls-node-icon")
+            ?.getAttribute("aria-hidden"),
+          logos: [...el.querySelectorAll("[data-logo]")].map((logo) =>
+            logo.getAttribute("data-logo"),
+          ),
+        })),
       );
-      expect(node.text, node.tool ?? "").toContain(tool?.name);
-      expect(node).toMatchObject({ iconHidden: "true", logoHidden: "true" });
+    expect(nodes.some((node) => node.models)).toBe(true);
+    for (const node of nodes) {
+      expect(node.iconHidden, node.text).toBe("true");
+      expect(node.text.trim(), node.text).not.toBe("");
+      if (node.models) expect(node.logos).toEqual([...AI_MODEL_LOGOS]);
+      else expect(node.logos).toHaveLength(1);
     }
   });
 }

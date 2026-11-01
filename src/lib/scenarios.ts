@@ -32,6 +32,7 @@ export type GraphNode = {
   agent: boolean;
   icon: NodeIcon;
   tool?: ToolLogoId;
+  models?: true;
   x: number;
   y: number;
   mx: number;
@@ -76,7 +77,7 @@ type NodeSpec = [
   y: number,
   mx: number,
   my: number,
-  tool?: ToolLogoId,
+  tool?: ToolLogoId | "models",
 ];
 type TraceSpec = [t: string, key: string, tone?: TraceLine["tone"]];
 
@@ -104,7 +105,7 @@ function scenario(
       metaKey: `${base}.meta.${nodeId}`,
       agent: nodeId === config.agent,
       icon,
-      ...(tool && { tool }),
+      ...(tool === "models" ? { models: true as const } : tool && { tool }),
       x,
       y,
       mx,
@@ -141,7 +142,7 @@ export const scenarios: Record<ScenarioId, Scenario> = {
     desktopOnly: ["think", "update"],
     nodes: [
       ["inbox", "inbox", 12.5, 28, 28, 8, "gmail"],
-      ["classifier", "filter", 38, 28, 28, 30],
+      ["classifier", "filter", 38, 28, 28, 30, "models"],
       ["crm", "database", 62, 72, 28, 52, "hubspot"],
       ["slack", "message", 87, 28, 28, 74, "slack"],
       ["archive", "file", 38, 72, 77, 30, "notion"],
@@ -183,9 +184,9 @@ export const scenarios: Record<ScenarioId, Scenario> = {
     agent: "search",
     desktopOnly: ["read", "waiting"],
     nodes: [
-      ["ticket", "inbox", 12.5, 28, 50, 8],
+      ["ticket", "inbox", 12.5, 28, 50, 8, "zendesk"],
       ["search", "search", 38, 28, 50, 27, "notion"],
-      ["draft", "file", 38, 72, 50, 46],
+      ["draft", "file", 38, 72, 50, 46, "models"],
       ["review", "user-check", 62, 72, 50, 65],
       ["sent", "message", 87, 28, 50, 84],
     ],
@@ -228,9 +229,9 @@ export const scenarios: Record<ScenarioId, Scenario> = {
     agent: "build",
     desktopOnly: ["build", "sitemap"],
     nodes: [
-      ["commit", "git", 12.5, 28, 50, 8],
-      ["build", "filter", 38, 28, 50, 27],
-      ["lighthouse", "gauge", 38, 72, 50, 46],
+      ["commit", "git", 12.5, 28, 50, 8, "git"],
+      ["build", "filter", 38, 28, 50, 27, "nextjs"],
+      ["lighthouse", "gauge", 38, 72, 50, 46, "lighthouse"],
       ["deploy", "rocket", 62, 72, 50, 65],
       ["llms", "file", 87, 28, 50, 84],
     ],
@@ -271,8 +272,8 @@ export const scenarios: Record<ScenarioId, Scenario> = {
     desktopOnly: ["read", "branch"],
     nodes: [
       ["ticket", "inbox", 12.5, 72, 50, 7],
-      ["repo", "git", 12.5, 28, 50, 23],
-      ["engineer", "user-check", 38, 28, 50, 38],
+      ["repo", "git", 12.5, 28, 50, 23, "git"],
+      ["engineer", "user-check", 38, 28, 50, 38, "models"],
       ["pr", "git", 38, 72, 50, 54],
       ["review", "search", 62, 72, 50, 69],
       ["deploy", "rocket", 87, 28, 50, 85],
@@ -356,8 +357,8 @@ export const scenarios: Record<ScenarioId, Scenario> = {
     agent: "extract",
     desktopOnly: ["waiting"],
     nodes: [
-      ["email", "inbox", 12.5, 28, 50, 8],
-      ["extract", "filter", 38, 28, 50, 27],
+      ["email", "inbox", 12.5, 28, 50, 8, "outlook"],
+      ["extract", "filter", 38, 28, 50, 27, "models"],
       ["erp", "database", 38, 72, 50, 46, "google-sheets"],
       ["validation", "user-check", 62, 72, 50, 65],
       ["send", "message", 87, 28, 50, 84],
@@ -399,10 +400,10 @@ export const scenarios: Record<ScenarioId, Scenario> = {
     desktopOnly: ["citations", "sources"],
     nodes: [
       ["prompts", "message", 12.5, 50, 26, 8],
-      ["chatgpt", "search", 37, 12, 74, 22],
-      ["perplexity", "search", 37, 37, 74, 38],
-      ["gemini", "search", 37, 63, 74, 54],
-      ["aio", "search", 37, 88, 74, 70],
+      ["chatgpt", "search", 37, 12, 74, 22, "openai"],
+      ["perplexity", "search", 37, 37, 74, 38, "perplexity"],
+      ["gemini", "search", 37, 63, 74, 54, "google-gemini"],
+      ["aio", "search", 37, 88, 74, 70, "google"],
       ["citation", "filter", 63, 50, 26, 62],
       ["report", "file", 87, 28, 26, 86],
     ],
@@ -455,7 +456,7 @@ export const scenarios: Record<ScenarioId, Scenario> = {
     desktopOnly: ["think", "crm"],
     nodes: [
       ["portal", "inbox", 12.5, 28, 28, 8],
-      ["match", "filter", 38, 28, 28, 30],
+      ["match", "filter", 38, 28, 28, 30, "models"],
       ["slot", "message", 62, 72, 28, 52],
       ["crm", "database", 87, 28, 28, 74],
       ["archive", "file", 38, 72, 77, 30],
@@ -496,7 +497,7 @@ export const scenarios: Record<ScenarioId, Scenario> = {
     desktopOnly: ["build", "schema"],
     nodes: [
       ["design", "file", 12.5, 28, 50, 8],
-      ["build", "filter", 38, 28, 50, 27],
+      ["build", "filter", 38, 28, 50, 27, "nextjs"],
       ["review", "user-check", 38, 72, 50, 46],
       ["deploy", "rocket", 62, 72, 50, 65],
       ["llms", "file", 87, 28, 50, 84],
@@ -538,7 +539,7 @@ export const scenarios: Record<ScenarioId, Scenario> = {
     desktopOnly: ["waiting"],
     nodes: [
       ["doc", "inbox", 12.5, 28, 50, 8],
-      ["extract", "filter", 38, 28, 50, 27],
+      ["extract", "filter", 38, 28, 50, 27, "models"],
       ["software", "database", 38, 72, 50, 46],
       ["validation", "user-check", 62, 72, 50, 65],
       ["follow", "message", 87, 28, 50, 84],

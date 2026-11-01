@@ -5,11 +5,6 @@ import { cn } from "@/lib/utils";
 
 export type ToolRow = { key: string; label: string; tools: Tool[] };
 
-function monogram(name: string) {
-  const words = name.split(" ");
-  return words.length > 1 ? `${words[0][0]}${words[1][0]}` : name.slice(0, 2);
-}
-
 const COLUMNS = {
   grid: "grid-cols-3 md:grid-cols-6",
   strip: "grid-cols-3 xl:grid-cols-9",
@@ -66,16 +61,7 @@ export function ToolsSection({
                 <span className="text-text-3 absolute top-2 left-2.5 font-mono text-[0.625rem] leading-none tracking-wide uppercase">
                   {row.label}
                 </span>
-                {tool.logo ? (
-                  <ToolLogo logo={tool.logo} size={24} className="shrink-0" />
-                ) : (
-                  <span
-                    aria-hidden="true"
-                    className="border-line-strong text-text-3 grid size-6 shrink-0 place-items-center rounded-xs border font-mono text-[0.625rem] leading-none"
-                  >
-                    {monogram(tool.name)}
-                  </span>
-                )}
+                <ToolLogo logo={tool.logo} size={24} className="shrink-0" />
                 <span className="font-mono text-[0.6875rem] leading-tight">
                   {tool.name}
                 </span>

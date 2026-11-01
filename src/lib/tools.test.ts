@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { CONNECTED_TOOLS, DEPLOYED_TECH, TOOLS } from "./tools";
+import { AI_MODEL_LOGOS, CONNECTED_TOOLS, DEPLOYED_TECH, TOOLS } from "./tools";
 
 const connected = CONNECTED_TOOLS.flatMap((group) => group.tools);
 const AUTOMATION_LOGOS = new Set(["make", "n8n", "zapier"]);
@@ -21,7 +21,7 @@ describe("tools", () => {
     expect(logos).not.toContain("zapier");
   });
 
-  it("keeps text-only names for brands without a usable logo licence", () => {
+  it("gives every tile a logo, including the brands that used to be text only", () => {
     for (const tool of [
       TOOLS.outlook,
       TOOLS.excel,
@@ -34,8 +34,21 @@ describe("tools", () => {
       TOOLS.openai,
       TOOLS.nanoclaw,
     ]) {
-      expect(tool, tool.name).not.toHaveProperty("logo");
+      expect(tool.logo, tool.name).toBeTruthy();
     }
+    const tiles = [...CONNECTED_TOOLS, ...DEPLOYED_TECH].flatMap(
+      (group) => group.tools,
+    );
+    expect(tiles.every((tool) => tool.logo)).toBe(true);
+  });
+
+  it("shows four AI model marks on AI steps", () => {
+    expect(AI_MODEL_LOGOS).toEqual([
+      "openai",
+      "claude",
+      "mistral-ai",
+      "google-gemini",
+    ]);
   });
 
   it("deploys the agreed technologies", () => {

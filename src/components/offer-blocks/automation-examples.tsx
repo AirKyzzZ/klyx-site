@@ -2,9 +2,11 @@ import type { LucideIcon } from "lucide-react";
 import { Inbox, ScanText, Send, UserCheck } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 
+import { ToolLogo } from "@/components/logos/tool-logo";
 import { Section, SectionHeading } from "@/components/section";
 import { messageKeys } from "@/i18n/message-list";
 import type { Locale } from "@/i18n/routing";
+import { WORKFLOW_TOOL_LOGOS } from "@/lib/tools";
 import { cn } from "@/lib/utils";
 
 const STEPS: { id: "trigger" | "ai" | "human" | "action"; icon: LucideIcon }[] =
@@ -114,6 +116,14 @@ export async function AutomationExamples({
             {labels && t.has(`examples.${example}.tools`) && (
               <p className="border-line type-data text-text-3 border-t px-4 py-3 text-[0.8125rem] sm:px-5">
                 <span className="type-label">{labels.tools}</span>
+                {WORKFLOW_TOOL_LOGOS[`${namespace}.${example}`]?.map((logo) => (
+                  <ToolLogo
+                    key={logo}
+                    logo={logo}
+                    size={14}
+                    className="text-text-2 ml-2 inline-block align-[-2px]"
+                  />
+                ))}
                 <span className="text-text-2 ml-2">
                   {t(`examples.${example}.tools`)}
                 </span>
