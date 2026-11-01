@@ -1,34 +1,10 @@
 {
-  "base": "http://localhost:4318",
+  "base": "https://klyx.fr",
   "date": "2026-11-01",
   "tool": "lighthouse@12.8.2, mobile preset, median of 3",
   "pages": [
     {
       "path": "/",
-      "scores": {
-        "performance": 93,
-        "accessibility": 100,
-        "bestPractices": 100,
-        "seo": 100
-      },
-      "lcp": "2.9 s",
-      "tbt": "10 ms",
-      "cls": "0"
-    },
-    {
-      "path": "/services/agents-ia",
-      "scores": {
-        "performance": 95,
-        "accessibility": 100,
-        "bestPractices": 100,
-        "seo": 100
-      },
-      "lcp": "2.8 s",
-      "tbt": "10 ms",
-      "cls": "0"
-    },
-    {
-      "path": "/tarifs",
       "scores": {
         "performance": 96,
         "accessibility": 100,
@@ -36,7 +12,31 @@
         "seo": 100
       },
       "lcp": "2.6 s",
-      "tbt": "10 ms",
+      "tbt": "30 ms",
+      "cls": "0"
+    },
+    {
+      "path": "/services/agents-ia",
+      "scores": {
+        "performance": 96,
+        "accessibility": 100,
+        "bestPractices": 100,
+        "seo": 100
+      },
+      "lcp": "2.7 s",
+      "tbt": "60 ms",
+      "cls": "0"
+    },
+    {
+      "path": "/tarifs",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "bestPractices": 100,
+        "seo": 100
+      },
+      "lcp": "1.7 s",
+      "tbt": "20 ms",
       "cls": "0"
     },
     {
