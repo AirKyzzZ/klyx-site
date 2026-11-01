@@ -96,7 +96,7 @@ export default async function PostPage({ params }: PostPageProps) {
         }
       />
 
-      <section className="relative z-1">
+      <section data-shot="article" className="relative z-1">
         <div className="container pb-16 md:pb-24">
           <article className="max-w-[66ch] space-y-6 text-[1.125rem] leading-[1.7]">
             <Content />

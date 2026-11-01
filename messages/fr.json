@@ -1898,12 +1898,12 @@
     "agencies": {
       "card": {
         "problem": "Vos clients demandent de l'IA, et personne dans l'équipe n'en a encore mis en production.",
-        "build": "Agents IA, automatisations et sites Next.js, livrés sous votre marque."
+        "build": "Agents IA, automatisations et sites Next.js, livrés en marque blanche."
       },
       "hero": {
         "eyebrow": "Agences web et marketing",
         "title": "L'IA de vos clients,",
-        "titleEmphasis": "sous votre marque.",
+        "titleEmphasis": "en marque blanche.",
         "serif": "marque",
         "subtitle": "Pour les agences web, marketing et les collectifs de freelances qui ont un brief IA ou Next.js sans personne pour le livrer. Landing page à partir de {landingPrice}, Site IA à partir de {siteIaPrice}, Sprint IA à partir de {sprintPrice}.",
         "ctaPrimary": "Réserver un appel",
@@ -1992,7 +1992,7 @@
           "nda": "Un accord de confidentialité avant le brief, si vous le souhaitez.",
           "brand": "Votre marque sur ce qu'on livre : on convient avec vous de ce qui peut mentionner notre nom, et de ce qui ne le mentionne pas.",
           "client": "La relation client reste la vôtre. Les échanges directs avec votre client se décident avec vous.",
-          "repo": "Le code est dans votre repo ou celui du client dès le premier jour.",
+          "repo": "Le code dans votre repo ou celui du client, comme on en convient avec vous.",
           "handover": "Une passation écrite à chaque livraison, pour qu'un autre développeur puisse reprendre.",
           "pricing": "Nos prix publics servent de base à votre devis. Pour un volume régulier, on en parle pendant l'appel."
         }
@@ -2369,7 +2369,7 @@
     },
     "agencies": {
       "title": "Sous-traitance IA et Next.js en marque blanche | Klyx",
-      "description": "Agents IA, automatisations et sites Next.js livrés sous la marque de votre agence. Code dans le repo du client, prix publics dès {landingPrice}."
+      "description": "Agents IA, automatisations et sites Next.js en marque blanche pour votre agence, aux règles fixées par écrit avec vous. Prix publics dès {landingPrice}."
     },
     "services": {
       "title": "Automatisation IA pour cabinet comptable | Klyx",
@@ -2459,13 +2459,13 @@
           "built": "Site compilé, prêt à partir",
           "lighthouse": "Test de vitesse sur mobile",
           "deploy": "Mise en ligne sur klyx.fr",
-          "retry": "Serveur lent, nouvel essai",
           "deployed": "En ligne sur klyx.fr",
           "sitemap": "Plan du site à jour",
           "llms": "Prêt à être lu par les IA"
         },
         "chip": "Lighthouse {score} · klyx.fr",
-        "chipPending": "Lighthouse · mesure en cours"
+        "chipPending": "Lighthouse · mesure en cours",
+        "measuredCaption": "Score Lighthouse mobile réel de klyx.fr, mesuré le {date}. Le déroulé est un exemple."
       },
       "fde": {
         "title": "ENG-142 · export CSV",

@@ -49,7 +49,10 @@ export default async function UseCasesPage({ params }: LocaleParams) {
         })}
       />
 
-      <section className="relative pt-28 pb-12 md:pt-36 md:pb-16">
+      <section
+        data-shot="hero"
+        className="relative pt-28 pb-12 md:pt-36 md:pb-16"
+      >
         <div className="container">
           <p className="hero-in type-label text-text-3">{t("hero.eyebrow")}</p>
           <h1 className="type-h1 mt-4 max-w-[20ch]">

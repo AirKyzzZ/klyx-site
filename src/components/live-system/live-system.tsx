@@ -1,7 +1,8 @@
 import { getTranslations } from "next-intl/server";
 
 import type { Locale } from "@/i18n/routing";
-import lighthouse from "@/lib/proof/klyx-lighthouse.json";
+import lighthouseData from "@/lib/proof/klyx-lighthouse.json";
+import { verifyLighthouse } from "@/lib/proof";
 import {
   finalState,
   type Scenario,
@@ -21,23 +22,52 @@ import "./live-system.css";
 
 type Translate = Awaited<ReturnType<typeof getTranslations>>;
 
-function measuredPerformance(data: unknown): number | null {
-  if (typeof data !== "object" || data === null) return null;
-  if (!("status" in data) || data.status !== "measured") return null;
-  if (!("scores" in data) || typeof data.scores !== "object") return null;
-  const scores = data.scores;
-  if (scores === null || !("performance" in scores)) return null;
-  return typeof scores.performance === "number" ? scores.performance : null;
-}
+const lighthouse = verifyLighthouse(lighthouseData);
 
 function chipText(scenario: Scenario, t: Translate): string | null {
   if (scenario.id !== "sites") return t(scenario.chipKey);
-  const score = measuredPerformance(lighthouse);
-  if (score !== null) return t(scenario.chipKey, { score });
+  if (lighthouse?.kind === "lighthouse") {
+    return t(scenario.chipKey, { score: lighthouse.scores.performance });
+  }
   if (process.env.NODE_ENV === "development") {
     return t("liveSystem.scenarios.sites.chipPending");
   }
   return null;
+}
+
+function captionKeyFor(scenario: Scenario, withTabs: boolean, t: Translate) {
+  const own = `liveSystem.scenarios.${scenario.id}.caption`;
+  return !withTabs && t.has(own) ? own : "liveSystem.caption";
+}
+
+function captionText(
+  scenario: Scenario,
+  withTabs: boolean,
+  t: Translate,
+  locale: Locale,
+): string {
+  if (scenario.id === "sites" && lighthouse?.kind === "lighthouse") {
+    const date = new Intl.DateTimeFormat(locale, {
+      dateStyle: "long",
+      timeZone: "UTC",
+    }).format(new Date(lighthouse.date));
+    return t("liveSystem.scenarios.sites.measuredCaption", { date });
+  }
+  return t(captionKeyFor(scenario, withTabs, t));
+}
+
+function groupCaptions(
+  list: Scenario[],
+  withTabs: boolean,
+  t: Translate,
+  locale: Locale,
+) {
+  const groups = new Map<string, ScenarioId[]>();
+  for (const scenario of list) {
+    const text = captionText(scenario, withTabs, t, locale);
+    groups.set(text, [...(groups.get(text) ?? []), scenario.id]);
+  }
+  return [...groups].map(([text, ids]) => ({ text, ids }));
 }
 
 export async function LiveSystem({
@@ -54,9 +84,7 @@ export async function LiveSystem({
   const t = await getTranslations({ locale });
   const list = scenarioIds.map((id) => scenarios[id]);
   const withTabs = list.length > 1;
-  const ownCaption = `liveSystem.scenarios.${initial}.caption`;
-  const captionKey =
-    !withTabs && t.has(ownCaption) ? ownCaption : "liveSystem.caption";
+  const captions = groupCaptions(list, withTabs, t, locale);
   const steps: Partial<Record<string, ScenarioStep[]>> = Object.fromEntries(
     list.map((scenario) => [scenario.id, scenario.steps]),
   );
@@ -123,7 +151,16 @@ export async function LiveSystem({
             }))}
           />
         )}
-        <p className="ls-caption">{t(captionKey)}</p>
+        {captions.map(({ text, ids }) => (
+          <p
+            key={ids.join(" ")}
+            className="ls-caption"
+            data-ls-caption={ids.join(" ")}
+            hidden={!ids.includes(initial)}
+          >
+            {text}
+          </p>
+        ))}
       </div>
     </LiveSystemPlayer>
   );

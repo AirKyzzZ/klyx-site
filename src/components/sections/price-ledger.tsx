@@ -24,9 +24,9 @@ export function PriceLedger({
         className,
       )}
     >
-      <table className="w-full text-left max-md:block">
+      <table className="w-full text-left max-lg:block">
         <caption className="sr-only">{offersT("vatNote")}</caption>
-        <thead className="max-md:sr-only">
+        <thead className="max-lg:sr-only">
           <tr className="type-label text-text-3">
             <th scope="col" className="py-4 pr-4 pl-7 font-medium">
               {t("table.offer")}
@@ -43,12 +43,12 @@ export function PriceLedger({
           </tr>
         </thead>
         {PRICE_GROUPS.map((group, g) => (
-          <tbody key={group.key} className="max-md:block">
-            <tr className="border-line bg-bg-sunken/40 border-t max-md:block">
+          <tbody key={group.key} className="max-lg:block">
+            <tr className="border-line bg-bg-sunken/40 border-t max-lg:block">
               <th
                 scope="colgroup"
                 colSpan={4}
-                className="type-label text-text-2 block px-5 py-3 font-medium md:table-cell md:px-7"
+                className="type-label text-text-2 block px-5 py-3 font-medium lg:table-cell lg:px-7"
               >
                 <span className="text-accent">
                   {String(g + 1).padStart(2, "0")}
@@ -63,11 +63,11 @@ export function PriceLedger({
               return (
                 <tr
                   key={id}
-                  className="group/row border-line hover:bg-surface-3 relative border-t transition-colors duration-(--d-fast) max-md:grid max-md:grid-cols-1 max-md:gap-y-1 max-md:px-5 max-md:py-4"
+                  className="group/row border-line hover:bg-surface-3 relative border-t transition-colors duration-(--d-fast) max-lg:grid max-lg:grid-cols-1 max-lg:gap-y-1 max-lg:px-5 max-lg:py-4"
                 >
                   <th
                     scope="row"
-                    className="min-w-0 py-4 pr-4 align-top font-medium max-md:p-0 md:pl-7"
+                    className="min-w-0 py-4 pr-4 align-top font-medium max-lg:p-0 lg:pl-7"
                   >
                     <Link
                       href={row.href}
@@ -76,25 +76,25 @@ export function PriceLedger({
                       {row.name}
                     </Link>
                   </th>
-                  <td className="text-text-2 py-4 pr-4 align-top text-[0.9375rem] leading-snug max-md:order-3 max-md:mt-1 max-md:min-w-0 max-md:p-0">
+                  <td className="text-text-2 py-4 pr-4 align-top text-[0.9375rem] leading-snug max-lg:order-3 max-lg:mt-1 max-lg:min-w-0 max-lg:p-0">
                     {row.summary}
                   </td>
-                  <td className="type-data text-text-3 py-4 pr-4 align-top max-md:order-4 max-md:min-w-0 max-md:p-0 md:whitespace-nowrap">
+                  <td className="type-data text-text-3 py-4 pr-4 align-top max-lg:order-4 max-lg:min-w-0 max-lg:p-0 lg:whitespace-nowrap">
                     {row.duration}
                   </td>
                   <td
                     className={cn(
-                      "type-data py-4 text-right align-top max-md:order-2 max-md:min-w-0 max-md:p-0 max-md:text-left md:pr-7",
+                      "type-data py-4 text-right align-top max-lg:order-2 max-lg:min-w-0 max-lg:p-0 max-lg:text-left lg:pr-7",
                       onQuote
-                        ? "text-text-3 md:whitespace-nowrap"
-                        : "text-text md:whitespace-nowrap",
+                        ? "text-text-3 lg:whitespace-nowrap"
+                        : "text-text lg:whitespace-nowrap",
                     )}
                   >
                     <span className="inline-flex items-start gap-2">
                       {row.price}
                       <ArrowRight
                         aria-hidden="true"
-                        className="text-text-3 group-hover/row:text-text mt-0.5 size-3.5 shrink-0 transition-[color,translate] duration-(--d-fast) group-hover/row:translate-x-0.5 max-md:hidden"
+                        className="text-text-3 group-hover/row:text-text mt-0.5 size-3.5 shrink-0 transition-[color,translate] duration-(--d-fast) group-hover/row:translate-x-0.5 max-lg:hidden"
                       />
                     </span>
                   </td>

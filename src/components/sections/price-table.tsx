@@ -17,7 +17,7 @@ type PriceTableProps = {
 
 export function PriceTable({ headers, groups, vatNote }: PriceTableProps) {
   return (
-    <section className="pb-28 lg:pb-32">
+    <section data-shot="prices" className="pb-28 lg:pb-32">
       <div className="container max-w-5xl">
         <table className="w-full text-start">
           <caption className="text-muted-foreground caption-bottom pt-6 text-start text-sm">

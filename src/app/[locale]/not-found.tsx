@@ -9,7 +9,7 @@ export default async function NotFound() {
   const t = await getTranslations("notFound");
 
   return (
-    <section className="relative">
+    <section data-shot="not-found" className="relative">
       <div className="container flex min-h-[80vh] flex-col items-center justify-center pt-28 pb-24 text-center">
         <h1 className="type-h1">{t("title")}</h1>
         <p className="text-text-2 mt-4 max-w-[44ch]">{t("body")}</p>

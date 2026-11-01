@@ -12,6 +12,7 @@ export function LegalSection({
   return (
     <section
       id={id}
+      data-shot={id}
       aria-labelledby={`${id}-title`}
       className="border-line scroll-mt-28 border-t pt-8"
     >

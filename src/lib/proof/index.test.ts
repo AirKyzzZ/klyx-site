@@ -10,6 +10,7 @@ import {
   verifyRunLog,
   verifySiteShots,
 } from "./index";
+import lighthouseData from "./klyx-lighthouse.json";
 
 const measured = {
   status: "measured",
@@ -104,9 +105,11 @@ describe("verifySiteShots", () => {
 });
 
 describe("getVerifiedProof", () => {
-  it("never returns the pending Lighthouse run", () => {
+  it("returns the klyx.fr Lighthouse run only once it is measured", () => {
     const kinds = getVerifiedProof().map((source) => source.kind);
-    expect(kinds).not.toContain("lighthouse");
+    expect(kinds.includes("lighthouse")).toBe(
+      verifyLighthouse(lighthouseData) !== null,
+    );
   });
 
   it("returns only site shots whose url is a live https url", () => {

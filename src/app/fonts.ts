@@ -19,6 +19,5 @@ export const serif = Instrument_Serif({
   style: "italic",
   variable: "--font-instrument-serif",
   display: "swap",
-  preload: false,
   adjustFontFallback: true,
 });

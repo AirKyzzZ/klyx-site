@@ -146,6 +146,10 @@ test.describe("home hero", () => {
       }),
     ).toBeVisible();
     await expect(page.locator('[data-ls-stage="agents"]')).toBeHidden();
+    await expect(page.getByText(en.liveSystem.caption)).toBeHidden();
+    await expect(
+      page.getByText(/^Real mobile Lighthouse score of klyx\.fr, measured on /),
+    ).toBeVisible();
   });
 
   test.describe("on a phone", () => {

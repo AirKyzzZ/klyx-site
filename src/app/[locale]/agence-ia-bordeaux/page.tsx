@@ -42,7 +42,10 @@ export default async function BordeauxPage({ params }: LocaleParams) {
 
   return (
     <>
-      <section className="relative pt-24 pb-16 md:pt-28 md:pb-20">
+      <section
+        data-shot="hero"
+        className="relative pt-24 pb-16 md:pt-28 md:pb-20"
+      >
         <div className="container">
           <div className="lg:border-line-strong relative isolate lg:flex lg:min-h-[600px] lg:items-center lg:overflow-hidden lg:rounded-xl lg:border lg:shadow-[0_0_0_1px_var(--line),0_40px_160px_-40px_var(--glow)] lg:after:absolute lg:after:inset-0 lg:after:-z-1 lg:after:bg-[url(/textures/grain.png)] lg:after:bg-size-[128px] lg:after:mix-blend-overlay">
             <div className="relative lg:flex lg:h-full lg:w-[52%] lg:flex-col lg:justify-center lg:bg-[linear-gradient(90deg,rgb(20_20_20/0.94)_0%,rgb(20_20_20/0.88)_72%,rgb(20_20_20/0))] lg:py-12 lg:pr-16 lg:pl-12">

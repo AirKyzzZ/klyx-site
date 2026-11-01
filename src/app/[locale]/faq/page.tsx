@@ -48,7 +48,10 @@ export default async function FaqPage({ params }: LocaleParams) {
         })}
       />
 
-      <section className="relative pt-28 pb-12 md:pt-36 md:pb-16">
+      <section
+        data-shot="hero"
+        className="relative pt-28 pb-12 md:pt-36 md:pb-16"
+      >
         <div className="container grid gap-10 lg:grid-cols-12 lg:items-end lg:gap-6">
           <div className="lg:col-span-7">
             <p className="hero-in type-label text-accent">

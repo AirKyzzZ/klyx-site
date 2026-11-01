@@ -4,6 +4,22 @@ No public page shows a `TODO(maxime)` marker any more (controller ruling, 2026-1
 
 Rows written before the sweep still describe the original claim; the sweep section at the end says what the page shows now.
 
+## Launch blockers
+
+Do not put the site live until each of these is answered and the page updated.
+
+| Page | Key | What is missing |
+|---|---|---|
+| Mentions légales | `legal.hosting.body` | Host identification required by the LCEN (art. 6, III): name, address and phone of the host. The page currently says « Hébergeur : précisé à la mise en ligne. » |
+| Confidentialité | `privacy.hosting.body` | Host named in the privacy policy (or an explicit pointer to the legal notice once it names it), and the transfer mechanism (DPF or SCCs) for the host, Resend and Cal.com |
+| Mentions légales | `legal.publisher.body`, `legal.publisher.siret` | Registered address and SIRET confirmed |
+| Mentions légales | `legal.publisher.vat` | VAT statement (and the « HT » wording if you are on franchise en base) |
+| Confidentialité | `privacy.contactForm.body` | Retention period for contact form data, confirm before launch |
+| Confidentialité | `privacy.analytics.body` | « No analytics, no ad cookies »: confirm before launch, update if PostHog or any tracker is added |
+| Confidentialité | `privacy.prospection.sources` | Prospect data sources the outreach system actually uses, confirm before launch |
+| Confidentialité | `privacy.prospection.retention` | Prospect data retention period, confirm before launch |
+| Home, Sites | `src/lib/proof/klyx-lighthouse.json` | The score was measured on the local production build (`next start`), not on the live klyx.fr. Rerun `node scripts/lighthouse.mjs --base https://klyx.fr` after deploy and commit the new file |
+
 ## Proof and identity
 
 | Page | Key | Claim | What to confirm |
@@ -104,7 +120,10 @@ No marker on these pages. The white-label terms are written as proposals agreed 
 | Mentions légales | `legal.hosting.body` | « Hébergeur : précisé à la mise en ligne. » | Final host |
 | Confidentialité | `privacy.hosting.body` | Host named only in the legal notice; DPF or SCCs "depending on the provider" | Host and each transfer mechanism |
 | Confidentialité | `privacy.contactForm.body`, `privacy.analytics.body`, `privacy.prospection.sources`, `privacy.prospection.retention` | Marker removed, sentences unchanged | Retention periods, analytics, prospect sources |
-| Réalisations (all 5) | `content/realisations/*.mdx` | Pending "what we built / result" notes removed; Hop Hop Immo keeps "the Hoppy assistant, from design to production" and "no figures until Hop Hop Immo agrees" | What is yours on each project, stack, year, figures and testimonials |
+| Réalisations (all 5) | `content/realisations/*.mdx` | Pending "what we built / result" notes removed | What is yours on each project, stack, year, figures and testimonials |
+| Hop Hop Immo case | `content/realisations/hop-hop-immo.*.mdx` | « L'assistant Hoppy, de la conception à la mise en production. » The « Résultat » section ("no figures until Hop Hop Immo agrees") is removed (R7) | That Klyx did the Hoppy assistant from design to production, and whether Hop Hop Immo agrees to figures |
+| Kenzi case | `content/realisations/kenzi.*.mdx` | « en ligne sur kenzievents.com » removed: https://kenzievents.com returned HTTP 500 on 2026-11-01 (R7). The case `url` still points there | Is the site still live? Fix it or drop the `url` |
+| Cas d'usage agences | `meta.agencies.description`, `useCases.agencies.hero.titleEmphasis`, `useCases.agencies.card.build`, `useCases.agencies.terms.items.repo` | Softened (R7): « livrés en marque blanche… selon des règles fixées par écrit », h1 « L'IA de vos clients, en marque blanche. », repo line « comme on en convient avec vous » | Same as the agencies terms row above |
 
 ## Local and legal
 
@@ -115,7 +134,7 @@ No marker on these pages. The white-label terms are written as proposals agreed 
 | Mentions légales | `legal.publisher.siret` | Same SIRET | Same |
 | Mentions légales | `legal.publisher.body` | Registered address | Address to publish |
 | Mentions légales | `legal.publisher.vat` | VAT statement | Your VAT status. Prices are shown « HT » everywhere: if you are on franchise en base (art. 293 B), the « HT » wording needs rethinking too |
-| Mentions légales | `legal.hosting.body` | Host is Vercel Inc. | Final host (MIGRATION.md recommends Vercel Pro) |
+| Mentions légales | `legal.hosting.body` | Now shows « Hébergeur : précisé à la mise en ligne. » (no host named) | Final host, with name, address and phone (LCEN). See launch blockers |
 | Confidentialité | `privacy.hosting.body` | Vercel, Resend, Cal.com transfers rely on the EU-US DPF or SCCs | Host, and each provider's transfer mechanism |
 | Confidentialité | `privacy.contactForm.body` | Retention of contact form data | Period (suggested: 3 years after last exchange) |
 | Confidentialité | `privacy.analytics.body` | No analytics, no ad cookies | Still true at launch; update if PostHog is added |

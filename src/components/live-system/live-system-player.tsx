@@ -229,6 +229,11 @@ export function LiveSystemPlayer({
         )) {
           stage.hidden = stage.dataset.lsStage !== id;
         }
+        for (const caption of root.querySelectorAll<HTMLElement>(
+          "[data-ls-caption]",
+        )) {
+          caption.hidden = !caption.dataset.lsCaption?.split(" ").includes(id);
+        }
         current = id;
         markTabs();
         start(id);

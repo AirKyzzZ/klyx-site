@@ -1,3 +1,5 @@
+import { readdirSync } from "node:fs";
+
 import { type Locale, routing } from "../src/i18n/routing";
 
 export const SAMPLE_SLUG = "hop-hop-immo";
@@ -16,3 +18,20 @@ export const routePaths = routing.locales.flatMap((locale) =>
       localize(locale, typeof value === "string" ? value : value[locale]),
     ),
 );
+
+const caseSlugs = [
+  ...new Set(
+    readdirSync("content/realisations").map((file) => file.split(".")[0]),
+  ),
+];
+
+export const pagePaths = [
+  ...new Set([
+    ...routePaths,
+    ...caseSlugs.flatMap((slug) => [
+      `/realisations/${slug}`,
+      `/en/work/${slug}`,
+    ]),
+    NOT_FOUND_PATH,
+  ]),
+];

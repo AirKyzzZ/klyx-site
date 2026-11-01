@@ -22,7 +22,7 @@ type StatementProps = {
 
 export function Statement({ rows, label, className }: StatementProps) {
   return (
-    <section className={cn("py-20 lg:py-28", className)}>
+    <section data-shot="statement" className={cn("py-20 lg:py-28", className)}>
       <div className="container">
         {label && <DashedLabel label={label} />}
         <div className="mx-auto max-w-5xl">

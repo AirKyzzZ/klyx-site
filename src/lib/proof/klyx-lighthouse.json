@@ -1,1 +1,13 @@
-{ "status": "pending" }
+{
+  "status": "measured",
+  "url": "https://klyx.fr/",
+  "measuredAt": "http://localhost:4318/ (next start, production build)",
+  "date": "2026-11-01",
+  "tool": "lighthouse@12.8.2, mobile preset, median of 3",
+  "scores": {
+    "performance": 95,
+    "accessibility": 100,
+    "bestPractices": 100,
+    "seo": 100
+  }
+}

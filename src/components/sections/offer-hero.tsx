@@ -39,7 +39,10 @@ export function OfferHero({
   scenario: ScenarioId;
 }) {
   return (
-    <section className="relative pt-24 pb-16 md:pt-28 md:pb-24">
+    <section
+      data-shot="hero"
+      className="relative pt-24 pb-16 md:pt-28 md:pb-24"
+    >
       <div className="container grid gap-12 xl:grid-cols-12 xl:items-center xl:gap-6">
         <div className="xl:col-span-5">
           <nav

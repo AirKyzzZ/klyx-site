@@ -88,7 +88,11 @@ export default async function CasePage({ params }: CasePageProps) {
       />
 
       <ChamferBreak edge="top" />
-      <section data-tone="sand" className="tone-sand relative z-1">
+      <section
+        data-shot="case-hero"
+        data-tone="sand"
+        className="tone-sand relative z-1"
+      >
         <div className="relative container pt-6 pb-12 md:pt-10 md:pb-16">
           <div
             className="case-cover tone-dark border-line-strong aspect-[4/3] rounded-xl border shadow-[0_0_0_1px_var(--line),0_40px_160px_-40px_var(--glow)] sm:aspect-[16/10] lg:aspect-[16/8]"
@@ -144,7 +148,7 @@ export default async function CasePage({ params }: CasePageProps) {
       </section>
       <ChamferBreak edge="bottom" />
 
-      <section className="relative z-1">
+      <section data-shot="case-body" className="relative z-1">
         <div className="container py-16 md:py-24">
           <article className="max-w-[64ch] space-y-5">
             <Content />

@@ -153,7 +153,7 @@ type CaseGridProps = {
 
 export function CaseGrid({ items, readLabel, className }: CaseGridProps) {
   return (
-    <section className={cn("py-section", className)}>
+    <section data-shot="cases" className={cn("py-section", className)}>
       <ul className="container grid gap-x-6 gap-y-14 md:grid-cols-2 lg:grid-cols-3">
         {items.map((item, i) => (
           <li key={item.slug}>

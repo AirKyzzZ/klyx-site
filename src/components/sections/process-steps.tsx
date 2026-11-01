@@ -9,7 +9,10 @@ type ProcessStepsProps = {
 
 export function ProcessSteps({ title, steps, className }: ProcessStepsProps) {
   return (
-    <section className={cn("overflow-hidden pb-28 lg:pb-32", className)}>
+    <section
+      data-shot="process"
+      className={cn("overflow-hidden pb-28 lg:pb-32", className)}
+    >
       <h2 className="container text-center text-3xl tracking-tight text-balance md:text-4xl lg:text-5xl">
         {title}
       </h2>

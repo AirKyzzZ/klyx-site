@@ -1898,13 +1898,13 @@
     "agencies": {
       "card": {
         "problem": "Your clients ask for AI, and nobody on the team has put any into production yet.",
-        "build": "AI agents, automations and Next.js sites, delivered under your brand."
+        "build": "AI agents, automations and Next.js sites, delivered white-label."
       },
       "hero": {
         "eyebrow": "Web and marketing agencies",
         "title": "Your clients' AI,",
-        "titleEmphasis": "under your brand.",
-        "serif": "brand",
+        "titleEmphasis": "delivered white-label.",
+        "serif": "white-label",
         "subtitle": "For web and marketing agencies and freelance collectives with an AI or Next.js brief and nobody to deliver it. Landing page from {landingPrice}, AI-ready site from {siteIaPrice}, AI Sprint from {sprintPrice}.",
         "ctaPrimary": "Book a call",
         "ctaSecondary": "Get a free quote"
@@ -1992,7 +1992,7 @@
           "nda": "A non-disclosure agreement before the brief, if you want one.",
           "brand": "Your brand on what we deliver: we agree with you on what may mention our name, and what does not.",
           "client": "The client relationship stays yours. Direct exchanges with your client are decided with you.",
-          "repo": "The code lives in your repo or the client's from day one.",
+          "repo": "The code in your repo or the client's, as agreed with you.",
           "handover": "A written handover at every delivery, so another developer can take over.",
           "pricing": "Our public prices are the basis for your quote. For regular volume, we discuss it on the call."
         }
@@ -2369,7 +2369,7 @@
     },
     "agencies": {
       "title": "White-label AI and Next.js subcontracting | Klyx",
-      "description": "AI agents, automations and Next.js sites delivered under your agency's brand. Code in the client's repo, public prices from {landingPrice}."
+      "description": "AI agents, automations and Next.js sites delivered white-label for your agency, on terms agreed in writing with you. Public prices from {landingPrice}."
     },
     "services": {
       "title": "AI automation for accounting and law firms | Klyx",
@@ -2459,13 +2459,13 @@
           "built": "Site built, ready to go",
           "lighthouse": "Mobile speed test",
           "deploy": "Publishing to klyx.fr",
-          "retry": "Server slow, trying again",
           "deployed": "Live on klyx.fr",
           "sitemap": "Site map updated",
           "llms": "Ready for AI engines to read"
         },
         "chip": "Lighthouse {score} · klyx.fr",
-        "chipPending": "Lighthouse · measuring"
+        "chipPending": "Lighthouse · measuring",
+        "measuredCaption": "Real mobile Lighthouse score of klyx.fr, measured on {date}. The run itself is an example."
       },
       "fde": {
         "title": "ENG-142 · CSV export",

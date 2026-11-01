@@ -44,6 +44,7 @@ export function Hero({
 }: HeroProps) {
   return (
     <section
+      data-shot="hero"
       className={cn("relative pt-24 pb-16 md:pt-28 md:pb-20", className)}
     >
       <div className="container">
@@ -127,7 +128,11 @@ export async function HomeHero({ locale }: { locale: Locale }) {
   const tabs = await getTranslations({ locale, namespace: "liveSystem.tabs" });
 
   return (
-    <section data-home-hero className="relative pt-28 pb-16 md:pb-24">
+    <section
+      data-home-hero
+      data-shot="hero"
+      className="relative pt-28 pb-16 md:pb-24"
+    >
       <div className="container">
         <div>
           <p className="hero-in type-label text-text-3" style={delay(0)}>

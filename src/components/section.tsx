@@ -52,6 +52,7 @@ export function Section({
   return (
     <section
       id={id}
+      data-shot={id ?? eyebrow ?? "section"}
       data-tone={tone}
       className={cn(
         "relative z-1",
