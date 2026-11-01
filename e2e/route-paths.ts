@@ -4,6 +4,7 @@ import { type Locale, routing } from "../src/i18n/routing";
 
 export const SAMPLE_SLUG = "hop-hop-immo";
 export const NOT_FOUND_PATH = "/page-introuvable";
+export const HIDDEN_CASE = "kenzi";
 
 function localize(locale: Locale, localized: string) {
   const path = localized.replace("[slug]", SAMPLE_SLUG);
@@ -23,7 +24,7 @@ const caseSlugs = [
   ...new Set(
     readdirSync("content/realisations").map((file) => file.split(".")[0]),
   ),
-];
+].filter((slug) => slug !== HIDDEN_CASE);
 
 export const pagePaths = [
   ...new Set([

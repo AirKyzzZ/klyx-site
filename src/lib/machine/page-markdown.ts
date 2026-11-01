@@ -25,7 +25,7 @@ import {
 } from "@/lib/offers";
 import { type AppPathname, absoluteUrl } from "@/lib/seo";
 import { CREDITS } from "@/lib/credits";
-import { getSiteShot } from "@/lib/proof";
+import { getGithubContributions, getSiteShot } from "@/lib/proof";
 import { faqThemes } from "@/lib/faq-page";
 import { scenarios } from "@/lib/scenarios";
 import {
@@ -154,9 +154,10 @@ function toolBlocks(
   t: Translate,
   key: string,
   groups: ToolGroup[],
+  title = sectionTitle(t, key),
 ): Block[] {
   return [
-    `## ${sectionTitle(t, key)}`,
+    `## ${title}`,
     t(`${key}.body`),
     `### ${t(`${key}.label`)}`,
     list(
@@ -309,7 +310,7 @@ function blockMarkdown(
         t("block.document.note"),
         ...card(t, "block.credit"),
         ...card(t, "block.bpifrance"),
-        t("block.bpifrance.source"),
+        link(t("block.bpifrance.source"), t("block.bpifrance.url")),
       ];
     }
     case "automation-examples":
@@ -335,10 +336,7 @@ async function offerPageMarkdown(
   const cases = (await getCaseStudies(locale)).filter((c) =>
     config.proofSlugs.includes(c.slug),
   );
-  const proofUrl =
-    config.proofLink === "github"
-      ? site.socials.github
-      : absoluteUrl(locale, "/realisations");
+  const proofUrl = absoluteUrl(locale, "/realisations");
   const deliverables: Block[] =
     config.key === "fde"
       ? [
@@ -372,6 +370,7 @@ async function offerPageMarkdown(
           getStaticTranslator(locale, "offerPage"),
           "stack",
           DEPLOYED_TECH,
+          `${getStaticTranslator(locale, "offerPage")("stack.title")} ${t("stack.titleEmphasis")}`,
         )
       : []),
     ...(config.proofLink === null
@@ -461,12 +460,12 @@ async function pricing(locale: Locale): Promise<string> {
         }),
       ].join("\n"),
     ]),
-    `## ${t("market.title")}`,
+    `## ${sectionTitle(t, "market")}`,
     t("market.body"),
     marketTable(locale, t, offersT),
     t("market.card.note"),
     ...faqBlocks(
-      t("faq.title"),
+      sectionTitle(t, "faq"),
       messageList(t, "faq.items", ["question", "answer"]),
     ),
     ...ctaBlocks(locale, t, "cta", ["quote", "book"]),
@@ -502,6 +501,7 @@ async function caseStudy(
       labelled(locale, t("labels.client"), meta.client),
       labelled(locale, t("labels.year"), String(meta.year)),
       labelled(locale, t("labels.stack"), meta.stack.join(", ")),
+      labelled(locale, t("labels.outcome"), t("labels.noOutcome")),
     ]),
     meta.live !== false && link(t("labels.visit"), meta.url),
     await getMdxBody("realisations", meta.slug, locale),
@@ -522,6 +522,7 @@ async function about(locale: Locale): Promise<string> {
     "Klyx Estate": t("lines.estate"),
   };
   const citeme = getSiteShot("citeme");
+  const contributions = getGithubContributions();
 
   return doc([
     ...intro(locale, "/a-propos", heroTitle(t)),
@@ -541,7 +542,9 @@ async function about(locale: Locale): Promise<string> {
       link(founder("github"), site.socials.github),
       link(founder("linkedin"), site.socials.linkedinFounder),
     ]),
-    citeme && `## ${founder("products")}`,
+    contributions &&
+      `${t("contributions.total", { total: new Intl.NumberFormat(locale).format(contributions.total) })}. ${t("contributions.caption", { date: formatDate(locale, contributions.capturedAt) })}`,
+    citeme && `## ${sectionTitle(t, "products")}`,
     citeme && link("CiteMe", citeme.url),
     `## ${t("lines.title")}`,
     list(
@@ -560,17 +563,17 @@ async function about(locale: Locale): Promise<string> {
 
 async function bordeaux(locale: Locale): Promise<string> {
   const t = getStaticTranslator(locale, "bordeaux");
-  const automation = getStaticTranslator(locale, "automation");
   return doc([
     ...intro(locale, "/agence-ia-bordeaux", heroTitle(t)),
     t("hero.subtitle"),
-    `## ${t("problem.title")}`,
+    `## ${sectionTitle(t, "problem")}`,
     t("problem.body"),
+    link(t("problem.source"), t("problem.sourceUrl")),
     `### ${t("examples.title")}`,
     list(messageStrings(t, "examples.items")),
-    ...automationExampleBlocks(automation),
+    ...automationExampleBlocks(t),
     ...processBlocks(locale, t),
-    `## ${t("local.title")}`,
+    `## ${sectionTitle(t, "local")}`,
     t("local.body"),
     list(
       ["city", "zone", "travel"].map((key) =>
@@ -581,10 +584,10 @@ async function bordeaux(locale: Locale): Promise<string> {
         ),
       ),
     ),
-    `## ${t("trust.title")}`,
+    `## ${sectionTitle(t, "trust")}`,
     t("trust.body"),
     ...faqBlocks(
-      t("faq.title"),
+      sectionTitle(t, "faq"),
       messageList(
         t,
         "faq.items",
@@ -803,7 +806,6 @@ async function legal(locale: Locale): Promise<string> {
     `## ${t("publisher.title")}`,
     t("publisher.body"),
     t("publisher.siret", { siret: site.siret }),
-    t("publisher.vat"),
     t("publisher.email", { email: site.email }),
     t("publisher.director"),
     `## ${t("hosting.title")}`,

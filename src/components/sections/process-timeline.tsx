@@ -43,14 +43,19 @@ export function SampleWindow({
             />
           ))}
         </span>
-        <span className="ml-1 truncate">{file}</span>
+        <span className="ml-1 min-w-0 truncate">{file}</span>
         {sample && (
-          <span className="border-line-strong type-label ml-auto rounded-xs border px-1.5 py-0.5">
+          <span className="border-line-strong type-label ml-auto hidden shrink-0 rounded-xs border px-1.5 py-0.5 whitespace-nowrap sm:inline">
             {sample}
           </span>
         )}
       </div>
       <div className="type-data p-4 text-[0.8125rem] sm:p-5">{children}</div>
+      {sample && (
+        <p className="border-line type-label text-text-3 border-t px-4 py-2 sm:hidden">
+          {sample}
+        </p>
+      )}
     </div>
   );
 }
@@ -284,7 +289,7 @@ export async function ProcessTimeline({
                   {t(`steps.${id}.body`)}
                 </p>
               </div>
-              <div className="reveal max-lg:max-h-40 max-lg:overflow-hidden max-lg:[mask-image:linear-gradient(180deg,#000_65%,transparent)]">
+              <div className="reveal min-w-0">
                 <SampleWindow file={files[id]} sample={sample}>
                   {artefacts[id]}
                 </SampleWindow>

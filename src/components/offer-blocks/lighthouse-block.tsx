@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 import type { Locale } from "@/i18n/routing";
 import { getVerifiedProof, type ProofSource } from "@/lib/proof";
 
-const SHOT_SLUGS = ["pkba", "vertiflow", "kenzi"];
+const SHOT_SLUGS = ["vertiflow", "hop-hop-immo"];
 const MAX_CARDS = 3;
 
 function blockProof(sources: ProofSource[]): ProofSource[] {

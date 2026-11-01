@@ -59,11 +59,10 @@
 
 .view-toggle--floating {
   position: fixed;
-  bottom: 20px;
-  left: 50%;
+  bottom: 24px;
+  left: 24px;
   z-index: 50;
   display: none;
-  translate: -50% 0;
   background-color: rgb(26 25 24 / 0.75);
   backdrop-filter: blur(12px);
   box-shadow:
@@ -79,7 +78,7 @@
   from {
     opacity: 0;
     pointer-events: none;
-    translate: -50% 12px;
+    translate: 0 12px;
   }
 }
 

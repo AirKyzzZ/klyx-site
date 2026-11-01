@@ -213,11 +213,12 @@ for (const useCase of USE_CASE_PAGES) {
   });
 }
 
-test("/faq answers are visible and anchored, with a link to their page", async ({
+test("/faq answers are anchored, open on click and link to their page", async ({
   page,
 }) => {
   await page.goto("/faq#faq-page-roi");
   const roi = page.locator("details#faq-page-roi");
+  await roi.locator("summary").click();
   await expect(roi).toHaveAttribute("open", "");
   await expect(roi.locator("p").first()).toBeVisible();
   await expect(page.locator("details#home-price a")).toHaveAttribute(

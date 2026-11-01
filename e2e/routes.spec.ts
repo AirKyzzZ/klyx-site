@@ -94,13 +94,28 @@ test("responses carry the security headers", async ({ request }) => {
 test.describe("an unknown path without JavaScript", () => {
   test.use({ javaScriptEnabled: false });
 
-  test("renders the global 404 with links to both homes", async ({ page }) => {
+  test("renders the French 404 with home, contact and English links", async ({
+    page,
+  }) => {
     const response = await page.goto(NOT_FOUND_PATH);
     expect(response?.status()).toBe(404);
-    await expect(page.locator("h1")).toHaveText("Page introuvable");
-    await expect(page.locator("main a[href='/']")).toHaveCount(1);
-    await expect(page.locator("main a[href='/en']")).toHaveCount(1);
+    await expect(page.locator("h1:visible")).toHaveText("Page introuvable");
+    await expect(page.locator("main a[href='/']:visible")).toHaveCount(1);
+    await expect(page.locator("main a[href='/contact']:visible")).toHaveCount(
+      1,
+    );
+    await expect(page.locator("main a[href='/en']:visible")).toHaveCount(1);
   });
+});
+
+test("an unknown /en path renders the English 404 only", async ({ page }) => {
+  const response = await page.goto("/en/page-not-here");
+  expect(response?.status()).toBe(404);
+  await expect(page.locator("h1:visible")).toHaveText("Page not found");
+  await expect(page.locator("main a[href='/en/contact']:visible")).toHaveCount(
+    1,
+  );
+  await expect(page.locator("h1")).toHaveCount(1);
 });
 
 test("an unknown case study renders the localized 404 page", async ({
@@ -109,7 +124,7 @@ test("an unknown case study renders the localized 404 page", async ({
   const response = await page.goto("/en/work/does-not-exist");
   expect(response?.status()).toBe(404);
   await expect(page.locator("h1")).toHaveText("Page not found");
-  await expect(page.locator("main a[href='/en/work']")).toHaveCount(1);
+  await expect(page.locator("main a[href='/en/contact']")).toHaveCount(1);
 });
 
 test("/tarifs ledger cells never clip at 390px", async ({ page }) => {
@@ -139,16 +154,21 @@ for (const path of [...routePaths, NOT_FOUND_PATH]) {
 }
 
 for (const path of ["/realisations/kenzi", "/en/work/kenzi"]) {
-  test(`${path} links nowhere while kenzievents.com is down`, async ({
+  test(`${path} stays hidden until the case has a write-up`, async ({
     page,
     request,
   }) => {
-    await page.goto(path);
-    await expect(page.locator('a[href*="kenzievents.com"]')).toHaveCount(0);
-    await expect(page.getByText("kenzievents.com")).toHaveCount(0);
+    const response = await page.goto(path);
+    expect(response?.status()).toBe(404);
     const locale = path.startsWith("/en") ? "" : "/fr";
-    const markdown = await request.get(`/md${locale}${path}`);
-    expect(markdown.status()).toBe(200);
-    expect(await markdown.text()).not.toContain("kenzievents.com");
+    expect((await request.get(`/md${locale}${path}`)).status()).toBe(404);
+    for (const listing of [
+      "/",
+      "/realisations",
+      "/services/creation-site-web",
+    ]) {
+      await page.goto(listing);
+      await expect(page.locator('a[href*="/kenzi"]')).toHaveCount(0);
+    }
   });
 }

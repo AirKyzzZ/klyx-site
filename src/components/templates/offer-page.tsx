@@ -1,7 +1,7 @@
 import type { JSX } from "react";
 
 import type { Metadata } from "next";
-import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 
 import { ActionButton } from "@/components/action-button";
@@ -37,10 +37,8 @@ import type {
   OfferPageConfig,
 } from "@/lib/offer-pages";
 import { getPriceValues } from "@/lib/offers";
-import { getSiteShot } from "@/lib/proof";
 import { sectorPages } from "@/lib/sector-pages";
 import { buildMetadata } from "@/lib/seo";
-import { site } from "@/lib/site";
 import { DEPLOYED_TECH } from "@/lib/tools";
 import { cn } from "@/lib/utils";
 
@@ -163,10 +161,6 @@ export async function OfferPage({
         : page(`eyebrows.${id}`),
   });
 
-  const firstShot = cases
-    .map((study) => getSiteShot(study.slug))
-    .find((shot) => shot !== null);
-
   return (
     <>
       <JsonLd
@@ -206,10 +200,10 @@ export async function OfferPage({
           </div>
           <aside className="reveal border-line self-end border-t pt-5 lg:col-span-3 lg:col-start-10 lg:border-t-0 lg:border-l lg:pt-0 lg:pl-6">
             <p className="type-label text-text-3">{page("symptoms")}</p>
-            <ul className="type-data mt-4 space-y-3">
+            <ul className="mt-4 space-y-3 text-[0.9375rem] leading-snug">
               {messageStrings(t, "problem.symptoms").map((symptom, i) => (
                 <li key={symptom} className="text-text-2 flex gap-3">
-                  <span className="text-text-3">
+                  <span className="type-data text-text-3">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   {symptom}
@@ -274,7 +268,7 @@ export async function OfferPage({
         <ToolsSection
           {...section("stack")}
           title={page("stack.title")}
-          emphasis={page("stack.titleEmphasis")}
+          emphasis={t("stack.titleEmphasis")}
           body={page("stack.body")}
           label={page("stack.label")}
           rows={DEPLOYED_TECH.map((group) => ({
@@ -309,28 +303,16 @@ export async function OfferPage({
                 )}
               >
                 <p className="text-text-2 max-w-[44ch]">{t("proof.body")}</p>
-                {config.proofLink === "github" ? (
-                  <a
-                    href={site.socials.github}
-                    target="_blank"
-                    rel="noopener"
-                    className="group border-ink/20 text-text hover:bg-sand-200 inline-flex h-11 items-center gap-2 rounded-sm border px-4.5 text-[0.9375rem] font-medium transition-colors duration-(--d-fast)"
-                  >
-                    {t("proof.link")}
-                    <ArrowUpRight aria-hidden="true" className="size-4" />
-                  </a>
-                ) : (
-                  <Link
-                    href="/realisations"
-                    className="group border-ink/20 text-text hover:bg-sand-200 inline-flex h-11 items-center gap-2 rounded-sm border px-4.5 text-[0.9375rem] font-medium transition-colors duration-(--d-fast)"
-                  >
-                    {t("proof.link")}
-                    <ArrowRight
-                      aria-hidden="true"
-                      className="size-4 transition-transform duration-(--d-fast) group-hover:translate-x-0.5"
-                    />
-                  </Link>
-                )}
+                <Link
+                  href="/realisations"
+                  className="group border-ink/20 text-text hover:bg-sand-200 inline-flex h-11 items-center gap-2 rounded-sm border px-4.5 text-[0.9375rem] font-medium transition-colors duration-(--d-fast)"
+                >
+                  {t("proof.link")}
+                  <ArrowRight
+                    aria-hidden="true"
+                    className="size-4 transition-transform duration-(--d-fast) group-hover:translate-x-0.5"
+                  />
+                </Link>
               </div>
             </div>
             {proofCases.length > 0 && (
@@ -392,7 +374,7 @@ export async function OfferPage({
                   <Link
                     key={key}
                     href={sectorPages[key].pathname}
-                    className="text-text-2 hover:text-text underline-offset-4 transition-colors hover:underline"
+                    className="text-text hover:text-text-2 underline underline-offset-4 transition-colors"
                   >
                     {nav(key)}
                   </Link>
@@ -418,7 +400,6 @@ export async function OfferPage({
         body={t("cta.body")}
         primary={{ action: config.cta[0], label: t("cta.ctaPrimary") }}
         secondary={{ action: config.cta[1], label: t("cta.ctaSecondary") }}
-        shot={firstShot ?? null}
       />
     </>
   );

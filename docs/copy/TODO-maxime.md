@@ -10,15 +10,17 @@ Do not put the site live until each of these is answered and the page updated.
 
 | Page | Key | What is missing |
 |---|---|---|
-| Mentions légales | `legal.hosting.body` | Host identification required by the LCEN (art. 6, III): name, address and phone of the host. The page currently says « Hébergeur : précisé à la mise en ligne. » |
-| Confidentialité | `privacy.hosting.body` | Host named in the privacy policy (or an explicit pointer to the legal notice once it names it), and the transfer mechanism (DPF or SCCs) for the host, Resend and Cal.com |
+| Mentions légales | `legal.hosting.body` | Host decided (Netlify, 2026-11-01). The page now names Netlify, Inc., 101 2nd Street, San Francisco, CA 94105, United States, contact support@netlify.com, taken from https://www.netlify.com/legal/terms-of-use/ (last updated 14 Oct 2026) and https://www.netlify.com/privacy/ (section 17). Netlify publishes no phone number on either page, and the LCEN asks for one: find a number Netlify accepts being published (or confirm with a lawyer that the support address is enough) before launch |
+| Confidentialité | `privacy.hosting.body` | Netlify is now named, with the EU-US Data Privacy Framework: Netlify's DPA (https://www.netlify.com/pdf/netlify-dpa.pdf, version 20260609, section 14.2) says Netlify is certified under the EU-US DPF, with SCCs as fallback. Still open: the transfer mechanism for Resend and Cal.com |
 | Mentions légales | `legal.publisher.body`, `legal.publisher.siret` | Registered address and SIRET confirmed |
-| Mentions légales | `legal.publisher.vat` | VAT statement (and the « HT » wording if you are on franchise en base) |
+| Mentions légales | `legal.publisher.vat` (removed) | VAT status unknown, so the line is gone from the page and the machine view. Add the VAT number, or « TVA non applicable, art. 293 B du CGI », back as `legal.publisher.vat` (FR and EN) and render it again in `mentions-legales/page.tsx` and `page-markdown.ts`. If you are on franchise en base, the « HT » wording needs rethinking too |
 | Confidentialité | `privacy.contactForm.body` | Retention period for contact form data, confirm before launch |
 | Confidentialité | `privacy.analytics.body` | « No analytics, no ad cookies »: confirm before launch, update if PostHog or any tracker is added |
 | Confidentialité | `privacy.prospection.sources` | Prospect data sources the outreach system actually uses, confirm before launch |
 | Confidentialité | `privacy.prospection.retention` | Prospect data retention period, confirm before launch |
 | Home, Sites, Création de site | `src/lib/proof/klyx-lighthouse.json` | The current run was made on the local production build, so the file says `status: "local"` and the Sites scenario chip, its « Score Lighthouse réel » caption and the Lighthouse proof card stay hidden. After deploy, run `node scripts/lighthouse.mjs --base https://klyx.fr`, rebuild and commit: they appear on their own once the file says `status: "measured"` for https://klyx.fr |
+
+| Réalisations, Création de site, case route | `content/realisations/kenzi.*.mdx` `listed: false` | Kenzi is hidden everywhere (index, home, Sites proof, "projet suivant", sitemap, llms.txt, machine view; `/realisations/kenzi` is a 404) until there is a real write-up and kenzievents.com answers again. To bring it back: write context, what was built and the live URL, recapture the cover after the intro animation, then remove `listed: false` (and `live: false`) |
 
 ## Proof and identity
 
@@ -153,3 +155,17 @@ These are not flagged inline because they come from your own sales assets or the
 - Réalisations copy (`home.cases.subtitle`, `cases.hero.subtitle`, `meta.cases.description`) now only says « sites et produits livrés », with no AI-in-production claim. AI wording only appears where it is flagged (`agents.proof.body`, the Hoppy case study).
 - Sprint IA vs FDE answer (`pricing.faq.items.sprintVsFde`) says Klyx reuses building blocks already built. True?
 - Bordeaux page: France Num 2026 figures (40% of TPE-PME use AI, 11% automate a task), sourced in `docs/KLYX_STRATEGY.md`.
+
+## Design review round 1 (2026-11-01)
+
+| Page | Key | Now shows | What to confirm |
+|---|---|---|---|
+| Audit IA | `audit.block.bpifrance` | The Diag Data IA is mentioned with a link to https://www.entreprises.gouv.fr/osez-lia, no figures. That page states 10 000 € HT, 40 % covered by France 2030, 8 days | Whether to put the figures back, citing entreprises.gouv.fr |
+| Tarifs | `pricing.market` | The Malt « audit IA express 1 500-2 500 € » row and sentence are removed (no source URL in `docs/KLYX_STRATEGY.md`) | A dated, linkable source if you want the row back |
+| Agence IA Bordeaux | `bordeaux.problem.source` | France Num figures now link to the entreprises.gouv.fr press release, which states 40 % and 11 % | Nothing, unless the wording should change |
+| Agence IA Bordeaux | `bordeaux.block` | Three new example workflows (wine trade export orders, construction quotes, accounting firm documents), labelled as typical examples | That these are trades you want to target |
+| Offres IA | `liveSystem.scenarios.support` | New hero scenario « réponse client » (Zendesk ticket, Notion lookup, human review), fictional values | That you are happy to show Zendesk and Notion there |
+| FDE | `fde.proof` (removed) | The empty « code you can read » section is gone. Recent public commits name Verana and 2060.io repos, which are not confirmed for the site | Whether those repos can be shown; then the section can come back with real commits |
+| À propos | `src/lib/proof/github-contributions.json` | Contribution graph and total (12 933 in 12 months) from github.com/AirKyzzZ, captured 2026-11-01 by `node scripts/github-contributions.mjs`. The count may include private contributions if your profile shows them | OK to show; rerun the script before launch to refresh |
+| À propos | (none) | No portrait yet | A real photo of Maxime for the hero or lead engineer section |
+| Réalisations (all cases) | `content/realisations/*.mdx` | Each case shows « Résultat : pas encore de chiffre publié » | For every case: 2 lines of context, 3 bullets of what was built, a second screen, and an honest outcome line |

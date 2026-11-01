@@ -206,7 +206,7 @@ function SiteShot({
 }) {
   const host = hostOf(source.url);
   return (
-    <Shell label={t("kinds.siteShot")} meta={<span>{t("live")}</span>}>
+    <Shell label={t("kinds.siteShot")}>
       <div className="flex-1 px-4 pt-4">
         <BrowserFrame
           url={source.url}

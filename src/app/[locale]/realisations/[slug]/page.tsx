@@ -69,7 +69,9 @@ export default async function CasePage({ params }: CasePageProps) {
     { label: t("labels.client"), value: meta.client },
     { label: t("labels.year"), value: String(meta.year) },
     { label: t("labels.stack"), value: meta.stack.join(", ") },
+    { label: t("labels.outcome"), value: t("labels.noOutcome") },
   ];
+  const [titleLead, ...titleRest] = meta.title.split(", ");
 
   const liveUrl = meta.live === false ? null : meta.url;
 
@@ -85,7 +87,8 @@ export default async function CasePage({ params }: CasePageProps) {
             {t("labels.back")}
           </Link>
         }
-        title={meta.title}
+        title={titleRest.length > 0 ? `${titleLead},` : meta.title}
+        emphasis={titleRest.length > 0 ? titleRest.join(", ") : undefined}
         subtitle={meta.summary}
       />
 
@@ -123,7 +126,7 @@ export default async function CasePage({ params }: CasePageProps) {
             )}
           </div>
 
-          <dl className="border-ink/15 mt-10 grid grid-cols-2 gap-x-6 gap-y-6 border-t pt-6 lg:grid-cols-4">
+          <dl className="border-ink/15 mt-10 grid grid-cols-2 gap-x-6 gap-y-6 border-t pt-6 lg:grid-cols-5">
             {facts.map((fact) => (
               <div key={fact.label}>
                 <dt className="type-label text-text-3">{fact.label}</dt>
@@ -175,6 +178,7 @@ export default async function CasePage({ params }: CasePageProps) {
 
       <Cta
         title={t("cta.title")}
+        emphasis={t("cta.titleEmphasis")}
         body={t("cta.body")}
         primary={{ action: "book", label: t("cta.ctaPrimary") }}
         secondary={{ action: "quote", label: t("cta.ctaSecondary") }}

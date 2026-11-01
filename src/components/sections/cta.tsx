@@ -1,10 +1,7 @@
 import { ArrowRight } from "lucide-react";
 
 import { ActionButton } from "@/components/action-button";
-import { BrowserFrame, hostOf } from "@/components/proof/browser-frame";
 import { Section, SectionHeading } from "@/components/section";
-import type { ProofSource } from "@/lib/proof";
-import { cn } from "@/lib/utils";
 
 import type { HeroAction } from "./hero";
 
@@ -14,7 +11,6 @@ type CtaProps = {
   body: string;
   primary: HeroAction;
   secondary: HeroAction;
-  shot?: Extract<ProofSource, { kind: "site-shot" }> | null;
 };
 
 function Backdrop() {
@@ -43,44 +39,15 @@ function Backdrop() {
   );
 }
 
-export function Cta({
-  title,
-  emphasis,
-  body,
-  primary,
-  secondary,
-  shot,
-}: CtaProps) {
+export function Cta({ title, emphasis, body, primary, secondary }: CtaProps) {
   return (
     <Section>
       <div className="reveal border-line-strong relative isolate overflow-hidden rounded-xl border bg-[linear-gradient(180deg,#1d1915_0%,#15130f_60%,#100f0d_100%)] shadow-[0_0_0_1px_var(--line),0_40px_160px_-40px_var(--glow)] after:absolute after:inset-0 after:-z-1 after:bg-[url(/textures/grain.png)] after:bg-size-[128px] after:mix-blend-overlay">
         <Backdrop />
-        <div
-          className={cn(
-            "relative px-6 py-16 text-center md:px-12 md:py-20",
-            shot &&
-              "lg:min-h-[440px] lg:py-24 lg:pr-[48%] lg:pl-16 lg:text-left",
-          )}
-        >
-          <SectionHeading
-            lead={title}
-            rest={emphasis}
-            className={cn("mx-auto", shot && "lg:mx-0")}
-          />
-          <p
-            className={cn(
-              "text-text-2 mx-auto mt-5 max-w-[48ch]",
-              shot && "lg:mx-0",
-            )}
-          >
-            {body}
-          </p>
-          <div
-            className={cn(
-              "mt-8 flex flex-col justify-center gap-3 sm:flex-row sm:items-center",
-              shot && "lg:justify-start",
-            )}
-          >
+        <div className="relative px-6 py-16 text-center md:px-12 md:py-20">
+          <SectionHeading lead={title} rest={emphasis} className="mx-auto" />
+          <p className="text-text-2 mx-auto mt-5 max-w-[48ch]">{body}</p>
+          <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row sm:items-center">
             <ActionButton action={primary.action} size="lg">
               {primary.label}
             </ActionButton>
@@ -95,19 +62,6 @@ export function Cta({
             </ActionButton>
           </div>
         </div>
-        {shot && (
-          <div
-            aria-hidden="true"
-            className="absolute top-[16%] right-[-8%] hidden w-[50%] rotate-[-6deg] lg:block"
-          >
-            <BrowserFrame
-              url={shot.url}
-              image={shot.image}
-              alt={hostOf(shot.url)}
-              sizes="600px"
-            />
-          </div>
-        )}
       </div>
     </Section>
   );

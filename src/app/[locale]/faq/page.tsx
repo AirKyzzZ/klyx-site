@@ -122,7 +122,7 @@ export default async function FaqPage({ params }: LocaleParams) {
           index={String(i + 1).padStart(2, "0")}
           eyebrow={t(`themes.${theme.key}`)}
           title={t(`themes.${theme.key}`)}
-          openAll
+          openFirst
           items={theme.items.map((item) => ({
             id: item.id,
             question: item.question,

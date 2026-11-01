@@ -16,10 +16,8 @@ import {
   type Translate,
 } from "@/i18n/message-list";
 import { type LocaleParams, resolvePageLocale } from "@/i18n/page-locale";
-import { getCaseStudies } from "@/lib/content";
 import { getOfferCopy } from "@/lib/offer-copy";
 import { MARKET_KLYX_OFFER } from "@/lib/offers";
-import { getSiteShot } from "@/lib/proof";
 import { buildMetadata } from "@/lib/seo";
 
 const MARKET_CHECKED_AT = "2026-10-31";
@@ -47,7 +45,6 @@ export default async function PricingPage({ params }: LocaleParams) {
     locale,
     namespace: "offers",
   })) as Translate;
-  const [firstCase] = await getCaseStudies(locale);
   const marketRows = messageKeys(t.raw("market.card.rows"));
 
   return (
@@ -61,7 +58,7 @@ export default async function PricingPage({ params }: LocaleParams) {
         aside={
           <div className="border-line border-t pt-5 lg:border-t-0 lg:border-l lg:pt-0 lg:pl-6">
             <h2 className="type-label text-text-3">{t("guarantees.title")}</h2>
-            <ul className="type-data mt-4 space-y-3">
+            <ul className="mt-4 space-y-3 text-[0.9375rem] leading-snug">
               {messageStrings(t, "guarantees.items").map((item) => (
                 <li key={item} className="text-text-2 flex gap-3">
                   <Check
@@ -81,7 +78,10 @@ export default async function PricingPage({ params }: LocaleParams) {
       <Section index="01" eyebrow={t("eyebrows.market")}>
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-6">
           <div className="reveal lg:col-span-5">
-            <SectionHeading lead={t("market.title")} />
+            <SectionHeading
+              lead={t("market.title")}
+              rest={t("market.titleEmphasis")}
+            />
             <p className="text-text-2 mt-6 max-w-[52ch]">{t("market.body")}</p>
           </div>
           <div className="reveal lg:col-span-6 lg:col-start-7">
@@ -172,6 +172,7 @@ export default async function PricingPage({ params }: LocaleParams) {
         index="02"
         eyebrow={t("eyebrows.faq")}
         title={t("faq.title")}
+        emphasis={t("faq.titleEmphasis")}
         items={messageList(t, "faq.items", ["question", "answer"])}
         bookLabel={t("cta.ctaSecondary")}
         openFirst
@@ -179,10 +180,10 @@ export default async function PricingPage({ params }: LocaleParams) {
 
       <Cta
         title={t("cta.title")}
+        emphasis={t("cta.titleEmphasis")}
         body={t("cta.body")}
         primary={{ action: "quote", label: t("cta.ctaPrimary") }}
         secondary={{ action: "book", label: t("cta.ctaSecondary") }}
-        shot={firstCase ? getSiteShot(firstCase.slug) : null}
       />
     </>
   );

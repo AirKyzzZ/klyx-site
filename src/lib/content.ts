@@ -11,6 +11,7 @@ export type CaseStudyMeta = {
   client: string;
   url: string;
   live?: boolean;
+  listed?: boolean;
   year: number;
   summary: string;
   stack: string[];
@@ -73,7 +74,10 @@ export async function getCaseStudies(locale: Locale): Promise<CaseStudyMeta[]> {
   const studies = await Promise.all(
     slugs.map((slug) => getCaseStudy(slug, locale)),
   );
-  return studies.map((s) => s.meta).sort((a, b) => a.order - b.order);
+  return studies
+    .map((s) => s.meta)
+    .filter((meta) => meta.listed !== false)
+    .sort((a, b) => a.order - b.order);
 }
 
 export async function getPosts(locale: Locale): Promise<PostMeta[]> {

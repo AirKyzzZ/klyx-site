@@ -5,6 +5,7 @@ import { getTranslations } from "next-intl/server";
 
 import { JsonLd } from "@/components/json-ld";
 import { BrowserFrame, hostOf } from "@/components/proof/browser-frame";
+import { ContributionGraph } from "@/components/proof/contribution-graph";
 import { Section, SectionHeading } from "@/components/section";
 import { Cta } from "@/components/sections/cta";
 import {
@@ -13,12 +14,13 @@ import {
   TerminalWindow,
 } from "@/components/sections/founder";
 import { Hero } from "@/components/sections/hero";
+import { SampleWindow } from "@/components/sections/process-timeline";
 import { Button } from "@/components/ui/button";
 import { messageKeys, messageList } from "@/i18n/message-list";
 import { Link } from "@/i18n/navigation";
 import { type LocaleParams, resolvePageLocale } from "@/i18n/page-locale";
 import { personJsonLd } from "@/lib/json-ld";
-import { getSiteShot } from "@/lib/proof";
+import { getGithubContributions, getSiteShot } from "@/lib/proof";
 import { buildMetadata } from "@/lib/seo";
 import { site } from "@/lib/site";
 import { teamRoster } from "@/lib/team-roster";
@@ -51,6 +53,13 @@ export default async function AboutPage({ params }: LocaleParams) {
     "Klyx Estate": t("lines.estate"),
   };
   const citeme = getSiteShot("citeme");
+  const contributions = getGithubContributions();
+  const number = new Intl.NumberFormat(locale);
+  const day = (date: string) =>
+    new Intl.DateTimeFormat(locale, {
+      dateStyle: "long",
+      timeZone: "UTC",
+    }).format(new Date(date));
 
   return (
     <>
@@ -104,7 +113,7 @@ export default async function AboutPage({ params }: LocaleParams) {
 
       <Section index="02" eyebrow={t("eyebrows.story")}>
         <div className="reveal grid gap-8 lg:grid-cols-12 lg:items-end lg:gap-6">
-          <div className="lg:col-span-7">
+          <div className="lg:col-span-6">
             <SectionHeading
               lead={t("story.title")}
               rest={t("story.titleEmphasis")}
@@ -115,21 +124,46 @@ export default async function AboutPage({ params }: LocaleParams) {
               <p className="text-text-2">{t("story.citeme")}</p>
             </div>
           </div>
-          <div className="flex flex-wrap gap-3 lg:col-span-4 lg:col-start-9">
-            <Button variant="secondary" size="lg" asChild>
-              <a href={site.socials.github} target="_blank" rel="noopener">
-                {founder("github")} <ArrowUpRight />
-              </a>
-            </Button>
-            <Button variant="secondary" size="lg" asChild>
-              <a
-                href={site.socials.linkedinFounder}
-                target="_blank"
-                rel="noopener"
-              >
-                {founder("linkedin")} <ArrowUpRight />
-              </a>
-            </Button>
+          <div className="space-y-6 lg:col-span-5 lg:col-start-8">
+            {contributions && (
+              <figure>
+                <SampleWindow file={t("contributions.window")}>
+                  <ContributionGraph
+                    data={contributions}
+                    label={t("contributions.label", {
+                      from: day(contributions.from),
+                      to: day(contributions.to),
+                    })}
+                  />
+                  <p className="text-text mt-4">
+                    {t("contributions.total", {
+                      total: number.format(contributions.total),
+                    })}
+                  </p>
+                </SampleWindow>
+                <figcaption className="text-text-3 mt-3 text-xs">
+                  {t("contributions.caption", {
+                    date: day(contributions.capturedAt),
+                  })}
+                </figcaption>
+              </figure>
+            )}
+            <div className="flex flex-wrap gap-3">
+              <Button variant="secondary" size="lg" asChild>
+                <a href={site.socials.github} target="_blank" rel="noopener">
+                  {founder("github")} <ArrowUpRight />
+                </a>
+              </Button>
+              <Button variant="secondary" size="lg" asChild>
+                <a
+                  href={site.socials.linkedinFounder}
+                  target="_blank"
+                  rel="noopener"
+                >
+                  {founder("linkedin")} <ArrowUpRight />
+                </a>
+              </Button>
+            </div>
           </div>
         </div>
       </Section>
@@ -137,7 +171,10 @@ export default async function AboutPage({ params }: LocaleParams) {
       <Section index="03" eyebrow={t("eyebrows.products")}>
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-6">
           <div className="reveal lg:col-span-7">
-            <SectionHeading lead={founder("products")} />
+            <SectionHeading
+              lead={t("products.title")}
+              rest={t("products.titleEmphasis")}
+            />
             {citeme && (
               <a
                 href={citeme.url}

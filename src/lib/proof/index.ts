@@ -1,4 +1,5 @@
 import prListData from "./citeme-prs.json";
+import contributionsData from "./github-contributions.json";
 import lighthouseData from "./klyx-lighthouse.json";
 import runLogData from "./run-log.json";
 import siteShotsData from "./site-shots.json";
@@ -178,4 +179,33 @@ export function selectStripProof(sources: ProofSource[]): ProofSource[] {
     const first = sources.find((source) => source.kind === kind);
     return first ? [first] : [];
   });
+}
+
+export type GithubContributions = {
+  user: string;
+  capturedAt: string;
+  from: string;
+  to: string;
+  total: number;
+  levels: number[];
+};
+
+export function verifyContributions(data: unknown): GithubContributions | null {
+  if (!hasStatus(data, "measured")) return null;
+  const { user, capturedAt, from, to, total, levels } = data;
+  if (![user, capturedAt, from, to].every(isText)) return null;
+  if (typeof total !== "number" || typeof levels !== "string") return null;
+  if (!/^[0-4]{360,371}$/.test(levels)) return null;
+  return {
+    user: String(user),
+    capturedAt: String(capturedAt),
+    from: String(from),
+    to: String(to),
+    total,
+    levels: [...levels].map(Number),
+  };
+}
+
+export function getGithubContributions(): GithubContributions | null {
+  return verifyContributions(contributionsData);
 }

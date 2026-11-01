@@ -1,3 +1,4 @@
+import { ArrowUpRight } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 
 import { Section, SectionHeading } from "@/components/section";
@@ -101,9 +102,15 @@ export async function AuditDocument({
             <p className="text-text-2 mt-2 text-[0.9375rem]">
               {t("bpifrance.body")}
             </p>
-            <p className="type-data text-text-3 mt-4 text-xs">
+            <a
+              href={t("bpifrance.url")}
+              target="_blank"
+              rel="noopener"
+              className="type-data text-text-2 hover:text-text mt-4 inline-flex items-center gap-1 text-xs underline underline-offset-4 transition-colors"
+            >
               {t("bpifrance.source")}
-            </p>
+              <ArrowUpRight aria-hidden="true" className="size-3" />
+            </a>
           </aside>
         </div>
       </div>

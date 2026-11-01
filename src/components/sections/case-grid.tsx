@@ -145,28 +145,62 @@ export function CaseCard({
   );
 }
 
-type CaseGridProps = {
+type CaseSpan = "wide" | "7" | "5";
+
+function caseSpan(index: number, total: number): CaseSpan {
+  if (index === total - 1 && total % 2 === 1) return "wide";
+  const row = Math.floor(index / 2);
+  const first = index % 2 === 0;
+  return (row % 2 === 0) === first ? "7" : "5";
+}
+
+export function CaseList({
+  items,
+  readLabel,
+  className,
+}: {
   items: CaseStudyMeta[];
   readLabel: string;
   className?: string;
-};
-
-export function CaseGrid({ items, readLabel, className }: CaseGridProps) {
+}) {
   return (
-    <section data-shot="cases" className={cn("py-section", className)}>
-      <ul className="container grid gap-x-6 gap-y-14 md:grid-cols-2 lg:grid-cols-3">
-        {items.map((item, i) => (
-          <li key={item.slug}>
+    <ul
+      className={cn(
+        "grid gap-x-6 gap-y-14 lg:grid-cols-12 lg:gap-y-20",
+        className,
+      )}
+    >
+      {items.map((item, i) => {
+        const span = caseSpan(i, items.length);
+        return (
+          <li
+            key={item.slug}
+            className={cn(
+              "reveal",
+              span === "wide" && "lg:col-span-12",
+              span === "7" && "lg:col-span-7",
+              span === "5" && "lg:col-span-5",
+            )}
+          >
             <CaseCard
               item={item}
               readLabel={readLabel}
+              layout={span === "wide" ? "wide" : "stack"}
+              device={span === "5" ? "mobile" : "desktop"}
               bandX={BAND_X[i % BAND_X.length]}
-              sizes="(min-width: 1024px) 340px, (min-width: 768px) 45vw, 90vw"
+              sizes={
+                span === "5"
+                  ? "(min-width: 1024px) 420px, 90vw"
+                  : "(min-width: 1024px) 680px, 90vw"
+              }
+              coverClassName={
+                span === "wide" ? undefined : "lg:aspect-auto lg:h-[400px]"
+              }
             />
           </li>
-        ))}
-      </ul>
-    </section>
+        );
+      })}
+    </ul>
   );
 }
 
@@ -189,7 +223,6 @@ export function CaseBand({
   readLabel: string;
   items: CaseStudyMeta[];
 }) {
-  const [first, second, ...rest] = items;
   return (
     <>
       <ChamferBreak edge="top" />
@@ -215,42 +248,11 @@ export function CaseBand({
           </div>
         </div>
 
-        <ul className="mt-12 grid gap-x-6 gap-y-14 md:mt-16 lg:grid-cols-12 lg:gap-y-16">
-          {first && (
-            <li className="reveal lg:col-span-7">
-              <CaseCard
-                item={first}
-                readLabel={readLabel}
-                bandX={BAND_X[0]}
-                sizes="(min-width: 1024px) 600px, 90vw"
-                coverClassName="lg:aspect-auto lg:h-[400px]"
-              />
-            </li>
-          )}
-          {second && (
-            <li className="reveal lg:col-span-5">
-              <CaseCard
-                item={second}
-                readLabel={readLabel}
-                bandX={BAND_X[1]}
-                device="mobile"
-                sizes="(min-width: 1024px) 420px, 90vw"
-                coverClassName="lg:aspect-auto lg:h-[400px]"
-              />
-            </li>
-          )}
-          {rest.map((item, i) => (
-            <li key={item.slug} className="reveal lg:col-span-12">
-              <CaseCard
-                item={item}
-                readLabel={readLabel}
-                layout="wide"
-                bandX={BAND_X[(i + 2) % BAND_X.length]}
-                sizes="(min-width: 1024px) 680px, 90vw"
-              />
-            </li>
-          ))}
-        </ul>
+        <CaseList
+          items={items}
+          readLabel={readLabel}
+          className="mt-12 md:mt-16"
+        />
       </Section>
       <ChamferBreak edge="bottom" />
     </>

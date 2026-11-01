@@ -448,7 +448,7 @@
       "titleEmphasis": "vous recevez"
     },
     "process": {
-      "title": "Les étapes",
+      "title": "Comment ça se passe,",
       "steps": {
         "brief": {
           "title": "Brief",
@@ -466,7 +466,8 @@
           "title": "Mise en ligne",
           "body": "On branche le domaine, on vérifie les performances et on vous montre comment modifier vos contenus."
         }
-      }
+      },
+      "titleEmphasis": "en quatre étapes."
     },
     "pricing": {
       "title": "Combien coûte",
@@ -476,7 +477,7 @@
     },
     "proof": {
       "title": "Sites",
-      "body": "Kenzi Events, PKBA et VertiFlow : le site d'une activité événementielle, celui d'un club de parkour et celui d'une marque de vêtements de parkour.",
+      "body": "PKBA et VertiFlow : le site d'un club de parkour et celui d'une marque de vêtements de parkour, tous deux en ligne.",
       "link": "Voir les réalisations",
       "titleEmphasis": "livrés"
     },
@@ -508,7 +509,7 @@
           "answer": "Vous modifiez vos contenus seul. Pour une nouvelle page ou une fonctionnalité, on vous envoie un devis."
         }
       },
-      "titleEmphasis": "fréquentes"
+      "titleEmphasis": "fréquentes."
     },
     "cta": {
       "title": "Votre site,",
@@ -582,7 +583,7 @@
       "body": "Si vous enchaînez sur un Sprint IA, le devis tient compte de l'audit déjà payé, et les conditions sont écrites avant que vous signiez."
     },
     "process": {
-      "title": "Les étapes",
+      "title": "Comment ça se passe,",
       "steps": {
         "call": {
           "title": "Appel",
@@ -600,7 +601,8 @@
           "title": "Suivi",
           "body": "On surveille le workflow et on l'améliore, ou votre équipe reprend la main avec le runbook."
         }
-      }
+      },
+      "titleEmphasis": "en quatre étapes."
     },
     "pricing": {
       "title": "Combien coûte",
@@ -642,7 +644,7 @@
           "answer": "Votre équipe, avec le runbook et la prise en main prévus dans le sprint, ou nous, avec le suivi mensuel."
         }
       },
-      "titleEmphasis": "fréquentes"
+      "titleEmphasis": "fréquentes."
     },
     "cta": {
       "title": "Commencez par le processus",
@@ -655,6 +657,9 @@
       "title": "Chaque action de l'agent,",
       "titleEmphasis": "dans le journal.",
       "body": "La vue que vous recevez avec le Sprint : chaque étape, sa durée, et les erreurs rattrapées. Ici sur un exemple fictif."
+    },
+    "stack": {
+      "titleEmphasis": "sous vos agents."
     }
   },
   "fde": {
@@ -706,7 +711,7 @@
       }
     },
     "process": {
-      "title": "Les étapes",
+      "title": "Comment ça se passe,",
       "steps": {
         "call": {
           "title": "Appel",
@@ -724,13 +729,8 @@
           "title": "Chaque semaine",
           "body": "Un point écrit avec les PR livrées et la suite. On ajuste le rythme si besoin."
         }
-      }
-    },
-    "proof": {
-      "title": "Du code que vous pouvez lire",
-      "body": "L'historique de commits de notre lead engineer est public.",
-      "link": "Voir le GitHub de Maxime",
-      "titleEmphasis": "avant de signer"
+      },
+      "titleEmphasis": "en quatre étapes."
     },
     "faq": {
       "title": "Questions",
@@ -756,7 +756,7 @@
           "answer": "Le Sprint IA livre un workflow précis au forfait, en deux semaines. Le FDE convient quand votre backlog bouge et que vous avez besoin de quelqu'un dans l'équipe pendant plusieurs semaines."
         }
       },
-      "titleEmphasis": "fréquentes"
+      "titleEmphasis": "fréquentes."
     },
     "cta": {
       "title": "Une fonctionnalité IA",
@@ -902,8 +902,9 @@
       "bpifrance": {
         "label": "Contexte",
         "title": "Et le Diagnostic Data IA de Bpifrance ?",
-        "body": "Bpifrance finance un Diagnostic Data IA, réalisé par des experts qu'elle référence. Selon les-aides.fr, il coûte 10 000 € HT et Bpifrance en prend 40 % en charge, pour des entreprises de 10 à 2 000 salariés. Klyx n'est pas référencé : notre audit est privé, plus court, et son prix est affiché.",
-        "source": "Source : les-aides.fr, consulté le 31 octobre 2026. Non vérifié sur bpifrance.fr."
+        "body": "Bpifrance propose un Diagnostic Data IA, réalisé par des experts qu'elle référence, dans le cadre du plan Osez l'IA. Klyx n'est pas référencé : notre audit est privé, plus court, et son prix est affiché.",
+        "source": "Le dispositif sur entreprises.gouv.fr",
+        "url": "https://www.entreprises.gouv.fr/osez-lia"
       }
     },
     "pricing": {
@@ -1105,6 +1106,9 @@
       "body": "Réservez un appel de 20 minutes. On vous dit s'il tient dans un workflow simple, et pour quel prix.",
       "ctaPrimary": "Réserver un appel",
       "ctaSecondary": "Demander un devis gratuit"
+    },
+    "stack": {
+      "titleEmphasis": "sous vos automatisations."
     }
   },
   "geo": {
@@ -1283,8 +1287,8 @@
       }
     },
     "market": {
-      "title": "Comment ces prix se situent",
-      "body": "La plupart des agences IA en France ne publient pas leurs prix. Les fourchettes publiées pour un développeur IA freelance vont en général de 650 à 900 € par jour, et un audit IA express se vend souvent entre 1 500 et 2 500 €.",
+      "title": "Comment ces prix",
+      "body": "La plupart des agences IA en France ne publient pas leurs prix. Les fourchettes publiées pour un développeur IA freelance vont en général de 650 à 900 € par jour.",
       "card": {
         "title": "marche.csv",
         "columns": {
@@ -1299,18 +1303,14 @@
             "range": "650-900 €",
             "source": "Studeria",
             "url": "https://www.studeria.fr/articles-de-blog/tjm-consultant-ia-2026-tarifs-grille"
-          },
-          "audit": {
-            "label": "Audit IA express",
-            "range": "1 500-2 500 €",
-            "source": "Malt"
           }
         },
         "note": "Fourchettes relevées le 31 octobre 2026."
-      }
+      },
+      "titleEmphasis": "se situent."
     },
     "faq": {
-      "title": "Questions sur les prix",
+      "title": "Questions",
       "items": {
         "sprintVsFde": {
           "question": "Pourquoi le Sprint IA coûte-t-il moins cher que 10 jours de FDE ?",
@@ -1320,13 +1320,15 @@
           "question": "Le prix peut-il augmenter en cours de projet ?",
           "answer": "Pas sans votre accord. Le prix couvre le périmètre écrit dans le devis. Si vous ajoutez quelque chose, on vous envoie un devis complémentaire avant de le faire."
         }
-      }
+      },
+      "titleEmphasis": "sur les prix."
     },
     "cta": {
-      "title": "Pour un prix précis, demandez un devis.",
+      "title": "Pour un prix précis,",
       "body": "Décrivez votre projet, on vous envoie un devis gratuit.",
       "ctaPrimary": "Demander un devis gratuit",
-      "ctaSecondary": "Réserver un appel"
+      "ctaSecondary": "Réserver un appel",
+      "titleEmphasis": "demandez un devis."
     },
     "eyebrows": {
       "market": "Marché",
@@ -1338,7 +1340,8 @@
       "title": "Ce qu'on a",
       "titleEmphasis": "construit.",
       "subtitle": "Des sites livrés pour des clients et des produits sur lesquels on a travaillé. Pour chaque projet, ce qu'on a fait exactement.",
-      "serif": "construit"
+      "serif": "construit",
+      "window": "realisations/"
     },
     "labels": {
       "client": "Client",
@@ -1348,13 +1351,16 @@
       "read": "Lire l'étude de cas",
       "back": "Toutes les réalisations",
       "url": "URL",
-      "next": "Projet suivant"
+      "next": "Projet suivant",
+      "outcome": "Résultat",
+      "noOutcome": "Pas encore de chiffre publié"
     },
     "cta": {
-      "title": "Votre projet peut rejoindre cette liste.",
+      "title": "Votre projet peut",
       "body": "Réservez un appel ou demandez un devis gratuit.",
       "ctaPrimary": "Réserver un appel",
-      "ctaSecondary": "Demander un devis gratuit"
+      "ctaSecondary": "Demander un devis gratuit",
+      "titleEmphasis": "rejoindre cette liste."
     },
     "count": "{count, plural, one {# projet} other {# projets}} · {years}",
     "eyebrow": "Projets"
@@ -1440,6 +1446,16 @@
       "agents": "Des agents de code IA prennent les tâches bien délimitées : un composant, un test, une migration. Le code qu'ils produisent est relu avant la mise en production.",
       "partners": "Si le projet le demande, on s'associe à un spécialiste, et on vous le dit avant.",
       "handover": "Le code est dans votre repo dès le premier jour. À la fin, une passation écrite permet à n'importe quel développeur de reprendre."
+    },
+    "products": {
+      "title": "Un produit",
+      "titleEmphasis": "cofondé par Maxime."
+    },
+    "contributions": {
+      "window": "github.com/AirKyzzZ",
+      "total": "{total} contributions sur GitHub en 12 mois",
+      "label": "Graphe des contributions GitHub de Maxime Mansiet, du {from} au {to}",
+      "caption": "Relevé le {date} sur son profil public. Une case par jour : plus elle est claire, plus il y a eu de commits, de PR et de revues."
     }
   },
   "bordeaux": {
@@ -1453,8 +1469,11 @@
       "serif": "jargon"
     },
     "problem": {
-      "title": "Vous avez essayé ChatGPT, mais rien n'a changé dans votre façon de travailler ?",
-      "body": "C'est le cas de la plupart des entreprises. En 2026, 40 % des TPE-PME françaises utilisent l'IA, mais seulement 11 % s'en servent pour automatiser une tâche (baromètre France Num 2026). L'outil est là, mais personne n'a eu le temps de le brancher sur les devis, les factures ou le suivi client. On s'en occupe : on choisit ensemble une tâche qui vous prend du temps chaque semaine, on l'automatise, et votre équipe garde la main sur ce qui part chez vos clients."
+      "title": "Vous avez essayé ChatGPT,",
+      "body": "C'est le cas de la plupart des entreprises. En 2026, 40 % des TPE-PME françaises utilisent l'IA, mais seulement 11 % s'en servent pour automatiser une tâche (baromètre France Num 2026). L'outil est là, mais personne n'a eu le temps de le brancher sur les devis, les factures ou le suivi client. On s'en occupe : on choisit ensemble une tâche qui vous prend du temps chaque semaine, on l'automatise, et votre équipe garde la main sur ce qui part chez vos clients.",
+      "titleEmphasis": "mais rien n'a changé dans votre façon de travailler ?",
+      "source": "Baromètre France Num 2026, entreprises.gouv.fr",
+      "sourceUrl": "https://www.entreprises.gouv.fr/espace-presse/barometre-france-num-2026-quatre-tpe-pme-sur-dix-utilisent-desormais-lintelligence"
     },
     "examples": {
       "title": "Ce qu'on peut automatiser",
@@ -1466,7 +1485,7 @@
       }
     },
     "process": {
-      "title": "Comment ça se passe",
+      "title": "Comment ça se passe,",
       "steps": {
         "call": {
           "title": "Un premier échange gratuit",
@@ -1484,10 +1503,11 @@
           "title": "Le suivi",
           "body": "Une fois l'automatisation en place, on vérifie avec vous qu'elle tourne et on vous remet une passation écrite. Si vous voulez qu'on continue à la suivre et à la corriger, c'est le suivi mensuel."
         }
-      }
+      },
+      "titleEmphasis": "en quatre étapes."
     },
     "local": {
-      "title": "Basé à Bordeaux",
+      "title": "Basés à Bordeaux,",
       "body": "On travaille depuis Bordeaux, avec des PME de la métropole et de Gironde. Le lieu du cadrage, à distance ou en rendez-vous, se décide avec vous.",
       "card": {
         "city": {
@@ -1503,14 +1523,16 @@
           "value": "À convenir avec vous"
         }
       },
-      "map": "Carte de la Gironde avec Bordeaux"
+      "map": "Carte de la Gironde avec Bordeaux",
+      "titleEmphasis": "à distance partout en France."
     },
     "trust": {
-      "title": "Pourquoi nous faire confiance",
-      "body": "Le prix et le périmètre sont écrits avant de commencer. Si vous payez l'audit, vous repartez avec le plan, même si vous n'allez pas plus loin. Les outils et les comptes sont à votre nom, et un suivi mensuel couvre la continuité."
+      "title": "Pourquoi",
+      "body": "Le prix et le périmètre sont écrits avant de commencer. Si vous payez l'audit, vous repartez avec le plan, même si vous n'allez pas plus loin. Les outils et les comptes sont à votre nom, et un suivi mensuel couvre la continuité.",
+      "titleEmphasis": "nous faire confiance."
     },
     "faq": {
-      "title": "Questions fréquentes",
+      "title": "Questions",
       "items": {
         "price": {
           "question": "Combien ça coûte ?",
@@ -1532,13 +1554,15 @@
           "question": "Combien de temps faut-il ?",
           "answer": "1 à 2 semaines pour l'audit, puis environ 2 semaines pour mettre une première automatisation en place."
         }
-      }
+      },
+      "titleEmphasis": "fréquentes."
     },
     "cta": {
-      "title": "Une tâche vous prend trop de temps ?",
+      "title": "Une tâche vous prend",
       "body": "Parlons-en 20 minutes. C'est gratuit, et vous saurez si elle vaut la peine d'être automatisée.",
       "ctaPrimary": "Réserver un appel",
-      "ctaSecondary": "Demander un devis gratuit"
+      "ctaSecondary": "Demander un devis gratuit",
+      "titleEmphasis": "trop de temps ?"
     },
     "eyebrows": {
       "problem": "Le problème",
@@ -1547,6 +1571,45 @@
       "local": "Local",
       "trust": "Confiance",
       "faq": "Questions"
+    },
+    "block": {
+      "title": "Trois métiers de la région,",
+      "titleEmphasis": "trois tâches qu'on automatise.",
+      "body": "Des exemples types pour des entreprises de Gironde, pas des projets clients. Chacun garde une validation humaine avant ce qui part chez le client.",
+      "human": "validation humaine",
+      "examples": {
+        "wine": {
+          "title": "Négoce de vin : commandes export",
+          "body": "Le bon de commande d'un importateur devient une commande saisie, avec les documents export préparés.",
+          "steps": {
+            "trigger": "Bon de commande",
+            "ai": "Lecture IA",
+            "human": "Contrôle ADV",
+            "action": "Commande saisie"
+          }
+        },
+        "building": {
+          "title": "BTP : devis de chantier",
+          "body": "La demande reçue avec ses photos devient un devis chiffré à partir de votre bibliothèque de prix.",
+          "steps": {
+            "trigger": "Demande + photos",
+            "ai": "Chiffrage IA",
+            "human": "Relecture conducteur",
+            "action": "Devis envoyé"
+          }
+        },
+        "accounting": {
+          "title": "Cabinet comptable : pièces clients",
+          "body": "Les pièces envoyées par les clients sont rangées par dossier, et ce qui manque est relancé.",
+          "steps": {
+            "trigger": "Pièces reçues",
+            "ai": "Classement IA",
+            "human": "Contrôle collaborateur",
+            "action": "Relance envoyée"
+          }
+        }
+      },
+      "limit": "Une tâche simple, c'est l'automatisation IA à prix fixe. Un agent qui touche plusieurs outils, c'est le Sprint IA."
     }
   },
   "contact": {
@@ -1648,13 +1711,12 @@
       "title": "Éditeur du site",
       "body": "Klyx, activité de Maxime Mansiet, entrepreneur individuel, Bordeaux, France.",
       "siret": "SIRET : {siret}",
-      "vat": "Mention TVA : précisée à la mise en ligne.",
       "email": "Contact : {email}",
       "director": "Directeur de la publication : Maxime Mansiet"
     },
     "hosting": {
       "title": "Hébergement",
-      "body": "Hébergeur : précisé à la mise en ligne."
+      "body": "Le site est hébergé par Netlify, Inc., 101 2nd Street, San Francisco, CA 94105, États-Unis. Contact : support@netlify.com."
     },
     "ip": {
       "title": "Propriété intellectuelle",
@@ -1696,7 +1758,7 @@
     },
     "hosting": {
       "title": "Hébergement et transferts",
-      "body": "L'hébergeur du site est indiqué dans les mentions légales. Resend et Cal.com sont des prestataires américains. Les transferts de données vers les États-Unis reposent, selon le prestataire, sur le Data Privacy Framework UE-États-Unis ou sur les clauses contractuelles types de la Commission européenne."
+      "body": "Le site est hébergé par Netlify, Inc. (États-Unis), qui adhère au Data Privacy Framework UE-États-Unis. Resend et Cal.com sont aussi des prestataires américains. Les transferts de données vers les États-Unis reposent, selon le prestataire, sur le Data Privacy Framework UE-États-Unis ou sur les clauses contractuelles types de la Commission européenne."
     },
     "prospection": {
       "anchor": "prospection",
@@ -1747,7 +1809,8 @@
       "serif": "secteur",
       "subtitle": "Pour les dirigeants de PME et d'agences qui veulent savoir quoi automatiser avant de payer. Trois secteurs, des workflows décrits étape par étape, et des prix publics : de {auditPrice} pour un audit à {sprintPrice} pour un agent en production.",
       "ctaPrimary": "Réserver un appel",
-      "ctaSecondary": "Demander un devis gratuit"
+      "ctaSecondary": "Demander un devis gratuit",
+      "window": "secteurs.csv"
     },
     "sectors": {
       "title": "Trois secteurs,",
@@ -2321,7 +2384,7 @@
     },
     "cases": {
       "title": "Réalisations : sites et agents IA livrés | Klyx",
-      "description": "Les sites et produits livrés par Klyx : Hop Hop Immo, CiteMe, Kenzi Events, PKBA, VertiFlow. Ce qui a été fait, projet par projet."
+      "description": "Les sites et produits livrés par Klyx : Hop Hop Immo, CiteMe, PKBA, VertiFlow. Ce qui a été fait, projet par projet."
     },
     "about": {
       "title": "L'équipe Klyx, agence IA à Bordeaux | Klyx",
@@ -2384,7 +2447,11 @@
     "title": "Page introuvable",
     "body": "Cette page n'existe pas ou a été déplacée.",
     "home": "Retour à l'accueil",
-    "cases": "Voir les réalisations"
+    "contact": "Nous contacter",
+    "unknown": "route inconnue",
+    "suggested": "redirection proposée :",
+    "english": "English version",
+    "french": "Version française"
   },
   "liveSystem": {
     "label": "Illustration · scénario type",
@@ -2404,7 +2471,8 @@
       "geo": "Référencement IA",
       "realEstate": "Immobilier",
       "agencies": "Agences",
-      "services": "Cabinets"
+      "services": "Cabinets",
+      "support": "Support client"
     },
     "scenarios": {
       "agents": {
@@ -2613,9 +2681,9 @@
           "busy": "Agenda pris, autre créneau",
           "slot": "Visite proposée samedi 10 h",
           "crm": "Fiche contact créée au CRM",
-          "done": "Lead rangé en 1,8 s"
+          "done": "Lead rangé en 2,4 s"
         },
-        "chip": "Visite proposée · 1,8 s",
+        "chip": "Visite proposée · 2,4 s",
         "caption": "Exemple de workflow pour une agence immobilière : la demande d'un portail est rattachée au bien, une visite est proposée et le contact rangé au CRM. Noms et valeurs fictifs."
       },
       "agencies": {
@@ -2676,6 +2744,36 @@
         },
         "chip": "Pièce saisie · client relancé",
         "caption": "Exemple de workflow pour un cabinet : le relevé est lu, les écritures sont préparées dans le logiciel, un collaborateur valide et le client est relancé pour la pièce manquante. Noms et valeurs fictifs."
+      },
+      "support": {
+        "title": "réponse client",
+        "nodes": {
+          "ticket": "Ticket reçu",
+          "search": "L'IA cherche",
+          "draft": "Brouillon prêt",
+          "review": "Votre accord",
+          "sent": "Envoyée"
+        },
+        "meta": {
+          "ticket": "Zendesk",
+          "search": "Notion",
+          "draft": "modèle IA",
+          "review": "support",
+          "sent": "e-mail"
+        },
+        "trace": {
+          "ticket": "Ticket : colis non reçu",
+          "read": "modèle IA · lecture du ticket",
+          "search": "Réponse cherchée dans Notion",
+          "carrier": "Transporteur muet, on réessaie",
+          "found": "Colis trouvé : livraison jeudi",
+          "draft": "Brouillon de réponse rédigé",
+          "waiting": "en attente de relecture",
+          "approved": "Relu et validé par le support",
+          "sent": "Réponse envoyée au client"
+        },
+        "chip": "Réponse envoyée · 4 min",
+        "caption": "Exemple d'agent qu'on construit : l'IA prépare la réponse à partir de votre base d'aide, et une personne la relit avant l'envoi. Noms et valeurs fictifs."
       }
     }
   },

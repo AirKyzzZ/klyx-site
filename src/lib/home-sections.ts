@@ -1,7 +1,7 @@
 import type { CaseStudyMeta } from "@/lib/content";
 import { getSiteShot } from "@/lib/proof";
 
-const HOME_CASE_COUNT = 3;
+const HOME_CASE_COUNT = 4;
 
 export const HOME_OFFER_CARDS = [
   { key: "sites", href: "/services/creation-site-web", offer: "landing" },

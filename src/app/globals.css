@@ -223,6 +223,10 @@
 
   html {
     background-color: var(--bg);
+
+    @media (width >= 1024px) {
+      scroll-padding-bottom: 88px;
+    }
   }
 
   body {
@@ -523,24 +527,12 @@
   }
 }
 
-@keyframes process-fill {
-  from {
-    transform: scaleX(0);
-  }
-}
-
 @supports (animation-timeline: view()) {
   @media (prefers-reduced-motion: no-preference) {
     .reveal {
       animation: reveal-rise auto var(--ease-out) both;
       animation-timeline: view();
       animation-range: entry 0% entry 40%;
-    }
-
-    .process-fill {
-      animation: process-fill auto linear both;
-      animation-timeline: view();
-      animation-range: entry 60% cover 55%;
     }
   }
 }

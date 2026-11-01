@@ -23,7 +23,6 @@ import { getCaseStudies } from "@/lib/content";
 import { trailPageJsonLd } from "@/lib/json-ld";
 import { getOfferCopy } from "@/lib/offer-copy";
 import { getPriceValues } from "@/lib/offers";
-import { getSiteShot } from "@/lib/proof";
 import type { SectorPageConfig } from "@/lib/sector-pages";
 import { buildMetadata } from "@/lib/seo";
 import { cn } from "@/lib/utils";
@@ -89,9 +88,6 @@ export async function SectorPage({
           proof.slugs.includes(study.slug),
         )
       : [];
-  const firstShot = cases
-    .map((study) => getSiteShot(study.slug))
-    .find((shot) => shot !== null);
 
   const sections = (
     [
@@ -153,10 +149,10 @@ export async function SectorPage({
           </div>
           <aside className="reveal border-line self-end border-t pt-5 lg:col-span-3 lg:col-start-10 lg:border-t-0 lg:border-l lg:pt-0 lg:pl-6">
             <p className="type-label text-text-3">{labels("symptoms")}</p>
-            <ul className="type-data mt-4 space-y-3">
+            <ul className="mt-4 space-y-3 text-[0.9375rem] leading-snug">
               {messageStrings(t, "problems.items").map((item, i) => (
                 <li key={item} className="text-text-2 flex gap-3">
-                  <span className="text-text-3">
+                  <span className="type-data text-text-3">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   {item}
@@ -348,7 +344,6 @@ export async function SectorPage({
         body={t("cta.body")}
         primary={{ action: "book", label: t("cta.ctaPrimary") }}
         secondary={{ action: "quote", label: t("cta.ctaSecondary") }}
-        shot={firstShot ?? null}
       />
     </>
   );

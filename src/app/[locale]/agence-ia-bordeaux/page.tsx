@@ -2,7 +2,7 @@ import type { CSSProperties } from "react";
 
 import type { Metadata } from "next";
 
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 
 import { ActionButton } from "@/components/action-button";
@@ -117,16 +117,26 @@ export default async function BordeauxPage({ params }: LocaleParams) {
           <div className="reveal lg:col-span-8">
             <SectionHeading
               lead={t("problem.title")}
+              rest={t("problem.titleEmphasis")}
               className="max-w-[28ch]"
             />
             <p className="text-text-2 mt-8 max-w-[62ch]">{t("problem.body")}</p>
+            <a
+              href={t("problem.sourceUrl")}
+              target="_blank"
+              rel="noopener"
+              className="type-data text-text-3 hover:text-text mt-4 inline-flex items-center gap-1 text-xs underline underline-offset-4 transition-colors"
+            >
+              {t("problem.source")}
+              <ArrowUpRight aria-hidden="true" className="size-3" />
+            </a>
           </div>
           <aside className="reveal border-line self-end border-t pt-5 lg:col-span-3 lg:col-start-10 lg:border-t-0 lg:border-l lg:pt-0 lg:pl-6">
             <p className="type-label text-text-3">{t("examples.title")}</p>
-            <ul className="type-data mt-4 space-y-3">
+            <ul className="mt-4 space-y-3 text-[0.9375rem] leading-snug">
               {messageStrings(t, "examples.items").map((item, i) => (
                 <li key={item} className="text-text-2 flex gap-3">
-                  <span className="text-text-3">
+                  <span className="type-data text-text-3">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   {item}
@@ -141,19 +151,24 @@ export default async function BordeauxPage({ params }: LocaleParams) {
         locale={locale}
         index="02"
         eyebrow={t("eyebrows.examples")}
+        namespace="bordeaux.block"
       />
 
       <ProcessLine
         index="03"
         eyebrow={t("eyebrows.process")}
         title={t("process.title")}
+        emphasis={t("process.titleEmphasis")}
         steps={messageList(t, "process.steps", ["title", "body"])}
       />
 
       <Section index="04" eyebrow={t("eyebrows.local")}>
         <div className="grid gap-12 lg:grid-cols-12 lg:items-center lg:gap-6">
           <div className="reveal lg:col-span-6">
-            <SectionHeading lead={t("local.title")} />
+            <SectionHeading
+              lead={t("local.title")}
+              rest={t("local.titleEmphasis")}
+            />
             <p className="text-text-2 mt-6 max-w-[54ch]">{t("local.body")}</p>
             <dl className="border-line bg-surface-1 shadow-card mt-10 rounded-md border">
               {LOCAL_FACTS.map((key) => (
@@ -182,7 +197,11 @@ export default async function BordeauxPage({ params }: LocaleParams) {
 
       <Section index="05" eyebrow={t("eyebrows.trust")}>
         <div className="reveal grid gap-8 lg:grid-cols-12 lg:gap-6">
-          <SectionHeading lead={t("trust.title")} className="lg:col-span-5" />
+          <SectionHeading
+            lead={t("trust.title")}
+            rest={t("trust.titleEmphasis")}
+            className="lg:col-span-5"
+          />
           <p className="text-text-2 max-w-[62ch] lg:col-span-6 lg:col-start-7">
             {t("trust.body")}
           </p>
@@ -193,6 +212,7 @@ export default async function BordeauxPage({ params }: LocaleParams) {
         index="06"
         eyebrow={t("eyebrows.faq")}
         title={t("faq.title")}
+        emphasis={t("faq.titleEmphasis")}
         items={messageList(t, "faq.items", ["question", "answer"], prices)}
         bookLabel={t("cta.ctaPrimary")}
         openFirst
@@ -200,6 +220,7 @@ export default async function BordeauxPage({ params }: LocaleParams) {
 
       <Cta
         title={t("cta.title")}
+        emphasis={t("cta.titleEmphasis")}
         body={t("cta.body")}
         primary={{ action: "book", label: t("cta.ctaPrimary") }}
         secondary={{ action: "quote", label: t("cta.ctaSecondary") }}

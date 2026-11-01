@@ -33,7 +33,7 @@ export type OfferPageConfig = {
   anchor: OfferId;
   block: OfferBlock;
   proofSlugs: string[];
-  proofLink: "cases" | "github" | null;
+  proofLink: "cases" | null;
   stack?: true;
   cta: [OfferAction, OfferAction];
   sectors: SectorKey[];
@@ -49,7 +49,7 @@ export const offerPages: Record<OfferPageKey, OfferPageConfig> = {
     highlighted: "site-ia",
     anchor: "landing",
     block: "lighthouse",
-    proofSlugs: ["kenzi", "pkba", "vertiflow"],
+    proofSlugs: ["pkba", "vertiflow"],
     proofLink: "cases",
     cta: ["quote", "book"],
     sectors: ["agencies"],
@@ -58,7 +58,7 @@ export const offerPages: Record<OfferPageKey, OfferPageConfig> = {
     key: "agents",
     pathname: "/services/agents-ia",
     namespace: "agents",
-    scenario: "agents",
+    scenario: "support",
     tiers: ["audit-ia", "sprint-ia", "retainer"],
     highlighted: "sprint-ia",
     anchor: "audit-ia",
@@ -78,7 +78,7 @@ export const offerPages: Record<OfferPageKey, OfferPageConfig> = {
     anchor: "fde",
     block: "fde-definition",
     proofSlugs: [],
-    proofLink: "github",
+    proofLink: null,
     cta: ["book", "quote"],
     sectors: ["agencies"],
   },

@@ -1,10 +1,12 @@
 import { describe, expect, it } from "vitest";
 
 import {
+  getGithubContributions,
   getSiteShot,
   getVerifiedProof,
   type ProofSource,
   selectStripProof,
+  verifyContributions,
   verifyLighthouse,
   verifyPrList,
   verifyRunLog,
@@ -163,5 +165,36 @@ describe("selectStripProof", () => {
 
   it("returns a single site shot when nothing else is verified", () => {
     expect(selectStripProof([shot("a"), shot("b")])).toHaveLength(1);
+  });
+});
+
+describe("verifyContributions", () => {
+  const measured = {
+    status: "measured",
+    user: "AirKyzzZ",
+    capturedAt: "2026-11-01",
+    from: "2025-11-02",
+    to: "2026-11-01",
+    total: 12,
+    levels: "0".repeat(364) + "4",
+  };
+
+  it("accepts a measured snapshot and splits the levels", () => {
+    const result = verifyContributions(measured);
+    expect(result?.levels).toHaveLength(365);
+    expect(result?.levels.at(-1)).toBe(4);
+  });
+
+  it.each([
+    { ...measured, status: "pending" },
+    { ...measured, levels: "5".repeat(365) },
+    { ...measured, levels: "1".repeat(20) },
+    { ...measured, total: "12" },
+  ])("rejects %o", (data) => {
+    expect(verifyContributions(data)).toBeNull();
+  });
+
+  it("ships a measured snapshot", () => {
+    expect(getGithubContributions()?.user).toBe("AirKyzzZ");
   });
 });

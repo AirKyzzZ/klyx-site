@@ -448,7 +448,7 @@
       "titleEmphasis": "you get"
     },
     "process": {
-      "title": "The steps",
+      "title": "How it works,",
       "steps": {
         "brief": {
           "title": "Brief",
@@ -466,7 +466,8 @@
           "title": "Launch",
           "body": "We connect the domain, check performance and show you how to edit your content."
         }
-      }
+      },
+      "titleEmphasis": "in four steps."
     },
     "pricing": {
       "title": "How much does",
@@ -476,7 +477,7 @@
     },
     "proof": {
       "title": "Sites",
-      "body": "Kenzi Events, PKBA and VertiFlow: a site for an events business, one for a parkour club and one for a parkour clothing brand.",
+      "body": "PKBA and VertiFlow: a site for a parkour club and one for a parkour clothing brand, both live.",
       "link": "See the work",
       "titleEmphasis": "shipped"
     },
@@ -508,7 +509,7 @@
           "answer": "You edit your content yourself. For a new page or feature, we send you a quote."
         }
       },
-      "titleEmphasis": "questions"
+      "titleEmphasis": "questions."
     },
     "cta": {
       "title": "Your site,",
@@ -582,7 +583,7 @@
       "body": "If you go on to an AI Sprint, the quote takes the audit you already paid into account, and the terms are written down before you sign."
     },
     "process": {
-      "title": "The steps",
+      "title": "How it works,",
       "steps": {
         "call": {
           "title": "Call",
@@ -600,7 +601,8 @@
           "title": "Run",
           "body": "We monitor and improve the workflow, or your team takes it over with the runbook."
         }
-      }
+      },
+      "titleEmphasis": "in four steps."
     },
     "pricing": {
       "title": "How much does",
@@ -642,7 +644,7 @@
           "answer": "Your team, using the runbook and onboarding included in the sprint, or us through the monthly run."
         }
       },
-      "titleEmphasis": "questions"
+      "titleEmphasis": "questions."
     },
     "cta": {
       "title": "Start with the process",
@@ -655,6 +657,9 @@
       "title": "Every agent action,",
       "titleEmphasis": "in the log.",
       "body": "The view you get with the Sprint: every step, its duration, and the errors it recovered from. Shown here on a fictional example."
+    },
+    "stack": {
+      "titleEmphasis": "under your agents."
     }
   },
   "fde": {
@@ -706,7 +711,7 @@
       }
     },
     "process": {
-      "title": "The steps",
+      "title": "How it works,",
       "steps": {
         "call": {
           "title": "Call",
@@ -724,13 +729,8 @@
           "title": "Every week",
           "body": "A written update with the merged PRs and what comes next. We adjust the pace if needed."
         }
-      }
-    },
-    "proof": {
-      "title": "Code you can read",
-      "body": "Our lead engineer's commit history is public.",
-      "link": "See Maxime's GitHub",
-      "titleEmphasis": "before you sign"
+      },
+      "titleEmphasis": "in four steps."
     },
     "faq": {
       "title": "Frequently asked",
@@ -756,7 +756,7 @@
           "answer": "The AI Sprint delivers one defined workflow at a fixed price in two weeks. The FDE fits when your backlog keeps changing and you need someone inside the team for several weeks."
         }
       },
-      "titleEmphasis": "questions"
+      "titleEmphasis": "questions."
     },
     "cta": {
       "title": "An AI feature",
@@ -902,8 +902,9 @@
       "bpifrance": {
         "label": "Context",
         "title": "What about Bpifrance's Diagnostic Data IA?",
-        "body": "Bpifrance funds a Diagnostic Data IA, delivered by experts it accredits. According to les-aides.fr, it costs €10,000 excl. VAT and Bpifrance covers 40%, for companies with 10 to 2,000 employees. Klyx is not accredited: our audit is private, shorter, and its price is public.",
-        "source": "Source: les-aides.fr, accessed 31 October 2026. Not checked on bpifrance.fr."
+        "body": "Bpifrance runs a Diagnostic Data IA, delivered by experts it accredits, as part of France's Osez l'IA plan. Klyx is not accredited: our audit is private, shorter, and its price is public.",
+        "source": "The scheme on entreprises.gouv.fr",
+        "url": "https://www.entreprises.gouv.fr/osez-lia"
       }
     },
     "pricing": {
@@ -1105,6 +1106,9 @@
       "body": "Book a 20-minute call. We tell you whether it fits in one simple workflow, and at what price.",
       "ctaPrimary": "Book a call",
       "ctaSecondary": "Get a free quote"
+    },
+    "stack": {
+      "titleEmphasis": "under your automations."
     }
   },
   "geo": {
@@ -1283,8 +1287,8 @@
       }
     },
     "market": {
-      "title": "How these prices compare",
-      "body": "Most AI agencies in France don't publish their prices. Published ranges for a freelance AI developer usually run from €650 to €900 a day, and a quick AI audit often sells for €1,500 to €2,500.",
+      "title": "How these prices",
+      "body": "Most AI agencies in France don't publish their prices. Published ranges for a freelance AI developer usually run from €650 to €900 a day.",
       "card": {
         "title": "market.csv",
         "columns": {
@@ -1299,18 +1303,14 @@
             "range": "€650-900",
             "source": "Studeria",
             "url": "https://www.studeria.fr/articles-de-blog/tjm-consultant-ia-2026-tarifs-grille"
-          },
-          "audit": {
-            "label": "Quick AI audit",
-            "range": "€1,500-2,500",
-            "source": "Malt"
           }
         },
         "note": "Ranges collected on 31 October 2026."
-      }
+      },
+      "titleEmphasis": "compare."
     },
     "faq": {
-      "title": "Pricing questions",
+      "title": "Questions",
       "items": {
         "sprintVsFde": {
           "question": "Why does an AI Sprint cost less than 10 FDE days?",
@@ -1320,13 +1320,15 @@
           "question": "Can the price go up during the project?",
           "answer": "Not without your agreement. The price covers the scope written into the quote. If you add something, we send you an extra quote before doing it."
         }
-      }
+      },
+      "titleEmphasis": "about pricing."
     },
     "cta": {
-      "title": "For an exact price, ask for a quote.",
+      "title": "For an exact price,",
       "body": "Tell us about your project and we'll send a free quote.",
       "ctaPrimary": "Get a free quote",
-      "ctaSecondary": "Book a call"
+      "ctaSecondary": "Book a call",
+      "titleEmphasis": "ask for a quote."
     },
     "eyebrows": {
       "market": "Market",
@@ -1338,7 +1340,8 @@
       "title": "What we've",
       "titleEmphasis": "built.",
       "subtitle": "Sites shipped for clients and products we've worked on. For each project, exactly what we did.",
-      "serif": "built"
+      "serif": "built",
+      "window": "work/"
     },
     "labels": {
       "client": "Client",
@@ -1348,13 +1351,16 @@
       "read": "Read the case study",
       "back": "All work",
       "url": "URL",
-      "next": "Next project"
+      "next": "Next project",
+      "outcome": "Outcome",
+      "noOutcome": "No published figure yet"
     },
     "cta": {
-      "title": "Your project could be next on this list.",
+      "title": "Your project could be",
       "body": "Book a call or ask for a free quote.",
       "ctaPrimary": "Book a call",
-      "ctaSecondary": "Get a free quote"
+      "ctaSecondary": "Get a free quote",
+      "titleEmphasis": "next on this list."
     },
     "count": "{count, plural, one {# project} other {# projects}} · {years}",
     "eyebrow": "Projects"
@@ -1440,6 +1446,16 @@
       "agents": "AI coding agents take well-bounded tasks: a component, a test, a migration. The code they write is reviewed before it goes to production.",
       "partners": "If the project needs it, we team up with a specialist, and we tell you first.",
       "handover": "The code is in your repo from day one. At the end, a written handover lets any developer pick it up."
+    },
+    "products": {
+      "title": "A product",
+      "titleEmphasis": "co-founded by Maxime."
+    },
+    "contributions": {
+      "window": "github.com/AirKyzzZ",
+      "total": "{total} GitHub contributions in 12 months",
+      "label": "Maxime Mansiet's GitHub contribution graph, from {from} to {to}",
+      "caption": "Captured on {date} from his public profile. One square per day: the lighter it is, the more commits, PRs and reviews that day."
     }
   },
   "bordeaux": {
@@ -1453,8 +1469,11 @@
       "serif": "jargon"
     },
     "problem": {
-      "title": "Tried ChatGPT, but nothing changed in how you work?",
-      "body": "That's true of most companies. In 2026, 40% of French small businesses use AI, but only 11% use it to automate a task (France Num 2026 barometer). The tool is there, but nobody had time to connect it to quotes, invoices or customer follow-up. That's what we do: we pick one task that takes time every week, automate it, and your team stays in control of what goes out to customers."
+      "title": "Tried ChatGPT,",
+      "body": "That's true of most companies. In 2026, 40% of French small businesses use AI, but only 11% use it to automate a task (France Num 2026 barometer). The tool is there, but nobody had time to connect it to quotes, invoices or customer follow-up. That's what we do: we pick one task that takes time every week, automate it, and your team stays in control of what goes out to customers.",
+      "titleEmphasis": "but nothing changed in how you work?",
+      "source": "France Num 2026 barometer, entreprises.gouv.fr",
+      "sourceUrl": "https://www.entreprises.gouv.fr/espace-presse/barometre-france-num-2026-quatre-tpe-pme-sur-dix-utilisent-desormais-lintelligence"
     },
     "examples": {
       "title": "What can be automated",
@@ -1466,7 +1485,7 @@
       }
     },
     "process": {
-      "title": "How it works",
+      "title": "How it works,",
       "steps": {
         "call": {
           "title": "A free first conversation",
@@ -1484,10 +1503,11 @@
           "title": "Follow-up",
           "body": "Once the automation is in place, we check together that it runs and give you a written handover. If you want us to keep monitoring and fixing it, that's the monthly plan."
         }
-      }
+      },
+      "titleEmphasis": "in four steps."
     },
     "local": {
-      "title": "Based in Bordeaux",
+      "title": "Based in Bordeaux,",
       "body": "We work from Bordeaux, with SMEs across the metro area and Gironde. Where scoping happens, remotely or in a meeting, is decided with you.",
       "card": {
         "city": {
@@ -1503,14 +1523,16 @@
           "value": "Agreed with you"
         }
       },
-      "map": "Map of Gironde with Bordeaux"
+      "map": "Map of Gironde with Bordeaux",
+      "titleEmphasis": "remote across France."
     },
     "trust": {
-      "title": "Why trust us",
-      "body": "Price and scope are in writing before work starts. If you pay for the audit, you keep the plan even if you go no further. Tools and accounts are in your name, and a monthly plan covers continuity."
+      "title": "Why",
+      "body": "Price and scope are in writing before work starts. If you pay for the audit, you keep the plan even if you go no further. Tools and accounts are in your name, and a monthly plan covers continuity.",
+      "titleEmphasis": "trust us."
     },
     "faq": {
-      "title": "Frequently asked questions",
+      "title": "Frequently asked",
       "items": {
         "price": {
           "question": "How much does it cost?",
@@ -1532,13 +1554,15 @@
           "question": "How long does it take?",
           "answer": "1 to 2 weeks for the audit, then about 2 weeks to put a first automation in place."
         }
-      }
+      },
+      "titleEmphasis": "questions."
     },
     "cta": {
-      "title": "Is one task taking too much time?",
+      "title": "Is one task taking",
       "body": "Let's talk for 20 minutes. It's free, and you'll know whether it's worth automating.",
       "ctaPrimary": "Book a call",
-      "ctaSecondary": "Get a free quote"
+      "ctaSecondary": "Get a free quote",
+      "titleEmphasis": "too much time?"
     },
     "eyebrows": {
       "problem": "The problem",
@@ -1547,6 +1571,45 @@
       "local": "Local",
       "trust": "Trust",
       "faq": "Questions"
+    },
+    "block": {
+      "title": "Three local trades,",
+      "titleEmphasis": "three tasks we automate.",
+      "body": "Typical examples for businesses in Gironde, not client projects. Each keeps a human approval step before anything reaches the customer.",
+      "human": "human approval",
+      "examples": {
+        "wine": {
+          "title": "Wine trade: export orders",
+          "body": "An importer's purchase order becomes an order in your system, with the export paperwork prepared.",
+          "steps": {
+            "trigger": "Purchase order",
+            "ai": "AI reading",
+            "human": "Sales admin check",
+            "action": "Order entered"
+          }
+        },
+        "building": {
+          "title": "Construction: site quotes",
+          "body": "A request with photos becomes a priced quote built from your own price list.",
+          "steps": {
+            "trigger": "Request + photos",
+            "ai": "AI pricing",
+            "human": "Site manager review",
+            "action": "Quote sent"
+          }
+        },
+        "accounting": {
+          "title": "Accounting firm: client documents",
+          "body": "Documents sent by clients are filed by case, and anything missing gets chased.",
+          "steps": {
+            "trigger": "Documents in",
+            "ai": "AI filing",
+            "human": "Accountant check",
+            "action": "Reminder sent"
+          }
+        }
+      },
+      "limit": "A simple task is the fixed-price AI automation. An agent that touches several tools is the AI Sprint."
     }
   },
   "contact": {
@@ -1648,13 +1711,12 @@
       "title": "Publisher",
       "body": "Klyx, a business of Maxime Mansiet, sole trader (entrepreneur individuel), Bordeaux, France.",
       "siret": "SIRET: {siret}",
-      "vat": "VAT statement: to be confirmed at launch.",
       "email": "Contact: {email}",
       "director": "Publication director: Maxime Mansiet"
     },
     "hosting": {
       "title": "Hosting",
-      "body": "Host: to be confirmed at launch."
+      "body": "The site is hosted by Netlify, Inc., 101 2nd Street, San Francisco, CA 94105, United States. Contact: support@netlify.com."
     },
     "ip": {
       "title": "Intellectual property",
@@ -1696,7 +1758,7 @@
     },
     "hosting": {
       "title": "Hosting and transfers",
-      "body": "The site's host is named in the legal notice. Resend and Cal.com are US providers. Transfers of data to the United States rely, depending on the provider, on the EU-US Data Privacy Framework or on the European Commission's standard contractual clauses."
+      "body": "The site is hosted by Netlify, Inc. (United States), which participates in the EU-US Data Privacy Framework. Resend and Cal.com are also US providers. Transfers of data to the United States rely, depending on the provider, on the EU-US Data Privacy Framework or on the European Commission's standard contractual clauses."
     },
     "prospection": {
       "anchor": "prospection",
@@ -1747,7 +1809,8 @@
       "serif": "sector",
       "subtitle": "For SME and agency owners who want to know what to automate before paying for it. Three sectors, workflows described step by step, and public prices: from {auditPrice} for an audit to {sprintPrice} for an agent in production.",
       "ctaPrimary": "Book a call",
-      "ctaSecondary": "Get a free quote"
+      "ctaSecondary": "Get a free quote",
+      "window": "sectors.csv"
     },
     "sectors": {
       "title": "Three sectors,",
@@ -2321,7 +2384,7 @@
     },
     "cases": {
       "title": "Work: websites and AI agents shipped | Klyx",
-      "description": "Sites and products shipped by Klyx: Hop Hop Immo, CiteMe, Kenzi Events, PKBA, VertiFlow. What was built, project by project."
+      "description": "Sites and products shipped by Klyx: Hop Hop Immo, CiteMe, PKBA, VertiFlow. What was built, project by project."
     },
     "about": {
       "title": "The Klyx team, AI agency in Bordeaux | Klyx",
@@ -2384,7 +2447,11 @@
     "title": "Page not found",
     "body": "This page doesn't exist or has moved.",
     "home": "Back to home",
-    "cases": "See the work"
+    "contact": "Contact us",
+    "unknown": "unknown route",
+    "suggested": "suggested redirect:",
+    "english": "English version",
+    "french": "Version française"
   },
   "liveSystem": {
     "label": "Illustration · sample run",
@@ -2404,7 +2471,8 @@
       "geo": "AI search",
       "realEstate": "Real estate",
       "agencies": "Agencies",
-      "services": "Firms"
+      "services": "Firms",
+      "support": "Customer support"
     },
     "scenarios": {
       "agents": {
@@ -2613,9 +2681,9 @@
           "busy": "Slot taken, trying another",
           "slot": "Viewing offered Sat 10am",
           "crm": "Contact created in the CRM",
-          "done": "Lead filed in 1.8 s"
+          "done": "Lead filed in 2.4 s"
         },
-        "chip": "Viewing offered · 1.8 s",
+        "chip": "Viewing offered · 2.4 s",
         "caption": "Sample workflow for an estate agency: a portal request is matched to the property, a viewing is offered and the contact filed in the CRM. Names and values are fictional."
       },
       "agencies": {
@@ -2676,6 +2744,36 @@
         },
         "chip": "Entered · client chased",
         "caption": "Sample workflow for a firm: the statement is read, entries are prepared in the software, a staff member approves and the client is chased for the missing document. Names and values are fictional."
+      },
+      "support": {
+        "title": "customer reply",
+        "nodes": {
+          "ticket": "Ticket in",
+          "search": "AI looks it up",
+          "draft": "Draft ready",
+          "review": "Your approval",
+          "sent": "Sent"
+        },
+        "meta": {
+          "ticket": "Zendesk",
+          "search": "Notion",
+          "draft": "AI model",
+          "review": "support",
+          "sent": "email"
+        },
+        "trace": {
+          "ticket": "Ticket: parcel not received",
+          "read": "AI model · reading the ticket",
+          "search": "Answer looked up in Notion",
+          "carrier": "Carrier silent, retrying",
+          "found": "Parcel found: due Thursday",
+          "draft": "Reply drafted",
+          "waiting": "waiting for review",
+          "approved": "Approved by support",
+          "sent": "Reply sent to the customer"
+        },
+        "chip": "Reply sent · 4 min",
+        "caption": "Sample agent we build: the AI drafts the reply from your help base, and a person reviews it before it goes out. Names and values are fictional."
       }
     }
   },

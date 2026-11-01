@@ -3,6 +3,7 @@ import type { ToolLogoId } from "@/lib/tools";
 
 export type ScenarioId =
   | "agents"
+  | "support"
   | "sites"
   | "fde"
   | "audit"
@@ -175,6 +176,50 @@ export const scenarios: Record<ScenarioId, Scenario> = {
       { at: 7000, edge: ["crm", "slack"] },
       { at: 8200, node: "slack", line: 7 },
       { at: 8800, line: 8, chip: true },
+    ],
+  }),
+  support: scenario("support", {
+    href: "/services/agents-ia",
+    agent: "search",
+    desktopOnly: ["read", "waiting"],
+    nodes: [
+      ["ticket", "inbox", 12.5, 28, 50, 8],
+      ["search", "search", 38, 28, 50, 27, "notion"],
+      ["draft", "file", 38, 72, 50, 46],
+      ["review", "user-check", 62, 72, 50, 65],
+      ["sent", "message", 87, 28, 50, 84],
+    ],
+    edges: [
+      ["ticket", "search"],
+      ["search", "draft"],
+      ["draft", "review"],
+      ["review", "sent"],
+    ],
+    trace: [
+      ["00:00", "ticket"],
+      ["00:01", "read", "dim"],
+      ["00:03", "search"],
+      ["00:04", "carrier", "err"],
+      ["00:09", "found", "ok"],
+      ["00:11", "draft"],
+      ["00:11", "waiting", "dim"],
+      ["04:02", "approved", "ok"],
+      ["04:03", "sent", "ok"],
+    ],
+    steps: [
+      { at: 0, node: "ticket", line: 0 },
+      { at: 600, edge: ["ticket", "search"] },
+      { at: 1800, node: "search", line: 1 },
+      { at: 2400, line: 2 },
+      { at: 3000, line: 3 },
+      { at: 3800, line: 4 },
+      { at: 4200, edge: ["search", "draft"] },
+      { at: 5400, node: "draft", line: 5 },
+      { at: 5900, edge: ["draft", "review"] },
+      { at: 7100, node: "review", line: 6 },
+      { at: 8100, line: 7 },
+      { at: 8500, edge: ["review", "sent"] },
+      { at: 9700, node: "sent", line: 8, chip: true },
     ],
   }),
   sites: scenario("sites", {
@@ -427,9 +472,9 @@ export const scenarios: Record<ScenarioId, Scenario> = {
       ["00.48", "match"],
       ["00.71", "score"],
       ["00.90", "busy", "err"],
-      ["01.32", "slot", "ok"],
-      ["01.60", "crm"],
-      ["01.84", "done", "ok"],
+      ["01.74", "slot", "ok"],
+      ["02.05", "crm"],
+      ["02.36", "done", "ok"],
     ],
     steps: [
       { at: 0, node: "portal", line: 0 },

@@ -34,7 +34,6 @@ export default async function LegalPage({ params }: LocaleParams) {
       <LegalSection id="editeur" title={t("publisher.title")}>
         <p>{t("publisher.body")}</p>
         <p>{t("publisher.siret", { siret: site.siret })}</p>
-        <p>{t("publisher.vat")}</p>
         <p>{t("publisher.email", { email: site.email })}</p>
         <p>{t("publisher.director")}</p>
       </LegalSection>

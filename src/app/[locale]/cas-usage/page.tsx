@@ -8,6 +8,7 @@ import { EmphasisTitle } from "@/components/emphasis-title";
 import { JsonLd } from "@/components/json-ld";
 import { Section, SectionHeading } from "@/components/section";
 import { Cta } from "@/components/sections/cta";
+import { SampleWindow } from "@/components/sections/process-timeline";
 import type { Translate } from "@/i18n/message-list";
 import { Link } from "@/i18n/navigation";
 import { type LocaleParams, resolvePageLocale } from "@/i18n/page-locale";
@@ -53,31 +54,63 @@ export default async function UseCasesPage({ params }: LocaleParams) {
         data-shot="hero"
         className="relative pt-28 pb-12 md:pt-36 md:pb-16"
       >
-        <div className="container">
-          <p className="hero-in type-label text-text-3">{t("hero.eyebrow")}</p>
-          <h1 className="type-h1 mt-4 max-w-[20ch]">
-            <EmphasisTitle
-              title={t("hero.title")}
-              emphasis={t("hero.titleEmphasis")}
-              serif={t("hero.serif")}
-            />
-          </h1>
-          <p className="hero-in type-lead text-text-2 mt-5 max-w-[60ch]">
-            {t("hero.subtitle", prices)}
-          </p>
-          <div className="hero-in mt-7 flex flex-col gap-3 sm:flex-row sm:items-center">
-            <ActionButton action="book" size="lg" className="w-full sm:w-auto">
-              {t("hero.ctaPrimary")}
-            </ActionButton>
-            <ActionButton
-              action="quote"
-              variant="secondary"
-              size="lg"
-              className="w-full sm:w-auto"
-            >
-              {t("hero.ctaSecondary")}
-              <ArrowRight />
-            </ActionButton>
+        <div className="container grid gap-10 lg:grid-cols-12 lg:items-end lg:gap-6">
+          <div className="lg:col-span-7">
+            <p className="hero-in type-label text-text-3">
+              {t("hero.eyebrow")}
+            </p>
+            <h1 className="type-h1 mt-4 max-w-[20ch]">
+              <EmphasisTitle
+                title={t("hero.title")}
+                emphasis={t("hero.titleEmphasis")}
+                serif={t("hero.serif")}
+              />
+            </h1>
+            <p className="hero-in type-lead text-text-2 mt-5 max-w-[60ch]">
+              {t("hero.subtitle", prices)}
+            </p>
+            <div className="hero-in mt-7 flex flex-col gap-3 sm:flex-row sm:items-center">
+              <ActionButton
+                action="book"
+                size="lg"
+                className="w-full sm:w-auto"
+              >
+                {t("hero.ctaPrimary")}
+              </ActionButton>
+              <ActionButton
+                action="quote"
+                variant="secondary"
+                size="lg"
+                className="w-full sm:w-auto"
+              >
+                {t("hero.ctaSecondary")}
+                <ArrowRight />
+              </ActionButton>
+            </div>
+          </div>
+          <div className="hero-in lg:col-span-4 lg:col-start-9">
+            <SampleWindow file={t("hero.window")}>
+              <ul className="space-y-1">
+                {SECTOR_KEYS.map((key) => {
+                  const anchor = getOfferCopy(
+                    offersT,
+                    locale,
+                    sectorPages[key].anchor,
+                  );
+                  return (
+                    <li key={key}>
+                      <Link
+                        href={sectorPages[key].pathname}
+                        className="hover:bg-surface-3 -mx-2 grid grid-cols-[minmax(0,1fr)_auto] gap-x-4 rounded-xs px-2 py-1.5 transition-colors"
+                      >
+                        <span className="text-text truncate">{nav(key)}</span>
+                        <span className="text-text-3">{anchor.price}</span>
+                      </Link>
+                    </li>
+                  );
+                })}
+              </ul>
+            </SampleWindow>
           </div>
         </div>
       </section>

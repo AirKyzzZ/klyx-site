@@ -61,9 +61,15 @@ export function Section({
       )}
     >
       <Hr />
-      <div className={cn("py-section relative container", className)}>
+      <div
+        className={cn(
+          "relative container",
+          eyebrow ? "pb-section pt-5" : "py-section",
+          className,
+        )}
+      >
         {eyebrow && (
-          <div className="absolute top-5 left-(--content-x)">
+          <div className="mb-8">
             <Eyebrow index={index}>{eyebrow}</Eyebrow>
           </div>
         )}

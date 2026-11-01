@@ -43,6 +43,16 @@ describe("case studies", () => {
   it("sorts by order", async () => {
     const orders = (await getCaseStudies("fr")).map((s) => s.order);
     expect(orders).toEqual([...orders].sort((a, b) => a - b));
-    expect(orders).toHaveLength(5);
+    expect(orders).toHaveLength(4);
   });
+
+  it.each(["fr", "en"] as const)(
+    "%s keeps Kenzi out of every listing until its write-up exists",
+    async (locale) => {
+      const listed = (await getCaseStudies(locale)).map((s) => s.slug);
+      expect(listed).not.toContain("kenzi");
+      const { meta } = await getCaseStudy("kenzi", locale);
+      expect(meta.listed).toBe(false);
+    },
+  );
 });

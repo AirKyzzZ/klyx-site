@@ -202,7 +202,6 @@ export default async function HomePage({ params }: LocaleParams) {
         body={t("finalCta.body")}
         primary={{ action: "book", label: t("finalCta.ctaPrimary") }}
         secondary={{ action: "quote", label: t("finalCta.ctaSecondary") }}
-        shot={cases[0] ? getSiteShot(cases[0].slug) : null}
       />
     </>
   );

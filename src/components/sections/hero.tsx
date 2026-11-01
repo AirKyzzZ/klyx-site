@@ -7,7 +7,6 @@ import { ActionButton } from "@/components/action-button";
 import { EmphasisTitle } from "@/components/emphasis-title";
 import { FoldStrip } from "@/components/fold-strip";
 import { LiveSystem } from "@/components/live-system/live-system";
-import { Tag } from "@/components/tag";
 import type { Locale } from "@/i18n/routing";
 import { cn } from "@/lib/utils";
 
@@ -125,7 +124,6 @@ const HOME_SCENARIOS = ["agents", "sites", "fde"] as const;
 
 export async function HomeHero({ locale }: { locale: Locale }) {
   const t = await getTranslations({ locale, namespace: "home.hero" });
-  const tabs = await getTranslations({ locale, namespace: "liveSystem.tabs" });
 
   return (
     <section
@@ -149,12 +147,7 @@ export async function HomeHero({ locale }: { locale: Locale }) {
             className="hero-in type-lead text-text-2 mt-5 max-w-[58ch]"
             style={delay(0.15)}
           >
-            {t("subtitle")}{" "}
-            <span className="inline-flex flex-wrap gap-1.5 align-middle">
-              {HOME_SCENARIOS.map((id) => (
-                <Tag key={id}>{tabs(id)}</Tag>
-              ))}
-            </span>
+            {t("subtitle")}
           </p>
           <div
             className="hero-in mt-7 flex flex-col gap-3 sm:flex-row sm:items-center"

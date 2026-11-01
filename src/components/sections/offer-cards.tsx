@@ -129,38 +129,44 @@ export function OfferCards({
         </p>
       </div>
 
-      <ul className="reveal border-line bg-line mt-12 grid gap-px overflow-hidden rounded-md border md:mt-16 lg:grid-cols-3">
+      <ul className="reveal border-line-strong bg-surface-1 shadow-card mt-12 overflow-hidden rounded-md border md:mt-16">
         {items.map((item, i) => (
-          <li key={item.href} data-offer-card className="bg-bg flex min-w-0">
+          <li
+            key={item.href}
+            data-offer-card
+            className="border-line flex min-w-0 border-t first:border-t-0"
+          >
             <Link
               href={item.href}
               data-spotlight=""
-              className="spotlight group hover:bg-surface-1 flex w-full flex-col p-5 transition-colors duration-(--d-fast) lg:p-7"
+              className="spotlight group hover:bg-surface-2 grid w-full gap-6 p-5 transition-colors duration-(--d-fast) lg:grid-cols-12 lg:items-center lg:gap-6 lg:p-7"
             >
-              <span className="type-label text-text-3 flex items-center justify-between">
-                <span>
+              <div className="min-w-0 lg:col-span-4">
+                <FlowGlyph glyph={item.glyph} steps={item.steps} />
+              </div>
+              <div className="lg:col-span-5">
+                <span className="type-label text-text-3">
                   <span className="text-text-2">
                     {String(i + 1).padStart(2, "0")}
                   </span>{" "}
                   / {item.tag}
                 </span>
+                <h3 className="type-h3 mt-3">{item.name}</h3>
+                <p className="text-text-2 mt-2 max-w-[48ch] text-[0.9375rem] leading-normal">
+                  {item.outcome}
+                </p>
+              </div>
+              <span className="border-line flex items-end justify-between gap-4 border-t pt-4 lg:col-span-3 lg:flex-col lg:items-end lg:border-t-0 lg:pt-0 lg:text-right">
+                <span className="flex flex-col gap-1">
+                  <span className="type-data text-text">{item.price}</span>
+                  <span className="type-data text-text-3 text-[0.8125rem]">
+                    {item.duration}
+                  </span>
+                </span>
                 <ArrowUpRight
                   aria-hidden="true"
-                  className="group-hover:text-text size-4 transition-transform duration-(--d-fast) group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                  className="text-text-3 group-hover:text-text size-4 transition-transform duration-(--d-fast) group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                 />
-              </span>
-              <div className="mt-6">
-                <FlowGlyph glyph={item.glyph} steps={item.steps} />
-              </div>
-              <h3 className="type-h3 mt-8">{item.name}</h3>
-              <p className="text-text-2 mt-2 mb-8 max-w-[38ch] text-[0.9375rem] leading-normal">
-                {item.outcome}
-              </p>
-              <span className="border-line mt-auto flex flex-col gap-1 border-t pt-4">
-                <span className="type-data text-text">{item.price}</span>
-                <span className="type-data text-text-3 text-[0.8125rem]">
-                  {item.duration}
-                </span>
               </span>
             </Link>
           </li>
@@ -169,10 +175,10 @@ export function OfferCards({
 
       {also && (
         <div className="reveal border-line mt-4 flex flex-col gap-3 rounded-md border px-5 py-4 md:flex-row md:items-center md:gap-8 lg:px-7">
-          <p className="type-label text-text-3">{also.label}</p>
-          <ul className="flex flex-col gap-2 md:flex-row md:gap-6">
+          <p className="type-label text-text-3 shrink-0">{also.label}</p>
+          <ul className="flex min-w-0 flex-1 flex-col gap-2 md:flex-row md:flex-wrap md:gap-x-6 md:gap-y-3">
             {also.items.map((item) => (
-              <li key={item.label}>
+              <li key={item.label} className="whitespace-nowrap">
                 <Link
                   href={item.href}
                   className="group type-data text-text-2 hover:text-text inline-flex items-center gap-1.5 transition-colors"
