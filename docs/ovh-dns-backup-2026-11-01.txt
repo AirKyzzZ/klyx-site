@@ -1,0 +1,107 @@
+; klyx.fr DNS backup, 2026-11-01
+; STATUS: COMPLETE. OVH zone (21 records, single page, read via the OVH manager session's own API,
+; GET /domain/zone/klyx.fr/record + /record/{id}) plus public dig output and OVH inventory.
+; Zone record order below is OVH record-id order. TTL "0" in OVH = "By default" = zone TTL 3600.
+
+; ==== OVH zone klyx.fr (as listed by OVH) ====
+$ORIGIN klyx.fr.
+$TTL 3600
+; SOA as served: dns20.ovh.net. tech.ovh.net. serial 2093473227 refresh 86400 retry 3600 expire 3600000 nxttl 60
+; zone lastUpdate 2026-04-01T14:51:22+02:00, DNSSEC activated, no Anycast DNS
+; sub-domain           TTL   type   target
+@                      0     NS     dns20.ovh.net.
+@                      0     NS     ns20.ovh.net.
+@                      0     A      188.165.53.185
+@                      0     AAAA   2001:41d0:301::21
+@                      0     TXT    "v=spf1 include:zohomail.eu ~all"
+@                      0     MX     10 mx.zoho.eu.
+@                      0     MX     20 mx2.zoho.eu.
+@                      0     MX     50 mx3.zoho.eu.
+zmail._domainkey       0     TXT    "v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCQtoQZBfJQF6E8olej0CCvkl9JdxPijREQeJdlzWOgpuy91r0f88X686nzY9TIzvJMUjC/baonqv16KV6Cd/r6QOeDN39dvnztO+HZIo7hglE8u0CrMDKLBLlYmj2vslIjtZjfOEjVEdx8lQxWVL/BuYQ87nc2FIscPDAVwI4f6QIDAQAB"
+_discord               0     TXT    "dh=2d89991c8f9e6b4397cca6fd2887c608e2e8409f"
+@                      300   TXT    "brevo-code:e779b965f6dfa4705383d667b680d78d"
+_dmarc                 300   TXT    "v=DMARC1; p=none; rua=mailto:rua@dmarc.brevo.com"
+brevo1._domainkey      300   CNAME  b1.klyx-fr.dkim.brevo.com.
+brevo2._domainkey      300   CNAME  b2.klyx-fr.dkim.brevo.com.
+@                      0     TXT    "66a9581d1ef77ed45e3d5b4634ca64e2"
+blog                   0     CNAME  7ce82a2a6da03495.vercel-dns-017.com.
+pulse                  0     CNAME  custom.lemlist.com.
+@                      0     TXT    "lemlist-verif=3e666b7d"
+studio                 0     CNAME  cname.vercel-dns.com.
+estate                 0     CNAME  cname.vercel-dns.com.
+dash                   0     CNAME  cname.vercel-dns.com.
+; OVH web redirections: none. DynHost records: none.
+
+; ==== dig output ====
+;; dig NS klyx.fr
+klyx.fr.		3584	IN	NS	ns20.ovh.net.
+klyx.fr.		3584	IN	NS	dns20.ovh.net.
+;; dig A klyx.fr
+klyx.fr.		3600	IN	A	188.165.53.185
+;; dig AAAA klyx.fr
+klyx.fr.		3600	IN	AAAA	2001:41d0:301::21
+;; dig MX klyx.fr
+klyx.fr.		3600	IN	MX	10 mx.zoho.eu.
+klyx.fr.		3600	IN	MX	50 mx3.zoho.eu.
+klyx.fr.		3600	IN	MX	20 mx2.zoho.eu.
+;; dig TXT klyx.fr
+klyx.fr.		300	IN	TXT	"lemlist-verif=3e666b7d"
+klyx.fr.		300	IN	TXT	"brevo-code:e779b965f6dfa4705383d667b680d78d"
+klyx.fr.		300	IN	TXT	"66a9581d1ef77ed45e3d5b4634ca64e2"
+klyx.fr.		300	IN	TXT	"v=spf1 include:zohomail.eu ~all"
+;; dig TXT _dmarc.klyx.fr
+_dmarc.klyx.fr.		300	IN	TXT	"v=DMARC1; p=none; rua=mailto:rua@dmarc.brevo.com"
+;; dig TXT zmail._domainkey.klyx.fr
+zmail._domainkey.klyx.fr. 3600	IN	TXT	"v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCQtoQZBfJQF6E8olej0CCvkl9JdxPijREQeJdlzWOgpuy91r0f88X686nzY9TIzvJMUjC/baonqv16KV6Cd/r6QOeDN39dvnztO+HZIo7hglE8u0CrMDKLBLlYmj2vslIjtZjfOEjVEdx8lQxWVL/BuYQ87nc2FIscPDAVwI4f6QIDAQAB"
+;; dig CNAME brevo1._domainkey.klyx.fr
+brevo1._domainkey.klyx.fr. 300	IN	CNAME	b1.klyx-fr.dkim.brevo.com.
+;; dig CNAME brevo2._domainkey.klyx.fr
+brevo2._domainkey.klyx.fr. 300	IN	CNAME	b2.klyx-fr.dkim.brevo.com.
+;; dig A www.klyx.fr
+;; dig CNAME www.klyx.fr
+;; dig CNAME blog.klyx.fr
+blog.klyx.fr.		3600	IN	CNAME	7ce82a2a6da03495.vercel-dns-017.com.
+;; dig CNAME studio.klyx.fr
+studio.klyx.fr.		3600	IN	CNAME	cname.vercel-dns.com.
+;; dig CNAME estate.klyx.fr
+estate.klyx.fr.		3600	IN	CNAME	cname.vercel-dns.com.
+;; dig A send.klyx.fr
+;; dig MX send.klyx.fr
+;; dig TXT send.klyx.fr
+;; dig DS klyx.fr
+klyx.fr.		3600	IN	DS	1145 8 2 4A97463788AA07FBD81030C0A5667D1748DAB3918AADD52C3169D032 017DCA42
+
+; ==== Zone vs dig differences ====
+; - Every dig answer matches an OVH zone record (values verified byte-for-byte, incl. DKIM and TXT).
+; - In zone but not queried by dig: _discord TXT, pulse CNAME (custom.lemlist.com.), dash CNAME
+;   (cname.vercel-dns.com.). Confirmed live by dig after the fact (TTL 3600).
+; - No www record in the zone: www.klyx.fr does not resolve (consistent with empty dig). Nothing on send.
+; - TTL: apex TXT RRset served at 300 by dig although 3 of the 4 apex TXT are "default" in OVH
+;   (RRset TTL normalised to the lowest, 300). NS 3584 in dig = cached 3600.
+; - DS at .fr (key tag 1145, alg 8, digest 2) consistent with DNSSEC enabled in OVH.
+
+; ==== Inventory (OVH, 2026-11-01) ====
+; Prices are the OVH API renewal price (likely excl. VAT).
+; DOMAIN klyx.fr (serviceId 131893799, standalone service, no parent)
+;   status Registered / Active, created 2025-04-24, expiry 2027-04-23, renew yearly, AUTO-RENEW ON, 7.79 EUR/yr
+;   DNS servers: dns20.ovh.net, ns20.ovh.net (Standard, not Anycast)
+;   DNSSEC: enabled. Transfer lock: enabled. Data protection (whois): enabled
+;   contacts: holder Maxime Mansiet; admin/tech/billing mm3030911-ovh
+;   linked: hosting jraddru.cluster021.hosting.ovh.net; multisite klyx.fr; "business emails included" (= MX Plan redirect below)
+; DNS ZONE klyx.fr (serviceId 131893349): free (0.00 EUR), auto-renew, next date 2027-04-01
+; EMAIL: OVH MX Plan klyx.fr (serviceId 131893350), offer "redirect" (the free redirect-only offer
+;   bundled with the domain), 0 accounts, 0 redirections, oneShot billing. Real mail = Zoho EU (MX + SPF + zmail DKIM).
+;   Brevo DKIM/DMARC and lemlist records also present.
+; WEB HOSTING jraddru.cluster021.hosting.ovh.net (serviceId 132256614, standalone, no parent, no options)
+;   plan Starter (hosting-starter), display name "Klyx.fr", active, created 2025-04-29, expiry 2027-04-02,
+;   renew yearly, AUTO-RENEW ON, 31.08 EUR/yr
+;   cluster121 (eu-west-gra), IPv4 188.165.53.185, IPv6 2001:41d0:301::21, disk 365 MB / 1 GB, SSL on
+;   attached domains: klyx.fr (path www, SSL), jraddru.cluster021.hosting.ovh.net. www.klyx.fr NOT attached
+;   database: jraddru938.mysql.db (MySQL 8.0, ~7.3 MB)
+;   FTP/SFTP login: jraddru (sftponly), host ftp.cluster121.hosting.ovh.net
+;   PHP: global 8.0 (flagged with a warning in the UI); .ovhconfig entries 8.0 (www), 7.4, 8.0, 8.5, 8.0
+;   hosting email addresses: Disabled. No CDN, no Video Center, 0 Web Cloud Databases
+; OTHER klyx.fr services billed: none beyond the 4 above (searched all 21 account services by name).
+; DEPENDENCY: domain, DNS zone and MX Plan redirect are separate services, not options of the hosting.
+;   Cancelling the hosting does not affect the domain or Zoho mail, but apex A/AAAA point at the hosting
+;   IPs, so the site goes down unless repointed first. Back up jraddru938 DB and FTP files before cancelling.
