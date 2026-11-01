@@ -336,6 +336,15 @@
   }
 }
 
+.ls-node-icon [data-logo] {
+  color: var(--text-2);
+  transition: color var(--d-ui) var(--ease-out);
+}
+
+.ls-node:is([data-state="active"], [data-state="done"]) [data-logo] {
+  color: var(--text);
+}
+
 .ls-node-text {
   display: flex;
   flex: 1;

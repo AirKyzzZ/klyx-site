@@ -103,6 +103,21 @@
         }
       }
     },
+    "tools": {
+      "title": "Your tools,",
+      "titleEmphasis": "connected.",
+      "body": "We plug AI into what you already use: your inbox, your spreadsheets, your CRM. You keep your tools.",
+      "label": "Tools we connect",
+      "groups": {
+        "email": "Email",
+        "data": "Sheets and databases",
+        "crm": "CRM",
+        "team": "Team",
+        "sales": "Sales and accounting",
+        "automation": "Automation"
+      },
+      "note": "Brands mentioned belong to their respective owners. Klyx is neither affiliated with nor a partner of these vendors."
+    },
     "cases": {
       "title": "Work",
       "subtitle": "Sites shipped for clients and products we've worked on. For each project, what we built.",
@@ -281,6 +296,7 @@
     "eyebrows": {
       "proof": "Proof",
       "offers": "Offers",
+      "tools": "Tools",
       "cases": "Work",
       "process": "Method",
       "founder": "Team",
@@ -503,7 +519,7 @@
   },
   "agents": {
     "hero": {
-      "eyebrow": "AI and agents",
+      "eyebrow": "AI agents",
       "title": "An AI agent in production",
       "titleEmphasis": "in two weeks.",
       "subtitle": "Audits from {auditPrice}, AI Sprints from {sprintPrice}. One workflow wired into your tools, with the code in your repo and a log of every action the agent takes.",
@@ -1249,7 +1265,7 @@
       "price": "Price",
       "groups": {
         "sites": "Websites",
-        "ai": "AI and agents",
+        "ai": "AI agents",
         "fde": "Forward Deployed Engineer"
       }
     },
@@ -1777,10 +1793,10 @@
           "archive": "Set aside"
         },
         "meta": {
-          "inbox": "gmail",
+          "inbox": "Gmail",
           "classifier": "AI model · sort",
-          "crm": "hubspot",
-          "slack": "#sales",
+          "crm": "HubSpot",
+          "slack": "Slack",
           "archive": "non-lead"
         },
         "trace": {
@@ -1891,12 +1907,12 @@
         "nodes": {
           "email": "Invoice in",
           "extract": "AI reads it",
-          "erp": "ERP draft",
+          "erp": "Google Sheets",
           "validation": "Your approval",
           "send": "Sent"
         },
         "meta": {
-          "email": "pdf",
+          "email": "Outlook",
           "extract": "14 fields",
           "erp": "to approve",
           "validation": "accounting",
@@ -1907,7 +1923,7 @@
           "extract": "AI picks out 14 fields",
           "vat": "VAT mismatch on line 3",
           "recompute": "VAT recomputed: 20%, ok",
-          "draft": "Draft created in the ERP",
+          "draft": "Row created in Google Sheets",
           "waiting": "waiting for approval",
           "approved": "Approved by accounting",
           "sent": "Invoice entered and sent"
@@ -1978,7 +1994,8 @@
         "audit-document": "Deliverable",
         "automation-examples": "Examples",
         "geo-visibility": "Measurement"
-      }
+      },
+      "stack": "Stack"
     },
     "ledger": {
       "offer": "Package",
@@ -1989,6 +2006,18 @@
       "file": "trace · {title}",
       "total": "total",
       "steps": "{count} steps"
+    },
+    "stack": {
+      "title": "What runs",
+      "titleEmphasis": "under your agents.",
+      "body": "The building blocks we put together for your agents and automations. We pick the model for the task, the cost and where your data has to stay.",
+      "label": "Technologies we deploy",
+      "groups": {
+        "agents": "Agents",
+        "models": "Models",
+        "plumbing": "Connections"
+      },
+      "note": "Brands mentioned belong to their respective owners. Klyx is neither affiliated with nor a partner of these vendors."
     }
   }
 }

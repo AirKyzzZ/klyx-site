@@ -28,6 +28,7 @@ import { getSiteShot } from "@/lib/proof";
 import { scenarios } from "@/lib/scenarios";
 import { site, socialLinks } from "@/lib/site";
 import { type TeamRoster, teamRoster } from "@/lib/team-roster";
+import { CONNECTED_TOOLS, DEPLOYED_TECH, type ToolGroup } from "@/lib/tools";
 
 import type { MachinePage } from "./markdown-href";
 
@@ -141,6 +142,29 @@ function caseList(locale: Locale, cases: CaseStudyMeta[]): Block {
   );
 }
 
+function toolBlocks(
+  locale: Locale,
+  t: Translate,
+  key: string,
+  groups: ToolGroup[],
+): Block[] {
+  return [
+    `## ${sectionTitle(t, key)}`,
+    t(`${key}.body`),
+    `### ${t(`${key}.label`)}`,
+    list(
+      groups.map((group) =>
+        labelled(
+          locale,
+          t(`${key}.groups.${group.key}`),
+          group.tools.map((tool) => tool.name).join(", "),
+        ),
+      ),
+    ),
+    t(`${key}.note`),
+  ];
+}
+
 function formatDate(locale: Locale, date: string): string {
   return new Intl.DateTimeFormat(locale, {
     dateStyle: "long",
@@ -174,6 +198,7 @@ async function home(locale: Locale): Promise<string> {
         link(t(`offers.also.${key}`), absoluteUrl(locale, href)),
       ).join(" · "),
     ),
+    ...toolBlocks(locale, t, "tools", CONNECTED_TOOLS),
     cases.length > 0 && `## ${heroTitle(casesT)}`,
     cases.length > 0 && t("cases.subtitle"),
     caseList(locale, cases),
@@ -334,6 +359,14 @@ async function offerPageMarkdown(
     offersT("vatNote"),
     ...processBlocks(locale, t),
     ...blockMarkdown(locale, config, t),
+    ...(config.stack
+      ? toolBlocks(
+          locale,
+          getStaticTranslator(locale, "offerPage"),
+          "stack",
+          DEPLOYED_TECH,
+        )
+      : []),
     ...(config.proofLink === null
       ? []
       : [

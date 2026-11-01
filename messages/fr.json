@@ -103,6 +103,21 @@
         }
       }
     },
+    "tools": {
+      "title": "Vos outils,",
+      "titleEmphasis": "branchés.",
+      "body": "On branche l'IA sur ce que vous utilisez déjà : votre messagerie, vos tableurs, votre CRM. Vous ne changez pas d'outil.",
+      "label": "Outils que nous connectons",
+      "groups": {
+        "email": "Email",
+        "data": "Tableurs et bases",
+        "crm": "CRM",
+        "team": "Équipe",
+        "sales": "Vente et compta",
+        "automation": "Automatisation"
+      },
+      "note": "Les marques citées appartiennent à leurs propriétaires respectifs. Klyx n'est ni affilié ni partenaire de ces éditeurs."
+    },
     "cases": {
       "title": "Réalisations",
       "subtitle": "Des sites livrés pour des clients et des produits sur lesquels on a travaillé. Pour chaque projet, ce qu'on a construit.",
@@ -281,6 +296,7 @@
     "eyebrows": {
       "proof": "Preuves",
       "offers": "Offres",
+      "tools": "Outils",
       "cases": "Réalisations",
       "process": "Méthode",
       "founder": "L'équipe",
@@ -503,7 +519,7 @@
   },
   "agents": {
     "hero": {
-      "eyebrow": "IA et agents",
+      "eyebrow": "Agents IA",
       "title": "Un agent IA en production",
       "titleEmphasis": "en deux semaines.",
       "subtitle": "Audit à partir de {auditPrice}, Sprint IA à partir de {sprintPrice}. Un workflow branché sur vos outils, avec le code dans votre repo et un journal de chaque action de l'agent.",
@@ -1249,7 +1265,7 @@
       "price": "Prix",
       "groups": {
         "sites": "Sites",
-        "ai": "IA et agents",
+        "ai": "Agents IA",
         "fde": "Forward Deployed Engineer"
       }
     },
@@ -1777,10 +1793,10 @@
           "archive": "Mis de côté"
         },
         "meta": {
-          "inbox": "gmail",
+          "inbox": "Gmail",
           "classifier": "modèle IA · tri",
-          "crm": "hubspot",
-          "slack": "#ventes",
+          "crm": "HubSpot",
+          "slack": "Slack",
           "archive": "hors lead"
         },
         "trace": {
@@ -1891,12 +1907,12 @@
         "nodes": {
           "email": "Facture reçue",
           "extract": "L'IA la lit",
-          "erp": "Brouillon ERP",
+          "erp": "Google Sheets",
           "validation": "Votre accord",
           "send": "Envoyée"
         },
         "meta": {
-          "email": "pdf joint",
+          "email": "Outlook",
           "extract": "14 champs",
           "erp": "à valider",
           "validation": "compta",
@@ -1907,7 +1923,7 @@
           "extract": "L'IA relève 14 champs",
           "vat": "TVA incohérente ligne 3",
           "recompute": "TVA recalculée : 20 %, ok",
-          "draft": "Brouillon créé dans l'ERP",
+          "draft": "Ligne créée dans Google Sheets",
           "waiting": "en attente de validation",
           "approved": "Validée par la compta",
           "sent": "Facture saisie et envoyée"
@@ -1978,7 +1994,8 @@
         "audit-document": "Livrable",
         "automation-examples": "Exemples",
         "geo-visibility": "Mesure"
-      }
+      },
+      "stack": "Stack"
     },
     "ledger": {
       "offer": "Offre",
@@ -1989,6 +2006,18 @@
       "file": "trace · {title}",
       "total": "total",
       "steps": "{count} étapes"
+    },
+    "stack": {
+      "title": "Ce qui tourne",
+      "titleEmphasis": "sous vos agents.",
+      "body": "Les briques qu'on assemble pour vos agents et vos automatisations. On choisit le modèle selon la tâche, le coût et l'endroit où vos données doivent rester.",
+      "label": "Technologies que nous déployons",
+      "groups": {
+        "agents": "Agents",
+        "models": "Modèles",
+        "plumbing": "Connexions"
+      },
+      "note": "Les marques citées appartiennent à leurs propriétaires respectifs. Klyx n'est ni affilié ni partenaire de ces éditeurs."
     }
   }
 }

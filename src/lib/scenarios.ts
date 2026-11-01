@@ -1,4 +1,5 @@
 import type { AppPathname } from "@/lib/seo";
+import type { ToolLogoId } from "@/lib/tools";
 
 export type ScenarioId =
   "agents" | "sites" | "fde" | "audit" | "automation" | "geo";
@@ -21,6 +22,7 @@ export type GraphNode = {
   metaKey: string;
   agent: boolean;
   icon: NodeIcon;
+  tool?: ToolLogoId;
   x: number;
   y: number;
   mx: number;
@@ -65,6 +67,7 @@ type NodeSpec = [
   y: number,
   mx: number,
   my: number,
+  tool?: ToolLogoId,
 ];
 type TraceSpec = [t: string, key: string, tone?: TraceLine["tone"]];
 
@@ -86,12 +89,13 @@ function scenario(
     id,
     href: config.href,
     titleKey: `${base}.title`,
-    nodes: config.nodes.map(([nodeId, icon, x, y, mx, my]) => ({
+    nodes: config.nodes.map(([nodeId, icon, x, y, mx, my, tool]) => ({
       id: nodeId,
       labelKey: `${base}.nodes.${nodeId}`,
       metaKey: `${base}.meta.${nodeId}`,
       agent: nodeId === config.agent,
       icon,
+      ...(tool && { tool }),
       x,
       y,
       mx,
@@ -127,10 +131,10 @@ export const scenarios: Record<ScenarioId, Scenario> = {
     agent: "classifier",
     desktopOnly: ["think", "update"],
     nodes: [
-      ["inbox", "inbox", 12.5, 28, 28, 8],
+      ["inbox", "inbox", 12.5, 28, 28, 8, "gmail"],
       ["classifier", "filter", 38, 28, 28, 30],
-      ["crm", "database", 62, 72, 28, 52],
-      ["slack", "message", 87, 28, 28, 74],
+      ["crm", "database", 62, 72, 28, 52, "hubspot"],
+      ["slack", "message", 87, 28, 28, 74, "slack"],
       ["archive", "file", 38, 72, 77, 30],
     ],
     edges: [
@@ -303,7 +307,7 @@ export const scenarios: Record<ScenarioId, Scenario> = {
     nodes: [
       ["email", "inbox", 12.5, 28, 50, 8],
       ["extract", "filter", 38, 28, 50, 27],
-      ["erp", "database", 38, 72, 50, 46],
+      ["erp", "database", 38, 72, 50, 46, "google-sheets"],
       ["validation", "user-check", 62, 72, 50, 65],
       ["send", "message", 87, 28, 50, 84],
     ],

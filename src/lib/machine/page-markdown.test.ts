@@ -14,6 +14,7 @@ import {
 } from "@/lib/offers";
 import type { AppPathname } from "@/lib/seo";
 import { teamRoster } from "@/lib/team-roster";
+import { CONNECTED_TOOLS, DEPLOYED_TECH, type ToolGroup } from "@/lib/tools";
 
 import {
   internalPathname,
@@ -211,6 +212,33 @@ describe.each(routing.locales)("pageMarkdown (%s)", (locale) => {
         expect(markdown, pathname).toContain(item.scope);
       }
     }
+  });
+
+  it("names the tools on home and the deployed stack on agent pages", async () => {
+    const names = (groups: ToolGroup[]) =>
+      groups.flatMap((group) => group.tools.map((tool) => tool.name));
+    const home = await pageMarkdown(locale, { pathname: "/" });
+    const homeT = getStaticTranslator(locale, "home");
+    expect(home).toContain(homeT("tools.label"));
+    expect(home).toContain(homeT("tools.note"));
+    for (const name of names(CONNECTED_TOOLS)) expect(home).toContain(name);
+
+    const page = getStaticTranslator(locale, "offerPage");
+    for (const pathname of [
+      "/services/agents-ia",
+      "/services/automatisation-ia",
+    ] as const) {
+      const markdown = await pageMarkdown(locale, { pathname });
+      expect(markdown, pathname).toContain(page("stack.label"));
+      expect(markdown, pathname).toContain(page("stack.note"));
+      for (const name of names(DEPLOYED_TECH)) {
+        expect(markdown, pathname).toContain(name);
+      }
+    }
+    const sites = await pageMarkdown(locale, {
+      pathname: "/services/creation-site-web",
+    });
+    expect(sites).not.toContain(page("stack.label"));
   });
 
   it("resolves every page from its own markdown href", async () => {

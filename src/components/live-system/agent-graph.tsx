@@ -13,6 +13,8 @@ import {
 } from "lucide-react";
 import type { CSSProperties } from "react";
 
+import { ToolLogo } from "@/components/logos/tool-logo";
+
 import {
   edgeKey,
   type GraphNode,
@@ -200,10 +202,15 @@ export function AgentGraph({
                 data-state={state.doneNodes.has(node.id) ? "done" : "idle"}
                 data-agent={node.agent || undefined}
                 data-terminal={node.id === terminal || undefined}
+                data-tool={node.tool}
                 style={position}
               >
                 <span className="ls-node-icon" aria-hidden="true">
-                  <Icon strokeWidth={1.5} />
+                  {node.tool ? (
+                    <ToolLogo logo={node.tool} size={14} />
+                  ) : (
+                    <Icon strokeWidth={1.5} />
+                  )}
                 </span>
                 <span className="ls-node-text">
                   <span className="ls-node-label">{labels[node.id]}</span>

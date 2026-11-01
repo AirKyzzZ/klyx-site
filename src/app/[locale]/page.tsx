@@ -11,6 +11,7 @@ import { OfferCards } from "@/components/sections/offer-cards";
 import { ProcessTimeline } from "@/components/sections/process-timeline";
 import { hasProofStrip, ProofStrip } from "@/components/sections/proof-strip";
 import { Testimonials } from "@/components/sections/testimonials";
+import { ToolsSection } from "@/components/sections/tools-section";
 import { SpotlightPointer } from "@/components/spotlight-pointer";
 import { messageList } from "@/i18n/message-list";
 import { type LocaleParams, resolvePageLocale } from "@/i18n/page-locale";
@@ -31,9 +32,17 @@ import { getSiteShot, getVerifiedProof } from "@/lib/proof";
 import { buildMetadata } from "@/lib/seo";
 import { site } from "@/lib/site";
 import { teamRoster } from "@/lib/team-roster";
+import { CONNECTED_TOOLS } from "@/lib/tools";
 
 type SectionId =
-  "proof" | "offers" | "cases" | "process" | "founder" | "testimonials" | "faq";
+  | "proof"
+  | "offers"
+  | "tools"
+  | "cases"
+  | "process"
+  | "founder"
+  | "testimonials"
+  | "faq";
 
 export async function generateMetadata({
   params,
@@ -63,6 +72,7 @@ export default async function HomePage({ params }: LocaleParams) {
   const candidates: (SectionId | false)[] = [
     hasProofStrip(proof) && "proof",
     "offers",
+    "tools",
     cases.length > 0 && "cases",
     "process",
     "founder",
@@ -117,6 +127,19 @@ export default async function HomePage({ params }: LocaleParams) {
             href,
           })),
         }}
+      />
+
+      <ToolsSection
+        {...section("tools")}
+        title={t("tools.title")}
+        emphasis={t("tools.titleEmphasis")}
+        body={t("tools.body")}
+        label={t("tools.label")}
+        rows={CONNECTED_TOOLS.map((group) => ({
+          ...group,
+          label: t(`tools.groups.${group.key}`),
+        }))}
+        note={t("tools.note")}
       />
 
       {cases.length > 0 && (

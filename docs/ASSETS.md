@@ -57,3 +57,30 @@ ImageMagick for crop and resize (Lanczos, metadata stripped), `avifenc` 1.4.2 (a
 | `band-1600.webp` | same | `cwebp -q 75 -m 6 -sharp_yuv` | 27.0 KB |
 
 10-bit AVIF is used to avoid banding in the dark gradients; a level-stretched check of the decoded 1600 AVIF shows no banding and keeps the canvas weave. Budgets from `DESIGN_DIRECTION.md` (1600w ≤ 70 KB, 800w ≤ 35 KB) are met with room to spare.
+
+## Tool and technology logos
+
+Used in the home section « Vos outils, branchés » (`ToolsSection` with `CONNECTED_TOOLS`), the « Technologies que nous déployons » strip on `/services/agents-ia` and `/services/automatisation-ia` (`DEPLOYED_TECH`), and three hero nodes. These are tools Klyx connects or deploys, never clients or partners: every strip carries the footnote « Les marques citées appartiennent à leurs propriétaires respectifs. Klyx n'est ni affilié ni partenaire de ces éditeurs. » and every logo sits next to its written name, at 16px (14px in hero nodes), smaller than the Klyx mark.
+
+Treatment: one neutral monochrome style, `fill="currentColor"` in `--text-2`, `--text` on hover. No brand colour on hover: section 7 rule 15 (no green or red, no second accent) wins over the brief's optional hover colour. Paths are copied unchanged (no redraw), only the colour is neutralised. Components live in `src/components/logos/` (one file per mark, inline SVG, 0 JS), registry in `tool-logo.tsx`. All files fetched 2026-11-01.
+
+| Mark | File | Source | Licence | Brand rules |
+|---|---|---|---|---|
+| Gmail | `gmail-logo.tsx` | Simple Icons v16.36.0, https://simpleicons.org/?q=gmail | CC0 (path data); mark owned by Google | Google brand resource center; no endorsement implied |
+| Google Sheets | `google-sheets-logo.tsx` | Simple Icons v16.36.0 | CC0; mark owned by Google | as above |
+| Notion | `notion-logo.tsx` | Simple Icons v16.36.0 | CC0; mark owned by Notion Labs | none published |
+| Airtable | `airtable-logo.tsx` | Simple Icons v16.36.0 | CC0; mark owned by Airtable | none published |
+| HubSpot | `hubspot-logo.tsx` | Simple Icons v16.36.0 | CC0; mark owned by HubSpot | https://www.hubspot.com/style-guide |
+| Slack | `slack-logo.tsx` | Simple Icons v16.36.0 | CC0; mark owned by Salesforce | https://slack.com/brand-guidelines, integration reference only, revocable |
+| WhatsApp | `whatsapp-logo.tsx` | Simple Icons v16.36.0 | CC0; mark owned by Meta | https://about.meta.com/brand/resources/whatsapp/whatsapp-brand, name written « WhatsApp Business » |
+| Shopify | `shopify-logo.tsx` | Simple Icons v16.36.0 | CC0; mark owned by Shopify | https://www.shopify.com/brand-assets |
+| WordPress | `wordpress-logo.tsx` | Simple Icons v16.36.0 | CC0; mark owned by WordPress Foundation | https://wordpressfoundation.org/trademark-policy/, no endorsement implied |
+| Stripe | `stripe-logo.tsx` | Simple Icons v16.36.0 | CC0; mark owned by Stripe | https://stripe.com/newsroom/brand-assets |
+| Make | `make-logo.tsx` | Simple Icons v16.36.0 | CC0; mark owned by Celonis (Make) | https://www.make.com/en/press |
+| n8n | `n8n-logo.tsx` | Simple Icons v16.36.0 (sourced from n8n.io/press) | CC0; mark owned by n8n GmbH | https://guidelines.n8n.design/logo, mono allowed |
+| Mistral AI | `mistral-ai-logo.tsx` | Simple Icons v16.36.0 | CC0; mark owned by Mistral AI | https://mistral.ai/brand: monochrome allowed, clear space, no distortion. The official zip returned 403 to scripts; swap in the kit file once downloaded by hand |
+| MCP | `mcp-logo.tsx` | symbol paths from `docs/logo/dark.svg`, https://github.com/modelcontextprotocol/modelcontextprotocol | CC-BY-4.0. Attribution: « Model Context Protocol logo by the Model Context Protocol project, CC BY 4.0 » | symbol only (wordmark replaced by the written name) |
+| OpenClaw | `openclaw-logo.tsx` | https://openclaw.ai/favicon.svg (site mascot), repo https://github.com/openclaw/openclaw (MIT) | MIT repo, no brand kit found | flattened from its red gradient to one neutral colour (eyes kept as cut-outs); no rule found either way, flag to Maxime |
+| Hermes Agent | `public/logos/hermes-agent.webp` (64x64, 1.7 KB) | `assets/icon-master.svg`, https://github.com/NousResearch/hermes-agent | MIT repo, no brand guidelines found | kept in its original black and white tile, unaltered; rasterised to WebP because the SVG is 116 KB |
+
+Text only (no logo shipped): Outlook, Excel, Microsoft Teams (Microsoft logos need a licence), Pipedrive and Pennylane (no public SVG kit), Claude and Claude Code (Anthropic needs written approval), OpenAI (until Maxime checks https://openai.com/brand), NanoClaw (PNG only, no redraw), Attio (official kit only in black, no recolour allowed, dropped). Not legal advice: have the strips reviewed before launch, especially Microsoft and Meta.

@@ -20,6 +20,7 @@ import { Cta } from "@/components/sections/cta";
 import { Faq } from "@/components/sections/faq";
 import { ProcessLine } from "@/components/sections/process-line";
 import { FeatureList, TierCards } from "@/components/sections/tier-cards";
+import { ToolsSection } from "@/components/sections/tools-section";
 import {
   messageList,
   messageStrings,
@@ -39,6 +40,7 @@ import { getPriceValues } from "@/lib/offers";
 import { getSiteShot } from "@/lib/proof";
 import { buildMetadata } from "@/lib/seo";
 import { site } from "@/lib/site";
+import { DEPLOYED_TECH } from "@/lib/tools";
 import { cn } from "@/lib/utils";
 
 type BlockProps = { locale: Locale; index: string; eyebrow: string };
@@ -60,6 +62,7 @@ type SectionId =
   | "deliverables"
   | "process"
   | "block"
+  | "stack"
   | "proof"
   | "pricing"
   | "faq";
@@ -69,6 +72,7 @@ const SECTIONS: SectionId[] = [
   "deliverables",
   "process",
   "block",
+  "stack",
   "proof",
   "pricing",
   "faq",
@@ -149,7 +153,9 @@ export async function OfferPage({
   const singleProof = proofCases.length === 1;
 
   const hasProof = config.proofLink !== null;
-  const sections = SECTIONS.filter((id) => hasProof || id !== "proof");
+  const sections = SECTIONS.filter(
+    (id) => (hasProof || id !== "proof") && (config.stack || id !== "stack"),
+  );
   const section = (id: SectionId) => ({
     index: String(sections.indexOf(id) + 1).padStart(2, "0"),
     eyebrow:
@@ -323,6 +329,21 @@ export async function OfferPage({
       />
 
       <Block locale={locale} {...section("block")} />
+
+      {config.stack && (
+        <ToolsSection
+          {...section("stack")}
+          title={page("stack.title")}
+          emphasis={page("stack.titleEmphasis")}
+          body={page("stack.body")}
+          label={page("stack.label")}
+          rows={DEPLOYED_TECH.map((group) => ({
+            ...group,
+            label: page(`stack.groups.${group.key}`),
+          }))}
+          note={page("stack.note")}
+        />
+      )}
 
       {hasProof && (
         <Section {...section("proof")}>

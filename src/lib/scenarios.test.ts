@@ -10,6 +10,7 @@ import {
   scenarios,
   terminalNode,
 } from "./scenarios";
+import { TOOLS } from "./tools";
 
 function lookup(messages: unknown, key: string): unknown {
   return key.split(".").reduce<unknown>((node, part) => {
@@ -81,6 +82,19 @@ describe("scenarios", () => {
     for (const key of keys) {
       expect(typeof lookup(fr, key), `fr ${key}`).toBe("string");
       expect(typeof lookup(en, key), `en ${key}`).toBe("string");
+    }
+  });
+
+  it.each(all)("$id names every node logo in its text", (scenario) => {
+    for (const node of scenario.nodes.filter((n) => n.tool)) {
+      const tool = Object.values(TOOLS).find(
+        (candidate) => "logo" in candidate && candidate.logo === node.tool,
+      );
+      expect(tool, node.id).toBeDefined();
+      for (const messages of [fr, en]) {
+        const text = `${String(lookup(messages, node.labelKey))} ${String(lookup(messages, node.metaKey))}`;
+        expect(text, node.id).toContain(tool?.name);
+      }
     }
   });
 
