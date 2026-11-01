@@ -6,6 +6,7 @@ import {
   organizationJsonLd,
   personJsonLd,
   serviceJsonLd,
+  trailPageJsonLd,
 } from "./json-ld";
 import { site } from "./site";
 
@@ -131,5 +132,39 @@ describe("personJsonLd", () => {
       worksFor: { "@id": "https://klyx.fr/#organization" },
       sameAs: [site.socials.linkedinFounder, site.socials.github],
     });
+  });
+});
+
+describe("trailPageJsonLd", () => {
+  it("chains home, the trail, offers and faq", () => {
+    const data = trailPageJsonLd({
+      locale: "en",
+      trail: [
+        { name: "Use cases", pathname: "/cas-usage" },
+        { name: "Real estate", pathname: "/cas-usage/immobilier" },
+      ],
+      offerIds: ["audit-ia"],
+      faq: [{ question: "Q?", answer: "A." }],
+    });
+    expect(data.map((item) => item["@type"])).toEqual([
+      "Service",
+      "FAQPage",
+      "BreadcrumbList",
+    ]);
+    expect(data[2]).toMatchObject({
+      itemListElement: [
+        { position: 1, item: "https://klyx.fr/en" },
+        { position: 2, item: "https://klyx.fr/en/use-cases" },
+        { position: 3, item: "https://klyx.fr/en/use-cases/real-estate" },
+      ],
+    });
+  });
+
+  it("omits FAQPage without questions", () => {
+    const data = trailPageJsonLd({
+      locale: "fr",
+      trail: [{ name: "FAQ", pathname: "/faq" }],
+    });
+    expect(data.map((item) => item["@type"])).toEqual(["BreadcrumbList"]);
   });
 });

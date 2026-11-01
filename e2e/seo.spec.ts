@@ -151,3 +151,93 @@ for (const javaScriptEnabled of [false, true]) {
     });
   });
 }
+
+const USE_CASE_PAGES = [
+  {
+    fr: "/cas-usage",
+    en: "/en/use-cases",
+    types: ["BreadcrumbList"],
+  },
+  {
+    fr: "/cas-usage/immobilier",
+    en: "/en/use-cases/real-estate",
+    types: ["Service", "FAQPage", "BreadcrumbList"],
+    price: 1500,
+  },
+  {
+    fr: "/cas-usage/agences",
+    en: "/en/use-cases/agencies",
+    types: ["Service", "FAQPage", "BreadcrumbList"],
+    price: 900,
+  },
+  {
+    fr: "/cas-usage/cabinets-services",
+    en: "/en/use-cases/professional-services",
+    types: ["Service", "FAQPage", "BreadcrumbList"],
+    price: 2400,
+  },
+  { fr: "/faq", en: "/en/faq", types: ["FAQPage", "BreadcrumbList"] },
+];
+
+for (const useCase of USE_CASE_PAGES) {
+  test(`${useCase.fr} declares hreflang and its JSON-LD types`, async ({
+    page,
+  }) => {
+    for (const path of [useCase.fr, useCase.en]) {
+      await page.goto(path);
+      const jsonLd = (
+        await page
+          .locator('script[type="application/ld+json"]')
+          .allTextContents()
+      ).join();
+      for (const type of useCase.types) {
+        expect(jsonLd, `${path} ${type}`).toContain(`"@type":"${type}"`);
+      }
+      if (useCase.price) {
+        expect(jsonLd, path).toContain(`"price":${useCase.price}`);
+      }
+      await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
+        "href",
+        `https://klyx.fr${path}`,
+      );
+      await expect(
+        page.locator('link[rel="alternate"][hreflang="fr"]'),
+      ).toHaveAttribute("href", `https://klyx.fr${useCase.fr}`);
+      await expect(
+        page.locator('link[rel="alternate"][hreflang="en"]'),
+      ).toHaveAttribute("href", `https://klyx.fr${useCase.en}`);
+      await expect(
+        page.locator('link[rel="alternate"][hreflang="x-default"]'),
+      ).toHaveAttribute("href", `https://klyx.fr${useCase.fr}`);
+    }
+  });
+}
+
+test("/faq answers are visible and anchored, with a link to their page", async ({
+  page,
+}) => {
+  await page.goto("/faq#faq-page-roi");
+  const roi = page.locator("details#faq-page-roi");
+  await expect(roi).toHaveAttribute("open", "");
+  await expect(roi.locator("p").first()).toBeVisible();
+  await expect(page.locator("details#home-price a")).toHaveAttribute(
+    "href",
+    "/",
+  );
+  const questions = await page.locator("main details").count();
+  const jsonLd = (
+    await page.locator('script[type="application/ld+json"]').allTextContents()
+  ).join();
+  expect(jsonLd.match(/"@type":"Question"/g)?.length).toBe(questions);
+});
+
+test("sitemap and llms.txt list the use-case and faq pages", async ({
+  request,
+}) => {
+  const llms = await (await request.get("/llms.txt")).text();
+  const sitemap = await (await request.get("/sitemap.xml")).text();
+  for (const useCase of USE_CASE_PAGES) {
+    expect(llms).toContain(`https://klyx.fr${useCase.fr}`);
+    expect(sitemap).toContain(`https://klyx.fr${useCase.en}`);
+  }
+});

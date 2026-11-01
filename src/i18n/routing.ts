@@ -36,6 +36,20 @@ export const routing = defineRouting({
       fr: "/agence-ia-bordeaux",
       en: "/ai-agency-bordeaux",
     },
+    "/cas-usage": { fr: "/cas-usage", en: "/use-cases" },
+    "/cas-usage/immobilier": {
+      fr: "/cas-usage/immobilier",
+      en: "/use-cases/real-estate",
+    },
+    "/cas-usage/agences": {
+      fr: "/cas-usage/agences",
+      en: "/use-cases/agencies",
+    },
+    "/cas-usage/cabinets-services": {
+      fr: "/cas-usage/cabinets-services",
+      en: "/use-cases/professional-services",
+    },
+    "/faq": "/faq",
     "/contact": "/contact",
     "/blog": "/blog",
     "/blog/[slug]": "/blog/[slug]",

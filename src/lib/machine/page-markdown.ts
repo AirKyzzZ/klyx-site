@@ -26,7 +26,13 @@ import {
 import { type AppPathname, absoluteUrl } from "@/lib/seo";
 import { CREDITS } from "@/lib/credits";
 import { getSiteShot } from "@/lib/proof";
+import { faqThemes } from "@/lib/faq-page";
 import { scenarios } from "@/lib/scenarios";
+import {
+  SECTOR_KEYS,
+  type SectorPageConfig,
+  sectorPages,
+} from "@/lib/sector-pages";
 import { site, socialLinks } from "@/lib/site";
 import { type TeamRoster, teamRoster } from "@/lib/team-roster";
 import { CONNECTED_TOOLS, DEPLOYED_TECH, type ToolGroup } from "@/lib/tools";
@@ -388,6 +394,19 @@ async function offerPageMarkdown(
       ),
     ),
     link(t("pricing.link"), absoluteUrl(locale, "/tarifs")),
+    config.sectors.length > 0 &&
+      labelled(
+        locale,
+        getStaticTranslator(locale, "offerPage")("sectors"),
+        config.sectors
+          .map((key) =>
+            link(
+              getStaticTranslator(locale, "nav")(key),
+              absoluteUrl(locale, sectorPages[key].pathname),
+            ),
+          )
+          .join(" · "),
+      ),
     ...faqBlocks(
       sectionTitle(t, "faq"),
       messageList(t, "faq.items", ["question", "answer"], prices),
@@ -577,6 +596,152 @@ async function bordeaux(locale: Locale): Promise<string> {
   ]);
 }
 
+function workflowBlocks(locale: Locale, t: Translate, labels: Translate) {
+  return [
+    `## ${sectionTitle(t, "workflows")}`,
+    t("workflows.body"),
+    ...messageKeys(t.raw("workflows.examples")).flatMap((id) => [
+      `### ${t(`workflows.examples.${id}.title`)}`,
+      ["trigger", "ai", "human", "action"]
+        .map((step) => t(`workflows.examples.${id}.steps.${step}`))
+        .join(" → "),
+      t(`workflows.examples.${id}.body`),
+      labelled(locale, labels("tools"), t(`workflows.examples.${id}.tools`)),
+    ]),
+    t("workflows.limit"),
+  ];
+}
+
+async function sectorPageMarkdown(
+  locale: Locale,
+  config: SectorPageConfig,
+): Promise<string> {
+  const t = getStaticTranslator(locale, config.namespace);
+  const labels = getStaticTranslator(locale, "useCases.labels");
+  const offersT = getStaticTranslator(locale, "offers");
+  const prices = getPriceValues(locale);
+  const tiers = config.offers.map((id) => getOfferCopy(offersT, locale, id));
+  const proof = config.proof;
+  const cases =
+    proof.kind === "cases"
+      ? (await getCaseStudies(locale)).filter((c) =>
+          proof.slugs.includes(c.slug),
+        )
+      : [];
+  const proofUrl = absoluteUrl(
+    locale,
+    proof.kind === "none" ? proof.href : "/realisations",
+  );
+
+  return doc([
+    ...intro(locale, config.pathname, heroTitle(t)),
+    getOfferCopy(offersT, locale, config.anchor).price,
+    t("hero.subtitle", prices),
+    `## ${sectionTitle(t, "problems")}`,
+    t("problems.body"),
+    list(messageStrings(t, "problems.items")),
+    ...workflowBlocks(locale, t, labels),
+    `## ${sectionTitle(t, "data")}`,
+    t("data.body"),
+    list(
+      messageKeys(t.raw("data.rows")).map((row) =>
+        labelled(
+          locale,
+          t(`data.rows.${row}.label`),
+          t(`data.rows.${row}.value`),
+        ),
+      ),
+    ),
+    ...(config.terms
+      ? [
+          `## ${sectionTitle(t, "terms")}`,
+          t("terms.body"),
+          list(messageStrings(t, "terms.items")),
+          ...processBlocks(locale, t),
+        ]
+      : []),
+    `## ${sectionTitle(t, "proof")}`,
+    t("proof.body"),
+    link(t("proof.link"), proofUrl),
+    caseList(locale, cases),
+    `## ${sectionTitle(t, "pricing")}`,
+    t("pricing.body", prices),
+    list(
+      tiers.map((tier) =>
+        labelled(
+          locale,
+          link(tier.name, absoluteUrl(locale, tier.href)),
+          `${tier.price} · ${tier.duration}`,
+        ),
+      ),
+    ),
+    offersT("vatNote"),
+    link(t("pricing.link"), absoluteUrl(locale, "/tarifs")),
+    ...faqBlocks(
+      sectionTitle(t, "faq"),
+      messageList(t, "faq.items", ["question", "answer"], prices),
+    ),
+    ...ctaBlocks(locale, t, "cta", ["book", "quote"]),
+  ]);
+}
+
+async function useCases(locale: Locale): Promise<string> {
+  const t = getStaticTranslator(locale, "useCases");
+  const nav = getStaticTranslator(locale, "nav");
+  const offersT = getStaticTranslator(locale, "offers");
+  return doc([
+    ...intro(locale, "/cas-usage", heroTitle(t)),
+    t("hero.subtitle", getPriceValues(locale)),
+    `## ${sectionTitle(t, "sectors")}`,
+    t("sectors.body"),
+    ...SECTOR_KEYS.flatMap((key) => {
+      const config = sectorPages[key];
+      const anchor = getOfferCopy(offersT, locale, config.anchor);
+      return [
+        `### ${nav(key)}`,
+        labelled(locale, t("labels.problem"), t(`${key}.card.problem`)),
+        labelled(locale, t("labels.build"), t(`${key}.card.build`)),
+        labelled(locale, t("labels.price"), `${anchor.price} · ${anchor.name}`),
+        link(t("labels.see"), absoluteUrl(locale, config.pathname)),
+      ];
+    }),
+    `## ${sectionTitle(t, "other")}`,
+    t("other.body"),
+    list([
+      link(t("other.faq"), absoluteUrl(locale, "/faq")),
+      link(t("other.pricing"), absoluteUrl(locale, "/tarifs")),
+    ]),
+    ...ctaBlocks(locale, t, "cta", ["book", "quote"]),
+  ]);
+}
+
+async function faqPage(locale: Locale): Promise<string> {
+  const t = getStaticTranslator(locale, "faqPage");
+  const nav = getStaticTranslator(locale, "nav");
+  const themes = faqThemes(
+    getStaticTranslator(locale, ""),
+    getPriceValues(locale),
+  );
+  const count = themes.reduce((sum, theme) => sum + theme.items.length, 0);
+  return doc([
+    ...intro(locale, "/faq", heroTitle(t)),
+    t("count", { count, themes: themes.length }),
+    t("hero.subtitle", getPriceValues(locale)),
+    ...themes.flatMap((theme) => [
+      `## ${t(`themes.${theme.key}`)}`,
+      ...theme.items.flatMap((item) => [
+        `### ${item.question}`,
+        item.answer,
+        link(
+          t("source", { page: nav(item.source.navKey) }),
+          absoluteUrl(locale, item.source.pathname),
+        ),
+      ]),
+    ]),
+    ...ctaBlocks(locale, t, "cta", ["book", "quote"]),
+  ]);
+}
+
 async function contact(locale: Locale): Promise<string> {
   const t = getStaticTranslator(locale, "contact");
   return doc([
@@ -713,6 +878,14 @@ const BUILDERS = {
   "/realisations/[slug]": caseStudy,
   "/a-propos": about,
   "/agence-ia-bordeaux": bordeaux,
+  "/cas-usage": useCases,
+  "/cas-usage/immobilier": (locale) =>
+    sectorPageMarkdown(locale, sectorPages.realEstate),
+  "/cas-usage/agences": (locale) =>
+    sectorPageMarkdown(locale, sectorPages.agencies),
+  "/cas-usage/cabinets-services": (locale) =>
+    sectorPageMarkdown(locale, sectorPages.services),
+  "/faq": faqPage,
   "/contact": contact,
   "/blog": blog,
   "/blog/[slug]": blogPost,

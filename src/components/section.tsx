@@ -53,7 +53,11 @@ export function Section({
     <section
       id={id}
       data-tone={tone}
-      className={cn("relative z-1", tone === "sand" && "tone-sand")}
+      className={cn(
+        "relative z-1",
+        id && "scroll-mt-16",
+        tone === "sand" && "tone-sand",
+      )}
     >
       <Hr />
       <div className={cn("py-section relative container", className)}>

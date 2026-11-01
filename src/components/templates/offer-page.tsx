@@ -1,13 +1,11 @@
-import type { CSSProperties, JSX } from "react";
+import type { JSX } from "react";
 
 import type { Metadata } from "next";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 
 import { ActionButton } from "@/components/action-button";
-import { EmphasisTitle } from "@/components/emphasis-title";
 import { JsonLd } from "@/components/json-ld";
-import { LiveSystem } from "@/components/live-system/live-system";
 import { AuditDocument } from "@/components/offer-blocks/audit-document";
 import { AutomationExamples } from "@/components/offer-blocks/automation-examples";
 import { FdeDefinition } from "@/components/offer-blocks/fde-definition";
@@ -18,6 +16,8 @@ import { Section, SectionHeading } from "@/components/section";
 import { CaseCard } from "@/components/sections/case-grid";
 import { Cta } from "@/components/sections/cta";
 import { Faq } from "@/components/sections/faq";
+import { OfferHero } from "@/components/sections/offer-hero";
+import { OfferLedger } from "@/components/sections/offer-ledger";
 import { ProcessLine } from "@/components/sections/process-line";
 import { FeatureList, TierCards } from "@/components/sections/tier-cards";
 import { ToolsSection } from "@/components/sections/tools-section";
@@ -38,6 +38,7 @@ import type {
 } from "@/lib/offer-pages";
 import { getPriceValues } from "@/lib/offers";
 import { getSiteShot } from "@/lib/proof";
+import { sectorPages } from "@/lib/sector-pages";
 import { buildMetadata } from "@/lib/seo";
 import { site } from "@/lib/site";
 import { DEPLOYED_TECH } from "@/lib/tools";
@@ -77,8 +78,6 @@ const SECTIONS: SectionId[] = [
   "pricing",
   "faq",
 ];
-
-const delay = (seconds: number) => ({ "--d": `${seconds}s` }) as CSSProperties;
 
 function hasChild(t: Translate, key: string, child: string) {
   const raw = t.raw(key);
@@ -180,79 +179,20 @@ export async function OfferPage({
         })}
       />
 
-      <section className="relative pt-24 pb-16 md:pt-28 md:pb-24">
-        <div className="container grid gap-12 xl:grid-cols-12 xl:items-center xl:gap-6">
-          <div className="xl:col-span-5">
-            <nav
-              aria-label={page("breadcrumb")}
-              className="hero-in"
-              style={delay(0)}
-            >
-              <ol className="type-label text-text-3 flex flex-wrap gap-2">
-                <li>
-                  <Link
-                    href="/tarifs"
-                    className="hover:text-text transition-colors"
-                  >
-                    {nav("offers")}
-                  </Link>
-                </li>
-                <li aria-hidden="true">/</li>
-                <li aria-current="page" className="text-text-2">
-                  {t("hero.eyebrow")}
-                </li>
-              </ol>
-            </nav>
-            <p
-              className="hero-in type-label text-accent mt-6"
-              style={delay(0.08)}
-            >
-              {anchorPrice}
-            </p>
-            <h1 className="type-h1 mt-3 max-w-[20ch]">
-              <EmphasisTitle
-                title={hero.lead}
-                emphasis={hero.rest}
-                serif={t("hero.serif")}
-              />
-            </h1>
-            <p
-              className="hero-in type-lead text-text-2 mt-5 max-w-[54ch]"
-              style={delay(0.15)}
-            >
-              {t("hero.subtitle", prices)}
-            </p>
-            <div
-              className="hero-in mt-7 flex flex-col gap-3 sm:flex-row sm:items-center"
-              style={delay(0.3)}
-            >
-              <ActionButton
-                action="book"
-                size="lg"
-                className="w-full sm:w-auto"
-              >
-                {t("hero.ctaPrimary")}
-              </ActionButton>
-              <ActionButton
-                action="quote"
-                variant="secondary"
-                size="lg"
-                className="w-full sm:w-auto"
-              >
-                {t("hero.ctaSecondary")}
-                <ArrowRight />
-              </ActionButton>
-            </div>
-          </div>
-          <div className="hero-in xl:col-span-7" style={delay(0.45)}>
-            <LiveSystem
-              scenarioIds={[config.scenario]}
-              initial={config.scenario}
-              locale={locale}
-            />
-          </div>
-        </div>
-      </section>
+      <OfferHero
+        locale={locale}
+        breadcrumbLabel={page("breadcrumb")}
+        trail={[{ href: "/tarifs", label: nav("offers") }]}
+        current={t("hero.eyebrow")}
+        anchorPrice={anchorPrice}
+        title={hero.lead}
+        emphasis={hero.rest}
+        serif={t("hero.serif")}
+        subtitle={t("hero.subtitle", prices)}
+        primaryLabel={t("hero.ctaPrimary")}
+        secondaryLabel={t("hero.ctaSecondary")}
+        scenario={config.scenario}
+      />
 
       <Section {...section("problem")}>
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-6">
@@ -426,50 +366,15 @@ export async function OfferPage({
             </p>
           </div>
           <div className="reveal lg:col-span-6 lg:col-start-7">
-            <table className="w-full text-left">
-              <caption className="type-label text-text-3 caption-bottom pt-4 text-left">
-                {offersT("vatNote")}
-              </caption>
-              <thead className="max-sm:sr-only">
-                <tr className="border-line type-label text-text-3 border-b">
-                  <th scope="col" className="py-3 pr-4 font-normal">
-                    {page("ledger.offer")}
-                  </th>
-                  <th scope="col" className="py-3 pr-4 font-normal">
-                    {page("ledger.duration")}
-                  </th>
-                  <th scope="col" className="py-3 text-right font-normal">
-                    {page("ledger.price")}
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {tiers.map((tier) => (
-                  <tr
-                    key={tier.id}
-                    className="border-line hover:bg-surface-1 border-b transition-colors duration-(--d-fast) max-sm:flex max-sm:flex-col max-sm:gap-1 max-sm:py-4"
-                  >
-                    <th
-                      scope="row"
-                      className="py-4 pr-4 font-medium max-sm:py-0"
-                    >
-                      <Link
-                        href={tier.href}
-                        className="hover:text-text-2 transition-colors"
-                      >
-                        {tier.name}
-                      </Link>
-                    </th>
-                    <td className="type-data text-text-3 py-4 pr-4 max-sm:py-0">
-                      {tier.duration}
-                    </td>
-                    <td className="type-data text-text py-4 text-right whitespace-nowrap max-sm:py-0 max-sm:text-left">
-                      {tier.price}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+            <OfferLedger
+              rows={tiers}
+              labels={{
+                offer: page("ledger.offer"),
+                duration: page("ledger.duration"),
+                price: page("ledger.price"),
+              }}
+              caption={offersT("vatNote")}
+            />
             <Link
               href="/tarifs"
               className="group text-text-2 hover:text-text mt-6 inline-flex items-center gap-1.5 text-sm transition-colors"
@@ -480,6 +385,20 @@ export async function OfferPage({
                 className="size-3.5 transition-transform duration-(--d-fast) group-hover:translate-x-0.5"
               />
             </Link>
+            {config.sectors.length > 0 && (
+              <p className="text-text-3 mt-3 flex flex-wrap gap-x-3 gap-y-1 text-sm">
+                <span className="type-label pt-0.5">{page("sectors")}</span>
+                {config.sectors.map((key) => (
+                  <Link
+                    key={key}
+                    href={sectorPages[key].pathname}
+                    className="text-text-2 hover:text-text underline-offset-4 transition-colors hover:underline"
+                  >
+                    {nav(key)}
+                  </Link>
+                ))}
+              </p>
+            )}
           </div>
         </div>
       </Section>

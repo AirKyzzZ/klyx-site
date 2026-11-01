@@ -35,7 +35,9 @@ export async function SiteFooter() {
     { href: "/realisations", label: nav("cases") },
     { href: "/tarifs", label: nav("pricing") },
     { href: "/a-propos", label: nav("about") },
+    { href: "/cas-usage", label: nav("useCases") },
     { href: "/agence-ia-bordeaux", label: nav("bordeaux") },
+    { href: "/faq", label: nav("faq") },
     { href: "/blog", label: nav("blog") },
     { href: "/contact", label: nav("contact") },
   ] as const;

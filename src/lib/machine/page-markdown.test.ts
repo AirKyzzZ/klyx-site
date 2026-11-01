@@ -13,6 +13,7 @@ import {
   type OfferId,
 } from "@/lib/offers";
 import type { AppPathname } from "@/lib/seo";
+import { faqPageItems } from "@/lib/faq-page";
 import { teamRoster } from "@/lib/team-roster";
 import { CONNECTED_TOOLS, DEPLOYED_TECH, type ToolGroup } from "@/lib/tools";
 
@@ -111,6 +112,29 @@ const EXPECTATIONS: Record<AppPathname, Expectation> = {
     prices: ["audit-ia", "automation"],
     faqNamespace: "bordeaux",
   },
+  "/cas-usage": {
+    h1: heroTitle("useCases"),
+    prices: ["audit-ia", "sprint-ia", "landing"],
+  },
+  "/cas-usage/immobilier": {
+    h1: heroTitle("useCases.realEstate"),
+    prices: ["audit-ia", "automation", "sprint-ia"],
+    faqNamespace: "useCases.realEstate",
+  },
+  "/cas-usage/agences": {
+    h1: heroTitle("useCases.agencies"),
+    prices: ["landing", "site-ia", "sprint-ia", "fde"],
+    faqNamespace: "useCases.agencies",
+  },
+  "/cas-usage/cabinets-services": {
+    h1: heroTitle("useCases.services"),
+    prices: ["audit-ia", "automation", "automation-care", "sprint-ia"],
+    faqNamespace: "useCases.services",
+  },
+  "/faq": {
+    h1: heroTitle("faqPage"),
+    prices: ["landing", "site-ia", "audit-ia", "sprint-ia"],
+  },
   "/contact": { h1: heroTitle("contact") },
   "/blog": { h1: plainTitle("blog", "hero.title") },
   "/blog/[slug]": {
@@ -126,7 +150,7 @@ const EXPECTATIONS: Record<AppPathname, Expectation> = {
 };
 
 const RAW_KEY =
-  /\b(nav|footer|home|offers|offerPage|sites|agents|fde|audit|automation|geo|liveSystem|pricing|cases|about|bordeaux|contact|blog|legal|privacy|meta|machine)\.[a-z][A-Za-z]*(\.[A-Za-z]+)*\b/;
+  /\b(nav|footer|home|offers|offerPage|useCases|faqPage|sites|agents|fde|audit|automation|geo|liveSystem|pricing|cases|about|bordeaux|contact|blog|legal|privacy|meta|machine)\.[a-z][A-Za-z]*(\.[A-Za-z]+)*\b/;
 
 describe.each(routing.locales)("pageMarkdown (%s)", (locale) => {
   it("covers every route pathname", async () => {
@@ -239,6 +263,18 @@ describe.each(routing.locales)("pageMarkdown (%s)", (locale) => {
       pathname: "/services/creation-site-web",
     });
     expect(sites).not.toContain(page("stack.label"));
+  });
+
+  it("carries every visible FAQ question and answer on /faq", async () => {
+    const markdown = await pageMarkdown(locale, { pathname: "/faq" });
+    const items = faqPageItems(
+      getStaticTranslator(locale, ""),
+      getPriceValues(locale),
+    );
+    for (const item of items) {
+      expect(markdown).toContain(`### ${item.question}`);
+      expect(markdown).toContain(item.answer);
+    }
   });
 
   it("carries the logo credits on the legal page", async () => {

@@ -158,3 +158,30 @@ export function offerPageJsonLd({
     ]),
   ];
 }
+
+export function trailPageJsonLd({
+  locale,
+  trail,
+  offerIds = [],
+  faq = [],
+}: {
+  locale: Locale;
+  trail: { name: string; pathname: AppPathname }[];
+  offerIds?: readonly OfferId[];
+  faq?: { question: string; answer: string }[];
+}): JsonLdObject[] {
+  const nav = getStaticTranslator(locale, "nav");
+  return [
+    ...serviceJsonLd(offerIds, locale),
+    ...(faq.length > 0
+      ? [faqJsonLd(faq.map((item) => ({ q: item.question, a: item.answer })))]
+      : []),
+    breadcrumbJsonLd([
+      { name: nav("home"), url: absoluteUrl(locale, "/") },
+      ...trail.map((item) => ({
+        name: item.name,
+        url: absoluteUrl(locale, item.pathname),
+      })),
+    ]),
+  ];
+}

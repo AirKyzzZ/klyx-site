@@ -9,6 +9,9 @@ const VIEWPORTS = [
   { width: 1440, height: 900 },
   { width: 390, height: 844 },
 ];
+const PAGE_VIEWPORTS = process.env.SCREENSHOT_TABLET
+  ? [...VIEWPORTS, { width: 768, height: 1024 }]
+  : VIEWPORTS;
 
 const requested = process.env.SCREENSHOT_ROUTES?.split(",").map((route) =>
   route.trim(),
@@ -29,7 +32,7 @@ test.describe("redesign screenshots", () => {
   });
 
   for (const route of routes) {
-    for (const viewport of VIEWPORTS) {
+    for (const viewport of PAGE_VIEWPORTS) {
       test(`${route} at ${viewport.width}`, async ({ page }) => {
         test.setTimeout(60_000);
         await page.setViewportSize(viewport);

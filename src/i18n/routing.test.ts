@@ -10,6 +10,14 @@ const NEW_SERVICES = [
   ["/services/geo-referencement-ia", "/en/services/ai-search-visibility"],
 ] as const;
 
+const NEW_PAGES = [
+  ["/cas-usage", "/en/use-cases"],
+  ["/cas-usage/immobilier", "/en/use-cases/real-estate"],
+  ["/cas-usage/agences", "/en/use-cases/agencies"],
+  ["/cas-usage/cabinets-services", "/en/use-cases/professional-services"],
+  ["/faq", "/en/faq"],
+] as const;
+
 describe("routing", () => {
   it("has an en entry for every pathname", () => {
     for (const [key, value] of Object.entries(routing.pathnames)) {
@@ -23,6 +31,12 @@ describe("routing", () => {
 
   it("leaves the default locale unprefixed", () => {
     expect(getPathname({ locale: "fr", href: "/tarifs" })).toBe("/tarifs");
+  });
+
+  it.each(NEW_PAGES)("serves the use-case and faq page %s", (fr, en) => {
+    expect(getPathname({ locale: "fr", href: fr })).toBe(fr);
+    expect(getPathname({ locale: "en", href: fr })).toBe(en);
+    expect(getLocaleHref("en", fr, { locale: "fr" })).toBe(en);
   });
 
   it.each(NEW_SERVICES)("serves %s in fr and en", (fr, en) => {

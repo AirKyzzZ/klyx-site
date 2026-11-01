@@ -13,6 +13,7 @@ export const ALSO_OFFERS = [
   { key: "audit", href: "/services/audit-ia" },
   { key: "automation", href: "/services/automatisation-ia" },
   { key: "geo", href: "/services/geo-referencement-ia" },
+  { key: "useCases", href: "/cas-usage" },
 ] as const;
 
 export function selectHomeCases(cases: CaseStudyMeta[]): CaseStudyMeta[] {

@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 export type ToolRow = { key: string; label: string; tools: Tool[] };
 
 const COLUMNS = {
-  grid: "grid-cols-3 md:grid-cols-4 lg:grid-cols-6",
+  grid: "grid-cols-3 md:grid-cols-6",
   strip: "grid-cols-3 xl:grid-cols-9",
 };
 

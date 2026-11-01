@@ -1,5 +1,6 @@
 import type { OfferId } from "./offers";
 import type { ScenarioId } from "./scenarios";
+import type { SectorKey } from "./sector-pages";
 
 export type OfferPageKey =
   "sites" | "agents" | "fde" | "audit" | "automation" | "geo";
@@ -35,6 +36,7 @@ export type OfferPageConfig = {
   proofLink: "cases" | "github" | null;
   stack?: true;
   cta: [OfferAction, OfferAction];
+  sectors: SectorKey[];
 };
 
 export const offerPages: Record<OfferPageKey, OfferPageConfig> = {
@@ -50,6 +52,7 @@ export const offerPages: Record<OfferPageKey, OfferPageConfig> = {
     proofSlugs: ["kenzi", "pkba", "vertiflow"],
     proofLink: "cases",
     cta: ["quote", "book"],
+    sectors: ["agencies"],
   },
   agents: {
     key: "agents",
@@ -64,6 +67,7 @@ export const offerPages: Record<OfferPageKey, OfferPageConfig> = {
     proofSlugs: ["hop-hop-immo", "citeme"],
     proofLink: "cases",
     cta: ["book", "quote"],
+    sectors: ["realEstate", "agencies"],
   },
   fde: {
     key: "fde",
@@ -76,6 +80,7 @@ export const offerPages: Record<OfferPageKey, OfferPageConfig> = {
     proofSlugs: [],
     proofLink: "github",
     cta: ["book", "quote"],
+    sectors: ["agencies"],
   },
   audit: {
     key: "audit",
@@ -89,6 +94,7 @@ export const offerPages: Record<OfferPageKey, OfferPageConfig> = {
     proofSlugs: [],
     proofLink: null,
     cta: ["book", "quote"],
+    sectors: ["services", "realEstate"],
   },
   automation: {
     key: "automation",
@@ -103,6 +109,7 @@ export const offerPages: Record<OfferPageKey, OfferPageConfig> = {
     proofSlugs: [],
     proofLink: null,
     cta: ["book", "quote"],
+    sectors: ["services", "realEstate"],
   },
   geo: {
     key: "geo",
@@ -116,6 +123,7 @@ export const offerPages: Record<OfferPageKey, OfferPageConfig> = {
     proofSlugs: ["citeme"],
     proofLink: "cases",
     cta: ["book", "quote"],
+    sectors: ["agencies"],
   },
 };
 

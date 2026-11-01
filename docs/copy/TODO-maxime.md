@@ -2,7 +2,7 @@
 
 Every `TODO(maxime)` in `messages/fr.json` and `messages/en.json` (same keys in both files). Each one renders visibly on the site until you resolve it: confirm and delete the marker, rewrite, or drop the sentence.
 
-Exception: the home page and À propos show no `TODO(maxime)` marker (review of 2026-11-01). There, the visible sentence was softened to what is true today or removed; the rows below marked « softened » still need your answer before the stronger wording can come back.
+Exception: the home page, À propos, the use-case pages (`/cas-usage/*`) and `/faq` show no `TODO(maxime)` marker (review of 2026-11-01). There, the visible sentence was softened to what is true today or removed; the rows below marked « softened » still need your answer before the stronger wording can come back.
 
 ## Proof and identity
 
@@ -57,6 +57,30 @@ Prices come from market research (`pricing-automation-geo.md`, 2026-10-31), not 
 | Audit IA, Automatisation IA | `offer-pages.ts` `proofLink: null` | No proof section on these two pages: Hoppy is a chatbot, not an audit or automation outcome | Add a real audit/automation case (consented, with numbers), then set `proofSlugs` and `proofLink` and write `audit.proof` / `automation.proof` |
 | Audit IA | `audit.block.credit.body`, `audit.deliverables.tiers.automation` | Audit credited against an Automatisation IA: 1 500 € HT deducted from 2 400 € HT, so the client pays 900 € HT for the workflow | Do you credit the full audit against the small offer too, or only against the Sprint IA (4 500)? |
 | Audit IA | `audit.faq.items.duration.answer` | Interviews about one hour per person | Matches how you run it? |
+
+## Use-case pages and FAQ (R9, 2026-11-01)
+
+No marker on these pages: the visible copy says only what is safe today. Confirm or correct each line.
+
+| Page | Key | Claim | What to confirm |
+|---|---|---|---|
+| Cas d'usage immobilier | `useCases.realEstate.proof.body` | Hoppy is the only real estate case; lead sorting and CRM sync are explicitly "not part of that project" | Is that the right scope for Hoppy? Hop Hop Immo OK with being named here too? |
+| Cas d'usage immobilier | `useCases.realEstate.faq.items.portals` | Most portals send leads by email; CRM via API, file import or Make | Matches what you can actually wire up |
+| Cas d'usage agences | `useCases.agencies.terms.items` | NDA on request, no Klyx mention anywhere, never contact the end client, code in agency/client repo, written handover | Each commitment, and whether you accept being introduced as a member of the agency's team (`faq.items.meetings`) |
+| Cas d'usage agences | `useCases.agencies.terms.items.pricing` | Softened: "public prices are the base, regular volume discussed on the call" | Partner pricing: discount, volume terms, who invoices whom. Not stated on the page until you decide |
+| Cas d'usage agences | `useCases.agencies.process.steps.build` | Weekly progress update, work in the agency's tools | Still how you work |
+| Cas d'usage agences | `useCases.agencies.faq.items.maintenance` | Monthly follow-up the agency resells | That you offer it in white label |
+| Cas d'usage agences | `offer-pages`/`sector-pages` `proof` | PKBA and VertiFlow shown as "sites delivered under our own name" | Same open questions as in the case studies (what is yours) |
+| Cas d'usage cabinets | `useCases.services.proof.body` | "No published client case yet" for accounting, law or consulting firms | True as worded |
+| Cas d'usage cabinets | `useCases.services.faq.items.secret` | Professional secrecy compatible "if processed in a framework you control" (EU provider, masking) | Wording, ideally reviewed by a lawyer |
+| Cas d'usage cabinets | `useCases.services.faq.items.software` | Accounting software via API or file import, else a file to import | Software you have actually integrated |
+| FAQ | `faqPage.faq.items.aiAct` | Email triage, invoice extraction and product Q&A are not high-risk under the AI Act; CV screening and credit scoring are; a customer-facing assistant must disclose it is an AI | Check against the AI Act text before relying on it (no dates quoted on purpose) |
+| FAQ | `faqPage.faq.items.rgpd`, `continuity`, `expertise` | Data mapping before code, retention set with the client, written handover, onboarding at every delivery | Still how you work |
+| Audit IA, FAQ | `audit.faq.items.next.answer` | Softened from "audit price deducted": now "the quote takes the audit you already paid into account, terms written before you sign" | Credit terms, then restore the exact rule |
+| Automatisation IA, FAQ | `automation.faq.items.tools.answer` | Softened: the self-hosted n8n option is removed | Whether you offer n8n self-hosted on a server in the client's name |
+| Automatisation IA, FAQ | `automation.faq.items.runCost.answer` | Softened: the euro ranges (n8n 10-25 €, Make ~30 €, API 20-80 €) are removed | Ranges you are happy to publish |
+| Référencement IA, FAQ | `geo.faq.items.platforms.answer` | Softened: "usually yes", platform list removed, "we check your platform on the call" | Platforms you accept |
+| Référencement IA, FAQ | `geo.faq.items.citeme.answer` | Softened: "we use it for the measurements" removed | Whether CiteMe is used for the GEO measurements |
 
 ## Local and legal
 

@@ -2,7 +2,22 @@ import { expect, test } from "@playwright/test";
 
 import { site } from "../src/lib/site";
 
-const PAGES = ["/", "/en", "/a-propos", "/en/about"];
+const PAGES = [
+  "/",
+  "/en",
+  "/a-propos",
+  "/en/about",
+  "/cas-usage",
+  "/en/use-cases",
+  "/cas-usage/immobilier",
+  "/en/use-cases/real-estate",
+  "/cas-usage/agences",
+  "/en/use-cases/agencies",
+  "/cas-usage/cabinets-services",
+  "/en/use-cases/professional-services",
+  "/faq",
+  "/en/faq",
+];
 
 for (const path of PAGES) {
   test(`${path} shows no pending marker and no SIRET outside the footer`, async ({

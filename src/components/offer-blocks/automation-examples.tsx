@@ -19,13 +19,18 @@ export async function AutomationExamples({
   locale,
   index,
   eyebrow,
+  namespace = "automation.block",
+  labels,
 }: {
   locale: Locale;
   index: string;
   eyebrow: string;
+  namespace?: string;
+  labels?: { human: string; tools: string; illustration?: string };
 }) {
-  const t = await getTranslations({ locale, namespace: "automation.block" });
+  const t = await getTranslations({ locale, namespace });
   const examples = messageKeys(t.raw("examples"));
+  const humanLabel = labels?.human ?? t("human");
 
   return (
     <Section index={index} eyebrow={eyebrow}>
@@ -39,7 +44,12 @@ export async function AutomationExamples({
           {t("body")}
         </p>
       </div>
-      <ul className="reveal mt-12 grid gap-4 md:mt-16 lg:grid-cols-3">
+      <ul
+        className={cn(
+          "reveal mt-12 grid gap-4 md:mt-16",
+          examples.length === 4 ? "md:grid-cols-2" : "lg:grid-cols-3",
+        )}
+      >
         {examples.map((example, i) => (
           <li
             key={example}
@@ -50,6 +60,11 @@ export async function AutomationExamples({
                 {String(i + 1).padStart(2, "0")}
               </span>
               &nbsp;/ {t(`examples.${example}.title`)}
+              {labels?.illustration && (
+                <span className="hatch text-text-2 ml-auto rounded-xs px-1.5 py-0.5">
+                  {labels.illustration}
+                </span>
+              )}
             </p>
             <ol className="flex flex-col p-4 sm:p-5">
               {STEPS.map(({ id, icon: Icon }, s) => {
@@ -85,7 +100,7 @@ export async function AutomationExamples({
                       </span>
                       {human && (
                         <span className="type-label text-text shrink-0">
-                          {t("human")}
+                          {humanLabel}
                         </span>
                       )}
                     </span>
@@ -96,6 +111,14 @@ export async function AutomationExamples({
             <p className="border-line text-text-2 mt-auto border-t px-4 py-4 text-[0.9375rem] sm:px-5">
               {t(`examples.${example}.body`)}
             </p>
+            {labels && t.has(`examples.${example}.tools`) && (
+              <p className="border-line type-data text-text-3 border-t px-4 py-3 text-[0.8125rem] sm:px-5">
+                <span className="type-label">{labels.tools}</span>
+                <span className="text-text-2 ml-2">
+                  {t(`examples.${example}.tools`)}
+                </span>
+              </p>
+            )}
           </li>
         ))}
       </ul>

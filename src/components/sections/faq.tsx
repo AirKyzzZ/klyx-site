@@ -1,20 +1,32 @@
+import type { ReactNode } from "react";
+
 import { Plus } from "lucide-react";
 
 import { ActionButton } from "@/components/action-button";
 import { Section, SectionHeading } from "@/components/section";
 
+type FaqItem = {
+  question: string;
+  answer: string;
+  id?: string;
+  more?: ReactNode;
+};
+
 type FaqProps = {
+  id?: string;
   index?: string;
   eyebrow?: string;
   title: string;
   emphasis?: string;
-  items: { question: string; answer: string }[];
+  items: FaqItem[];
   bookLabel?: string;
   openFirst?: boolean;
+  openAll?: boolean;
   className?: string;
 };
 
 export function Faq({
+  id,
   index,
   eyebrow,
   title,
@@ -22,10 +34,11 @@ export function Faq({
   items,
   bookLabel,
   openFirst = false,
+  openAll = false,
   className,
 }: FaqProps) {
   return (
-    <Section index={index} eyebrow={eyebrow} className={className}>
+    <Section id={id} index={index} eyebrow={eyebrow} className={className}>
       <div className="grid gap-10 lg:grid-cols-12 lg:gap-6">
         <div className="reveal space-y-8 lg:sticky lg:top-28 lg:col-span-4 lg:self-start">
           <SectionHeading lead={title} rest={emphasis} />
@@ -40,8 +53,9 @@ export function Faq({
           {items.map((item, i) => (
             <details
               key={item.question}
-              open={openFirst && i === 0}
-              className="faq-item border-line group border-b"
+              id={item.id}
+              open={openAll || (openFirst && i === 0)}
+              className="faq-item border-line group scroll-mt-28 border-b"
             >
               <summary className="text-text hover:text-text-2 flex items-start justify-between gap-6 py-5 text-[1.0625rem] font-medium tracking-[-0.01em] transition-colors duration-(--d-fast)">
                 {item.question}
@@ -51,6 +65,7 @@ export function Faq({
                 />
               </summary>
               <p className="text-text-2 max-w-[62ch] pb-6">{item.answer}</p>
+              {item.more && <div className="-mt-2 pb-6">{item.more}</div>}
             </details>
           ))}
         </div>
