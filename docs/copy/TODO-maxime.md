@@ -128,6 +128,17 @@ No marker on these pages. The white-label terms are written as proposals agreed 
 | Kenzi case | `content/realisations/kenzi.*.mdx` | https://kenzievents.com returned HTTP 500 on 2026-11-01 (R7). « en ligne sur kenzievents.com » is removed and the case has `live: false`, so the page and its machine view render no link to the site. The case text stays | Is the site still live? When it answers 200 again, remove `live: false` |
 | Cas d'usage agences | `meta.agencies.description`, `useCases.agencies.hero.titleEmphasis`, `useCases.agencies.card.build`, `useCases.agencies.terms.items.repo` | Softened (R7): « livrés en marque blanche… selon des règles fixées par écrit », h1 « L'IA de vos clients, en marque blanche. », repo line « comme on en convient avec vous » | Same as the agencies terms row above |
 
+## Outreach pages `/pour/agences` and `/pour/startups-sprint-ia` (2026-11-01)
+
+FR only, `noindex, nofollow`, out of the sitemap and llms.txt. Copy lives in `src/lib/outreach-pages.ts`, not in `messages/*.json`.
+
+| Page | Key | What to confirm |
+|---|---|---|
+| Both | `NEXT_PUBLIC_CAL_URL` | Not set, so every « Réserver 20 minutes » goes to `/contact`. The spec wants one Cal.com event per page (`klyx-agences`, `klyx-startups`) for attribution; the site has one `calUrl` today. Create the events and say whether you want a per-page URL |
+| Both | before sending | 5-second test with 5 people per ICP (4 of 5 say what, for whom, next step) |
+| Startups | `outreachPages.startups` proof | Shows the Hop Hop Immo (Hoppy) and CiteMe case cards, same as the live `/realisations`. Hoppy naming is still open under `agents.proof.body` |
+| Agences | `outreachPages.agencies` terms | White-label terms are written as proposals agreed in writing, same as `/cas-usage/agences`. No paid test mission price exists in `offers.ts`, so the page points to a landing page as a first limited project |
+
 ## Local and legal
 
 | Page | Key | Claim | What to confirm |

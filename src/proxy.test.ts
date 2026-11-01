@@ -27,6 +27,13 @@ describe("proxy legacy redirects", () => {
     expect(run("/wp-login.php").status).toBe(410);
   });
 
+  it("serves the FR-only outreach pages without a locale rewrite", () => {
+    const response = run("/pour/agences?ref=dm&utm_source=linkedin");
+    expect(response.status).toBe(200);
+    expect(response.headers.get("x-middleware-rewrite")).toBeNull();
+    expect(response.headers.get("x-middleware-next")).toBe("1");
+  });
+
   it("hands normal pages to next-intl", () => {
     const response = run("/tarifs");
     expect(response.headers.get("x-middleware-rewrite")).toContain(

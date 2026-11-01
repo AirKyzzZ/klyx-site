@@ -7,13 +7,16 @@ import {
   findLegacyRedirect,
   isGone,
 } from "./lib/legacy-urls";
+import { isOutreachPath } from "./lib/outreach-paths";
 
 const handleI18nRouting = createMiddleware(routing);
 
 export default function proxy(request: NextRequest) {
   const { pathname, searchParams } = request.nextUrl;
   if (isGone(pathname)) return new NextResponse(null, { status: 410 });
-  if (pathname === LEAD_MAGNET_PATH) return NextResponse.next();
+  if (pathname === LEAD_MAGNET_PATH || isOutreachPath(pathname)) {
+    return NextResponse.next();
+  }
   const destination = findLegacyRedirect(pathname, searchParams);
   if (destination) {
     const url = request.nextUrl.clone();
