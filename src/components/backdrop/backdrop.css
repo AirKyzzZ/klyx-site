@@ -1,0 +1,176 @@
+.bd {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  overflow: hidden;
+  pointer-events: none;
+  mask-image: radial-gradient(
+    ellipse 85% 80% at 50% 45%,
+    #000 45%,
+    transparent 100%
+  );
+
+  & svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.bd:is([data-backdrop="grid"], [data-backdrop="flow"]) {
+  background: radial-gradient(
+    42% 60% at 18% 92%,
+    rgb(245 78 0 / 0.14),
+    transparent 70%
+  );
+}
+
+.bd-gridline {
+  fill: none;
+  stroke: rgb(237 232 222 / 0.045);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.bd-wire {
+  fill: none;
+  stroke: rgb(237 232 222 / 0.12);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.bd-node {
+  fill: #1a1816;
+  stroke: rgb(237 232 222 / 0.22);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.bd-node[data-lit] {
+  fill: rgb(245 78 0 / 0.16);
+  stroke: rgb(245 78 0 / 0.55);
+}
+
+.bd-packet {
+  fill: var(--accent);
+  opacity: 0;
+}
+
+.bd-packet-glow {
+  opacity: 0.22;
+}
+
+.bd-flow {
+  fill: none;
+  stroke: rgb(237 232 222 / 0.09);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.bd-flow-packet {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-dasharray: 6 94;
+  stroke-dashoffset: 6;
+  opacity: 0;
+  vector-effect: non-scaling-stroke;
+}
+
+.bd[data-backdrop="mesh"] {
+  background:
+    radial-gradient(38% 52% at 16% 80%, rgb(245 78 0 / 0.26), transparent 70%),
+    radial-gradient(
+      34% 44% at 86% 14%,
+      rgb(227 220 207 / 0.07),
+      transparent 70%
+    ),
+    radial-gradient(50% 60% at 62% 70%, rgb(150 70 20 / 0.14), transparent 75%);
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    pointer-events: none;
+  }
+
+  &::before {
+    inset: -15%;
+    background: radial-gradient(
+      26% 30% at 34% 72%,
+      rgb(245 78 0 / 0.16),
+      transparent 70%
+    );
+  }
+
+  &::after {
+    inset: 0;
+    background-image:
+      linear-gradient(rgb(237 232 222 / 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(237 232 222 / 0.04) 1px, transparent 1px);
+    background-size: 24px 24px;
+    mask-image: linear-gradient(180deg, #000, transparent 85%);
+  }
+}
+
+@keyframes bd-packet {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0);
+  }
+  15%,
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--bd-dx), var(--bd-dy));
+  }
+}
+
+@keyframes bd-flow {
+  0% {
+    opacity: 0;
+    stroke-dashoffset: 6;
+  }
+  10%,
+  85% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0;
+    stroke-dashoffset: -94;
+  }
+}
+
+@keyframes bd-breathe {
+  to {
+    opacity: 0.45;
+  }
+}
+
+@keyframes bd-drift {
+  to {
+    transform: translate3d(6%, -4%, 0) scale(1.08);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  [data-playing] .bd-packet {
+    animation: bd-packet var(--bd-dur) var(--ease-in-out) var(--bd-delay)
+      infinite;
+  }
+
+  [data-playing] .bd-flow-packet {
+    animation: bd-flow var(--bd-dur) linear var(--bd-delay) infinite;
+  }
+
+  [data-playing] .bd-node[data-lit] {
+    animation: bd-breathe 2.4s var(--ease-in-out) infinite alternate;
+  }
+
+  [data-playing] .bd[data-backdrop="mesh"]::before {
+    animation: bd-drift 14s var(--ease-in-out) infinite alternate;
+  }
+}

@@ -6,6 +6,7 @@ import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 
 import { ActionButton } from "@/components/action-button";
+import { AbstractBackdrop } from "@/components/backdrop/abstract-backdrop";
 import { EmphasisTitle } from "@/components/emphasis-title";
 import { GirondeMap } from "@/components/gironde-map";
 import { AutomationExamples } from "@/components/offer-blocks/automation-examples";
@@ -15,8 +16,10 @@ import { Faq } from "@/components/sections/faq";
 import { ProcessLine } from "@/components/sections/process-line";
 import { messageList, messageStrings } from "@/i18n/message-list";
 import { type LocaleParams, resolvePageLocale } from "@/i18n/page-locale";
+import { HERO_BACKDROP } from "@/lib/hero-backdrop";
 import { getPriceValues } from "@/lib/offers";
 import { buildMetadata } from "@/lib/seo";
+import { cn } from "@/lib/utils";
 
 const LOCAL_FACTS = ["city", "zone", "travel"] as const;
 
@@ -35,6 +38,32 @@ export async function generateMetadata({
   });
 }
 
+function Painting() {
+  return (
+    <picture>
+      <source
+        type="image/avif"
+        srcSet="/backdrop/bordeaux-800.avif 800w, /backdrop/bordeaux-1600.avif 1600w"
+        sizes="(min-width: 1280px) 1168px, 100vw"
+      />
+      <source
+        type="image/webp"
+        srcSet="/backdrop/bordeaux-800.webp 800w, /backdrop/bordeaux-1600.webp 1600w"
+        sizes="(min-width: 1280px) 1168px, 100vw"
+      />
+      <img
+        src="/backdrop/bordeaux-800.webp"
+        alt=""
+        width={1600}
+        height={900}
+        decoding="async"
+        className="hero-in border-line-strong mt-10 aspect-[4/3] w-full rounded-lg border object-cover lg:absolute lg:inset-0 lg:-z-2 lg:mt-0 lg:aspect-auto lg:h-full lg:rounded-none lg:border-0"
+        style={delay(0.45)}
+      />
+    </picture>
+  );
+}
+
 export default async function BordeauxPage({ params }: LocaleParams) {
   const locale = await resolvePageLocale(params);
   const t = await getTranslations({ locale, namespace: "bordeaux" });
@@ -47,8 +76,14 @@ export default async function BordeauxPage({ params }: LocaleParams) {
         className="relative pt-24 pb-16 md:pt-28 md:pb-20"
       >
         <div className="container">
-          <div className="lg:border-line-strong relative isolate lg:flex lg:min-h-[600px] lg:items-center lg:overflow-hidden lg:rounded-xl lg:border lg:shadow-[0_0_0_1px_var(--line),0_40px_160px_-40px_var(--glow)] lg:after:absolute lg:after:inset-0 lg:after:-z-1 lg:after:bg-[url(/textures/grain.png)] lg:after:bg-size-[128px] lg:after:mix-blend-overlay">
-            <div className="relative lg:flex lg:h-full lg:w-[52%] lg:flex-col lg:justify-center lg:bg-[linear-gradient(90deg,rgb(20_20_20/0.94)_0%,rgb(20_20_20/0.88)_72%,rgb(20_20_20/0))] lg:py-12 lg:pr-16 lg:pl-12">
+          <div className="lg:border-line-strong relative isolate lg:flex lg:min-h-[600px] lg:items-center lg:overflow-hidden lg:rounded-xl lg:border lg:bg-[linear-gradient(180deg,#1d1915_0%,#15130f_60%,#100f0d_100%)] lg:shadow-[0_0_0_1px_var(--line),0_40px_160px_-40px_var(--glow)] lg:after:absolute lg:after:inset-0 lg:after:-z-1 lg:after:bg-[url(/textures/grain.png)] lg:after:bg-size-[128px] lg:after:mix-blend-overlay">
+            <div
+              className={cn(
+                "relative lg:flex lg:h-full lg:w-[52%] lg:flex-col lg:justify-center lg:py-12 lg:pr-16 lg:pl-12",
+                HERO_BACKDROP === "painting" &&
+                  "lg:bg-[linear-gradient(90deg,rgb(20_20_20/0.94)_0%,rgb(20_20_20/0.88)_72%,rgb(20_20_20/0))]",
+              )}
+            >
               <p className="hero-in type-label text-text-3" style={delay(0)}>
                 {t("hero.eyebrow")}
               </p>
@@ -87,27 +122,14 @@ export default async function BordeauxPage({ params }: LocaleParams) {
                 </ActionButton>
               </div>
             </div>
-            <picture>
-              <source
-                type="image/avif"
-                srcSet="/backdrop/bordeaux-800.avif 800w, /backdrop/bordeaux-1600.avif 1600w"
-                sizes="(min-width: 1280px) 1168px, 100vw"
+            {HERO_BACKDROP === "painting" ? (
+              <Painting />
+            ) : (
+              <AbstractBackdrop
+                variant={HERO_BACKDROP}
+                className="max-lg:hidden"
               />
-              <source
-                type="image/webp"
-                srcSet="/backdrop/bordeaux-800.webp 800w, /backdrop/bordeaux-1600.webp 1600w"
-                sizes="(min-width: 1280px) 1168px, 100vw"
-              />
-              <img
-                src="/backdrop/bordeaux-800.webp"
-                alt=""
-                width={1600}
-                height={900}
-                decoding="async"
-                className="hero-in border-line-strong mt-10 aspect-[4/3] w-full rounded-lg border object-cover lg:absolute lg:inset-0 lg:-z-2 lg:mt-0 lg:aspect-auto lg:h-full lg:rounded-none lg:border-0"
-                style={delay(0.45)}
-              />
-            </picture>
+            )}
           </div>
         </div>
       </section>
