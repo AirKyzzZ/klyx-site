@@ -16,7 +16,6 @@ export type Tier = {
   duration: string;
   summary: string;
   features: string[];
-  highlighted: boolean;
   href?: OfferPathname;
 };
 
@@ -32,6 +31,7 @@ type TierCardsProps = {
   moreLabel: (count: number) => string;
   footnote: string;
   children?: ReactNode;
+  aside?: ReactNode;
 };
 
 export function FeatureList({ items }: { items: string[] }) {
@@ -97,10 +97,7 @@ function TierCard({
         )}
       </div>
       <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-3">
-        <ActionButton
-          action="quote"
-          variant={tier.highlighted ? "primary" : "secondary"}
-        >
+        <ActionButton action="quote" variant="secondary">
           {quoteLabel}
         </ActionButton>
         {tier.href && (
@@ -132,6 +129,7 @@ export function TierCards({
   moreLabel,
   footnote,
   children,
+  aside,
 }: TierCardsProps) {
   return (
     <Section index={index} eyebrow={eyebrow}>
@@ -166,6 +164,7 @@ export function TierCards({
         </ul>
       )}
       <p className="type-label text-text-3 mt-6">{footnote}</p>
+      {aside}
     </Section>
   );
 }

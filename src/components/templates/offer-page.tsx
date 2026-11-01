@@ -136,7 +136,9 @@ export async function OfferPage({
   const cases = (await getCaseStudies(locale)).filter((study) =>
     config.proofSlugs.includes(study.slug),
   );
-  const anchorPrice = getOfferCopy(offersT, locale, config.anchor).price;
+  const anchorPrice = config.anchorLine
+    ? t("hero.anchor", prices)
+    : getOfferCopy(offersT, locale, config.anchor).price;
   const Block = BLOCKS[config.block];
   const hero = heading(t, "hero");
   const problem = heading(t, "problem");
@@ -150,8 +152,40 @@ export async function OfferPage({
   const singleProof = proofCases.length === 1;
 
   const hasProof = config.proofLink !== null;
-  const sections = SECTIONS.filter(
-    (id) => (hasProof || id !== "proof") && (config.stack || id !== "stack"),
+  const hidden = new Set<SectionId>([
+    ...(hasProof ? [] : (["proof"] as const)),
+    ...(config.stack ? [] : (["stack"] as const)),
+    ...(config.process ? [] : (["process"] as const)),
+    ...(config.pricing ? [] : (["pricing"] as const)),
+  ]);
+  const sections = SECTIONS.filter((id) => !hidden.has(id));
+  const pricingLinks = (
+    <>
+      <Link
+        href="/tarifs"
+        className="group text-text-2 hover:text-text mt-6 inline-flex items-center gap-1.5 text-sm transition-colors"
+      >
+        {t("pricing.link")}
+        <ArrowRight
+          aria-hidden="true"
+          className="size-3.5 transition-transform duration-(--d-fast) group-hover:translate-x-0.5"
+        />
+      </Link>
+      {config.sectors.length > 0 && (
+        <p className="text-text-3 mt-3 flex flex-wrap gap-x-3 gap-y-1 text-sm">
+          <span className="type-label pt-0.5">{page("sectors")}</span>
+          {config.sectors.map((key) => (
+            <Link
+              key={key}
+              href={sectorPages[key].pathname}
+              className="text-text hover:text-text-2 underline underline-offset-4 transition-colors"
+            >
+              {nav(key)}
+            </Link>
+          ))}
+        </p>
+      )}
+    </>
   );
   const section = (id: SectionId) => ({
     index: String(sections.indexOf(id) + 1).padStart(2, "0"),
@@ -227,6 +261,7 @@ export async function OfferPage({
         seeOfferLabel={page("seeOffer")}
         moreLabel={(count) => page("moreFeatures", { count })}
         footnote={offersT("vatNote")}
+        aside={config.pricing ? undefined : pricingLinks}
         tiers={
           isFde
             ? []
@@ -240,7 +275,6 @@ export async function OfferPage({
                   t,
                   `deliverables.tiers.${tier.key}.items`,
                 ),
-                highlighted: tier.id === config.highlighted,
                 href: tier.href === config.pathname ? undefined : tier.href,
               }))
         }
@@ -255,12 +289,14 @@ export async function OfferPage({
         ) : null}
       </TierCards>
 
-      <ProcessLine
-        {...section("process")}
-        title={process.lead}
-        emphasis={process.rest}
-        steps={messageList(t, "process.steps", ["title", "body"])}
-      />
+      {config.process && (
+        <ProcessLine
+          {...section("process")}
+          title={process.lead}
+          emphasis={process.rest}
+          steps={messageList(t, "process.steps", ["title", "body"])}
+        />
+      )}
 
       <Block locale={locale} {...section("block")} />
 
@@ -339,51 +375,30 @@ export async function OfferPage({
         </Section>
       )}
 
-      <Section {...section("pricing")}>
-        <div className="grid gap-10 lg:grid-cols-12 lg:gap-6">
-          <div className="reveal space-y-6 lg:col-span-5">
-            <SectionHeading lead={pricing.lead} rest={pricing.rest} />
-            <p className="text-text-2 max-w-[48ch]">
-              {t("pricing.body", prices)}
-            </p>
-          </div>
-          <div className="reveal lg:col-span-6 lg:col-start-7">
-            <OfferLedger
-              rows={tiers}
-              labels={{
-                offer: page("ledger.offer"),
-                duration: page("ledger.duration"),
-                price: page("ledger.price"),
-              }}
-              caption={offersT("vatNote")}
-            />
-            <Link
-              href="/tarifs"
-              className="group text-text-2 hover:text-text mt-6 inline-flex items-center gap-1.5 text-sm transition-colors"
-            >
-              {t("pricing.link")}
-              <ArrowRight
-                aria-hidden="true"
-                className="size-3.5 transition-transform duration-(--d-fast) group-hover:translate-x-0.5"
-              />
-            </Link>
-            {config.sectors.length > 0 && (
-              <p className="text-text-3 mt-3 flex flex-wrap gap-x-3 gap-y-1 text-sm">
-                <span className="type-label pt-0.5">{page("sectors")}</span>
-                {config.sectors.map((key) => (
-                  <Link
-                    key={key}
-                    href={sectorPages[key].pathname}
-                    className="text-text hover:text-text-2 underline underline-offset-4 transition-colors"
-                  >
-                    {nav(key)}
-                  </Link>
-                ))}
+      {config.pricing && (
+        <Section {...section("pricing")}>
+          <div className="grid gap-10 lg:grid-cols-12 lg:gap-6">
+            <div className="reveal space-y-6 lg:col-span-5">
+              <SectionHeading lead={pricing.lead} rest={pricing.rest} />
+              <p className="text-text-2 max-w-[48ch]">
+                {t("pricing.body", prices)}
               </p>
-            )}
+            </div>
+            <div className="reveal lg:col-span-6 lg:col-start-7">
+              <OfferLedger
+                rows={tiers}
+                labels={{
+                  offer: page("ledger.offer"),
+                  duration: page("ledger.duration"),
+                  price: page("ledger.price"),
+                }}
+                caption={offersT("vatNote")}
+              />
+              {pricingLinks}
+            </div>
           </div>
-        </div>
-      </Section>
+        </Section>
+      )}
 
       <Faq
         {...section("faq")}

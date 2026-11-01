@@ -1,4 +1,5 @@
 import {
+  Cpu,
   Database,
   FileText,
   Funnel,
@@ -138,15 +139,7 @@ function Edges({
 }
 
 function NodeGlyph({ node }: { node: GraphNode }) {
-  if (node.models) {
-    return (
-      <span className="ls-models">
-        {AI_MODELS.map(({ logo }) => (
-          <ToolLogo key={logo} logo={logo} size={12} />
-        ))}
-      </span>
-    );
-  }
+  if (node.models) return <Cpu strokeWidth={1.5} />;
   if (node.tool) return <ToolLogo logo={node.tool} size={14} />;
   const Icon = ICONS[node.icon];
   return <Icon strokeWidth={1.5} />;

@@ -6,15 +6,8 @@ import { cn } from "@/lib/utils";
 import type { Locale } from "@/i18n/routing";
 import { getVerifiedProof, type ProofSource } from "@/lib/proof";
 
-const SHOT_SLUGS = ["vertiflow", "hop-hop-immo"];
-const MAX_CARDS = 3;
-
 function blockProof(sources: ProofSource[]): ProofSource[] {
-  const lighthouse = sources.filter((source) => source.kind === "lighthouse");
-  const shots = sources.filter(
-    (source) => source.kind === "site-shot" && SHOT_SLUGS.includes(source.slug),
-  );
-  return [...lighthouse, ...shots].slice(0, MAX_CARDS);
+  return sources.filter((source) => source.kind === "lighthouse");
 }
 
 export async function LighthouseBlock({

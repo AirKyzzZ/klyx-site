@@ -25,6 +25,8 @@ async function expectStrip(
 ) {
   const strip = page.locator("[data-tools]");
   await strip.scrollIntoViewIfNeeded();
+  const details = strip.locator("details[data-tools-details]");
+  if ((await details.count()) > 0) await details.locator("summary").click();
   await expect(strip.getByRole("heading", { name: label })).toBeVisible();
   await expect(strip.getByText(note)).toBeVisible();
   const chips = strip.locator("li[data-tool]");
@@ -32,20 +34,22 @@ async function expectStrip(
   for (const name of expected) {
     await expect(chips.filter({ hasText: name }).first()).toBeVisible();
   }
-  const logos = await strip.locator("[data-logo]").evaluateAll((els) =>
-    els.map((el) => {
-      const tile = el.closest<HTMLElement>("li[data-tool]");
-      const box = el.getBoundingClientRect();
-      return {
-        logo: el.getAttribute("data-logo"),
-        hidden: el.getAttribute("aria-hidden"),
-        size: [Math.round(box.width), Math.round(box.height)],
-        named:
-          !!tile?.dataset.tool &&
-          (tile.textContent ?? "").includes(tile.dataset.tool),
-      };
-    }),
-  );
+  const logos = await strip
+    .locator("li[data-tool] [data-logo]")
+    .evaluateAll((els) =>
+      els.map((el) => {
+        const tile = el.closest<HTMLElement>("li[data-tool]");
+        const box = el.getBoundingClientRect();
+        return {
+          logo: el.getAttribute("data-logo"),
+          hidden: el.getAttribute("aria-hidden"),
+          size: [Math.round(box.width), Math.round(box.height)],
+          named:
+            !!tile?.dataset.tool &&
+            (tile.textContent ?? "").includes(tile.dataset.tool),
+        };
+      }),
+    );
   expect(logos).toHaveLength(expected.length);
   for (const logo of logos) {
     expect(logo, logo.logo ?? "").toMatchObject({
@@ -67,11 +71,17 @@ for (const viewport of VIEWPORTS) {
     ["/", fr],
     ["/en", en],
   ] as const) {
-    test(`${path} tool grid names every tool at ${viewport.width}`, async ({
+    test(`${path} tool map links every group and the grid names every tool at ${viewport.width}`, async ({
       page,
     }) => {
       await page.setViewportSize(viewport);
       await page.goto(path);
+      const map = page.locator("[data-tools-map]");
+      await map.scrollIntoViewIfNeeded();
+      await expect(map).toBeVisible();
+      for (const name of names(CONNECTED_TOOLS)) {
+        await expect(map.getByText(name, { exact: true })).toHaveCount(1);
+      }
       await expectStrip(
         page,
         names(CONNECTED_TOOLS),
@@ -110,7 +120,7 @@ test("offer pages outside agents and automation carry no stack strip", async ({
 });
 
 for (const path of ["/", "/services/automatisation-ia"]) {
-  test(`${path} hero logos are decorative and the AI step shows the model marks`, async ({
+  test(`${path} hero logos are decorative and the AI step names the models`, async ({
     page,
   }) => {
     await page.goto(path);
@@ -133,7 +143,7 @@ for (const path of ["/", "/services/automatisation-ia"]) {
       expect(node.iconHidden, node.text).toBe("true");
       expect(node.text.trim(), node.text).not.toBe("");
       if (node.models) {
-        expect(node.logos).toEqual(AI_MODELS.map((tool) => tool.logo));
+        expect(node.logos).toEqual([]);
         for (const { name } of AI_MODELS) expect(node.text).toContain(name);
       } else expect(node.logos).toHaveLength(1);
     }

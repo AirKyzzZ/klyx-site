@@ -1,3 +1,5 @@
+import type { ReactNode } from "react";
+
 import type { LucideIcon } from "lucide-react";
 import { Inbox, ScanText, Send, UserCheck } from "lucide-react";
 import { getTranslations } from "next-intl/server";
@@ -23,12 +25,14 @@ export async function AutomationExamples({
   eyebrow,
   namespace = "automation.block",
   labels,
+  footer,
 }: {
   locale: Locale;
   index: string;
   eyebrow: string;
   namespace?: string;
   labels?: { human: string; tools: string; illustration?: string };
+  footer?: ReactNode;
 }) {
   const t = await getTranslations({ locale, namespace });
   const examples = messageKeys(t.raw("examples"));
@@ -135,6 +139,7 @@ export async function AutomationExamples({
       <p className="reveal border-line text-text-2 mt-4 rounded-md border px-5 py-4 lg:px-7">
         {t("limit")}
       </p>
+      {footer}
     </Section>
   );
 }

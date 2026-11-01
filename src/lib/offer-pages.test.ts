@@ -50,11 +50,9 @@ describe("offerPages", () => {
     }
   });
 
-  it("highlights and anchors on offers it lists or owns", () => {
+  it("anchors on an offer with a public price", () => {
     for (const key of OFFER_PAGE_KEYS) {
       const config = offerPages[key];
-      if (config.highlighted)
-        expect(config.tiers).toContain(config.highlighted);
       expect(getOffer(config.anchor).priceFrom, key).not.toBeNull();
     }
   });

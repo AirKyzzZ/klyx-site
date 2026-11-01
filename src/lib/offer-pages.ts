@@ -29,12 +29,14 @@ export type OfferPageConfig = {
   namespace: OfferPageKey;
   scenario: ScenarioId;
   tiers: OfferId[];
-  highlighted?: OfferId;
   anchor: OfferId;
   block: OfferBlock;
   proofSlugs: string[];
   proofLink: "cases" | null;
   stack?: true;
+  process: boolean;
+  pricing: boolean;
+  anchorLine?: true;
   cta: [OfferAction, OfferAction];
   sectors: SectorKey[];
 };
@@ -46,11 +48,12 @@ export const offerPages: Record<OfferPageKey, OfferPageConfig> = {
     namespace: "sites",
     scenario: "sites",
     tiers: ["landing", "site-ia", "site-custom"],
-    highlighted: "site-ia",
     anchor: "landing",
     block: "lighthouse",
     proofSlugs: ["pkba", "vertiflow"],
     proofLink: "cases",
+    process: true,
+    pricing: true,
     cta: ["quote", "book"],
     sectors: ["agencies"],
   },
@@ -60,12 +63,14 @@ export const offerPages: Record<OfferPageKey, OfferPageConfig> = {
     namespace: "agents",
     scenario: "support",
     tiers: ["audit-ia", "sprint-ia", "retainer"],
-    highlighted: "sprint-ia",
     anchor: "audit-ia",
     block: "trace",
     stack: true,
     proofSlugs: ["hop-hop-immo", "citeme"],
     proofLink: "cases",
+    process: false,
+    pricing: false,
+    anchorLine: true,
     cta: ["book", "quote"],
     sectors: ["realEstate", "agencies"],
   },
@@ -79,6 +84,8 @@ export const offerPages: Record<OfferPageKey, OfferPageConfig> = {
     block: "fde-definition",
     proofSlugs: [],
     proofLink: null,
+    process: true,
+    pricing: true,
     cta: ["book", "quote"],
     sectors: ["agencies"],
   },
@@ -88,11 +95,12 @@ export const offerPages: Record<OfferPageKey, OfferPageConfig> = {
     namespace: "audit",
     scenario: "audit",
     tiers: ["audit-ia", "automation", "sprint-ia"],
-    highlighted: "audit-ia",
     anchor: "audit-ia",
     block: "audit-document",
     proofSlugs: [],
     proofLink: null,
+    process: false,
+    pricing: true,
     cta: ["book", "quote"],
     sectors: ["services", "realEstate"],
   },
@@ -102,12 +110,13 @@ export const offerPages: Record<OfferPageKey, OfferPageConfig> = {
     namespace: "automation",
     scenario: "automation",
     tiers: ["automation", "automation-care", "sprint-ia"],
-    highlighted: "automation",
     anchor: "automation",
     block: "automation-examples",
     stack: true,
     proofSlugs: [],
     proofLink: null,
+    process: false,
+    pricing: true,
     cta: ["book", "quote"],
     sectors: ["services", "realEstate"],
   },
@@ -117,11 +126,12 @@ export const offerPages: Record<OfferPageKey, OfferPageConfig> = {
     namespace: "geo",
     scenario: "geo",
     tiers: ["geo", "geo-care", "site-ia"],
-    highlighted: "geo",
     anchor: "geo",
     block: "geo-visibility",
     proofSlugs: ["citeme"],
     proofLink: "cases",
+    process: false,
+    pricing: true,
     cta: ["book", "quote"],
     sectors: ["agencies"],
   },

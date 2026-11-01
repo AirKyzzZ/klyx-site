@@ -1,8 +1,12 @@
 import { ArrowRight } from "lucide-react";
+import { getLocale, getTranslations } from "next-intl/server";
 
 import { ActionButton } from "@/components/action-button";
 import { AbstractBackdrop } from "@/components/backdrop/abstract-backdrop";
+import { AgendaSlots } from "@/components/agenda-slots";
 import { Section, SectionHeading } from "@/components/section";
+import { SampleWindow } from "@/components/sections/process-timeline";
+import type { Locale } from "@/i18n/routing";
 import { HERO_BACKDROP } from "@/lib/hero-backdrop";
 
 import type { HeroAction } from "./hero";
@@ -41,7 +45,17 @@ function Painting() {
   );
 }
 
-export function Cta({ title, emphasis, body, primary, secondary }: CtaProps) {
+export async function Cta({
+  title,
+  emphasis,
+  body,
+  primary,
+  secondary,
+}: CtaProps) {
+  const locale = (await getLocale()) as Locale;
+  const t = await getTranslations({ locale, namespace: "home.process" });
+  const book = primary.action === "book" ? primary : secondary;
+  const other = book === primary ? secondary : primary;
   return (
     <Section>
       <div className="reveal border-line-strong relative isolate overflow-hidden rounded-xl border bg-[linear-gradient(180deg,#1d1915_0%,#15130f_60%,#100f0d_100%)] shadow-[0_0_0_1px_var(--line),0_40px_160px_-40px_var(--glow)] after:absolute after:inset-0 after:-z-1 after:bg-[url(/textures/grain.png)] after:bg-size-[128px] after:mix-blend-overlay">
@@ -50,22 +64,37 @@ export function Cta({ title, emphasis, body, primary, secondary }: CtaProps) {
         ) : (
           <AbstractBackdrop variant={HERO_BACKDROP} />
         )}
-        <div className="relative px-6 py-16 text-center md:px-12 md:py-20">
-          <SectionHeading lead={title} rest={emphasis} className="mx-auto" />
-          <p className="text-text-2 mx-auto mt-5 max-w-[48ch]">{body}</p>
-          <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row sm:items-center">
-            <ActionButton action={primary.action} size="lg">
-              {primary.label}
-            </ActionButton>
+        <div className="relative grid gap-10 px-5 py-12 sm:px-8 md:px-12 md:py-16 lg:grid-cols-12 lg:items-center lg:gap-6">
+          <div className="lg:col-span-6">
+            <SectionHeading lead={title} rest={emphasis} />
+            <p className="text-text-2 mt-5 max-w-[46ch]">{body}</p>
             <ActionButton
-              action={secondary.action}
+              action={other.action}
               variant="secondary"
               size="lg"
-              className="bg-bg/40"
+              className="bg-bg/40 mt-8 w-full sm:w-auto"
             >
-              {secondary.label}
+              {other.label}
               <ArrowRight />
             </ActionButton>
+          </div>
+          <div className="lg:col-span-5 lg:col-start-8">
+            <SampleWindow file={t("call.file")} sample={t("sample")}>
+              <p className="text-text font-sans text-sm font-medium">
+                {t("call.title")}
+              </p>
+              <p className="text-text-3 text-xs">{t("call.meta")}</p>
+              <div className="mt-4">
+                <AgendaSlots locale={locale} />
+              </div>
+              <ActionButton
+                action={book.action}
+                size="lg"
+                className="mt-5 w-full font-sans"
+              >
+                {book.label}
+              </ActionButton>
+            </SampleWindow>
           </div>
         </div>
       </div>

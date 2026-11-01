@@ -1,18 +1,18 @@
 {
-  "base": "http://localhost:4400",
+  "base": "http://localhost:4318",
   "date": "2026-11-01",
   "tool": "lighthouse@12.8.2, mobile preset, median of 3",
   "pages": [
     {
       "path": "/",
       "scores": {
-        "performance": 95,
+        "performance": 93,
         "accessibility": 100,
         "bestPractices": 100,
         "seo": 100
       },
-      "lcp": "2.8 s",
-      "tbt": "30 ms",
+      "lcp": "2.9 s",
+      "tbt": "10 ms",
       "cls": "0"
     },
     {
@@ -30,12 +30,12 @@
     {
       "path": "/tarifs",
       "scores": {
-        "performance": 93,
+        "performance": 96,
         "accessibility": 100,
         "bestPractices": 100,
         "seo": 100
       },
-      "lcp": "3.1 s",
+      "lcp": "2.6 s",
       "tbt": "10 ms",
       "cls": "0"
     },

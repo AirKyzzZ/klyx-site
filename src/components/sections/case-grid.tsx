@@ -49,6 +49,8 @@ function CaseCover({
 }) {
   const shot = getSiteShot(item.slug);
   const mobile = device === "mobile" && shot !== null;
+  const lift =
+    "absolute top-[9%] transition-transform duration-(--d-ui) ease-(--ease-out) group-hover:-translate-y-1";
   return (
     <div
       className={cn(
@@ -58,19 +60,13 @@ function CaseCover({
       style={{ "--band-x": bandX } as CSSProperties}
     >
       <BandPicture />
-      <div
-        className={cn(
-          "absolute top-[9%] transition-transform duration-(--d-ui) ease-(--ease-out) group-hover:-translate-y-1",
-          mobile ? "inset-x-[27%]" : "inset-x-[7%]",
-        )}
-      >
+      <div className={cn(lift, "inset-x-[7%]", mobile && "lg:hidden")}>
         {shot ? (
           <BrowserFrame
             url={shot.url}
-            image={mobile ? `/realisations/${item.slug}-390.png` : shot.image}
+            image={shot.image}
             alt={item.client}
-            sizes={mobile ? "240px" : sizes}
-            imageClassName={mobile ? "aspect-[390/844]" : undefined}
+            sizes={sizes}
           />
         ) : (
           <div className="border-line-strong shadow-window relative aspect-[16/10] overflow-hidden rounded-lg border">
@@ -84,6 +80,18 @@ function CaseCover({
           </div>
         )}
       </div>
+      {mobile && (
+        <div className={cn(lift, "inset-x-[27%] hidden lg:block")}>
+          <BrowserFrame
+            url={shot.url}
+            image={`/realisations/${item.slug}-390.png`}
+            alt={item.client}
+            sizes="240px"
+            imageClassName="aspect-[390/844]"
+            compact
+          />
+        </div>
+      )}
     </div>
   );
 }

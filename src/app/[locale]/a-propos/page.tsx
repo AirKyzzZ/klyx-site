@@ -4,8 +4,8 @@ import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 
 import { JsonLd } from "@/components/json-ld";
-import { BrowserFrame, hostOf } from "@/components/proof/browser-frame";
-import { ContributionGraph } from "@/components/proof/contribution-graph";
+import { hostOf } from "@/components/proof/browser-frame";
+import { ContributionWindow } from "@/components/proof/contribution-window";
 import { Section, SectionHeading } from "@/components/section";
 import { Cta } from "@/components/sections/cta";
 import {
@@ -14,13 +14,12 @@ import {
   TerminalWindow,
 } from "@/components/sections/founder";
 import { Hero } from "@/components/sections/hero";
-import { SampleWindow } from "@/components/sections/process-timeline";
 import { Button } from "@/components/ui/button";
 import { messageKeys, messageList } from "@/i18n/message-list";
 import { Link } from "@/i18n/navigation";
 import { type LocaleParams, resolvePageLocale } from "@/i18n/page-locale";
 import { personJsonLd } from "@/lib/json-ld";
-import { getGithubContributions, getSiteShot } from "@/lib/proof";
+import { getSiteShot } from "@/lib/proof";
 import { buildMetadata } from "@/lib/seo";
 import { site } from "@/lib/site";
 import { teamRoster } from "@/lib/team-roster";
@@ -53,13 +52,6 @@ export default async function AboutPage({ params }: LocaleParams) {
     "Klyx Estate": t("lines.estate"),
   };
   const citeme = getSiteShot("citeme");
-  const contributions = getGithubContributions();
-  const number = new Intl.NumberFormat(locale);
-  const day = (date: string) =>
-    new Intl.DateTimeFormat(locale, {
-      dateStyle: "long",
-      timeZone: "UTC",
-    }).format(new Date(date));
 
   return (
     <>
@@ -71,24 +63,7 @@ export default async function AboutPage({ params }: LocaleParams) {
         subtitle={t("hero.subtitle")}
         primary={{ action: "book", label: t("cta.ctaPrimary") }}
         secondary={{ action: "quote", label: t("cta.ctaSecondary") }}
-        aside={
-          <figure>
-            <TerminalWindow
-              title={t("info.window")}
-              command={t("info.command")}
-            >
-              <FactRows
-                rows={facts.map((fact) => ({
-                  key: fact.label,
-                  value: fact.value,
-                }))}
-              />
-            </TerminalWindow>
-            <figcaption className="type-label text-text-3 mt-4">
-              {t("info.caption")}
-            </figcaption>
-          </figure>
-        }
+        aside={<ContributionWindow locale={locale} />}
       />
 
       <Section index="01" eyebrow={t("eyebrows.team")}>
@@ -121,33 +96,25 @@ export default async function AboutPage({ params }: LocaleParams) {
             <div className="mt-8 max-w-[62ch] space-y-5">
               <p className="type-lead text-text">{t("story.intro")}</p>
               <p className="text-text-2">{t("story.work")}</p>
-              <p className="text-text-2">{t("story.citeme")}</p>
             </div>
           </div>
           <div className="space-y-6 lg:col-span-5 lg:col-start-8">
-            {contributions && (
-              <figure>
-                <SampleWindow file={t("contributions.window")}>
-                  <ContributionGraph
-                    data={contributions}
-                    label={t("contributions.label", {
-                      from: day(contributions.from),
-                      to: day(contributions.to),
-                    })}
-                  />
-                  <p className="text-text mt-4">
-                    {t("contributions.total", {
-                      total: number.format(contributions.total),
-                    })}
-                  </p>
-                </SampleWindow>
-                <figcaption className="text-text-3 mt-3 text-xs">
-                  {t("contributions.caption", {
-                    date: day(contributions.capturedAt),
-                  })}
-                </figcaption>
-              </figure>
-            )}
+            <figure>
+              <TerminalWindow
+                title={t("info.window")}
+                command={t("info.command")}
+              >
+                <FactRows
+                  rows={facts.map((fact) => ({
+                    key: fact.label,
+                    value: fact.value,
+                  }))}
+                />
+              </TerminalWindow>
+              <figcaption className="type-label text-text-3 mt-4">
+                {t("info.caption")}
+              </figcaption>
+            </figure>
             <div className="flex flex-wrap gap-3">
               <Button variant="secondary" size="lg" asChild>
                 <a href={site.socials.github} target="_blank" rel="noopener">
@@ -180,15 +147,16 @@ export default async function AboutPage({ params }: LocaleParams) {
                 href={citeme.url}
                 target="_blank"
                 rel="noopener"
-                className="group mt-10 block"
+                className="border-line-strong bg-surface-1 hover:bg-surface-2 shadow-card mt-10 flex flex-wrap items-baseline gap-x-4 gap-y-1 rounded-md border px-5 py-4 transition-colors duration-(--d-fast)"
               >
-                <BrowserFrame
-                  url={citeme.url}
-                  image={citeme.image}
-                  alt={hostOf(citeme.url)}
-                  sizes="(min-width: 1024px) 680px, 90vw"
-                  className="transition-transform duration-(--d-ui) ease-(--ease-out) group-hover:-translate-y-1"
-                />
+                <span className="text-text font-medium">CiteMe</span>
+                <span className="type-data text-text-3 inline-flex items-center gap-1.5">
+                  {hostOf(citeme.url)}
+                  <ArrowUpRight aria-hidden="true" className="size-3.5" />
+                </span>
+                <span className="text-text-2 w-full text-[0.9375rem] leading-snug">
+                  {t("story.citeme")}
+                </span>
               </a>
             )}
           </div>

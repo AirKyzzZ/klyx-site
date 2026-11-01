@@ -123,7 +123,15 @@
         "finance": "Accounting",
         "automation": "Automation"
       },
-      "note": "Brands mentioned belong to their respective owners. Klyx is neither affiliated with nor a partner of these vendors."
+      "note": "Brands mentioned belong to their respective owners. Klyx is neither affiliated with nor a partner of these vendors.",
+      "map": {
+        "inputs": "What comes in",
+        "outputs": "Where it goes",
+        "hub": "AI agent",
+        "hubMeta": "reads · sorts · drafts",
+        "under": "runs on",
+        "details": "All {count} tools, one by one"
+      }
     },
     "cases": {
       "title": "Work",
@@ -409,7 +417,7 @@
     "problem": {
       "title": "Why rebuild",
       "body": "A slow or badly structured site loses visitors before they've read your offer. And some of your customers now ask ChatGPT or Perplexity instead of searching, and those tools mostly cite sites they can parse. We build sites that work for both.",
-      "titleEmphasis": "your site",
+      "titleEmphasis": "your site.",
       "symptoms": {
         "slow": "A site that takes over 3 seconds to show on mobile",
         "noPrice": "Pages that state neither price nor timeline",
@@ -445,10 +453,10 @@
           }
         }
       },
-      "titleEmphasis": "you get"
+      "titleEmphasis": "you get."
     },
     "process": {
-      "title": "How it works,",
+      "title": "From brief to launch,",
       "steps": {
         "brief": {
           "title": "Brief",
@@ -479,7 +487,7 @@
       "title": "Sites",
       "body": "PKBA and VertiFlow: a site for a parkour club and one for a parkour clothing brand, both live.",
       "link": "See the work",
-      "titleEmphasis": "shipped"
+      "titleEmphasis": "shipped."
     },
     "faq": {
       "title": "Frequently asked",
@@ -532,12 +540,13 @@
       "subtitle": "Audits from {auditPrice}, AI Sprints from {sprintPrice}. One workflow wired into your tools, with the code in your repo and a log of every action the agent takes.",
       "ctaPrimary": "Book a call",
       "ctaSecondary": "Get a free quote",
-      "serif": "production"
+      "serif": "production",
+      "anchor": "Audit {auditPrice} · Sprint {sprintPrice}"
     },
     "problem": {
       "title": "Why AI projects",
       "body": "Your team already uses ChatGPT, but nothing is connected to your tools. The prototype worked in the meeting, then nobody had time to make it reliable. That's the part we take on: we pick one process worth automating, connect it to your real data, and it runs under monitoring.",
-      "titleEmphasis": "get stuck at the demo stage",
+      "titleEmphasis": "get stuck at the demo stage.",
       "symptoms": {
         "demo": "A prototype that worked in a meeting, then nothing",
         "copy": "ChatGPT open in a tab, nothing wired into your tools",
@@ -576,7 +585,7 @@
           }
         }
       },
-      "titleEmphasis": "each paid separately"
+      "titleEmphasis": "each paid separately."
     },
     "credit": {
       "title": "The audit is credited against the Sprint",
@@ -614,7 +623,7 @@
       "title": "Already",
       "body": "Hoppy, the AI assistant for Hop Hop Immo, and CiteMe, co-founded by Maxime, our lead engineer.",
       "link": "See the work",
-      "titleEmphasis": "in production"
+      "titleEmphasis": "in production."
     },
     "faq": {
       "title": "Frequently asked",
@@ -690,14 +699,14 @@
         "weekly": "A written update every week with the list of merged PRs",
         "handover": "Handover documentation at the end of the engagement"
       },
-      "titleEmphasis": "inside your team"
+      "titleEmphasis": "inside your team."
     },
     "terms": {
       "title": "Terms",
       "items": {
         "rate": "{fdeDayPrice} per day",
         "rhythm": "2 to 3 days a week",
-        "minimum": "4 weeks minimum, about {fdeMinimum}",
+        "minimum": "4 weeks minimum, from {fdeMinimum} (2 days × 4 weeks)",
         "capacity": "Two clients at most at any time"
       }
     },
@@ -711,7 +720,7 @@
       }
     },
     "process": {
-      "title": "How it works,",
+      "title": "An engineer on your team,",
       "steps": {
         "call": {
           "title": "Call",
@@ -730,7 +739,7 @@
           "body": "A written update with the merged PRs and what comes next. We adjust the pace if needed."
         }
       },
-      "titleEmphasis": "in four steps."
+      "titleEmphasis": "week after week."
     },
     "faq": {
       "title": "Frequently asked",
@@ -778,7 +787,7 @@
     "pricing": {
       "title": "How much does",
       "titleEmphasis": "a Forward Deployed Engineer cost?",
-      "body": "{fdeDayPrice} per day, 2 to 3 days a week, 4 weeks minimum, so about {fdeMinimum} to start.",
+      "body": "{fdeDayPrice} per day, 2 to 3 days a week, 4 weeks minimum: from {fdeMinimum} to start (2 days × 4 weeks).",
       "link": "See all prices"
     }
   },
@@ -1307,7 +1316,9 @@
         },
         "note": "Ranges collected on 31 October 2026."
       },
-      "titleEmphasis": "compare."
+      "titleEmphasis": "compare.",
+      "line": "Most AI agencies in France don't publish their prices. For comparison, published ranges for a freelance AI developer usually run from €650 to €900 per day (checked on 31 October 2026). Our Forward Deployed Engineer is {fdeDayPrice} per day.",
+      "sourceLabel": "Source: Studeria"
     },
     "faq": {
       "title": "Questions",
@@ -1402,7 +1413,7 @@
     "trust": {
       "title": "Why",
       "body": "We don't ask you to take our word for it. Everything below can be checked before you sign, and we tell you on the first call what we don't do.",
-      "titleEmphasis": "trust us",
+      "titleEmphasis": "trust us.",
       "items": {
         "code": {
           "label": "Public code",
@@ -1485,7 +1496,7 @@
       }
     },
     "process": {
-      "title": "How it works,",
+      "title": "From the first call to follow-up,",
       "steps": {
         "call": {
           "title": "A free first conversation",
@@ -2230,7 +2241,8 @@
         "title": "No client case yet",
         "titleEmphasis": "in this sector.",
         "body": "We would rather say it: we don't have a published client case for an accounting, law or consulting firm yet. The workflows on this page are illustrations. The audit exists precisely to check, on your real documents, what is worth automating before you pay for any build.",
-        "link": "See the AI audit"
+        "link": "See the AI audit",
+        "line": "No published client case in this sector yet: these workflows are illustrations, and the audit checks on your own documents what is worth automating."
       },
       "pricing": {
         "title": "What it costs,",
@@ -2539,7 +2551,8 @@
         },
         "chip": "Lighthouse {score} · klyx.fr",
         "chipPending": "Lighthouse · measuring",
-        "measuredCaption": "Real mobile Lighthouse score of klyx.fr, measured on {date}. The run itself is an example."
+        "measuredCaption": "Real mobile Lighthouse score of klyx.fr, measured on {date}. The run itself is an example.",
+        "caption": "Sample release: every change is built, speed-tested on mobile, then published with its llms.txt. The run and its timings are an example."
       },
       "fde": {
         "title": "ENG-142 · CSV export",

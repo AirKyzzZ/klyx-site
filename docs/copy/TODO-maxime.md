@@ -170,3 +170,15 @@ These are not flagged inline because they come from your own sales assets or the
 | À propos | `src/lib/proof/github-contributions.json` | Contribution graph and total (12 933 in 12 months) from github.com/AirKyzzZ, captured 2026-11-01 by `node scripts/github-contributions.mjs`. The count may include private contributions if your profile shows them | OK to show; rerun the script before launch to refresh |
 | À propos | (none) | No portrait yet | A real photo of Maxime for the hero or lead engineer section |
 | Réalisations (all cases) | `content/realisations/*.mdx` | Each case shows « Résultat : pas encore de chiffre publié » | For every case: 2 lines of context, 3 bullets of what was built, a second screen, and an honest outcome line |
+
+## Design review round 2 (2026-11-01)
+
+| Page | Key | Now shows | What to confirm |
+|---|---|---|---|
+| Hop Hop Immo case | `content/realisations/hop-hop-immo.*.mdx` | Context, the approved « what we built » line, what a visitor sees on hophopimmo.com today (Hoppy button, assistant page, voice or text, ElevenLabs consent), stack seen on the live site (Next.js, ElevenLabs, OpenStreetMap map) and three screenshots taken 2026-11-01 | What Klyx built beyond « the assistant » (retrieval over the programme feed? map search? handoff to an agent?), one real Hoppy exchange you are allowed to publish, and any figure the client accepts to share. Also confirm ElevenLabs belongs in the case stack |
+| Création de site web | `sites.block` (hidden) | The « sites en ligne » proof block no longer repeats VertiFlow; it only comes back with a measured klyx.fr Lighthouse score. Lighthouse 12.8.2 mobile, median of 3, run by Klyx on 2026-11-01 ~13:00 UTC: vertiflow.fr perf 87 · a11y 96 · BP 96 · SEO 100 · LCP 3.7 s · CLS 0; pkba.vertiflow.fr perf 76 · a11y 83 · BP 79 · SEO 100 · LCP 5.5 s · CLS 0 | Whether to publish these client scores (PKBA would need a perf pass first) |
+| Réalisations | `pkba`, `vertiflow` | PKBA lives on a VertiFlow subdomain; the copy says « sites livrés pour des clients » | That PKBA and VertiFlow are two separate clients, or a word in each case explaining the link |
+| À propos / home | `about.contributions.caption` | Contribution graph now in the à propos hero and under team.yml on home | Whether the 12 933 total includes private contributions (the public page does not say); add it to the caption if so |
+| À propos | `site.sisterSites` | studio.klyx.fr still has no description | One sentence for studio.klyx.fr |
+| Offres IA | `agents.hero.anchor` | Hero eyebrow « Audit 1 500 € HT · Sprint 4 500 € HT »; the duplicate « Prix » section is gone (prices stay in Offres and on /tarifs) | OK |
+| CTA (every page) | `home.process.call` | The final CTA now holds the sample agenda window (lun. 2 to mer. 4, 11:00 lit) with « Réserver un appel » inside it, labelled « Exemple » | OK to show sample slots there |

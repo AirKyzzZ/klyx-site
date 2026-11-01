@@ -5,9 +5,16 @@ import type { Locale } from "@/i18n/routing";
 
 type MdxContent = ComponentType;
 
+export type CaseFlowStep = {
+  image: string;
+  device: "desktop" | "mobile";
+  caption: string;
+};
+
 export type CaseStudyMeta = {
   slug: string;
   title: string;
+  serif?: string;
   client: string;
   url: string;
   live?: boolean;
@@ -17,6 +24,7 @@ export type CaseStudyMeta = {
   stack: string[];
   image: string;
   order: number;
+  flow?: { title: string; caption: string; steps: CaseFlowStep[] };
 };
 
 export type PostMeta = {

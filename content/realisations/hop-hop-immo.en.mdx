@@ -1,16 +1,57 @@
 export const metadata = {
   title: "Hoppy, the AI assistant for Hop Hop Immo",
+  serif: "assistant",
   client: "Hop Hop Immo",
   url: "https://www.hophopimmo.com",
   year: 2026,
-  summary: "An AI assistant that helps buyers find their way through new-build housing in south-west France.",
-  stack: ["Next.js"],
+  summary:
+    "An AI assistant that helps buyers find their way through new-build housing in south-west France.",
+  stack: ["Next.js", "ElevenLabs"],
   image: "/realisations/hop-hop-immo.png",
   order: 1,
+  flow: {
+    title: "The flow, in screenshots",
+    caption: "Screenshots of the live site, taken on 1 November 2026.",
+    steps: [
+      {
+        image: "/realisations/hop-hop-immo-assistant-1440.png",
+        device: "desktop",
+        caption:
+          "The assistant page: the map, Hoppy, and search criteria to set by talking it through.",
+      },
+      {
+        image: "/realisations/hop-hop-immo-voice-1440.png",
+        device: "desktop",
+        caption:
+          "Before voice mode, visitors are told their voice goes through ElevenLabs, and can say no.",
+      },
+      {
+        image: "/realisations/hop-hop-immo-assistant-390.png",
+        device: "mobile",
+        caption:
+          "The same starting point on a phone: talk to Hoppy or write to it.",
+      },
+    ],
+  },
 };
 
 Hop Hop Immo tracks new-build programmes across south-west France, from Bordeaux to Toulouse, with their full price history. We designed Hoppy, the site's AI assistant, which answers visitors' questions about those programmes.
 
+## Context
+
+On the site, you look for a new home the way you would on a property portal: a town, a département on the map, or an area you draw yourself. Hoppy adds another way in: describe what you are looking for in your own words, out loud or in writing.
+
 ## What we built
 
 The Hoppy assistant, from design to production.
+
+## What visitors see
+
+1. On the home page, next to the regular search, a "Rechercher avec Hoppy" (search with Hoppy) button.
+2. The button opens the assistant page: the map on one side, Hoppy on the other, and a "Critères de recherche" (search criteria) panel to fill in by talking.
+3. Visitors choose to talk to Hoppy or to write to it.
+4. Before voice mode, a window explains that the voice is processed by ElevenLabs, a provider based in the United States, and that recordings are not kept after processing. Visitors can accept or decline.
+
+## Stack
+
+The live site runs on Next.js. Hoppy's voice goes through ElevenLabs, as the site tells its visitors. The map shows OpenStreetMap data.

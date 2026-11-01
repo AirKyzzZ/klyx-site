@@ -89,6 +89,7 @@ export default async function CasePage({ params }: CasePageProps) {
         }
         title={titleRest.length > 0 ? `${titleLead},` : meta.title}
         emphasis={titleRest.length > 0 ? titleRest.join(", ") : undefined}
+        serif={meta.serif}
         subtitle={meta.summary}
       />
 
@@ -162,6 +163,46 @@ export default async function CasePage({ params }: CasePageProps) {
           </article>
         </div>
       </section>
+
+      {meta.flow && (
+        <section data-shot="case-flow" className="relative z-1">
+          <div className="container pb-16 md:pb-24">
+            <h2 className="type-label text-text-3">{meta.flow.title}</h2>
+            <ol className="mt-6 grid gap-x-6 gap-y-10 lg:grid-cols-12">
+              {meta.flow.steps.map((step, i) => {
+                const mobile = step.device === "mobile";
+                return (
+                  <li
+                    key={step.image}
+                    className={mobile ? "lg:col-span-2" : "lg:col-span-5"}
+                  >
+                    <figure>
+                      <BrowserFrame
+                        url={liveUrl}
+                        image={step.image}
+                        alt={step.caption}
+                        sizes={
+                          mobile ? "240px" : "(min-width: 1024px) 480px, 90vw"
+                        }
+                        imageClassName={mobile ? "aspect-[390/844]" : undefined}
+                        className={mobile ? "mx-auto max-w-60" : undefined}
+                        compact={mobile}
+                      />
+                      <figcaption className="text-text-2 mt-4 flex gap-3 text-[0.9375rem] leading-snug">
+                        <span className="type-data text-text-3">
+                          {String(i + 1).padStart(2, "0")}
+                        </span>
+                        {step.caption}
+                      </figcaption>
+                    </figure>
+                  </li>
+                );
+              })}
+            </ol>
+            <p className="text-text-3 mt-8 text-xs">{meta.flow.caption}</p>
+          </div>
+        </section>
+      )}
 
       {next && (
         <Section index="01" eyebrow={t("labels.next")}>

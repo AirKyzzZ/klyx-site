@@ -23,6 +23,10 @@ import { cn } from "@/lib/utils";
 
 const LOCAL_FACTS = ["city", "zone", "travel"] as const;
 
+const BORDEAUX_COORDS = "44.84° N · 0.58° W";
+const FRAME =
+  "border-line-strong overflow-hidden rounded-xl border bg-[linear-gradient(180deg,#1d1915_0%,#15130f_60%,#100f0d_100%)] shadow-[0_0_0_1px_var(--line),0_40px_160px_-40px_var(--glow)] after:absolute after:inset-0 after:-z-1 after:bg-[url(/textures/grain.png)] after:bg-size-[128px] after:mix-blend-overlay";
+
 const delay = (seconds: number) => ({ "--d": `${seconds}s` }) as CSSProperties;
 
 export async function generateMetadata({
@@ -68,6 +72,7 @@ export default async function BordeauxPage({ params }: LocaleParams) {
   const locale = await resolvePageLocale(params);
   const t = await getTranslations({ locale, namespace: "bordeaux" });
   const prices = getPriceValues(locale);
+  const painting = HERO_BACKDROP === "painting";
 
   return (
     <>
@@ -76,11 +81,18 @@ export default async function BordeauxPage({ params }: LocaleParams) {
         className="relative pt-24 pb-16 md:pt-28 md:pb-20"
       >
         <div className="container">
-          <div className="lg:border-line-strong relative isolate lg:flex lg:min-h-[600px] lg:items-center lg:overflow-hidden lg:rounded-xl lg:border lg:bg-[linear-gradient(180deg,#1d1915_0%,#15130f_60%,#100f0d_100%)] lg:shadow-[0_0_0_1px_var(--line),0_40px_160px_-40px_var(--glow)] lg:after:absolute lg:after:inset-0 lg:after:-z-1 lg:after:bg-[url(/textures/grain.png)] lg:after:bg-size-[128px] lg:after:mix-blend-overlay">
+          <div
+            className={cn(
+              "relative isolate lg:flex lg:min-h-[600px] lg:items-center",
+              painting
+                ? "lg:border-line-strong lg:overflow-hidden lg:rounded-xl lg:border lg:bg-[linear-gradient(180deg,#1d1915_0%,#15130f_60%,#100f0d_100%)] lg:shadow-[0_0_0_1px_var(--line),0_40px_160px_-40px_var(--glow)] lg:after:absolute lg:after:inset-0 lg:after:-z-1 lg:after:bg-[url(/textures/grain.png)] lg:after:bg-size-[128px] lg:after:mix-blend-overlay"
+                : `${FRAME} p-5 sm:p-8 lg:p-0`,
+            )}
+          >
             <div
               className={cn(
                 "relative lg:flex lg:h-full lg:w-[52%] lg:flex-col lg:justify-center lg:py-12 lg:pr-16 lg:pl-12",
-                HERO_BACKDROP === "painting" &&
+                painting &&
                   "lg:bg-[linear-gradient(90deg,rgb(20_20_20/0.94)_0%,rgb(20_20_20/0.88)_72%,rgb(20_20_20/0))]",
               )}
             >
@@ -125,10 +137,25 @@ export default async function BordeauxPage({ params }: LocaleParams) {
             {HERO_BACKDROP === "painting" ? (
               <Painting />
             ) : (
-              <AbstractBackdrop
-                variant={HERO_BACKDROP}
-                className="max-lg:hidden"
-              />
+              <>
+                <AbstractBackdrop
+                  variant={HERO_BACKDROP}
+                  className="max-lg:hidden"
+                />
+                <figure
+                  className="hero-in border-line relative mt-10 flex flex-col items-center border-t pt-8 lg:absolute lg:inset-y-0 lg:right-0 lg:mt-0 lg:w-[44%] lg:justify-center lg:border-t-0 lg:pt-0"
+                  style={delay(0.45)}
+                >
+                  <GirondeMap
+                    label={t("local.map")}
+                    className="h-auto w-full max-w-[240px] sm:max-w-[300px] lg:max-w-[340px]"
+                  />
+                  <figcaption className="type-label text-text-3 mt-5 flex flex-col items-center gap-1 text-center">
+                    <span>{t("local.card.zone.value")}</span>
+                    <span>{BORDEAUX_COORDS}</span>
+                  </figcaption>
+                </figure>
+              </>
             )}
           </div>
         </div>
@@ -185,14 +212,16 @@ export default async function BordeauxPage({ params }: LocaleParams) {
       />
 
       <Section index="04" eyebrow={t("eyebrows.local")}>
-        <div className="grid gap-12 lg:grid-cols-12 lg:items-center lg:gap-6">
-          <div className="reveal lg:col-span-6">
+        <div className="grid gap-10 lg:grid-cols-12 lg:gap-6">
+          <div className="reveal space-y-6 lg:col-span-5">
             <SectionHeading
               lead={t("local.title")}
               rest={t("local.titleEmphasis")}
             />
-            <p className="text-text-2 mt-6 max-w-[54ch]">{t("local.body")}</p>
-            <dl className="border-line bg-surface-1 shadow-card mt-10 rounded-md border">
+            <p className="text-text-2 max-w-[54ch]">{t("local.body")}</p>
+          </div>
+          <div className="reveal self-start lg:col-span-6 lg:col-start-7">
+            <dl className="border-line bg-surface-1 shadow-card rounded-md border">
               {LOCAL_FACTS.map((key) => (
                 <div
                   key={key}
@@ -207,12 +236,6 @@ export default async function BordeauxPage({ params }: LocaleParams) {
                 </div>
               ))}
             </dl>
-          </div>
-          <div className="reveal lg:col-span-5 lg:col-start-8">
-            <GirondeMap
-              label={t("local.map")}
-              className="mx-auto h-auto w-full max-w-[360px]"
-            />
           </div>
         </div>
       </Section>
