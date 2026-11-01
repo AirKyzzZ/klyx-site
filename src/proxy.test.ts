@@ -28,6 +28,9 @@ describe("proxy legacy redirects", () => {
   });
 
   it("hands normal pages to next-intl", () => {
-    expect(run("/tarifs").status).not.toBe(308);
+    const response = run("/tarifs");
+    expect(response.headers.get("x-middleware-rewrite")).toContain(
+      "/fr/tarifs",
+    );
   });
 });

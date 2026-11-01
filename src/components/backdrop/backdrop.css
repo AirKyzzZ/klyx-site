@@ -17,12 +17,10 @@
   }
 }
 
-.bd:is([data-backdrop="grid"], [data-backdrop="flow"]) {
-  background: radial-gradient(
-    42% 60% at 18% 92%,
-    rgb(245 78 0 / 0.14),
-    transparent 70%
-  );
+.ls-frame:has(> .bd) {
+  background:
+    radial-gradient(36% 34% at 16% 88%, rgb(245 78 0 / 0.12), transparent 70%),
+    linear-gradient(180deg, #1d1915 0%, #15130f 60%, #100f0d 100%);
 }
 
 .bd-gridline {
@@ -34,7 +32,9 @@
 
 .bd-wire {
   fill: none;
-  stroke: rgb(237 232 222 / 0.12);
+  stroke: rgb(237 232 222 / 0.14);
+  stroke-dasharray: 1 5;
+  stroke-linecap: round;
   stroke-width: 1;
   vector-effect: non-scaling-stroke;
 }
@@ -62,7 +62,7 @@
 
 .bd-flow {
   fill: none;
-  stroke: rgb(237 232 222 / 0.09);
+  stroke: rgb(237 232 222 / 0.14);
   stroke-width: 1;
   vector-effect: non-scaling-stroke;
 }
@@ -73,14 +73,14 @@
   stroke-width: 1.5;
   stroke-linecap: round;
   stroke-dasharray: 6 94;
-  stroke-dashoffset: 6;
+  stroke-dashoffset: -84;
   opacity: 0;
   vector-effect: non-scaling-stroke;
 }
 
 .bd[data-backdrop="mesh"] {
   background:
-    radial-gradient(38% 52% at 16% 80%, rgb(245 78 0 / 0.26), transparent 70%),
+    radial-gradient(38% 52% at 16% 80%, rgb(245 78 0 / 0.16), transparent 70%),
     radial-gradient(
       34% 44% at 86% 14%,
       rgb(227 220 207 / 0.07),
@@ -99,7 +99,7 @@
     inset: -15%;
     background: radial-gradient(
       26% 30% at 34% 72%,
-      rgb(245 78 0 / 0.16),
+      rgb(245 78 0 / 0.1),
       transparent 70%
     );
   }
@@ -132,7 +132,7 @@
 @keyframes bd-flow {
   0% {
     opacity: 0;
-    stroke-dashoffset: 6;
+    stroke-dashoffset: -84;
   }
   10%,
   85% {

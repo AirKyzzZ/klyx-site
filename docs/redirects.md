@@ -1,6 +1,6 @@
 # Legacy WordPress URLs
 
-Live klyx.fr (WordPress) was a single page, so the list is short. Redirects are 308 (permanent) from `next.config.ts` via `src/lib/legacy-urls.ts`; 410s come from `src/proxy.ts`.
+Live klyx.fr (WordPress) was a single page, so the list is short. Redirects are 308 (permanent), defined once in `src/lib/legacy-urls.ts`. `src/proxy.ts` answers them first, before next-intl (`findLegacyRedirect`), because on Netlify the `next.config.ts` redirects run after the proxy and next-intl would swallow the old paths; `next.config.ts` keeps the same list so local `next start` behaves the same. 410s also come from `src/proxy.ts`.
 
 | Old URL | New behaviour |
 |---|---|
@@ -18,4 +18,4 @@ Live klyx.fr (WordPress) was a single page, so the list is short. Redirects are 
 
 `blog.klyx.fr` stays live on its own Vercel project and is not redirected.
 
-Security headers on every response (ported from the old `.htaccess`): `Strict-Transport-Security: max-age=31536000`, `X-Content-Type-Options: nosniff`, `X-Frame-Options: SAMEORIGIN`, `Referrer-Policy: strict-origin-when-cross-origin`, `Permissions-Policy: camera=(), microphone=(), geolocation=()`. `X-Powered-By` is disabled.
+Security headers on every response (ported from the old `.htaccess`): `Strict-Transport-Security: max-age=31536000` (Netlify appends `includeSubDomains; preload` on `*.netlify.app`, so e2e only checks the prefix), `X-Content-Type-Options: nosniff`, `X-Frame-Options: SAMEORIGIN`, `Referrer-Policy: strict-origin-when-cross-origin`, `Permissions-Policy: camera=(), microphone=(), geolocation=()`. `X-Powered-By` is disabled.

@@ -3,7 +3,7 @@ import { expect, type Page, test } from "@playwright/test";
 import en from "../messages/en.json";
 import fr from "../messages/fr.json";
 import {
-  AI_MODEL_LOGOS,
+  AI_MODELS,
   CONNECTED_TOOLS,
   DEPLOYED_TECH,
   type ToolGroup,
@@ -132,8 +132,10 @@ for (const path of ["/", "/services/automatisation-ia"]) {
     for (const node of nodes) {
       expect(node.iconHidden, node.text).toBe("true");
       expect(node.text.trim(), node.text).not.toBe("");
-      if (node.models) expect(node.logos).toEqual([...AI_MODEL_LOGOS]);
-      else expect(node.logos).toHaveLength(1);
+      if (node.models) {
+        expect(node.logos).toEqual(AI_MODELS.map((tool) => tool.logo));
+        for (const { name } of AI_MODELS) expect(node.text).toContain(name);
+      } else expect(node.logos).toHaveLength(1);
     }
   });
 }

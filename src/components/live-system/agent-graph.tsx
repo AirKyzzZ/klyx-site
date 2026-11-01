@@ -24,7 +24,7 @@ import {
   lastEdge,
   terminalNode,
 } from "@/lib/scenarios";
-import { AI_MODEL_LOGOS } from "@/lib/tools";
+import { AI_MODELS } from "@/lib/tools";
 
 const ICONS: Record<NodeIcon, LucideIcon> = {
   inbox: Inbox,
@@ -141,8 +141,8 @@ function NodeGlyph({ node }: { node: GraphNode }) {
   if (node.models) {
     return (
       <span className="ls-models">
-        {AI_MODEL_LOGOS.map((logo) => (
-          <ToolLogo key={logo} logo={logo} size={9} />
+        {AI_MODELS.map(({ logo }) => (
+          <ToolLogo key={logo} logo={logo} size={12} />
         ))}
       </span>
     );
@@ -227,6 +227,11 @@ export function AgentGraph({
                 <span className="ls-node-text">
                   <span className="ls-node-label">{labels[node.id]}</span>
                   <span className="ls-node-meta">{metas[node.id]}</span>
+                  {node.models && (
+                    <span className="sr-only">
+                      {AI_MODELS.map(({ name }) => name).join(", ")}
+                    </span>
+                  )}
                 </span>
                 <span className="ls-dot" aria-hidden="true" />
               </li>

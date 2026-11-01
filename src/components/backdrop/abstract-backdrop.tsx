@@ -6,40 +6,37 @@ import { cn } from "@/lib/utils";
 import "./backdrop.css";
 
 const NODES = [
-  [80, 80],
-  [280, 80],
-  [280, 200],
-  [480, 40],
-  [720, 40],
+  [800, 80],
   [960, 80],
-  [1120, 80],
-  [1120, 280],
-  [1120, 520],
-  [960, 520],
-  [760, 560],
-  [520, 560],
-  [320, 480],
-  [80, 400],
-  [80, 560],
+  [960, 120],
+  [1160, 80],
+  [1160, 240],
+  [1160, 440],
+  [1160, 560],
+  [40, 160],
+  [40, 440],
+  [40, 560],
+  [200, 440],
+  [200, 560],
+  [440, 520],
+  [600, 520],
 ] as const;
 
-const LIT_NODES = new Set([3, 7, 11]);
+const LIT_NODES = new Set([0, 4, 12]);
 
 const WIRES = [
-  "M80 80H280V200",
-  "M280 80V40H720",
-  "M720 40H960V80H1120V280",
-  "M1120 280V520H960",
-  "M960 520H760V560H520",
-  "M520 560H320V480H80V400",
-  "M80 400V560",
+  "M800 80H1160V560",
+  "M960 80V120",
+  "M40 160V560",
+  "M40 440H200V560",
+  "M200 440H440V520H600",
 ];
 
 const PACKETS = [
-  { x: 280, y: 40, dx: 440, dy: 0, duration: 7, delay: 0 },
-  { x: 1120, y: 80, dx: 0, dy: 200, duration: 5, delay: 2 },
-  { x: 960, y: 520, dx: -200, dy: 0, duration: 4, delay: 1 },
-  { x: 320, y: 480, dx: -240, dy: 0, duration: 5, delay: 3 },
+  { x: 1160, y: 120, dx: 0, dy: 400, duration: 7, delay: 0 },
+  { x: 820, y: 80, dx: 320, dy: 0, duration: 5, delay: 2 },
+  { x: 40, y: 200, dx: 0, dy: 320, duration: 6, delay: 1 },
+  { x: 220, y: 440, dx: 200, dy: 0, duration: 4, delay: 3 },
 ];
 
 const FLOWS = [
@@ -53,9 +50,9 @@ const FLOWS = [
 ];
 
 const FLOW_PACKETS = [
-  { path: 1, duration: 9, delay: 0 },
-  { path: 3, duration: 7, delay: 2.5 },
-  { path: 5, duration: 11, delay: 5 },
+  { path: 1, duration: 4, delay: 0 },
+  { path: 3, duration: 3.5, delay: 1.5 },
+  { path: 5, duration: 4.5, delay: 3 },
 ];
 
 const timing = (duration: number, delay: number) =>
@@ -112,20 +109,28 @@ function Constellation() {
 }
 
 function FlowLines() {
+  const gutterId = useId();
   return (
     <svg viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <clipPath id={gutterId}>
+          <rect x="1116" width="84" height="600" />
+        </clipPath>
+      </defs>
       {FLOWS.map((d) => (
         <path key={d} d={d} className="bd-flow" />
       ))}
-      {FLOW_PACKETS.map(({ path, duration, delay }) => (
-        <path
-          key={path}
-          d={FLOWS[path]}
-          pathLength={100}
-          className="bd-flow-packet"
-          style={timing(duration, delay)}
-        />
-      ))}
+      <g clipPath={`url(#${gutterId})`}>
+        {FLOW_PACKETS.map(({ path, duration, delay }) => (
+          <path
+            key={path}
+            d={FLOWS[path]}
+            pathLength={100}
+            className="bd-flow-packet"
+            style={timing(duration, delay)}
+          />
+        ))}
+      </g>
     </svg>
   );
 }

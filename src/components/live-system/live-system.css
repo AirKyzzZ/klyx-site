@@ -336,14 +336,26 @@
   }
 }
 
+.ls-node[data-models] {
+  gap: 5px;
+
+  & .ls-node-icon {
+    width: 26px;
+  }
+}
+
 .ls-models {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 2px;
+  grid-auto-flow: column;
+  gap: 0;
 
   & svg {
-    width: 9px;
-    height: 9px;
+    width: 12px;
+    height: 12px;
+  }
+
+  & > :nth-child(n + 3) {
+    display: none;
   }
 }
 
@@ -715,13 +727,29 @@
       height: 28px;
     }
 
-    & .ls-models svg {
-      width: 11px;
-      height: 11px;
-    }
-
     & .ls-node-label {
       font-size: 0.875rem;
+    }
+  }
+
+  .ls-node[data-models] {
+    gap: 7px;
+
+    & .ls-node-icon {
+      width: 32px;
+      height: 32px;
+    }
+  }
+
+  .ls-models {
+    grid-template-columns: repeat(2, 12px);
+    grid-auto-flow: row;
+    gap: 2px;
+
+    & > :nth-child(n + 3) {
+      display: block;
+      grid-column: span 2;
+      justify-self: center;
     }
   }
 }

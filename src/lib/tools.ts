@@ -68,13 +68,6 @@ export const TOOLS = {
   mcp: { name: "MCP", logo: "mcp" },
 } as const satisfies Record<string, Tool>;
 
-export const AI_MODEL_LOGOS: ToolLogoId[] = [
-  "openai",
-  "claude",
-  "mistral-ai",
-  "google-gemini",
-];
-
 export const WORKFLOW_TOOL_LOGOS: Partial<Record<string, ToolLogoId[]>> = {
   "useCases.realEstate.workflows.visits": ["google", "outlook"],
   "useCases.agencies.workflows.leads": ["hubspot", "pipedrive"],
@@ -108,3 +101,5 @@ export const DEPLOYED_TECH: ToolGroup[] = [
   { key: "models", tools: [TOOLS.claude, TOOLS.openai, TOOLS.mistral] },
   { key: "plumbing", tools: [TOOLS.n8n, TOOLS.mcp] },
 ];
+
+export const AI_MODELS: Tool[] = [TOOLS.openai, TOOLS.claude, TOOLS.mistral];

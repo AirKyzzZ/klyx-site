@@ -2,7 +2,7 @@
 
 Every place a third-party tool could show a logo, what it shows now, and why. Sources and licences per mark are in `docs/ASSETS.md`; risk rows are in `docs/copy/TODO-maxime.md` (launch blockers). Maxime's ruling on 2026-11-01, « Add all, monochrome, log risk », overrides the earlier text-only decisions for Microsoft, Anthropic, OpenAI, Pipedrive, Pennylane, Qonto and NanoClaw.
 
-All marks are monochrome `currentColor`, decorative (`aria-hidden`), next to the written name, under the « marques citées » footnote where they appear in a strip.
+All marks are monochrome `currentColor` and decorative (`aria-hidden`). In the strips (24px) each mark sits above its written name, under the « marques citées » footnote. In the hero, a tool step's mark (14px) sits next to text that names the tool. An AI step's model marks (12px) have no visible name: the hero is labelled « Illustration · scénario type », the names are in visually hidden text for screen readers, and they are written out in the « Technologies que nous déployons » tiles.
 
 ## Placements
 
@@ -16,7 +16,7 @@ All marks are monochrome `currentColor`, decorative (`aria-hidden`), next to the
 | same | OpenAI | logo, 24px (new) | Simple Icons 15.22.0; brand page not readable by script, nominative use |
 | same | NanoClaw | logo, 24px (new) | faithful potrace of the official PNG icon, accepted by Maxime |
 | Hero, agents « tri des demandes » | Email reçu (Gmail), CRM (HubSpot), Slack, Hors lead (Notion) | logo | unchanged |
-| same | L'IA le trie | OpenAI, Claude, Mistral AI, Gemini cluster (new) | AI step; was a generic funnel |
+| same | L'IA le trie | OpenAI, Claude, Mistral AI marks at 12px (new; OpenAI and Claude only on mobile) | AI step; was a generic funnel |
 | Hero, support « réponse client » | Ticket reçu (Zendesk) | Zendesk (new) | step names the tool |
 | same | L'IA cherche (Notion) | Notion | step names the tool; kept over the model cluster |
 | same | Brouillon prêt (modèle IA) | model cluster (new) | AI step |
@@ -48,7 +48,7 @@ All marks are monochrome `currentColor`, decorative (`aria-hidden`), next to the
 | Home FAQ « stack », À propos facts, Bordeaux, GEO titles | text | text | prose and headings |
 | Machine view (`/md/*`) | names | text | markdown has no images by design |
 
-The AI model cluster is static (no rotation): section 2.1 of `DESIGN_DIRECTION.md` forbids decorative loops, and a static 2x2 cluster also covers reduced motion without a second state.
+The model cluster is static (no rotation): section 2.1 of `DESIGN_DIRECTION.md` forbids decorative loops, and a static cluster also covers reduced motion without a second state. Desktop: a 32px tile with OpenAI and Claude on top and Mistral AI under them, 12px each. Mobile: OpenAI and Claude at 12px in a 32x24 slot. Gemini was dropped from the cluster: in one colour its sparkle reads as a generic "AI" star at 12px, not as Gemini. It stays on the GEO « Gemini » node, where the text names it.
 
 ## Logos added
 
