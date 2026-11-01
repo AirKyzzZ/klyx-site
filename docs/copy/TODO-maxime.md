@@ -18,7 +18,7 @@ Do not put the site live until each of these is answered and the page updated.
 | Confidentialité | `privacy.analytics.body` | « No analytics, no ad cookies »: confirm before launch, update if PostHog or any tracker is added |
 | Confidentialité | `privacy.prospection.sources` | Prospect data sources the outreach system actually uses, confirm before launch |
 | Confidentialité | `privacy.prospection.retention` | Prospect data retention period, confirm before launch |
-| Home, Sites | `src/lib/proof/klyx-lighthouse.json` | The score was measured on the local production build (`next start`), not on the live klyx.fr. Rerun `node scripts/lighthouse.mjs --base https://klyx.fr` after deploy and commit the new file |
+| Home, Sites, Création de site | `src/lib/proof/klyx-lighthouse.json` | The current run was made on the local production build, so the file says `status: "local"` and the Sites scenario chip, its « Score Lighthouse réel » caption and the Lighthouse proof card stay hidden. After deploy, run `node scripts/lighthouse.mjs --base https://klyx.fr`, rebuild and commit: they appear on their own once the file says `status: "measured"` for https://klyx.fr |
 
 ## Proof and identity
 
@@ -122,7 +122,7 @@ No marker on these pages. The white-label terms are written as proposals agreed 
 | Confidentialité | `privacy.contactForm.body`, `privacy.analytics.body`, `privacy.prospection.sources`, `privacy.prospection.retention` | Marker removed, sentences unchanged | Retention periods, analytics, prospect sources |
 | Réalisations (all 5) | `content/realisations/*.mdx` | Pending "what we built / result" notes removed | What is yours on each project, stack, year, figures and testimonials |
 | Hop Hop Immo case | `content/realisations/hop-hop-immo.*.mdx` | « L'assistant Hoppy, de la conception à la mise en production. » The « Résultat » section ("no figures until Hop Hop Immo agrees") is removed (R7) | That Klyx did the Hoppy assistant from design to production, and whether Hop Hop Immo agrees to figures |
-| Kenzi case | `content/realisations/kenzi.*.mdx` | « en ligne sur kenzievents.com » removed: https://kenzievents.com returned HTTP 500 on 2026-11-01 (R7). The case `url` still points there | Is the site still live? Fix it or drop the `url` |
+| Kenzi case | `content/realisations/kenzi.*.mdx` | https://kenzievents.com returned HTTP 500 on 2026-11-01 (R7). « en ligne sur kenzievents.com » is removed and the case has `live: false`, so the page and its machine view render no link to the site. The case text stays | Is the site still live? When it answers 200 again, remove `live: false` |
 | Cas d'usage agences | `meta.agencies.description`, `useCases.agencies.hero.titleEmphasis`, `useCases.agencies.card.build`, `useCases.agencies.terms.items.repo` | Softened (R7): « livrés en marque blanche… selon des règles fixées par écrit », h1 « L'IA de vos clients, en marque blanche. », repo line « comme on en convient avec vous » | Same as the agencies terms row above |
 
 ## Local and legal

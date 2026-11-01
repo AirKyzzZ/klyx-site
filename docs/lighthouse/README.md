@@ -9,9 +9,9 @@ node scripts/lighthouse.mjs --base https://klyx.fr   # after deploy
 node scripts/scroll-trace.mjs                  # 60fps scroll trace on /
 ```
 
-`scripts/lighthouse.mjs` runs `lighthouse@12.8.2` with the mobile preset, three times per page, and keeps the median run (by performance) as `docs/lighthouse/<page>.json`. It writes the home scores to `src/lib/proof/klyx-lighthouse.json`, which feeds the Sites scenario chip and the Lighthouse proof card. Rebuild after a run so the pages pick up the new score.
+`scripts/lighthouse.mjs` runs `lighthouse@12.8.2` with the mobile preset, an odd number of times per page (`--runs`, default 3), and keeps the median run (by performance) as `docs/lighthouse/<page>.json`. It writes the home scores and the origin it measured to `src/lib/proof/klyx-lighthouse.json`.
 
-When the run targets localhost, the proof file keeps `url: https://klyx.fr/` and records the local origin in `measuredAt`. Rerun against the live site after deploy (see `docs/copy/TODO-maxime.md`, launch blockers).
+Only a run with `--base https://klyx.fr` writes `status: "measured"`. Any other origin writes `status: "local"`, and `verifyLighthouse` ignores it: the Sites scenario chip, its « Score Lighthouse réel » caption and the Lighthouse proof card stay hidden until the post-deploy run (see `docs/copy/TODO-maxime.md`, launch blockers). Rebuild after a run so the pages pick up the file.
 
 ## Latest scores (2026-11-01, local `next start`, mobile, median of 3)
 

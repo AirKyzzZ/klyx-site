@@ -5,7 +5,7 @@ import { parseArgs } from "node:util";
 
 const LIGHTHOUSE = "lighthouse@12.8.2";
 const PATHS = ["/", "/services/agents-ia", "/tarifs", "/cas-usage/immobilier"];
-const PUBLIC_URL = "https://klyx.fr/";
+const LIVE_ORIGIN = "https://klyx.fr";
 const REPORT_DIR = "docs/lighthouse";
 const PROOF_FILE = "src/lib/proof/klyx-lighthouse.json";
 const CATEGORIES = {
@@ -23,8 +23,8 @@ const { values } = parseArgs({
 });
 const base = values.base.replace(/\/$/, "");
 const runs = Number(values.runs);
-if (!Number.isInteger(runs) || runs < 1) {
-  throw new Error(`--runs must be a positive integer, got ${values.runs}`);
+if (!Number.isInteger(runs) || runs < 1 || runs % 2 === 0) {
+  throw new Error(`--runs must be a positive odd integer, got ${values.runs}`);
 }
 
 function slugOf(path) {
@@ -92,16 +92,13 @@ const results = PATHS.map((path) => {
 });
 
 const home = results.find((result) => result.path === "/");
-const local = !base.startsWith("https://");
+const live = base === LIVE_ORIGIN;
 writeFileSync(
   PROOF_FILE,
   `${JSON.stringify(
     {
-      status: "measured",
-      url: local ? PUBLIC_URL : `${base}/`,
-      measuredAt: local
-        ? `${base}/ (next start, production build)`
-        : `${base}/`,
+      status: live ? "measured" : "local",
+      url: `${base}/`,
       date,
       tool: `${LIGHTHOUSE}, mobile preset, median of ${runs}`,
       scores: home.scores,

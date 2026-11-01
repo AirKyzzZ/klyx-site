@@ -123,3 +123,17 @@ for (const path of [...routePaths, NOT_FOUND_PATH]) {
     expect(scrollWidth).toBeLessThanOrEqual(390);
   });
 }
+
+for (const path of ["/realisations/kenzi", "/en/work/kenzi"]) {
+  test(`${path} links nowhere while kenzievents.com is down`, async ({
+    page,
+    request,
+  }) => {
+    await page.goto(path);
+    await expect(page.locator('a[href*="kenzievents.com"]')).toHaveCount(0);
+    const locale = path.startsWith("/en") ? "" : "/fr";
+    const markdown = await request.get(`/md${locale}${path}`);
+    expect(markdown.status()).toBe(200);
+    expect(await markdown.text()).not.toContain("kenzievents.com");
+  });
+}

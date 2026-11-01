@@ -10,6 +10,7 @@ export type CaseStudyMeta = {
   title: string;
   client: string;
   url: string;
+  live?: boolean;
   year: number;
   summary: string;
   stack: string[];

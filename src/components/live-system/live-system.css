@@ -623,6 +623,10 @@
   margin-top: 12px;
   color: var(--text-3);
   font-size: 0.8125rem;
+
+  @media (width < 768px) {
+    min-height: 2lh;
+  }
 }
 
 .ls[data-paused] *,

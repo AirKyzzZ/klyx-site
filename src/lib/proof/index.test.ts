@@ -33,6 +33,25 @@ describe("verifyLighthouse", () => {
     ).toBeNull();
   });
 
+  it("excludes a local run", () => {
+    expect(
+      verifyLighthouse({
+        ...measured,
+        status: "local",
+        url: "http://localhost:4318/",
+      }),
+    ).toBeNull();
+  });
+
+  it("excludes a measured run that is not on https://klyx.fr", () => {
+    expect(
+      verifyLighthouse({ ...measured, url: "http://localhost:4318/" }),
+    ).toBeNull();
+    expect(
+      verifyLighthouse({ ...measured, url: "https://example.com/" }),
+    ).toBeNull();
+  });
+
   it("keeps a measured run with its url and date", () => {
     expect(verifyLighthouse(measured)).toEqual({
       kind: "lighthouse",

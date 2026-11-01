@@ -45,6 +45,7 @@ const SCORE_KEYS = [
   "seo",
 ] as const;
 const TONES = ["ok", "err", "dim"] as const;
+const LIVE_HOST = "klyx.fr";
 
 type Data = Record<string, unknown>;
 
@@ -68,10 +69,14 @@ function hasStatus(data: unknown, status: string): data is Data {
   return isRecord(data) && data.status === status;
 }
 
+function isLiveKlyx(value: unknown): value is string {
+  return isHttps(value) && new URL(value).hostname === LIVE_HOST;
+}
+
 export function verifyLighthouse(data: unknown): ProofSource | null {
   if (!hasStatus(data, "measured")) return null;
   const { url, date, scores } = data;
-  if (!isHttps(url) || !isText(date) || !isRecord(scores)) return null;
+  if (!isLiveKlyx(url) || !isText(date) || !isRecord(scores)) return null;
   if (!SCORE_KEYS.every((key) => isScore(scores[key]))) return null;
   return {
     kind: "lighthouse",

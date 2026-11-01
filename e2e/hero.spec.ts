@@ -2,6 +2,8 @@ import { expect, test } from "@playwright/test";
 
 import en from "../messages/en.json";
 import fr from "../messages/fr.json";
+import { verifyLighthouse } from "../src/lib/proof";
+import lighthouseData from "../src/lib/proof/klyx-lighthouse.json";
 
 const HOME_TABS = ["agents", "sites", "fde"] as const;
 const agents = fr.liveSystem.scenarios.agents;
@@ -146,10 +148,29 @@ test.describe("home hero", () => {
       }),
     ).toBeVisible();
     await expect(page.locator('[data-ls-stage="agents"]')).toBeHidden();
-    await expect(page.getByText(en.liveSystem.caption)).toBeHidden();
-    await expect(
-      page.getByText(/^Real mobile Lighthouse score of klyx\.fr, measured on /),
-    ).toBeVisible();
+  });
+
+  test("the Sites tab shows a Lighthouse score only from a live klyx.fr run", async ({
+    page,
+  }) => {
+    await page.goto("/en");
+    await page.getByRole("tab", { name: en.liveSystem.tabs.sites }).click();
+    const sites = page.locator('[data-ls-stage="sites"]');
+    const measuredCaption = page.getByText(
+      /^Real mobile Lighthouse score of klyx\.fr, measured on /,
+    );
+    const live = verifyLighthouse(lighthouseData);
+    if (live?.kind === "lighthouse") {
+      await expect(sites.locator("[data-chip]")).toHaveText(
+        `Lighthouse ${live.scores.performance} · klyx.fr`,
+      );
+      await expect(measuredCaption).toBeVisible();
+      await expect(page.getByText(en.liveSystem.caption)).toBeHidden();
+      return;
+    }
+    await expect(sites.locator("[data-chip]")).toHaveCount(0);
+    await expect(measuredCaption).toHaveCount(0);
+    await expect(page.getByText(en.liveSystem.caption)).toBeVisible();
   });
 
   test.describe("on a phone", () => {

@@ -128,21 +128,23 @@ export default async function CasePage({ params }: CasePageProps) {
                 <dd className="type-data text-text mt-2">{fact.value}</dd>
               </div>
             ))}
-            <div>
-              <dt className="type-label text-text-3">{t("labels.url")}</dt>
-              <dd className="type-data mt-2">
-                <a
-                  href={meta.url}
-                  target="_blank"
-                  rel="noopener"
-                  aria-label={`${t("labels.visit")} ${hostOf(meta.url)}`}
-                  className="text-text hover:text-text-2 inline-flex items-center gap-1 underline underline-offset-4 transition-colors"
-                >
-                  {hostOf(meta.url)}
-                  <ArrowUpRight aria-hidden="true" className="size-3.5" />
-                </a>
-              </dd>
-            </div>
+            {meta.live !== false && (
+              <div>
+                <dt className="type-label text-text-3">{t("labels.url")}</dt>
+                <dd className="type-data mt-2">
+                  <a
+                    href={meta.url}
+                    target="_blank"
+                    rel="noopener"
+                    aria-label={`${t("labels.visit")} ${hostOf(meta.url)}`}
+                    className="text-text hover:text-text-2 inline-flex items-center gap-1 underline underline-offset-4 transition-colors"
+                  >
+                    {hostOf(meta.url)}
+                    <ArrowUpRight aria-hidden="true" className="size-3.5" />
+                  </a>
+                </dd>
+              </div>
+            )}
           </dl>
         </div>
       </section>

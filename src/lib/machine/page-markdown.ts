@@ -503,7 +503,7 @@ async function caseStudy(
       labelled(locale, t("labels.year"), String(meta.year)),
       labelled(locale, t("labels.stack"), meta.stack.join(", ")),
     ]),
-    link(t("labels.visit"), meta.url),
+    meta.live !== false && link(t("labels.visit"), meta.url),
     await getMdxBody("realisations", meta.slug, locale),
     ...ctaBlocks(locale, t, "cta", ["book", "quote"]),
   ]);

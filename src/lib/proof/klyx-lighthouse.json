@@ -1,7 +1,6 @@
 {
-  "status": "measured",
-  "url": "https://klyx.fr/",
-  "measuredAt": "http://localhost:4318/ (next start, production build)",
+  "status": "local",
+  "url": "http://localhost:4318/",
   "date": "2026-11-01",
   "tool": "lighthouse@12.8.2, mobile preset, median of 3",
   "scores": {
