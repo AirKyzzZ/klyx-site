@@ -5,6 +5,7 @@ import {
   type ReactNode,
   startTransition,
   useActionState,
+  useEffect,
 } from "react";
 
 import { sendContact } from "@/actions/send-contact";
@@ -22,6 +23,7 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
+import { track } from "@/lib/analytics/track";
 import type { ContactState } from "@/lib/contact-schema";
 
 type FieldCopy = { label: string; placeholder: string };
@@ -56,6 +58,12 @@ export function ContactForm({
     INITIAL_STATE,
   );
   const errors = state.fieldErrors ?? {};
+
+  useEffect(() => {
+    if (state.status !== "idle") {
+      track("contact_submit", { status: state.status });
+    }
+  }, [state]);
 
   if (state.status === "success") {
     return (

@@ -386,6 +386,7 @@ export async function OfferPage({
             </div>
             <div className="reveal lg:col-span-6 lg:col-start-7">
               <OfferLedger
+                trackLocation="offer_page"
                 rows={tiers}
                 labels={{
                   offer: page("ledger.offer"),
@@ -446,7 +447,9 @@ function FdeTermsCard({
             <FeatureList items={messageStrings(t, "deliverables.items")} />
           </div>
           <div className="mt-8">
-            <ActionButton action="quote">{quoteLabel}</ActionButton>
+            <ActionButton trackLocation="offer_page" action="quote">
+              {quoteLabel}
+            </ActionButton>
           </div>
         </div>
         <div className="lg:col-span-5 lg:col-start-8">

@@ -1770,8 +1770,12 @@
       "body": "Call booking runs on Cal.com, which receives what you enter (name, email, time slot). Cal.com's privacy policy applies to that service."
     },
     "analytics": {
-      "title": "Analytics and cookies",
-      "body": "This site uses no analytics tool and no advertising cookies."
+      "title": "Audience measurement and cookies",
+      "body": "We measure traffic on this site with PostHog, on its European infrastructure (PostHog Cloud EU, data hosted in the European Union). It runs without cookies and writes nothing to your browser, neither cookies nor local storage: a visit is not linked to your earlier visits, nor tracked across other sites. We only measure page views, clicks on the booking and quote buttons, and whether a contact form submission succeeded or failed, never its content.",
+      "purpose": "Purpose: aggregate traffic statistics, to learn which pages are useful. This data is not combined with any other processing, not shared or sold, not used for advertising, and IP addresses are not kept. This setup meets the conditions the CNIL (French data protection authority) sets for exempting audience measurement from consent, which is why you see no consent banner.",
+      "retention": "Retention: 13 months at most, set in Klyx's PostHog project.",
+      "optOut": "To object, turn on your browser's \"Do Not Track\" or \"Global Privacy Control\" setting: the tool is then not loaded. A content blocker has the same effect. Since nothing is stored on your device, there is no choice for us to record. You can also write to {email}.",
+      "cookies": "Apart from that, the site sets a single technical cookie that remembers your display language, and no advertising cookies."
     },
     "hosting": {
       "title": "Hosting and transfers",

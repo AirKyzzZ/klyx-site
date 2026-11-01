@@ -325,6 +325,7 @@ export async function SectorPage({
           </div>
           <div className="reveal lg:col-span-6 lg:col-start-7">
             <OfferLedger
+              trackLocation="sector_page"
               rows={tiers}
               labels={{
                 offer: labels("offer"),

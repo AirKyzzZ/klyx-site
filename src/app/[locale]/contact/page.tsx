@@ -106,6 +106,7 @@ export default async function ContactPage({ params }: LocaleParams) {
                 calUrl={site.calUrl}
                 label={t("booking.title")}
                 title={t("booking.frame")}
+                trackLocation="contact_page"
               />
             </div>
           </section>

@@ -1771,7 +1771,11 @@
     },
     "analytics": {
       "title": "Mesure d'audience et cookies",
-      "body": "Ce site n'utilise ni outil de mesure d'audience ni cookie publicitaire."
+      "body": "Nous mesurons la fréquentation du site avec PostHog, sur son infrastructure européenne (PostHog Cloud EU, données hébergées dans l'Union européenne). L'outil fonctionne sans cookie et n'écrit rien dans votre navigateur, ni cookie ni stockage local : une visite n'est pas reliée à vos visites précédentes, ni suivie sur d'autres sites. Seuls sont mesurés les pages vues, les clics sur les boutons de rendez-vous et de devis, et le résultat de l'envoi du formulaire de contact (réussi ou non), jamais son contenu.",
+      "purpose": "Finalité : produire des statistiques de fréquentation agrégées, pour savoir quelles pages servent. Ces données ne sont ni croisées avec d'autres traitements, ni cédées, ni utilisées pour de la publicité, et l'adresse IP n'est pas conservée. Cette mesure remplit les conditions posées par la CNIL pour exempter la mesure d'audience de consentement, c'est pourquoi aucun bandeau ne vous est présenté.",
+      "retention": "Durée de conservation : 13 mois au plus, réglée dans le projet PostHog de Klyx.",
+      "optOut": "Pour vous opposer à cette mesure, activez l'option « Do Not Track » ou « Global Privacy Control » de votre navigateur : l'outil n'est alors pas chargé. Un bloqueur de contenu a le même effet. Comme rien n'est stocké sur votre appareil, il n'y a pas de choix à enregistrer de notre côté. Vous pouvez aussi écrire à {email}.",
+      "cookies": "En dehors de cela, le site dépose un seul cookie technique, qui retient la langue d'affichage, et aucun cookie publicitaire."
     },
     "hosting": {
       "title": "Hébergement et transferts",

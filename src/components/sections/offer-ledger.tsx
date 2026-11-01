@@ -5,6 +5,7 @@ export function OfferLedger({
   rows,
   labels,
   caption,
+  trackLocation,
 }: {
   rows: {
     id: string;
@@ -15,9 +16,14 @@ export function OfferLedger({
   }[];
   labels: { offer: string; duration: string; price: string };
   caption: string;
+  trackLocation: string;
 }) {
   return (
-    <table className="w-full text-left">
+    <table
+      className="w-full text-left"
+      data-track-view="pricing_view"
+      data-track-location={trackLocation}
+    >
       <caption className="type-label text-text-3 caption-bottom pt-4 text-left">
         {caption}
       </caption>

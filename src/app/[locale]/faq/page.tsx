@@ -69,6 +69,7 @@ export default async function FaqPage({ params }: LocaleParams) {
             </p>
             <div className="hero-in mt-7 flex flex-col gap-3 sm:flex-row sm:items-center">
               <ActionButton
+                trackLocation="hero"
                 action="book"
                 size="lg"
                 className="w-full sm:w-auto"
@@ -76,6 +77,7 @@ export default async function FaqPage({ params }: LocaleParams) {
                 {t("hero.ctaPrimary")}
               </ActionButton>
               <ActionButton
+                trackLocation="hero"
                 action="quote"
                 variant="secondary"
                 size="lg"

@@ -1,3 +1,5 @@
+import { Suspense } from "react";
+
 import type { Metadata, Viewport } from "next";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import {
@@ -7,6 +9,7 @@ import {
 } from "next-intl/server";
 import { notFound } from "next/navigation";
 
+import { AnalyticsIsland } from "@/components/analytics/analytics-island";
 import { MachineView } from "@/components/machine-view/machine-view";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
@@ -63,6 +66,9 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
             <main className="relative">{children}</main>
             <SiteFooter />
             <MachineView />
+            <Suspense fallback={null}>
+              <AnalyticsIsland />
+            </Suspense>
           </div>
         </NextIntlClientProvider>
       </body>

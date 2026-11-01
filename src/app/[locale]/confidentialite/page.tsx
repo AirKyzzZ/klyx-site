@@ -7,10 +7,14 @@ import { buildMetadata } from "@/lib/seo";
 import { site } from "@/lib/site";
 
 const SECTIONS = [
-  { key: "contactForm", id: "formulaire" },
-  { key: "booking", id: "rendez-vous" },
-  { key: "analytics", id: "cookies" },
-  { key: "hosting", id: "hebergement" },
+  { key: "contactForm", id: "formulaire", paragraphs: ["body"] },
+  { key: "booking", id: "rendez-vous", paragraphs: ["body"] },
+  {
+    key: "analytics",
+    id: "cookies",
+    paragraphs: ["body", "purpose", "retention", "optOut", "cookies"],
+  },
+  { key: "hosting", id: "hebergement", paragraphs: ["body"] },
 ] as const;
 
 const PROSPECTION_PARAGRAPHS = [
@@ -49,9 +53,11 @@ export default async function PrivacyPage({ params }: LocaleParams) {
       updated={t("updated", { date: updated })}
       intro={t("intro", values)}
     >
-      {SECTIONS.map(({ key, id }) => (
+      {SECTIONS.map(({ key, id, paragraphs }) => (
         <LegalSection key={key} id={id} title={t(`${key}.title`)}>
-          <p>{t(`${key}.body`)}</p>
+          {paragraphs.map((paragraph) => (
+            <p key={paragraph}>{t(`${key}.${paragraph}`, values)}</p>
+          ))}
         </LegalSection>
       ))}
 

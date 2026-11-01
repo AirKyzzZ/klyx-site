@@ -117,6 +117,7 @@ export default async function BordeauxPage({ params }: LocaleParams) {
                 style={delay(0.3)}
               >
                 <ActionButton
+                  trackLocation="hero"
                   action="book"
                   size="lg"
                   className="w-full sm:w-auto"
@@ -124,6 +125,7 @@ export default async function BordeauxPage({ params }: LocaleParams) {
                   {t("hero.ctaPrimary")}
                 </ActionButton>
                 <ActionButton
+                  trackLocation="hero"
                   action="quote"
                   variant="secondary"
                   size="lg"
