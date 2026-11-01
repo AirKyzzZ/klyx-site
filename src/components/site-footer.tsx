@@ -16,8 +16,11 @@ export async function SiteFooter() {
   const t = await getTranslations("footer");
   const nav = await getTranslations("nav");
 
-  const sisterText: Record<(typeof site.sisterSites)[number]["name"], string> =
-    { "Klyx Studio": t("studio"), "Klyx Estate": t("estate") };
+  const sisterText: Partial<
+    Record<(typeof site.sisterSites)[number]["name"], string>
+  > = {
+    "Klyx Estate": t("estate"),
+  };
 
   const offerLinks = [
     { href: "/services/creation-site-web", label: nav("sites") },
@@ -123,9 +126,11 @@ export async function SiteFooter() {
                   {new URL(sister.url).host}
                   <ArrowUpRight className="size-3.5" />
                 </a>
-                <p className="text-text-3 text-[0.8125rem] leading-snug">
-                  {sisterText[sister.name]}
-                </p>
+                {sisterText[sister.name] && (
+                  <p className="text-text-3 text-[0.8125rem] leading-snug">
+                    {sisterText[sister.name]}
+                  </p>
+                )}
               </li>
             ))}
           </ul>

@@ -158,11 +158,7 @@ async function home(locale: Locale): Promise<string> {
   return doc([
     ...intro(locale, "/", heroTitle(t)),
     t("hero.subtitle"),
-    list([
-      t("fold.repo"),
-      t("fold.prices"),
-      t("fold.base"),
-    ]),
+    list([t("fold.repo"), t("fold.prices"), t("fold.base")]),
     `## ${sectionTitle(t, "offers")}`,
     t("offers.subtitle"),
     ...HOME_OFFER_CARDS.flatMap((card) => [
@@ -467,8 +463,9 @@ async function about(locale: Locale): Promise<string> {
   const trust = messageList(t, "trust.items", ["label", "value"], {
     github: site.socials.github.replace("https://", ""),
   });
-  const sisterText = {
-    "Klyx Studio": t("lines.studio"),
+  const sisterText: Partial<
+    Record<(typeof site.sisterSites)[number]["name"], string>
+  > = {
     "Klyx Estate": t("lines.estate"),
   };
   const citeme = getSiteShot("citeme");
@@ -495,9 +492,10 @@ async function about(locale: Locale): Promise<string> {
     citeme && link("CiteMe", citeme.url),
     `## ${t("lines.title")}`,
     list(
-      site.sisterSites.map(
-        (sister) =>
-          `${sisterText[sister.name]} ${link(new URL(sister.url).host, sister.url)}`,
+      site.sisterSites.map((sister) =>
+        [sisterText[sister.name], link(new URL(sister.url).host, sister.url)]
+          .filter(Boolean)
+          .join(" "),
       ),
     ),
     `## ${sectionTitle(t, "trust")}`,

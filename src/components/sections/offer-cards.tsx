@@ -51,7 +51,7 @@ function Connector() {
     <svg
       viewBox="0 0 40 8"
       preserveAspectRatio="none"
-      className="h-2 min-w-4 flex-1"
+      className="h-2 w-0 min-w-4 flex-1"
       aria-hidden="true"
     >
       <path
@@ -77,6 +77,7 @@ function FlowGlyph({
     <div
       className="border-line bg-bg-sunken/70 flex items-center rounded-md border px-3 py-5 sm:px-4"
       aria-hidden="true"
+      data-flow-glyph
     >
       {steps.map((step, i) => {
         const Icon = icons[i];
@@ -130,7 +131,7 @@ export function OfferCards({
 
       <ul className="reveal border-line bg-line mt-12 grid gap-px overflow-hidden rounded-md border md:mt-16 lg:grid-cols-3">
         {items.map((item, i) => (
-          <li key={item.href} className="bg-bg flex">
+          <li key={item.href} data-offer-card className="bg-bg flex min-w-0">
             <Link
               href={item.href}
               data-spotlight=""

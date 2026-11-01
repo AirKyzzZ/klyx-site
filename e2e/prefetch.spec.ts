@@ -15,10 +15,7 @@ for (const path of EN_PAGES) {
     });
     await page.reload();
     await page.waitForLoadState("networkidle", { timeout: 10_000 });
-    await page
-      .getByRole("link", { name: "FR", exact: true })
-      .first()
-      .hover();
+    await page.getByRole("link", { name: "FR", exact: true }).first().hover();
     await page.waitForTimeout(3000);
     const repeated = [...counts].filter(
       ([, count]) => count > MAX_REQUESTS_PER_URL,

@@ -5,7 +5,7 @@
     "groupBuild": "Build",
     "groupAdvise": "Advise",
     "sites": "Websites and landing pages",
-    "agents": "AI and agents",
+    "agents": "AI agents",
     "fde": "Forward Deployed Engineer",
     "cases": "Work",
     "pricing": "Pricing",
@@ -33,7 +33,6 @@
     "companyTitle": "Klyx",
     "legalTitle": "Legal",
     "sisterSitesTitle": "Other Klyx lines",
-    "studio": "Klyx Studio",
     "estate": "Klyx Estate: films and visuals to launch high-end property listings.",
     "legal": "Legal notice",
     "privacy": "Privacy",
@@ -199,7 +198,7 @@
           "lead": {
             "role": "lead engineer",
             "who": "Maxime Mansiet",
-            "scope": "your contact, scoping, review, shipping"
+            "scope": "your contact, scoping, follow-up, shipping"
           },
           "agents": {
             "role": "agents",
@@ -1393,7 +1392,6 @@
     },
     "lines": {
       "title": "Other Klyx lines",
-      "studio": "Klyx Studio",
       "estate": "Klyx Estate: films and visuals to launch high-end property listings."
     },
     "cta": {
@@ -1753,7 +1751,7 @@
   },
   "liveSystem": {
     "label": "Illustration · sample run",
-    "caption": "Examples of what we build: the repetitive work runs on its own, and your team keeps its time for clients. Names and values are fictional.",
+    "caption": "Three examples of what we deliver, from the first step to production. Names and values are fictional.",
     "tablist": "Scenarios",
     "trace": "log",
     "run": {
@@ -1818,13 +1816,13 @@
         "trace": {
           "push": "Change pushed",
           "build": "Building the site",
-          "built": "Site built, static pages",
+          "built": "Site built, ready to go",
           "lighthouse": "Mobile speed test",
           "deploy": "Publishing to klyx.fr",
           "retry": "Server slow, trying again",
           "deployed": "Live on klyx.fr",
-          "sitemap": "sitemap.xml updated",
-          "llms": "llms.txt ready for AI"
+          "sitemap": "Site map updated",
+          "llms": "Ready for AI engines to read"
         },
         "chip": "Lighthouse {score} · klyx.fr",
         "chipPending": "Lighthouse · measuring"
@@ -1849,12 +1847,12 @@
         },
         "trace": {
           "ticket": "Ticket: CSV export is slow",
-          "branch": "Branch fix/export-csv created",
+          "branch": "Fix under way on the CSV export",
           "read": "AI agent · reads 14 files",
           "testFail": "A test fails, we fix it",
-          "fix": "Query split into pages",
+          "fix": "Export split into batches",
           "testPass": "128 tests pass",
-          "pr": "Fix proposed (PR #87)",
+          "pr": "Fix sent for review",
           "review": "Reviewed, 1 comment handled",
           "merged": "Approved and shipped"
         },

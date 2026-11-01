@@ -45,8 +45,9 @@ export default async function AboutPage({ params }: LocaleParams) {
     github: site.socials.github.replace("https://", ""),
   };
   const trustKeys = messageKeys(t.raw("trust.items"));
-  const sisterText = {
-    "Klyx Studio": t("lines.studio"),
+  const sisterText: Partial<
+    Record<(typeof site.sisterSites)[number]["name"], string>
+  > = {
     "Klyx Estate": t("lines.estate"),
   };
   const citeme = getSiteShot("citeme");
@@ -168,9 +169,11 @@ export default async function AboutPage({ params }: LocaleParams) {
                     {new URL(sister.url).host}
                     <ArrowUpRight aria-hidden="true" className="size-3.5" />
                   </a>
-                  <p className="text-text-2 mt-2 text-[0.9375rem] leading-normal">
-                    {sisterText[sister.name]}
-                  </p>
+                  {sisterText[sister.name] && (
+                    <p className="text-text-2 mt-2 text-[0.9375rem] leading-normal">
+                      {sisterText[sister.name]}
+                    </p>
+                  )}
                 </li>
               ))}
             </ul>

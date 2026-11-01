@@ -19,7 +19,7 @@ Exception: the home page and À propos show no `TODO(maxime)` marker (review of 
 | Home, Offres IA, Bordeaux | `home.faq.items.data.answer`, `agents.faq.items.data.answer`, `bordeaux.faq.items.data.answer` | Data goes through a model provider's API (e.g. OpenAI, Anthropic), which by default does not train on API data | Which providers you use by default, and that their API terms still say this. Marker removed from the home FAQ (the sentence only states the providers' public API defaults) |
 | Offres IA | `agents.proof.body` | Hoppy (Hop Hop Immo) and CiteMe are "already in production" | What exactly was built on Hoppy, and can Hop Hop Immo be named this way? |
 | FDE | `fde.proof.body` | Public commit history, PRs to show | GitHub profile to link; Credo-ts PRs merged under your handle (do not say « contributeur » unless merged); CiteMe PR links |
-| Footer, À propos | `footer.studio`, `about.lines.studio` | One sentence on studio.klyx.fr | What studio.klyx.fr sells, in one line. Softened: the line now just reads « Klyx Studio » next to the link |
+| Footer, À propos | `footer.studio`, `about.lines.studio` | One sentence on studio.klyx.fr | What studio.klyx.fr sells, in one line. Softened: the keys are removed and only the studio.klyx.fr link renders until you give the sentence (add `footer.studio` and `about.lines.studio` back, FR and EN) |
 
 ## Offers and prices
 

@@ -5,7 +5,7 @@
     "groupBuild": "Construire",
     "groupAdvise": "Conseiller",
     "sites": "Sites et landing pages",
-    "agents": "IA et agents",
+    "agents": "Agents IA",
     "fde": "Forward Deployed Engineer",
     "cases": "Réalisations",
     "pricing": "Tarifs",
@@ -33,7 +33,6 @@
     "companyTitle": "Klyx",
     "legalTitle": "Informations",
     "sisterSitesTitle": "Les autres activités Klyx",
-    "studio": "Klyx Studio",
     "estate": "Klyx Estate : des films et des visuels pour lancer les mandats immobiliers de prestige.",
     "legal": "Mentions légales",
     "privacy": "Confidentialité",
@@ -199,7 +198,7 @@
           "lead": {
             "role": "lead engineer",
             "who": "Maxime Mansiet",
-            "scope": "votre interlocuteur, cadrage, revue, mise en prod"
+            "scope": "votre interlocuteur, cadrage, suivi, mise en prod"
           },
           "agents": {
             "role": "agents",
@@ -1393,7 +1392,6 @@
     },
     "lines": {
       "title": "Les autres activités Klyx",
-      "studio": "Klyx Studio",
       "estate": "Klyx Estate : des films et des visuels pour lancer les mandats immobiliers de prestige."
     },
     "cta": {
@@ -1753,7 +1751,7 @@
   },
   "liveSystem": {
     "label": "Illustration · scénario type",
-    "caption": "Exemples de ce qu'on construit : le travail répétitif se fait tout seul, et votre équipe garde son temps pour ses clients. Noms et valeurs fictifs.",
+    "caption": "Trois exemples de ce qu'on livre, de la première étape à la mise en production. Noms et valeurs fictifs.",
     "tablist": "Scénarios",
     "trace": "journal",
     "run": {
@@ -1818,13 +1816,13 @@
         "trace": {
           "push": "Modification envoyée",
           "build": "Compilation du site",
-          "built": "Site compilé, pages statiques",
+          "built": "Site compilé, prêt à partir",
           "lighthouse": "Test de vitesse sur mobile",
           "deploy": "Mise en ligne sur klyx.fr",
           "retry": "Serveur lent, nouvel essai",
           "deployed": "En ligne sur klyx.fr",
-          "sitemap": "sitemap.xml à jour",
-          "llms": "llms.txt prêt pour les IA"
+          "sitemap": "Plan du site à jour",
+          "llms": "Prêt à être lu par les IA"
         },
         "chip": "Lighthouse {score} · klyx.fr",
         "chipPending": "Lighthouse · mesure en cours"
@@ -1849,12 +1847,12 @@
         },
         "trace": {
           "ticket": "Ticket : l'export CSV est lent",
-          "branch": "Branche fix/export-csv créée",
+          "branch": "Correctif en cours sur l'export CSV",
           "read": "agent IA · lit 14 fichiers",
           "testFail": "Un test échoue, on corrige",
-          "fix": "Requête découpée en pages",
+          "fix": "Export découpé en petits lots",
           "testPass": "128 tests passent",
-          "pr": "Correctif proposé (PR #87)",
+          "pr": "Correctif envoyé en relecture",
           "review": "Relu, 1 remarque traitée",
           "merged": "Validé et mis en prod"
         },
