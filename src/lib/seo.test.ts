@@ -52,12 +52,34 @@ describe("buildMetadata", () => {
     });
     const cases = buildMetadata({
       locale: "fr",
-      pathname: "/realisations",
-      title: "Réalisations",
-      description: "Projets.",
+      pathname: "/realisations/[slug]",
+      params: { slug: "citeme" },
+      title: "CiteMe",
+      description: "Projet.",
+      type: "article",
     });
     expect(cases.openGraph).toMatchObject({
-      images: [{ url: "https://klyx.fr/fr/opengraph-image" }],
+      type: "article",
+      images: [
+        { url: "https://klyx.fr/fr/realisations/citeme/opengraph-image" },
+      ],
+    });
+    expect(cases.twitter).toMatchObject({
+      card: "summary_large_image",
+      title: "CiteMe",
+      images: [
+        { url: "https://klyx.fr/fr/realisations/citeme/opengraph-image" },
+      ],
+    });
+    const legal = buildMetadata({
+      locale: "en",
+      pathname: "/mentions-legales",
+      title: "Legal notice",
+      description: "Legal.",
+    });
+    expect(legal.openGraph).toMatchObject({
+      locale: "en_US",
+      images: [{ url: "https://klyx.fr/en/opengraph-image" }],
     });
   });
 

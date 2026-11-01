@@ -18,7 +18,7 @@ What changed for each item in `round-2.md` §3, plus the round-1 items it flagge
 9. **Home tools.** New connection map: Email, Données, Site/boutique → AI agent node (runs on n8n, Make) → CRM, Équipe, Compta, with dashed wires, logos per group. The full 18-tile grid with names sits in a `<details>` under it; the brand note stays visible.
 10. **Service méthode table.** Removed from agents IA, audit, automatisation and GEO (they already have journal, livrable, exemples, mesure). Kept on sites, FDE, Bordeaux and agences with page-specific headings (« Du brief à la mise en ligne, », « Un ingénieur dans votre équipe, semaine après semaine. », « Du premier échange au suivi, »). Machine view follows.
 11. **Offres window.** All tier buttons are ghost; `highlighted` is gone from the config. Agents IA drops §08 prix (same three items as §03); the tarifs link and sector links move under the offers window.
-12. **Home hero at 1440.** Graph and journal are side by side and vertically centred, the journal fills the right column, and the result chip lives in the journal footer (the floating wire is gone). The AI node uses one neutral glyph; model names stay in screen-reader text.
+12. **Home hero at 1440.** Graph and journal are side by side and vertically centred, the journal fills the right column, and the result chip lives in the journal footer (the floating wire is gone). The AI node keeps the real model marks (OpenAI, Claude, Mistral: 3 on desktop, 2 on phones, names in screen-reader text): the reviewer's neutral-glyph suggestion was overruled by the controller, since Maxime asked for real logos.
 13. **À propos hero.** The GitHub contribution window replaces `klyx --info` in the hero; `klyx --info` moves to the lead engineer section. No portrait yet (TODO row from round 1).
 14. **Tarifs marché.** The one-row `marche.csv` window is folded into one sourced sentence under the price table (Studeria link, checked 31 Oct 2026, compared with the FDE day rate). The section and its index are gone.
 15. **Agences marque blanche.** Commitments in Geist 15px, mono only for `01` to `06`.
@@ -29,6 +29,12 @@ What changed for each item in `round-2.md` §3, plus the round-1 items it flagge
 20. **768 home offers.** Pipelines keep intrinsic width from 640 to 1023px, stretch only on phones and inside the desktop column.
 
 Round-1 leftovers: 3 (legal) per ruling; 6, 7, 9, 11, 13, 21, 22, 25 and the FDE wording are covered above; 19 (periods, serif in case h1s) above.
+
+## Favicon and social cards (added to this round)
+
+- Favicon set traced from `public/brand/klyx-black.png` (potrace): `src/app/icon.svg` (ink mark, light mark under `prefers-color-scheme: dark`), `src/app/favicon.ico` (16/32/48), `src/app/apple-icon.png` (180), `public/icon-192.png` and `public/icon-512.png` (light mark on `--bg`), and `src/app/manifest.ts` (Klyx, `#141414` theme and background).
+- `buildMetadata` now sets Twitter `summary_large_image` (title, description, image), `og:locale` `fr_FR` / `en_US` with the other one as alternate, and `og:type` `article` for case studies and blog posts. Every page uses a branded 1200x630 image: new `opengraph-image` routes for à propos, Bordeaux, cas d'usage and its three sectors, contact, FAQ, réalisations and each case study. Legal, privacy and blog fall back to the home image.
+- `e2e/social-meta.spec.ts` checks these tags and fetches the image (PNG, 1200x630) on every route in both locales, plus the icon and manifest links and files.
 
 ## Gates
 
