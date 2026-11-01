@@ -110,10 +110,11 @@
       "label": "Tools we connect",
       "groups": {
         "email": "Email",
-        "data": "Sheets and databases",
+        "data": "Data",
         "crm": "CRM",
         "team": "Team",
-        "sales": "Sales and accounting",
+        "commerce": "Site, store",
+        "finance": "Accounting",
         "automation": "Automation"
       },
       "note": "Brands mentioned belong to their respective owners. Klyx is neither affiliated with nor a partner of these vendors."
@@ -1659,6 +1660,18 @@
       "body": "How your data is collected and used is described in the privacy policy.",
       "link": "Privacy policy"
     },
+    "credits": {
+      "title": "Credits",
+      "trademarks": "Tool names and logos on this site are trademarks of their respective owners. They show the tools Klyx connects or deploys. Klyx is neither affiliated with nor a partner of these vendors.",
+      "source": "source",
+      "license": "license",
+      "items": {
+        "mcp": "Model Context Protocol logo © Model Context Protocol contributors, licensed under CC BY 4.0. Changed: symbol only, recoloured to monochrome.",
+        "simpleIcons": "Logo paths for Gmail, Google Sheets, Notion, Airtable, HubSpot, Slack, WhatsApp, Shopify, WordPress, Stripe, Make, n8n and Mistral AI: Simple Icons, CC0.",
+        "hermes": "Hermes Agent icon © Nous Research, white version from the MIT-licensed repository.",
+        "openclaw": "OpenClaw mascot, MIT-licensed repository, rendered in monochrome."
+      }
+    },
     "updated": "Last updated: {date}"
   },
   "privacy": {
@@ -1790,14 +1803,14 @@
           "classifier": "AI sorts it",
           "crm": "CRM updated",
           "slack": "Team notified",
-          "archive": "Set aside"
+          "archive": "Not a lead"
         },
         "meta": {
           "inbox": "Gmail",
           "classifier": "AI model · sort",
           "crm": "HubSpot",
           "slack": "Slack",
-          "archive": "non-lead"
+          "archive": "Notion"
         },
         "trace": {
           "watch": "Email in: quote request",

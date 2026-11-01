@@ -135,7 +135,7 @@ export const scenarios: Record<ScenarioId, Scenario> = {
       ["classifier", "filter", 38, 28, 28, 30],
       ["crm", "database", 62, 72, 28, 52, "hubspot"],
       ["slack", "message", 87, 28, 28, 74, "slack"],
-      ["archive", "file", 38, 72, 77, 30],
+      ["archive", "file", 38, 72, 77, 30, "notion"],
     ],
     edges: [
       ["inbox", "classifier"],

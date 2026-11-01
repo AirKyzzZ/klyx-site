@@ -241,6 +241,16 @@ describe.each(routing.locales)("pageMarkdown (%s)", (locale) => {
     expect(sites).not.toContain(page("stack.label"));
   });
 
+  it("carries the logo credits on the legal page", async () => {
+    const t = getStaticTranslator(locale, "legal");
+    const markdown = await pageMarkdown(locale, {
+      pathname: "/mentions-legales",
+    });
+    expect(markdown).toContain(t("credits.trademarks"));
+    expect(markdown).toContain(t("credits.items.mcp"));
+    expect(markdown).toContain("https://creativecommons.org/licenses/by/4.0/");
+  });
+
   it("resolves every page from its own markdown href", async () => {
     for (const page of await machinePages(locale)) {
       const segments = pageMarkdownHref(locale, page)

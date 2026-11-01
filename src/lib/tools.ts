@@ -36,6 +36,7 @@ export const TOOLS = {
   wordpress: { name: "WordPress", logo: "wordpress" },
   stripe: { name: "Stripe", logo: "stripe" },
   pennylane: { name: "Pennylane" },
+  qonto: { name: "Qonto" },
   make: { name: "Make", logo: "make" },
   hermesAgent: { name: "Hermes Agent", logo: "hermes-agent" },
   openclaw: { name: "OpenClaw", logo: "openclaw" },
@@ -56,11 +57,9 @@ export const CONNECTED_TOOLS: ToolGroup[] = [
   },
   { key: "crm", tools: [TOOLS.hubspot, TOOLS.pipedrive] },
   { key: "team", tools: [TOOLS.slack, TOOLS.teams, TOOLS.whatsapp] },
-  {
-    key: "sales",
-    tools: [TOOLS.shopify, TOOLS.wordpress, TOOLS.stripe, TOOLS.pennylane],
-  },
-  { key: "automation", tools: [TOOLS.make] },
+  { key: "commerce", tools: [TOOLS.wordpress, TOOLS.shopify, TOOLS.stripe] },
+  { key: "finance", tools: [TOOLS.pennylane, TOOLS.qonto] },
+  { key: "automation", tools: [TOOLS.n8n, TOOLS.make] },
 ];
 
 export const DEPLOYED_TECH: ToolGroup[] = [

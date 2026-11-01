@@ -1,8 +1,7 @@
 import type { ComponentType } from "react";
 
-import Image from "next/image";
-
 import type { ToolLogoId } from "@/lib/tools";
+import { cn } from "@/lib/utils";
 
 import { AirtableLogo } from "./airtable-logo";
 import { GmailLogo } from "./gmail-logo";
@@ -53,15 +52,14 @@ export function ToolLogo({
 }) {
   if (logo === "hermes-agent") {
     return (
-      <Image
-        src="/logos/hermes-agent.webp"
-        width={size}
-        height={size}
-        alt=""
+      <span
         aria-hidden="true"
-        unoptimized
         data-logo={logo}
-        className={className}
+        className={cn(
+          "inline-block bg-current [mask:url(/logos/hermes-agent.webp)_center/contain_no-repeat]",
+          className,
+        )}
+        style={{ width: size, height: size }}
       />
     );
   }

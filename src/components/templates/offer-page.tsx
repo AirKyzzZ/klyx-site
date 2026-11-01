@@ -342,6 +342,7 @@ export async function OfferPage({
             label: page(`stack.groups.${group.key}`),
           }))}
           note={page("stack.note")}
+          layout="strip"
         />
       )}
 

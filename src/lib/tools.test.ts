@@ -6,18 +6,19 @@ const connected = CONNECTED_TOOLS.flatMap((group) => group.tools);
 const AUTOMATION_LOGOS = new Set(["make", "n8n", "zapier"]);
 
 describe("tools", () => {
-  it("lists 12 to 16 connected tools, each once", () => {
+  it("lists 12 to 18 connected tools, each once", () => {
     expect(connected.length).toBeGreaterThanOrEqual(12);
-    expect(connected.length).toBeLessThanOrEqual(16);
+    expect(connected.length).toBeLessThanOrEqual(18);
     const names = connected.map((tool) => tool.name);
     expect(new Set(names).size).toBe(names.length);
   });
 
-  it("shows at most one automation logo among connected tools", () => {
-    const logos = connected.filter(
-      (tool) => tool.logo && AUTOMATION_LOGOS.has(tool.logo),
+  it("shows n8n, the automation tool we deploy, among connected tools", () => {
+    const logos = connected.flatMap((tool) =>
+      tool.logo && AUTOMATION_LOGOS.has(tool.logo) ? [tool.logo] : [],
     );
-    expect(logos.length).toBeLessThanOrEqual(1);
+    expect(logos).toContain("n8n");
+    expect(logos).not.toContain("zapier");
   });
 
   it("keeps text-only names for brands without a usable logo licence", () => {
@@ -27,6 +28,7 @@ describe("tools", () => {
       TOOLS.teams,
       TOOLS.pipedrive,
       TOOLS.pennylane,
+      TOOLS.qonto,
       TOOLS.claude,
       TOOLS.claudeCode,
       TOOLS.openai,

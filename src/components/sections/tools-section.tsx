@@ -1,8 +1,14 @@
 import { ToolLogo } from "@/components/logos/tool-logo";
 import { Section, SectionHeading } from "@/components/section";
 import type { Tool } from "@/lib/tools";
+import { cn } from "@/lib/utils";
 
 export type ToolRow = { key: string; label: string; tools: Tool[] };
+
+const COLUMNS = {
+  grid: "grid-cols-3 md:grid-cols-4 lg:grid-cols-6",
+  strip: "grid-cols-3 xl:grid-cols-9",
+};
 
 export function ToolsSection({
   index,
@@ -13,6 +19,7 @@ export function ToolsSection({
   label,
   rows,
   note,
+  layout = "grid",
 }: {
   index: string;
   eyebrow: string;
@@ -22,6 +29,7 @@ export function ToolsSection({
   label: string;
   rows: ToolRow[];
   note: string;
+  layout?: keyof typeof COLUMNS;
 }) {
   return (
     <Section index={index} eyebrow={eyebrow}>
@@ -37,34 +45,38 @@ export function ToolsSection({
       </div>
       <div className="reveal mt-12 md:mt-16" data-tools>
         <h3 className="type-label text-text-2">{label}</h3>
-        <dl className="border-line mt-4 border-t">
-          {rows.map((row) => (
-            <div
-              key={row.key}
-              className="border-line grid gap-3 border-b py-4 md:grid-cols-12 md:items-center md:gap-6"
-            >
-              <dt className="type-label text-text-3 md:col-span-3">
-                {row.label}
-              </dt>
-              <dd className="md:col-span-9">
-                <ul className="flex flex-wrap gap-2">
-                  {row.tools.map((tool) => (
-                    <li
-                      key={tool.name}
-                      data-tool={tool.name}
-                      className="border-line bg-surface-1 text-text-2 hover:border-line-strong hover:text-text inline-flex h-9 items-center gap-2 rounded-sm border px-3 text-sm leading-none transition-colors duration-(--d-fast)"
-                    >
-                      {tool.logo && (
-                        <ToolLogo logo={tool.logo} className="shrink-0" />
-                      )}
+        <ul
+          className={cn(
+            "mt-4 grid auto-rows-fr gap-2 sm:gap-3",
+            COLUMNS[layout],
+          )}
+        >
+          {rows.flatMap((row) =>
+            row.tools.map((tool) => (
+              <li
+                key={tool.name}
+                data-tool={tool.name}
+                className="border-line bg-surface-1 text-text-2 relative flex min-h-24 flex-col items-center justify-center gap-2 rounded-sm border px-2 pt-6 pb-3 text-center shadow-[inset_0_1px_0_var(--highlight)]"
+              >
+                <span className="text-text-3 absolute top-2 left-2.5 font-mono text-[0.625rem] leading-none tracking-wide uppercase">
+                  {row.label}
+                </span>
+                {tool.logo ? (
+                  <>
+                    <ToolLogo logo={tool.logo} size={24} className="shrink-0" />
+                    <span className="font-mono text-[0.6875rem] leading-tight">
                       {tool.name}
-                    </li>
-                  ))}
-                </ul>
-              </dd>
-            </div>
-          ))}
-        </dl>
+                    </span>
+                  </>
+                ) : (
+                  <span className="text-[0.9375rem] leading-tight font-semibold tracking-[-0.02em]">
+                    {tool.name}
+                  </span>
+                )}
+              </li>
+            )),
+          )}
+        </ul>
         <p className="text-text-3 mt-4 max-w-[72ch] text-xs leading-relaxed">
           {note}
         </p>

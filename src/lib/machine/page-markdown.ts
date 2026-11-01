@@ -24,6 +24,7 @@ import {
   PRICE_GROUPS,
 } from "@/lib/offers";
 import { type AppPathname, absoluteUrl } from "@/lib/seo";
+import { CREDITS } from "@/lib/credits";
 import { getSiteShot } from "@/lib/proof";
 import { scenarios } from "@/lib/scenarios";
 import { site, socialLinks } from "@/lib/site";
@@ -643,6 +644,19 @@ async function legal(locale: Locale): Promise<string> {
     t("hosting.body"),
     `## ${t("ip.title")}`,
     t("ip.body"),
+    `## ${t("credits.title")}`,
+    t("credits.trademarks"),
+    list(
+      CREDITS.map((credit) =>
+        [
+          t(`credits.items.${credit.key}`),
+          link(t("credits.source"), credit.source),
+          credit.license && link(t("credits.license"), credit.license),
+        ]
+          .filter(Boolean)
+          .join(" "),
+      ),
+    ),
     `## ${t("data.title")}`,
     t("data.body"),
     link(t("data.link"), absoluteUrl(locale, "/confidentialite")),

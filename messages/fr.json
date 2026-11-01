@@ -110,10 +110,11 @@
       "label": "Outils que nous connectons",
       "groups": {
         "email": "Email",
-        "data": "Tableurs et bases",
+        "data": "Données",
         "crm": "CRM",
         "team": "Équipe",
-        "sales": "Vente et compta",
+        "commerce": "Site, boutique",
+        "finance": "Compta",
         "automation": "Automatisation"
       },
       "note": "Les marques citées appartiennent à leurs propriétaires respectifs. Klyx n'est ni affilié ni partenaire de ces éditeurs."
@@ -1659,6 +1660,18 @@
       "body": "La collecte et l'usage de vos données sont décrits dans la politique de confidentialité.",
       "link": "Politique de confidentialité"
     },
+    "credits": {
+      "title": "Crédits",
+      "trademarks": "Les noms et logos d'outils cités sur ce site sont des marques de leurs propriétaires respectifs. Ils indiquent les outils que Klyx connecte ou déploie. Klyx n'est ni affilié ni partenaire de ces éditeurs.",
+      "source": "source",
+      "license": "licence",
+      "items": {
+        "mcp": "Logo Model Context Protocol © Model Context Protocol contributors, sous licence CC BY 4.0. Modifié : symbole seul, recoloré en monochrome.",
+        "simpleIcons": "Tracés des logos Gmail, Google Sheets, Notion, Airtable, HubSpot, Slack, WhatsApp, Shopify, WordPress, Stripe, Make, n8n et Mistral AI : Simple Icons, CC0.",
+        "hermes": "Icône Hermes Agent © Nous Research, version blanche du dépôt sous licence MIT.",
+        "openclaw": "Mascotte OpenClaw, dépôt sous licence MIT, rendue en monochrome."
+      }
+    },
     "updated": "Dernière mise à jour : {date}"
   },
   "privacy": {
@@ -1790,14 +1803,14 @@
           "classifier": "L'IA le trie",
           "crm": "CRM à jour",
           "slack": "Équipe avertie",
-          "archive": "Mis de côté"
+          "archive": "Hors lead"
         },
         "meta": {
           "inbox": "Gmail",
           "classifier": "modèle IA · tri",
           "crm": "HubSpot",
           "slack": "Slack",
-          "archive": "hors lead"
+          "archive": "Notion"
         },
         "trace": {
           "watch": "Email reçu : demande de devis",

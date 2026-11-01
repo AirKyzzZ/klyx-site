@@ -33,20 +33,24 @@ async function expectStrip(
     await expect(chips.filter({ hasText: name }).first()).toBeVisible();
   }
   const logos = await strip.locator("[data-logo]").evaluateAll((els) =>
-    els.map((el) => ({
-      logo: el.getAttribute("data-logo"),
-      hidden: el.getAttribute("aria-hidden"),
-      width: el.getAttribute("width"),
-      height: el.getAttribute("height"),
-      named: (el.closest("li")?.textContent ?? "").trim().length > 0,
-    })),
+    els.map((el) => {
+      const tile = el.closest<HTMLElement>("li[data-tool]");
+      const box = el.getBoundingClientRect();
+      return {
+        logo: el.getAttribute("data-logo"),
+        hidden: el.getAttribute("aria-hidden"),
+        size: [Math.round(box.width), Math.round(box.height)],
+        named:
+          !!tile?.dataset.tool &&
+          (tile.textContent ?? "").includes(tile.dataset.tool),
+      };
+    }),
   );
   expect(logos.length).toBeGreaterThan(0);
   for (const logo of logos) {
     expect(logo, logo.logo ?? "").toMatchObject({
       hidden: "true",
-      width: "16",
-      height: "16",
+      size: [24, 24],
       named: true,
     });
   }
@@ -59,18 +63,23 @@ async function expectStrip(
 test.use({ reducedMotion: "reduce" });
 
 for (const viewport of VIEWPORTS) {
-  test(`home tool strip names every tool at ${viewport.width}`, async ({
-    page,
-  }) => {
-    await page.setViewportSize(viewport);
-    await page.goto("/");
-    await expectStrip(
+  for (const [path, messages] of [
+    ["/", fr],
+    ["/en", en],
+  ] as const) {
+    test(`${path} tool grid names every tool at ${viewport.width}`, async ({
       page,
-      names(CONNECTED_TOOLS),
-      fr.home.tools.label,
-      fr.home.tools.note,
-    );
-  });
+    }) => {
+      await page.setViewportSize(viewport);
+      await page.goto(path);
+      await expectStrip(
+        page,
+        names(CONNECTED_TOOLS),
+        messages.home.tools.label,
+        messages.home.tools.note,
+      );
+    });
+  }
 
   for (const [path, messages] of [
     ["/services/agents-ia", fr],
@@ -125,5 +134,20 @@ for (const path of ["/", "/services/automatisation-ia"]) {
       expect(node.text, node.tool ?? "").toContain(tool?.name);
       expect(node).toMatchObject({ iconHidden: "true", logoHidden: "true" });
     }
+  });
+}
+
+for (const [path, messages] of [
+  ["/mentions-legales", fr],
+  ["/en/legal-notice", en],
+] as const) {
+  test(`${path} credits the MCP logo under CC BY 4.0`, async ({ page }) => {
+    await page.goto(path);
+    const credits = page.locator("#credits");
+    await expect(credits).toContainText(messages.legal.credits.trademarks);
+    await expect(credits).toContainText(messages.legal.credits.items.mcp);
+    await expect(
+      credits.locator('a[href="https://creativecommons.org/licenses/by/4.0/"]'),
+    ).toBeVisible();
   });
 }
