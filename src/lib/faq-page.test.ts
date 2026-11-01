@@ -26,7 +26,7 @@ const DUPLICATES = [
   "bordeaux.data",
   "bordeaux.price",
   "bordeaux.subsidy",
-  "audit.bpifrance",
+  "agents.bpifrance",
   "sites.geo",
 ];
 

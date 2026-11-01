@@ -222,7 +222,7 @@ test("/faq answers are visible and anchored, with a link to their page", async (
   await expect(roi.locator("p").first()).toBeVisible();
   await expect(page.locator("details#home-price a")).toHaveAttribute(
     "href",
-    "/",
+    "/tarifs",
   );
   const questions = await page.locator("main details").count();
   const jsonLd = (

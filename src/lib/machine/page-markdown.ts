@@ -732,10 +732,11 @@ async function faqPage(locale: Locale): Promise<string> {
       ...theme.items.flatMap((item) => [
         `### ${item.question}`,
         item.answer,
-        link(
-          t("source", { page: nav(item.source.navKey) }),
-          absoluteUrl(locale, item.source.pathname),
-        ),
+        item.source &&
+          link(
+            t("source", { page: nav(item.source.navKey) }),
+            absoluteUrl(locale, item.source.pathname),
+          ),
       ]),
     ]),
     ...ctaBlocks(locale, t, "cta", ["book", "quote"]),

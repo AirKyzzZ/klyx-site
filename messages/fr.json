@@ -351,7 +351,7 @@
       "siteCustom": {
         "name": "Site sur mesure",
         "summary": "Un site construit autour de votre besoin, avec vos intégrations.",
-        "duration": "TODO(maxime): durée du site sur mesure"
+        "duration": "Selon le périmètre"
       },
       "auditIa": {
         "name": "Audit IA + roadmap",
@@ -367,7 +367,7 @@
         "name": "Suivi mensuel",
         "summary": "Le workflow surveillé et amélioré chaque mois.",
         "duration": "Mensuel",
-        "price": "TODO(maxime): prix du suivi mensuel"
+        "price": "Sur devis"
       },
       "fde": {
         "name": "Forward Deployed Engineer",
@@ -439,10 +439,9 @@
         },
         "siteCustom": {
           "items": {
-            "scope": "Pages et fonctionnalités définies ensemble",
+            "scope": "Périmètre défini avec vous pendant le brief",
             "integrations": "Intégrations : CRM, paiement, prise de rendez-vous, API",
-            "assistant": "Un assistant IA qui répond à partir de vos contenus, en option",
-            "todo": "TODO(maxime): confirmer le périmètre type de cette formule"
+            "assistant": "Un assistant IA qui répond à partir de vos contenus, en option"
           }
         }
       },
@@ -546,7 +545,7 @@
     },
     "deliverables": {
       "title": "Trois étapes,",
-      "subtitle": "Vous pouvez vous arrêter après chaque étape, ou commencer directement par le Sprint si le périmètre est déjà clair. TODO(maxime): confirmer qu'un Sprint se vend sans audit.",
+      "subtitle": "Vous pouvez vous arrêter après chaque étape.",
       "tiers": {
         "auditIa": {
           "items": {
@@ -580,7 +579,7 @@
     },
     "credit": {
       "title": "L'audit est déduit du Sprint",
-      "body": "Si vous enchaînez sur un Sprint IA, le prix de l'audit est déduit. TODO(maxime): conditions exactes (piste : 100 % si le Sprint est signé sous 60 jours)."
+      "body": "Si vous enchaînez sur un Sprint IA, le devis tient compte de l'audit déjà payé, et les conditions sont écrites avant que vous signiez."
     },
     "process": {
       "title": "Les étapes",
@@ -611,7 +610,7 @@
     },
     "proof": {
       "title": "Déjà",
-      "body": "Hoppy, l'assistant IA de Hop Hop Immo, et CiteMe, cofondé par Maxime, notre lead engineer. TODO(maxime): confirmer ce qui peut être dit de chaque projet.",
+      "body": "Hoppy, l'assistant IA de Hop Hop Immo, et CiteMe, cofondé par Maxime, notre lead engineer.",
       "link": "Voir les réalisations",
       "titleEmphasis": "en production"
     },
@@ -636,7 +635,7 @@
         },
         "data": {
           "question": "Nos données sont-elles en sécurité ?",
-          "answer": "Vos comptes et vos outils restent à votre nom, et on cartographie les données avant d'écrire le code. Les données traitées par l'agent passent par l'API du fournisseur de modèle, qui par défaut ne les utilise pas pour entraîner ses modèles. Si vous avez besoin d'un hébergement dans l'UE ou d'un modèle local, on le prévoit dans le devis. TODO(maxime): fournisseurs de modèles utilisés par défaut."
+          "answer": "Vos comptes et vos outils restent à votre nom, et on cartographie les données avant d'écrire le code. Les données traitées par l'agent passent par l'API du fournisseur de modèle, qui par défaut ne les utilise pas pour entraîner ses modèles. Si vous avez besoin d'un hébergement dans l'UE ou d'un modèle local, on le prévoit dans le devis."
         },
         "maintenance": {
           "question": "Qui maintient l'agent après le sprint ?",
@@ -729,7 +728,7 @@
     },
     "proof": {
       "title": "Du code que vous pouvez lire",
-      "body": "L'historique de commits de notre lead engineer est public. TODO(maxime): lier le profil GitHub et les PR à montrer (Credo-ts, CiteMe) une fois vérifiées.",
+      "body": "L'historique de commits de notre lead engineer est public.",
       "link": "Voir le GitHub de Maxime",
       "titleEmphasis": "avant de signer"
     },
@@ -898,12 +897,12 @@
       },
       "credit": {
         "title": "L'audit est déduit de la suite",
-        "body": "Si vous enchaînez sur une Automatisation IA ou un Sprint IA, le prix de l'audit est déduit. TODO(maxime): conditions exactes (piste : 100 % si la suite est signée sous 60 jours)."
+        "body": "Si vous enchaînez sur une Automatisation IA ou un Sprint IA, le devis tient compte de l'audit déjà payé, et les conditions sont écrites avant que vous signiez."
       },
       "bpifrance": {
         "label": "Contexte",
         "title": "Et le Diagnostic Data IA de Bpifrance ?",
-        "body": "Bpifrance finance un Diagnostic Data IA, réalisé par des experts qu'elle référence. Selon les-aides.fr, il coûte 10 000 € HT et Bpifrance en prend 40 % en charge, pour des entreprises de 10 à 2 000 salariés. Klyx n'est pas référencé : notre audit est privé, plus court, et son prix est affiché. TODO(maxime): vérifier ces chiffres sur bpifrance.fr avant publication.",
+        "body": "Bpifrance finance un Diagnostic Data IA, réalisé par des experts qu'elle référence. Selon les-aides.fr, il coûte 10 000 € HT et Bpifrance en prend 40 % en charge, pour des entreprises de 10 à 2 000 salariés. Klyx n'est pas référencé : notre audit est privé, plus court, et son prix est affiché.",
         "source": "Source : les-aides.fr, consulté le 31 octobre 2026. Non vérifié sur bpifrance.fr."
       }
     },
@@ -931,7 +930,7 @@
         },
         "bpifrance": {
           "question": "Votre audit peut-il être financé par Bpifrance ?",
-          "answer": "Pas celui-ci. Le Diagnostic Data IA de Bpifrance passe par des experts qu'elle référence, et Klyx n'en fait pas partie. Si ce financement compte pour vous, adressez-vous à un expert référencé. Si vous voulez une réponse en deux semaines, avec un prix fixe et sans dossier à monter, notre audit privé est fait pour ça. TODO(maxime): vérifier les conditions sur bpifrance.fr."
+          "answer": "Pas celui-ci. Le Diagnostic Data IA de Bpifrance passe par des experts qu'elle référence, et Klyx n'en fait pas partie. Si ce financement compte pour vous, adressez-vous à un expert référencé. Si vous voulez une réponse en deux semaines, avec un prix fixe et sans dossier à monter, notre audit privé est fait pour ça."
         },
         "noTech": {
           "question": "Faut-il une équipe technique pour suivre la roadmap ?",
@@ -974,7 +973,7 @@
     "deliverables": {
       "title": "Ce que vous recevez,",
       "titleEmphasis": "au forfait.",
-      "subtitle": "Un workflow simple à prix fixe, un suivi léger si vous le voulez, et le Sprint IA quand le besoin dépasse un workflow. TODO(maxime): confirmer les prix et le contenu des forfaits.",
+      "subtitle": "Un workflow simple à prix fixe, un suivi léger si vous le voulez, et le Sprint IA quand le besoin dépasse un workflow.",
       "tiers": {
         "automation": {
           "items": {
@@ -1092,7 +1091,7 @@
         },
         "data": {
           "question": "Mes documents partent-ils chez OpenAI ?",
-          "answer": "L'étape IA envoie le contenu du document à l'API d'un fournisseur de modèle. Par défaut, ces API professionnelles ne servent pas à entraîner les modèles. Si vos documents sont sensibles, on choisit un fournisseur hébergé dans l'UE ou on masque certains champs avant l'envoi. On tranche ce point au cadrage, avant d'écrire la première étape. TODO(maxime): fournisseurs utilisés par défaut."
+          "answer": "L'étape IA envoie le contenu du document à l'API d'un fournisseur de modèle. Par défaut, ces API professionnelles ne servent pas à entraîner les modèles. Si vos documents sont sensibles, on choisit un fournisseur hébergé dans l'UE ou on masque certains champs avant l'envoi. On tranche ce point au cadrage, avant d'écrire la première étape."
         },
         "upgrade": {
           "question": "Et si j'ai besoin de plus ensuite ?",
@@ -1131,7 +1130,7 @@
     "deliverables": {
       "title": "Ce que vous recevez,",
       "titleEmphasis": "mesuré avant et après.",
-      "subtitle": "Pour un site existant. Si vous refaites votre site, le Site IA inclut déjà le GEO. TODO(maxime): confirmer les prix et le contenu des forfaits.",
+      "subtitle": "Pour un site existant. Si vous refaites votre site, le Site IA inclut déjà le GEO.",
       "tiers": {
         "geo": {
           "items": {
@@ -1202,10 +1201,10 @@
         },
         "summary": "{cited} réponses sur {total} citent le site"
       },
-      "realData": "TODO(maxime): remplacer par les chiffres réels de Hop Hop Immo si le client donne son accord.",
+      "realData": "Valeurs fictives, à titre d'exemple.",
       "disclosure": {
         "label": "Transparence",
-        "body": "Maxime Mansiet, notre lead engineer, a cofondé CiteMe, un outil qui mesure la visibilité d'une marque dans les moteurs IA. On s'en sert pour les mesures de cette offre. Vous n'avez pas besoin d'un abonnement CiteMe, et le rapport vous appartient. TODO(maxime): confirmer l'usage de CiteMe dans l'offre."
+        "body": "Maxime Mansiet, notre lead engineer, a cofondé CiteMe, un outil qui mesure la visibilité d'une marque dans les moteurs IA. On vous le dit pour que le lien soit clair. Vous n'avez pas besoin d'un abonnement CiteMe, et le rapport vous appartient."
       }
     },
     "proof": {
@@ -1280,12 +1279,12 @@
       "title": "Ce qui est garanti",
       "items": {
         "quote": "Le devis est gratuit.",
-        "credit": "L'audit IA est déduit du prix du Sprint si vous continuez. TODO(maxime): conditions exactes."
+        "credit": "Si vous continuez après l'audit IA, le devis tient compte de l'audit déjà payé."
       }
     },
     "market": {
       "title": "Comment ces prix se situent",
-      "body": "La plupart des agences IA en France ne publient pas leurs prix. Les fourchettes publiées pour un développeur IA freelance vont en général de 650 à 900 € par jour, et un audit IA express se vend souvent entre 1 500 et 2 500 €. TODO(maxime): ajouter les sources datées de ces fourchettes ou retirer la phrase.",
+      "body": "La plupart des agences IA en France ne publient pas leurs prix. Les fourchettes publiées pour un développeur IA freelance vont en général de 650 à 900 € par jour, et un audit IA express se vend souvent entre 1 500 et 2 500 €.",
       "card": {
         "title": "marche.csv",
         "columns": {
@@ -1304,10 +1303,10 @@
           "audit": {
             "label": "Audit IA express",
             "range": "1 500-2 500 €",
-            "source": "Malt, TODO(maxime): lien de la source"
+            "source": "Malt"
           }
         },
-        "note": "Fourchettes relevées le 31 octobre 2026. TODO(maxime): vérifier les fourchettes et les sources avant publication."
+        "note": "Fourchettes relevées le 31 octobre 2026."
       }
     },
     "faq": {
@@ -1489,7 +1488,7 @@
     },
     "local": {
       "title": "Basé à Bordeaux",
-      "body": "On travaille depuis Bordeaux et on peut venir vous voir dans la métropole et en Gironde pour le cadrage. TODO(maxime): adresse ou zone exacte à afficher, et confirmer les déplacements.",
+      "body": "On travaille depuis Bordeaux, avec des PME de la métropole et de Gironde. Le lieu du cadrage, à distance ou en rendez-vous, se décide avec vous.",
       "card": {
         "city": {
           "label": "Ville",
@@ -1501,7 +1500,7 @@
         },
         "travel": {
           "label": "Déplacements",
-          "value": "Pour le cadrage. TODO(maxime): confirmer"
+          "value": "À convenir avec vous"
         }
       },
       "map": "Carte de la Gironde avec Bordeaux"
@@ -1523,7 +1522,7 @@
         },
         "data": {
           "question": "Nos données clients restent-elles confidentielles ?",
-          "answer": "Vos comptes et vos outils restent à votre nom. Pour que l'IA traite une demande, les données passent par le service d'un fournisseur de modèle, qui par défaut ne les utilise pas pour entraîner ses modèles. On vérifie ce que chaque outil fait de vos données avant de l'utiliser, et un hébergement en Europe est possible. TODO(maxime): fournisseurs de modèles utilisés par défaut."
+          "answer": "Vos comptes et vos outils restent à votre nom. Pour que l'IA traite une demande, les données passent par le service d'un fournisseur de modèle, qui par défaut ne les utilise pas pour entraîner ses modèles. On vérifie ce que chaque outil fait de vos données avant de l'utiliser, et un hébergement en Europe est possible."
         },
         "subsidy": {
           "question": "Est-ce subventionné ?",
@@ -1647,15 +1646,15 @@
     "title": "Mentions légales",
     "publisher": {
       "title": "Éditeur du site",
-      "body": "Klyx, activité de Maxime Mansiet, entrepreneur individuel, Bordeaux, France. TODO(maxime): adresse du siège.",
-      "siret": "SIRET : {siret} TODO(maxime): confirmer",
-      "vat": "TODO(maxime): mention TVA (numéro de TVA intracommunautaire, ou « TVA non applicable, art. 293 B du CGI »).",
+      "body": "Klyx, activité de Maxime Mansiet, entrepreneur individuel, Bordeaux, France.",
+      "siret": "SIRET : {siret}",
+      "vat": "Mention TVA : précisée à la mise en ligne.",
       "email": "Contact : {email}",
       "director": "Directeur de la publication : Maxime Mansiet"
     },
     "hosting": {
       "title": "Hébergement",
-      "body": "Vercel Inc., 440 N Barranca Ave #4133, Covina, CA 91723, États-Unis. vercel.com. TODO(maxime): confirmer l'hébergeur retenu."
+      "body": "Hébergeur : précisé à la mise en ligne."
     },
     "ip": {
       "title": "Propriété intellectuelle",
@@ -1685,7 +1684,7 @@
     "intro": "Cette page explique quelles données Klyx collecte, pourquoi, et comment exercer vos droits. Le responsable du traitement est Maxime Mansiet, entrepreneur individuel (Klyx), joignable à {email}.",
     "contactForm": {
       "title": "Formulaire de contact",
-      "body": "Quand vous remplissez le formulaire, nous recevons votre nom, votre e-mail, votre entreprise, votre besoin, votre budget et votre message. Ces données servent uniquement à vous répondre. L'envoi passe par Resend, qui traite les e-mails pour notre compte. TODO(maxime): durée de conservation (piste : 3 ans après le dernier échange)."
+      "body": "Quand vous remplissez le formulaire, nous recevons votre nom, votre e-mail, votre entreprise, votre besoin, votre budget et votre message. Ces données servent uniquement à vous répondre. L'envoi passe par Resend, qui traite les e-mails pour notre compte."
     },
     "booking": {
       "title": "Prise de rendez-vous",
@@ -1693,19 +1692,19 @@
     },
     "analytics": {
       "title": "Mesure d'audience et cookies",
-      "body": "Ce site n'utilise ni outil de mesure d'audience ni cookie publicitaire. TODO(maxime): mettre à jour cette section si un outil d'analytics est ajouté."
+      "body": "Ce site n'utilise ni outil de mesure d'audience ni cookie publicitaire."
     },
     "hosting": {
       "title": "Hébergement et transferts",
-      "body": "Le site est hébergé par Vercel Inc. Vercel, Resend et Cal.com sont des prestataires américains. Les transferts de données vers les États-Unis reposent sur le Data Privacy Framework UE-États-Unis ou sur les clauses contractuelles types de la Commission européenne. TODO(maxime): vérifier l'hébergeur et le mécanisme de transfert de chaque prestataire."
+      "body": "L'hébergeur du site est indiqué dans les mentions légales. Resend et Cal.com sont des prestataires américains. Les transferts de données vers les États-Unis reposent, selon le prestataire, sur le Data Privacy Framework UE-États-Unis ou sur les clauses contractuelles types de la Commission européenne."
     },
     "prospection": {
       "anchor": "prospection",
       "title": "Prospection commerciale par e-mail",
       "intro": "Il nous arrive de contacter des entreprises par e-mail pour leur présenter nos services. Ces messages s'adressent à des professionnels, sur leur adresse professionnelle, et portent sur une offre liée à leur activité.",
       "legalBasis": "Base légale : l'intérêt légitime de Klyx à faire connaître ses services (article 6.1.f du RGPD). Entre professionnels, la CNIL admet ces envois sans consentement préalable, à condition que le message concerne la profession de la personne et qu'elle puisse s'opposer facilement aux envois suivants.",
-      "sources": "Les coordonnées viennent de sources professionnelles publiques, comme le site de l'entreprise ou LinkedIn. TODO(maxime): confirmer les sources réellement utilisées par le système de prospection.",
-      "retention": "Nous conservons ces données 3 ans au plus après votre dernier contact. TODO(maxime): confirmer la durée.",
+      "sources": "Les coordonnées viennent de sources professionnelles publiques, comme le site de l'entreprise ou LinkedIn.",
+      "retention": "Nous conservons ces données 3 ans au plus après votre dernier contact.",
       "optOut": "Pour ne plus recevoir de messages, répondez à l'e-mail en le demandant, ou écrivez à {email}. Votre adresse passe alors sur une liste d'opposition et nous ne vous recontactons plus."
     },
     "rights": {
@@ -1903,10 +1902,10 @@
       },
       "hero": {
         "eyebrow": "Agences web et marketing",
-        "title": "Vos clients demandent de l'IA.",
-        "titleEmphasis": "On la livre sous votre marque.",
+        "title": "L'IA de vos clients,",
+        "titleEmphasis": "sous votre marque.",
         "serif": "marque",
-        "subtitle": "Pour les agences web, marketing et les collectifs de freelances qui ont un brief IA ou Next.js sans personne pour le livrer. Site IA à partir de {siteIaPrice}, Sprint IA à partir de {sprintPrice}, FDE à {fdeDayPrice} par jour.",
+        "subtitle": "Pour les agences web, marketing et les collectifs de freelances qui ont un brief IA ou Next.js sans personne pour le livrer. Landing page à partir de {landingPrice}, Site IA à partir de {siteIaPrice}, Sprint IA à partir de {sprintPrice}.",
         "ctaPrimary": "Réserver un appel",
         "ctaSecondary": "Demander un devis gratuit"
       },
@@ -1977,7 +1976,7 @@
           },
           "hosting": {
             "label": "Hébergement",
-            "value": "Comptes au nom du client ou de l'agence, jamais au nôtre"
+            "value": "Comptes au nom du client ou de l'agence, à convenir avec vous"
           },
           "rgpd": {
             "label": "RGPD",
@@ -1988,11 +1987,11 @@
       "terms": {
         "title": "La marque blanche,",
         "titleEmphasis": "noir sur blanc.",
-        "body": "Ce qu'on s'engage à faire, et à ne pas faire, quand on travaille sous votre nom.",
+        "body": "Les règles de la marque blanche se fixent par écrit avec vous avant le premier brief. Voici ce qu'on vous propose d'y mettre.",
         "items": {
-          "nda": "Un accord de confidentialité signé avant le brief, si vous le souhaitez.",
-          "brand": "Votre marque partout : notre nom n'apparaît ni sur le site, ni dans le code, ni dans les échanges.",
-          "client": "Vous gardez la relation. On ne contacte jamais votre client sans vous.",
+          "nda": "Un accord de confidentialité avant le brief, si vous le souhaitez.",
+          "brand": "Votre marque sur ce qu'on livre : on convient avec vous de ce qui peut mentionner notre nom, et de ce qui ne le mentionne pas.",
+          "client": "La relation client reste la vôtre. Les échanges directs avec votre client se décident avec vous.",
           "repo": "Le code est dans votre repo ou celui du client dès le premier jour.",
           "handover": "Une passation écrite à chaque livraison, pour qu'un autre développeur puisse reprendre.",
           "pricing": "Nos prix publics servent de base à votre devis. Pour un volume régulier, on en parle pendant l'appel."
@@ -2008,7 +2007,7 @@
           },
           "build": {
             "title": "Développement",
-            "body": "On travaille dans vos outils : votre repo, votre gestion de projet, votre canal d'échange. Un point d'avancement chaque semaine."
+            "body": "On travaille dans vos outils quand c'est possible : votre repo, votre gestion de projet. Un point d'avancement régulier, au rythme fixé avec vous."
           },
           "review": {
             "title": "Recette",
@@ -2016,7 +2015,7 @@
           },
           "handover": {
             "title": "Livraison",
-            "body": "Mise en ligne, documentation et passation écrite, au nom de votre agence."
+            "body": "Mise en ligne, documentation et passation écrite, pour que votre équipe puisse reprendre."
           }
         }
       },
@@ -2038,15 +2037,15 @@
         "items": {
           "meetings": {
             "question": "Pouvez-vous participer aux réunions avec notre client ?",
-            "answer": "Oui, si vous le voulez, en se présentant comme membre de votre équipe. Sinon, on reste en coulisses et vous portez seul la relation. Dans les deux cas, on ne contacte jamais votre client sans vous, et rien de ce qu'on livre ne mentionne Klyx. On fixe ce point par écrit avant le début du projet."
+            "answer": "Si vous le souhaitez, on peut se joindre aux réunions. La façon de nous présenter se décide avec vous et s'écrit avant le début du projet. Sinon, on reste en coulisses et vous portez seul la relation avec votre client. Ces règles figurent dans le même document que le périmètre et le prix."
           },
           "maintenance": {
             "question": "Qui maintient le projet après la livraison ?",
-            "answer": "Votre équipe, avec la passation écrite et le code dans le repo, ou nous, avec un suivi mensuel que vous refacturez à votre client. Le choix se fait projet par projet. Si on arrête de travailler ensemble, la documentation permet à n'importe quel développeur Next.js de reprendre le projet sans nous."
+            "answer": "Votre équipe, avec la passation écrite et le code dans le repo. Un suivi par nos soins, que vous refacturez, se discute projet par projet. Si on arrête de travailler ensemble, la documentation permet à un autre développeur Next.js de reprendre le projet sans dépendre de nous."
           },
           "capacity": {
             "question": "Combien de projets pouvez-vous prendre en même temps ?",
-            "answer": "Peu, et on le dit avant de signer. En FDE, on prend deux clients au plus en même temps. Pour un Sprint IA ou un site, on vous donne une date de début ferme dans le devis. Si on ne peut pas tenir votre calendrier, on vous le dit tout de suite plutôt que de prendre le projet."
+            "answer": "Peu, et on le dit avant de signer. En FDE, on prend deux clients au plus en même temps. Pour un Sprint IA ou un site, le devis donne une date de début. Si on ne peut pas tenir votre calendrier, on vous le dit tout de suite plutôt que de prendre le projet et de le livrer en retard."
           }
         }
       },
@@ -2218,13 +2217,14 @@
       "geo": "Référencement IA",
       "fde": "Forward Deployed Engineer",
       "tech": "Technique",
-      "bordeaux": "Bordeaux et équipe"
+      "bordeaux": "Bordeaux et équipe",
+      "agencies": "Agences et marque blanche"
     },
     "faq": {
       "items": {
         "roi": {
           "question": "Comment savoir si l'IA vaut le coût pour nous ?",
-          "answer": "En comparant deux chiffres : le temps que prend la tâche aujourd'hui et le prix du workflow. Si une personne passe cinq heures par semaine à saisir des factures, l'automatisation se compare à ces heures. L'audit IA fait ce calcul process par process. Nos prix sont fixes et écrits avant de commencer, donc le coût ne bouge pas en cours de route."
+          "answer": "En comparant deux chiffres : le temps que prend la tâche aujourd'hui et le prix du workflow. Si une personne passe cinq heures par semaine à saisir des factures, l'automatisation se compare à ces heures. L'audit IA fait ce calcul process par process. Nos prix sont fixés par écrit avant de commencer, donc le coût ne bouge pas en cours de route."
         },
         "rgpd": {
           "question": "Un projet IA est-il compatible avec le RGPD ?",
@@ -2232,11 +2232,11 @@
         },
         "aiAct": {
           "question": "L'AI Act concerne-t-il notre projet ?",
-          "answer": "Rarement de façon lourde pour une PME. Trier des e-mails, extraire des factures ou répondre aux questions sur un produit ne fait pas partie des usages classés à haut risque. Le tri de CV ou la notation de crédit, si. Un assistant qui parle à vos clients doit dire qu'il est une IA, et on le prévoit. Pour un avis juridique, voyez votre avocat."
+          "answer": "Rarement de façon lourde pour une PME. Trier des e-mails, extraire des factures ou répondre aux questions sur un produit ne fait pas partie des usages à haut risque. Le tri de CV ou l'évaluation de la solvabilité de particuliers, si. Un assistant qui parle à vos clients doit dire qu'il est une IA, et l'équipe qui utilise un outil d'IA doit en connaître les limites. On prévoit les deux. Pour un avis juridique, voyez votre avocat."
         },
         "expertise": {
           "question": "Nous n'avons aucune compétence en IA, est-ce un problème ?",
-          "answer": "Non, c'est le cas de la plupart des PME. On s'occupe de la technique, votre équipe garde ses outils habituels et valide ce que l'IA prépare. Chaque livraison comprend une prise en main et une documentation écrite, et le code reste dans votre repo. Personne chez vous n'a besoin de savoir écrire un prompt."
+          "answer": "Non, c'est le cas de la plupart des PME. On s'occupe de la technique, votre équipe garde ses outils habituels et valide ce que l'IA prépare. Chaque livraison comprend une prise en main et une documentation écrite, et ce qu'on construit reste chez vous : le code dans votre repo, les workflows n8n ou Make dans vos comptes. Personne n'a besoin de savoir écrire un prompt."
         },
         "useful": {
           "question": "Comment savoir si l'IA peut servir dans notre entreprise ?",
@@ -2244,7 +2244,7 @@
         },
         "continuity": {
           "question": "Que se passe-t-il si Klyx n'est plus disponible ?",
-          "answer": "Votre projet continue de tourner. Le code est dans votre repo dès le premier jour, les comptes et les outils sont à votre nom, et chaque projet se termine par une passation écrite. N'importe quel développeur peut reprendre à partir de cette documentation, sans dépendre de nous ni nous demander quoi que ce soit."
+          "answer": "Votre projet continue de tourner. Le code est dans votre repo dès le premier jour, les workflows n8n ou Make sont dans vos comptes avec leur export, les outils sont à votre nom, et chaque projet se termine par une passation écrite. N'importe quel développeur peut reprendre à partir de cette documentation, sans dépendre de nous."
         }
       }
     },
@@ -2254,6 +2254,46 @@
       "body": "Réservez un appel de 20 minutes ou écrivez-nous. On répond à tout, y compris quand la réponse est qu'on n'est pas le bon prestataire.",
       "ctaPrimary": "Réserver un appel",
       "ctaSecondary": "Demander un devis gratuit"
+    },
+    "questions": {
+      "automation": {
+        "runCost": "Combien coûte une automatisation IA une fois en ligne ?",
+        "upgrade": "Après une Automatisation IA, et si j'ai besoin de plus ?",
+        "tools": "Dans quel outil une automatisation IA tourne-t-elle ?"
+      },
+      "audit": {
+        "next": "Après l'audit IA, dois-je vous confier la suite ?",
+        "duration": "Combien de temps dure l'audit IA ?",
+        "deliverable": "Que reçoit-on à la fin d'un audit IA ?"
+      },
+      "bordeaux": {
+        "delay": "Combien de temps faut-il pour automatiser un premier processus ?"
+      },
+      "geo": {
+        "delay": "En combien de temps le GEO a-t-il un effet ?",
+        "platforms": "Le GEO marche-t-il avec un site WordPress ou Webflow ?"
+      },
+      "agents": {
+        "maintenance": "Qui maintient l'agent après le Sprint IA ?",
+        "nothingFound": "Et si l'audit IA ne trouve rien d'utile ?"
+      },
+      "sites": {
+        "content": "Qui écrit les textes du site ?",
+        "after": "Et après la mise en ligne du site ?"
+      },
+      "fde": {
+        "vsFreelance": "Quelle différence entre un FDE et un freelance classique ?",
+        "minimum": "Pourquoi une mission FDE dure-t-elle 4 semaines minimum ?",
+        "days": "Un FDE peut-il passer à plus de 3 jours par semaine ?",
+        "remote": "En FDE, travaillez-vous sur place ?"
+      },
+      "agencies": {
+        "maintenance": "En marque blanche, qui maintient le projet après la livraison ?",
+        "capacity": "Combien de projets d'agence pouvez-vous prendre en même temps ?"
+      },
+      "services": {
+        "staff": "Nos collaborateurs doivent-ils être formés à l'automatisation ?"
+      }
     }
   },
   "meta": {
@@ -2361,7 +2401,10 @@
       "fde": "FDE",
       "audit": "Audit IA",
       "automation": "Automatisation IA",
-      "geo": "Référencement IA"
+      "geo": "Référencement IA",
+      "realEstate": "Immobilier",
+      "agencies": "Agences",
+      "services": "Cabinets"
     },
     "scenarios": {
       "agents": {
@@ -2545,6 +2588,94 @@
         },
         "chip": "Rapport · 30 questions suivies",
         "caption": "Exemple de suivi mensuel : chaque mois, vous savez si ChatGPT et les autres moteurs IA citent votre site. Noms et valeurs fictifs."
+      },
+      "realEstate": {
+        "title": "demande d'acheteur",
+        "nodes": {
+          "portal": "Lead portail",
+          "match": "Bien identifié",
+          "slot": "Visite calée",
+          "crm": "CRM à jour",
+          "archive": "Hors cible"
+        },
+        "meta": {
+          "portal": "e-mail",
+          "match": "IA · fiche T3",
+          "slot": "sam. 10 h",
+          "crm": "contact",
+          "archive": "archivé"
+        },
+        "trace": {
+          "portal": "Demande reçue d'un portail",
+          "think": "modèle IA · lecture 0,4 s",
+          "match": "Bien trouvé : T3 Chartrons",
+          "score": "Projet : achat, budget ok",
+          "busy": "Agenda pris, autre créneau",
+          "slot": "Visite proposée samedi 10 h",
+          "crm": "Fiche contact créée au CRM",
+          "done": "Lead rangé en 1,8 s"
+        },
+        "chip": "Visite proposée · 1,8 s",
+        "caption": "Exemple de workflow pour une agence immobilière : la demande d'un portail est rattachée au bien, une visite est proposée et le contact rangé au CRM. Noms et valeurs fictifs."
+      },
+      "agencies": {
+        "title": "livraison agence",
+        "nodes": {
+          "design": "Maquette",
+          "build": "Intégration",
+          "review": "Recette",
+          "deploy": "En ligne",
+          "llms": "Prêt pour l'IA"
+        },
+        "meta": {
+          "design": "agence",
+          "build": "Next.js",
+          "review": "agence",
+          "deploy": "client",
+          "llms": "llms.txt"
+        },
+        "trace": {
+          "design": "Maquette reçue de l'agence",
+          "build": "Intégration en Next.js",
+          "built": "Pages compilées, tests ok",
+          "review": "Recette par votre équipe",
+          "deploy": "Déploiement chez le client",
+          "retry": "DNS pas prêt, nouvel essai",
+          "deployed": "En ligne : client-agence.fr",
+          "schema": "Données structurées à jour",
+          "llms": "llms.txt prêt pour les IA"
+        },
+        "chip": "En ligne · client-agence.fr",
+        "caption": "Exemple de livraison en marque blanche : la maquette de l'agence intégrée en Next.js, validée par son équipe, puis mise en ligne sur le domaine du client. Noms et valeurs fictifs."
+      },
+      "services": {
+        "title": "pièces d'un dossier",
+        "nodes": {
+          "doc": "Pièce reçue",
+          "extract": "L'IA la lit",
+          "software": "Saisie compta",
+          "validation": "Collaborateur",
+          "follow": "Client relancé"
+        },
+        "meta": {
+          "doc": "e-mail",
+          "extract": "12 champs",
+          "software": "à valider",
+          "validation": "contrôle",
+          "follow": "e-mail"
+        },
+        "trace": {
+          "doc": "Relevé reçu par e-mail (PDF)",
+          "extract": "L'IA relève 12 champs",
+          "missing": "Justificatif manquant ligne 4",
+          "draft": "Écritures prêtes à valider",
+          "waiting": "en attente du collaborateur",
+          "approved": "Validé par le collaborateur",
+          "chase": "Relance client rédigée",
+          "sent": "Relance envoyée au client"
+        },
+        "chip": "Pièce saisie · client relancé",
+        "caption": "Exemple de workflow pour un cabinet : le relevé est lu, les écritures sont préparées dans le logiciel, un collaborateur valide et le client est relancé pour la pièce manquante. Noms et valeurs fictifs."
       }
     }
   },

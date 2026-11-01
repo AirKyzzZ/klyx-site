@@ -79,17 +79,25 @@ const SOURCES: Record<Exclude<FaqSourceKey, "faqPage">, FaqSource> = {
   },
 };
 
-const OWN_LINKS: Record<string, FaqSource> = {
+const OWN_LINKS: Record<string, FaqSource | null> = {
   roi: SOURCES.audit,
   rgpd: SOURCES.audit,
-  aiAct: SOURCES.audit,
+  aiAct: null,
   expertise: SOURCES.automation,
   useful: { namespace: "useCases", pathname: "/cas-usage", navKey: "useCases" },
   continuity: { namespace: "about", pathname: "/a-propos", navKey: "about" },
 };
 
 export type FaqThemeKey =
-  "pricing" | "timing" | "data" | "ai" | "geo" | "fde" | "tech" | "bordeaux";
+  | "pricing"
+  | "timing"
+  | "data"
+  | "ai"
+  | "geo"
+  | "fde"
+  | "tech"
+  | "agencies"
+  | "bordeaux";
 
 type FaqRef = [FaqSourceKey, string];
 
@@ -102,7 +110,7 @@ export const FAQ_THEMES: { key: FaqThemeKey; items: FaqRef[] }[] = [
       ["pricing", "final"],
       ["pricing", "sprintVsFde"],
       ["automation", "runCost"],
-      ["agents", "bpifrance"],
+      ["audit", "bpifrance"],
       ["audit", "next"],
       ["automation", "upgrade"],
     ],
@@ -177,6 +185,11 @@ export const FAQ_THEMES: { key: FaqThemeKey; items: FaqRef[] }[] = [
       ["sites", "ownership"],
       ["sites", "after"],
       ["faqPage", "continuity"],
+    ],
+  },
+  {
+    key: "agencies",
+    items: [
       ["agencies", "meetings"],
       ["agencies", "maintenance"],
       ["agencies", "capacity"],
@@ -196,15 +209,30 @@ export type FaqPageItem = {
   id: string;
   question: string;
   answer: string;
-  source: { pathname: StaticPathname; navKey: string };
+  source: { pathname: StaticPathname; navKey: string } | null;
 };
 
-function sourceOf(ref: FaqRef): FaqSource {
+const SOURCE_OVERRIDES: Record<string, FaqSource> = {
+  "home.price": SOURCES.pricing,
+};
+
+function sourceOf(ref: FaqRef): FaqSource | null {
   const [key, item] = ref;
-  if (key !== "faqPage") return SOURCES[key];
-  const own = OWN_LINKS[item];
-  if (!own) throw new Error(`No link for faqPage.items.${item}`);
-  return own;
+  if (key !== "faqPage")
+    return SOURCE_OVERRIDES[`${key}.${item}`] ?? SOURCES[key];
+  if (!(item in OWN_LINKS))
+    throw new Error(`No link for faqPage.items.${item}`);
+  return OWN_LINKS[item];
+}
+
+function questionOverride(root: Translate, [key, item]: FaqRef) {
+  const raw = root.raw("faqPage.questions");
+  if (typeof raw !== "object" || raw === null || !(key in raw)) return null;
+  const group: unknown = raw[key as keyof typeof raw];
+  if (typeof group !== "object" || group === null || !(item in group)) {
+    return null;
+  }
+  return root(`faqPage.questions.${key}.${item}`);
 }
 
 export function faqAnchor([key, item]: FaqRef): string {
@@ -224,9 +252,13 @@ export function faqThemes(
       const source = sourceOf(ref);
       return {
         id: faqAnchor(ref),
-        question: root(`${path}.question`, prices),
+        question:
+          questionOverride(root, ref) ?? root(`${path}.question`, prices),
         answer: root(`${path}.answer`, prices),
-        source: { pathname: source.pathname, navKey: source.navKey },
+        source: source && {
+          pathname: source.pathname,
+          navKey: source.navKey,
+        },
       };
     }),
   }));

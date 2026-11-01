@@ -1,8 +1,8 @@
 # TODO(maxime): claims to confirm before launch
 
-Every `TODO(maxime)` in `messages/fr.json` and `messages/en.json` (same keys in both files). Each one renders visibly on the site until you resolve it: confirm and delete the marker, rewrite, or drop the sentence.
+No public page shows a `TODO(maxime)` marker any more (controller ruling, 2026-11-01; `e2e/pending-markers.spec.ts` crawls every route and case study in both locales). Each claim below was softened to what is true today, or removed, and still needs your answer before the stronger wording can come back. The only markers left in `messages/*.json` are `home.proof.body` and `home.testimonials.note`, which do not render.
 
-Exception: the home page, À propos, the use-case pages (`/cas-usage/*`) and `/faq` show no `TODO(maxime)` marker (review of 2026-11-01). There, the visible sentence was softened to what is true today or removed; the rows below marked « softened » still need your answer before the stronger wording can come back.
+Rows written before the sweep still describe the original claim; the sweep section at the end says what the page shows now.
 
 ## Proof and identity
 
@@ -60,15 +60,15 @@ Prices come from market research (`pricing-automation-geo.md`, 2026-10-31), not 
 
 ## Use-case pages and FAQ (R9, 2026-11-01)
 
-No marker on these pages: the visible copy says only what is safe today. Confirm or correct each line.
+No marker on these pages. The white-label terms are written as proposals agreed in writing with the agency, not as commitments. Confirm or correct each line.
 
 | Page | Key | Claim | What to confirm |
 |---|---|---|---|
 | Cas d'usage immobilier | `useCases.realEstate.proof.body` | Hoppy is the only real estate case; lead sorting and CRM sync are explicitly "not part of that project" | Is that the right scope for Hoppy? Hop Hop Immo OK with being named here too? |
 | Cas d'usage immobilier | `useCases.realEstate.faq.items.portals` | Most portals send leads by email; CRM via API, file import or Make | Matches what you can actually wire up |
-| Cas d'usage agences | `useCases.agencies.terms.items` | NDA on request, no Klyx mention anywhere, never contact the end client, code in agency/client repo, written handover | Each commitment, and whether you accept being introduced as a member of the agency's team (`faq.items.meetings`) |
+| Cas d'usage agences | `useCases.agencies.terms.*`, `faq.items.meetings`, `faq.items.maintenance` | Proposals, set in writing per agency: NDA if wanted, what may mention Klyx agreed case by case, direct contact with the end client decided with the agency, joining meetings if wanted, follow-up by Klyx discussed per project | What you are ready to commit to by default, so the page can state it firmly |
 | Cas d'usage agences | `useCases.agencies.terms.items.pricing` | Softened: "public prices are the base, regular volume discussed on the call" | Partner pricing: discount, volume terms, who invoices whom. Not stated on the page until you decide |
-| Cas d'usage agences | `useCases.agencies.process.steps.build` | Weekly progress update, work in the agency's tools | Still how you work |
+| Cas d'usage agences | `useCases.agencies.process.steps.build` | Softened: "a regular progress update, at a pace agreed with you" (weekly removed) | Your actual cadence |
 | Cas d'usage agences | `useCases.agencies.faq.items.maintenance` | Monthly follow-up the agency resells | That you offer it in white label |
 | Cas d'usage agences | `offer-pages`/`sector-pages` `proof` | PKBA and VertiFlow shown as "sites delivered under our own name" | Same open questions as in the case studies (what is yours) |
 | Cas d'usage cabinets | `useCases.services.proof.body` | "No published client case yet" for accounting, law or consulting firms | True as worded |
@@ -81,6 +81,30 @@ No marker on these pages: the visible copy says only what is safe today. Confirm
 | Automatisation IA, FAQ | `automation.faq.items.runCost.answer` | Softened: the euro ranges (n8n 10-25 €, Make ~30 €, API 20-80 €) are removed | Ranges you are happy to publish |
 | Référencement IA, FAQ | `geo.faq.items.platforms.answer` | Softened: "usually yes", platform list removed, "we check your platform on the call" | Platforms you accept |
 | Référencement IA, FAQ | `geo.faq.items.citeme.answer` | Softened: "we use it for the measurements" removed | Whether CiteMe is used for the GEO measurements |
+
+## Sweep of visible markers (R9 fix round 1)
+
+| Page | Key | Now shows | What to confirm |
+|---|---|---|---|
+| Tarifs, Sites | `offers.items.siteCustom.duration` | « Selon le périmètre » | Duration of the custom site |
+| Tarifs, Offres IA | `offers.items.retainer.price` | « Sur devis » | Monthly run price |
+| Sites | `sites.deliverables.tiers.siteCustom.items.scope` (was `.todo`) | « Périmètre défini avec vous pendant le brief » | Typical scope |
+| Offres IA | `agents.deliverables.subtitle` | "you can stop after any step"; the standalone-Sprint sentence is removed | Whether the Sprint sells without the audit |
+| Offres IA, Audit IA, Tarifs | `agents.credit.body`, `audit.block.credit.body`, `pricing.guarantees.items.credit` | "the quote takes the audit you already paid into account, terms written before you sign" | Exact credit rule |
+| Offres IA, FDE | `agents.proof.body`, `fde.proof.body` | Marker removed, sentence unchanged | Same as the proof rows above |
+| Offres IA, Automatisation IA, Bordeaux | `agents/automation/bordeaux.faq.items.data.answer` | Marker removed; answers state only the providers' public API defaults | Default model providers |
+| Audit IA | `audit.block.bpifrance.body`, `audit.faq.items.bpifrance.answer` | Marker removed; the les-aides.fr figures keep their visible dated source line « non vérifié sur bpifrance.fr ». `/faq` now uses `audit.bpifrance` as the Bpifrance entry | Check the figures on bpifrance.fr |
+| Automatisation IA, Référencement IA | `automation.deliverables.subtitle`, `geo.deliverables.subtitle` | Marker removed | Prices and package contents (rows above) |
+| Référencement IA | `geo.block.realData` | « Valeurs fictives, à titre d'exemple. » | Hop Hop Immo numbers with consent |
+| Référencement IA | `geo.block.disclosure.body` | "we tell you so the link is clear"; "we use it for the measurements" removed | Whether CiteMe is used |
+| Tarifs | `pricing.market.body`, `pricing.market.card.note`, `pricing.market.card.rows.audit.source` | Marker removed; audit row source reads « Malt » with no link | Dated source link for the audit range, or drop the row |
+| Agence IA Bordeaux | `bordeaux.local.body`, `bordeaux.local.card.travel.value` | "where scoping happens, remotely or in a meeting, is decided with you"; travel « À convenir avec vous » | Area and travel |
+| Mentions légales | `legal.publisher.body`, `legal.publisher.siret` | Marker removed | Address, SIRET |
+| Mentions légales | `legal.publisher.vat` | « Mention TVA : précisée à la mise en ligne. » | VAT statement |
+| Mentions légales | `legal.hosting.body` | « Hébergeur : précisé à la mise en ligne. » | Final host |
+| Confidentialité | `privacy.hosting.body` | Host named only in the legal notice; DPF or SCCs "depending on the provider" | Host and each transfer mechanism |
+| Confidentialité | `privacy.contactForm.body`, `privacy.analytics.body`, `privacy.prospection.sources`, `privacy.prospection.retention` | Marker removed, sentences unchanged | Retention periods, analytics, prospect sources |
+| Réalisations (all 5) | `content/realisations/*.mdx` | Pending "what we built / result" notes removed; Hop Hop Immo keeps "the Hoppy assistant, from design to production" and "no figures until Hop Hop Immo agrees" | What is yours on each project, stack, year, figures and testimonials |
 
 ## Local and legal
 

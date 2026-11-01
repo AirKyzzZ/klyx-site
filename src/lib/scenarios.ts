@@ -2,7 +2,15 @@ import type { AppPathname } from "@/lib/seo";
 import type { ToolLogoId } from "@/lib/tools";
 
 export type ScenarioId =
-  "agents" | "sites" | "fde" | "audit" | "automation" | "geo";
+  | "agents"
+  | "sites"
+  | "fde"
+  | "audit"
+  | "automation"
+  | "geo"
+  | "realEstate"
+  | "agencies"
+  | "services";
 
 export type NodeIcon =
   | "inbox"
@@ -396,6 +404,133 @@ export const scenarios: Record<ScenarioId, Scenario> = {
       { at: 9400, line: 7 },
       { at: 9800, edge: ["citation", "report"] },
       { at: 11000, node: "report", line: 8, chip: true },
+    ],
+  }),
+  realEstate: scenario("realEstate", {
+    href: "/cas-usage/immobilier",
+    agent: "match",
+    desktopOnly: ["think", "crm"],
+    nodes: [
+      ["portal", "inbox", 12.5, 28, 28, 8],
+      ["match", "filter", 38, 28, 28, 30],
+      ["slot", "message", 62, 72, 28, 52],
+      ["crm", "database", 87, 28, 28, 74],
+      ["archive", "file", 38, 72, 77, 30],
+    ],
+    edges: [
+      ["portal", "match"],
+      ["match", "slot"],
+      ["slot", "crm"],
+      ["match", "archive"],
+    ],
+    trace: [
+      ["00.00", "portal"],
+      ["00.15", "think", "dim"],
+      ["00.48", "match"],
+      ["00.71", "score"],
+      ["00.90", "busy", "err"],
+      ["01.32", "slot", "ok"],
+      ["01.60", "crm"],
+      ["01.84", "done", "ok"],
+    ],
+    steps: [
+      { at: 0, node: "portal", line: 0 },
+      { at: 700, line: 1 },
+      { at: 1300, edge: ["portal", "match"] },
+      { at: 2500, node: "match", line: 2 },
+      { at: 3300, line: 3 },
+      { at: 3800, edge: ["match", "slot"] },
+      { at: 5000, node: "slot", line: 4 },
+      { at: 5900, line: 5 },
+      { at: 6500, line: 6 },
+      { at: 7000, edge: ["slot", "crm"] },
+      { at: 8200, node: "crm", line: 7, chip: true },
+    ],
+  }),
+  agencies: scenario("agencies", {
+    href: "/cas-usage/agences",
+    agent: "build",
+    desktopOnly: ["build", "schema"],
+    nodes: [
+      ["design", "file", 12.5, 28, 50, 8],
+      ["build", "filter", 38, 28, 50, 27],
+      ["review", "user-check", 38, 72, 50, 46],
+      ["deploy", "rocket", 62, 72, 50, 65],
+      ["llms", "file", 87, 28, 50, 84],
+    ],
+    edges: [
+      ["design", "build"],
+      ["build", "review"],
+      ["review", "deploy"],
+      ["deploy", "llms"],
+    ],
+    trace: [
+      ["00:00", "design"],
+      ["00:03", "build"],
+      ["00:41", "built", "ok"],
+      ["00:43", "review"],
+      ["01:12", "deploy"],
+      ["01:19", "retry", "err"],
+      ["01:27", "deployed", "ok"],
+      ["01:28", "schema", "dim"],
+      ["01:29", "llms", "ok"],
+    ],
+    steps: [
+      { at: 0, node: "design", line: 0 },
+      { at: 600, edge: ["design", "build"] },
+      { at: 1800, node: "build", line: 1 },
+      { at: 2800, line: 2 },
+      { at: 3300, edge: ["build", "review"] },
+      { at: 4500, node: "review", line: 3 },
+      { at: 5300, edge: ["review", "deploy"] },
+      { at: 6500, node: "deploy", line: 4 },
+      { at: 7100, line: 5 },
+      { at: 7900, line: 6 },
+      { at: 8300, edge: ["deploy", "llms"] },
+      { at: 9500, node: "llms", line: 7 },
+      { at: 9900, line: 8, chip: true },
+    ],
+  }),
+  services: scenario("services", {
+    href: "/cas-usage/cabinets-services",
+    agent: "extract",
+    desktopOnly: ["waiting"],
+    nodes: [
+      ["doc", "inbox", 12.5, 28, 50, 8],
+      ["extract", "filter", 38, 28, 50, 27],
+      ["software", "database", 38, 72, 50, 46],
+      ["validation", "user-check", 62, 72, 50, 65],
+      ["follow", "message", 87, 28, 50, 84],
+    ],
+    edges: [
+      ["doc", "extract"],
+      ["extract", "software"],
+      ["software", "validation"],
+      ["validation", "follow"],
+    ],
+    trace: [
+      ["00:00", "doc"],
+      ["00:01", "extract"],
+      ["00:01", "missing", "err"],
+      ["00:02", "draft"],
+      ["00:02", "waiting", "dim"],
+      ["11:40", "approved", "ok"],
+      ["11:41", "chase"],
+      ["11:42", "sent", "ok"],
+    ],
+    steps: [
+      { at: 0, node: "doc", line: 0 },
+      { at: 600, edge: ["doc", "extract"] },
+      { at: 1800, node: "extract", line: 1 },
+      { at: 2600, line: 2 },
+      { at: 3000, edge: ["extract", "software"] },
+      { at: 4200, node: "software", line: 3 },
+      { at: 4700, edge: ["software", "validation"] },
+      { at: 5900, node: "validation", line: 4 },
+      { at: 7100, line: 5 },
+      { at: 7900, line: 6 },
+      { at: 8300, edge: ["validation", "follow"] },
+      { at: 9500, node: "follow", line: 7, chip: true },
     ],
   }),
 };

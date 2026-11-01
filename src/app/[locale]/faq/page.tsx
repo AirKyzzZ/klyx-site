@@ -117,14 +117,14 @@ export default async function FaqPage({ params }: LocaleParams) {
           key={theme.key}
           id={theme.key}
           index={String(i + 1).padStart(2, "0")}
-          eyebrow={t("themesLabel")}
+          eyebrow={t(`themes.${theme.key}`)}
           title={t(`themes.${theme.key}`)}
           openAll
           items={theme.items.map((item) => ({
             id: item.id,
             question: item.question,
             answer: item.answer,
-            more: (
+            more: item.source && (
               <Link
                 href={item.source.pathname}
                 className="group text-text-3 hover:text-text inline-flex items-center gap-1.5 text-sm transition-colors"

@@ -4,7 +4,7 @@ import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
 import { getStaticTranslator } from "@/i18n/static-translator";
 import { getOfferCopy } from "@/lib/offer-copy";
-import { PRICE_GROUPS } from "@/lib/offers";
+import { getOffer, PRICE_GROUPS } from "@/lib/offers";
 import { cn } from "@/lib/utils";
 
 export function PriceLedger({
@@ -59,7 +59,7 @@ export function PriceLedger({
             </tr>
             {group.offers.map((id) => {
               const row = getOfferCopy(offersT, locale, id);
-              const todo = row.price.startsWith("TODO(maxime)");
+              const onQuote = getOffer(id).priceFrom === null;
               return (
                 <tr
                   key={id}
@@ -85,8 +85,8 @@ export function PriceLedger({
                   <td
                     className={cn(
                       "type-data py-4 text-right align-top max-md:order-2 max-md:min-w-0 max-md:p-0 max-md:text-left md:pr-7",
-                      todo
-                        ? "text-text-3 text-xs md:max-w-[22ch]"
+                      onQuote
+                        ? "text-text-3 md:whitespace-nowrap"
                         : "text-text md:whitespace-nowrap",
                     )}
                   >

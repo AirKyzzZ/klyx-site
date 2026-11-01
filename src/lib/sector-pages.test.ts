@@ -7,6 +7,7 @@ import { routing } from "@/i18n/routing";
 import { getStaticTranslator } from "@/i18n/static-translator";
 
 import { getPriceValues } from "./offers";
+import { scenarios } from "./scenarios";
 import { SECTOR_KEYS, sectorPages } from "./sector-pages";
 
 const MESSAGES = { fr, en } as const;
@@ -18,6 +19,7 @@ describe("sectorPages", () => {
       const config = sectorPages[key];
       expect(Object.keys(routing.pathnames)).toContain(config.pathname);
       expect(config.offers, key).toContain(config.anchor);
+      expect(scenarios[config.scenario].href, key).toBe(config.pathname);
     }
   });
 

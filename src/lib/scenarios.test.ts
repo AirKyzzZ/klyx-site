@@ -104,6 +104,22 @@ describe("scenarios", () => {
     }
   });
 
+  it("gives each sector page its own scenario, with no klyx.fr deployment", () => {
+    for (const id of ["realEstate", "agencies", "services"] as const) {
+      expect(scenarios[id].illustration).toBe(true);
+      for (const messages of [fr, en]) {
+        const copy = JSON.stringify(
+          lookup(messages, `liveSystem.scenarios.${id}`),
+        );
+        expect(copy, id).not.toContain("klyx.fr");
+        expect(
+          typeof lookup(messages, `liveSystem.scenarios.${id}.caption`),
+          id,
+        ).toBe("string");
+      }
+    }
+  });
+
   it("final state marks every stepped node and edge done", () => {
     const { doneNodes, doneEdges } = finalState(scenarios.agents);
     expect([...doneNodes]).toEqual(["inbox", "classifier", "crm", "slack"]);
