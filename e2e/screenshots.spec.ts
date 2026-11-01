@@ -1,0 +1,122 @@
+import { mkdirSync, writeFileSync } from "node:fs";
+
+import { expect, test } from "@playwright/test";
+
+import { NOT_FOUND_PATH, pagePaths } from "./route-paths";
+
+const OUTPUT_DIR = "docs/screenshots/redesign";
+const PAGES_DIR = "docs/screenshots/pages";
+const PAGE_WIDTHS = [1440, 390];
+const VIEWPORTS = [
+  { width: 1440, height: 900 },
+  { width: 768, height: 1024 },
+  { width: 390, height: 844 },
+];
+
+const requested = process.env.SCREENSHOT_ROUTES?.split(",").map((route) =>
+  route.trim(),
+);
+const routes = requested ?? pagePaths;
+
+function slugify(text: string) {
+  return text
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/\p{M}/gu, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+}
+
+function fileStem(path: string) {
+  if (path === NOT_FOUND_PATH) return "404";
+  return path === "/" ? "home" : path.slice(1).replaceAll("/", "-");
+}
+
+test.describe("redesign screenshots", () => {
+  test.skip(process.env.SCREENSHOTS !== "1", "set SCREENSHOTS=1 to capture");
+  test.use({ reducedMotion: "reduce" });
+
+  test.beforeAll(() => {
+    mkdirSync(OUTPUT_DIR, { recursive: true });
+    mkdirSync(PAGES_DIR, { recursive: true });
+  });
+
+  for (const route of routes) {
+    for (const viewport of VIEWPORTS) {
+      test(`${route} at ${viewport.width}`, async ({ page }) => {
+        test.setTimeout(60_000);
+        await page.setViewportSize(viewport);
+        await page.goto(route);
+        await page.evaluate(async () => {
+          for (let y = 0; y < document.body.scrollHeight; y += 600) {
+            scrollTo(0, y);
+            await new Promise((resolve) => setTimeout(resolve, 50));
+          }
+          scrollTo(0, 0);
+        });
+        await page.waitForLoadState("networkidle");
+        await page.waitForFunction(() =>
+          Array.from(document.images).every(
+            (img) => img.complete || img.getClientRects().length === 0,
+          ),
+        );
+        await page.evaluate(() => document.fonts.ready);
+        const scrollWidth = await page.evaluate(
+          () => document.documentElement.scrollWidth,
+        );
+        expect(scrollWidth, route).toBeLessThanOrEqual(viewport.width);
+        const shot = await page.screenshot({
+          path: `${OUTPUT_DIR}/${fileStem(route)}-${viewport.width}.png`,
+          fullPage: true,
+          animations: "disabled",
+        });
+        if (!route.startsWith("/en") && PAGE_WIDTHS.includes(viewport.width)) {
+          writeFileSync(
+            `${PAGES_DIR}/${fileStem(route)}-${viewport.width}.png`,
+            shot,
+          );
+        }
+
+        const dir = `${OUTPUT_DIR}/${fileStem(route)}`;
+        mkdirSync(dir, { recursive: true });
+        await page.addStyleTag({
+          content: "header, .view-toggle { visibility: hidden !important; }",
+        });
+        const sections = page.locator("section[data-shot]:visible");
+        const names = await sections.evaluateAll((els) =>
+          els.map((el) => el.getAttribute("data-shot") ?? "section"),
+        );
+        for (const [i, name] of names.entries()) {
+          const section = sections.nth(i);
+          await section.scrollIntoViewIfNeeded();
+          await section.screenshot({
+            path: `${dir}/${String(i + 1).padStart(2, "0")}-${slugify(name)}-${viewport.width}.png`,
+            animations: "disabled",
+          });
+        }
+      });
+    }
+  }
+});
+
+const MACHINE_ROUTES = ["/", "/services/agents-ia"];
+
+test.describe("machine view screenshots", () => {
+  test.skip(process.env.SCREENSHOTS !== "1", "set SCREENSHOTS=1 to capture");
+  test.use({ reducedMotion: "reduce" });
+
+  for (const route of MACHINE_ROUTES) {
+    for (const viewport of VIEWPORTS) {
+      test(`${route} machine view at ${viewport.width}`, async ({ page }) => {
+        await page.setViewportSize(viewport);
+        await page.goto(`${route}#machine`);
+        await page.locator(".mv-line").first().waitFor();
+        await page.evaluate(() => document.fonts.ready);
+        await page.screenshot({
+          path: `${OUTPUT_DIR}/machine-${fileStem(route)}-${viewport.width}.png`,
+          animations: "disabled",
+        });
+      });
+    }
+  }
+});

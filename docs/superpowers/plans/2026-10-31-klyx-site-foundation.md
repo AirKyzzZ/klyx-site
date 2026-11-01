@@ -51,6 +51,21 @@
 - [ ] **Step 4:** `npm run lint && npm run typecheck && npm run build` → all succeed.
 - [ ] **Step 5:** Create private GitHub repo: `gh repo create AirKyzzZ/klyx-site --private --source . --remote origin` (do not push yet). Commit `chore: scaffold next 16 app with tailwind and vitest`.
 
+### Task 1b: Adopt the Mainline design base
+
+**Files:**
+- Create: `src/components/ui/*` (shadcn primitives Mainline uses), `src/components/layout/navbar.tsx`, `src/components/layout/footer.tsx`, `src/components/blocks/*` (each Mainline section as its own file, kebab-case), `components.json`
+- Modify: `src/app/globals.css` (Mainline theme tokens replace the provisional Task 1 tokens; keep `--font-serif` and `--font-mono` variables), `src/app/fonts.ts` (Mainline's sans + Instrument Serif + Geist Mono), `package.json` (Mainline runtime deps such as `motion`, `lucide-react`, Radix packages, at versions compatible with Next 16.4 / React 19)
+- Create: `src/app/design-preview/page.tsx` rendering every ported block once with Mainline's demo content (deleted in Task 5)
+- Create: `docs/design-base.md`: source repo + commit SHA, license text, which blocks were ported, which Tailark free blocks are available for gaps and how to add them (`npx shadcn add` registry URL)
+
+Clone `https://github.com/shadcnblocks/mainline-nextjs-template` into the session scratchpad (not the repo), read it, and port its components into our structure. Keep its look as-is. Convert default exports to named exports and strip comments per Global Constraints. Do not port its pages, content, analytics or Mainline-specific images.
+
+- [ ] **Step 1:** Port components, theme and fonts.
+- [ ] **Step 2:** `npm run lint && npm run typecheck && npm test && npm run build` → green.
+- [ ] **Step 3:** Screenshot `/design-preview` at 1440 and 390 wide (headless Chrome: `"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless=new --hide-scrollbars --screenshot=<file> --window-size=1440,4000 http://localhost:3000/design-preview`) next to the Mainline demo; save both to `docs/screenshots/design-base/`; they must look like the same design.
+- [ ] **Step 4:** Commit `feat: adopt mainline design base`.
+
 ### Task 2: i18n routing (next-intl)
 
 **Files:**
@@ -126,7 +141,7 @@ Per page content: home (sections in spec order), each offer page (problem, deliv
 - Create: `src/components/site-header.tsx`, `src/components/site-footer.tsx`, `src/components/sections/*.tsx` (one file per reusable section: `hero`, `offer-cards`, `case-grid`, `process-steps`, `founder`, `testimonials`, `faq`, `cta`, `price-table`, `proof-card`)
 - Test: `e2e/routes.spec.ts`
 
-Folder names are the FR pathname keys; next-intl `pathnames` serves the EN slugs. Each page: `generateStaticParams`, `setRequestLocale`, `generateMetadata` (Task 6 helper), content only from messages/MDX. Neutral styling with the Task 1 tokens; semantic HTML, one `h1` per page. Proof card renders `TODO(maxime)` content until real artefacts exist. Footer links sister sites, legal, privacy.
+Folder names are the FR pathname keys; next-intl `pathnames` serves the EN slugs. Each page: `generateStaticParams`, `setRequestLocale`, `generateMetadata` (Task 6 helper), content only from messages/MDX. Sections are built from the Task 1b Mainline blocks (adapted to Klyx content) and, where Mainline has no fitting block, Tailark free blocks restyled to Mainline's tokens; no section designed from scratch. Home follows the spec section order; the hero keeps Mainline's hero layout with the key phrase in Instrument Serif italic. Delete `src/app/design-preview`. Semantic HTML, one `h1` per page. Proof card renders `TODO(maxime)` content until real artefacts exist. Footer links sister sites, legal, privacy.
 
 - [ ] **Step 1: Failing e2e.** `routes.spec.ts`: for every FR and EN path in the Task 2 table (slugs resolved with `hop-hop-immo`), `GET` returns 200 and has exactly one `h1`; `/en/pricing` language switch link points to `/tarifs`; `/realisations/does-not-exist` returns 404.
 - [ ] **Step 2:** `npm run build && npx playwright test` → FAIL.
@@ -195,4 +210,4 @@ French, for startups and agencies, on the outcome angle and the price ladder fro
 - [ ] **Step 3:** Lighthouse mobile on `/` (`npx lighthouse http://localhost:3000 --preset=perf --form-factor=mobile --quiet --chrome-flags="--headless=new"`), record score (target ≥ 95; final check repeats after the design plan).
 - [ ] **Step 4:** `git push -u origin feature/site-foundation`, `gh pr create --draft` with a short body in Maxime's PR style.
 
-Execution order: Task 1 → Task 2 → Tasks 3 and 4 in parallel → Task 5 → Tasks 6 and 7 → Task 10. Tasks 8 and 9 run in parallel from the start.
+Execution order: Task 1 → Task 1b → Task 2 → Tasks 3 and 4 in parallel → Task 5 → Tasks 6 and 7 → Task 10. Tasks 8 and 9 run in parallel from the start.

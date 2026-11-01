@@ -1,0 +1,303 @@
+.view-toggle {
+  position: relative;
+  display: inline-grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  height: 32px;
+  padding: 3px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-full);
+  background-color: var(--surface-1);
+  box-shadow: inset 0 1px 0 var(--highlight);
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  text-transform: uppercase;
+  isolation: isolate;
+  user-select: none;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 3px auto 3px 3px;
+    z-index: -1;
+    width: calc(50% - 3px);
+    border-radius: var(--r-full);
+    background-color: var(--surface-3);
+    transition: transform var(--d-ui) var(--ease-out);
+  }
+
+  &[data-state="machine"]::before {
+    transform: translateX(100%);
+    background-color: var(--accent);
+  }
+}
+
+.view-toggle-option {
+  display: grid;
+  place-items: center;
+  height: 100%;
+  padding-inline: 12px;
+  color: var(--text-3);
+  transition: color var(--d-fast) var(--ease-out);
+}
+
+.view-toggle[data-state="human"] [data-option="human"] {
+  color: var(--text);
+}
+
+.view-toggle[data-state="machine"] [data-option="machine"] {
+  color: var(--accent-ink);
+}
+
+.view-toggle[data-state="human"]:hover [data-option="machine"],
+.view-toggle[data-state="machine"]:hover [data-option="human"] {
+  color: var(--text-2);
+}
+
+.view-toggle--floating {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  z-index: 50;
+  display: none;
+  background-color: rgb(26 25 24 / 0.75);
+  backdrop-filter: blur(12px);
+  box-shadow:
+    inset 0 1px 0 var(--highlight),
+    0 16px 32px -16px rgb(0 0 0 / 0.7);
+
+  @media (width >= 1024px) {
+    display: inline-grid;
+  }
+}
+
+@keyframes view-toggle-in {
+  from {
+    opacity: 0;
+    pointer-events: none;
+    translate: 0 12px;
+  }
+}
+
+@supports (animation-timeline: scroll()) {
+  @media (prefers-reduced-motion: no-preference) {
+    :root:has([data-home-hero])
+      .view-toggle--floating[data-state="human"]:not(:focus-visible) {
+      animation: view-toggle-in linear both;
+      animation-timeline: scroll(root);
+      animation-range: 50vh 80vh;
+    }
+  }
+}
+
+.machine-view {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding-block: 88px 96px;
+  background-color: var(--bg-sunken);
+  visibility: hidden;
+  clip-path: circle(0 at var(--wipe-x) var(--wipe-y));
+  transition:
+    clip-path var(--d-swap) var(--ease-in-out),
+    visibility 0s linear var(--d-swap);
+  outline: none;
+
+  &[data-open] {
+    visibility: visible;
+    clip-path: circle(150vmax at var(--wipe-x) var(--wipe-y));
+    transition:
+      clip-path var(--d-swap) var(--ease-in-out),
+      visibility 0s;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+
+    &[data-open] {
+      transition: none;
+    }
+  }
+
+  @media (width >= 1024px) {
+    padding-top: 96px;
+  }
+}
+
+.mv-window {
+  overflow: hidden;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-lg);
+  background-color: var(--bg-sunken);
+  box-shadow:
+    inset 0 1px 0 var(--highlight),
+    0 24px 48px -24px rgb(0 0 0 / 0.6);
+}
+
+.mv-bar {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  border-bottom: 1px solid var(--line-strong);
+  background-color: var(--surface-2);
+}
+
+.mv-hatch {
+  height: 12px;
+  background-image: repeating-linear-gradient(
+    -45deg,
+    var(--line-strong) 0 1px,
+    transparent 1px 7px
+  );
+
+  & + .mv-meta {
+    border-top: 1px solid var(--line);
+  }
+}
+
+.mv-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 16px;
+  min-height: 48px;
+  padding: 8px 16px;
+
+  @media (width < 640px) {
+    padding-inline: 12px;
+  }
+  border-bottom: 1px solid var(--line);
+}
+
+.mv-request {
+  min-width: 0;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-3);
+  overflow-wrap: anywhere;
+}
+
+.mv-verb {
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.mv-path {
+  color: var(--text);
+}
+
+.mv-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.mv-action {
+  display: inline-flex;
+  align-items: center;
+  height: 28px;
+  padding-inline: 10px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-sm);
+  background-color: var(--surface-1);
+  color: var(--text-2);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  white-space: nowrap;
+  transition:
+    color var(--d-fast) var(--ease-out),
+    background-color var(--d-fast) var(--ease-out);
+
+  &:hover {
+    background-color: var(--surface-3);
+    color: var(--text);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: default;
+  }
+}
+
+.mv-inline-toggle {
+  display: contents;
+
+  @media (width >= 1024px) {
+    display: none;
+  }
+}
+
+.mv-failure {
+  padding: 16px;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  color: var(--text-2);
+}
+
+.mv-lines {
+  padding-block: 16px 24px;
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  line-height: 1.7;
+  color: var(--text-2);
+
+  @media (width < 640px) {
+    font-size: 0.8125rem;
+  }
+}
+
+.mv-line {
+  display: grid;
+  grid-template-columns: 4ch 1fr;
+  gap: 16px;
+  padding-inline: 8px 24px;
+
+  &:hover {
+    background-color: rgb(237 232 222 / 0.03);
+  }
+
+  @media (width < 640px) {
+    grid-template-columns: 3ch 1fr;
+    gap: 10px;
+    padding-inline: 4px 12px;
+  }
+}
+
+.mv-ln {
+  text-align: right;
+  color: var(--text-3);
+  font-variant-numeric: tabular-nums;
+  user-select: none;
+}
+
+.mv-code {
+  min-width: 0;
+  min-height: 1.7em;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.mv-heading {
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.mv-link {
+  color: var(--text);
+  text-decoration: underline;
+  text-decoration-color: var(--text-3);
+  text-underline-offset: 3px;
+
+  &:hover {
+    text-decoration-color: var(--text);
+  }
+}

@@ -1,0 +1,2840 @@
+{
+  "nav": {
+    "home": "Home",
+    "offers": "Services",
+    "groupBuild": "Build",
+    "groupAdvise": "Advise",
+    "sites": "Websites and landing pages",
+    "agents": "AI agents",
+    "fde": "Forward Deployed Engineer",
+    "cases": "Work",
+    "pricing": "Pricing",
+    "about": "About",
+    "bordeaux": "AI agency Bordeaux",
+    "blog": "Blog",
+    "contact": "Contact",
+    "book": "Book a call",
+    "quote": "Get a free quote",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "switchLanguage": "Français",
+    "audit": "AI audit",
+    "automation": "AI automation",
+    "geo": "AI search visibility",
+    "hints": {
+      "audit": "Your processes reviewed and a 90-day roadmap.",
+      "automation": "One AI workflow wired into your tools in a week.",
+      "geo": "Get cited by ChatGPT and Perplexity, measured before and after."
+    },
+    "useCases": "Use cases",
+    "faq": "FAQ",
+    "realEstate": "Real estate",
+    "agencies": "Web agencies",
+    "services": "Professional services"
+  },
+  "footer": {
+    "tagline": "Websites, AI agents and automations at a fixed price. Based in Bordeaux, working remotely across France and Europe.",
+    "offersTitle": "Services",
+    "companyTitle": "Klyx",
+    "legalTitle": "Legal",
+    "sisterSitesTitle": "Other Klyx lines",
+    "estate": "Klyx Estate: films and visuals to launch high-end property listings.",
+    "legal": "Legal notice",
+    "privacy": "Privacy",
+    "copyright": "© {year} Klyx, by Maxime Mansiet. Prices exclude VAT.",
+    "siret": "SIRET {siret}"
+  },
+  "home": {
+    "hero": {
+      "title": "AI agents that run in production,",
+      "titleEmphasis": "not demos.",
+      "subtitle": "Websites, agents and automations delivered at a fixed price for startups and agencies. Free quote, public prices.",
+      "ctaPrimary": "Book a call",
+      "ctaSecondary": "Get a free quote",
+      "eyebrow": "AI agency · Bordeaux",
+      "serif": "demos"
+    },
+    "proof": {
+      "label": "Real deliverable",
+      "title": "Something we shipped recently",
+      "body": "TODO(maxime): pick the artefact shown here (a CiteMe PR list, the Lighthouse score of a live client site, or an agent run log). Nothing shows until it is a real deliverable."
+    },
+    "offers": {
+      "title": "Three ways",
+      "subtitle": "Prices are on the site, excl. VAT. The quote is free, and we agree the scope in writing before we start.",
+      "link": "See the offer",
+      "cards": {
+        "sites": {
+          "name": "Websites and landing pages",
+          "outcome": "A fast, clear site that Google and ChatGPT can read. Live in 1 to 4 weeks.",
+          "price": "From {price}",
+          "duration": "1 to 4 weeks"
+        },
+        "agents": {
+          "name": "AI agents",
+          "outcome": "We plug AI into your tools so a repetitive task runs on its own. In production in 2 weeks, and the code stays yours.",
+          "price": "From {price}",
+          "duration": "2 weeks"
+        },
+        "fde": {
+          "name": "Forward Deployed Engineer",
+          "outcome": "A developer from the agency inside your team 2 to 3 days a week, for 4 weeks or more, shipping your AI features in your own code.",
+          "price": "From {price} / day",
+          "duration": "4 weeks minimum"
+        }
+      },
+      "titleEmphasis": "to work together.",
+      "also": {
+        "label": "Also",
+        "audit": "AI audit",
+        "automation": "AI automation",
+        "geo": "AI search (GEO)",
+        "useCases": "Use cases by sector"
+      },
+      "steps": {
+        "sites": {
+          "a": "Brief",
+          "b": "Build",
+          "c": "Live"
+        },
+        "agents": {
+          "a": "Tools",
+          "b": "Agent",
+          "c": "In prod"
+        },
+        "fde": {
+          "a": "Request",
+          "b": "Code",
+          "c": "Shipped"
+        }
+      }
+    },
+    "tools": {
+      "title": "Your tools,",
+      "titleEmphasis": "connected.",
+      "body": "We plug AI into what you already use: your inbox, your spreadsheets, your CRM. You keep your tools.",
+      "label": "Tools we connect",
+      "groups": {
+        "email": "Email",
+        "data": "Data",
+        "crm": "CRM",
+        "team": "Team",
+        "commerce": "Site, store",
+        "finance": "Accounting",
+        "automation": "Automation"
+      },
+      "note": "Brands mentioned belong to their respective owners. Klyx is neither affiliated with nor a partner of these vendors."
+    },
+    "cases": {
+      "title": "Work",
+      "subtitle": "Sites shipped for clients and products we've worked on. For each project, what we built.",
+      "visit": "See the project",
+      "readCase": "Read the case study",
+      "viewAll": "All work"
+    },
+    "process": {
+      "title": "How it works,",
+      "steps": {
+        "call": {
+          "title": "A scoping call",
+          "body": "20 minutes to understand your product, your stack and your deadline, and to see where AI could save you time."
+        },
+        "scope": {
+          "title": "Audit or quote",
+          "body": "We review your site or your processes, then send you a written scope and a fixed price."
+        },
+        "build": {
+          "title": "Build",
+          "body": "We build in short steps, with a check-in every week and tests on your real data. The code lives in your repo from day one."
+        },
+        "measure": {
+          "title": "Measure and hand over",
+          "body": "After launch, we check together that everything runs and give you a written handover. If you want us to keep monitoring and improving it, that's the monthly run."
+        }
+      },
+      "titleEmphasis": "in four steps.",
+      "sample": "Sample",
+      "call": {
+        "file": "calendar",
+        "title": "Scoping call",
+        "meta": "20 min · video",
+        "pick": "Pick a slot"
+      },
+      "scope": {
+        "file": "scope.md",
+        "title": "AI Sprint · inbound request triage",
+        "inLabel": "In scope",
+        "in": {
+          "a": "read the contact@ inbox",
+          "b": "sort into lead, support or spam",
+          "c": "update the CRM record"
+        },
+        "outLabel": "Out of scope",
+        "out": {
+          "a": "automatic reply to the customer"
+        },
+        "price": "Fixed price"
+      },
+      "build": {
+        "file": "weekly-update.md",
+        "title": "Weekly update · week 1",
+        "items": {
+          "a": "Inbox connected",
+          "b": "Classifier tested on real emails",
+          "c": "CRM update"
+        },
+        "done": "done",
+        "doing": "in progress",
+        "next": "Demo on Friday, on your data"
+      },
+      "measure": {
+        "file": "HANDOVER.md",
+        "title": "Handover",
+        "items": {
+          "a": "Code and accounts in your name",
+          "b": "Runbook: restart, monitor, switch off",
+          "c": "Test set in the repo",
+          "d": "Monthly follow-up, if you want it"
+        }
+      }
+    },
+    "founder": {
+      "title": "Who's behind",
+      "body": "Klyx is an AI agency based in Bordeaux. Maxime Mansiet, our lead engineer, is your direct contact from the first call to the handover: he scopes the project and follows it through to production.",
+      "experience": "Maxime also co-founded CiteMe, a tool that tracks how often brands get cited in ChatGPT and Perplexity.",
+      "github": "Maxime's GitHub",
+      "linkedin": "Maxime's LinkedIn",
+      "about": "Meet the team",
+      "titleEmphasis": "your project.",
+      "products": "Co-founded by Maxime",
+      "caption": "Klyx · Bordeaux",
+      "roster": {
+        "window": "klyx: ~/team",
+        "file": "team.yml",
+        "keys": {
+          "role": "role",
+          "who": "who",
+          "scope": "scope"
+        },
+        "items": {
+          "lead": {
+            "role": "lead engineer",
+            "who": "Maxime Mansiet",
+            "scope": "your contact, scoping, follow-up, shipping"
+          },
+          "agents": {
+            "role": "agents",
+            "who": "AI coding agents",
+            "scope": "scoped tasks, code reviewed before release"
+          },
+          "partners": {
+            "role": "specialists",
+            "who": "case by case",
+            "scope": "if the project needs one, we tell you first"
+          }
+        }
+      }
+    },
+    "testimonials": {
+      "title": "What clients",
+      "note": "TODO(maxime): each client's consent to reuse their quote on the new site. Quotes are translated from French.",
+      "items": {
+        "david": {
+          "quote": "Flawless service. The site finally reflects the quality of what we do, and our prospects notice. Clear communication, deadlines met, nothing to fault.",
+          "author": "David A.",
+          "company": "PKBA"
+        },
+        "antoni": {
+          "quote": "Smooth from start to finish. The site is clear, fast and well structured. Klyx understood exactly what we needed without wasting any time, a young team that is already very professional.",
+          "author": "Antoni V.",
+          "company": "Kenzi"
+        },
+        "clement": {
+          "quote": "I recommend Klyx without hesitation. The follow-up was great, and the design is modern and suits our business. You can feel real passion behind every detail.",
+          "author": "Clément D.",
+          "company": "Reciproq"
+        }
+      },
+      "titleEmphasis": "say."
+    },
+    "faq": {
+      "title": "Frequently",
+      "items": {
+        "price": {
+          "question": "How much does a project cost?",
+          "answer": "A landing page starts at {landingPrice}, an AI-ready site at {siteIaPrice}, an AI audit at {auditPrice} and an AI Sprint at {sprintPrice}. The final price depends on scope, which is agreed in writing before work starts. Every price is on the pricing page."
+        },
+        "team": {
+          "question": "Who works on our project?",
+          "answer": "Maxime Mansiet, our lead engineer, from the first call to the handover. He hands well-bounded tasks to AI coding agents, and the code they write is reviewed before it goes to production. If the project needs design or a specialty, we team up with a specialist and tell you first. The code is in your repo from day one, and every project ends with a written handover so another developer can pick it up. For Forward Deployed Engineer work, we take on two clients at most at a time, and we don't offer 24/7 on-call."
+        },
+        "production": {
+          "question": "What do you mean by \"in production\"?",
+          "answer": "An agent or automation wired into your real tools and data, used by your team every day, with a log of what the agent does. A demo running on test data doesn't count."
+        },
+        "data": {
+          "question": "What happens to our data?",
+          "answer": "Your accounts and tools stay in your name. For the AI to handle a request, data goes through a model provider's API, such as OpenAI or Anthropic, which by default doesn't use it to train its models. If you need EU hosting or a local model, we plan for it in the quote."
+        },
+        "remote": {
+          "question": "Do you work with teams outside Bordeaux?",
+          "answer": "Yes. Klyx is based in Bordeaux and we work remotely with teams across France and Europe, in French or English."
+        },
+        "stack": {
+          "question": "What stack do you use?",
+          "answer": "Next.js, TypeScript and Supabase for products, WordPress when your team wants to edit on its own. On the AI side: OpenAI, Anthropic and Gemini, MCP servers, and agents connected to your tools."
+        }
+      },
+      "titleEmphasis": "asked questions."
+    },
+    "finalCta": {
+      "title": "Let's talk about your next workflow",
+      "body": "Book a 20-minute call. You'll come away with a clear view of what's worth doing, whether or not we end up working together.",
+      "ctaPrimary": "Book a call",
+      "ctaSecondary": "Get a free quote",
+      "titleEmphasis": "or site."
+    },
+    "fold": {
+      "label": "Verifiable commitments",
+      "repo": "Code in your repo from day 1",
+      "prices": "Public prices, excl. VAT",
+      "base": "Based in Bordeaux, remote across France"
+    },
+    "eyebrows": {
+      "proof": "Proof",
+      "offers": "Offers",
+      "tools": "Tools",
+      "cases": "Work",
+      "process": "Method",
+      "founder": "Team",
+      "testimonials": "Clients",
+      "faq": "Questions"
+    },
+    "proofStrip": {
+      "title": "What we've shipped,",
+      "titleEmphasis": "verifiable in one click.",
+      "kinds": {
+        "lighthouse": "Lighthouse",
+        "prList": "Pull requests",
+        "runLog": "Run log",
+        "siteShot": "Live site"
+      },
+      "scores": {
+        "performance": "Performance",
+        "accessibility": "Accessibility",
+        "bestPractices": "Best practices",
+        "seo": "SEO"
+      },
+      "measured": "Measured on {date}",
+      "merged": "merged {date}",
+      "anonymised": "Anonymised",
+      "live": "Live",
+      "open": "Open {host}"
+    }
+  },
+  "offers": {
+    "priceFrom": "From {price}",
+    "perDay": "{price} / day",
+    "perMonth": "{price} / month",
+    "vatNote": "All prices exclude VAT.",
+    "items": {
+      "landing": {
+        "name": "Landing page",
+        "summary": "One page that presents an offer and makes people want to get in touch.",
+        "duration": "1 to 2 weeks"
+      },
+      "siteIa": {
+        "name": "AI-ready site",
+        "summary": "5 to 8 pages, ranked on Google and readable by AI engines (GEO).",
+        "duration": "3 to 4 weeks"
+      },
+      "siteCustom": {
+        "name": "Custom site",
+        "summary": "A site built around your needs, with your integrations.",
+        "duration": "Depends on scope"
+      },
+      "auditIa": {
+        "name": "AI audit + roadmap",
+        "summary": "Your processes reviewed, automations ranked, a 90-day roadmap.",
+        "duration": "1 to 2 weeks"
+      },
+      "sprintIa": {
+        "name": "AI Sprint",
+        "summary": "One workflow in production, with the scope fixed before work starts.",
+        "duration": "2 weeks"
+      },
+      "retainer": {
+        "name": "Monthly run",
+        "summary": "The workflow monitored and improved every month.",
+        "duration": "Monthly",
+        "price": "On quote"
+      },
+      "fde": {
+        "name": "Forward Deployed Engineer",
+        "summary": "2 to 3 days a week inside your team, on a fractional basis.",
+        "duration": "4 weeks minimum"
+      },
+      "automation": {
+        "name": "AI automation",
+        "summary": "One linear workflow wired into your tools: trigger, AI step, action.",
+        "duration": "4 to 5 working days"
+      },
+      "automationCare": {
+        "name": "Automation monitoring",
+        "summary": "The workflow monitored, with 1 hour of changes per month.",
+        "duration": "Monthly, 3 months minimum"
+      },
+      "geo": {
+        "name": "AI search visibility (GEO)",
+        "summary": "30 questions tested on 4 AI engines, 5 pages fixed, re-test at day 30.",
+        "duration": "2 weeks"
+      },
+      "geoCare": {
+        "name": "GEO monitoring",
+        "summary": "The 30 questions run again every month, 2 pieces of content and a report.",
+        "duration": "Monthly, 3 months minimum"
+      }
+    }
+  },
+  "sites": {
+    "hero": {
+      "eyebrow": "Websites and landing pages",
+      "title": "Websites built in Bordeaux,",
+      "titleEmphasis": "at the listed price.",
+      "subtitle": "Landing pages from {landingPrice}, 5 to 8 page sites from {siteIaPrice}. Fast sites that rank on Google and that ChatGPT or Perplexity can read.",
+      "ctaPrimary": "Book a call",
+      "ctaSecondary": "Get a free quote",
+      "serif": "listed"
+    },
+    "problem": {
+      "title": "Why rebuild",
+      "body": "A slow or badly structured site loses visitors before they've read your offer. And some of your customers now ask ChatGPT or Perplexity instead of searching, and those tools mostly cite sites they can parse. We build sites that work for both.",
+      "titleEmphasis": "your site",
+      "symptoms": {
+        "slow": "A site that takes over 3 seconds to show on mobile",
+        "noPrice": "Pages that state neither price nor timeline",
+        "invisible": "Missing from ChatGPT and Perplexity answers"
+      }
+    },
+    "deliverables": {
+      "title": "What",
+      "subtitle": "Three packages. The starting price is public, and the exact scope goes in the quote.",
+      "tiers": {
+        "landing": {
+          "items": {
+            "page": "One page, with structure and copy worked out together",
+            "contact": "A contact form or booking widget",
+            "seo": "Basic SEO: titles, descriptions, structured data",
+            "launch": "Launch on your own domain"
+          }
+        },
+        "siteIa": {
+          "items": {
+            "pages": "5 to 8 pages, custom design",
+            "stack": "Next.js or WordPress, depending on who edits the site day to day",
+            "geo": "SEO and GEO: structured data, llms.txt, pages written to be cited",
+            "speed": "Core Web Vitals checked before launch",
+            "handover": "A handover so you know how to edit your content"
+          }
+        },
+        "siteCustom": {
+          "items": {
+            "scope": "Scope defined with you during the brief",
+            "integrations": "Integrations: CRM, payments, booking, APIs",
+            "assistant": "An optional AI assistant that answers from your content"
+          }
+        }
+      },
+      "titleEmphasis": "you get"
+    },
+    "process": {
+      "title": "How it works,",
+      "steps": {
+        "brief": {
+          "title": "Brief",
+          "body": "A call to pin down your goals, your pages and your content."
+        },
+        "design": {
+          "title": "Structure and design",
+          "body": "We show you the structure and design before writing any code. You sign off."
+        },
+        "build": {
+          "title": "Build",
+          "body": "We build the site, and you follow progress on a staging URL."
+        },
+        "launch": {
+          "title": "Launch",
+          "body": "We connect the domain, check performance and show you how to edit your content."
+        }
+      },
+      "titleEmphasis": "in four steps."
+    },
+    "pricing": {
+      "title": "How much does",
+      "body": "A landing page starts at {landingPrice}, an AI-ready site at {siteIaPrice} and a custom site at {siteCustomPrice}. The quote is free, and the price doesn't move once the scope is signed.",
+      "link": "See all prices",
+      "titleEmphasis": "a website cost?"
+    },
+    "proof": {
+      "title": "Sites",
+      "body": "PKBA and VertiFlow: a site for a parkour club and one for a parkour clothing brand, both live.",
+      "link": "See the work",
+      "titleEmphasis": "shipped"
+    },
+    "faq": {
+      "title": "Frequently asked",
+      "items": {
+        "delay": {
+          "question": "How long does it take to build a site?",
+          "answer": "Allow 1 to 2 weeks for a landing page and 3 to 4 weeks for a 5 to 8 page AI-ready site. The schedule is written into the quote."
+        },
+        "stack": {
+          "question": "Next.js or WordPress?",
+          "answer": "WordPress if your team wants to edit pages without going through us. Next.js if you want the fastest possible site or custom features. We decide together during the brief."
+        },
+        "geo": {
+          "question": "What is GEO?",
+          "answer": "GEO (Generative Engine Optimization) means making a site readable and quotable by AI engines like ChatGPT, Perplexity or Gemini: well-organised content, structured data, and clear answers to the questions your customers ask."
+        },
+        "content": {
+          "question": "Who writes the copy?",
+          "answer": "We send you a content brief, then structure and rework your copy with you. You approve everything before launch."
+        },
+        "ownership": {
+          "question": "Do I own the site?",
+          "answer": "Yes. The code, the domain and the hosting accounts are in your name."
+        },
+        "after": {
+          "question": "What happens after launch?",
+          "answer": "You edit your content yourself. For a new page or feature, we send you a quote."
+        }
+      },
+      "titleEmphasis": "questions."
+    },
+    "cta": {
+      "title": "Your site,",
+      "body": "Tell us about your project and we'll send a free quote with a fixed price.",
+      "ctaPrimary": "Get a free quote",
+      "ctaSecondary": "Book a call",
+      "titleEmphasis": "delivered at the quoted price."
+    },
+    "block": {
+      "title": "Live sites,",
+      "titleEmphasis": "open them yourself.",
+      "body": "Sites shipped for clients, with their address. Open them and check the speed yourself."
+    }
+  },
+  "agents": {
+    "hero": {
+      "eyebrow": "AI agents",
+      "title": "An AI agent in production",
+      "titleEmphasis": "in two weeks.",
+      "subtitle": "Audits from {auditPrice}, AI Sprints from {sprintPrice}. One workflow wired into your tools, with the code in your repo and a log of every action the agent takes.",
+      "ctaPrimary": "Book a call",
+      "ctaSecondary": "Get a free quote",
+      "serif": "production"
+    },
+    "problem": {
+      "title": "Why AI projects",
+      "body": "Your team already uses ChatGPT, but nothing is connected to your tools. The prototype worked in the meeting, then nobody had time to make it reliable. That's the part we take on: we pick one process worth automating, connect it to your real data, and it runs under monitoring.",
+      "titleEmphasis": "get stuck at the demo stage",
+      "symptoms": {
+        "demo": "A prototype that worked in a meeting, then nothing",
+        "copy": "ChatGPT open in a tab, nothing wired into your tools",
+        "owner": "Nobody to harden it or watch it"
+      }
+    },
+    "deliverables": {
+      "title": "Three steps,",
+      "subtitle": "You can stop after any step.",
+      "tiers": {
+        "auditIa": {
+          "items": {
+            "interviews": "Interviews with your team",
+            "map": "A map of your processes",
+            "ranking": "The 3 most profitable automations, ranked by time saved and risk",
+            "gdpr": "The GDPR points to deal with",
+            "roadmap": "A 90-day roadmap, presented in a review session"
+          }
+        },
+        "sprintIa": {
+          "items": {
+            "workflow": "One workflow in production: agent, assistant or automation",
+            "human": "A human approval step when the agent touches sensitive data",
+            "log": "A log of every action the agent takes",
+            "evals": "A test set to check the outputs",
+            "runbook": "A runbook and an onboarding session for your team",
+            "repo": "The code in your repo"
+          }
+        },
+        "retainer": {
+          "items": {
+            "monitoring": "Monitoring of the workflow",
+            "updates": "Model and prompt updates",
+            "evals": "Tests re-run after every change",
+            "report": "A monthly check-in on what's running"
+          }
+        }
+      },
+      "titleEmphasis": "each paid separately"
+    },
+    "credit": {
+      "title": "The audit is credited against the Sprint",
+      "body": "If you go on to an AI Sprint, the quote takes the audit you already paid into account, and the terms are written down before you sign."
+    },
+    "process": {
+      "title": "How it works,",
+      "steps": {
+        "call": {
+          "title": "Call",
+          "body": "20 minutes to find the process that costs you the most time."
+        },
+        "audit": {
+          "title": "Audit",
+          "body": "We go through your processes and rank the possible automations by payoff and risk."
+        },
+        "sprint": {
+          "title": "Sprint",
+          "body": "Two weeks to put one workflow into production, with a review at the end of each week."
+        },
+        "run": {
+          "title": "Run",
+          "body": "We monitor and improve the workflow, or your team takes it over with the runbook."
+        }
+      },
+      "titleEmphasis": "in four steps."
+    },
+    "pricing": {
+      "title": "How much does",
+      "body": "An AI audit starts at {auditPrice}. An AI Sprint, which puts one workflow into production in two weeks, starts at {sprintPrice}. Larger projects, with several integrations or search over your documents, are quoted separately.",
+      "link": "See all prices",
+      "titleEmphasis": "an AI agent cost?"
+    },
+    "proof": {
+      "title": "Already",
+      "body": "Hoppy, the AI assistant for Hop Hop Immo, and CiteMe, co-founded by Maxime, our lead engineer.",
+      "link": "See the work",
+      "titleEmphasis": "in production"
+    },
+    "faq": {
+      "title": "Frequently asked",
+      "items": {
+        "agentVsAutomation": {
+          "question": "What's the difference between an AI agent and an automation?",
+          "answer": "An automation follows fixed rules: when an email arrives, it adds a row to the CRM. An AI agent reads, decides and acts within limits you set, for example sorting a customer request and drafting a reply. Many projects use both."
+        },
+        "tools": {
+          "question": "n8n, Make or custom code?",
+          "answer": "It depends on the process and on who will maintain it. n8n or Make work well when your team wants to change the steps itself. Custom code makes sense when you need fine-grained control, tests or high volume."
+        },
+        "nothingFound": {
+          "question": "What if the audit finds nothing useful?",
+          "answer": "You keep the process map and the roadmap, even if you go no further."
+        },
+        "bpifrance": {
+          "question": "Is this audit a Bpifrance Diag Data IA?",
+          "answer": "No. The Diag Data IA is delivered by experts accredited by Bpifrance, and Klyx isn't one of them. Our audit is a private audit at a fixed, published price."
+        },
+        "data": {
+          "question": "Is our data safe?",
+          "answer": "Your accounts and tools stay in your name, and we map the data before writing any code. Data the agent handles goes through the model provider's API, which by default doesn't use it to train its models. If you need EU hosting or a local model, we plan for it in the quote."
+        },
+        "maintenance": {
+          "question": "Who maintains the agent after the sprint?",
+          "answer": "Your team, using the runbook and onboarding included in the sprint, or us through the monthly run."
+        }
+      },
+      "titleEmphasis": "questions."
+    },
+    "cta": {
+      "title": "Start with the process",
+      "body": "Book a 20-minute call. We'll work out together whether it's worth automating.",
+      "ctaPrimary": "Book a call",
+      "ctaSecondary": "Get a free quote",
+      "titleEmphasis": "that costs you the most hours."
+    },
+    "block": {
+      "title": "Every agent action,",
+      "titleEmphasis": "in the log.",
+      "body": "The view you get with the Sprint: every step, its duration, and the errors it recovered from. Shown here on a fictional example."
+    },
+    "stack": {
+      "titleEmphasis": "under your agents."
+    }
+  },
+  "fde": {
+    "hero": {
+      "eyebrow": "Forward Deployed Engineer",
+      "title": "A fractional",
+      "titleEmphasis": "Forward Deployed Engineer.",
+      "subtitle": "Our lead engineer joins your team 2 to 3 days a week to ship your AI features. {fdeDayPrice} per day, 4 weeks minimum, two clients at most at any time.",
+      "ctaPrimary": "Book a call",
+      "ctaSecondary": "Get a free quote",
+      "serif": "fractional"
+    },
+    "definition": {
+      "title": "What is a",
+      "body": "A Forward Deployed Engineer (FDE) is a developer who works directly with a customer's team, on their codebase, to get a product into production. The role comes from software companies like Palantir, and AI labs now use it to deploy their models with customers. At Klyx it's the same work on a fractional basis: our lead engineer joins your team a few days a week, without you making a full-time hire.",
+      "titleEmphasis": "Forward Deployed Engineer?",
+      "term": "forward deployed engineer · noun · FDE"
+    },
+    "audience": {
+      "title": "Who it's for",
+      "body": "A 2 to 4 person startup that has to ship an AI feature before its next round and has no time to hire. Or an agency that signed an AI project and has nobody to build it."
+    },
+    "deliverables": {
+      "title": "What we do",
+      "items": {
+        "tools": "We work in your Slack, your repo and your stand-ups",
+        "backlog": "We own part of the backlog, from design to production",
+        "weekly": "A written update every week with the list of merged PRs",
+        "handover": "Handover documentation at the end of the engagement"
+      },
+      "titleEmphasis": "inside your team"
+    },
+    "terms": {
+      "title": "Terms",
+      "items": {
+        "rate": "{fdeDayPrice} per day",
+        "rhythm": "2 to 3 days a week",
+        "minimum": "4 weeks minimum, about {fdeMinimum}",
+        "capacity": "Two clients at most at any time"
+      }
+    },
+    "limits": {
+      "title": "What we don't offer",
+      "body": "There's no 24/7 on-call and no SOC 2 certification. If your project needs either, we'll tell you on the first call.",
+      "items": {
+        "capacity": "Two clients at most at any time",
+        "oncall": "No 24/7 on-call",
+        "soc2": "No SOC 2 certification"
+      }
+    },
+    "process": {
+      "title": "How it works,",
+      "steps": {
+        "call": {
+          "title": "Call",
+          "body": "We talk about your product, your team and what needs to ship."
+        },
+        "scope": {
+          "title": "Scope",
+          "body": "We send you the goals for the first 4 weeks and the number of days per week, in writing."
+        },
+        "onboarding": {
+          "title": "Onboarding",
+          "body": "Access to the repo, Slack and your tools. We aim to merge a first PR in week one."
+        },
+        "weekly": {
+          "title": "Every week",
+          "body": "A written update with the merged PRs and what comes next. We adjust the pace if needed."
+        }
+      },
+      "titleEmphasis": "in four steps."
+    },
+    "faq": {
+      "title": "Frequently asked",
+      "items": {
+        "vsFreelance": {
+          "question": "How is this different from a regular freelancer?",
+          "answer": "A freelancer usually delivers a project defined up front. As an FDE, our lead engineer works inside your team on whatever matters most right now, joins your stand-ups and ships every week."
+        },
+        "minimum": {
+          "question": "Why 4 weeks minimum?",
+          "answer": "It takes one to two weeks to really learn your codebase and your team. Below four weeks, you'd mostly be paying for that ramp-up."
+        },
+        "days": {
+          "question": "Can we go above 3 days a week?",
+          "answer": "No. Three days a week is our maximum per client, so every engagement gets the same quality of work."
+        },
+        "remote": {
+          "question": "Do you work on site?",
+          "answer": "Remote by default. If your team is in Bordeaux, we can come to your office."
+        },
+        "vsSprint": {
+          "question": "FDE or AI Sprint?",
+          "answer": "The AI Sprint delivers one defined workflow at a fixed price in two weeks. The FDE fits when your backlog keeps changing and you need someone inside the team for several weeks."
+        }
+      },
+      "titleEmphasis": "questions."
+    },
+    "cta": {
+      "title": "An AI feature",
+      "body": "Book a call. We'll tell you quickly whether we can take it on, and at what pace.",
+      "ctaPrimary": "Book a call",
+      "ctaSecondary": "Get a free quote",
+      "titleEmphasis": "to ship this quarter?"
+    },
+    "problem": {
+      "title": "Your AI feature has to ship,",
+      "titleEmphasis": "hiring will take months.",
+      "body": "Hiring an AI developer takes time, and the feature has to ship before that. A classic freelancer delivers a ticket and leaves. You need someone who works with your team, reads your code and puts it in production.",
+      "symptoms": {
+        "hiring": "A role open for months",
+        "backlog": "AI tickets slipping from sprint to sprint",
+        "deadline": "A demo promised to investors"
+      }
+    },
+    "pricing": {
+      "title": "How much does",
+      "titleEmphasis": "a Forward Deployed Engineer cost?",
+      "body": "{fdeDayPrice} per day, 2 to 3 days a week, 4 weeks minimum, so about {fdeMinimum} to start.",
+      "link": "See all prices"
+    }
+  },
+  "audit": {
+    "hero": {
+      "eyebrow": "AI audit",
+      "title": "An AI audit of your business,",
+      "titleEmphasis": "with a 90-day roadmap.",
+      "serif": "roadmap",
+      "subtitle": "From {auditPrice}, in 1 to 2 weeks. We interview your team, map your processes and rank the possible automations by hours saved and by risk. You keep the roadmap, even if you stop there.",
+      "ctaPrimary": "Book a call",
+      "ctaSecondary": "Get a free quote"
+    },
+    "problem": {
+      "title": "Everyone talks about AI,",
+      "titleEmphasis": "nobody tells you where to start.",
+      "body": "You know your team loses hours on quotes, invoices and follow-ups. Between the tools, the vendors and the promises, it is hard to tell which process to automate first, for what budget and at what risk. The audit answers those questions before you commit to any build.",
+      "symptoms": {
+        "quotes": "Quotes typed by hand into two different tools",
+        "trial": "A ChatGPT trial that never left a browser tab",
+        "quotesCompared": "Three agency quotes you cannot compare"
+      }
+    },
+    "deliverables": {
+      "title": "What you get,",
+      "titleEmphasis": "and what can follow.",
+      "subtitle": "The audit is sold on its own. If a project comes out of it, you pick the next step: a simple automation or an AI Sprint.",
+      "tiers": {
+        "auditIa": {
+          "items": {
+            "interviews": "Interviews with the people who do the work",
+            "map": "A map of your processes and the tools they run through",
+            "score": "Every possible automation scored: hours saved per week, cost, risk",
+            "gdpr": "The GDPR and security points to settle before any code",
+            "roadmap": "A 90-day roadmap, walked through in a review meeting"
+          }
+        },
+        "automation": {
+          "items": {
+            "workflow": "One linear workflow: a trigger, an AI step, an action",
+            "speed": "Live in 4 to 5 working days",
+            "fit": "For the first process on the roadmap, when it is a simple one"
+          }
+        },
+        "sprintIa": {
+          "items": {
+            "agent": "An agent or a multi-step workflow that makes decisions",
+            "log": "Human approval and a log of every action",
+            "repo": "The code in your repo, in 2 weeks"
+          }
+        }
+      }
+    },
+    "process": {
+      "title": "How it works,",
+      "titleEmphasis": "in four steps.",
+      "steps": {
+        "call": {
+          "title": "Call",
+          "body": "20 minutes to check an audit will be useful to you. If it won't, we tell you."
+        },
+        "interviews": {
+          "title": "Interviews",
+          "body": "We meet the people who do the work, in Bordeaux or on video, and look at their tools."
+        },
+        "analysis": {
+          "title": "Analysis",
+          "body": "We map your processes and score every possible automation."
+        },
+        "restitution": {
+          "title": "Review",
+          "body": "We walk you through the roadmap. You decide what comes next, with us or with someone else."
+        }
+      }
+    },
+    "block": {
+      "title": "The deliverable,",
+      "titleEmphasis": "and what it looks like.",
+      "body": "A written document you can pass to your management or to another provider. Below, a roadmap excerpt for a fictional company.",
+      "document": {
+        "file": "ai-audit-roadmap.md",
+        "sample": "Sample",
+        "heading": "Roadmap · 90 days",
+        "company": "Fictional SME · 25 people · 9 processes reviewed",
+        "columns": {
+          "process": "Process",
+          "hours": "Time lost",
+          "offer": "Answer",
+          "risk": "Risk",
+          "when": "When"
+        },
+        "rows": {
+          "quotes": {
+            "process": "Quote follow-ups",
+            "hours": "~6 h / wk",
+            "offer": "AI automation",
+            "risk": "Low",
+            "when": "Month 1"
+          },
+          "invoices": {
+            "process": "Supplier invoice entry",
+            "hours": "~4 h / wk",
+            "offer": "AI automation",
+            "risk": "Medium",
+            "when": "Month 2"
+          },
+          "emails": {
+            "process": "Customer email triage",
+            "hours": "~3 h / wk",
+            "offer": "AI Sprint",
+            "risk": "Medium",
+            "when": "Month 3"
+          }
+        },
+        "note": "Hours are estimated during the interviews, then checked once the workflow is live."
+      },
+      "credit": {
+        "title": "The audit is credited against what follows",
+        "body": "If you go on to an AI automation or an AI Sprint, the quote takes the audit you already paid into account, and the terms are written down before you sign."
+      },
+      "bpifrance": {
+        "label": "Context",
+        "title": "What about Bpifrance's Diagnostic Data IA?",
+        "body": "Bpifrance runs a Diagnostic Data IA, delivered by experts it accredits, as part of France's Osez l'IA plan. Klyx is not accredited: our audit is private, shorter, and its price is public.",
+        "source": "The scheme on entreprises.gouv.fr",
+        "url": "https://www.entreprises.gouv.fr/osez-lia"
+      }
+    },
+    "pricing": {
+      "title": "How much does",
+      "titleEmphasis": "an AI audit cost?",
+      "body": "The AI audit starts at {auditPrice}, for 1 to 2 weeks. If an automation comes out of it, an AI automation starts at {automationPrice} and an AI Sprint at {sprintPrice}.",
+      "link": "See all prices"
+    },
+    "faq": {
+      "title": "Questions",
+      "titleEmphasis": "about the audit.",
+      "items": {
+        "pme": {
+          "question": "Is an AI audit useful for a 15-person company?",
+          "answer": "Yes, that is often where it pays back fastest. In a company of 10 to 50 people, a few repetitive tasks (quotes, invoices, follow-ups, email triage) take one or two people several hours a week. The audit finds them, puts a number on that time and checks that an automation costs less than what it saves."
+        },
+        "duration": {
+          "question": "How long does the audit take?",
+          "answer": "One to two weeks between the first interview and the review. Interviews take about an hour per person, and we ask your team to show us their tools the way they really use them. The rest happens on our side: mapping, scoring the possible automations and writing the roadmap. You have nothing to prepare beforehand."
+        },
+        "deliverable": {
+          "question": "What do I get at the end?",
+          "answer": "A written document, not a slide deck: the map of your processes, the possible automations scored by hours saved, cost and risk, the GDPR points to settle and a 90-day roadmap. We go through it together in the review meeting. It belongs to you, and you can hand it to another provider if you prefer."
+        },
+        "bpifrance": {
+          "question": "Can your audit be funded by Bpifrance?",
+          "answer": "Not this one. Bpifrance's Diagnostic Data IA goes through experts it accredits, and Klyx is not one of them. If that funding matters to you, talk to an accredited expert. If you want an answer within two weeks, at a fixed price and with no application to file, our private audit is built for that."
+        },
+        "noTech": {
+          "question": "Do I need a tech team to follow the roadmap?",
+          "answer": "No. Most of the small companies we work with have no in-house developer. We write the roadmap for the person who decides, without jargon, and each recommendation says who can carry it out: you with a tool like Make or n8n, us, or another provider. When a point needs real technical skills, we say so."
+        },
+        "next": {
+          "question": "Do I have to hire you for what comes next?",
+          "answer": "No. The audit is paid separately and the roadmap is yours. Part of the recommendations can often be done with the tools you already have. If you hire us for the next step, the quote takes the audit you already paid into account, and the terms are written down before you sign."
+        }
+      }
+    },
+    "cta": {
+      "title": "A 20-minute call",
+      "titleEmphasis": "to see if the audit is worth it.",
+      "body": "We look at your processes together. If an audit would not help you, we tell you.",
+      "ctaPrimary": "Book a call",
+      "ctaSecondary": "Get a free quote"
+    }
+  },
+  "automation": {
+    "hero": {
+      "eyebrow": "AI automation",
+      "title": "AI automation for small businesses:",
+      "titleEmphasis": "one workflow in one week.",
+      "serif": "week",
+      "subtitle": "From {automationPrice}. We wire one workflow into your tools: a trigger, an AI step, an action. Invoices, quotes or follow-ups, live in 4 to 5 working days, with a human approval step wherever a mistake is costly.",
+      "ctaPrimary": "Book a call",
+      "ctaSecondary": "Get a free quote"
+    },
+    "problem": {
+      "title": "Your team retypes",
+      "titleEmphasis": "what a machine can read.",
+      "body": "An invoice arrives by email. Someone opens the PDF, copies the amount and the VAT into the accounting tool, then files it. Quotes and follow-ups take the same path. Each task takes two minutes, but it comes back all day long. An automation with an AI step does this work well, as long as its scope is clear.",
+      "symptoms": {
+        "pdf": "PDFs retyped by hand into the ERP",
+        "reminders": "Follow-ups sent whenever someone remembers",
+        "zapier": "A Zap built two years ago that nobody dares to touch"
+      }
+    },
+    "deliverables": {
+      "title": "What you get,",
+      "titleEmphasis": "at a fixed price.",
+      "subtitle": "One simple workflow at a fixed price, light monitoring if you want it, and the AI Sprint when the need goes beyond one workflow.",
+      "tiers": {
+        "automation": {
+          "items": {
+            "kickoff": "A 45-minute scoping call",
+            "workflow": "One linear workflow in your n8n or Make account: trigger, AI step, action",
+            "tests": "The AI step tested on 10 of your real documents",
+            "alert": "An email alert if a run fails",
+            "doc": "A one-page doc and a 30-minute handover",
+            "fixes": "14 days of fixes after launch"
+          }
+        },
+        "automationCare": {
+          "items": {
+            "monitoring": "Run monitoring",
+            "hour": "1 hour of changes per month",
+            "costs": "A monthly API cost report",
+            "minimum": "3 months minimum, then 30 days' notice"
+          }
+        },
+        "sprintIa": {
+          "items": {
+            "agent": "An agent that makes decisions, or a flow across several tools",
+            "evals": "A test set of 20 to 50 cases and an action log",
+            "credit": "The AI automation price credited 100% if the Sprint is signed within 60 days"
+          }
+        }
+      }
+    },
+    "process": {
+      "title": "How it works,",
+      "titleEmphasis": "in one week.",
+      "steps": {
+        "call": {
+          "title": "Call",
+          "body": "20 minutes to pick the workflow and check it fits the package."
+        },
+        "scope": {
+          "title": "Scoping",
+          "body": "45 minutes to list the tools, the access and 10 real documents for testing."
+        },
+        "build": {
+          "title": "Build",
+          "body": "4 to 5 working days. We test the AI step on your documents before wiring the action."
+        },
+        "launch": {
+          "title": "Launch",
+          "body": "The workflow runs. You get the doc and a 30-minute handover."
+        }
+      }
+    },
+    "block": {
+      "title": "Three examples,",
+      "titleEmphasis": "with a person in the loop.",
+      "body": "Each workflow keeps a human approval step wherever a mistake is costly. These are typical examples, not client projects.",
+      "human": "human approval",
+      "examples": {
+        "invoices": {
+          "title": "Supplier invoices",
+          "body": "The PDF received by email becomes a draft in the accounting tool.",
+          "steps": {
+            "trigger": "Email + PDF",
+            "ai": "AI extraction",
+            "human": "Accounts check",
+            "action": "ERP entry"
+          }
+        },
+        "quotes": {
+          "title": "Quotes",
+          "body": "The form request becomes a prefilled quote, reviewed before it goes out.",
+          "steps": {
+            "trigger": "Form",
+            "ai": "AI draft",
+            "human": "Review",
+            "action": "Sent to client"
+          }
+        },
+        "reminders": {
+          "title": "Payment reminders",
+          "body": "An overdue invoice triggers a reminder written from the client's history.",
+          "steps": {
+            "trigger": "Due date",
+            "ai": "Drafted reminder",
+            "human": "Owner sign-off",
+            "action": "Email sent"
+          }
+        }
+      },
+      "limit": "An autonomous agent, a test set or an integration across several tools are outside the package: that is the AI Sprint."
+    },
+    "pricing": {
+      "title": "How much does",
+      "titleEmphasis": "an AI automation cost?",
+      "body": "One simple workflow starts at {automationPrice}. Monitoring costs {automationCarePrice} per month, 3 months minimum. Tool subscriptions (n8n, Make, model API) are in your name and billed directly by the vendors.",
+      "link": "See all prices"
+    },
+    "faq": {
+      "title": "Questions",
+      "titleEmphasis": "about automation.",
+      "items": {
+        "vsSprint": {
+          "question": "What is the difference between AI automation and the AI Sprint?",
+          "answer": "AI automation is one linear workflow: a trigger, an AI step that reads or drafts, an action. The AI makes no decision on its own and the workflow does not connect five tools. As soon as the process needs to choose between several actions, or act across several tools with a test set, it is an AI Sprint, delivered in two weeks."
+        },
+        "tools": {
+          "question": "Which tool does the workflow run in?",
+          "answer": "In your own n8n or Make account, in your name, so you stay in control. If you don't have a tool yet, we help you pick one and open the account. We also hand over the workflow export, which you can give to another provider if you ever change partners."
+        },
+        "runCost": {
+          "question": "How much does the workflow cost once it is live?",
+          "answer": "You pay the vendors directly: the automation tool, such as n8n or Make, and the AI model's API. For a small volume these subscriptions usually stay modest, but they depend on how many documents you process. We give you a costed estimate for your case during scoping, before we start, so you know what to expect."
+        },
+        "errors": {
+          "question": "What if the AI gets an invoice wrong?",
+          "answer": "That is planned for. We add a human approval step wherever a mistake is costly: the person sees the extracted fields, fixes them if needed and approves. The workflow also emails you when a run fails. Before launch, we test the AI step on 10 of your real documents to see where it gets things wrong."
+        },
+        "data": {
+          "question": "Do my documents end up at OpenAI?",
+          "answer": "The AI step sends the document's content to a model provider's API. By default, these business APIs are not used to train models. If your documents are sensitive, we pick a provider hosted in the EU or mask some fields before sending. We settle this during scoping, before the first step is written."
+        },
+        "upgrade": {
+          "question": "What if I need more later?",
+          "answer": "The AI automation price is credited 100% against an AI Sprint signed within 60 days. So you can start small, watch the workflow run on your real documents, then move to a fuller agent without paying twice for the discovery of your processes. After 60 days, the two stay separate fixed-price packages."
+        }
+      }
+    },
+    "cta": {
+      "title": "Which process",
+      "titleEmphasis": "do you still retype by hand?",
+      "body": "Book a 20-minute call. We tell you whether it fits in one simple workflow, and at what price.",
+      "ctaPrimary": "Book a call",
+      "ctaSecondary": "Get a free quote"
+    },
+    "stack": {
+      "titleEmphasis": "under your automations."
+    }
+  },
+  "geo": {
+    "hero": {
+      "eyebrow": "AI search visibility (GEO)",
+      "title": "ChatGPT search visibility,",
+      "titleEmphasis": "so AI engines can cite you.",
+      "serif": "cite",
+      "subtitle": "From {geoPrice}, in 2 weeks, for an existing site. We ask 4 AI engines 30 of your clients' questions, fix 5 key pages on your site, then run the test again at day 30.",
+      "ctaPrimary": "Book a call",
+      "ctaSecondary": "Get a free quote"
+    },
+    "problem": {
+      "title": "Your clients ask ChatGPT.",
+      "titleEmphasis": "You don't know what it answers.",
+      "body": "Part of search now goes through ChatGPT, Perplexity, Gemini or Google's AI Overviews. These engines answer with a few sources, not ten links. If your site is poorly structured or silent on prices, it does not show up in the answer, and no classic SEO tool shows you that.",
+      "symptoms": {
+        "competitor": "A smaller competitor cited instead of you",
+        "pages": "Service pages with no price and no clear answer",
+        "blind": "No idea what ChatGPT says about you"
+      }
+    },
+    "deliverables": {
+      "title": "What you get,",
+      "titleEmphasis": "measured before and after.",
+      "subtitle": "For an existing site. If you are rebuilding your site, the AI-ready site already includes GEO.",
+      "tiers": {
+        "geo": {
+          "items": {
+            "baseline": "30 questions tested on ChatGPT, Perplexity, Gemini and Google AI Overviews",
+            "technical": "The technical review: robots, AI crawlers, sitemap, structured data, llms.txt",
+            "pages": "5 key pages rewritten and marked up (Schema.org, FAQ)",
+            "article": "One article written to be cited",
+            "retest": "The same test run again at day 30, with a report"
+          }
+        },
+        "geoCare": {
+          "items": {
+            "content": "2 pieces of content or page updates per month",
+            "rerun": "The 30 questions run again every month",
+            "report": "A citation report and a monthly call",
+            "minimum": "3 months minimum"
+          }
+        },
+        "siteIa": {
+          "items": {
+            "rebuild": "A 5 to 8 page site built for AI engines",
+            "included": "GEO included from launch",
+            "when": "When the site needs rebuilding rather than fixing"
+          }
+        }
+      }
+    },
+    "process": {
+      "title": "How it works,",
+      "titleEmphasis": "in two weeks.",
+      "steps": {
+        "call": {
+          "title": "Call",
+          "body": "20 minutes to pick the questions your clients really ask."
+        },
+        "baseline": {
+          "title": "Baseline",
+          "body": "We ask 4 AI engines 30 questions and note who gets cited: you, or the others."
+        },
+        "fix": {
+          "title": "Fixes",
+          "body": "We fix 5 key pages and write one article, directly in your site if access allows."
+        },
+        "retest": {
+          "title": "Re-test",
+          "body": "At day 30, we ask the same questions again and show you what moved."
+        }
+      }
+    },
+    "block": {
+      "title": "How we measure",
+      "titleEmphasis": "a citation.",
+      "body": "A citation is your site listed as a source in an AI engine's answer. We ask the same questions before and after, on the same engines, and count. Sample report below, with fictional values.",
+      "card": {
+        "file": "geo-report.md",
+        "sample": "Sample",
+        "site": "example-firm.com",
+        "promptsLabel": "Question",
+        "prompts": {
+          "a": "accountant for startups in Bordeaux",
+          "b": "how much does an accountant cost for a small company",
+          "c": "online accountant or local firm"
+        },
+        "states": {
+          "cited": "Cited",
+          "competitor": "Competitor",
+          "absent": "Absent"
+        },
+        "summary": "{cited} of {total} answers cite the site"
+      },
+      "realData": "Fictional values, for illustration.",
+      "disclosure": {
+        "label": "Disclosure",
+        "body": "Maxime Mansiet, our lead engineer, co-founded CiteMe, a tool that measures a brand's visibility in AI engines. We tell you so the link is clear. You don't need a CiteMe subscription, and the report is yours."
+      }
+    },
+    "proof": {
+      "title": "A GEO tool",
+      "titleEmphasis": "co-founded by Maxime.",
+      "body": "CiteMe tracks a brand's citations in ChatGPT, Gemini and Perplexity. The measurement method in this offer comes from there.",
+      "link": "See the work"
+    },
+    "pricing": {
+      "title": "How much does",
+      "titleEmphasis": "AI search visibility cost?",
+      "body": "The audit and the fixes start at {geoPrice}, in 2 weeks. GEO monitoring costs {geoCarePrice} per month, 3 months minimum. For a new site, the AI-ready site from {siteIaPrice} already includes GEO.",
+      "link": "See all prices"
+    },
+    "faq": {
+      "title": "Questions",
+      "titleEmphasis": "about GEO.",
+      "items": {
+        "whatIs": {
+          "question": "Is GEO just SEO for ChatGPT?",
+          "answer": "Partly. GEO stands for Generative Engine Optimization: the work that makes a site readable and citable by AI engines such as ChatGPT, Perplexity, Gemini or Google's AI Overviews. SEO aims for a rank in a list of links. GEO aims for a place among the few sources an AI engine cites in its answer. The two overlap a lot."
+        },
+        "guarantee": {
+          "question": "Can you guarantee ChatGPT will cite me?",
+          "answer": "No, and nobody can honestly promise that. AI engines change their answers from one week to the next and do not publish their rules. What we commit to is the method: a baseline, documented fixes on your pages, and the same measurement at day 30 on the same questions. You see what moved, with the numbers to back it."
+        },
+        "vsSeo": {
+          "question": "Should I stop doing classic SEO?",
+          "answer": "No. AI engines rely largely on the same signals as Google: fast, well-structured pages with clear answers and verifiable facts. Good SEO is still the base. GEO adds direct answers at the top of the page, structured data, an llms.txt file and tracking of what AI engines say about you, question by question."
+        },
+        "platforms": {
+          "question": "My site runs on WordPress or Webflow. Does that work?",
+          "answer": "Usually, yes. The offer is built for existing sites. We need editor access to change the 5 key pages and add the structured data. If your tool does not allow it, we hand over the copy and the markup ready to paste, and you publish them yourself. We check your platform during the call, before you sign."
+        },
+        "citeme": {
+          "question": "How is this offer related to CiteMe?",
+          "answer": "Maxime Mansiet, our lead engineer, co-founded CiteMe, a tool that measures how often a brand appears in AI engines' answers. We tell you so the link is clear before you sign. You don't have to subscribe: the report, the tracked questions and the fixed pages belong to you, and you can run the tests yourself."
+        },
+        "delay": {
+          "question": "How long before I see an effect?",
+          "answer": "The fixes are live within 2 weeks. Engines that search the web live, like Perplexity, can pick them up within days. Others rely on older data and take longer. That is why we run the test again at day 30, then every month if you take the GEO monitoring package."
+        }
+      }
+    },
+    "cta": {
+      "title": "What does ChatGPT answer",
+      "titleEmphasis": "when asked about your trade?",
+      "body": "Book a 20-minute call. We ask three of your clients' questions together, live.",
+      "ctaPrimary": "Book a call",
+      "ctaSecondary": "Get a free quote"
+    }
+  },
+  "pricing": {
+    "hero": {
+      "title": "Every price,",
+      "titleEmphasis": "in the open.",
+      "subtitle": "Prices exclude VAT and are starting prices. The final price depends on scope, written into the free quote before work starts.",
+      "serif": "open"
+    },
+    "table": {
+      "offer": "Offer",
+      "includes": "What you get",
+      "duration": "Duration",
+      "price": "Price",
+      "groups": {
+        "sites": "Websites",
+        "ai": "AI agents",
+        "fde": "Forward Deployed Engineer"
+      }
+    },
+    "guarantees": {
+      "title": "What's guaranteed",
+      "items": {
+        "quote": "The quote is free.",
+        "credit": "If you continue after the AI audit, the quote takes the audit you already paid into account."
+      }
+    },
+    "market": {
+      "title": "How these prices",
+      "body": "Most AI agencies in France don't publish their prices. Published ranges for a freelance AI developer usually run from €650 to €900 a day.",
+      "card": {
+        "title": "market.csv",
+        "columns": {
+          "item": "Service",
+          "market": "Market",
+          "klyx": "Klyx",
+          "source": "Source"
+        },
+        "rows": {
+          "tjm": {
+            "label": "Freelance AI developer, per day",
+            "range": "€650-900",
+            "source": "Studeria",
+            "url": "https://www.studeria.fr/articles-de-blog/tjm-consultant-ia-2026-tarifs-grille"
+          }
+        },
+        "note": "Ranges collected on 31 October 2026."
+      },
+      "titleEmphasis": "compare."
+    },
+    "faq": {
+      "title": "Questions",
+      "items": {
+        "sprintVsFde": {
+          "question": "Why does an AI Sprint cost less than 10 FDE days?",
+          "answer": "The AI Sprint is sold on the outcome: one workflow, with a scope we fix before work starts. We reuse building blocks we've already made, and the two weeks go into that single deliverable. With an FDE you pay for time inside your team on an open backlog that changes from week to week."
+        },
+        "final": {
+          "question": "Can the price go up during the project?",
+          "answer": "Not without your agreement. The price covers the scope written into the quote. If you add something, we send you an extra quote before doing it."
+        }
+      },
+      "titleEmphasis": "about pricing."
+    },
+    "cta": {
+      "title": "For an exact price,",
+      "body": "Tell us about your project and we'll send a free quote.",
+      "ctaPrimary": "Get a free quote",
+      "ctaSecondary": "Book a call",
+      "titleEmphasis": "ask for a quote."
+    },
+    "eyebrows": {
+      "market": "Market",
+      "faq": "Questions"
+    }
+  },
+  "cases": {
+    "hero": {
+      "title": "What we've",
+      "titleEmphasis": "built.",
+      "subtitle": "Sites shipped for clients and products we've worked on. For each project, exactly what we did.",
+      "serif": "built",
+      "window": "work/"
+    },
+    "labels": {
+      "client": "Client",
+      "year": "Year",
+      "stack": "Stack",
+      "visit": "Visit the site",
+      "read": "Read the case study",
+      "back": "All work",
+      "url": "URL",
+      "next": "Next project",
+      "outcome": "Outcome",
+      "noOutcome": "No published figure yet"
+    },
+    "cta": {
+      "title": "Your project could be",
+      "body": "Book a call or ask for a free quote.",
+      "ctaPrimary": "Book a call",
+      "ctaSecondary": "Get a free quote",
+      "titleEmphasis": "next on this list."
+    },
+    "count": "{count, plural, one {# project} other {# projects}} · {years}",
+    "eyebrow": "Projects"
+  },
+  "about": {
+    "hero": {
+      "title": "An AI agency in Bordeaux,",
+      "titleEmphasis": "one point of contact.",
+      "subtitle": "We build websites, AI agents and automations for startups, agencies and small businesses. One lead engineer follows your project from the first call to the handover.",
+      "serif": "contact"
+    },
+    "story": {
+      "title": "Maxime Mansiet,",
+      "intro": "Maxime founded Klyx in Bordeaux. He leads every project as lead engineer, from the first call to production.",
+      "work": "Alongside Klyx, he builds MCP servers and AI agents for a European digital identity infrastructure.",
+      "citeme": "He co-founded CiteMe, a tool that tracks how brands get cited in ChatGPT, Gemini and Perplexity.",
+      "titleEmphasis": "lead engineer."
+    },
+    "facts": {
+      "items": {
+        "role": {
+          "label": "studio",
+          "value": "Klyx, AI agency"
+        },
+        "location": {
+          "label": "base",
+          "value": "Bordeaux, France"
+        },
+        "languages": {
+          "label": "languages",
+          "value": "French, English"
+        },
+        "focus": {
+          "label": "stack",
+          "value": "Next.js, TypeScript, AI agents, MCP servers"
+        }
+      }
+    },
+    "trust": {
+      "title": "Why",
+      "body": "We don't ask you to take our word for it. Everything below can be checked before you sign, and we tell you on the first call what we don't do.",
+      "titleEmphasis": "trust us",
+      "items": {
+        "code": {
+          "label": "Public code",
+          "value": "{github}"
+        },
+        "prices": {
+          "label": "Public prices",
+          "value": "Every price, excl. VAT"
+        },
+        "handover": {
+          "label": "Handover",
+          "value": "Your repo from day one, written handover"
+        }
+      }
+    },
+    "lines": {
+      "title": "Other Klyx lines",
+      "estate": "Klyx Estate: films and visuals to launch high-end property listings."
+    },
+    "cta": {
+      "title": "Shall we talk?",
+      "body": "A 20-minute call is enough to know whether we can help.",
+      "ctaPrimary": "Book a call",
+      "ctaSecondary": "Get a free quote"
+    },
+    "eyebrows": {
+      "team": "Team",
+      "story": "Lead engineer",
+      "products": "Products",
+      "trust": "Trust"
+    },
+    "info": {
+      "window": "klyx: ~",
+      "command": "klyx --info",
+      "caption": "Klyx · Bordeaux"
+    },
+    "team": {
+      "title": "Who works",
+      "titleEmphasis": "on your project.",
+      "intro": "Every project has one lead engineer, Maxime Mansiet. He takes the first call, writes the scope, and he is the person you talk to until the handover.",
+      "agents": "AI coding agents take well-bounded tasks: a component, a test, a migration. The code they write is reviewed before it goes to production.",
+      "partners": "If the project needs it, we team up with a specialist, and we tell you first.",
+      "handover": "The code is in your repo from day one. At the end, a written handover lets any developer pick it up."
+    },
+    "products": {
+      "title": "A product",
+      "titleEmphasis": "co-founded by Maxime."
+    },
+    "contributions": {
+      "window": "github.com/AirKyzzZ",
+      "total": "{total} GitHub contributions in 12 months",
+      "label": "Maxime Mansiet's GitHub contribution graph, from {from} to {to}",
+      "caption": "Captured on {date} from his public profile. One square per day: the lighter it is, the more commits, PRs and reviews that day."
+    }
+  },
+  "bordeaux": {
+    "hero": {
+      "eyebrow": "AI agency in Bordeaux",
+      "title": "AI for Bordeaux businesses,",
+      "titleEmphasis": "without the jargon.",
+      "subtitle": "We help small and mid-sized companies in Bordeaux and Gironde automate repetitive work: quotes, invoices, emails, reporting. The price is fixed before work starts.",
+      "ctaPrimary": "Book a call",
+      "ctaSecondary": "Get a free quote",
+      "serif": "jargon"
+    },
+    "problem": {
+      "title": "Tried ChatGPT,",
+      "body": "That's true of most companies. In 2026, 40% of French small businesses use AI, but only 11% use it to automate a task (France Num 2026 barometer). The tool is there, but nobody had time to connect it to quotes, invoices or customer follow-up. That's what we do: we pick one task that takes time every week, automate it, and your team stays in control of what goes out to customers.",
+      "titleEmphasis": "but nothing changed in how you work?",
+      "source": "France Num 2026 barometer, entreprises.gouv.fr",
+      "sourceUrl": "https://www.entreprises.gouv.fr/espace-presse/barometre-france-num-2026-quatre-tpe-pme-sur-dix-utilisent-desormais-lintelligence"
+    },
+    "examples": {
+      "title": "What can be automated",
+      "items": {
+        "quotes": "Drafting a quote from a customer request",
+        "invoices": "Chasing unpaid invoices",
+        "emails": "Sorting emails and preparing replies",
+        "reporting": "Putting together the weekly report"
+      }
+    },
+    "process": {
+      "title": "How it works,",
+      "steps": {
+        "call": {
+          "title": "A free first conversation",
+          "body": "By phone or video, you tell us about your business and what eats your time."
+        },
+        "audit": {
+          "title": "A fixed-price audit",
+          "body": "We look at how you work and tell you what's worth automating, with the numbers behind it."
+        },
+        "build": {
+          "title": "Setup",
+          "body": "We set the automation up on your tools and train your team to use it."
+        },
+        "followUp": {
+          "title": "Follow-up",
+          "body": "Once the automation is in place, we check together that it runs and give you a written handover. If you want us to keep monitoring and fixing it, that's the monthly plan."
+        }
+      },
+      "titleEmphasis": "in four steps."
+    },
+    "local": {
+      "title": "Based in Bordeaux,",
+      "body": "We work from Bordeaux, with SMEs across the metro area and Gironde. Where scoping happens, remotely or in a meeting, is decided with you.",
+      "card": {
+        "city": {
+          "label": "City",
+          "value": "Bordeaux (33)"
+        },
+        "zone": {
+          "label": "Area served",
+          "value": "Bordeaux metro area and Gironde"
+        },
+        "travel": {
+          "label": "Travel",
+          "value": "Agreed with you"
+        }
+      },
+      "map": "Map of Gironde with Bordeaux",
+      "titleEmphasis": "remote across France."
+    },
+    "trust": {
+      "title": "Why",
+      "body": "Price and scope are in writing before work starts. If you pay for the audit, you keep the plan even if you go no further. Tools and accounts are in your name, and a monthly plan covers continuity.",
+      "titleEmphasis": "trust us."
+    },
+    "faq": {
+      "title": "Frequently asked",
+      "items": {
+        "price": {
+          "question": "How much does it cost?",
+          "answer": "The audit starts at {auditPrice}. Setting up an automation starts at {automationPrice}. You know the exact price before you sign."
+        },
+        "it": {
+          "question": "Do we need an IT department?",
+          "answer": "No. We handle the technical side, and your team learns to use the tool. You don't have to install anything yourself."
+        },
+        "data": {
+          "question": "Does our customer data stay confidential?",
+          "answer": "Your accounts and tools stay in your name. For the AI to handle a request, data goes through a model provider's service, which by default doesn't use it to train its models. We check what each tool does with your data before using it, and hosting in Europe is possible."
+        },
+        "subsidy": {
+          "question": "Is it subsidised?",
+          "answer": "Our prices are shown without any public funding. Klyx isn't accredited by Bpifrance, so our audit isn't a Diag Data IA."
+        },
+        "delay": {
+          "question": "How long does it take?",
+          "answer": "1 to 2 weeks for the audit, then about 2 weeks to put a first automation in place."
+        }
+      },
+      "titleEmphasis": "questions."
+    },
+    "cta": {
+      "title": "Is one task taking",
+      "body": "Let's talk for 20 minutes. It's free, and you'll know whether it's worth automating.",
+      "ctaPrimary": "Book a call",
+      "ctaSecondary": "Get a free quote",
+      "titleEmphasis": "too much time?"
+    },
+    "eyebrows": {
+      "problem": "The problem",
+      "examples": "Examples",
+      "process": "Method",
+      "local": "Local",
+      "trust": "Trust",
+      "faq": "Questions"
+    },
+    "block": {
+      "title": "Three local trades,",
+      "titleEmphasis": "three tasks we automate.",
+      "body": "Typical examples for businesses in Gironde, not client projects. Each keeps a human approval step before anything reaches the customer.",
+      "human": "human approval",
+      "examples": {
+        "wine": {
+          "title": "Wine trade: export orders",
+          "body": "An importer's purchase order becomes an order in your system, with the export paperwork prepared.",
+          "steps": {
+            "trigger": "Purchase order",
+            "ai": "AI reading",
+            "human": "Sales admin check",
+            "action": "Order entered"
+          }
+        },
+        "building": {
+          "title": "Construction: site quotes",
+          "body": "A request with photos becomes a priced quote built from your own price list.",
+          "steps": {
+            "trigger": "Request + photos",
+            "ai": "AI pricing",
+            "human": "Site manager review",
+            "action": "Quote sent"
+          }
+        },
+        "accounting": {
+          "title": "Accounting firm: client documents",
+          "body": "Documents sent by clients are filed by case, and anything missing gets chased.",
+          "steps": {
+            "trigger": "Documents in",
+            "ai": "AI filing",
+            "human": "Accountant check",
+            "action": "Reminder sent"
+          }
+        }
+      },
+      "limit": "A simple task is the fixed-price AI automation. An agent that touches several tools is the AI Sprint."
+    }
+  },
+  "contact": {
+    "hero": {
+      "title": "Let's talk about",
+      "titleEmphasis": "your project.",
+      "subtitle": "Book a 20-minute call or describe what you need below. Maxime, our lead engineer, answers every message himself.",
+      "serif": "project"
+    },
+    "booking": {
+      "title": "Book a call",
+      "body": "Pick a slot. The call is free.",
+      "duration": "20 min",
+      "next": "Next, a free written quote before any work starts.",
+      "frame": "Booking calendar"
+    },
+    "form": {
+      "title": "Get a free quote",
+      "fields": {
+        "name": {
+          "label": "Name *",
+          "placeholder": "First and last name"
+        },
+        "email": {
+          "label": "Email *",
+          "placeholder": "you@company.com"
+        },
+        "company": {
+          "label": "Company",
+          "placeholder": "Company name"
+        },
+        "need": {
+          "label": "What you need *",
+          "placeholder": "Pick an option",
+          "options": {
+            "site": "A website or landing page",
+            "agents": "An AI agent or automation",
+            "audit": "An AI audit",
+            "fde": "A Forward Deployed Engineer",
+            "other": "Something else"
+          }
+        },
+        "budget": {
+          "label": "Budget",
+          "placeholder": "Pick a range",
+          "options": {
+            "under3k": "< €3k",
+            "from3to10k": "€3-10k",
+            "from10to30k": "€10-30k",
+            "over30k": "> €30k",
+            "unknown": "Not sure yet"
+          }
+        },
+        "message": {
+          "label": "Your message *",
+          "placeholder": "Describe your product and what you want to build."
+        },
+        "honeypot": {
+          "label": "Leave this field empty"
+        }
+      },
+      "consent": "I agree that this information is used to answer my request.",
+      "privacyLink": "Privacy policy",
+      "submit": "Send request",
+      "sending": "Sending…",
+      "success": "Thanks, your request is on its way. We'll reply by email.",
+      "errors": {
+        "required": "This field is required.",
+        "email": "This email address isn't valid.",
+        "generic": "Sending failed. Try again, or email us at {email}.",
+        "invalid": "Check this field: it's too short, too long or invalid.",
+        "unavailable": "The form is unavailable right now. Email us at {email}, or book a call."
+      }
+    },
+    "direct": {
+      "title": "Or by email",
+      "location": "Klyx, Bordeaux"
+    }
+  },
+  "blog": {
+    "hero": {
+      "title": "Blog",
+      "subtitle": "Notes on AI agents, GEO and building fast websites."
+    },
+    "empty": "The first posts are on their way.",
+    "readMore": "Read the post",
+    "byline": "By {author}",
+    "published": "Published {date}",
+    "updated": "Updated {date}",
+    "back": "All posts",
+    "rss": "RSS feed",
+    "readingTime": "{minutes} min",
+    "emptyCount": "0 posts published",
+    "sources": "Sources"
+  },
+  "legal": {
+    "title": "Legal notice",
+    "publisher": {
+      "title": "Publisher",
+      "body": "Klyx, a business of Maxime Mansiet, sole trader (entrepreneur individuel), Bordeaux, France.",
+      "siret": "SIRET: {siret}",
+      "email": "Contact: {email}",
+      "director": "Publication director: Maxime Mansiet"
+    },
+    "hosting": {
+      "title": "Hosting",
+      "body": "The site is hosted by Netlify, Inc., 101 2nd Street, San Francisco, CA 94105, United States. Contact: support@netlify.com."
+    },
+    "ip": {
+      "title": "Intellectual property",
+      "body": "The text, visuals and code on this site belong to Klyx unless stated otherwise. Reproduction without prior permission is prohibited."
+    },
+    "data": {
+      "title": "Personal data",
+      "body": "How your data is collected and used is described in the privacy policy.",
+      "link": "Privacy policy"
+    },
+    "credits": {
+      "title": "Credits",
+      "trademarks": "Tool names and logos on this site are trademarks of their respective owners. They show the tools Klyx connects or deploys. Klyx is neither affiliated with nor a partner of these vendors.",
+      "source": "source",
+      "license": "license",
+      "items": {
+        "mcp": "Model Context Protocol logo © Model Context Protocol contributors, licensed under CC BY 4.0. Changed: symbol only, recoloured to monochrome.",
+        "simpleIcons": "Logo paths for Gmail, Google Sheets, Notion, Airtable, HubSpot, Slack, WhatsApp, Shopify, WordPress, Stripe, Make, n8n, Mistral AI, Claude, Claude Code, OpenAI, Google, Gemini, Perplexity, Zendesk, Next.js, Lighthouse, Figma and GitHub: Simple Icons, CC0.",
+        "microsoft": "Outlook, Excel and Microsoft Teams icons © Microsoft, Fluent UI paths taken from Simple Icons 12.4.0, rendered in monochrome.",
+        "git": "Git logo by Jason Long, licensed under CC BY 3.0.",
+        "pipedrive": "Pipedrive symbol taken from the logo published on pipedrive.com, rendered in monochrome.",
+        "pennylane": "Pennylane symbol taken from the logo published on pennylane.com, rendered in monochrome.",
+        "qonto": "Qonto symbol taken from the logo published on qonto.com, rendered in monochrome.",
+        "hermes": "Hermes Agent icon © Nous Research, white version from the MIT-licensed repository.",
+        "openclaw": "OpenClaw mascot, MIT-licensed repository, rendered in monochrome.",
+        "nanoclaw": "NanoClaw mascot, MIT-licensed repository, vectorised in monochrome from the official icon."
+      }
+    },
+    "updated": "Last updated: {date}"
+  },
+  "privacy": {
+    "title": "Privacy policy",
+    "intro": "This page explains what data Klyx collects, why, and how to exercise your rights. The data controller is Maxime Mansiet, sole trader (Klyx), reachable at {email}.",
+    "contactForm": {
+      "title": "Contact form",
+      "body": "When you fill in the form, we receive your name, email, company, need, budget and message. This data is used only to reply to you. Messages are sent through Resend, which processes emails on our behalf."
+    },
+    "booking": {
+      "title": "Booking a call",
+      "body": "Call booking runs on Cal.com, which receives what you enter (name, email, time slot). Cal.com's privacy policy applies to that service."
+    },
+    "analytics": {
+      "title": "Analytics and cookies",
+      "body": "This site uses no analytics tool and no advertising cookies."
+    },
+    "hosting": {
+      "title": "Hosting and transfers",
+      "body": "The site is hosted by Netlify, Inc. (United States), which participates in the EU-US Data Privacy Framework. Resend and Cal.com are also US providers. Transfers of data to the United States rely, depending on the provider, on the EU-US Data Privacy Framework or on the European Commission's standard contractual clauses."
+    },
+    "prospection": {
+      "anchor": "prospection",
+      "title": "Business prospecting by email",
+      "intro": "We sometimes email companies to introduce our services. These messages go to professionals, at their work address, and relate to an offer connected to their line of work.",
+      "legalBasis": "Legal basis: Klyx's legitimate interest in making its services known (Article 6(1)(f) GDPR). Between businesses, the CNIL (the French data protection authority) allows these emails without prior consent, provided the message relates to the recipient's job and they can easily object to further emails.",
+      "sources": "Contact details come from public professional sources, such as the company's website or LinkedIn.",
+      "retention": "We keep this data for at most 3 years after your last contact.",
+      "optOut": "To stop receiving emails, reply to the email and say so, or write to {email}. Your address then goes on a suppression list and we won't contact you again."
+    },
+    "rights": {
+      "title": "Your rights",
+      "body": "You can ask to access, correct or delete your data, object to its processing or request its portability by writing to {email}. We reply within one month. If you believe your rights aren't respected, you can complain to the CNIL (cnil.fr)."
+    },
+    "updated": "Last updated: {date}"
+  },
+  "useCases": {
+    "labels": {
+      "breadcrumb": "Breadcrumb",
+      "symptoms": "What we often see",
+      "tools": "Tools",
+      "illustration": "Illustration",
+      "human": "human approval",
+      "problem": "The problem",
+      "build": "What we build",
+      "price": "Starting price",
+      "see": "See the use case",
+      "offer": "Package",
+      "duration": "Duration",
+      "amount": "Price"
+    },
+    "eyebrows": {
+      "sectors": "Sectors",
+      "other": "Other sectors",
+      "problems": "The problem",
+      "workflows": "Workflows",
+      "data": "Data",
+      "terms": "White label",
+      "process": "Method",
+      "proof": "Proof",
+      "pricing": "Pricing",
+      "faq": "Questions"
+    },
+    "hero": {
+      "eyebrow": "Use cases",
+      "title": "What AI actually does",
+      "titleEmphasis": "in your sector.",
+      "serif": "sector",
+      "subtitle": "For SME and agency owners who want to know what to automate before paying for it. Three sectors, workflows described step by step, and public prices: from {auditPrice} for an audit to {sprintPrice} for an agent in production.",
+      "ctaPrimary": "Book a call",
+      "ctaSecondary": "Get a free quote",
+      "window": "sectors.csv"
+    },
+    "sectors": {
+      "title": "Three sectors,",
+      "titleEmphasis": "three ways to go about it.",
+      "body": "For each one: what gets stuck, what we build, the tools involved and the starting price. Only one of these sectors already has a published client case with us, real estate, and every page says so."
+    },
+    "other": {
+      "title": "Your sector",
+      "titleEmphasis": "isn't on the list?",
+      "body": "The same building blocks work elsewhere: sorting requests, reading documents, chasing clients, preparing a report. In a 20-minute call, we look at whether one of your processes is worth automating, and at what price.",
+      "faq": "Read the FAQ",
+      "pricing": "See all prices"
+    },
+    "cta": {
+      "title": "Is one process",
+      "titleEmphasis": "costing you hours every week?",
+      "body": "Book a 20-minute call. We'll tell you whether it's worth automating, and at what price.",
+      "ctaPrimary": "Book a call",
+      "ctaSecondary": "Get a free quote"
+    },
+    "realEstate": {
+      "card": {
+        "problem": "Requests coming in from everywhere, viewings booked by hand, the same questions on every listing.",
+        "build": "An assistant that answers on your listings, lead sorting and CRM updates."
+      },
+      "hero": {
+        "eyebrow": "Real estate",
+        "title": "An answer for every buyer,",
+        "titleEmphasis": "every lead in your CRM.",
+        "serif": "answer",
+        "subtitle": "For estate agencies, agent networks and new-build developers who lose contacts between portals, the website and the phone. Audit from {auditPrice}, an agent in production from {sprintPrice}.",
+        "ctaPrimary": "Book a call",
+        "ctaSecondary": "Get a free quote"
+      },
+      "problems": {
+        "title": "Leads come in fast,",
+        "titleEmphasis": "answers come in slow.",
+        "body": "A real estate AI agent answers buyers, qualifies their request and files it in your CRM, at any hour. In an agency, requests come through a portal, the website, a form or a missed call, often in the evening or at the weekend. By the time someone checks the property and offers a slot, the buyer has contacted other agencies. The agent takes the repetitive part. Your negotiators keep the viewings and the negotiation.",
+        "items": {
+          "leads": "Leads scattered across portals, the website and email",
+          "visits": "Viewings booked by phone, after several back-and-forths",
+          "questions": "The same questions on every listing: service charges, energy rating, parking",
+          "crm": "A CRM filled in by hand at the end of the day, when it is"
+        }
+      },
+      "workflows": {
+        "title": "Three workflows",
+        "titleEmphasis": "we set up in an agency.",
+        "body": "Each workflow keeps a person in the loop wherever a mistake is costly. These are typical examples, not client projects.",
+        "examples": {
+          "listing": {
+            "title": "Questions on a listing",
+            "body": "The assistant answers from the property sheet (price, floor area, charges, energy rating) and hands over to a negotiator as soon as the question goes beyond it.",
+            "tools": "Website, property sheets, CRM",
+            "steps": {
+              "trigger": "Question on the site",
+              "ai": "Answer from the sheet",
+              "human": "Negotiator if needed",
+              "action": "Contact saved"
+            }
+          },
+          "leads": {
+            "title": "Sorting portal leads",
+            "body": "Each request from a portal is matched to the right property, scored on the buyer's project (budget, timing, financing), then created in the CRM for the right negotiator.",
+            "tools": "Listing portals, inbox, CRM",
+            "steps": {
+              "trigger": "Portal email",
+              "ai": "Lead qualified",
+              "human": "Agent check",
+              "action": "CRM record created"
+            }
+          },
+          "visits": {
+            "title": "Booking viewings",
+            "body": "The agent offers free slots from the negotiator's calendar, sends the confirmation and a reminder the day before. The negotiator approves before it goes out.",
+            "tools": "Google or Outlook calendar, email or SMS",
+            "steps": {
+              "trigger": "Qualified buyer",
+              "ai": "Slots offered",
+              "human": "Negotiator approval",
+              "action": "Viewing booked"
+            }
+          }
+        },
+        "limit": "A single linear workflow, such as lead sorting, is an AI automation. An assistant that answers on your listings and acts in several tools, with a test set, is an AI Sprint."
+      },
+      "data": {
+        "title": "The data",
+        "titleEmphasis": "and the tools involved.",
+        "body": "A real estate agent handles buyers' personal data: name, phone, budget, sometimes financing. We list it before writing any code, and keep only what the follow-up needs.",
+        "rows": {
+          "data": {
+            "label": "Data",
+            "value": "Buyer contact details and project, property sheets, negotiators' availability"
+          },
+          "tools": {
+            "label": "Tools",
+            "value": "Your website, your listing portals, your CRM, your calendar"
+          },
+          "hosting": {
+            "label": "Hosting",
+            "value": "Accounts in your name, EU hosting possible and planned in the quote"
+          },
+          "rgpd": {
+            "label": "GDPR",
+            "value": "Privacy notice on the form, retention period agreed with you, financing data collected only when it is needed"
+          }
+        }
+      },
+      "proof": {
+        "title": "A real case:",
+        "titleEmphasis": "Hoppy, for Hop Hop Immo.",
+        "body": "Hop Hop Immo tracks new-build programmes in south-west France. We designed Hoppy, the site's AI assistant, which answers visitors' questions about those programmes. The lead sorting and CRM updates described above are not part of that project.",
+        "link": "See all work"
+      },
+      "pricing": {
+        "title": "What it costs,",
+        "titleEmphasis": "excl. VAT.",
+        "body": "An audit at {auditPrice} if you don't know where to start. An AI automation at {automationPrice} for a workflow like lead sorting. An AI Sprint at {sprintPrice} for an assistant that answers on your listings and acts in your tools.",
+        "link": "All prices"
+      },
+      "faq": {
+        "title": "Questions",
+        "titleEmphasis": "about AI in a real estate agency.",
+        "items": {
+          "portals": {
+            "question": "Can the agent plug into our portals and our CRM?",
+            "answer": "Usually, yes. Most portals send their requests by email, and the agent can read those emails. For the CRM, we use its API when it has one, otherwise a file import or a tool like Make. We check your tools during the call, before we put a price on anything, so you know what is possible."
+          },
+          "replace": {
+            "question": "Does the assistant replace our negotiators?",
+            "answer": "No. It answers the questions whose answer is on the property sheet, qualifies the request and offers a slot. As soon as a question needs an opinion, a negotiation or information missing from the sheet, it hands over to a negotiator, with the conversation history. Your team spends less time on the phone and more on viewings."
+          },
+          "errors": {
+            "question": "What if the assistant gives wrong information about a property?",
+            "answer": "It answers only from the data you give it, and says it doesn't know when information is missing. Before launch, we test it on real buyer questions. Every exchange is recorded in a log, so you can fix a property sheet or an instruction as soon as an answer isn't right."
+          }
+        }
+      },
+      "cta": {
+        "title": "Start with",
+        "titleEmphasis": "the requests you lose.",
+        "body": "Book a 20-minute call. We look at where your leads come from and what an agent can take on.",
+        "ctaPrimary": "Book a call",
+        "ctaSecondary": "Get a free quote"
+      }
+    },
+    "agencies": {
+      "card": {
+        "problem": "Your clients ask for AI, and nobody on the team has put any into production yet.",
+        "build": "AI agents, automations and Next.js sites, delivered white-label."
+      },
+      "hero": {
+        "eyebrow": "Web and marketing agencies",
+        "title": "Your clients' AI,",
+        "titleEmphasis": "delivered white-label.",
+        "serif": "white-label",
+        "subtitle": "For web and marketing agencies and freelance collectives with an AI or Next.js brief and nobody to deliver it. Landing page from {landingPrice}, AI-ready site from {siteIaPrice}, AI Sprint from {sprintPrice}.",
+        "ctaPrimary": "Book a call",
+        "ctaSecondary": "Get a free quote"
+      },
+      "problems": {
+        "title": "The brief arrives,",
+        "titleEmphasis": "the team isn't there.",
+        "body": "White-label AI subcontracting lets an agency sell an agent, an automation or a Next.js site without hiring. Agency clients increasingly ask for a chatbot, request sorting or a site ChatGPT can read. Hiring for two projects is expensive, and shipping a flaky agent under your own name costs even more. Your agency keeps the client, the relationship and the margin. We deliver the technical part inside your process.",
+        "items": {
+          "brief": "An AI or GEO brief nobody in-house can price",
+          "peak": "A peak in Next.js development work",
+          "risk": "The fear of shipping an unstable agent under your brand",
+          "dev": "A developer leaving mid-project"
+        }
+      },
+      "workflows": {
+        "title": "What we deliver",
+        "titleEmphasis": "for your agency's clients.",
+        "body": "Three common requests from agency clients, described step by step. These are typical examples, not client projects.",
+        "examples": {
+          "assistant": {
+            "title": "Assistant on the client's site",
+            "body": "An assistant that answers from the client's pages and documents, and passes the request to their team when it doesn't know.",
+            "tools": "Client's website, their documents, email or CRM",
+            "steps": {
+              "trigger": "Visitor question",
+              "ai": "Answer from their content",
+              "human": "Handover to the client",
+              "action": "Request passed on"
+            }
+          },
+          "leads": {
+            "title": "Sorting incoming requests",
+            "body": "Requests from the form and the inbox are classified, summarised and created in the client's CRM, with their team approving.",
+            "tools": "Form, inbox, a CRM such as HubSpot or Pipedrive",
+            "steps": {
+              "trigger": "Form or email",
+              "ai": "Request classified",
+              "human": "Client approval",
+              "action": "CRM updated"
+            }
+          },
+          "site": {
+            "title": "AI-ready Next.js site",
+            "body": "Your design built in Next.js, with structured data and llms.txt for AI engines. Your team signs it off before it goes live.",
+            "tools": "Figma, GitHub, the client's host",
+            "steps": {
+              "trigger": "Agency design",
+              "ai": "Next.js build",
+              "human": "Agency sign-off",
+              "action": "Go live"
+            }
+          }
+        },
+        "limit": "Scope and price are set in writing before we start, so you can resell at a fixed price with no surprises."
+      },
+      "data": {
+        "title": "Your clients'",
+        "titleEmphasis": "data.",
+        "body": "We work on your clients' accounts and data, not ours. What flows through them and where it is hosted are agreed with you before the first commit.",
+        "rows": {
+          "data": {
+            "label": "Data",
+            "value": "Site content, visitor requests, contacts in the client's CRM"
+          },
+          "tools": {
+            "label": "Tools",
+            "value": "Your repo or the client's, your project management, your chat channel"
+          },
+          "hosting": {
+            "label": "Hosting",
+            "value": "Accounts in the client's or the agency's name, agreed with you"
+          },
+          "rgpd": {
+            "label": "GDPR",
+            "value": "Data listed before the build, notices and retention periods supplied for the client's records"
+          }
+        }
+      },
+      "terms": {
+        "title": "White label,",
+        "titleEmphasis": "in black and white.",
+        "body": "White-label rules are set in writing with you before the first brief. Here is what we suggest putting in them.",
+        "items": {
+          "nda": "A non-disclosure agreement before the brief, if you want one.",
+          "brand": "Your brand on what we deliver: we agree with you on what may mention our name, and what does not.",
+          "client": "The client relationship stays yours. Direct exchanges with your client are decided with you.",
+          "repo": "The code in your repo or the client's, as agreed with you.",
+          "handover": "A written handover at every delivery, so another developer can take over.",
+          "pricing": "Our public prices are the basis for your quote. For regular volume, we discuss it on the call."
+        }
+      },
+      "process": {
+        "title": "How we plug into",
+        "titleEmphasis": "your delivery.",
+        "steps": {
+          "brief": {
+            "title": "Brief",
+            "body": "You send us the brief, or we scope it together. We give you a written scope and price before you quote your client."
+          },
+          "build": {
+            "title": "Build",
+            "body": "We work in your tools where we can: your repo, your project management. A regular progress update, at a pace agreed with you."
+          },
+          "review": {
+            "title": "Sign-off",
+            "body": "Your team tests and approves before the client sees anything."
+          },
+          "handover": {
+            "title": "Delivery",
+            "body": "Go-live, documentation and written handover, so your team can take over."
+          }
+        }
+      },
+      "proof": {
+        "title": "What you can",
+        "titleEmphasis": "check before you sign.",
+        "body": "We show no white-label project here. To judge us, look at the sites delivered under our own name, or start with a small first project, such as a landing page.",
+        "link": "See all work"
+      },
+      "pricing": {
+        "title": "What it costs,",
+        "titleEmphasis": "excl. VAT.",
+        "body": "Landing page from {landingPrice}, AI-ready site from {siteIaPrice}, AI Sprint from {sprintPrice}. To strengthen your team over time, FDE is {fdeDayPrice} a day, 4 weeks minimum. You set your own resale price.",
+        "link": "All prices"
+      },
+      "faq": {
+        "title": "Questions",
+        "titleEmphasis": "about subcontracting.",
+        "items": {
+          "meetings": {
+            "question": "Can you join meetings with our client?",
+            "answer": "If you want, we can join meetings. How we are introduced is decided with you and written down before the project starts. Otherwise we stay behind the scenes and you carry the relationship with your client alone. These rules sit in the same document as the scope and the price."
+          },
+          "maintenance": {
+            "question": "Who maintains the project after delivery?",
+            "answer": "Your team, with the written handover and the code in the repo. Follow-up by us, which you bill on, is discussed project by project. If we stop working together, the documentation lets another Next.js developer take the project over without depending on us."
+          },
+          "capacity": {
+            "question": "How many projects can you take on at once?",
+            "answer": "Not many, and we say so before you sign. As an FDE, we take two clients at most at the same time. For an AI Sprint or a site, the quote gives a start date. If we can't meet your timeline, we tell you straight away rather than take the project and deliver it late."
+          }
+        }
+      },
+      "cta": {
+        "title": "An AI brief",
+        "titleEmphasis": "nobody on your team can deliver?",
+        "body": "Book a 20-minute call. We read the brief with you and tell you what we can deliver, how fast and at what price.",
+        "ctaPrimary": "Book a call",
+        "ctaSecondary": "Get a free quote"
+      }
+    },
+    "services": {
+      "card": {
+        "problem": "Hours every week spent sorting email, re-keying documents and chasing clients.",
+        "build": "Email triage, document extraction, follow-ups and reporting, with human approval."
+      },
+      "hero": {
+        "eyebrow": "Firms and B2B services",
+        "title": "Less data entry,",
+        "titleEmphasis": "more time for your clients.",
+        "serif": "time",
+        "subtitle": "For accounting, law and consulting firms and B2B service companies in Bordeaux and Nouvelle-Aquitaine. Audit from {auditPrice}, first workflow from {automationPrice}.",
+        "ctaPrimary": "Book a call",
+        "ctaSecondary": "Get a free quote"
+      },
+      "problems": {
+        "title": "Repetitive work",
+        "titleEmphasis": "eats billable hours.",
+        "body": "AI automation for an accounting or law firm takes over reading and data entry, and a staff member approves every sensitive step. In a firm of 10 to 50 people, part of the week goes into sorting the shared inbox, re-keying invoices and statements, chasing missing documents and rebuilding the same dashboard every month. These tasks always follow the same steps.",
+        "items": {
+          "inbox": "A shared inbox sorted by hand every morning",
+          "docs": "Invoices, statements and receipts re-keyed into the software",
+          "chase": "Reminders for missing documents written one by one",
+          "report": "The same monthly report rebuilt in a spreadsheet"
+        }
+      },
+      "workflows": {
+        "title": "Four workflows,",
+        "titleEmphasis": "illustrated step by step.",
+        "body": "These workflows illustrate what we build, they are not client projects. Each one keeps human approval wherever a mistake is costly.",
+        "examples": {
+          "triage": {
+            "title": "Sorting the shared inbox",
+            "body": "Each email is matched to the right client and file, with a summary and a priority. Doubtful cases stay in a queue to check.",
+            "tools": "Outlook or Gmail, list of clients and files",
+            "steps": {
+              "trigger": "Incoming email",
+              "ai": "Filed by client",
+              "human": "Office check",
+              "action": "Sent to the right person"
+            }
+          },
+          "extraction": {
+            "title": "Extracting invoices and statements",
+            "body": "Amounts, dates, VAT and supplier are extracted from the PDF, checked, then proposed for entry. The staff member corrects if needed and approves.",
+            "tools": "Inbox or document system, accounting software or spreadsheet",
+            "steps": {
+              "trigger": "PDF received",
+              "ai": "Fields extracted",
+              "human": "Staff check",
+              "action": "Entered in the software"
+            }
+          },
+          "chase": {
+            "title": "Chasing missing documents",
+            "body": "When a document is missing from a file, a reminder is drafted from the client's history. The person in charge approves it before it goes out.",
+            "tools": "File tracking sheet, email",
+            "steps": {
+              "trigger": "Missing document",
+              "ai": "Reminder drafted",
+              "human": "Manager approval",
+              "action": "Email to client"
+            }
+          },
+          "reporting": {
+            "title": "Monthly reporting",
+            "body": "The month's figures are gathered into the same template, with a written comment the partner reviews before it goes to the client.",
+            "tools": "Practice software, spreadsheet, report template",
+            "steps": {
+              "trigger": "Month end",
+              "ai": "Figures compiled",
+              "human": "Partner review",
+              "action": "Report sent"
+            }
+          }
+        },
+        "limit": "Illustration: steps and tools are given as examples. We adapt each workflow to your software during the audit or scoping."
+      },
+      "data": {
+        "title": "Professional secrecy",
+        "titleEmphasis": "and client data.",
+        "body": "A firm handles data covered by professional secrecy and its clients' personal data. We map that data before writing the first step, and choose the hosting accordingly.",
+        "rows": {
+          "data": {
+            "label": "Data",
+            "value": "Accounting documents, client emails, file data"
+          },
+          "tools": {
+            "label": "Tools",
+            "value": "Your email, your document system, your accounting or practice software"
+          },
+          "hosting": {
+            "label": "Hosting",
+            "value": "Accounts in your name, an EU-hosted model provider or masked fields if documents are sensitive"
+          },
+          "rgpd": {
+            "label": "GDPR",
+            "value": "Data kept to what is needed, processing described for your records, retention period agreed with you"
+          }
+        }
+      },
+      "proof": {
+        "title": "No client case yet",
+        "titleEmphasis": "in this sector.",
+        "body": "We would rather say it: we don't have a published client case for an accounting, law or consulting firm yet. The workflows on this page are illustrations. The audit exists precisely to check, on your real documents, what is worth automating before you pay for any build.",
+        "link": "See the AI audit"
+      },
+      "pricing": {
+        "title": "What it costs,",
+        "titleEmphasis": "excl. VAT.",
+        "body": "Start with the audit at {auditPrice}: your processes reviewed and a 90-day roadmap. A first workflow, such as invoice extraction, starts at {automationPrice}, with follow-up from {automationCarePrice} a month. An agent that acts in several tools is an AI Sprint, from {sprintPrice}.",
+        "link": "All prices"
+      },
+      "faq": {
+        "title": "Questions",
+        "titleEmphasis": "from firms.",
+        "items": {
+          "secret": {
+            "question": "Is professional secrecy compatible with an AI tool?",
+            "answer": "Yes, if the data is processed within a framework you control. Accounts stay in your name, we can choose an EU-hosted model provider, mask names and amounts before sending, or keep some steps free of AI. We set that framework with you during the audit. Your profession's rules remain the reference."
+          },
+          "software": {
+            "question": "Does it work with our accounting software?",
+            "answer": "Often, but not always directly. When the software has an API or a file import, the workflow drops the entries there for approval. Otherwise it prepares a file ready to import by hand. We check your software during the audit, and tell you what is possible before we price the workflow."
+          },
+          "staff": {
+            "question": "Does our staff need training?",
+            "answer": "A little. They keep their usual tools and approve what the workflow prepares for them. We plan an onboarding session at delivery and short documentation written for them. If a staff member needs to change a step themselves, we show them how to do it in your automation tool."
+          }
+        }
+      },
+      "cta": {
+        "title": "Which process",
+        "titleEmphasis": "takes you the most hours?",
+        "body": "Book a 20-minute call. We'll tell you whether the audit is worth it for your firm, before any commitment.",
+        "ctaPrimary": "Book a call",
+        "ctaSecondary": "Get a free quote"
+      }
+    }
+  },
+  "faqPage": {
+    "hero": {
+      "eyebrow": "FAQ",
+      "title": "Frequently asked questions",
+      "titleEmphasis": "about our prices, timelines and your data.",
+      "serif": "data",
+      "subtitle": "Every answer on the site in one place, grouped by theme, for SME and agency owners. Public prices excl. VAT, from {landingPrice} for a landing page to {sprintPrice} for an AI agent in production.",
+      "ctaPrimary": "Book a call",
+      "ctaSecondary": "Get a free quote"
+    },
+    "count": "{count} questions · {themes} themes",
+    "themesLabel": "Themes",
+    "source": "See the {page} page",
+    "themes": {
+      "pricing": "Prices",
+      "timing": "Timelines",
+      "data": "Data and GDPR",
+      "ai": "AI and agents",
+      "geo": "AI search visibility",
+      "fde": "Forward Deployed Engineer",
+      "tech": "Technical",
+      "bordeaux": "Bordeaux and team",
+      "agencies": "Agencies and white label"
+    },
+    "faq": {
+      "items": {
+        "roi": {
+          "question": "How do we know whether AI is worth the cost?",
+          "answer": "By comparing two numbers: the time the task takes today and the price of the workflow. If someone spends five hours a week keying in invoices, the automation is measured against those hours. The AI audit does that calculation process by process. Our prices are set in writing before we start, so the cost doesn't move along the way."
+        },
+        "rgpd": {
+          "question": "Can an AI project comply with GDPR?",
+          "answer": "Yes, if it is designed to. Before writing code, we list the personal data the workflow handles, keep only what it needs, and set a retention period. Accounts stay in your name. If your data is sensitive, we choose EU hosting or mask some fields before they are sent to the model."
+        },
+        "aiAct": {
+          "question": "Does the AI Act apply to our project?",
+          "answer": "Rarely in a heavy way for an SME. Sorting email, extracting invoices or answering product questions are not among the high-risk uses. CV screening or assessing the creditworthiness of individuals are. An assistant that talks to your customers must say it is an AI, and the team using an AI tool must understand its limits. We plan for both. For legal advice, ask your lawyer."
+        },
+        "expertise": {
+          "question": "We have no AI skills at all. Is that a problem?",
+          "answer": "No, that is the case for most SMEs. We handle the technical side, your team keeps its usual tools and approves what the AI prepares. Every delivery includes onboarding and written documentation, and what we build stays with you: the code in your repo, the n8n or Make workflows in your accounts. Nobody needs to know how to write a prompt."
+        },
+        "useful": {
+          "question": "How do we know whether AI can help our business?",
+          "answer": "Think of a task that comes back every week: reading email, re-keying documents, chasing clients. If it follows roughly the same steps each time, it can probably be partly automated. Book a 20-minute call: we pick one with you and tell you honestly whether it's worth it."
+        },
+        "continuity": {
+          "question": "What happens if Klyx is no longer available?",
+          "answer": "Your project keeps running. The code is in your repo from day one, the n8n or Make workflows sit in your accounts with their export, the tools are in your name, and every project ends with a written handover. Any developer can take over from that documentation, without depending on us."
+        }
+      }
+    },
+    "cta": {
+      "title": "Your question",
+      "titleEmphasis": "isn't on the list?",
+      "body": "Book a 20-minute call or write to us. We answer everything, including when the answer is that we're not the right provider.",
+      "ctaPrimary": "Book a call",
+      "ctaSecondary": "Get a free quote"
+    },
+    "questions": {
+      "automation": {
+        "runCost": "How much does an AI automation cost once it is live?",
+        "upgrade": "After an AI automation, what if I need more?",
+        "tools": "Which tool does an AI automation run in?"
+      },
+      "audit": {
+        "next": "After the AI audit, do I have to hire you for what comes next?",
+        "duration": "How long does the AI audit take?",
+        "deliverable": "What do we get at the end of an AI audit?"
+      },
+      "bordeaux": {
+        "delay": "How long does it take to automate a first process?"
+      },
+      "geo": {
+        "delay": "How long before GEO has an effect?",
+        "platforms": "Does GEO work with a WordPress or Webflow site?"
+      },
+      "agents": {
+        "maintenance": "Who maintains the agent after the AI Sprint?",
+        "nothingFound": "What if the AI audit finds nothing useful?"
+      },
+      "sites": {
+        "content": "Who writes the website copy?",
+        "after": "What happens after the site goes live?"
+      },
+      "fde": {
+        "vsFreelance": "How is an FDE different from a regular freelancer?",
+        "minimum": "Why does an FDE engagement last 4 weeks minimum?",
+        "days": "Can an FDE go beyond 3 days a week?",
+        "remote": "As an FDE, do you work on site?"
+      },
+      "agencies": {
+        "maintenance": "In white label, who maintains the project after delivery?",
+        "capacity": "How many agency projects can you take on at once?"
+      },
+      "services": {
+        "staff": "Does our staff need training on the automation?"
+      }
+    }
+  },
+  "meta": {
+    "title": "Klyx",
+    "description": "Websites, AI agents and automations delivered at a fixed price for startups and agencies, from Bordeaux. Free quote, public prices.",
+    "home": {
+      "title": "Klyx | Fixed-price AI agents and websites, Bordeaux",
+      "description": "AI agents that run in production, not demos. Websites, agents and automations at a fixed price for startups and agencies. Free quote, public prices."
+    },
+    "sites": {
+      "title": "Website design in Bordeaux, public prices | Klyx",
+      "description": "Landing pages from {landingPrice}, 5 to 8 page sites from {siteIaPrice}. Fast sites that rank on Google and that ChatGPT can read."
+    },
+    "agents": {
+      "title": "AI agents and automation for businesses | Klyx",
+      "description": "AI audits from {auditPrice}, AI Sprints from {sprintPrice}: one workflow in production in two weeks, with the code in your repo."
+    },
+    "fde": {
+      "title": "Fractional Forward Deployed Engineer | Klyx",
+      "description": "What is a Forward Deployed Engineer? An AI developer inside your team 2 to 3 days a week, from {fdeDayPrice} per day."
+    },
+    "pricing": {
+      "title": "Pricing: what a website or AI agent costs | Klyx",
+      "description": "Every Klyx price, excluding VAT: landing page, AI-ready site, AI audit, AI Sprint and Forward Deployed Engineer. Free quote."
+    },
+    "cases": {
+      "title": "Work: websites and AI agents shipped | Klyx",
+      "description": "Sites and products shipped by Klyx: Hop Hop Immo, CiteMe, PKBA, VertiFlow. What was built, project by project."
+    },
+    "about": {
+      "title": "The Klyx team, AI agency in Bordeaux | Klyx",
+      "description": "Who works on your project at Klyx: one lead engineer, Maxime Mansiet, AI agents whose code is reviewed before release, and a specialist when a project needs one."
+    },
+    "bordeaux": {
+      "title": "AI agency in Bordeaux for small businesses | Klyx",
+      "description": "Automate quotes, invoices, emails and reporting in your Bordeaux or Gironde business. Fixed price agreed before work starts."
+    },
+    "contact": {
+      "title": "Contact and free quote | Klyx",
+      "description": "Book a 20-minute call or get a free quote for a website, an AI agent or a Forward Deployed Engineer engagement."
+    },
+    "blog": {
+      "title": "Blog: AI agents, GEO and fast websites | Klyx",
+      "description": "Notes from Maxime Mansiet on AI agents in production, getting cited by AI engines and building fast websites."
+    },
+    "legal": {
+      "title": "Legal notice | Klyx",
+      "description": "Legal notice for klyx.fr: publisher, host and intellectual property."
+    },
+    "privacy": {
+      "title": "Privacy policy | Klyx",
+      "description": "What data Klyx collects, why, for how long, and how to opt out of prospecting emails."
+    },
+    "audit": {
+      "title": "AI audit for small businesses, fixed price | Klyx",
+      "description": "An AI audit of your business from {auditPrice}: processes mapped, automations ranked by time saved and a 90-day roadmap. Public price."
+    },
+    "automation": {
+      "title": "AI automation for small businesses | Klyx",
+      "description": "One AI workflow wired into your tools from {automationPrice}: invoices, quotes, reminders. Live in 4 to 5 days, with human approval."
+    },
+    "geo": {
+      "title": "AI search visibility for ChatGPT and Perplexity | Klyx",
+      "description": "Get cited by ChatGPT, Perplexity and Gemini: 30 questions tested and 5 pages fixed from {geoPrice}, re-test at day 30. For existing sites."
+    },
+    "useCases": {
+      "title": "AI use cases for SMEs, by sector | Klyx",
+      "description": "What an AI agent or automation does for a real estate agency, a web agency or a professional firm: workflows, tools and public prices excl. VAT."
+    },
+    "realEstate": {
+      "title": "AI agent for real estate: leads and viewings | Klyx",
+      "description": "An AI agent that answers buyers, sorts portal leads and updates your CRM. For agencies and developers, audit from {auditPrice}."
+    },
+    "agencies": {
+      "title": "White-label AI and Next.js subcontracting | Klyx",
+      "description": "AI agents, automations and Next.js sites delivered white-label for your agency, on terms agreed in writing with you. Public prices from {landingPrice}."
+    },
+    "services": {
+      "title": "AI automation for accounting and law firms | Klyx",
+      "description": "Email triage, invoice extraction, follow-ups and reporting for firms and B2B services in Nouvelle-Aquitaine. Audit from {auditPrice}."
+    },
+    "faq": {
+      "title": "FAQ: prices, timelines, data and AI for SMEs | Klyx",
+      "description": "What SMEs and agencies ask about our prices, timelines, GDPR, AI agents, FDE and GEO, with short answers and real numbers."
+    }
+  },
+  "notFound": {
+    "title": "Page not found",
+    "body": "This page doesn't exist or has moved.",
+    "home": "Back to home",
+    "contact": "Contact us",
+    "unknown": "unknown route",
+    "suggested": "suggested redirect:",
+    "english": "English version",
+    "french": "Version française"
+  },
+  "liveSystem": {
+    "label": "Illustration · sample run",
+    "caption": "Three examples of what we deliver, from the first step to production. Names and values are fictional.",
+    "tablist": "Scenarios",
+    "trace": "log",
+    "run": {
+      "active": "running",
+      "done": "complete"
+    },
+    "tabs": {
+      "agents": "AI agents",
+      "sites": "Websites",
+      "fde": "FDE",
+      "audit": "AI audit",
+      "automation": "AI automation",
+      "geo": "AI search",
+      "realEstate": "Real estate",
+      "agencies": "Agencies",
+      "services": "Firms",
+      "support": "Customer support"
+    },
+    "scenarios": {
+      "agents": {
+        "title": "lead sorting",
+        "nodes": {
+          "inbox": "Email in",
+          "classifier": "AI sorts it",
+          "crm": "CRM updated",
+          "slack": "Team notified",
+          "archive": "Not a lead"
+        },
+        "meta": {
+          "inbox": "Gmail",
+          "classifier": "AI model · sort",
+          "crm": "HubSpot",
+          "slack": "Slack",
+          "archive": "Notion"
+        },
+        "trace": {
+          "watch": "Email in: quote request",
+          "think": "AI model · read in 0.3s",
+          "classify": "AI reads it: it's a lead",
+          "score": "Serious lead, rated 86/100",
+          "update": "Creating the CRM record",
+          "retry": "CRM slow, trying again",
+          "updated": "Contact added to the CRM",
+          "post": "Team pinged on Slack",
+          "done": "Lead handled in 1.8s"
+        },
+        "chip": "Lead handed off · 1.8s",
+        "caption": "Sample agent we build: every request is sorted and passed on in seconds, so nobody has to watch the inbox. Names and values are fictional."
+      },
+      "sites": {
+        "title": "klyx.fr · release",
+        "nodes": {
+          "commit": "Update",
+          "build": "Site built",
+          "lighthouse": "Speed tested",
+          "deploy": "Live",
+          "llms": "AI-ready"
+        },
+        "meta": {
+          "commit": "git push",
+          "build": "next build",
+          "lighthouse": "lighthouse",
+          "deploy": "klyx.fr",
+          "llms": "llms.txt"
+        },
+        "trace": {
+          "push": "Change pushed",
+          "build": "Building the site",
+          "built": "Site built, ready to go",
+          "lighthouse": "Mobile speed test",
+          "deploy": "Publishing to klyx.fr",
+          "deployed": "Live on klyx.fr",
+          "sitemap": "Site map updated",
+          "llms": "Ready for AI engines to read"
+        },
+        "chip": "Lighthouse {score} · klyx.fr",
+        "chipPending": "Lighthouse · measuring",
+        "measuredCaption": "Real mobile Lighthouse score of klyx.fr, measured on {date}. The run itself is an example."
+      },
+      "fde": {
+        "title": "ENG-142 · CSV export",
+        "nodes": {
+          "ticket": "Request",
+          "repo": "Your code",
+          "engineer": "Dev + AI agent",
+          "pr": "Fix",
+          "review": "Review",
+          "deploy": "Shipped"
+        },
+        "meta": {
+          "ticket": "ENG-142",
+          "repo": "git repo",
+          "engineer": "paired",
+          "pr": "PR #87",
+          "review": "1 comment",
+          "deploy": "prod"
+        },
+        "trace": {
+          "ticket": "Ticket: CSV export is slow",
+          "branch": "Fix under way on the CSV export",
+          "read": "AI agent · reads 14 files",
+          "testFail": "A test fails, we fix it",
+          "fix": "Export split into batches",
+          "testPass": "128 tests pass",
+          "pr": "Fix sent for review",
+          "review": "Reviewed, 1 comment handled",
+          "merged": "Approved and shipped"
+        },
+        "chip": "Fix shipped · tests ✓",
+        "caption": "Sample FDE day: a developer from the agency fixes a problem in your code, and the fix ships the same afternoon. Names and values are fictional."
+      },
+      "audit": {
+        "title": "audit · sample-sme",
+        "nodes": {
+          "interviews": "Interviews",
+          "mapping": "Your processes",
+          "scoring": "Ranked by gain",
+          "roadmap": "Action plan"
+        },
+        "meta": {
+          "interviews": "4 people",
+          "mapping": "9 found",
+          "scoring": "gain × effort",
+          "roadmap": "top 3"
+        },
+        "trace": {
+          "interviews": "Interviews with 4 people",
+          "mapping": "9 repetitive tasks found",
+          "quotes": "Quote follow-ups: ~6 h/week",
+          "invoices": "Invoice entry: ~4 h/week",
+          "missing": "Missing data, we follow up",
+          "emails": "Email triage: ~3 h/week",
+          "scoring": "ranking · gain × feasibility",
+          "roadmap": "Action plan: 3 priorities"
+        },
+        "chip": "Action plan · 3 priorities",
+        "caption": "Sample audit run: you leave with the tasks that take up most of your time, costed and ranked. Names and values are fictional."
+      },
+      "automation": {
+        "title": "supplier invoices",
+        "nodes": {
+          "email": "Invoice in",
+          "extract": "AI reads it",
+          "erp": "Google Sheets",
+          "validation": "Your approval",
+          "send": "Sent"
+        },
+        "meta": {
+          "email": "Outlook",
+          "extract": "14 fields",
+          "erp": "to approve",
+          "validation": "accounting",
+          "send": "email"
+        },
+        "trace": {
+          "email": "Invoice in by email (PDF)",
+          "extract": "AI picks out 14 fields",
+          "vat": "VAT mismatch on line 3",
+          "recompute": "VAT recomputed: 20%, ok",
+          "draft": "Row created in Google Sheets",
+          "waiting": "waiting for approval",
+          "approved": "Approved by accounting",
+          "sent": "Invoice entered and sent"
+        },
+        "chip": "Invoice entered and approved",
+        "caption": "Sample automation: supplier invoices get entered on their own, and all you do is approve them. Names and values are fictional."
+      },
+      "geo": {
+        "title": "AI visibility · monthly",
+        "nodes": {
+          "prompts": "Questions",
+          "chatgpt": "ChatGPT",
+          "perplexity": "Perplexity",
+          "gemini": "Gemini",
+          "citation": "Cited or not?",
+          "report": "Report",
+          "aio": "AI Overview"
+        },
+        "meta": {
+          "prompts": "30 tested",
+          "chatgpt": "AI engine",
+          "perplexity": "AI engine",
+          "gemini": "AI engine",
+          "citation": "your domain",
+          "report": "monthly",
+          "aio": "AI engine"
+        },
+        "trace": {
+          "prompts": "30 questions your clients ask",
+          "chatgpt": "ChatGPT: 30 of 30 answers",
+          "perplexity": "Perplexity: 30 answers",
+          "geminiRetry": "Gemini slow, trying again",
+          "gemini": "Gemini: 30 answers",
+          "citations": "looking for your domain",
+          "sources": "31 sites cited as sources",
+          "report": "Report: 30 questions tracked",
+          "aio": "AI Overviews: 30 answers"
+        },
+        "chip": "Report · 30 questions tracked",
+        "caption": "Sample monthly report: every month you know whether ChatGPT and the other AI engines cite your site. Names and values are fictional."
+      },
+      "realEstate": {
+        "title": "buyer request",
+        "nodes": {
+          "portal": "Portal lead",
+          "match": "Home matched",
+          "slot": "Viewing set",
+          "crm": "CRM updated",
+          "archive": "Not a fit"
+        },
+        "meta": {
+          "portal": "email",
+          "match": "AI · 2-bed flat",
+          "slot": "Sat 10am",
+          "crm": "contact",
+          "archive": "archived"
+        },
+        "trace": {
+          "portal": "Request from a portal",
+          "think": "AI model · read 0.4 s",
+          "match": "Matched: 2-bed, Chartrons",
+          "score": "Buyer: purchase, budget ok",
+          "busy": "Slot taken, trying another",
+          "slot": "Viewing offered Sat 10am",
+          "crm": "Contact created in the CRM",
+          "done": "Lead filed in 2.4 s"
+        },
+        "chip": "Viewing offered · 2.4 s",
+        "caption": "Sample workflow for an estate agency: a portal request is matched to the property, a viewing is offered and the contact filed in the CRM. Names and values are fictional."
+      },
+      "agencies": {
+        "title": "agency delivery",
+        "nodes": {
+          "design": "Design",
+          "build": "Build",
+          "review": "Sign-off",
+          "deploy": "Live",
+          "llms": "AI-ready"
+        },
+        "meta": {
+          "design": "agency",
+          "build": "Next.js",
+          "review": "agency",
+          "deploy": "client",
+          "llms": "llms.txt"
+        },
+        "trace": {
+          "design": "Design received from agency",
+          "build": "Building in Next.js",
+          "built": "Pages built, tests passing",
+          "review": "Sign-off by your team",
+          "deploy": "Deploying to the client",
+          "retry": "DNS not ready, retrying",
+          "deployed": "Live: client-agence.fr",
+          "schema": "Structured data updated",
+          "llms": "llms.txt ready for AI"
+        },
+        "chip": "Live · client-agence.fr",
+        "caption": "Sample white-label delivery: the agency's design built in Next.js, signed off by its team, then put live on the client's domain. Names and values are fictional."
+      },
+      "services": {
+        "title": "client file documents",
+        "nodes": {
+          "doc": "Doc received",
+          "extract": "AI reads it",
+          "software": "Accounting app",
+          "validation": "Staff check",
+          "follow": "Client chased"
+        },
+        "meta": {
+          "doc": "email",
+          "extract": "12 fields",
+          "software": "to approve",
+          "validation": "review",
+          "follow": "email"
+        },
+        "trace": {
+          "doc": "Statement received (PDF)",
+          "extract": "AI reads 12 fields",
+          "missing": "Receipt missing, line 4",
+          "draft": "Entries ready to approve",
+          "waiting": "waiting for staff check",
+          "approved": "Approved by staff",
+          "chase": "Client reminder drafted",
+          "sent": "Reminder sent to client"
+        },
+        "chip": "Entered · client chased",
+        "caption": "Sample workflow for a firm: the statement is read, entries are prepared in the software, a staff member approves and the client is chased for the missing document. Names and values are fictional."
+      },
+      "support": {
+        "title": "customer reply",
+        "nodes": {
+          "ticket": "Ticket in",
+          "search": "AI looks it up",
+          "draft": "Draft ready",
+          "review": "Your approval",
+          "sent": "Sent"
+        },
+        "meta": {
+          "ticket": "Zendesk",
+          "search": "Notion",
+          "draft": "AI model",
+          "review": "support",
+          "sent": "email"
+        },
+        "trace": {
+          "ticket": "Ticket: parcel not received",
+          "read": "AI model · reading the ticket",
+          "search": "Answer looked up in Notion",
+          "carrier": "Carrier silent, retrying",
+          "found": "Parcel found: due Thursday",
+          "draft": "Reply drafted",
+          "waiting": "waiting for review",
+          "approved": "Approved by support",
+          "sent": "Reply sent to the customer"
+        },
+        "chip": "Reply sent · 4 min",
+        "caption": "Sample agent we build: the AI drafts the reply from your help base, and a person reviews it before it goes out. Names and values are fictional."
+      }
+    }
+  },
+  "machine": {
+    "human": "HUMAN",
+    "machine": "MACHINE",
+    "copy": "Copy",
+    "copied": "Copied",
+    "openRaw": "Open the .md",
+    "tokensApprox": "≈{count} tokens"
+  },
+  "offerPage": {
+    "breadcrumb": "Breadcrumb",
+    "symptoms": "Symptoms",
+    "seeOffer": "See the offer",
+    "moreFeatures": "{count, plural, one {# more item included} other {# more items included}}",
+    "eyebrows": {
+      "problem": "The problem",
+      "deliverables": "Packages",
+      "process": "Method",
+      "proof": "Work",
+      "pricing": "Pricing",
+      "faq": "Questions",
+      "block": {
+        "trace": "Log",
+        "lighthouse": "Proof",
+        "fde-definition": "Definition",
+        "audit-document": "Deliverable",
+        "automation-examples": "Examples",
+        "geo-visibility": "Measurement"
+      },
+      "stack": "Stack"
+    },
+    "ledger": {
+      "offer": "Package",
+      "duration": "Duration",
+      "price": "Price"
+    },
+    "trace": {
+      "file": "trace · {title}",
+      "total": "total",
+      "steps": "{count} steps"
+    },
+    "stack": {
+      "title": "What runs",
+      "titleEmphasis": "under your agents.",
+      "body": "The building blocks we put together for your agents and automations. We pick the model for the task, the cost and where your data has to stay.",
+      "label": "Technologies we deploy",
+      "groups": {
+        "agents": "Agents",
+        "models": "Models",
+        "plumbing": "Connections"
+      },
+      "note": "Brands mentioned belong to their respective owners. Klyx is neither affiliated with nor a partner of these vendors."
+    },
+    "sectors": "By sector"
+  }
+}

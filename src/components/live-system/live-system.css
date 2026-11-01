@@ -1,0 +1,834 @@
+.ls {
+  --lh: 1.25rem;
+  --lines: 7;
+  position: relative;
+}
+
+.ls-frame {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-xl);
+  padding: 44px 12px 72px;
+  background:
+    radial-gradient(60% 50% at 22% 70%, rgb(245 78 0 / 0.22), transparent 70%),
+    linear-gradient(180deg, #1d1915 0%, #15130f 60%, #100f0d 100%);
+  box-shadow:
+    0 0 0 1px var(--line),
+    0 40px 160px -40px var(--glow);
+  view-transition-name: hero-stage;
+}
+
+.ls-frame::before,
+.ls-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.ls-frame::before {
+  background: radial-gradient(
+    50% 30% at 50% 100%,
+    rgb(255 255 255 / 0.08),
+    transparent
+  );
+}
+
+.ls-frame::after {
+  background: url("/textures/grain.png") 0 0 / 128px 128px;
+  mix-blend-mode: overlay;
+}
+
+.ls-backdrop img {
+  position: absolute;
+  inset: auto 0 0;
+  z-index: -2;
+  width: 100%;
+  max-width: none;
+  height: 62%;
+  object-fit: cover;
+  object-position: 50% 100%;
+  filter: brightness(1.45) saturate(1.1);
+  mask-image: linear-gradient(180deg, transparent, #000 35%);
+}
+
+.ls-strip {
+  position: absolute;
+  inset: 0 0 auto;
+  display: flex;
+  align-items: center;
+  height: 28px;
+  padding-inline: 14px;
+  border-bottom: 1px solid var(--line);
+  background-color: rgb(15 15 14 / 0.6);
+  background-image: repeating-linear-gradient(
+    -45deg,
+    var(--line-strong) 0 1px,
+    transparent 1px 7px
+  );
+  color: var(--text-2);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.ls-stage {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.ls-stage[hidden] {
+  display: none;
+}
+
+.ls-window {
+  overflow: hidden;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-lg);
+  background: var(--surface-2);
+  box-shadow:
+    inset 0 1px 0 var(--highlight),
+    0 24px 48px -24px rgb(0 0 0 / 0.6);
+}
+
+.ls-chrome {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 36px;
+  padding-inline: 12px;
+  border-bottom: 1px solid var(--line);
+  color: var(--text-3);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  white-space: nowrap;
+}
+
+.ls-run {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: auto;
+  color: var(--text-2);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+
+  &::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--ui-ok);
+  }
+}
+
+.ls-run-stack {
+  display: inline-grid;
+
+  & > span {
+    grid-area: 1 / 1;
+  }
+
+  & [data-for="active"] {
+    visibility: hidden;
+  }
+}
+
+.ls-stage:has([data-state="active"]) .ls-run {
+  &::before {
+    background: var(--accent);
+  }
+
+  & [data-for="done"] {
+    visibility: hidden;
+  }
+
+  & [data-for="active"] {
+    visibility: visible;
+  }
+}
+
+.ls-lights {
+  display: inline-flex;
+  gap: 6px;
+  margin-right: 4px;
+
+  & i {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--surface-3);
+    box-shadow: inset 0 0 0 1px var(--line-strong);
+  }
+}
+
+.ls-graph {
+  container: graph / inline-size;
+  background: rgb(33 31 29 / 0.62);
+}
+
+.ls-graph-box {
+  position: relative;
+  aspect-ratio: 5 / 6;
+  background: rgb(20 19 18 / 0.25);
+}
+
+.ls-edges {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.ls-edges-d {
+  display: none;
+}
+
+.ls-edge {
+  fill: none;
+  stroke: var(--line-strong);
+  stroke-width: 1.25;
+  stroke-dasharray: 3 4;
+  vector-effect: non-scaling-stroke;
+  transition: stroke var(--d-ui) var(--ease-out);
+}
+
+[data-state="done"] > .ls-edge {
+  stroke: rgb(245 78 0 / 0.38);
+  stroke-dasharray: none;
+}
+
+[data-state="active"] > .ls-edge {
+  stroke: rgb(245 78 0 / 0.6);
+  stroke-dasharray: none;
+}
+
+.ls-packet,
+.ls-packet-glow {
+  fill: none;
+  stroke: var(--accent);
+  stroke-linecap: round;
+  stroke-dasharray: var(--dash) 200;
+  stroke-dashoffset: var(--dash);
+  opacity: 0;
+}
+
+.ls-packet {
+  --dash: 6;
+  stroke-width: 2.5;
+}
+
+.ls-packet-glow {
+  --dash: 10;
+  stroke-width: 8;
+}
+
+.ls-edges-m .ls-packet {
+  --dash: 28;
+}
+
+.ls-edges-m .ls-packet-glow {
+  --dash: 40;
+}
+
+.ls[data-playing] [data-state="active"] > .ls-packet {
+  opacity: 1;
+  animation: ls-packet var(--d-packet) var(--ease-in-out) both;
+}
+
+.ls[data-playing] [data-state="active"] > .ls-packet-glow {
+  opacity: 0.28;
+  animation: ls-packet var(--d-packet) var(--ease-in-out) both;
+}
+
+@keyframes ls-packet {
+  from {
+    stroke-dashoffset: var(--dash);
+  }
+  to {
+    stroke-dashoffset: -100;
+  }
+}
+
+.ls-parked {
+  fill: var(--accent);
+  opacity: 0;
+  transition: opacity var(--d-ui) var(--ease-out);
+
+  & circle:first-child {
+    opacity: 0.25;
+  }
+}
+
+[data-state="done"] > .ls-parked {
+  opacity: 1;
+}
+
+.ls[data-playing] .ls-parked {
+  opacity: 0;
+}
+
+.ls-nodes {
+  position: absolute;
+  inset: 0;
+}
+
+.ls-node {
+  --nx: var(--mx);
+  --ny: var(--my);
+  position: absolute;
+  left: var(--nx);
+  top: var(--ny);
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  width: 44%;
+  padding: 5px 14px 5px 5px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-md);
+  background: var(--surface-2);
+  box-shadow:
+    inset 0 1px 0 var(--highlight),
+    0 8px 20px -10px rgb(0 0 0 / 0.7);
+  font-family: var(--font-mono);
+  white-space: nowrap;
+  transform: translate(-50%, -50%);
+  transition: border-color var(--d-ui) var(--ease-out);
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    box-shadow:
+      0 0 0 4px var(--accent-soft),
+      0 0 32px -4px var(--glow);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--d-ui) var(--ease-out);
+  }
+}
+
+.ls-node-icon {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  background: var(--surface-3);
+  color: var(--text-2);
+  transition:
+    color var(--d-ui) var(--ease-out),
+    background-color var(--d-ui) var(--ease-out);
+
+  & svg {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+.ls-node[data-models] {
+  gap: 5px;
+
+  & .ls-node-icon {
+    width: 26px;
+  }
+}
+
+.ls-models {
+  display: grid;
+  grid-auto-flow: column;
+  gap: 0;
+
+  & svg {
+    width: 12px;
+    height: 12px;
+  }
+
+  & > :nth-child(n + 3) {
+    display: none;
+  }
+}
+
+.ls-node-icon [data-logo] {
+  color: var(--text-2);
+  transition: color var(--d-ui) var(--ease-out);
+}
+
+.ls-node:is([data-state="active"], [data-state="done"]) [data-logo] {
+  color: var(--text);
+}
+
+.ls-node-text {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.ls-node-label,
+.ls-node-meta {
+  overflow: hidden;
+  font-size: 0.75rem;
+  line-height: 1.3;
+  text-overflow: ellipsis;
+}
+
+.ls-node-label {
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+}
+
+.ls-node-meta {
+  color: var(--text-3);
+}
+
+.ls-dot {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 6px;
+  height: 6px;
+  border: 1px solid var(--text-3);
+  border-radius: 50%;
+}
+
+.ls-node[data-state="idle"] .ls-node-label {
+  color: var(--text-2);
+}
+
+.ls-node[data-state="done"] .ls-dot {
+  border-color: var(--ui-ok);
+  background: var(--ui-ok);
+}
+
+.ls-node[data-agent] {
+  width: 50%;
+  border-color: rgb(245 78 0 / 0.5);
+  background: #26211d;
+
+  & .ls-node-icon {
+    border-color: rgb(245 78 0 / 0.3);
+    background: var(--accent-soft);
+    color: var(--accent);
+  }
+}
+
+.ls-node[data-terminal][data-state="done"] {
+  border-color: rgb(245 78 0 / 0.7);
+  box-shadow:
+    inset 0 1px 0 var(--highlight),
+    0 0 0 4px var(--accent-soft),
+    0 0 36px -8px var(--glow);
+
+  & .ls-node-icon {
+    background: var(--accent-soft);
+    color: var(--accent);
+  }
+}
+
+.ls-node[data-state="active"] {
+  border-color: var(--accent);
+
+  & .ls-node-icon {
+    background: var(--accent-soft);
+    color: var(--accent);
+  }
+
+  & .ls-dot {
+    border-color: var(--accent);
+    background: var(--accent);
+  }
+
+  &::after {
+    opacity: 1;
+  }
+}
+
+.ls[data-playing] .ls-node[data-state="active"] .ls-dot {
+  animation: ls-pulse 900ms var(--ease-in-out) infinite alternate;
+}
+
+@keyframes ls-pulse {
+  to {
+    opacity: 0.3;
+  }
+}
+
+.ls-terminal {
+  position: relative;
+  z-index: 1;
+  width: calc(100% - 20px);
+  margin: -24px 0 0 auto;
+  background: var(--bg-sunken);
+}
+
+.ls-term-body {
+  padding: 12px 14px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  line-height: var(--lh);
+}
+
+.ls-term-clip {
+  height: calc(var(--lines) * var(--lh));
+  overflow: hidden;
+}
+
+.ls-line {
+  display: flex;
+  gap: 10px;
+  height: var(--lh);
+  color: var(--text);
+  white-space: nowrap;
+}
+
+.ls-line[data-mobile="false"] {
+  display: none;
+}
+
+.ls-line[data-shown="false"] {
+  opacity: 0;
+}
+
+.ls[data-playing] .ls-line[data-shown="true"] {
+  animation: ls-type 420ms steps(24, end) both;
+}
+
+@keyframes ls-type {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+.ls-time {
+  flex: none;
+  min-width: 5ch;
+  color: var(--text-3);
+  font-variant-numeric: tabular-nums;
+}
+
+.ls-mark {
+  flex: none;
+  width: 1ch;
+  color: var(--text-3);
+}
+
+.ls-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ls-line[data-tone="dim"] .ls-text {
+  color: var(--text-3);
+}
+
+.ls-line[data-tone="ok"] .ls-mark {
+  color: var(--ui-ok);
+}
+
+.ls-line[data-tone="err"] {
+  & .ls-mark,
+  & .ls-text {
+    color: var(--ui-err);
+  }
+}
+
+.ls-link {
+  display: none;
+}
+
+.ls-chip {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  align-self: flex-end;
+  align-items: center;
+  gap: 8px;
+  height: 34px;
+  margin-top: 12px;
+  padding-inline: 12px;
+  border: 1px solid var(--accent);
+  border-radius: var(--r-sm);
+  background: rgb(26 25 24 / 0.94);
+  box-shadow:
+    0 0 0 4px var(--accent-soft),
+    0 16px 32px -12px rgb(0 0 0 / 0.7);
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  white-space: nowrap;
+  transition:
+    opacity var(--d-ui) var(--ease-out),
+    transform var(--d-ui) var(--ease-out);
+
+  & svg {
+    width: 14px;
+    height: 14px;
+    color: var(--ui-ok);
+  }
+}
+
+.ls-chip[data-shown="false"] {
+  opacity: 0;
+  transform: scale(0.96);
+}
+
+.ls-tabs {
+  display: flex;
+  gap: 6px;
+  margin: 24px calc(-1 * var(--content-x)) 0;
+  padding: 2px var(--content-x);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.ls-tab {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  gap: 8px;
+  height: 36px;
+  padding-inline: 14px 16px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-full);
+  color: var(--text-2);
+  font-size: 0.875rem;
+  scroll-snap-align: start;
+  transition:
+    background-color var(--d-fast) var(--ease-out),
+    border-color var(--d-fast) var(--ease-out),
+    color var(--d-fast) var(--ease-out);
+
+  &::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--text-3);
+  }
+
+  &:hover {
+    color: var(--text);
+    border-color: var(--text-3);
+  }
+
+  &[aria-selected="true"] {
+    border-color: rgb(245 78 0 / 0.45);
+    background: var(--accent-soft);
+    color: var(--text);
+
+    &::before {
+      background: var(--accent);
+    }
+  }
+}
+
+.ls-caption {
+  margin-top: 12px;
+  color: var(--text-3);
+  font-size: 0.8125rem;
+
+  @media (width < 768px) {
+    min-height: 2lh;
+  }
+}
+
+.ls[data-paused] *,
+.ls[data-paused] *::before,
+.ls[data-paused] *::after {
+  animation-play-state: paused !important;
+}
+
+::view-transition-group(hero-stage) {
+  animation-duration: var(--d-swap);
+  animation-timing-function: var(--ease-in-out);
+}
+
+@media (width >= 640px) {
+  .ls {
+    --lines: 11;
+  }
+
+  .ls-line[data-mobile="false"] {
+    display: flex;
+  }
+
+  .ls-backdrop img {
+    inset: 0;
+    height: 100%;
+    object-position: 30% 50%;
+    mask-image: none;
+  }
+
+  .ls-frame {
+    padding: 52px 24px 24px;
+  }
+
+  .ls-tabs {
+    justify-content: center;
+  }
+
+  .ls-caption {
+    text-align: center;
+  }
+}
+
+@container graph (width >= 600px) {
+  .ls-graph-box {
+    aspect-ratio: 2.4 / 1;
+  }
+
+  .ls-edges-d {
+    display: block;
+  }
+
+  .ls-edges-m {
+    display: none;
+  }
+
+  .ls-node {
+    --nx: var(--x);
+    --ny: var(--y);
+    width: 23%;
+    gap: 7px;
+    padding: 6px 14px 6px 6px;
+  }
+
+  .ls-node-icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .ls-node[data-agent] {
+    width: 26%;
+    padding-block: 9px;
+
+    & .ls-node-icon {
+      width: 28px;
+      height: 28px;
+    }
+
+    & .ls-node-label {
+      font-size: 0.875rem;
+    }
+  }
+
+  .ls-node[data-models] {
+    gap: 7px;
+
+    & .ls-node-icon {
+      width: 32px;
+      height: 32px;
+    }
+  }
+
+  .ls-models {
+    grid-template-columns: repeat(2, 12px);
+    grid-auto-flow: row;
+    gap: 2px;
+
+    & > :nth-child(n + 3) {
+      display: block;
+      grid-column: span 2;
+      justify-self: center;
+    }
+  }
+}
+
+[data-layout="compact"] .ls-terminal {
+  margin-top: 12px;
+}
+
+@container graph (width >= 600px) {
+  [data-layout="compact"] {
+    & .ls-graph-box {
+      aspect-ratio: 2 / 1;
+    }
+
+    & .ls-node {
+      width: max-content;
+      max-width: 24%;
+    }
+
+    & .ls-node[data-agent] {
+      width: max-content;
+      max-width: 32%;
+    }
+  }
+}
+
+@media (width >= 1200px) {
+  [data-layout="wide"] {
+    & .ls-frame {
+      aspect-ratio: 2 / 1;
+      padding: 0;
+    }
+
+    & .ls-backdrop img {
+      inset: auto;
+      top: var(--bd-top, -57%);
+      left: var(--bd-left, -28%);
+      width: 140%;
+      height: auto;
+    }
+
+    & .ls-stage {
+      position: absolute;
+      inset: 0;
+    }
+
+    & .ls-graph {
+      position: absolute;
+      top: calc(28px + 6%);
+      left: 7%;
+      width: 56%;
+    }
+
+    & .ls-terminal {
+      position: absolute;
+      right: 7%;
+      bottom: 7%;
+      width: 40%;
+      margin: 0;
+    }
+
+    & .ls-link {
+      position: absolute;
+      top: calc(64px + 19.07%);
+      left: 61.6%;
+      right: 9%;
+      display: block;
+      border-top: 1px dashed rgb(245 78 0 / 0.55);
+    }
+
+    & .ls-chip {
+      position: absolute;
+      top: calc(47px + 19.07%);
+      right: 7%;
+      margin: 0;
+    }
+  }
+}
+
+.ls-stage:has([data-chip][data-shown="false"]) .ls-link {
+  opacity: 0;
+}
