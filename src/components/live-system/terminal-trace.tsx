@@ -1,3 +1,5 @@
+import type { ReactNode } from "react";
+
 import type { TraceLine } from "@/lib/scenarios";
 
 const MARKS: Record<NonNullable<TraceLine["tone"]> | "default", string> = {
@@ -10,9 +12,11 @@ const MARKS: Record<NonNullable<TraceLine["tone"]> | "default", string> = {
 export function TerminalTrace({
   title,
   lines,
+  footer,
 }: {
   title: string;
   lines: (TraceLine & { text: string })[];
+  footer?: ReactNode;
 }) {
   return (
     <div className="ls-window ls-terminal">
@@ -46,6 +50,7 @@ export function TerminalTrace({
           </ol>
         </div>
       </div>
+      {footer && <div className="ls-term-foot">{footer}</div>}
     </div>
   );
 }

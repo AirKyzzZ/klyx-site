@@ -123,7 +123,15 @@
         "finance": "Compta",
         "automation": "Automatisation"
       },
-      "note": "Les marques citées appartiennent à leurs propriétaires respectifs. Klyx n'est ni affilié ni partenaire de ces éditeurs."
+      "note": "Les marques citées appartiennent à leurs propriétaires respectifs. Klyx n'est ni affilié ni partenaire de ces éditeurs.",
+      "map": {
+        "inputs": "Ce qui arrive",
+        "outputs": "Où ça repart",
+        "hub": "Agent IA",
+        "hubMeta": "lit · trie · prépare",
+        "under": "tourne sur",
+        "details": "Les {count} outils, un par un"
+      }
     },
     "cases": {
       "title": "Réalisations",
@@ -409,7 +417,7 @@
     "problem": {
       "title": "Pourquoi refaire",
       "body": "Un site lent ou mal structuré perd ses visiteurs avant qu'ils aient lu votre offre. Et une partie de vos clients pose maintenant ses questions à ChatGPT ou Perplexity, qui citent surtout les sites qu'ils arrivent à lire. On construit des sites pensés pour les deux.",
-      "titleEmphasis": "votre site",
+      "titleEmphasis": "votre site.",
       "symptoms": {
         "slow": "Un site qui met plus de 3 secondes à s'afficher sur mobile",
         "noPrice": "Des pages qui ne disent ni le prix ni le délai",
@@ -445,10 +453,10 @@
           }
         }
       },
-      "titleEmphasis": "vous recevez"
+      "titleEmphasis": "vous recevez."
     },
     "process": {
-      "title": "Comment ça se passe,",
+      "title": "Du brief à la mise en ligne,",
       "steps": {
         "brief": {
           "title": "Brief",
@@ -479,7 +487,7 @@
       "title": "Sites",
       "body": "PKBA et VertiFlow : le site d'un club de parkour et celui d'une marque de vêtements de parkour, tous deux en ligne.",
       "link": "Voir les réalisations",
-      "titleEmphasis": "livrés"
+      "titleEmphasis": "livrés."
     },
     "faq": {
       "title": "Questions",
@@ -532,12 +540,13 @@
       "subtitle": "Audit à partir de {auditPrice}, Sprint IA à partir de {sprintPrice}. Un workflow branché sur vos outils, avec le code dans votre repo et un journal de chaque action de l'agent.",
       "ctaPrimary": "Réserver un appel",
       "ctaSecondary": "Demander un devis gratuit",
-      "serif": "production"
+      "serif": "production",
+      "anchor": "Audit {auditPrice} · Sprint {sprintPrice}"
     },
     "problem": {
       "title": "Pourquoi les projets IA",
       "body": "Votre équipe utilise déjà ChatGPT, mais rien n'est branché sur vos outils. Le prototype a marché en réunion, puis personne n'a eu le temps de le fiabiliser. C'est la partie qu'on prend en charge : on choisit un processus qui rapporte, on le branche sur vos vraies données et il tourne sous surveillance.",
-      "titleEmphasis": "restent au stade de la démo",
+      "titleEmphasis": "restent au stade de la démo.",
       "symptoms": {
         "demo": "Un prototype qui a marché en réunion, puis plus rien",
         "copy": "ChatGPT ouvert dans un onglet, rien de branché sur vos outils",
@@ -576,7 +585,7 @@
           }
         }
       },
-      "titleEmphasis": "chacune payée à part"
+      "titleEmphasis": "chacune payée à part."
     },
     "credit": {
       "title": "L'audit est déduit du Sprint",
@@ -614,7 +623,7 @@
       "title": "Déjà",
       "body": "Hoppy, l'assistant IA de Hop Hop Immo, et CiteMe, cofondé par Maxime, notre lead engineer.",
       "link": "Voir les réalisations",
-      "titleEmphasis": "en production"
+      "titleEmphasis": "en production."
     },
     "faq": {
       "title": "Questions",
@@ -690,14 +699,14 @@
         "weekly": "Chaque semaine, un point écrit avec la liste des PR livrées",
         "handover": "Une documentation de passation à la fin de la mission"
       },
-      "titleEmphasis": "dans votre équipe"
+      "titleEmphasis": "dans votre équipe."
     },
     "terms": {
       "title": "Les conditions",
       "items": {
         "rate": "{fdeDayPrice} par jour",
         "rhythm": "2 à 3 jours par semaine",
-        "minimum": "4 semaines minimum, soit environ {fdeMinimum}",
+        "minimum": "4 semaines minimum, à partir de {fdeMinimum} (2 jours × 4 semaines)",
         "capacity": "Deux clients au plus en même temps"
       }
     },
@@ -711,7 +720,7 @@
       }
     },
     "process": {
-      "title": "Comment ça se passe,",
+      "title": "Un ingénieur dans votre équipe,",
       "steps": {
         "call": {
           "title": "Appel",
@@ -730,7 +739,7 @@
           "body": "Un point écrit avec les PR livrées et la suite. On ajuste le rythme si besoin."
         }
       },
-      "titleEmphasis": "en quatre étapes."
+      "titleEmphasis": "semaine après semaine."
     },
     "faq": {
       "title": "Questions",
@@ -778,7 +787,7 @@
     "pricing": {
       "title": "Combien coûte",
       "titleEmphasis": "un Forward Deployed Engineer ?",
-      "body": "{fdeDayPrice} par jour, 2 à 3 jours par semaine, 4 semaines minimum, soit environ {fdeMinimum} pour démarrer.",
+      "body": "{fdeDayPrice} par jour, 2 à 3 jours par semaine, 4 semaines minimum : à partir de {fdeMinimum} pour démarrer (2 jours × 4 semaines).",
       "link": "Voir tous les tarifs"
     }
   },
@@ -1307,7 +1316,9 @@
         },
         "note": "Fourchettes relevées le 31 octobre 2026."
       },
-      "titleEmphasis": "se situent."
+      "titleEmphasis": "se situent.",
+      "line": "La plupart des agences IA en France ne publient pas leurs prix. Pour comparer, les fourchettes publiées pour un développeur IA freelance vont en général de 650 à 900 € par jour (relevé le 31 octobre 2026). Notre Forward Deployed Engineer est à {fdeDayPrice} par jour.",
+      "sourceLabel": "Source : Studeria"
     },
     "faq": {
       "title": "Questions",
@@ -1402,7 +1413,7 @@
     "trust": {
       "title": "Pourquoi nous",
       "body": "Vous n'avez pas à nous croire sur parole. Tout ce qui suit se vérifie avant de signer, et dès le premier appel, nous vous disons ce que nous ne faisons pas.",
-      "titleEmphasis": "faire confiance",
+      "titleEmphasis": "faire confiance.",
       "items": {
         "code": {
           "label": "Code public",
@@ -1485,7 +1496,7 @@
       }
     },
     "process": {
-      "title": "Comment ça se passe,",
+      "title": "Du premier échange au suivi,",
       "steps": {
         "call": {
           "title": "Un premier échange gratuit",
@@ -2230,7 +2241,8 @@
         "title": "Pas encore de cas client",
         "titleEmphasis": "dans ce secteur.",
         "body": "On préfère le dire : on n'a pas encore de cas client publié pour un cabinet comptable, juridique ou de conseil. Les workflows de cette page sont des illustrations. L'audit sert justement à vérifier, sur vos vrais documents, ce qui vaut la peine d'être automatisé avant que vous payiez un développement.",
-        "link": "Voir l'audit IA"
+        "link": "Voir l'audit IA",
+        "line": "Pas encore de cas client publié dans ce secteur : ces workflows sont des illustrations, et l'audit vérifie sur vos documents ce qui vaut la peine d'être automatisé."
       },
       "pricing": {
         "title": "Ce que ça coûte,",
@@ -2539,7 +2551,8 @@
         },
         "chip": "Lighthouse {score} · klyx.fr",
         "chipPending": "Lighthouse · mesure en cours",
-        "measuredCaption": "Score Lighthouse mobile réel de klyx.fr, mesuré le {date}. Le déroulé est un exemple."
+        "measuredCaption": "Score Lighthouse mobile réel de klyx.fr, mesuré le {date}. Le déroulé est un exemple.",
+        "caption": "Exemple de mise en ligne : chaque modification est compilée, testée en vitesse sur mobile, puis publiée avec son llms.txt. Le déroulé et les durées sont un exemple."
       },
       "fde": {
         "title": "ENG-142 · export CSV",

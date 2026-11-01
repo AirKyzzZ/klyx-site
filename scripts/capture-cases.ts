@@ -22,7 +22,7 @@ function readTargets(): Target[] {
     .flatMap((file) => {
       const source = readFileSync(path.join(CASES_DIR, file), "utf8");
       const url = source.match(/url:\s*"([^"]+)"/)?.[1];
-      if (!url) return [];
+      if (!url || /listed:\s*false/.test(source)) return [];
       return [{ slug: file.replace(/\.fr\.mdx$/, ""), url }];
     });
 }
@@ -53,6 +53,19 @@ function hidePromoBars() {
   }
 }
 
+function hideTextCutByFold() {
+  const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+  const range = document.createRange();
+  for (let node = walker.nextNode(); node; node = walker.nextNode()) {
+    if (!node.textContent?.trim() || !node.parentElement) continue;
+    range.selectNodeContents(node);
+    const { top, bottom } = range.getBoundingClientRect();
+    if (top < innerHeight && bottom > innerHeight) {
+      node.parentElement.style.visibility = "hidden";
+    }
+  }
+}
+
 async function capture(target: Target): Promise<Shot> {
   const browser = await chromium.launch();
   try {
@@ -73,6 +86,7 @@ async function capture(target: Target): Promise<Shot> {
       await page.waitForTimeout(SETTLE_MS);
       await page.evaluate(hideConsentBanners);
       await page.evaluate(hidePromoBars);
+      await page.evaluate(hideTextCutByFold);
       await page.waitForTimeout(300);
       await page.screenshot({
         path: path.join(OUTPUT_DIR, `${target.slug}-${viewport.width}.png`),

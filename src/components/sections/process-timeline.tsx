@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import { Check } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 
+import { AgendaSlots } from "@/components/agenda-slots";
 import { Section, SectionHeading } from "@/components/section";
 import { messageStrings } from "@/i18n/message-list";
 import type { Locale } from "@/i18n/routing";
@@ -15,13 +16,6 @@ type Translate = Awaited<ReturnType<typeof getTranslations>>;
 type StepId = "call" | "scope" | "build" | "measure";
 
 const STEP_IDS: StepId[] = ["call", "scope", "build", "measure"];
-const SAMPLE_WEEK = ["2026-11-02", "2026-11-03", "2026-11-04"];
-const SAMPLE_SLOTS = [
-  ["09:30", "14:00"],
-  ["11:00", "16:30"],
-  ["10:00", "17:30"],
-];
-const PICKED = { day: 1, slot: 0 };
 
 export function SampleWindow({
   file,
@@ -61,41 +55,14 @@ export function SampleWindow({
 }
 
 function CallSample({ t, locale }: { t: Translate; locale: Locale }) {
-  const weekday = new Intl.DateTimeFormat(locale, {
-    weekday: "short",
-    day: "numeric",
-    timeZone: "UTC",
-  });
   return (
     <>
       <p className="text-text font-sans text-sm font-medium">
         {t("call.title")}
       </p>
       <p className="text-text-3 text-xs">{t("call.meta")}</p>
-      <div className="mt-4 grid grid-cols-3 gap-2">
-        {SAMPLE_WEEK.map((day, d) => (
-          <div key={day} className="space-y-2">
-            <p className="text-text-3 text-xs">
-              {weekday.format(new Date(day))}
-            </p>
-            {SAMPLE_SLOTS[d].map((slot, s) => {
-              const picked = d === PICKED.day && s === PICKED.slot;
-              return (
-                <p
-                  key={slot}
-                  className={cn(
-                    "rounded-xs border px-2 py-1.5 text-center",
-                    picked
-                      ? "border-accent bg-accent-soft text-text"
-                      : "border-line-strong text-text-2",
-                  )}
-                >
-                  {slot}
-                </p>
-              );
-            })}
-          </div>
-        ))}
+      <div className="mt-4">
+        <AgendaSlots locale={locale} />
       </div>
     </>
   );

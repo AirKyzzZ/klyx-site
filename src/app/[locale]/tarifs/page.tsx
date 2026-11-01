@@ -3,24 +3,20 @@ import type { Metadata } from "next";
 import { ArrowUpRight, Check } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 
-import { Section, SectionHeading } from "@/components/section";
 import { Cta } from "@/components/sections/cta";
 import { Faq } from "@/components/sections/faq";
 import { Hero } from "@/components/sections/hero";
 import { PriceLedger } from "@/components/sections/price-ledger";
-import { SampleWindow } from "@/components/sections/process-timeline";
 import {
-  messageKeys,
   messageList,
   messageStrings,
   type Translate,
 } from "@/i18n/message-list";
 import { type LocaleParams, resolvePageLocale } from "@/i18n/page-locale";
-import { getOfferCopy } from "@/lib/offer-copy";
-import { MARKET_KLYX_OFFER } from "@/lib/offers";
+import { getPriceValues } from "@/lib/offers";
 import { buildMetadata } from "@/lib/seo";
 
-const MARKET_CHECKED_AT = "2026-10-31";
+const MARKET_ROW = "tjm";
 
 export async function generateMetadata({
   params,
@@ -45,7 +41,6 @@ export default async function PricingPage({ params }: LocaleParams) {
     locale,
     namespace: "offers",
   })) as Translate;
-  const marketRows = messageKeys(t.raw("market.card.rows"));
 
   return (
     <>
@@ -73,103 +68,22 @@ export default async function PricingPage({ params }: LocaleParams) {
         }
       >
         <PriceLedger locale={locale} />
+        <p className="text-text-3 mt-6 max-w-[72ch] text-sm leading-relaxed">
+          {t("market.line", getPriceValues(locale))}{" "}
+          <a
+            href={t(`market.card.rows.${MARKET_ROW}.url`)}
+            target="_blank"
+            rel="noopener"
+            className="hover:text-text inline-flex items-center gap-1 underline underline-offset-4 transition-colors"
+          >
+            {t("market.sourceLabel")}
+            <ArrowUpRight aria-hidden="true" className="size-3" />
+          </a>
+        </p>
       </Hero>
 
-      <Section index="01" eyebrow={t("eyebrows.market")}>
-        <div className="grid gap-10 lg:grid-cols-12 lg:gap-6">
-          <div className="reveal lg:col-span-5">
-            <SectionHeading
-              lead={t("market.title")}
-              rest={t("market.titleEmphasis")}
-            />
-            <p className="text-text-2 mt-6 max-w-[52ch]">{t("market.body")}</p>
-          </div>
-          <div className="reveal lg:col-span-6 lg:col-start-7">
-            <SampleWindow
-              file={t("market.card.title")}
-              sample={MARKET_CHECKED_AT}
-            >
-              <table className="w-full text-left">
-                <thead className="max-sm:sr-only">
-                  <tr className="text-text-3 border-line border-b">
-                    <th scope="col" className="pr-3 pb-3 font-normal">
-                      {t("market.card.columns.item")}
-                    </th>
-                    <th scope="col" className="pr-3 pb-3 font-normal">
-                      {t("market.card.columns.market")}
-                    </th>
-                    <th scope="col" className="pb-3 font-normal">
-                      {t("market.card.columns.klyx")}
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {marketRows.map((key) => {
-                    const row = `market.card.rows.${key}`;
-                    const klyx = getOfferCopy(
-                      offersT,
-                      locale,
-                      MARKET_KLYX_OFFER[key],
-                    );
-                    const url = messageKeys(t.raw(row)).includes("url")
-                      ? t(`${row}.url`)
-                      : null;
-                    return (
-                      <tr
-                        key={key}
-                        className="border-line border-b align-top last:border-b-0 max-sm:flex max-sm:flex-col max-sm:gap-1 max-sm:py-4"
-                      >
-                        <th
-                          scope="row"
-                          className="text-text py-4 pr-3 font-sans text-sm font-medium max-sm:py-0"
-                        >
-                          {t(`${row}.label`)}
-                          <span className="text-text-3 mt-1 block font-mono text-xs font-normal">
-                            {url ? (
-                              <a
-                                href={url}
-                                target="_blank"
-                                rel="noopener"
-                                className="hover:text-text inline-flex items-center gap-1 underline underline-offset-4 transition-colors"
-                              >
-                                {t(`${row}.source`)}
-                                <ArrowUpRight
-                                  aria-hidden="true"
-                                  className="size-3"
-                                />
-                              </a>
-                            ) : (
-                              t(`${row}.source`)
-                            )}
-                          </span>
-                        </th>
-                        <td className="text-text-2 py-4 pr-3 whitespace-nowrap max-sm:py-0">
-                          <span className="text-text-3 sm:hidden">
-                            {t("market.card.columns.market")}{" "}
-                          </span>
-                          {t(`${row}.range`)}
-                        </td>
-                        <td className="text-text py-4 max-sm:py-0">
-                          <span className="text-text-3 sm:hidden">
-                            {t("market.card.columns.klyx")}{" "}
-                          </span>
-                          {klyx.price}
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
-              <p className="border-line text-text-3 mt-2 border-t pt-4 text-xs">
-                {t("market.card.note")}
-              </p>
-            </SampleWindow>
-          </div>
-        </div>
-      </Section>
-
       <Faq
-        index="02"
+        index="01"
         eyebrow={t("eyebrows.faq")}
         title={t("faq.title")}
         emphasis={t("faq.titleEmphasis")}

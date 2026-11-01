@@ -19,13 +19,16 @@ import {
   formatPrice,
   getOfferPrice,
   getPriceValues,
-  MARKET_KLYX_OFFER,
   type OfferId,
   PRICE_GROUPS,
 } from "@/lib/offers";
 import { type AppPathname, absoluteUrl } from "@/lib/seo";
 import { CREDITS } from "@/lib/credits";
-import { getGithubContributions, getSiteShot } from "@/lib/proof";
+import {
+  getGithubContributions,
+  getSiteShot,
+  getVerifiedProof,
+} from "@/lib/proof";
 import { faqThemes } from "@/lib/faq-page";
 import { scenarios } from "@/lib/scenarios";
 import {
@@ -279,7 +282,9 @@ function blockMarkdown(
       ];
     }
     case "lighthouse":
-      return [`## ${sectionTitle(t, "block")}`, t("block.body")];
+      return getVerifiedProof().some((source) => source.kind === "lighthouse")
+        ? [`## ${sectionTitle(t, "block")}`, t("block.body")]
+        : [];
     case "fde-definition":
       return [
         `## ${sectionTitle(t, "definition")}`,
@@ -353,7 +358,9 @@ async function offerPageMarkdown(
 
   return doc([
     ...intro(locale, config.pathname, heroTitle(t)),
-    getOfferCopy(offersT, locale, config.anchor).price,
+    config.anchorLine
+      ? t("hero.anchor", prices)
+      : getOfferCopy(offersT, locale, config.anchor).price,
     t("hero.subtitle", prices),
     `## ${sectionTitle(t, "problem")}`,
     t("problem.body"),
@@ -362,7 +369,7 @@ async function offerPageMarkdown(
     hasChild(t, "deliverables", "subtitle") && t("deliverables.subtitle"),
     ...deliverables,
     offersT("vatNote"),
-    ...processBlocks(locale, t),
+    ...(config.process ? processBlocks(locale, t) : []),
     ...blockMarkdown(locale, config, t),
     ...(config.stack
       ? toolBlocks(
@@ -381,17 +388,21 @@ async function offerPageMarkdown(
           link(t("proof.link"), proofUrl),
           caseList(locale, cases),
         ]),
-    `## ${sectionTitle(t, "pricing")}`,
-    t("pricing.body", prices),
-    list(
-      tiers.map((tier) =>
-        labelled(
-          locale,
-          link(tier.name, absoluteUrl(locale, tier.href)),
-          `${tier.price} · ${tier.duration}`,
-        ),
-      ),
-    ),
+    ...(config.pricing
+      ? [
+          `## ${sectionTitle(t, "pricing")}`,
+          t("pricing.body", prices),
+          list(
+            tiers.map((tier) =>
+              labelled(
+                locale,
+                link(tier.name, absoluteUrl(locale, tier.href)),
+                `${tier.price} · ${tier.duration}`,
+              ),
+            ),
+          ),
+        ]
+      : []),
     link(t("pricing.link"), absoluteUrl(locale, "/tarifs")),
     config.sectors.length > 0 &&
       labelled(
@@ -412,24 +423,6 @@ async function offerPageMarkdown(
     ),
     ...ctaBlocks(locale, t, "cta", config.cta),
   ]);
-}
-
-function marketTable(locale: Locale, t: Translate, offersT: Translate) {
-  const columns = ["item", "market", "klyx", "source"].map((column) =>
-    t(`market.card.columns.${column}`),
-  );
-  return [
-    `| ${columns.join(" | ")} |`,
-    `| ${columns.map(() => "---").join(" | ")} |`,
-    ...messageKeys(t.raw("market.card.rows")).map((key) => {
-      const row = `market.card.rows.${key}`;
-      const source = hasChild(t, row, "url")
-        ? link(t(`${row}.source`), t(`${row}.url`))
-        : t(`${row}.source`);
-      const klyx = getOfferCopy(offersT, locale, MARKET_KLYX_OFFER[key]).price;
-      return `| ${[t(`${row}.label`), t(`${row}.range`), klyx, source].map(cell).join(" | ")} |`;
-    }),
-  ].join("\n");
 }
 
 async function pricing(locale: Locale): Promise<string> {
@@ -460,10 +453,7 @@ async function pricing(locale: Locale): Promise<string> {
         }),
       ].join("\n"),
     ]),
-    `## ${sectionTitle(t, "market")}`,
-    t("market.body"),
-    marketTable(locale, t, offersT),
-    t("market.card.note"),
+    `${t("market.line", getPriceValues(locale))} ${link(t("market.sourceLabel"), t("market.card.rows.tjm.url"))}`,
     ...faqBlocks(
       sectionTitle(t, "faq"),
       messageList(t, "faq.items", ["question", "answer"]),
@@ -505,6 +495,9 @@ async function caseStudy(
     ]),
     meta.live !== false && link(t("labels.visit"), meta.url),
     await getMdxBody("realisations", meta.slug, locale),
+    meta.flow && `## ${meta.flow.title}`,
+    meta.flow && list(meta.flow.steps.map((step) => step.caption)),
+    meta.flow?.caption,
     ...ctaBlocks(locale, t, "cta", ["book", "quote"]),
   ]);
 }
@@ -537,7 +530,6 @@ async function about(locale: Locale): Promise<string> {
     `## ${sectionTitle(t, "story")}`,
     t("story.intro"),
     t("story.work"),
-    t("story.citeme"),
     list([
       link(founder("github"), site.socials.github),
       link(founder("linkedin"), site.socials.linkedinFounder),
@@ -546,6 +538,7 @@ async function about(locale: Locale): Promise<string> {
       `${t("contributions.total", { total: new Intl.NumberFormat(locale).format(contributions.total) })}. ${t("contributions.caption", { date: formatDate(locale, contributions.capturedAt) })}`,
     citeme && `## ${sectionTitle(t, "products")}`,
     citeme && link("CiteMe", citeme.url),
+    citeme && t("story.citeme"),
     `## ${t("lines.title")}`,
     list(
       site.sisterSites.map((sister) =>
@@ -644,6 +637,8 @@ async function sectorPageMarkdown(
     t("problems.body"),
     list(messageStrings(t, "problems.items")),
     ...workflowBlocks(locale, t, labels),
+    proof.kind === "none" &&
+      `${t("proof.line")} ${link(t("proof.link"), proofUrl)}`,
     `## ${sectionTitle(t, "data")}`,
     t("data.body"),
     list(
@@ -663,10 +658,14 @@ async function sectorPageMarkdown(
           ...processBlocks(locale, t),
         ]
       : []),
-    `## ${sectionTitle(t, "proof")}`,
-    t("proof.body"),
-    link(t("proof.link"), proofUrl),
-    caseList(locale, cases),
+    ...(proof.kind === "cases"
+      ? [
+          `## ${sectionTitle(t, "proof")}`,
+          t("proof.body"),
+          link(t("proof.link"), proofUrl),
+          caseList(locale, cases),
+        ]
+      : []),
     `## ${sectionTitle(t, "pricing")}`,
     t("pricing.body", prices),
     list(

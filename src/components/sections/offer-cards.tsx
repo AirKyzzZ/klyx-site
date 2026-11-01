@@ -51,7 +51,7 @@ function Connector() {
     <svg
       viewBox="0 0 40 8"
       preserveAspectRatio="none"
-      className="h-2 w-0 min-w-4 flex-1"
+      className="h-2 w-0 min-w-3 flex-1 sm:w-8 sm:flex-none lg:w-0 lg:min-w-4 lg:flex-1"
       aria-hidden="true"
     >
       <path
@@ -75,7 +75,7 @@ function FlowGlyph({
   const icons = GLYPH_ICONS[glyph];
   return (
     <div
-      className="border-line bg-bg-sunken/70 flex items-center rounded-md border px-3 py-5 sm:px-4"
+      className="border-line bg-bg-sunken/70 flex items-center rounded-md border px-3 py-5 sm:w-fit sm:max-w-full sm:px-4 lg:w-auto"
       aria-hidden="true"
       data-flow-glyph
     >

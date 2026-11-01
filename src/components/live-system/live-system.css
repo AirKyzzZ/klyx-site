@@ -550,19 +550,19 @@
   }
 }
 
-.ls-link {
-  display: none;
+.ls-term-foot {
+  display: flex;
+  padding: 10px 14px 12px;
+  border-top: 1px solid var(--line);
 }
 
 .ls-chip {
   position: relative;
   z-index: 2;
   display: inline-flex;
-  align-self: flex-end;
   align-items: center;
   gap: 8px;
   height: 34px;
-  margin-top: 12px;
   padding-inline: 12px;
   border: 1px solid var(--accent);
   border-radius: var(--r-sm);
@@ -798,37 +798,20 @@
 
     & .ls-graph {
       position: absolute;
-      top: calc(28px + 6%);
-      left: 7%;
-      width: 56%;
+      top: calc(14px + 50%);
+      left: 5%;
+      width: 57%;
+      translate: 0 -50%;
     }
 
     & .ls-terminal {
       position: absolute;
-      right: 7%;
-      bottom: 7%;
-      width: 40%;
+      top: calc(14px + 50%);
+      right: 5%;
+      left: 64%;
+      width: auto;
       margin: 0;
-    }
-
-    & .ls-link {
-      position: absolute;
-      top: calc(64px + 19.07%);
-      left: 61.6%;
-      right: 9%;
-      display: block;
-      border-top: 1px dashed rgb(245 78 0 / 0.55);
-    }
-
-    & .ls-chip {
-      position: absolute;
-      top: calc(47px + 19.07%);
-      right: 7%;
-      margin: 0;
+      translate: 0 -50%;
     }
   }
-}
-
-.ls-stage:has([data-chip][data-shown="false"]) .ls-link {
-  opacity: 0;
 }

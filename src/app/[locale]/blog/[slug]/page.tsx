@@ -46,6 +46,7 @@ export async function generateMetadata({
     params: { slug },
     title: brandedTitle(meta.title),
     description: meta.summary,
+    type: "article",
   });
 }
 

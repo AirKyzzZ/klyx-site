@@ -96,7 +96,7 @@ export async function SectorPage({
       "data",
       config.terms && "terms",
       config.terms && "process",
-      "proof",
+      proof.kind === "cases" && "proof",
       "pricing",
       "faq",
     ] as const
@@ -172,6 +172,20 @@ export async function SectorPage({
           tools: labels("tools"),
           illustration: config.illustrated ? labels("illustration") : undefined,
         }}
+        footer={
+          proof.kind === "none" && (
+            <p className="reveal text-text-2 mt-6 flex max-w-[78ch] flex-wrap items-baseline gap-x-3 gap-y-2 text-[0.9375rem]">
+              {t("proof.line")}
+              <Link
+                href={proof.href}
+                className="text-text hover:text-text-2 inline-flex items-center gap-1.5 text-sm font-medium underline underline-offset-4 transition-colors"
+              >
+                {t("proof.link")}
+                <ArrowRight aria-hidden="true" className="size-3.5" />
+              </Link>
+            </p>
+          )
+        }
       />
 
       <Section {...section("data")}>
@@ -221,7 +235,9 @@ export async function SectorPage({
                     <td className="text-accent w-10 py-3.5 align-top">
                       {String(i + 1).padStart(2, "0")}
                     </td>
-                    <td className="text-text py-3.5">{term}</td>
+                    <td className="text-text py-3.5 font-sans text-[0.9375rem] leading-snug">
+                      {term}
+                    </td>
                   </tr>
                 ))}
               </tbody>
@@ -239,60 +255,62 @@ export async function SectorPage({
         />
       )}
 
-      <Section {...section("proof")}>
-        <div
-          className={cn(
-            "reveal relative grid gap-10 lg:grid-cols-12 lg:gap-6",
-            cases.length > 0 && "tone-sand rounded-xl p-6 md:p-10 lg:p-12",
-          )}
-        >
+      {proof.kind === "cases" && (
+        <Section {...section("proof")}>
           <div
             className={cn(
-              "content-start space-y-6",
-              cases.length > 1 ? "lg:col-span-7" : "lg:col-span-5",
+              "reveal relative grid gap-10 lg:grid-cols-12 lg:gap-6",
+              cases.length > 0 && "tone-sand rounded-xl p-6 md:p-10 lg:p-12",
             )}
           >
-            <SectionHeading
-              lead={t("proof.title")}
-              rest={t("proof.titleEmphasis")}
-            />
-            <p className="text-text-2 max-w-[48ch]">{t("proof.body")}</p>
-            <Link
-              href={proof.kind === "none" ? proof.href : "/realisations"}
+            <div
               className={cn(
-                outlineLink,
-                cases.length > 0 && "border-ink/20 hover:bg-sand-200",
+                "content-start space-y-6",
+                cases.length > 1 ? "lg:col-span-7" : "lg:col-span-5",
               )}
             >
-              {t("proof.link")}
-              <ArrowRight
-                aria-hidden="true"
-                className="size-4 transition-transform duration-(--d-fast) group-hover:translate-x-0.5"
+              <SectionHeading
+                lead={t("proof.title")}
+                rest={t("proof.titleEmphasis")}
               />
-            </Link>
+              <p className="text-text-2 max-w-[48ch]">{t("proof.body")}</p>
+              <Link
+                href="/realisations"
+                className={cn(
+                  outlineLink,
+                  cases.length > 0 && "border-ink/20 hover:bg-sand-200",
+                )}
+              >
+                {t("proof.link")}
+                <ArrowRight
+                  aria-hidden="true"
+                  className="size-4 transition-transform duration-(--d-fast) group-hover:translate-x-0.5"
+                />
+              </Link>
+            </div>
+            {cases.length > 0 && (
+              <ul
+                className={cn(
+                  "grid gap-x-6 gap-y-12",
+                  cases.length > 1
+                    ? "md:grid-cols-2 lg:col-span-12"
+                    : "lg:col-span-6 lg:col-start-7",
+                )}
+              >
+                {cases.map((study) => (
+                  <li key={study.slug}>
+                    <CaseCard
+                      item={study}
+                      readLabel={casesT("read")}
+                      sizes="(min-width: 1024px) 540px, 90vw"
+                    />
+                  </li>
+                ))}
+              </ul>
+            )}
           </div>
-          {cases.length > 0 && (
-            <ul
-              className={cn(
-                "grid gap-x-6 gap-y-12",
-                cases.length > 1
-                  ? "md:grid-cols-2 lg:col-span-12"
-                  : "lg:col-span-6 lg:col-start-7",
-              )}
-            >
-              {cases.map((study) => (
-                <li key={study.slug}>
-                  <CaseCard
-                    item={study}
-                    readLabel={casesT("read")}
-                    sizes="(min-width: 1024px) 540px, 90vw"
-                  />
-                </li>
-              ))}
-            </ul>
-          )}
-        </div>
-      </Section>
+        </Section>
+      )}
 
       <Section {...section("pricing")}>
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-6">

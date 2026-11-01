@@ -129,13 +129,8 @@ export async function LiveSystem({
                     ...line,
                     text: t(line.key),
                   }))}
+                  footer={chip && <ResultChip>{chip}</ResultChip>}
                 />
-                {chip && (
-                  <>
-                    <span className="ls-link" aria-hidden="true" />
-                    <ResultChip>{chip}</ResultChip>
-                  </>
-                )}
               </div>
             );
           })}

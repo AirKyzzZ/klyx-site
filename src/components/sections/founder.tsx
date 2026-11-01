@@ -2,13 +2,10 @@ import type { ReactNode } from "react";
 
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 
-import { BrowserFrame, hostOf } from "@/components/proof/browser-frame";
+import { hostOf } from "@/components/proof/browser-frame";
 import { Section, SectionHeading } from "@/components/section";
 import { Link } from "@/i18n/navigation";
-import type { ProofSource } from "@/lib/proof";
 import { ROSTER_FIELDS, type TeamRoster } from "@/lib/team-roster";
-
-type SiteShot = Extract<ProofSource, { kind: "site-shot" }>;
 
 type FounderProps = {
   index?: string;
@@ -20,7 +17,7 @@ type FounderProps = {
   caption: string;
   roster: TeamRoster;
   products: { label: string; items: { name: string; url: string }[] };
-  shot: SiteShot | null;
+  proof?: ReactNode;
   links: { label: string; href: string }[];
   aboutLabel: string;
 };
@@ -109,34 +106,22 @@ export function Founder({
   caption,
   roster,
   products,
-  shot,
+  proof,
   links,
   aboutLabel,
 }: FounderProps) {
   return (
     <Section index={index} eyebrow={eyebrow}>
       <div className="grid gap-12 lg:grid-cols-12 lg:gap-6">
-        <figure className="reveal lg:col-span-5">
-          {shot && (
-            <BrowserFrame
-              url={shot.url}
-              image={shot.image}
-              alt={hostOf(shot.url)}
-              sizes="(min-width: 1024px) 460px, 90vw"
-              className="w-[92%]"
-            />
-          )}
-          <div
-            className={
-              shot ? "relative z-1 -mt-6 ml-auto w-[86%] lg:-mt-20" : undefined
-            }
-          >
+        <div className="reveal space-y-8 lg:col-span-5">
+          <figure>
             <RosterWindow {...roster} />
-          </div>
-          <figcaption className="type-label text-text-3 mt-4">
-            {caption}
-          </figcaption>
-        </figure>
+            <figcaption className="type-label text-text-3 mt-4">
+              {caption}
+            </figcaption>
+          </figure>
+          {proof}
+        </div>
 
         <div className="lg:col-span-6 lg:col-start-7">
           <SectionHeading lead={title} rest={emphasis} className="reveal" />

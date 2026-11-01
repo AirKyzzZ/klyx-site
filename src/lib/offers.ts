@@ -124,11 +124,6 @@ export const PRICE_GROUPS: {
   { key: "fde", offers: ["fde"] },
 ];
 
-export const MARKET_KLYX_OFFER: Record<string, OfferId> = {
-  tjm: "fde",
-  audit: "audit-ia",
-};
-
 export function formatPrice(amount: number, locale: Locale): string {
   const formatted = new Intl.NumberFormat(locale === "fr" ? "fr-FR" : "en-GB", {
     style: "currency",

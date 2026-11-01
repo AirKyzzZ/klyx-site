@@ -10,6 +10,16 @@ export type AppPathname = keyof typeof routing.pathnames;
 type PathParams = Record<string, string>;
 
 const OG_IMAGE_PATHNAMES: AppPathname[] = [
+  "/a-propos",
+  "/agence-ia-bordeaux",
+  "/cas-usage",
+  "/cas-usage/immobilier",
+  "/cas-usage/agences",
+  "/cas-usage/cabinets-services",
+  "/contact",
+  "/faq",
+  "/realisations",
+  "/realisations/[slug]",
   "/services/creation-site-web",
   "/services/agents-ia",
   "/services/audit-ia",
@@ -19,12 +29,18 @@ const OG_IMAGE_PATHNAMES: AppPathname[] = [
   "/tarifs",
 ];
 
-export function ogImageUrl(locale: Locale, pathname: AppPathname): string {
-  const segment = OG_IMAGE_PATHNAMES.includes(pathname) ? pathname : "";
+export function ogImageUrl(
+  locale: Locale,
+  pathname: AppPathname,
+  params: PathParams = {},
+): string {
+  const segment = OG_IMAGE_PATHNAMES.includes(pathname)
+    ? pathname.replace(/\[(\w+)\]/g, (_, key: string) => params[key] ?? "")
+    : "";
   return `${site.url}/${locale}${segment}/opengraph-image`;
 }
 
-const OG_LOCALES: Record<Locale, string> = { fr: "fr_FR", en: "en_GB" };
+const OG_LOCALES: Record<Locale, string> = { fr: "fr_FR", en: "en_US" };
 const TITLE_MAX = 60;
 const BRAND_SUFFIX = ` | ${site.name}`;
 
@@ -60,14 +76,22 @@ export function buildMetadata({
   params,
   title,
   description,
+  type = "website",
 }: {
   locale: Locale;
   pathname: AppPathname;
   params?: PathParams;
   title: string;
   description: string;
+  type?: "website" | "article";
 }): Metadata {
   const canonical = absoluteUrl(locale, pathname, params);
+  const image = {
+    url: ogImageUrl(locale, pathname, params),
+    width: 1200,
+    height: 630,
+    alt: title,
+  };
   return {
     title: { absolute: title },
     description,
@@ -87,15 +111,14 @@ export function buildMetadata({
       alternateLocale: routing.locales
         .filter((other) => other !== locale)
         .map((other) => OG_LOCALES[other]),
-      type: "website",
-      images: [
-        {
-          url: ogImageUrl(locale, pathname),
-          width: 1200,
-          height: 630,
-          alt: site.name,
-        },
-      ],
+      type,
+      images: [image],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [image],
     },
   };
 }

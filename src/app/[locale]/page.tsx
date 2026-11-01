@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 
 import { JsonLd } from "@/components/json-ld";
+import { ContributionWindow } from "@/components/proof/contribution-window";
 import { CaseBand } from "@/components/sections/case-grid";
 import { Cta } from "@/components/sections/cta";
 import { Faq } from "@/components/sections/faq";
@@ -140,6 +141,21 @@ export default async function HomePage({ params }: LocaleParams) {
           label: t(`tools.groups.${group.key}`),
         }))}
         note={t("tools.note")}
+        map={{
+          inputs: ["email", "data", "commerce"],
+          outputs: ["crm", "team", "finance"],
+          hub: "automation",
+          labels: {
+            inputs: t("tools.map.inputs"),
+            outputs: t("tools.map.outputs"),
+            hub: t("tools.map.hub"),
+            hubMeta: t("tools.map.hubMeta"),
+            under: t("tools.map.under"),
+            details: t("tools.map.details", {
+              count: CONNECTED_TOOLS.flatMap((group) => group.tools).length,
+            }),
+          },
+        }}
       />
 
       {cases.length > 0 && (
@@ -168,7 +184,7 @@ export default async function HomePage({ params }: LocaleParams) {
           label: t("founder.products"),
           items: citeme ? [{ name: "CiteMe", url: citeme.url }] : [],
         }}
-        shot={citeme}
+        proof={<ContributionWindow locale={locale} />}
         links={[
           { label: t("founder.github"), href: site.socials.github },
           { label: t("founder.linkedin"), href: site.socials.linkedinFounder },
