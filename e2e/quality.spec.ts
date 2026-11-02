@@ -1,6 +1,6 @@
 import { expect, type Page, test } from "@playwright/test";
 
-import { pagePaths } from "./route-paths";
+import { outreachPaths, pagePaths } from "./route-paths";
 
 const WIDTHS = [390, 768, 1440];
 const MAX_CLS = 0.02;
@@ -27,7 +27,7 @@ function effectiveOpacity(el: Element) {
   return opacity;
 }
 
-for (const route of pagePaths) {
+for (const route of [...pagePaths, ...outreachPaths]) {
   for (const width of WIDTHS) {
     test.describe(`${route} at ${width}`, () => {
       test.use({ viewport: { width, height: width < 768 ? 844 : 900 } });

@@ -1,10 +1,10 @@
 {
-  "status": "local",
-  "url": "http://localhost:4318/",
+  "status": "measured",
+  "url": "https://klyx.fr/",
   "date": "2026-11-01",
   "tool": "lighthouse@12.8.2, mobile preset, median of 3",
   "scores": {
-    "performance": 93,
+    "performance": 96,
     "accessibility": 100,
     "bestPractices": 100,
     "seo": 100

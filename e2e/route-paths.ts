@@ -1,6 +1,9 @@
 import { readdirSync } from "node:fs";
 
 import { type Locale, routing } from "../src/i18n/routing";
+import { OUTREACH_PATHS } from "../src/lib/outreach-paths";
+
+export const outreachPaths: string[] = [...OUTREACH_PATHS];
 
 export const SAMPLE_SLUG = "hop-hop-immo";
 export const NOT_FOUND_PATH = "/page-introuvable";

@@ -18,7 +18,7 @@ Do not put the site live until each of these is answered and the page updated.
 | Confidentialité | `privacy.analytics.body` | « No analytics, no ad cookies »: confirm before launch, update if PostHog or any tracker is added |
 | Confidentialité | `privacy.prospection.sources` | Prospect data sources the outreach system actually uses, confirm before launch |
 | Confidentialité | `privacy.prospection.retention` | Prospect data retention period, confirm before launch |
-| Home, Sites, Création de site | `src/lib/proof/klyx-lighthouse.json` | The current run was made on the local production build, so the file says `status: "local"` and the Sites scenario chip, its « Score Lighthouse réel » caption and the Lighthouse proof card stay hidden. After deploy, run `node scripts/lighthouse.mjs --base https://klyx.fr`, rebuild and commit: they appear on their own once the file says `status: "measured"` for https://klyx.fr |
+| Home, Sites, Création de site | `src/lib/proof/klyx-lighthouse.json` | Done (2026-11-01): `node scripts/lighthouse.mjs --base https://klyx.fr` ran on the live site (Lighthouse 12.8.2, mobile, median of 3). The file now says `status: "measured"` for https://klyx.fr/ (perf 96 · a11y 100 · BP 100 · SEO 100), so the Sites chip, its « Score Lighthouse réel » caption and the Lighthouse proof card show after the next deploy. Per-page scores in `docs/lighthouse/summary.json`. Re-run after any big change |
 | Home tools grid, Agents IA and Automatisation IA strips, every hero with an AI step | `src/lib/tools.ts`, `src/components/logos/claude-logo.tsx`, `claude-code-logo.tsx` | Claude and Claude Code marks ship in monochrome at your decision (2026-11-01), but Anthropic's trademark guidelines ask for prior approval. Send the draft in `docs/sales/anthropic-logo-request.md` to marketing@anthropic.com and keep the answer; drop the two marks if refused |
 | Same places, plus use-case workflow cards | all third-party logos in `src/components/logos/` | Lawyer check before launch on the Microsoft (Outlook, Excel, Teams: Fluent icons need a licence), Meta (WhatsApp), Anthropic and OpenAI marks, used nominatively in monochrome. `docs/logos-audit.md` lists every placement and source |
 | Réalisations, Création de site, case route | `content/realisations/kenzi.*.mdx` `listed: false` | Kenzi is hidden everywhere (index, home, Sites proof, "projet suivant", sitemap, llms.txt, machine view; `/realisations/kenzi` is a 404) until there is a real write-up and kenzievents.com answers again. To bring it back: write context, what was built and the live URL, recapture the cover after the intro animation, then remove `listed: false` (and `live: false`) |
@@ -127,6 +127,17 @@ No marker on these pages. The white-label terms are written as proposals agreed 
 | Hop Hop Immo case | `content/realisations/hop-hop-immo.*.mdx` | « L'assistant Hoppy, de la conception à la mise en production. » The « Résultat » section ("no figures until Hop Hop Immo agrees") is removed (R7) | That Klyx did the Hoppy assistant from design to production, and whether Hop Hop Immo agrees to figures |
 | Kenzi case | `content/realisations/kenzi.*.mdx` | https://kenzievents.com returned HTTP 500 on 2026-11-01 (R7). « en ligne sur kenzievents.com » is removed and the case has `live: false`, so the page and its machine view render no link to the site. The case text stays | Is the site still live? When it answers 200 again, remove `live: false` |
 | Cas d'usage agences | `meta.agencies.description`, `useCases.agencies.hero.titleEmphasis`, `useCases.agencies.card.build`, `useCases.agencies.terms.items.repo` | Softened (R7): « livrés en marque blanche… selon des règles fixées par écrit », h1 « L'IA de vos clients, en marque blanche. », repo line « comme on en convient avec vous » | Same as the agencies terms row above |
+
+## Outreach pages `/pour/agences` and `/pour/startups-sprint-ia` (2026-11-01)
+
+FR only, `noindex, nofollow`, out of the sitemap and llms.txt. Copy lives in `src/lib/outreach-pages.ts`, not in `messages/*.json`.
+
+| Page | Key | What to confirm |
+|---|---|---|
+| Both | `NEXT_PUBLIC_CAL_URL` | Not set, so every « Réserver 20 minutes » goes to `/contact`. The spec wants one Cal.com event per page (`klyx-agences`, `klyx-startups`) for attribution; the site has one `calUrl` today. Create the events and say whether you want a per-page URL |
+| Both | before sending | 5-second test with 5 people per ICP (4 of 5 say what, for whom, next step) |
+| Startups | `outreachPages.startups` proof | Shows the Hop Hop Immo (Hoppy) and CiteMe case cards, same as the live `/realisations`. Hoppy naming is still open under `agents.proof.body` |
+| Agences | `outreachPages.agencies` terms | White-label terms are written as proposals agreed in writing, same as `/cas-usage/agences`. No paid test mission price exists in `offers.ts`, so the page points to a landing page as a first limited project |
 
 ## Local and legal
 
