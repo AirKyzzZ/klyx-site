@@ -831,10 +831,13 @@ async function legal(locale: Locale): Promise<string> {
 }
 
 const PRIVACY_SECTIONS = [
-  "contactForm",
-  "booking",
-  "analytics",
-  "hosting",
+  { key: "contactForm", paragraphs: ["body"] },
+  { key: "booking", paragraphs: ["body"] },
+  {
+    key: "analytics",
+    paragraphs: ["body", "purpose", "retention", "optOut", "cookies"],
+  },
+  { key: "hosting", paragraphs: ["body"] },
 ] as const;
 const PROSPECTION_PARAGRAPHS = [
   "intro",
@@ -851,9 +854,9 @@ async function privacy(locale: Locale): Promise<string> {
     ...intro(locale, "/confidentialite", t("title")),
     t("updated", { date: formatDate(locale, site.legalUpdatedAt) }),
     t("intro", values),
-    ...PRIVACY_SECTIONS.flatMap((key) => [
+    ...PRIVACY_SECTIONS.flatMap(({ key, paragraphs }) => [
       `## ${t(`${key}.title`)}`,
-      t(`${key}.body`),
+      ...paragraphs.map((paragraph) => t(`${key}.${paragraph}`, values)),
     ]),
     `## ${t("prospection.title")}`,
     ...PROSPECTION_PARAGRAPHS.map((key) => t(`prospection.${key}`, values)),

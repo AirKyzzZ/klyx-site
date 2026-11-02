@@ -88,10 +88,16 @@ export function OfferHero({
             className="hero-in mt-7 flex flex-col gap-3 sm:flex-row sm:items-center"
             style={delay(0.3)}
           >
-            <ActionButton action="book" size="lg" className="w-full sm:w-auto">
+            <ActionButton
+              trackLocation="offer_page"
+              action="book"
+              size="lg"
+              className="w-full sm:w-auto"
+            >
               {primaryLabel}
             </ActionButton>
             <ActionButton
+              trackLocation="offer_page"
               action="quote"
               variant="secondary"
               size="lg"

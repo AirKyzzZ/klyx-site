@@ -69,6 +69,7 @@ export async function Cta({
             <SectionHeading lead={title} rest={emphasis} />
             <p className="text-text-2 mt-5 max-w-[46ch]">{body}</p>
             <ActionButton
+              trackLocation="final_cta"
               action={other.action}
               variant="secondary"
               size="lg"
@@ -88,6 +89,7 @@ export async function Cta({
                 <AgendaSlots locale={locale} />
               </div>
               <ActionButton
+                trackLocation="final_cta"
                 action={book.action}
                 size="lg"
                 className="mt-5 w-full font-sans"

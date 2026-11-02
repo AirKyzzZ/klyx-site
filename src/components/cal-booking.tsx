@@ -10,16 +10,22 @@ export function CalBooking({
   calUrl,
   label,
   title,
+  trackLocation,
 }: {
   calUrl: string | undefined;
   label: string;
   title: string;
+  trackLocation?: string;
 }) {
   const [open, setOpen] = useState(false);
+  const tracking = {
+    "data-track": "cta_book_call_click",
+    "data-track-location": trackLocation,
+  };
 
   if (!calUrl) {
     return (
-      <Button size="lg" className="w-full" asChild>
+      <Button size="lg" className="w-full" asChild {...tracking}>
         <a href="#contact-form">{label}</a>
       </Button>
     );
@@ -44,6 +50,7 @@ export function CalBooking({
       size="lg"
       className="w-full"
       onClick={() => setOpen(true)}
+      {...tracking}
     >
       <CalendarDays aria-hidden="true" />
       {label}

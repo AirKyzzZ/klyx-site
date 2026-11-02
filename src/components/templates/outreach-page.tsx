@@ -26,7 +26,12 @@ const delay = (seconds: number) => ({ "--d": `${seconds}s` }) as CSSProperties;
 function BookRow({ className }: { className?: string }) {
   return (
     <div className={className}>
-      <ActionButton action="book" size="lg" className="w-full sm:w-auto">
+      <ActionButton
+        action="book"
+        size="lg"
+        className="w-full sm:w-auto"
+        trackLocation="outreach_page"
+      >
         {OUTREACH_CTA}
       </ActionButton>
       <p className="type-label text-text-3 mt-4">{OUTREACH_PROOF_LINE}</p>
@@ -136,6 +141,7 @@ async function SectionBody({ section }: { section: OutreachSection }) {
               price: labels("amount"),
             }}
             caption={offersT("vatNote")}
+            trackLocation="outreach_page"
           />
         </div>
       </div>
@@ -186,7 +192,12 @@ function Booking({ config }: { config: OutreachPageConfig }) {
               title={OUTREACH_CTA}
             />
           ) : (
-            <ActionButton action="book" size="lg" className="w-full">
+            <ActionButton
+              action="book"
+              size="lg"
+              className="w-full"
+              trackLocation="outreach_page"
+            >
               {OUTREACH_CTA}
             </ActionButton>
           )}

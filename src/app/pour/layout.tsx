@@ -1,7 +1,9 @@
 import type { Metadata, Viewport } from "next";
 import { NextIntlClientProvider } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
+import { Suspense } from "react";
 
+import { AnalyticsIsland } from "@/components/analytics/analytics-island";
 import { OutreachFooter } from "@/components/outreach-footer";
 import { OutreachHeader } from "@/components/outreach-header";
 import { site } from "@/lib/site";
@@ -36,6 +38,9 @@ export default function OutreachLayout({
             <OutreachHeader />
             <main className="relative">{children}</main>
             <OutreachFooter />
+            <Suspense>
+              <AnalyticsIsland />
+            </Suspense>
           </div>
         </NextIntlClientProvider>
       </body>

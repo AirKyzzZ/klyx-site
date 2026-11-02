@@ -97,7 +97,11 @@ function TierCard({
         )}
       </div>
       <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-3">
-        <ActionButton action="quote" variant="secondary">
+        <ActionButton
+          trackLocation="offer_page"
+          action="quote"
+          variant="secondary"
+        >
           {quoteLabel}
         </ActionButton>
         {tier.href && (
@@ -146,7 +150,11 @@ export function TierCards({
         )}
       </div>
       {children ?? (
-        <ul className="reveal border-line-strong bg-surface-1 shadow-card mt-12 grid items-stretch overflow-hidden rounded-md border md:mt-16 lg:grid-cols-3">
+        <ul
+          className="reveal border-line-strong bg-surface-1 shadow-card mt-12 grid items-stretch overflow-hidden rounded-md border md:mt-16 lg:grid-cols-3"
+          data-track-view="pricing_view"
+          data-track-location="offer_page"
+        >
           {tiers.map((tier, i) => (
             <li
               key={tier.id}

@@ -137,7 +137,11 @@ export function SiteNav({
           <div className="px-2 max-lg:hidden">
             <LanguageSwitcher />
           </div>
-          <ActionButton action="book" className="rounded-full max-sm:hidden">
+          <ActionButton
+            trackLocation="header"
+            action="book"
+            className="rounded-full max-sm:hidden"
+          >
             {bookLabel}
             <ArrowRight />
           </ActionButton>
@@ -224,7 +228,12 @@ export function SiteNav({
             </div>
             <div className="border-line flex items-center justify-between gap-4 border-t px-3 pt-3 pb-1">
               <LanguageSwitcher />
-              <ActionButton action="book" size="lg" className="rounded-full">
+              <ActionButton
+                trackLocation="header"
+                action="book"
+                size="lg"
+                className="rounded-full"
+              >
                 {bookLabel}
                 <ArrowRight />
               </ActionButton>
