@@ -2,7 +2,7 @@ import { readdirSync } from "node:fs";
 
 import { expect, test } from "@playwright/test";
 
-import { HIDDEN_CASE, routePaths } from "./route-paths";
+import { HIDDEN_CASE, outreachPaths, routePaths } from "./route-paths";
 
 const caseSlugs = [
   ...new Set(
@@ -12,6 +12,7 @@ const caseSlugs = [
 
 const paths = new Set([
   ...routePaths,
+  ...outreachPaths,
   ...caseSlugs.flatMap((slug) => [`/realisations/${slug}`, `/en/work/${slug}`]),
 ]);
 
