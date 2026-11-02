@@ -145,7 +145,7 @@
       "steps": {
         "call": {
           "title": "A scoping call",
-          "body": "20 minutes to understand your product, your stack and your deadline, and to see where AI could save you time."
+          "body": "30 minutes to understand your product, your stack and your deadline, and to see where AI could save you time."
         },
         "scope": {
           "title": "Audit or quote",
@@ -165,7 +165,7 @@
       "call": {
         "file": "calendar",
         "title": "Scoping call",
-        "meta": "20 min · video",
+        "meta": "30 min · video",
         "pick": "Pick a slot"
       },
       "scope": {
@@ -297,7 +297,7 @@
     },
     "finalCta": {
       "title": "Let's talk about your next workflow",
-      "body": "Book a 20-minute call. You'll come away with a clear view of what's worth doing, whether or not we end up working together.",
+      "body": "Book a 30-minute call. You'll come away with a clear view of what's worth doing, whether or not we end up working together.",
       "ctaPrimary": "Book a call",
       "ctaSecondary": "Get a free quote",
       "titleEmphasis": "or site."
@@ -596,7 +596,7 @@
       "steps": {
         "call": {
           "title": "Call",
-          "body": "20 minutes to find the process that costs you the most time."
+          "body": "30 minutes to find the process that costs you the most time."
         },
         "audit": {
           "title": "Audit",
@@ -657,7 +657,7 @@
     },
     "cta": {
       "title": "Start with the process",
-      "body": "Book a 20-minute call. We'll work out together whether it's worth automating.",
+      "body": "Book a 30-minute call. We'll work out together whether it's worth automating.",
       "ctaPrimary": "Book a call",
       "ctaSecondary": "Get a free quote",
       "titleEmphasis": "that costs you the most hours."
@@ -847,7 +847,7 @@
       "steps": {
         "call": {
           "title": "Call",
-          "body": "20 minutes to check an audit will be useful to you. If it won't, we tell you."
+          "body": "30 minutes to check an audit will be useful to you. If it won't, we tell you."
         },
         "interviews": {
           "title": "Interviews",
@@ -953,7 +953,7 @@
       }
     },
     "cta": {
-      "title": "A 20-minute call",
+      "title": "A 30-minute call",
       "titleEmphasis": "to see if the audit is worth it.",
       "body": "We look at your processes together. If an audit would not help you, we tell you.",
       "ctaPrimary": "Book a call",
@@ -1018,7 +1018,7 @@
       "steps": {
         "call": {
           "title": "Call",
-          "body": "20 minutes to pick the workflow and check it fits the package."
+          "body": "30 minutes to pick the workflow and check it fits the package."
         },
         "scope": {
           "title": "Scoping",
@@ -1112,7 +1112,7 @@
     "cta": {
       "title": "Which process",
       "titleEmphasis": "do you still retype by hand?",
-      "body": "Book a 20-minute call. We tell you whether it fits in one simple workflow, and at what price.",
+      "body": "Book a 30-minute call. We tell you whether it fits in one simple workflow, and at what price.",
       "ctaPrimary": "Book a call",
       "ctaSecondary": "Get a free quote"
     },
@@ -1177,7 +1177,7 @@
       "steps": {
         "call": {
           "title": "Call",
-          "body": "20 minutes to pick the questions your clients really ask."
+          "body": "30 minutes to pick the questions your clients really ask."
         },
         "baseline": {
           "title": "Baseline",
@@ -1265,7 +1265,7 @@
     "cta": {
       "title": "What does ChatGPT answer",
       "titleEmphasis": "when asked about your trade?",
-      "body": "Book a 20-minute call. We ask three of your clients' questions together, live.",
+      "body": "Book a 30-minute call. We ask three of your clients' questions together, live.",
       "ctaPrimary": "Book a call",
       "ctaSecondary": "Get a free quote"
     }
@@ -1435,7 +1435,7 @@
     },
     "cta": {
       "title": "Shall we talk?",
-      "body": "A 20-minute call is enough to know whether we can help.",
+      "body": "A 30-minute call is enough to know whether we can help.",
       "ctaPrimary": "Book a call",
       "ctaSecondary": "Get a free quote"
     },
@@ -1570,7 +1570,7 @@
     },
     "cta": {
       "title": "Is one task taking",
-      "body": "Let's talk for 20 minutes. It's free, and you'll know whether it's worth automating.",
+      "body": "Let's talk for 30 minutes. It's free, and you'll know whether it's worth automating.",
       "ctaPrimary": "Book a call",
       "ctaSecondary": "Get a free quote",
       "titleEmphasis": "too much time?"
@@ -1627,13 +1627,13 @@
     "hero": {
       "title": "Let's talk about",
       "titleEmphasis": "your project.",
-      "subtitle": "Book a 20-minute call or describe what you need below. Maxime, our lead engineer, answers every message himself.",
+      "subtitle": "Book a 30-minute call or describe what you need below. Maxime, our lead engineer, answers every message himself.",
       "serif": "project"
     },
     "booking": {
       "title": "Book a call",
       "body": "Pick a slot. The call is free.",
-      "duration": "20 min",
+      "duration": "30 min",
       "next": "Next, a free written quote before any work starts.",
       "frame": "Booking calendar"
     },
@@ -1841,14 +1841,14 @@
     "other": {
       "title": "Your sector",
       "titleEmphasis": "isn't on the list?",
-      "body": "The same building blocks work elsewhere: sorting requests, reading documents, chasing clients, preparing a report. In a 20-minute call, we look at whether one of your processes is worth automating, and at what price.",
+      "body": "The same building blocks work elsewhere: sorting requests, reading documents, chasing clients, preparing a report. In a 30-minute call, we look at whether one of your processes is worth automating, and at what price.",
       "faq": "Read the FAQ",
       "pricing": "See all prices"
     },
     "cta": {
       "title": "Is one process",
       "titleEmphasis": "costing you hours every week?",
-      "body": "Book a 20-minute call. We'll tell you whether it's worth automating, and at what price.",
+      "body": "Book a 30-minute call. We'll tell you whether it's worth automating, and at what price.",
       "ctaPrimary": "Book a call",
       "ctaSecondary": "Get a free quote"
     },
@@ -1974,7 +1974,7 @@
       "cta": {
         "title": "Start with",
         "titleEmphasis": "the requests you lose.",
-        "body": "Book a 20-minute call. We look at where your leads come from and what an agent can take on.",
+        "body": "Book a 30-minute call. We look at where your leads come from and what an agent can take on.",
         "ctaPrimary": "Book a call",
         "ctaSecondary": "Get a free quote"
       }
@@ -2136,7 +2136,7 @@
       "cta": {
         "title": "An AI brief",
         "titleEmphasis": "nobody on your team can deliver?",
-        "body": "Book a 20-minute call. We read the brief with you and tell you what we can deliver, how fast and at what price.",
+        "body": "Book a 30-minute call. We read the brief with you and tell you what we can deliver, how fast and at what price.",
         "ctaPrimary": "Book a call",
         "ctaSecondary": "Get a free quote"
       }
@@ -2275,7 +2275,7 @@
       "cta": {
         "title": "Which process",
         "titleEmphasis": "takes you the most hours?",
-        "body": "Book a 20-minute call. We'll tell you whether the audit is worth it for your firm, before any commitment.",
+        "body": "Book a 30-minute call. We'll tell you whether the audit is worth it for your firm, before any commitment.",
         "ctaPrimary": "Book a call",
         "ctaSecondary": "Get a free quote"
       }
@@ -2325,7 +2325,7 @@
         },
         "useful": {
           "question": "How do we know whether AI can help our business?",
-          "answer": "Think of a task that comes back every week: reading email, re-keying documents, chasing clients. If it follows roughly the same steps each time, it can probably be partly automated. Book a 20-minute call: we pick one with you and tell you honestly whether it's worth it."
+          "answer": "Think of a task that comes back every week: reading email, re-keying documents, chasing clients. If it follows roughly the same steps each time, it can probably be partly automated. Book a 30-minute call: we pick one with you and tell you honestly whether it's worth it."
         },
         "continuity": {
           "question": "What happens if Klyx is no longer available?",
@@ -2336,7 +2336,7 @@
     "cta": {
       "title": "Your question",
       "titleEmphasis": "isn't on the list?",
-      "body": "Book a 20-minute call or write to us. We answer everything, including when the answer is that we're not the right provider.",
+      "body": "Book a 30-minute call or write to us. We answer everything, including when the answer is that we're not the right provider.",
       "ctaPrimary": "Book a call",
       "ctaSecondary": "Get a free quote"
     },
@@ -2418,7 +2418,7 @@
     },
     "contact": {
       "title": "Contact and free quote | Klyx",
-      "description": "Book a 20-minute call or get a free quote for a website, an AI agent or a Forward Deployed Engineer engagement."
+      "description": "Book a 30-minute call or get a free quote for a website, an AI agent or a Forward Deployed Engineer engagement."
     },
     "blog": {
       "title": "Blog: AI agents, GEO and fast websites | Klyx",

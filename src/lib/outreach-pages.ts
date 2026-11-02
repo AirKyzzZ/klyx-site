@@ -36,7 +36,7 @@ export type OutreachPageConfig = {
   booking: Heading & { body: string };
 };
 
-export const OUTREACH_CTA = "Réserver 20 minutes";
+export const OUTREACH_CTA = "Réserver 30 minutes";
 export const OUTREACH_PROOF_LINE = `${site.name} · ${site.city} · SIRET ${site.siret}`;
 export const OUTREACH_EMAIL_LINE = "Vous préférez écrire ?";
 
@@ -128,7 +128,7 @@ export const outreachPages: Record<OutreachKey, OutreachPageConfig> = {
     ],
     midCtaAfter: "pricing",
     booking: {
-      eyebrow: "20 minutes",
+      eyebrow: "30 minutes",
       title: "Un brief IA",
       emphasis: "que personne ne peut livrer chez vous ?",
       body: "On lit le brief avec vous et on vous dit ce qu'on peut livrer, en combien de temps et à quel prix. Si ce n'est pas pour nous, on vous le dit aussi.",
@@ -190,7 +190,7 @@ export const outreachPages: Record<OutreachKey, OutreachPageConfig> = {
         items: [
           {
             title: "Avant",
-            body: "Un appel de 20 minutes, puis un périmètre et un prix écrits. Rien ne commence sans votre accord.",
+            body: "Un appel de 30 minutes, puis un périmètre et un prix écrits. Rien ne commence sans votre accord.",
           },
           {
             title: "Semaine 1",
@@ -238,7 +238,7 @@ export const outreachPages: Record<OutreachKey, OutreachPageConfig> = {
     ],
     midCtaAfter: "deliverables",
     booking: {
-      eyebrow: "20 minutes",
+      eyebrow: "30 minutes",
       title: "Une feature IA",
       emphasis: "qui attend quelqu'un pour la livrer ?",
       body: "On regarde la feature avec vous et on vous dit si elle tient dans un Sprint. Sinon, on vous dit ce qu'il faudrait, sans engagement.",

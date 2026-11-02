@@ -12,7 +12,7 @@ Usage : lien envoyé après un premier échange (réponse à un DM, demande de d
 | 22-40 s | L'artefact choisi (voir plus haut) | « Voilà à quoi ça ressemble. [Une phrase factuelle sur ce qu'on voit : ce que fait l'agent, ou ce qui a été livré.] Le code est dans le repo du client dès le premier jour. Il voit chaque commit, et il garde tout si on arrête. » |
 | 40-58 s | Page tarifs | « Mes prix sont publics. Un Audit IA à partir de 1 500 € HT, déduit du sprint si vous continuez. Un Sprint IA à partir de 4 500 € HT : un workflow en production en 2 semaines, périmètre fixé avant de commencer. Et si vous avez besoin de quelqu'un dans l'équipe, du temps partagé, 2 à 3 jours par semaine. » |
 | 58-70 s | Caméra | « Je travaille seul, et je ne prends que 2 clients à la fois en temps partagé. C'est ce qui me permet de tenir les délais. » |
-| 70-80 s | Page contact / Cal.com | « Si vous avez un projet IA qui attend, réservez 20 minutes avec moi, le lien est sous la vidéo. Le devis est gratuit. À bientôt. » |
+| 70-80 s | Page contact / Cal.com | « Si vous avez un projet IA qui attend, réservez 30 minutes avec moi, le lien est sous la vidéo. Le devis est gratuit. À bientôt. » |
 
 ## Notes de tournage
 

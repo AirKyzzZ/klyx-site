@@ -39,7 +39,7 @@ Je rejoins votre équipe 2 à 3 jours par semaine : votre Slack, votre repo, vos
 
 ## Comment ça se passe
 
-1. Appel de 20 minutes : votre besoin, votre stack, votre date.
+1. Appel de 30 minutes : votre besoin, votre stack, votre date.
 2. Audit ou devis : un périmètre écrit et un prix fixe.
 3. Build : code dans votre repo, point écrit chaque semaine.
 4. Mesure : on vérifie ce qui tourne, je documente la passation.

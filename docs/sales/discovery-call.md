@@ -1,4 +1,4 @@
-# Appel découverte (20-30 min)
+# Appel découverte (30 min)
 
 Pour : fondateurs de startups, gérants et directeurs techniques d'agences.
 But de l'appel : savoir si je peux les aider, et si oui repartir avec une prochaine étape datée (Audit IA ou Sprint IA). Si ce n'est pas un bon fit, je le dis pendant l'appel.
@@ -17,7 +17,7 @@ Avant l'appel, 5 minutes : site de la boîte, LinkedIn de la personne, dernière
 
 ## 1. Cadre (0-3 min)
 
-> « Merci de prendre le temps. Je propose 25 minutes : vous me racontez où vous en êtes, je vous pose quelques questions, et à la fin je vous dis honnêtement si je peux vous aider et à quel prix. Si ce n'est pas le cas, je vous le dis aussi. Ça vous va ? »
+> « Merci de prendre le temps. Je propose 30 minutes : vous me racontez où vous en êtes, je vous pose quelques questions, et à la fin je vous dis honnêtement si je peux vous aider et à quel prix. Si ce n'est pas le cas, je vous le dis aussi. Ça vous va ? »
 
 Je ne présente pas Klyx en long ici. S'ils demandent, une phrase :
 

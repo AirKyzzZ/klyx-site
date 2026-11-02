@@ -145,7 +145,7 @@
       "steps": {
         "call": {
           "title": "Un appel pour cadrer",
-          "body": "20 minutes pour comprendre votre produit, votre stack et votre échéance, et voir où l'IA peut vous faire gagner du temps."
+          "body": "30 minutes pour comprendre votre produit, votre stack et votre échéance, et voir où l'IA peut vous faire gagner du temps."
         },
         "scope": {
           "title": "Audit ou devis",
@@ -165,7 +165,7 @@
       "call": {
         "file": "agenda",
         "title": "Appel de cadrage",
-        "meta": "20 min · visio",
+        "meta": "30 min · visio",
         "pick": "Choisir un créneau"
       },
       "scope": {
@@ -297,7 +297,7 @@
     },
     "finalCta": {
       "title": "Parlons de votre prochain workflow",
-      "body": "Réservez un appel de 20 minutes. Vous repartez avec un avis clair sur ce qui vaut le coup, même si on ne travaille pas ensemble.",
+      "body": "Réservez un appel de 30 minutes. Vous repartez avec un avis clair sur ce qui vaut le coup, même si on ne travaille pas ensemble.",
       "ctaPrimary": "Réserver un appel",
       "ctaSecondary": "Demander un devis gratuit",
       "titleEmphasis": "ou de votre prochain site."
@@ -596,7 +596,7 @@
       "steps": {
         "call": {
           "title": "Appel",
-          "body": "20 minutes pour repérer le processus qui vous coûte le plus de temps."
+          "body": "30 minutes pour repérer le processus qui vous coûte le plus de temps."
         },
         "audit": {
           "title": "Audit",
@@ -657,7 +657,7 @@
     },
     "cta": {
       "title": "Commencez par le processus",
-      "body": "Réservez un appel de 20 minutes. On regarde ensemble s'il vaut la peine d'être automatisé.",
+      "body": "Réservez un appel de 30 minutes. On regarde ensemble s'il vaut la peine d'être automatisé.",
       "ctaPrimary": "Réserver un appel",
       "ctaSecondary": "Demander un devis gratuit",
       "titleEmphasis": "qui vous coûte le plus d'heures."
@@ -847,7 +847,7 @@
       "steps": {
         "call": {
           "title": "Appel",
-          "body": "20 minutes pour vérifier qu'un audit vous sera utile. Si ce n'est pas le cas, on vous le dit."
+          "body": "30 minutes pour vérifier qu'un audit vous sera utile. Si ce n'est pas le cas, on vous le dit."
         },
         "interviews": {
           "title": "Entretiens",
@@ -953,7 +953,7 @@
       }
     },
     "cta": {
-      "title": "Un appel de 20 minutes",
+      "title": "Un appel de 30 minutes",
       "titleEmphasis": "pour savoir si l'audit vaut le coup.",
       "body": "On regarde vos process ensemble. Si un audit ne vous apporte rien, on vous le dit.",
       "ctaPrimary": "Réserver un appel",
@@ -1018,7 +1018,7 @@
       "steps": {
         "call": {
           "title": "Appel",
-          "body": "20 minutes pour choisir le workflow et vérifier qu'il tient dans le forfait."
+          "body": "30 minutes pour choisir le workflow et vérifier qu'il tient dans le forfait."
         },
         "scope": {
           "title": "Cadrage",
@@ -1112,7 +1112,7 @@
     "cta": {
       "title": "Quel processus",
       "titleEmphasis": "recopiez-vous encore à la main ?",
-      "body": "Réservez un appel de 20 minutes. On vous dit s'il tient dans un workflow simple, et pour quel prix.",
+      "body": "Réservez un appel de 30 minutes. On vous dit s'il tient dans un workflow simple, et pour quel prix.",
       "ctaPrimary": "Réserver un appel",
       "ctaSecondary": "Demander un devis gratuit"
     },
@@ -1177,7 +1177,7 @@
       "steps": {
         "call": {
           "title": "Appel",
-          "body": "20 minutes pour choisir les questions que vos clients posent vraiment."
+          "body": "30 minutes pour choisir les questions que vos clients posent vraiment."
         },
         "baseline": {
           "title": "Mesure",
@@ -1265,7 +1265,7 @@
     "cta": {
       "title": "Que répond ChatGPT",
       "titleEmphasis": "quand on l'interroge sur votre métier ?",
-      "body": "Réservez un appel de 20 minutes. On pose ensemble trois questions de vos clients, en direct.",
+      "body": "Réservez un appel de 30 minutes. On pose ensemble trois questions de vos clients, en direct.",
       "ctaPrimary": "Réserver un appel",
       "ctaSecondary": "Demander un devis gratuit"
     }
@@ -1435,7 +1435,7 @@
     },
     "cta": {
       "title": "On en parle ?",
-      "body": "Un appel de 20 minutes suffit pour savoir si on peut vous aider.",
+      "body": "Un appel de 30 minutes suffit pour savoir si on peut vous aider.",
       "ctaPrimary": "Réserver un appel",
       "ctaSecondary": "Demander un devis gratuit"
     },
@@ -1570,7 +1570,7 @@
     },
     "cta": {
       "title": "Une tâche vous prend",
-      "body": "Parlons-en 20 minutes. C'est gratuit, et vous saurez si elle vaut la peine d'être automatisée.",
+      "body": "Parlons-en 30 minutes. C'est gratuit, et vous saurez si elle vaut la peine d'être automatisée.",
       "ctaPrimary": "Réserver un appel",
       "ctaSecondary": "Demander un devis gratuit",
       "titleEmphasis": "trop de temps ?"
@@ -1627,13 +1627,13 @@
     "hero": {
       "title": "Parlons de",
       "titleEmphasis": "votre projet.",
-      "subtitle": "Réservez un appel de 20 minutes ou décrivez votre besoin ci-dessous. Maxime, notre lead engineer, vous répond en personne.",
+      "subtitle": "Réservez un appel de 30 minutes ou décrivez votre besoin ci-dessous. Maxime, notre lead engineer, vous répond en personne.",
       "serif": "projet"
     },
     "booking": {
       "title": "Réserver un appel",
       "body": "Choisissez un créneau. L'appel est gratuit.",
-      "duration": "20 min",
+      "duration": "30 min",
       "next": "Ensuite, un devis écrit et gratuit avant de commencer.",
       "frame": "Calendrier de réservation"
     },
@@ -1841,14 +1841,14 @@
     "other": {
       "title": "Votre secteur n'est pas",
       "titleEmphasis": "dans la liste ?",
-      "body": "Les mêmes briques servent ailleurs : trier des demandes, lire des documents, relancer des clients, préparer un reporting. En 20 minutes d'appel, on regarde si un de vos processus vaut la peine d'être automatisé, et à quel prix.",
+      "body": "Les mêmes briques servent ailleurs : trier des demandes, lire des documents, relancer des clients, préparer un reporting. En 30 minutes d'appel, on regarde si un de vos processus vaut la peine d'être automatisé, et à quel prix.",
       "faq": "Lire la FAQ",
       "pricing": "Voir tous les tarifs"
     },
     "cta": {
       "title": "Un processus",
       "titleEmphasis": "vous coûte des heures chaque semaine ?",
-      "body": "Réservez un appel de 20 minutes. On vous dit s'il vaut la peine d'être automatisé, et à quel prix.",
+      "body": "Réservez un appel de 30 minutes. On vous dit s'il vaut la peine d'être automatisé, et à quel prix.",
       "ctaPrimary": "Réserver un appel",
       "ctaSecondary": "Demander un devis gratuit"
     },
@@ -1974,7 +1974,7 @@
       "cta": {
         "title": "Commencez par",
         "titleEmphasis": "les demandes que vous perdez.",
-        "body": "Réservez un appel de 20 minutes. On regarde d'où viennent vos leads et ce qu'un agent peut prendre en charge.",
+        "body": "Réservez un appel de 30 minutes. On regarde d'où viennent vos leads et ce qu'un agent peut prendre en charge.",
         "ctaPrimary": "Réserver un appel",
         "ctaSecondary": "Demander un devis gratuit"
       }
@@ -2136,7 +2136,7 @@
       "cta": {
         "title": "Un brief IA",
         "titleEmphasis": "que personne ne peut livrer chez vous ?",
-        "body": "Réservez un appel de 20 minutes. On lit le brief avec vous et on vous dit ce qu'on peut livrer, en combien de temps et à quel prix.",
+        "body": "Réservez un appel de 30 minutes. On lit le brief avec vous et on vous dit ce qu'on peut livrer, en combien de temps et à quel prix.",
         "ctaPrimary": "Réserver un appel",
         "ctaSecondary": "Demander un devis gratuit"
       }
@@ -2275,7 +2275,7 @@
       "cta": {
         "title": "Quel processus",
         "titleEmphasis": "vous prend le plus d'heures ?",
-        "body": "Réservez un appel de 20 minutes. On vous dit si l'audit vaut le coup pour votre cabinet, avant tout engagement.",
+        "body": "Réservez un appel de 30 minutes. On vous dit si l'audit vaut le coup pour votre cabinet, avant tout engagement.",
         "ctaPrimary": "Réserver un appel",
         "ctaSecondary": "Demander un devis gratuit"
       }
@@ -2325,7 +2325,7 @@
         },
         "useful": {
           "question": "Comment savoir si l'IA peut servir dans notre entreprise ?",
-          "answer": "Pensez à une tâche qui revient chaque semaine : lire des e-mails, ressaisir des documents, relancer des clients. Si elle suit à peu près toujours les mêmes étapes, elle peut sans doute être automatisée en partie. Réservez un appel de 20 minutes : on en choisit une avec vous et on vous dit franchement si ça vaut le coup."
+          "answer": "Pensez à une tâche qui revient chaque semaine : lire des e-mails, ressaisir des documents, relancer des clients. Si elle suit à peu près toujours les mêmes étapes, elle peut sans doute être automatisée en partie. Réservez un appel de 30 minutes : on en choisit une avec vous et on vous dit franchement si ça vaut le coup."
         },
         "continuity": {
           "question": "Que se passe-t-il si Klyx n'est plus disponible ?",
@@ -2336,7 +2336,7 @@
     "cta": {
       "title": "Votre question",
       "titleEmphasis": "n'est pas dans la liste ?",
-      "body": "Réservez un appel de 20 minutes ou écrivez-nous. On répond à tout, y compris quand la réponse est qu'on n'est pas le bon prestataire.",
+      "body": "Réservez un appel de 30 minutes ou écrivez-nous. On répond à tout, y compris quand la réponse est qu'on n'est pas le bon prestataire.",
       "ctaPrimary": "Réserver un appel",
       "ctaSecondary": "Demander un devis gratuit"
     },
@@ -2418,7 +2418,7 @@
     },
     "contact": {
       "title": "Contact et devis gratuit | Klyx",
-      "description": "Réservez un appel de 20 minutes ou demandez un devis gratuit pour un site, un agent IA ou une mission de Forward Deployed Engineer."
+      "description": "Réservez un appel de 30 minutes ou demandez un devis gratuit pour un site, un agent IA ou une mission de Forward Deployed Engineer."
     },
     "blog": {
       "title": "Blog : agents IA, GEO et sites rapides | Klyx",
