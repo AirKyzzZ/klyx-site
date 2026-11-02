@@ -33,7 +33,7 @@ Variante plus courte :
 
 ### Relance
 
-> Bonjour [Prénom], une relance rapide. Deux façons de travailler ensemble : un Sprint IA (un workflow en production en 2 semaines, à partir de 4 500 € HT) ou du temps partagé, 2-3 jours par semaine dans votre équipe. Si vous voulez juste un avis sur ce que vous construisez, 20 minutes d'appel suffisent, et le devis est gratuit. Si ce n'est pas le moment, dites-le moi et je ne relance plus.
+> Bonjour [Prénom], une relance rapide. Deux façons de travailler ensemble : un Sprint IA (un workflow en production en 2 semaines, à partir de 4 500 € HT) ou du temps partagé, 2-3 jours par semaine dans votre équipe. Si vous voulez juste un avis sur ce que vous construisez, 30 minutes d'appel suffisent, et le devis est gratuit. Si ce n'est pas le moment, dites-le moi et je ne relance plus.
 
 ## Longueurs (vérifiées)
 

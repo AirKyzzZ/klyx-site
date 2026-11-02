@@ -100,7 +100,7 @@ def two_col(left, right):
 
 steps = [Paragraph("COMMENT ÇA SE PASSE", h2), Spacer(1, 4)] + [
     Paragraph(f'<font name="Mono-Bold" color="#E8431F">{i}</font>&nbsp;&nbsp;{txt}', s('step', spaceAfter=5)) for i, txt in [
-        ("01", "<font name='Sans-Bold'>Appel de 20 minutes.</font> Votre besoin, votre stack, votre date."),
+        ("01", "<font name='Sans-Bold'>Appel de 30 minutes.</font> Votre besoin, votre stack, votre date."),
         ("02", "<font name='Sans-Bold'>Audit ou devis.</font> Un périmètre écrit et un prix fixe."),
         ("03", "<font name='Sans-Bold'>Build.</font> Code dans votre repo, point écrit chaque semaine."),
         ("04", "<font name='Sans-Bold'>Mesure.</font> On vérifie ce qui tourne, je documente la passation."),

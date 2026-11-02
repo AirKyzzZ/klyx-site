@@ -2,7 +2,7 @@ import { expect, test } from "@playwright/test";
 
 import { outreachPaths } from "./route-paths";
 
-const CTA = "Réserver 20 minutes";
+const CTA = "Réserver 30 minutes";
 const CAL_URL = process.env.NEXT_PUBLIC_CAL_URL;
 const MAIN_NAV_HREFS = ["/tarifs", "/realisations", "/a-propos", "/services/"];
 

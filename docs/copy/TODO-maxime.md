@@ -136,7 +136,7 @@ FR only, `noindex, nofollow`, out of the sitemap and llms.txt. Copy lives in `sr
 
 | Page | Key | What to confirm |
 |---|---|---|
-| Both | `NEXT_PUBLIC_CAL_URL` | Not set, so every « Réserver 20 minutes » goes to `/contact`. The spec wants one Cal.com event per page (`klyx-agences`, `klyx-startups`) for attribution; the site has one `calUrl` today. Create the events and say whether you want a per-page URL |
+| Both | `NEXT_PUBLIC_CAL_URL` | Set to `https://cal.com/klyx-studio/30min`, used by every « Réserver 30 minutes ». The spec wants one Cal.com event per page (`klyx-agences`, `klyx-startups`) for attribution; the site has one `calUrl` today. Create the events and say if you want a per-page URL |
 | Both | before sending | 5-second test with 5 people per ICP (4 of 5 say what, for whom, next step) |
 | Startups | `outreachPages.startups` proof | Shows the Hop Hop Immo (Hoppy) and CiteMe case cards, same as the live `/realisations`. Hoppy naming is still open under `agents.proof.body` |
 | Agences | `outreachPages.agencies` terms | White-label terms are written as proposals agreed in writing, same as `/cas-usage/agences`. No paid test mission price exists in `offers.ts`, so the page points to a landing page as a first limited project |
@@ -161,7 +161,7 @@ FR only, `noindex, nofollow`, out of the sitemap and llms.txt. Copy lives in `sr
 
 These are not flagged inline because they come from your own sales assets or the live site, but they are commitments a prospect can hold you to:
 
-- Discovery call is 20 minutes everywhere (matches `docs/sales/offer-one-pager.md`). Make the Cal.com event match.
+- Discovery call is 30 minutes everywhere, matching the Cal.com event and `docs/sales/offer-one-pager.md`.
 - Sprint IA deliverables: human approval step, agent action log, test set, runbook, onboarding (from the strategy ladder, no numbers kept).
 - FDE: max 3 days a week per client, « on vise une première PR dès la première semaine », remote by default with on-site possible in Bordeaux. The FDE pages now say « notre lead engineer rejoint votre équipe »: the FDE is you.
 - Voice: the site now speaks as an agency (« on » / « nous », « we »). The only named person is Maxime Mansiet, lead engineer. No headcount, photos or partner names anywhere.

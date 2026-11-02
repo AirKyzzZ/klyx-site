@@ -3,7 +3,7 @@ import { describe, expect, it } from "vitest";
 
 import { CalBooking } from "./cal-booking";
 
-const CAL_URL = "https://cal.com/klyx/20min";
+const CAL_URL = "https://cal.com/klyx-studio/30min";
 
 describe("CalBooking", () => {
   it("loads the calendar only after the button is clicked", () => {
@@ -17,7 +17,7 @@ describe("CalBooking", () => {
     const frame = screen.getByTitle("Agenda");
     expect(frame.tagName).toBe("IFRAME");
     expect(frame.getAttribute("src")).toMatch(
-      /^https:\/\/cal\.com\/klyx\/20min\?/,
+      /^https:\/\/cal\.com\/klyx-studio\/30min\?/,
     );
   });
 
