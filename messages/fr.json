@@ -1297,7 +1297,7 @@
     },
     "market": {
       "title": "Comment ces prix",
-      "body": "La plupart des agences IA en France ne publient pas leurs prix. Les fourchettes publiées pour un développeur IA freelance vont en général de 650 à 900 € par jour.",
+      "body": "La plupart des agences IA en France ne publient pas leurs prix. Les fourchettes publiées pour un développeur IA freelance vont en général de 600 à 900 € par jour.",
       "card": {
         "title": "marche.csv",
         "columns": {
@@ -1309,15 +1309,15 @@
         "rows": {
           "tjm": {
             "label": "Développeur IA freelance, par jour",
-            "range": "650-900 €",
+            "range": "600-900 €",
             "source": "Studeria",
             "url": "https://www.studeria.fr/articles-de-blog/tjm-consultant-ia-2026-tarifs-grille"
           }
         },
-        "note": "Fourchettes relevées le 31 octobre 2026."
+        "note": "Fourchettes relevées le 3 novembre 2026."
       },
       "titleEmphasis": "se situent.",
-      "line": "La plupart des agences IA en France ne publient pas leurs prix. Pour comparer, les fourchettes publiées pour un développeur IA freelance vont en général de 650 à 900 € par jour (relevé le 31 octobre 2026). Notre Forward Deployed Engineer est à {fdeDayPrice} par jour.",
+      "line": "La plupart des agences IA en France ne publient pas leurs prix. Pour comparer, les fourchettes publiées pour un développeur IA freelance vont en général de 600 à 900 € par jour (relevé le 3 novembre 2026). Notre Forward Deployed Engineer est à {fdeDayPrice} par jour.",
       "sourceLabel": "Source : Studeria"
     },
     "faq": {
