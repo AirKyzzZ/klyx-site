@@ -8,12 +8,15 @@ const files = readdirSync(dir).filter((f) => f.endsWith(".mdx"));
 const slugs = [...new Set(files.map((f) => f.replace(/\.(fr|en)\.mdx$/, "")))];
 
 describe("case studies", () => {
-  it("has the five expected slugs", () => {
+  it("has the eight expected slugs", () => {
     expect(slugs.sort()).toEqual([
       "citeme",
+      "crealogique",
       "hop-hop-immo",
       "kenzi",
+      "lady-gallery",
       "pkba",
+      "reciproq",
       "vertiflow",
     ]);
   });
@@ -43,16 +46,25 @@ describe("case studies", () => {
   it("sorts by order", async () => {
     const orders = (await getCaseStudies("fr")).map((s) => s.order);
     expect(orders).toEqual([...orders].sort((a, b) => a - b));
-    expect(orders).toHaveLength(4);
+    expect(orders).toHaveLength(8);
   });
 
   it.each(["fr", "en"] as const)(
-    "%s keeps Kenzi out of every listing until its write-up exists",
+    "%s lists Kenzi without a live link while its site is down",
     async (locale) => {
       const listed = (await getCaseStudies(locale)).map((s) => s.slug);
-      expect(listed).not.toContain("kenzi");
+      expect(listed).toContain("kenzi");
       const { meta } = await getCaseStudy("kenzi", locale);
-      expect(meta.listed).toBe(false);
+      expect(meta.live).toBe(false);
+    },
+  );
+
+  it.each(["fr", "en"] as const)(
+    "%s marks Créalogique as in development, with no live link",
+    async (locale) => {
+      const { meta } = await getCaseStudy("crealogique", locale);
+      expect(meta.status).toBe("inDevelopment");
+      expect(meta.live).toBe(false);
     },
   );
 });

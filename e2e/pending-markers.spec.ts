@@ -2,13 +2,13 @@ import { readdirSync } from "node:fs";
 
 import { expect, test } from "@playwright/test";
 
-import { HIDDEN_CASE, outreachPaths, routePaths } from "./route-paths";
+import { outreachPaths, routePaths } from "./route-paths";
 
 const caseSlugs = [
   ...new Set(
     readdirSync("content/realisations").map((file) => file.split(".")[0]),
   ),
-].filter((slug) => slug !== HIDDEN_CASE);
+];
 
 const paths = new Set([
   ...routePaths,
