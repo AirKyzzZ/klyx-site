@@ -210,6 +210,10 @@ export async function resolveOgLocale(
   return hasLocale(routing.locales, locale) ? locale : routing.defaultLocale;
 }
 
+export function ogLocaleParams() {
+  return routing.locales.map((locale) => ({ locale }));
+}
+
 export function pageOgImage(namespace: string) {
   return async function OpengraphImage({
     params,

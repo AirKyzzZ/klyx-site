@@ -49,6 +49,23 @@ test("OpenGraph images render in both locales without redirect", async ({
   }
 });
 
+test("OpenGraph images and llms.txt are prerendered at build time", async ({
+  request,
+}) => {
+  for (const path of [
+    "/llms.txt",
+    "/fr/opengraph-image",
+    "/en/tarifs/opengraph-image",
+    "/fr/realisations/citeme/opengraph-image",
+  ]) {
+    const response = await request.get(path, { maxRedirects: 0 });
+    expect(response.status(), path).toBe(200);
+    expect(response.headers()["x-nextjs-cache"], path).toBe("HIT");
+  }
+  const unknown = await request.get("/xx/opengraph-image", { maxRedirects: 0 });
+  expect(unknown.status()).toBe(404);
+});
+
 test("home and offer pages embed JSON-LD", async ({ page }) => {
   await page.goto("/");
   const home = await page

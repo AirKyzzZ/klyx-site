@@ -5,6 +5,8 @@ import { pageMarkdownHref } from "@/lib/machine/markdown-href";
 import { type AppPathname, absoluteUrl } from "@/lib/seo";
 import { site } from "@/lib/site";
 
+export const dynamic = "force-static";
+
 const KEY_PAGES: { pathname: AppPathname; metaKey: string }[] = [
   { pathname: "/tarifs", metaKey: "pricing" },
   { pathname: "/services/creation-site-web", metaKey: "sites" },
