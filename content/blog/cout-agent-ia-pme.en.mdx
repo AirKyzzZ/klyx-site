@@ -1,0 +1,127 @@
+export const metadata = {
+  title: "How much does an AI agent cost for an SME in 2026? (real price grid)",
+  date: "2026-11-03",
+  summary:
+    "What an AI agent costs a French SME in 2026: sourced market estimates, API prices, tools, ongoing supervision, and our public rates.",
+  sources: [
+    {
+      title: "Insee Première no. 2120, ICT in companies in 2025 (21 July 2026)",
+      url: "https://www.insee.fr/fr/statistiques/9025878",
+    },
+    {
+      title:
+        "The Intelligence Academy, AI agent guide for SMEs (updated 3 November 2026)",
+      url: "https://www.the-intelligence-academy.com/blog/agent-ia-pour-pme-guide-complet-2026",
+    },
+    {
+      title:
+        "The Intelligence Academy, cost of an AI agent in an SME (updated 3 November 2026)",
+      url: "https://www.the-intelligence-academy.com/blog/cout-agent-ia-pme-budget-roi",
+    },
+    {
+      title:
+        "Studeria, cost of an AI agent in production (updated 14 October 2026)",
+      url: "https://www.studeria.fr/articles-de-blog/cout-agent-ia-production-pme-2026",
+    },
+    {
+      title:
+        "Studeria, AI consultant day rates in 2026 (updated 5 October 2026)",
+      url: "https://www.studeria.fr/articles-de-blog/tjm-consultant-ia-2026-tarifs-grille",
+    },
+    {
+      title: "Tensoria, custom AI agent or SaaS (updated 24 May 2026)",
+      url: "https://tensoria.fr/blog/cout-agent-ia-sur-mesure-vs-saas-comparatif",
+    },
+    {
+      title: "Anthropic, Claude API pricing (read 3 November 2026)",
+      url: "https://platform.claude.com/docs/en/about-claude/pricing",
+    },
+    {
+      title: "OpenAI, API pricing (read 3 November 2026)",
+      url: "https://developers.openai.com/api/docs/pricing",
+    },
+    {
+      title: "Mistral AI, pricing (read 3 November 2026)",
+      url: "https://mistral.ai/pricing",
+    },
+    {
+      title: "n8n, pricing (read 3 November 2026)",
+      url: "https://n8n.io/pricing/",
+    },
+    {
+      title:
+        "French Directorate General for Enterprise, Osez l'IA plan (updated 28 September 2026)",
+      url: "https://www.entreprises.gouv.fr/osez-lia",
+    },
+  ],
+};
+
+Going by estimates published in the French market, an AI agent for an SME costs anywhere from a few thousand to a few tens of thousands of euros in its first year. None of these estimates is an independent study. We quote them with their author and put our own prices next to them so you can compare.
+
+Cost weighs on the decision: 32% of French companies with 10 or more staff that don't use AI consider the costs too high ([Insee Première no. 2120](https://www.insee.fr/fr/statistiques/9025878), July 2026, 2025 data).
+
+## How much does an AI agent cost for an SME in 2026?
+
+Published ranges run from about €1,900 excl. VAT for a simple agent to €49,000 over the first year for a full project. The three French publishers below all sell AI training or services, so read these as vendor estimates with no detailed method behind them.
+
+- The Intelligence Academy, a training company: custom agent from €1,900 to €15,000 excl. VAT, ready-made SaaS agent from €390 to €890 excl. VAT one-off or €49 to €95 a month ([SME guide](https://www.the-intelligence-academy.com/blog/agent-ia-pour-pme-guide-complet-2026), updated 3 November 2026). Another article from the same publisher gives €480 to €2,850 excl. VAT for the build ([agent cost](https://www.the-intelligence-academy.com/blog/cout-agent-ia-pme-budget-roi), updated 3 November 2026).
+- Studeria, a training company: €6,000 to €25,000 for integration, then a total of €11,000 to €49,000 in year one and €5,000 to €24,000 a year after that, for about 10,000 requests a month ([Studeria](https://www.studeria.fr/articles-de-blog/cout-agent-ia-production-pme-2026), updated 14 October 2026).
+- Tensoria, an AI agency in Toulouse: no public price for custom work, €50 to €300 a month for hosting and €50 to €200 a month for API use at average SME volume ([Tensoria](https://tensoria.fr/blog/cout-agent-ia-sur-mesure-vs-saas-comparatif), updated 24 May 2026).
+
+In our view the gaps come mostly from what each of them calls an "agent". A template chatbot and a workflow wired into your ERP are different purchases.
+
+## What are you paying for when you buy an AI agent?
+
+An AI agent has four cost lines: scoping, the build, usage and supervision. Scoping decides which process gets treated. The build connects the agent to your tools. Usage covers model calls and subscriptions. Supervision pays someone to check the agent keeps answering correctly.
+
+Studeria sums up the monthly cost as monthly volume times cost per request, plus integration spread over 12 months, plus supervision ([Studeria](https://www.studeria.fr/articles-de-blog/cout-agent-ia-production-pme-2026), updated 14 October 2026). It's a simple formula, and we suggest asking any provider to fill it in, us included.
+
+## How much do AI model calls cost?
+
+Model calls cost $22.50 to $110 a month in our example below, depending on the model. APIs bill per million tokens, separately for input and output:
+
+- Claude Sonnet 5.5: $2 input, $10 output ([Anthropic](https://platform.claude.com/docs/en/about-claude/pricing), read 3 November 2026).
+- GPT-6.1 Terra: $1 input, $5 output ([OpenAI](https://developers.openai.com/api/docs/pricing), read 3 November 2026).
+- Mistral Large: $0.50 input, $1.50 output ([Mistral AI](https://mistral.ai/pricing), read 3 November 2026).
+
+Here is a fictional example, worked out by us: 2,000 tasks a month, 5 model calls per task, 3,000 input tokens and 500 output tokens per call. That makes 30 million input tokens and 5 million output tokens, or $110 a month with Claude Sonnet 5.5, $55 with GPT-6.1 Terra and $22.50 with Mistral Large. Prices move often and price alone doesn't pick a model, so we test on your real cases first.
+
+## How much does the automation tool around the agent cost?
+
+A tool like n8n costs €20 to €667 a month in its hosted version, billed annually: Starter at €20 for 2,500 runs, Pro at €50 for 10,000, Business at €667 for 40,000 ([n8n](https://n8n.io/pricing/), read 3 November 2026). A self-hosted edition is on GitHub, but the server and its upkeep are yours. Tensoria, which sells custom work, puts orchestration tools such as Zapier and Make at €20 to €600 a month ([Tensoria](https://tensoria.fr/blog/cout-agent-ia-sur-mesure-vs-saas-comparatif), updated 24 May 2026).
+
+## How much does an AI developer charge in France?
+
+A mid-level AI developer or consultant charges €600 to €900 a day according to Studeria, and a generative AI or agent orchestration expert €1,000 to €1,500 ([Studeria](https://www.studeria.fr/articles-de-blog/tjm-consultant-ia-2026-tarifs-grille), updated 5 October 2026). Studeria sells an AI consultant course and attributes these ranges to the Malt, Hays and Free-Work barometers without giving a sample size. Our Forward Deployed Engineer is €700 excl. VAT a day ([Klyx pricing](/en/pricing), November 2026).
+
+## What are Klyx's prices for an AI agent?
+
+At Klyx, an AI agent in production starts at €4,500 excl. VAT with the AI Sprint, and all our prices are public ([Klyx pricing](/en/pricing), November 2026). These are starting prices: the final price depends on the scope, written into a free quote before we begin.
+
+- [AI audit + roadmap](/en/services/ai-audit): from €1,500 excl. VAT, in 1 to 2 weeks. If you carry on with us, the quote takes the audit you already paid into account.
+- [AI automation](/en/services/ai-automation): from €2,400 excl. VAT, in 4 to 5 working days, for a linear workflow. Automation monitoring from €190 excl. VAT a month.
+- [AI Sprint](/en/services/ai-agents): from €4,500 excl. VAT, in 2 weeks, for a workflow in production with human approval, an action log and the code in your repo. Monthly run on quote.
+- [Forward Deployed Engineer](/en/forward-deployed-engineer): from €700 excl. VAT a day, 4 weeks minimum, so at least €5,600 excl. VAT.
+
+On an automation you pay the tool and the model API directly, and we give you a costed estimate during scoping.
+
+## Which costs get left out of an AI agent quote?
+
+Supervision after launch is often missing from quotes. Studeria estimates it at €4,000 to €18,000 a year ([Studeria](https://www.studeria.fr/articles-de-blog/cout-agent-ia-production-pme-2026), updated 14 October 2026). The Intelligence Academy counts 15% to 25% of the initial cost per year to maintain a custom agent ([SME guide](https://www.the-intelligence-academy.com/blog/agent-ia-pour-pme-guide-complet-2026), updated 3 November 2026). On SaaS, Tensoria estimates year one costs 1.3 to 1.8 times the sticker price once integration and training are counted ([Tensoria](https://tensoria.fr/blog/cout-agent-ia-sur-mesure-vs-saas-comparatif), updated 24 May 2026).
+
+Before signing, ask the provider:
+
+- Who monitors the agent once it's live, and at what price?
+- What happens when the vendor retires the model in use?
+- What does the agent cost if volume doubles?
+- Who owns the code and the accounts?
+
+## How do you know whether an AI agent will pay off?
+
+An AI agent pays off if the time saved over a year exceeds its first-year cost, supervision included. Fictional example: a task takes 6 hours a week over 46 weeks, at a loaded hourly cost of €35, the assumption used by The Intelligence Academy ([agent cost](https://www.the-intelligence-academy.com/blog/cout-agent-ia-pme-budget-roi), updated 3 November 2026). That comes to €9,660 a year. Swap in your own numbers, and only count the hours the agent really takes over, since human checks stay with you. If the total doesn't cover the cost, we'd advise against starting.
+
+## Is there public funding for an AI agent project in France?
+
+Funding exists under France's Osez l'IA plan, run with Bpifrance. Current terms are on the [French Directorate General for Enterprise's official page](https://www.entreprises.gouv.fr/osez-lia). Bpifrance's Diagnostic Data IA goes through experts it accredits, and Klyx is not one of them: our audit is private and doesn't qualify for this funding.
+
+To cost your own case, the [discovery call](/en/contact) lasts 30 minutes. We look at one process with you and redo this calculation with your numbers.
