@@ -3,12 +3,13 @@ import type { CSSProperties } from "react";
 import Image from "next/image";
 
 import { ArrowRight } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 import { ChamferBreak } from "@/components/chamfer-break";
 import { BrowserFrame } from "@/components/proof/browser-frame";
 import { Section, SectionHeading } from "@/components/section";
 import { Link } from "@/i18n/navigation";
-import type { CaseStudyMeta } from "@/lib/content";
+import type { CaseStatus, CaseStudyMeta } from "@/lib/content";
 import { getSiteShot } from "@/lib/proof";
 import { cn } from "@/lib/utils";
 
@@ -31,6 +32,26 @@ export function BandPicture() {
         decoding="async"
       />
     </picture>
+  );
+}
+
+export function CaseStatusBadge({
+  status,
+  className,
+}: {
+  status: CaseStatus;
+  className?: string;
+}) {
+  const t = useTranslations("cases.status");
+  return (
+    <span
+      className={cn(
+        "type-label border-line-strong text-text inline-block rounded-xs border px-2 py-1",
+        className,
+      )}
+    >
+      {t(status)}
+    </span>
   );
 }
 
@@ -134,6 +155,9 @@ export function CaseCard({
         )}
       />
       <div className={cn("flex flex-col", wide && "lg:col-span-4 lg:pb-2")}>
+        {item.status && (
+          <CaseStatusBadge status={item.status} className="mb-3 self-start" />
+        )}
         <p className="type-label text-text-3">
           {[item.client, item.year, ...item.stack].join(" · ")}
         </p>

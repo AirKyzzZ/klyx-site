@@ -11,6 +11,8 @@ export type CaseFlowStep = {
   caption: string;
 };
 
+export type CaseStatus = "inDevelopment";
+
 export type CaseStudyMeta = {
   slug: string;
   title: string;
@@ -19,6 +21,7 @@ export type CaseStudyMeta = {
   url: string;
   live?: boolean;
   listed?: boolean;
+  status?: CaseStatus;
   year: number;
   summary: string;
   stack: string[];

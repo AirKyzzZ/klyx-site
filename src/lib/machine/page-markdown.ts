@@ -492,6 +492,15 @@ async function caseStudy(
       labelled(locale, t("labels.year"), String(meta.year)),
       labelled(locale, t("labels.stack"), meta.stack.join(", ")),
       labelled(locale, t("labels.outcome"), t("labels.noOutcome")),
+      ...(meta.status
+        ? [
+            labelled(
+              locale,
+              t("labels.status"),
+              t(`status.${meta.status}`),
+            ),
+          ]
+        : []),
     ]),
     meta.live !== false && link(t("labels.visit"), meta.url),
     await getMdxBody("realisations", meta.slug, locale),

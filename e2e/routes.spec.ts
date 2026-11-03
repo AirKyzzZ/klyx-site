@@ -163,22 +163,37 @@ for (const path of [...routePaths, NOT_FOUND_PATH]) {
   });
 }
 
-for (const path of ["/realisations/kenzi", "/en/work/kenzi"]) {
-  test(`${path} stays hidden until the case has a write-up`, async ({
-    page,
-    request,
-  }) => {
+const NO_LIVE_LINK_CASES = [
+  { path: "/realisations/kenzi", host: "kenzievents.com", status: null },
+  { path: "/en/work/kenzi", host: "kenzievents.com", status: null },
+  { path: "/realisations/reciproq", host: "reciproq.com", status: null },
+  { path: "/en/work/reciproq", host: "reciproq.com", status: null },
+  {
+    path: "/realisations/crealogique",
+    host: "crealogique.fr",
+    status: "En cours de développement",
+  },
+  { path: "/en/work/crealogique", host: "crealogique.fr", status: "In development" },
+];
+
+for (const { path, host, status } of NO_LIVE_LINK_CASES) {
+  test(`${path} renders without a live link`, async ({ page, request }) => {
     const response = await page.goto(path);
-    expect(response?.status()).toBe(404);
-    const locale = path.startsWith("/en") ? "" : "/fr";
-    expect((await request.get(`/md${locale}${path}`)).status()).toBe(404);
-    for (const listing of [
-      "/",
-      "/realisations",
-      "/services/creation-site-web",
-    ]) {
-      await page.goto(listing);
-      await expect(page.locator('a[href*="/kenzi"]')).toHaveCount(0);
+    expect(response?.status()).toBe(200);
+    await expect(page.locator(`a[href*="${host}"]`)).toHaveCount(0);
+    if (status) {
+      await expect(page.getByText(status).first()).toBeVisible();
     }
+    const locale = path.startsWith("/en") ? "" : "/fr";
+    const markdown = await request.get(`/md${locale}${path}`);
+    expect(markdown.status()).toBe(200);
+    expect(await markdown.text()).not.toContain(host);
   });
 }
+
+test("the case index labels Créalogique as in development", async ({ page }) => {
+  await page.goto("/realisations");
+  const card = page.locator('a[href*="/crealogique"]').last();
+  await expect(card).toContainText("En cours de développement");
+  await expect(page.locator('a[href*="/kenzi"]').first()).toBeVisible();
+});
