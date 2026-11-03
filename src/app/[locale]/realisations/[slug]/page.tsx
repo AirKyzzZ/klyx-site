@@ -10,7 +10,11 @@ import { getTranslations } from "next-intl/server";
 import { ChamferBreak } from "@/components/chamfer-break";
 import { BrowserFrame, hostOf } from "@/components/proof/browser-frame";
 import { Section } from "@/components/section";
-import { BandPicture, CaseCard } from "@/components/sections/case-grid";
+import {
+  BandPicture,
+  CaseCard,
+  CaseStatusBadge,
+} from "@/components/sections/case-grid";
 import { Cta } from "@/components/sections/cta";
 import { Hero } from "@/components/sections/hero";
 import { Link } from "@/i18n/navigation";
@@ -71,6 +75,9 @@ export default async function CasePage({ params }: CasePageProps) {
     { label: t("labels.year"), value: String(meta.year) },
     { label: t("labels.stack"), value: meta.stack.join(", ") },
     { label: t("labels.outcome"), value: t("labels.noOutcome") },
+    ...(meta.status
+      ? [{ label: t("labels.status"), value: t(`status.${meta.status}`) }]
+      : []),
   ];
   const [titleLead, ...titleRest] = meta.title.split(", ");
 
@@ -92,6 +99,7 @@ export default async function CasePage({ params }: CasePageProps) {
         emphasis={titleRest.length > 0 ? titleRest.join(", ") : undefined}
         serif={meta.serif}
         subtitle={meta.summary}
+        meta={meta.status && <CaseStatusBadge status={meta.status} />}
       />
 
       <ChamferBreak edge="top" />

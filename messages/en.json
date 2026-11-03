@@ -1364,7 +1364,11 @@
       "url": "URL",
       "next": "Next project",
       "outcome": "Outcome",
-      "noOutcome": "No published figure yet"
+      "noOutcome": "No published figure yet",
+      "status": "Status"
+    },
+    "status": {
+      "inDevelopment": "In development"
     },
     "cta": {
       "title": "Your project could be",

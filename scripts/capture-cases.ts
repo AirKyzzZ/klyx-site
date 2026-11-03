@@ -22,7 +22,7 @@ function readTargets(): Target[] {
     .flatMap((file) => {
       const source = readFileSync(path.join(CASES_DIR, file), "utf8");
       const url = source.match(/url:\s*"([^"]+)"/)?.[1];
-      if (!url || /listed:\s*false/.test(source)) return [];
+      if (!url || /(listed|live):\s*false/.test(source)) return [];
       return [{ slug: file.replace(/\.fr\.mdx$/, ""), url }];
     });
 }

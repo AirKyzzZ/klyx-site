@@ -1364,7 +1364,11 @@
       "url": "URL",
       "next": "Projet suivant",
       "outcome": "Résultat",
-      "noOutcome": "Pas encore de chiffre publié"
+      "noOutcome": "Pas encore de chiffre publié",
+      "status": "Statut"
+    },
+    "status": {
+      "inDevelopment": "En cours de développement"
     },
     "cta": {
       "title": "Votre projet peut",
