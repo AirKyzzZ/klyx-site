@@ -1297,7 +1297,7 @@
     },
     "market": {
       "title": "How these prices",
-      "body": "Most AI agencies in France don't publish their prices. Published ranges for a freelance AI developer usually run from €650 to €900 a day.",
+      "body": "Most AI agencies in France don't publish their prices. Published ranges for a freelance AI developer usually run from €600 to €900 a day.",
       "card": {
         "title": "market.csv",
         "columns": {
@@ -1309,15 +1309,15 @@
         "rows": {
           "tjm": {
             "label": "Freelance AI developer, per day",
-            "range": "€650-900",
+            "range": "€600-900",
             "source": "Studeria",
             "url": "https://www.studeria.fr/articles-de-blog/tjm-consultant-ia-2026-tarifs-grille"
           }
         },
-        "note": "Ranges collected on 31 October 2026."
+        "note": "Ranges collected on 3 November 2026."
       },
       "titleEmphasis": "compare.",
-      "line": "Most AI agencies in France don't publish their prices. For comparison, published ranges for a freelance AI developer usually run from €650 to €900 per day (checked on 31 October 2026). Our Forward Deployed Engineer is {fdeDayPrice} per day.",
+      "line": "Most AI agencies in France don't publish their prices. For comparison, published ranges for a freelance AI developer usually run from €600 to €900 per day (checked on 3 November 2026). Our Forward Deployed Engineer is {fdeDayPrice} per day.",
       "sourceLabel": "Source: Studeria"
     },
     "faq": {
