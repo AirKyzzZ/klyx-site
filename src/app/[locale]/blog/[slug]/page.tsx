@@ -5,12 +5,14 @@ import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import { hasLocale } from "next-intl";
 import { getTranslations } from "next-intl/server";
 
+import { JsonLd } from "@/components/json-ld";
 import { Cta } from "@/components/sections/cta";
 import { Hero } from "@/components/sections/hero";
 import { Link } from "@/i18n/navigation";
 import { resolvePageLocale } from "@/i18n/page-locale";
 import { type Locale, routing } from "@/i18n/routing";
 import { getMdxBody, getPost, getPosts, readingMinutes } from "@/lib/content";
+import { blogPostingJsonLd } from "@/lib/json-ld";
 import { brandedTitle, buildMetadata } from "@/lib/seo";
 import { site } from "@/lib/site";
 
@@ -60,6 +62,17 @@ export default async function PostPage({ params }: PostPageProps) {
 
   return (
     <>
+      <JsonLd
+        data={blogPostingJsonLd({
+          locale,
+          slug,
+          title: meta.title,
+          summary: meta.summary,
+          date: meta.date,
+          updated: meta.updated,
+          sources: meta.sources,
+        })}
+      />
       <Hero
         eyebrow={
           <Link

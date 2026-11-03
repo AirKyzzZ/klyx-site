@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 
 import {
+  blogPostingJsonLd,
   breadcrumbJsonLd,
   faqJsonLd,
   organizationJsonLd,
@@ -166,5 +167,42 @@ describe("trailPageJsonLd", () => {
       trail: [{ name: "FAQ", pathname: "/faq" }],
     });
     expect(data.map((item) => item["@type"])).toEqual(["BreadcrumbList"]);
+  });
+});
+
+describe("blogPostingJsonLd", () => {
+  const post = {
+    slug: "cout-agent-ia-pme",
+    title: "Titre",
+    summary: "Résumé",
+    date: "2026-11-03",
+  };
+
+  it("links the author, publisher and localized url", () => {
+    const [article] = blogPostingJsonLd({ ...post, locale: "en" });
+    expect(article).toMatchObject({
+      "@type": "BlogPosting",
+      url: "https://klyx.fr/en/blog/cout-agent-ia-pme",
+      inLanguage: "en",
+      image: "https://klyx.fr/en/opengraph-image",
+      dateModified: "2026-11-03",
+      author: { "@id": `${site.url}/#person`, name: site.founder },
+      publisher: { "@id": `${site.url}/#organization` },
+    });
+    expect(article).not.toHaveProperty("citation");
+  });
+
+  it("uses the update date and cites the sources", () => {
+    const [article, breadcrumb] = blogPostingJsonLd({
+      ...post,
+      locale: "fr",
+      updated: "2026-12-01",
+      sources: [{ title: "Insee", url: "https://www.insee.fr/x" }],
+    });
+    expect(article).toMatchObject({
+      dateModified: "2026-12-01",
+      citation: [{ name: "Insee", url: "https://www.insee.fr/x" }],
+    });
+    expect(breadcrumb).toMatchObject({ "@type": "BreadcrumbList" });
   });
 });
