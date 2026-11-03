@@ -1,0 +1,92 @@
+export const metadata = {
+  title: "How to bring AI into an SME: a 4-step method",
+  date: "2026-11-03",
+  summary:
+    "Our 4-step method for bringing AI into an SME: pick one process, check data and rules, go to production with human approval, then measure.",
+  sources: [
+    {
+      title: "Insee Première no. 2120, ICT in companies in 2025 (21 July 2026)",
+      url: "https://www.insee.fr/fr/statistiques/9025878",
+    },
+    {
+      title: "CNIL, AI and GDPR, new recommendations (7 February 2025)",
+      url: "https://www.cnil.fr/fr/ia-et-rgpd-la-cnil-publie-ses-nouvelles-recommandations-pour-accompagner-une-innovation-responsable",
+    },
+    {
+      title:
+        "European Commission, AI regulatory framework (updated 19 October 2026)",
+      url: "https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai",
+    },
+  ],
+};
+
+To bring AI into an SME, we work in four steps: pick a single process, check the data and rules that apply to it, put a workflow in production with human approval, then measure. It's the method we offer at Klyx, and you can follow it without us.
+
+## Where do French SMEs stand with AI?
+
+In France, 18% of companies with 10 or more staff used at least one AI technology in 2025, up from 10% in 2024 and 6% in 2023 ([Insee Première no. 2120](https://www.insee.fr/fr/statistiques/9025878), July 2026). Size still makes a clear difference: 15% at 10 to 49 staff, 31% at 50 to 249, 58% at 250 or more (same source).
+
+Among companies not using AI, 71% see no use for it and 54% cite a lack of expertise (same source, 2025 data). Our method goes after those two points first: it starts from a precise problem, and it says who does what.
+
+## Where should an SME start with AI?
+
+Start with a process that costs you time, not with a tool. A ChatGPT account in a browser tab doesn't change how a team works while nothing is connected to its software. The four steps:
+
+1. Pick one process, with an estimated saving in hours.
+2. Check the available data and the rules that apply.
+3. Put a workflow in production, with human approval.
+4. Measure the result, then decide what comes next.
+
+## Step 1: how do you choose the first process to automate?
+
+A good first process is frequent, already more or less documented, and an error in it stays easy to catch. We interview the people doing the work and not just management, because they know where the hours go.
+
+For each candidate we note three things: hours lost per week, the cost of an error and the tools involved. Chasing quotes often ticks those boxes. A credit decision or CV screening doesn't.
+
+An example from our [audit roadmap](/en/services/ai-audit), for a fictional SME: chasing quotes, about 6 hours a week, low risk, to tackle in month one. Those values are illustrative. On a real project we estimate them during the interviews.
+
+## Step 2: which data and rules should you check before writing code?
+
+Check where the process's data lives, who can access it, and whether the use case falls under a specific rule. If the information is split across three Excel files and a mailbox, sorting that out is part of the project.
+
+On personal data, France's regulator CNIL states that GDPR allows the development of innovative and responsible AI in Europe, and its recommendations cover informing people and helping them exercise their rights ([CNIL](https://www.cnil.fr/fr/ia-et-rgpd-la-cnil-publie-ses-nouvelles-recommandations-pour-accompagner-une-innovation-responsable), 7 February 2025).
+
+On the EU AI Act, three points directly concern an SME, according to the [European Commission](https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai) (page updated 19 October 2026):
+
+- A chatbot must tell people they are dealing with a machine. The Commission gives August 2026 for these transparency rules.
+- Recruitment tools such as CV sorting are classed as high risk. The matching rules apply from 2 December 2027.
+- The Act adds no rules for minimal-risk AI such as a spam filter.
+
+We flag these points during an audit, but we aren't lawyers: on a sensitive case, get your counsel to confirm.
+
+## Step 3: how do you go from test to production?
+
+A workflow is in production when it runs on your real tools, a person approves sensitive actions and every action is logged. A project can easily stop at the demo if nobody has the time to harden the prototype after the meeting that approved it.
+
+Here's what we deliver on an [AI Sprint](/en/services/ai-agents), and what we suggest asking any provider for:
+
+- Human approval whenever the agent touches sensitive data.
+- A log of every action the agent takes.
+- A test set to check its answers, rerun after every model or prompt change.
+- A runbook and onboarding for your team.
+- The code in your repo and accounts in your name.
+
+The scope stays deliberately small: one workflow. If the process is linear (one trigger, one AI step, one action), an [automation](/en/services/ai-automation) is enough and you don't need an agent.
+
+## Step 4: how do you measure whether it worked?
+
+Compare the process before and after on the same indicators: time spent, error rate and cost per task. That means recording the time spent before you start, or the saving stays a feeling.
+
+Also count what the workflow still demands: human approval time and correction time. An agent that saves four hours and needs three hours of review hasn't solved much. If the result isn't there, we fix it or stop, and the next item on the roadmap moves up.
+
+## How long does it take to bring AI into an SME?
+
+At Klyx, a first workflow takes a few weeks: 1 to 2 weeks for the audit, then 4 to 5 working days for a simple automation or 2 weeks for an AI Sprint ([Klyx pricing](/en/pricing), November 2026). Those durations cover a first process. The rest of the audit roadmap runs over 90 days, and team adoption depends on your organisation as much as on us.
+
+## Should you hire, train or bring someone in?
+
+It depends on what you already have in-house. If a developer knows your tools, training them and giving them time may be enough. If nobody can take it on, an outside provider can set up the first workflow, provided they leave a runbook and a written handover so you don't end up dependent on them.
+
+The skills gap is real: 54% of companies without AI cite it as a barrier ([Insee Première no. 2120](https://www.insee.fr/fr/statistiques/9025878), July 2026, 2025 data).
+
+Our prices are public: audit from €1,500 excl. VAT, automation from €2,400 excl. VAT, AI Sprint from €4,500 excl. VAT ([Klyx pricing](/en/pricing), November 2026). The [discovery call](/en/contact) lasts 30 minutes and is there to find the process costing you the most time. If there's nothing worth doing with AI at your company, we'll tell you.

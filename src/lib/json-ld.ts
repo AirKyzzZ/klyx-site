@@ -185,3 +185,60 @@ export function trailPageJsonLd({
     ]),
   ];
 }
+
+export function blogPostingJsonLd({
+  locale,
+  slug,
+  title,
+  summary,
+  date,
+  updated,
+  sources = [],
+}: {
+  locale: Locale;
+  slug: string;
+  title: string;
+  summary: string;
+  date: string;
+  updated?: string;
+  sources?: { title: string; url: string }[];
+}): JsonLdObject[] {
+  const nav = getStaticTranslator(locale, "nav");
+  const url = absoluteUrl(locale, "/blog/[slug]", { slug });
+  return [
+    {
+      "@context": CONTEXT,
+      "@type": "BlogPosting",
+      "@id": `${url}#article`,
+      mainEntityOfPage: url,
+      url,
+      headline: title,
+      description: summary,
+      inLanguage: locale,
+      image: `${site.url}/${locale}/opengraph-image`,
+      datePublished: date,
+      dateModified: updated ?? date,
+      author: {
+        "@type": "Person",
+        "@id": PERSON_ID,
+        name: site.founder,
+        url: absoluteUrl(locale, "/a-propos"),
+      },
+      publisher: { "@id": ORGANIZATION_ID },
+      ...(sources.length > 0
+        ? {
+            citation: sources.map((source) => ({
+              "@type": "CreativeWork",
+              name: source.title,
+              url: source.url,
+            })),
+          }
+        : {}),
+    },
+    breadcrumbJsonLd([
+      { name: nav("home"), url: absoluteUrl(locale, "/") },
+      { name: nav("blog"), url: absoluteUrl(locale, "/blog") },
+      { name: title, url },
+    ]),
+  ];
+}
