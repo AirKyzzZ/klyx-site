@@ -114,6 +114,10 @@
     transition:
       clip-path var(--d-swap) var(--ease-in-out),
       visibility 0s;
+
+    @starting-style {
+      clip-path: circle(0 at var(--wipe-x) var(--wipe-y));
+    }
   }
 
   @media (prefers-reduced-motion: reduce) {

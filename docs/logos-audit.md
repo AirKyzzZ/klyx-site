@@ -48,7 +48,7 @@ All marks are monochrome `currentColor` and decorative (`aria-hidden`). In the s
 | Home FAQ « stack », À propos facts, Bordeaux, GEO titles | text | text | prose and headings |
 | Machine view (`/md/*`) | names | text | markdown has no images by design |
 
-The model cluster is static (no rotation): section 2.1 of `DESIGN_DIRECTION.md` forbids decorative loops, and a static cluster also covers reduced motion without a second state. Desktop: a 32px tile with OpenAI and Claude on top and Mistral AI under them, 12px each. Mobile: OpenAI and Claude at 12px in a 32x24 slot. Gemini was dropped from the cluster: in one colour its sparkle reads as a generic "AI" star at 12px, not as Gemini. It stays on the GEO « Gemini » node, where the text names it.
+The model cluster is static (no rotation): section 2.1 of `DESIGN_DIRECTION.md` forbids decorative loops, and a static cluster also covers reduced motion without a second state. Desktop: a 32px tile with OpenAI and Claude on top and Mistral AI under them, 12px each. Mobile: OpenAI and Claude at 12px in a 26x24 slot. Gemini was dropped from the cluster: in one colour its sparkle reads as a generic "AI" star at 12px, not as Gemini. It stays on the GEO « Gemini » node, where the text names it.
 
 ## Logos added
 

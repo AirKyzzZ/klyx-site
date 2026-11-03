@@ -7,6 +7,7 @@ import lighthouseData from "../src/lib/proof/klyx-lighthouse.json";
 
 const HOME_TABS = ["agents", "sites", "fde"] as const;
 const agents = fr.liveSystem.scenarios.agents;
+const PLAYBACK_TIMEOUT_MS = 15_000;
 
 test.describe("home hero", () => {
   test("h1 is visible at full opacity from first paint", async ({ page }) => {
@@ -85,7 +86,11 @@ test.describe("home hero", () => {
 
     test("runs no animation and keeps the final state", async ({ page }) => {
       await page.goto("/");
-      await page.waitForTimeout(2000);
+      await page.waitForLoadState("load");
+      await expect(page.locator(".view-toggle--floating")).toHaveAttribute(
+        "role",
+        "switch",
+      );
       expect(await page.evaluate(() => document.getAnimations().length)).toBe(
         0,
       );
@@ -119,10 +124,20 @@ test.describe("home hero", () => {
         }).observe({ type: "layout-shift", buffered: true });
       });
       await page.goto("/");
-      await page.locator("[data-live-system]").scrollIntoViewIfNeeded();
-      await page.waitForTimeout(6000);
-      await page.getByRole("tab", { name: fr.liveSystem.tabs.sites }).click();
-      await page.waitForTimeout(1500);
+      const system = page.locator("[data-live-system]");
+      await system.scrollIntoViewIfNeeded();
+      await expect(system).toHaveAttribute("data-playing", "");
+      await expect(
+        page.locator('[data-ls-stage="agents"] [data-chip]'),
+      ).toHaveAttribute("data-shown", "true", { timeout: PLAYBACK_TIMEOUT_MS });
+      const sitesTab = page.getByRole("tab", {
+        name: fr.liveSystem.tabs.sites,
+      });
+      await sitesTab.click();
+      await expect(sitesTab).toHaveAttribute("aria-selected", "true");
+      await expect(
+        page.locator('[data-ls-stage="sites"] [data-line="1"]').first(),
+      ).toHaveAttribute("data-shown", "true", { timeout: PLAYBACK_TIMEOUT_MS });
       const cls = await page.evaluate(
         () => (window as Window & { __cls?: number }).__cls ?? 0,
       );
@@ -188,13 +203,13 @@ test.describe("home hero", () => {
         }).observe({ type: "largest-contentful-paint", buffered: true });
       });
       await page.goto("/");
-      await page.waitForLoadState("load");
-      await page.waitForTimeout(2500);
-      expect(
-        await page.evaluate(
-          () => (window as Window & { __lcp?: string }).__lcp,
-        ),
-      ).toBe("h1");
+      await page.waitForLoadState("networkidle");
+      await page.evaluate(() => document.fonts.ready);
+      await expect
+        .poll(() =>
+          page.evaluate(() => (window as Window & { __lcp?: string }).__lcp),
+        )
+        .toBe("h1");
     });
 
     test("h1 and both CTAs fit in the first screen", async ({ page }) => {

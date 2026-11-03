@@ -41,3 +41,29 @@ test("/contact loads nothing from Cal.com until the booking button is clicked", 
   await expect(page).toHaveURL(/#contact-form$/);
   expect(calRequests).toEqual([]);
 });
+
+test("the form reports how long it took to fill", async ({ page }) => {
+  await page.goto("/contact");
+  await expect(page.locator('input[name="locale"]')).toBeAttached();
+  await page.waitForLoadState("networkidle");
+
+  const posted = new Promise<string>((resolve) => {
+    void page.route("**/contact*", async (route) => {
+      if (route.request().method() !== "POST") return route.fallback();
+      resolve(route.request().postData() ?? "");
+      await route.abort();
+    });
+  });
+
+  await page.locator("#contact-name").fill("Ada Lovelace");
+  await page.locator("#contact-email").fill("ada@example.com");
+  await page.locator("#contact-need").click();
+  await page.getByRole("option").first().click();
+  await page.locator("#contact-message").fill("Nous voulons automatiser.");
+  await page.locator("#contact-consent").click();
+  await page.locator('form button[type="submit"]').click();
+
+  const body = await posted;
+  const fillMs = /name="[^"]*fillMs"\r\n\r\n([\d.]+)/.exec(body)?.[1];
+  expect(Number(fillMs)).toBeGreaterThan(0);
+});

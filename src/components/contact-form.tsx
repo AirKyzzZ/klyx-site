@@ -6,6 +6,7 @@ import {
   startTransition,
   useActionState,
   useEffect,
+  useRef,
 } from "react";
 
 import { sendContact } from "@/actions/send-contact";
@@ -58,6 +59,11 @@ export function ContactForm({
     INITIAL_STATE,
   );
   const errors = state.fieldErrors ?? {};
+  const mountedAt = useRef(0);
+
+  useEffect(() => {
+    mountedAt.current = performance.now();
+  }, []);
 
   useEffect(() => {
     if (state.status !== "idle") {
@@ -79,6 +85,7 @@ export function ContactForm({
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
+    formData.set("fillMs", String(performance.now() - mountedAt.current));
     startTransition(() => formAction(formData));
   }
 

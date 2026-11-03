@@ -1,4 +1,8 @@
+import { unstable_doesMiddlewareMatch as doesProxyMatch } from "next/experimental/testing/server";
+import { NextRequest } from "next/server";
 import { describe, expect, it } from "vitest";
+
+import proxy, { config } from "@/proxy";
 
 import {
   LEAD_MAGNET_PATH,
@@ -88,5 +92,67 @@ describe("findLegacyRedirect", () => {
     ["/blog/rss.xml", ""],
   ])("leaves %s?%s alone", (pathname, query) => {
     expect(find(pathname, query)).toBeNull();
+  });
+});
+
+describe("proxy redirects", () => {
+  const redirectOf = (url: string) => {
+    const response = proxy(new NextRequest(`https://klyx.fr${url}`));
+    return {
+      status: response.status,
+      location: response.headers.get("location"),
+    };
+  };
+
+  it.each([
+    ["/feed", "https://klyx.fr/blog/rss.xml"],
+    ["/feed/", "https://klyx.fr/blog/rss.xml"],
+    ["/agence-web-bordeaux/", "https://klyx.fr/"],
+    ["/author/maxime/", "https://klyx.fr/"],
+  ])("sends %s to %s in one hop", (url, location) => {
+    expect(redirectOf(url)).toEqual({ status: 308, location });
+  });
+
+  it("keeps the query string", () => {
+    expect(redirectOf("/?attachment_id=425")).toEqual({
+      status: 308,
+      location: `https://klyx.fr${LEAD_MAGNET_PATH}?attachment_id=425`,
+    });
+  });
+});
+
+describe("proxy matcher", () => {
+  const matches = (url: string) => doesProxyMatch({ config, url });
+
+  it.each([
+    "/",
+    "/tarifs",
+    "/feed/",
+    "/apiculture",
+    "/trpc-guide",
+    "/_vercel-case",
+    "/mdx",
+    "/blog/opengraph-image-guide",
+    "/foo/opengraph-image/bar",
+    "/opengraph-image",
+    "/wp-login.php",
+    "/wp-content/themes/x/style.css",
+    "/sitemap_index.xml",
+  ])("runs on %s", (url) => {
+    expect(matches(url)).toBe(true);
+  });
+
+  it.each([
+    "/api/contact",
+    "/trpc/hello",
+    "/_next/static/chunk.js",
+    "/_vercel/insights/script.js",
+    "/md/fr/tarifs",
+    "/fr/opengraph-image",
+    "/fr/tarifs/opengraph-image",
+    "/blog/rss.xml",
+    "/llms.txt",
+  ])("skips %s", (url) => {
+    expect(matches(url)).toBe(false);
   });
 });

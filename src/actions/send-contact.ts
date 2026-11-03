@@ -1,10 +1,17 @@
 "use server";
 
 import { hasLocale } from "next-intl";
+import { headers } from "next/headers";
 import { Resend } from "resend";
 
 import { routing } from "@/i18n/routing";
 import { getStaticTranslator } from "@/i18n/static-translator";
+import {
+  type ContactBlockReason,
+  checkContactRequest,
+  clientIp,
+  maskIp,
+} from "@/lib/contact-guard";
 import {
   type ContactInput,
   type ContactState,
@@ -35,7 +42,12 @@ export async function sendContact(
   const t = getStaticTranslator(locale, "contact.form.errors");
   const input = readFields(formData);
 
-  if (input.website) return { status: "success" };
+  const ip = clientIp(await headers());
+
+  if (input.website) {
+    logBlocked("honeypot", ip, locale);
+    return { status: "success" };
+  }
 
   const parsed = contactSchema.safeParse(input);
   if (!parsed.success) {
@@ -52,6 +64,12 @@ export async function sendContact(
       }
     }
     return { status: "error", fieldErrors };
+  }
+
+  const blocked = checkContactRequest(ip, formData.get("fillMs"));
+  if (blocked) {
+    logBlocked(blocked, ip, locale);
+    return { status: "error", message: t("generic", { email: site.email }) };
   }
 
   const apiKey = process.env.RESEND_API_KEY;
@@ -84,6 +102,16 @@ export async function sendContact(
   }
 
   return { status: "success" };
+}
+
+function logBlocked(
+  reason: ContactBlockReason | "honeypot",
+  ip: string,
+  locale: string,
+) {
+  console.warn(
+    `[contact] blocked request: reason=${reason} ip=${maskIp(ip)} locale=${locale}`,
+  );
 }
 
 function readFields(formData: FormData) {

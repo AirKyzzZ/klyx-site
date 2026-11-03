@@ -52,6 +52,37 @@ for (const { route, price, md } of CASES) {
   });
 }
 
+test("the machine layer only loads on the first toggle", async ({ page }) => {
+  await page.setViewportSize(DESKTOP);
+  await page.goto("/contact");
+  await page.waitForLoadState("networkidle");
+  await expect(page.locator(".machine-view")).toHaveCount(0);
+
+  const toggle = page.locator(".view-toggle--floating");
+  await toggle.click();
+  await expect(page.locator(".machine-view")).toBeVisible();
+  await page.keyboard.press("Escape");
+  await expect(page.locator(".machine-view")).toBeHidden();
+  await expect(page.locator(".machine-view")).toHaveCount(1);
+});
+
+test("the first toggle plays the wipe", async ({ page }) => {
+  await page.setViewportSize(DESKTOP);
+  await page.goto("/contact");
+  await page.waitForLoadState("networkidle");
+  await page.evaluate(() => {
+    const win = window as Window & { __wiped?: boolean };
+    document.addEventListener("transitionstart", (event) => {
+      if (event.propertyName === "clip-path") win.__wiped = true;
+    });
+  });
+  await page.locator(".view-toggle--floating").click();
+  await expect(page.locator(".machine-view")).toBeVisible();
+  await page.waitForFunction(
+    () => (window as Window & { __wiped?: boolean }).__wiped === true,
+  );
+});
+
 test("Esc returns to HUMAN and restores the scroll position", async ({
   page,
 }) => {
@@ -179,7 +210,12 @@ for (const viewport of [DESKTOP, MOBILE]) {
       }).observe({ type: "layout-shift", buffered: true });
     });
     await page.goto("/services/agents-ia");
-    await page.waitForTimeout(1000);
+    await page.waitForLoadState("networkidle");
+    await page.evaluate(() => document.fonts.ready);
+    await expect(page.locator(".view-toggle").first()).toHaveAttribute(
+      "role",
+      "switch",
+    );
     const before = await page.evaluate(
       () => (window as Window & { __cls?: number }).__cls ?? 0,
     );
@@ -189,7 +225,12 @@ for (const viewport of [DESKTOP, MOBILE]) {
     await expect(page.locator(".mv-line").first()).toBeVisible();
     await page.keyboard.press("Escape");
     await expect(page.locator(".machine-view")).toBeHidden();
-    await page.waitForTimeout(500);
+    await page.evaluate(
+      () =>
+        new Promise((resolve) =>
+          requestAnimationFrame(() => requestAnimationFrame(resolve)),
+        ),
+    );
     const after = await page.evaluate(
       () => (window as Window & { __cls?: number }).__cls ?? 0,
     );
