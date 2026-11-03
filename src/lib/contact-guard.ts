@@ -44,7 +44,7 @@ export function checkContactRequest(
   fillMs: FormDataEntryValue | null,
 ): ContactBlockReason | null {
   if (filledTooFast(fillMs)) return "too-fast";
-  return allowRequest(ip) ? null : "rate-limited";
+  return allowRequest(limiterKey(ip)) ? null : "rate-limited";
 }
 
 export function clientIp(headers: Pick<Headers, "get">): string {
@@ -53,9 +53,58 @@ export function clientIp(headers: Pick<Headers, "get">): string {
   return headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
 }
 
+function ipv6Hextets(ip: string): number[] | null {
+  const address = ip.split("%")[0].replace(/^\[|\]$/g, "");
+  const dotted = /^(.*:)(\d{1,3})\.(\d{1,3})\.(\d{1,3})\.(\d{1,3})$/.exec(
+    address,
+  );
+  const octets = dotted?.slice(2).map(Number);
+  if (octets?.some((octet) => octet > 255)) return null;
+  const hex = octets
+    ? `${dotted?.[1]}${((octets[0] << 8) | octets[1]).toString(16)}:${((octets[2] << 8) | octets[3]).toString(16)}`
+    : address;
+
+  const parts = hex.split("::");
+  if (parts.length > 2) return null;
+  const [head, tail] = parts.map((part) => (part ? part.split(":") : []));
+  const missing = 8 - head.length - (tail?.length ?? 0);
+  if (tail ? missing < 1 : missing !== 0) return null;
+  const groups = [
+    ...head,
+    ...Array<string>(missing).fill("0"),
+    ...(tail ?? []),
+  ];
+  if (!groups.every((group) => /^[\da-f]{1,4}$/i.test(group))) return null;
+  return groups.map((group) => parseInt(group, 16));
+}
+
+function mappedIpv4(hextets: number[]): string | null {
+  const isMapped =
+    hextets.slice(0, 5).every((group) => group === 0) && hextets[5] === 0xffff;
+  if (!isMapped) return null;
+  const [high, low] = hextets.slice(6);
+  return [high >> 8, high & 255, low >> 8, low & 255].join(".");
+}
+
+function ipv6Prefix(hextets: number[], groups: number): string {
+  const prefix = hextets
+    .slice(0, groups)
+    .map((group) => group.toString(16))
+    .join(":");
+  return `${prefix}::/${groups * 16}`;
+}
+
+export function limiterKey(ip: string): string {
+  const hextets = ipv6Hextets(ip);
+  if (!hextets) return ip;
+  return mappedIpv4(hextets) ?? ipv6Prefix(hextets, 4);
+}
+
 export function maskIp(ip: string): string {
-  if (ip.includes(":")) return `${ip.split(":").slice(0, 3).join(":")}::/48`;
-  const octets = ip.split(".");
+  const hextets = ipv6Hextets(ip);
+  const ipv4 = hextets ? mappedIpv4(hextets) : ip;
+  if (hextets && !ipv4) return ipv6Prefix(hextets, 3);
+  const octets = (ipv4 ?? ip).split(".");
   if (octets.length !== 4) return ip;
   return `${octets.slice(0, 3).join(".")}.0/24`;
 }
