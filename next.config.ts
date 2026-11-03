@@ -2,8 +2,6 @@ import type { NextConfig } from "next";
 import createMDX from "@next/mdx";
 import createNextIntlPlugin from "next-intl/plugin";
 
-import { legacyRedirects } from "./src/lib/legacy-urls";
-
 const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
 
 const withMDX = createMDX();
@@ -21,7 +19,6 @@ const securityHeaders = [
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
-  redirects: async () => legacyRedirects,
   headers: async () => [{ source: "/:path*", headers: securityHeaders }],
   pageExtensions: ["ts", "tsx", "mdx"],
   // Optimistic routing predicts as-needed locale URLs wrong and refetches them in a loop.
