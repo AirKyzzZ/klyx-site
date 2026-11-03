@@ -210,7 +210,12 @@ for (const viewport of [DESKTOP, MOBILE]) {
       }).observe({ type: "layout-shift", buffered: true });
     });
     await page.goto("/services/agents-ia");
-    await page.waitForTimeout(1000);
+    await page.waitForLoadState("networkidle");
+    await page.evaluate(() => document.fonts.ready);
+    await expect(page.locator(".view-toggle").first()).toHaveAttribute(
+      "role",
+      "switch",
+    );
     const before = await page.evaluate(
       () => (window as Window & { __cls?: number }).__cls ?? 0,
     );
@@ -220,7 +225,12 @@ for (const viewport of [DESKTOP, MOBILE]) {
     await expect(page.locator(".mv-line").first()).toBeVisible();
     await page.keyboard.press("Escape");
     await expect(page.locator(".machine-view")).toBeHidden();
-    await page.waitForTimeout(500);
+    await page.evaluate(
+      () =>
+        new Promise((resolve) =>
+          requestAnimationFrame(() => requestAnimationFrame(resolve)),
+        ),
+    );
     const after = await page.evaluate(
       () => (window as Window & { __cls?: number }).__cls ?? 0,
     );

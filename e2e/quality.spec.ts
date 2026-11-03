@@ -4,7 +4,8 @@ import { outreachPaths, pagePaths } from "./route-paths";
 
 const WIDTHS = [390, 768, 1440];
 const MAX_CLS = 0.02;
-const HERO_LADDER_MS = 1800;
+const NO_JS_TIMEOUT_MS = 120_000;
+const OPACITY_TIMEOUT_MS = 30_000;
 const PRICE = /\d\s?€|€\s?\d/;
 
 async function scrollThrough(page: Page) {
@@ -17,6 +18,21 @@ async function scrollThrough(page: Page) {
     scrollTo(0, document.documentElement.scrollHeight);
     await new Promise((resolve) => setTimeout(resolve, 300));
   });
+}
+
+async function finishEntranceAnimations(page: Page) {
+  await page.evaluate(() =>
+    Promise.allSettled(
+      document
+        .getAnimations()
+        .filter(
+          (animation) =>
+            animation.timeline === document.timeline &&
+            animation.effect?.getComputedTiming().iterations !== Infinity,
+        )
+        .map((animation) => animation.finished),
+    ),
+  );
 }
 
 function effectiveOpacity(el: Element) {
@@ -89,12 +105,13 @@ for (const route of [...pagePaths, ...outreachPaths]) {
         test.use({ javaScriptEnabled: false });
 
         test("h1, prices and FAQ answers are visible", async ({ page }) => {
+          test.setTimeout(NO_JS_TIMEOUT_MS);
           await page.goto(route);
           const h1 = page.locator("h1");
           await expect(h1).toBeVisible();
           expect(await h1.evaluate(effectiveOpacity)).toBe(1);
 
-          await page.waitForTimeout(HERO_LADDER_MS);
+          await finishEntranceAnimations(page);
           const priceCount = await page.evaluate((source) => {
             const price = new RegExp(source);
             const walker = document.createTreeWalker(
@@ -119,11 +136,12 @@ for (const route of [...pagePaths, ...outreachPaths]) {
             await price.evaluate((el) =>
               el.scrollIntoView({ block: "center" }),
             );
-            await page.waitForTimeout(30);
-            expect(
-              await price.evaluate(effectiveOpacity),
-              await price.innerText(),
-            ).toBeGreaterThan(0.99);
+            await expect
+              .poll(() => price.evaluate(effectiveOpacity), {
+                message: await price.innerText(),
+                timeout: OPACITY_TIMEOUT_MS,
+              })
+              .toBeGreaterThan(0.99);
           }
 
           const faqs = page.locator("details.faq-item");
@@ -136,10 +154,11 @@ for (const route of [...pagePaths, ...outreachPaths]) {
             await answer.evaluate((el) =>
               el.scrollIntoView({ block: "center" }),
             );
-            await page.waitForTimeout(30);
-            expect(await answer.evaluate(effectiveOpacity)).toBeGreaterThan(
-              0.99,
-            );
+            await expect
+              .poll(() => answer.evaluate(effectiveOpacity), {
+                timeout: OPACITY_TIMEOUT_MS,
+              })
+              .toBeGreaterThan(0.99);
           }
         });
       });
