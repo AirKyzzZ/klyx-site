@@ -52,6 +52,37 @@ for (const { route, price, md } of CASES) {
   });
 }
 
+test("the machine layer only loads on the first toggle", async ({ page }) => {
+  await page.setViewportSize(DESKTOP);
+  await page.goto("/contact");
+  await page.waitForLoadState("networkidle");
+  await expect(page.locator(".machine-view")).toHaveCount(0);
+
+  const toggle = page.locator(".view-toggle--floating");
+  await toggle.click();
+  await expect(page.locator(".machine-view")).toBeVisible();
+  await page.keyboard.press("Escape");
+  await expect(page.locator(".machine-view")).toBeHidden();
+  await expect(page.locator(".machine-view")).toHaveCount(1);
+});
+
+test("the first toggle plays the wipe", async ({ page }) => {
+  await page.setViewportSize(DESKTOP);
+  await page.goto("/contact");
+  await page.waitForLoadState("networkidle");
+  await page.evaluate(() => {
+    const win = window as Window & { __wiped?: boolean };
+    document.addEventListener("transitionstart", (event) => {
+      if (event.propertyName === "clip-path") win.__wiped = true;
+    });
+  });
+  await page.locator(".view-toggle--floating").click();
+  await expect(page.locator(".machine-view")).toBeVisible();
+  await page.waitForFunction(
+    () => (window as Window & { __wiped?: boolean }).__wiped === true,
+  );
+});
+
 test("Esc returns to HUMAN and restores the scroll position", async ({
   page,
 }) => {
