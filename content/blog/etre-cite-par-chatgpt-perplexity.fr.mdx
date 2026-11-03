@@ -1,0 +1,109 @@
+export const metadata = {
+  title: "Être cité par ChatGPT et Perplexity : ce que montrent les données",
+  date: "2026-11-03",
+  summary:
+    "Ce que l'étude GEO de Princeton et les données publiques disent des citations par ChatGPT et Perplexity : ce qui marche, ce qui ne marche pas, et les limites.",
+  sources: [
+    {
+      title: "Aggarwal et al., GEO: Generative Engine Optimization, KDD 2024",
+      url: "https://arxiv.org/abs/2311.09735",
+    },
+    {
+      title:
+        "Ahrefs, recoupement entre citations IA et top 10 Google (11 août 2025)",
+      url: "https://ahrefs.com/blog/ai-search-overlap/",
+    },
+    {
+      title: "OpenAI, robots d'exploration (relevé le 3 novembre 2026)",
+      url: "https://developers.openai.com/api/docs/bots",
+    },
+    {
+      title: "Perplexity, robots d'exploration (relevé le 3 novembre 2026)",
+      url: "https://docs.perplexity.ai/guides/bots",
+    },
+    {
+      title:
+        "Google Search Central, fonctionnalités IA (relevé le 3 novembre 2026)",
+      url: "https://developers.google.com/search/docs/appearance/ai-features",
+    },
+    {
+      title: "SE Ranking, étude llms.txt (15 octobre 2026)",
+      url: "https://seranking.com/blog/llms-txt/",
+    },
+    {
+      title: "Search Atlas, étude llms.txt (mise à jour le 19 juin 2026)",
+      url: "https://searchatlas.com/blog/limits-of-llms-txt-for-ai-search-citation-study/",
+    },
+    {
+      title:
+        "Pew Research Center, clics et résumés IA de Google (22 juillet 2025)",
+      url: "https://www.pewresearch.org/short-reads/2025/07/22/google-users-are-less-likely-to-click-on-links-when-an-ai-summary-appears-in-the-results/",
+    },
+  ],
+};
+
+Pour être cité par ChatGPT et Perplexity, une page doit d'abord être accessible à leurs robots, puis contenir des passages faciles à reprendre : des chiffres sourcés, des extraits cités, des réponses directes. C'est ce que montrent les données publiques qu'on a lues, avec des limites qu'on détaille ici. Personne en dehors de ces éditeurs ne connaît leurs algorithmes.
+
+## Comment ChatGPT et Perplexity choisissent-ils leurs sources ?
+
+Les moteurs IA cherchent d'abord des pages, puis un modèle rédige une réponse à partir de ce qu'il a récupéré. L'article fondateur sur le sujet décrit ce fonctionnement en deux temps, et le reproduit dans son banc d'essai : les 5 premiers résultats Google pour chaque question, puis une réponse générée par gpt-3.5-turbo ([Aggarwal et al.](https://arxiv.org/abs/2311.09735), KDD 2024). Votre page doit donc passer deux filtres : être trouvée, puis être reprise.
+
+## Que montre l'étude GEO de Princeton ?
+
+L'étude GEO montre que modifier le contenu d'une page peut augmenter sa visibilité dans les réponses générées d'environ 40 % au mieux. Les auteurs, notamment de Princeton et de l'IIT Delhi, ont testé 9 méthodes sur 10 000 questions ([Aggarwal et al.](https://arxiv.org/abs/2311.09735), KDD 2024). Sur leur score de visibilité principal, où la page non modifiée obtient 19,3 (tableau de résultats de la même étude) :
+
+- Ajouter des extraits cités de sources crédibles : 27,2.
+- Ajouter des statistiques : 25,2.
+- Améliorer la fluidité du texte : 24,7.
+- Indiquer ses sources : 24,6.
+- Adopter un ton plus affirmé : 21,3.
+- Bourrer le texte de mots-clés : 17,7, soit moins que la page d'origine.
+
+Ce résultat va contre une habitude du SEO. Le bourrage de mots-clés fait baisser le score, et le ton affirmé apporte peu, alors que les ajouts vérifiables pèsent le plus.
+
+Testées sur le vrai Perplexity, les méthodes vont dans le même sens : les extraits cités gagnent 22 % sur le score principal, les statistiques jusqu'à 37 % sur le second score, et le bourrage de mots-clés perd 10 % (même source).
+
+## Les petits sites ont-ils une chance d'être cités ?
+
+D'après cette étude, les pages moins bien classées gagnent le plus. Quand toutes les sources d'une réponse sont optimisées, indiquer ses sources augmente de 115,1 % la visibilité du site classé cinquième sur Google, et le site classé premier perd en moyenne 30,3 % ([Aggarwal et al.](https://arxiv.org/abs/2311.09735), KDD 2024). Ce résultat vient d'un montage expérimental, et rien ne garantit qu'il se reproduise à l'identique aujourd'hui.
+
+## Quelles sont les limites de ces chiffres ?
+
+La principale limite de ces chiffres est leur âge et leur cadre. L'étude date de 2023-2024, utilise gpt-3.5-turbo sur un moteur simulé, et mesure une part de la réponse. Elle ne mesure ni le trafic ni les ventes. Les moteurs ont changé depuis. Prenez la direction indiquée, pas le pourcentage. Quand une agence vous promet « +40 % de visibilité » en citant ce travail, demandez-lui ce qu'elle mesure.
+
+## Être bien classé sur Google suffit-il pour être cité ?
+
+Non, un bon classement Google ne suffit pas pour être cité. Ahrefs, qui vend des outils SEO, a testé 15 000 questions début juillet 2025 : seuls 12 % des liens cités par ChatGPT, Gemini et Copilot figurent dans le top 10 de Google pour la même question, contre 28,6 % pour Perplexity ([Ahrefs](https://ahrefs.com/blog/ai-search-overlap/), 11 août 2025). Ces questions sont des requêtes longues, et d'autres méthodes de mesure donnent d'autres chiffres, mais l'ordre de grandeur rappelle qu'un suivi de positions Google ne vous dit pas si les moteurs IA vous citent.
+
+Google, de son côté, n'annonce aucune recette particulière pour ses fonctions IA : « There are no additional requirements to appear in AI Overviews or AI Mode », et il faut qu'une page soit indexée et éligible à un extrait ([Google Search Central](https://developers.google.com/search/docs/appearance/ai-features), relevé le 3 novembre 2026).
+
+## Quels robots faut-il autoriser dans robots.txt ?
+
+Il faut autoriser OAI-SearchBot pour ChatGPT et PerplexityBot pour Perplexity. OpenAI écrit que les sites qui bloquent OAI-SearchBot n'apparaîtront pas dans les réponses de ChatGPT search, sauf éventuellement en liens de navigation ([OpenAI](https://developers.openai.com/api/docs/bots), relevé le 3 novembre 2026). GPTBot est un autre robot, qui sert à l'entraînement des modèles : vous pouvez le bloquer sans sortir de ChatGPT search (même source). Perplexity recommande d'autoriser PerplexityBot, qui alimente ses résultats et qu'elle dit ne pas utiliser pour entraîner des modèles ([Perplexity](https://docs.perplexity.ai/guides/bots), relevé le 3 novembre 2026).
+
+Vérifiez aussi les réglages de votre hébergeur ou de votre pare-feu, qui peuvent bloquer ces robots sans que votre fichier robots.txt le dise.
+
+## Un fichier llms.txt aide-t-il à être cité ?
+
+Non, aucune étude qu'on a lue ne montre d'effet du fichier llms.txt sur les citations. SE Ranking conclut à l'absence d'impact sur environ 300 000 sites, dont 10,13 % ont ce fichier ([SE Ranking](https://seranking.com/blog/llms-txt/), 15 octobre 2026). Search Atlas arrive au même constat sur 13 911 domaines ([Search Atlas](https://searchatlas.com/blog/limits-of-llms-txt-for-ai-search-citation-study/), mise à jour le 19 juin 2026). Ces deux études viennent d'éditeurs d'outils SEO. Google précise aussi que ses fonctions IA n'exigent pas de fichier texte dédié à l'IA ([Google Search Central](https://developers.google.com/search/docs/appearance/ai-features), relevé le 3 novembre 2026). Nous publions un llms.txt sur klyx.fr parce qu'il coûte peu, sans en attendre de gain.
+
+## Être cité rapporte-t-il du trafic ?
+
+Pas forcément : les résumés IA réduisent les clics. Pew Research a suivi 900 adultes américains et 68 879 recherches Google en mars 2025 : on clique sur un résultat classique dans 8 % des visites avec résumé IA, contre 15 % sans, et sur un lien du résumé dans environ 1 % des cas ([Pew Research Center](https://www.pewresearch.org/short-reads/2025/07/22/google-users-are-less-likely-to-click-on-links-when-an-ai-summary-appears-in-the-results/), 22 juillet 2025). Ce chiffre concerne les résumés de Google aux États-Unis. Il ne dit rien de ChatGPT ni de la France. Pour nous, il faut compter une citation comme de la notoriété autant que comme du trafic, et suivre les deux.
+
+## Que faire concrètement sur votre site ?
+
+Commencez par les pages que vos clients consultent avant d'acheter, et rendez chaque passage citable tout seul :
+
+- Répondez à la question dès la première phrase sous chaque titre.
+- Mettez des chiffres avec leur source et leur date, et affichez vos prix s'ils peuvent être publics.
+- Reprenez des extraits de sources crédibles, indiquez vos sources, et laissez les mots-clés répétés de côté.
+- Gardez le texte dans le HTML initial, sans le cacher derrière du JavaScript. On le fait par prudence : on n'a pas de chiffre public solide sur ce point.
+
+## Comment mesurer ses citations dans les moteurs IA ?
+
+On mesure ses citations en posant les mêmes questions aux mêmes moteurs, avant et après les modifications, et en comptant qui est cité. Les réponses varient d'une fois à l'autre, alors un seul test ne prouve rien : il faut plusieurs questions et une répétition dans le temps.
+
+C'est le principe de notre [offre de référencement IA](/services/geo-referencement-ia) : à partir de 1 200 € HT, 30 questions testées sur 4 moteurs, 5 pages corrigées, et le même test refait à J+30 ([tarifs Klyx](/tarifs), novembre 2026). Par transparence : Maxime Mansiet, notre lead engineer, a cofondé CiteMe, un outil qui mesure la visibilité d'une marque dans les moteurs IA. Vous n'avez pas besoin d'un abonnement CiteMe, et le rapport vous appartient.
+
+L'[appel de découverte](/contact) dure 30 minutes et sert à choisir les questions que vos clients posent vraiment.
