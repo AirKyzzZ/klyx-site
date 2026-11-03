@@ -1,0 +1,93 @@
+export const metadata = {
+  title: "Comment intégrer l'IA dans une PME : méthode en 4 étapes",
+  date: "2026-11-03",
+  summary:
+    "Notre méthode en 4 étapes pour intégrer l'IA dans une PME : choisir un process, vérifier données et règles, passer en production, mesurer.",
+  sources: [
+    {
+      title:
+        "Insee Première n° 2120, les TIC dans les entreprises en 2025 (21 juillet 2026)",
+      url: "https://www.insee.fr/fr/statistiques/9025878",
+    },
+    {
+      title: "CNIL, IA et RGPD, nouvelles recommandations (7 février 2025)",
+      url: "https://www.cnil.fr/fr/ia-et-rgpd-la-cnil-publie-ses-nouvelles-recommandations-pour-accompagner-une-innovation-responsable",
+    },
+    {
+      title:
+        "Commission européenne, cadre réglementaire de l'IA (mis à jour le 19 octobre 2026)",
+      url: "https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai",
+    },
+  ],
+};
+
+Pour intégrer l'IA dans une PME, on procède en quatre étapes : choisir un seul process, vérifier les données et les règles qui s'y appliquent, mettre un workflow en production avec une validation humaine, puis mesurer. C'est la méthode qu'on applique chez Klyx, et vous pouvez la suivre sans nous.
+
+## Où en sont les PME françaises avec l'IA ?
+
+En France, 18 % des entreprises de 10 salariés ou plus utilisaient au moins une technologie d'IA en 2025, contre 10 % en 2024 et 6 % en 2023 ([Insee Première n° 2120](https://www.insee.fr/fr/statistiques/9025878), juillet 2026). L'écart reste net selon la taille : 15 % entre 10 et 49 salariés, 31 % entre 50 et 249, 58 % à partir de 250 (même source).
+
+Parmi les entreprises qui n'utilisent pas d'IA, 71 % n'en voient pas l'utilité et 54 % citent le manque d'expertise (même source, données 2025). Notre méthode répond d'abord à ces deux points : elle part d'un problème précis, et elle dit qui fait quoi.
+
+## Par quoi commencer pour intégrer l'IA dans une PME ?
+
+Il faut commencer par un process qui coûte du temps, pas par un outil. Un compte ChatGPT dans un onglet ne change pas la façon dont une équipe travaille tant que rien n'est branché sur ses logiciels. Les quatre étapes :
+
+1. Choisir un process, avec un gain estimé en heures.
+2. Vérifier les données disponibles et les règles applicables.
+3. Mettre un workflow en production, avec une validation humaine.
+4. Mesurer le résultat, puis décider de la suite.
+
+## Étape 1 : comment choisir le premier process à automatiser ?
+
+Le bon premier process est fréquent, déjà à peu près documenté, et une erreur y reste facile à rattraper. On interroge les personnes qui font le travail plutôt que la direction seule, parce que ce sont elles qui savent où partent les heures.
+
+Pour chaque process candidat, on note trois choses : les heures perdues par semaine, le coût d'une erreur et les outils traversés. Une relance de devis coche souvent ces cases. Une décision de crédit ou un tri de candidatures, non.
+
+Un exemple de notre [roadmap d'audit](/services/audit-ia), pour une PME fictive : relance des devis, environ 6 heures par semaine, risque faible, à traiter le premier mois. Ce sont des valeurs d'illustration. Sur un vrai projet, on les estime pendant les entretiens.
+
+## Étape 2 : quelles données et quelles règles faut-il vérifier avant de coder ?
+
+Il faut vérifier où vivent les données du process, qui y a accès, et si le cas d'usage tombe sous une règle précise. Si les informations sont réparties entre trois fichiers Excel et une boîte mail, ce travail de remise en ordre fait partie du projet.
+
+Côté données personnelles, la CNIL rappelle que « le RGPD permet le développement d'IA innovantes et responsables en Europe », et ses recommandations portent notamment sur l'information des personnes et l'exercice de leurs droits ([CNIL](https://www.cnil.fr/fr/ia-et-rgpd-la-cnil-publie-ses-nouvelles-recommandations-pour-accompagner-une-innovation-responsable), 7 février 2025).
+
+Côté règlement européen sur l'IA (AI Act), trois points concernent directement une PME, d'après la [Commission européenne](https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai) (page mise à jour le 19 octobre 2026) :
+
+- Un chatbot doit indiquer à la personne qu'elle échange avec une machine. La Commission annonce ces règles de transparence pour août 2026.
+- Les outils de recrutement, comme le tri de CV, sont classés à haut risque. Les règles correspondantes s'appliquent à partir du 2 décembre 2027.
+- Le texte n'ajoute pas de règle pour l'IA à risque minimal, comme un filtre anti-spam.
+
+On signale ces points pendant un audit, mais on n'est pas juristes : pour un cas sensible, faites valider par votre conseil.
+
+## Étape 3 : comment passer du test à la production ?
+
+Un workflow est en production quand il tourne sur vos vrais outils, qu'une personne valide les actions sensibles et que chaque action est journalisée. Beaucoup de projets s'arrêtent à la démo, parce que personne n'a le temps de fiabiliser le prototype après la réunion qui l'a validé.
+
+Voici ce qu'on livre sur un [Sprint IA](/services/agents-ia), et ce qu'on vous conseille de demander à n'importe quel prestataire :
+
+- Une validation humaine dès que l'agent touche à des données sensibles.
+- Un journal de chaque action de l'agent.
+- Un jeu de tests pour vérifier les réponses, relancé après chaque changement de modèle ou de prompt.
+- Un runbook et une prise en main pour votre équipe.
+- Le code dans votre repo, et des comptes à votre nom.
+
+Le périmètre reste volontairement petit : un seul workflow. Si le process est linéaire (un déclencheur, une étape IA, une action), une [automatisation](/services/automatisation-ia) suffit et il n'y a pas besoin d'agent.
+
+## Étape 4 : comment mesurer si l'intégration de l'IA a marché ?
+
+On mesure en comparant le process avant et après sur les mêmes indicateurs : le temps passé, le taux d'erreur, et le coût par tâche. Il faut donc relever le temps passé avant de commencer, sinon le gain restera une impression.
+
+Comptez aussi ce que le workflow demande encore : le temps de validation humaine et le temps de correction. Un agent qui fait gagner quatre heures et en demande trois de relecture n'a pas réglé grand-chose. Si le résultat n'est pas là, on corrige ou on arrête, et l'étape suivante de la roadmap passe devant.
+
+## Combien de temps prend l'intégration de l'IA dans une PME ?
+
+Chez Klyx, un premier workflow prend quelques semaines : de 1 à 2 semaines pour l'audit, puis de 4 à 5 jours ouvrés pour une automatisation simple ou 2 semaines pour un Sprint IA ([tarifs Klyx](/tarifs), novembre 2026). Ces durées couvrent un premier process. Le reste de la roadmap d'audit s'étale sur 90 jours, et l'adoption par l'équipe dépend de votre organisation autant que de nous.
+
+## Faut-il recruter, former ou se faire accompagner ?
+
+Le choix dépend de ce que vous avez déjà en interne. Si un développeur connaît vos outils, former cette personne et lui donner du temps peut suffire. Si personne ne peut s'en occuper, un prestataire externe met le premier workflow en place, à condition de laisser un runbook et une passation écrite pour que vous ne restiez pas dépendant.
+
+Le besoin de compétences est réel : c'est le frein cité par 54 % des entreprises sans IA ([Insee Première n° 2120](https://www.insee.fr/fr/statistiques/9025878), juillet 2026, données 2025).
+
+Nos prix sont publics : audit à partir de 1 500 € HT, automatisation à partir de 2 400 € HT, Sprint IA à partir de 4 500 € HT ([tarifs Klyx](/tarifs), novembre 2026). L'[appel de découverte](/contact) dure 30 minutes et sert à repérer le process qui vous coûte le plus de temps. S'il n'y a rien à faire avec l'IA chez vous, on vous le dit.
