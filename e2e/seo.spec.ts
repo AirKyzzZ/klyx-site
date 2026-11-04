@@ -39,6 +39,9 @@ test("OpenGraph images render in both locales without redirect", async ({
     "/fr/tarifs/opengraph-image",
     "/en/services/agents-ia/opengraph-image",
     "/fr/services/geo-referencement-ia/opengraph-image",
+    "/fr/blog/opengraph-image",
+    "/en/blog/cout-agent-ia-pme/opengraph-image",
+    "/fr/blog/etre-cite-par-chatgpt-perplexity/opengraph-image",
   ]) {
     const response = await request.get(path, { maxRedirects: 0 });
     expect(response.status(), path).toBe(200);
