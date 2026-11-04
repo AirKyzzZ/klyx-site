@@ -642,6 +642,50 @@
   }
 }
 
+.ls-toggle {
+  position: absolute;
+  top: 3px;
+  right: 8px;
+  display: none;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border-radius: var(--r-full);
+  color: var(--text-2);
+  cursor: pointer;
+  transition: color var(--d-fast) var(--ease-out);
+  view-transition-name: ls-toggle;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: -8px;
+  }
+
+  &:hover {
+    color: var(--text);
+  }
+
+  & svg {
+    width: 14px;
+    height: 14px;
+    fill: currentColor;
+  }
+}
+
+.ls[data-can-pause] .ls-toggle {
+  display: grid;
+}
+
+.ls-toggle-play,
+.ls[data-user-paused] .ls-toggle-pause {
+  display: none;
+}
+
+.ls[data-user-paused] .ls-toggle-play {
+  display: block;
+}
+
 .ls-caption {
   margin-top: 12px;
   color: var(--text-3);

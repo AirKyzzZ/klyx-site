@@ -77,6 +77,7 @@ test.describe("home hero", () => {
           await expect(tab).not.toHaveAttribute("tabindex", /.*/);
         }
         await expect(page.getByText(fr.liveSystem.caption)).toBeVisible();
+        await expect(page.locator("[data-ls-toggle]")).toBeHidden();
       });
     }
   });
@@ -103,6 +104,7 @@ test.describe("home hero", () => {
         "data-shown",
         "true",
       );
+      await expect(page.locator("[data-ls-toggle]")).toBeHidden();
     });
   });
 
@@ -144,6 +146,23 @@ test.describe("home hero", () => {
       expect(cls).toBeLessThan(0.02);
     });
   }
+
+  test("the pause button freezes the hero and plays it again", async ({
+    page,
+  }) => {
+    await page.goto("/");
+    const system = page.locator("[data-live-system]");
+    await expect(system).toHaveAttribute("data-playing", "");
+    await page.getByRole("button", { name: fr.liveSystem.pause }).click();
+    await expect(system).toHaveAttribute("data-paused", "");
+    const play = page.getByRole("button", { name: fr.liveSystem.play });
+    await expect(play).toBeVisible();
+    await play.click();
+    await expect(system).not.toHaveAttribute("data-paused", "");
+    await expect(
+      page.getByRole("button", { name: fr.liveSystem.pause }),
+    ).toBeVisible();
+  });
 
   test("a tab click swaps the selected tab and the graph", async ({ page }) => {
     await page.goto("/en");

@@ -1,3 +1,4 @@
+import { Pause, Play } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 
 import type { Locale } from "@/i18n/routing";
@@ -135,6 +136,17 @@ export async function LiveSystem({
             );
           })}
         </LitFrame>
+        <button
+          type="button"
+          className="ls-toggle"
+          data-ls-toggle=""
+          data-label-pause={t("liveSystem.pause")}
+          data-label-play={t("liveSystem.play")}
+          aria-label={t("liveSystem.pause")}
+        >
+          <Pause className="ls-toggle-pause" aria-hidden="true" />
+          <Play className="ls-toggle-play" aria-hidden="true" />
+        </button>
         {withTabs && (
           <ScenarioTabs
             label={t("liveSystem.tablist")}

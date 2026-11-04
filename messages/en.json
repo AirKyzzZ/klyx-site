@@ -2481,6 +2481,8 @@
   },
   "liveSystem": {
     "label": "Illustration · sample run",
+    "pause": "Pause the animation",
+    "play": "Play the animation",
     "caption": "Three examples of what we deliver, from the first step to production. Names and values are fictional.",
     "tablist": "Scenarios",
     "trace": "log",
