@@ -19,7 +19,7 @@ How the set was chosen: work built for someone else, with a live site, code by M
 |---|---|---|---|---|---|
 | ActionFocus | Sports photography site | actionfocus.netlify.app | Live | Looks like a demo: "Created for free using WordPress and Colibri", "12 rue du sport", a generic testimonial, contact domain does not resolve. No repo, no proof of a client | `candidates/actionfocus.jpg` |
 | La Vie en Bleu | Events site | none found | Unknown | Only `lveb_screenshot.png` in the WordPress media and a name in his notes. No repo, no text on what was built. lavieenbleu.fr is an unrelated aquarium maker, lveb.fr is unrelated too | none |
-| Chronolis, Le Pôle Horloger | B2B watch repair app for JL Strack | no public URL | Private | Mostly Julien Mellano's code (137 commits, Maxime 33) in another company's GitLab. Could be subcontracted work, ask Maxime | none |
+| Cronolyss (ex-Chronolis) | Internal watch repair software | no public URL | Private | Added on 2026-11-04 at Maxime's request. Client not named, cover from the project docs with the user name removed. UI scope only: backend and project lead were others (123+14 commits by the lead, 33 by Maxime) | `public/realisations/cronolyss.png` |
 | Tapage Culturel | Events collective site | none (`tapage.example.com` in config) | Not deployed | Code exists (`AirKyzzZ/TAPAGECULTUREL`, 5 commits, 2025-08-28), no sign it was delivered | none |
 | Le Pavillon d'Arcachon | Rental site from a template | lepavillondarcachon.fr does not resolve | Down | 2020, README calls it his first website | none |
 | Klyx Estate | Own studio site | estate.klyx.fr | Live | Own venture, already a sister site on `/a-propos` | `candidates/klyx-estate.jpg` |
