@@ -1470,7 +1470,7 @@
       "window": "github.com/AirKyzzZ",
       "total": "{total} contributions sur GitHub en 12 mois",
       "label": "Graphe des contributions GitHub de Maxime Mansiet, du {from} au {to}",
-      "caption": "Relevé le {date} sur son profil public. Une case par jour : plus elle est claire, plus il y a eu de commits, de PR et de revues."
+      "caption": "Relevé le {date} sur son profil public. Une case par jour : plus elle est orange vif, plus il y a eu de commits, de PR et de revues."
     }
   },
   "bordeaux": {

@@ -70,8 +70,10 @@ export default async function HomePage({ params }: LocaleParams) {
   const prices = getPriceValues(locale);
   const price = (id: OfferId) => formatPrice(getOfferPrice(id), locale);
 
+  const showProof = site.flags.homeProofStrip && hasProofStrip(proof);
+
   const candidates: (SectionId | false)[] = [
-    hasProofStrip(proof) && "proof",
+    showProof && "proof",
     "offers",
     "tools",
     cases.length > 0 && "cases",
@@ -94,13 +96,15 @@ export default async function HomePage({ params }: LocaleParams) {
       <SpotlightPointer />
       <HomeHero locale={locale} />
 
-      <ProofStrip
-        {...section("proof")}
-        sources={proof}
-        locale={locale}
-        title={t("proofStrip.title")}
-        emphasis={t("proofStrip.titleEmphasis")}
-      />
+      {showProof && (
+        <ProofStrip
+          {...section("proof")}
+          sources={proof}
+          locale={locale}
+          title={t("proofStrip.title")}
+          emphasis={t("proofStrip.titleEmphasis")}
+        />
+      )}
 
       <OfferCards
         {...section("offers")}

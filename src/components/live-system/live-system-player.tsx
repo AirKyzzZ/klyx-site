@@ -267,16 +267,15 @@ export function LiveSystemPlayer({
       select(next.dataset.lsTab);
     };
 
-    const onPointerEnter = () => run?.pause("hover");
-    const onPointerLeave = () => run?.resume("hover");
-    const onFocusIn = () => run?.pause("focus");
+    const onFocusIn = (event: Event) => {
+      if ((event.target as Element).matches(":focus-visible"))
+        run?.pause("focus");
+    };
     const onFocusOut = (event: Event) => {
       const next = (event as FocusEvent).relatedTarget;
       if (!(next instanceof Node && frame.contains(next))) run?.resume("focus");
     };
     const frameListeners = [
-      ["pointerenter", onPointerEnter],
-      ["pointerleave", onPointerLeave],
       ["focusin", onFocusIn],
       ["focusout", onFocusOut],
     ] as const;
