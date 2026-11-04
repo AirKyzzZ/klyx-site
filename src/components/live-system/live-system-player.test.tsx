@@ -55,6 +55,13 @@ function renderPlayer() {
         <Stage id="agents" />
         <Stage id="sites" hidden />
       </div>
+      <button
+        type="button"
+        data-ls-toggle
+        data-label-pause="pause"
+        data-label-play="play"
+        aria-label="pause"
+      />
       <a data-ls-tab="agents" href="#agents" role="tab" aria-selected="true">
         agents
       </a>
@@ -176,6 +183,53 @@ describe("LiveSystemPlayer", () => {
     expect(
       container.querySelector("[data-live-system]")?.hasAttribute("data-playing"),
     ).toBe(true);
+  });
+
+  it("stays paused from the button until it is pressed again", () => {
+    const { state, container, setVisible } = renderPlayer();
+    const root = container.querySelector("[data-live-system]")!;
+    const toggle = container.querySelector("[data-ls-toggle]")!;
+    advance(0);
+
+    fireEvent.click(toggle);
+    expect(toggle.getAttribute("aria-label")).toBe("play");
+    expect(root.hasAttribute("data-paused")).toBe(true);
+    setVisible(false);
+    setVisible(true);
+    advance(5000);
+    expect(state('[data-edge="a>b"]')).toBe("idle");
+
+    fireEvent.click(toggle);
+    expect(toggle.getAttribute("aria-label")).toBe("pause");
+    expect(root.hasAttribute("data-paused")).toBe(false);
+    advance(500);
+    expect(state('[data-edge="a>b"]')).toBe("active");
+  });
+
+  it("shows the finished scenario when a tab is picked while paused", () => {
+    const { state, container } = renderPlayer();
+    const toggle = container.querySelector("[data-ls-toggle]")!;
+    advance(0);
+    fireEvent.click(toggle);
+    fireEvent.click(container.querySelector('[data-ls-tab="sites"]')!);
+    expect(vi.getTimerCount()).toBe(0);
+    expect(state('[data-node="b"]', "sites")).toBe("done");
+    expect(state("[data-chip]", "sites")).toBe("true");
+
+    fireEvent.click(toggle);
+    expect(state('[data-node="b"]', "sites")).toBe("idle");
+    advance(0);
+    expect(state('[data-node="a"]', "sites")).toBe("active");
+  });
+
+  it("offers no pause button under reduced motion", () => {
+    setReducedMotion(true);
+    const { container } = renderPlayer();
+    expect(
+      container
+        .querySelector("[data-live-system]")
+        ?.hasAttribute("data-can-pause"),
+    ).toBe(false);
   });
 
   it("applies a roving tabindex to the tabs after mount", () => {

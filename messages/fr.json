@@ -2481,6 +2481,8 @@
   },
   "liveSystem": {
     "label": "Illustration · scénario type",
+    "pause": "Mettre l'animation en pause",
+    "play": "Relancer l'animation",
     "caption": "Trois exemples de ce qu'on livre, de la première étape à la mise en production. Noms et valeurs fictifs.",
     "tablist": "Scénarios",
     "trace": "journal",

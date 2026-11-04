@@ -72,6 +72,12 @@ function applyStep(stage: HTMLElement, step: ScenarioStep) {
   if (step.chip) setAll(stage, "[data-chip]", "data-shown", "true");
 }
 
+function showFinal(stage: HTMLElement, steps: ScenarioStep[]) {
+  reset(stage);
+  for (const step of steps) applyStep(stage, step);
+  settle(stage);
+}
+
 function play(
   root: HTMLElement,
   stage: HTMLElement,
@@ -191,7 +197,18 @@ export function LiveSystemPlayer({
     const frame = root.querySelector("[data-ls-frame]") ?? root;
     let current = initial;
     let visible = false;
+    let userPaused = false;
     let run: Run | undefined;
+
+    const markToggle = () => {
+      root.toggleAttribute("data-can-pause", !reduced);
+      root.toggleAttribute("data-user-paused", userPaused);
+      const toggle = root.querySelector<HTMLElement>("[data-ls-toggle]");
+      const label = userPaused
+        ? toggle?.dataset.labelPlay
+        : toggle?.dataset.labelPause;
+      if (label) toggle?.setAttribute("aria-label", label);
+    };
 
     const markTabs = () => {
       for (const tab of root.querySelectorAll<HTMLElement>("[data-ls-tab]")) {
@@ -210,6 +227,10 @@ export function LiveSystemPlayer({
       const stage = stageOf(id);
       const steps = scenarios[id];
       if (reduced || !stage || !steps) return;
+      if (userPaused) {
+        showFinal(stage, steps);
+        return;
+      }
       run = play(root, stage, steps);
       if (!visible) run.pause("view");
     };
@@ -235,7 +256,19 @@ export function LiveSystemPlayer({
       else document.startViewTransition(swap);
     };
 
+    const togglePlayback = () => {
+      userPaused = !userPaused;
+      markToggle();
+      if (userPaused) run?.pause("user");
+      else if (run) run.resume("user");
+      else start(current);
+    };
+
     const onClick = (event: MouseEvent) => {
+      if ((event.target as Element).closest("[data-ls-toggle]")) {
+        togglePlayback();
+        return;
+      }
       const tab = (event.target as Element).closest<HTMLElement>(
         "[data-ls-tab]",
       );
@@ -274,6 +307,7 @@ export function LiveSystemPlayer({
     ] as const;
 
     markTabs();
+    markToggle();
     start(current);
     const unsubscribe = (subscribeVisibility ?? subscribeViewport(root))(
       (next) => {
