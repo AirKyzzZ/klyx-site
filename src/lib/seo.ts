@@ -12,6 +12,8 @@ type PathParams = Record<string, string>;
 const OG_IMAGE_PATHNAMES: AppPathname[] = [
   "/a-propos",
   "/agence-ia-bordeaux",
+  "/blog",
+  "/blog/[slug]",
   "/cas-usage",
   "/cas-usage/immobilier",
   "/cas-usage/agences",
