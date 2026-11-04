@@ -11,7 +11,7 @@ import type { CaseStudyMeta } from "@/lib/content";
 import {
   ALSO_OFFERS,
   HOME_OFFER_CARDS,
-  selectHomeCases,
+  selectFeaturedCases,
 } from "@/lib/home-sections";
 import { getOfferCopy } from "@/lib/offer-copy";
 import { type OfferPageConfig, offerPages } from "@/lib/offer-pages";
@@ -188,7 +188,7 @@ async function home(locale: Locale): Promise<string> {
   const casesT = getStaticTranslator(locale, "cases");
   const prices = getPriceValues(locale);
   const price = (id: OfferId) => formatPrice(getOfferPrice(id), locale);
-  const cases = selectHomeCases(await getCaseStudies(locale));
+  const cases = selectFeaturedCases(await getCaseStudies(locale));
 
   return doc([
     ...intro(locale, "/", heroTitle(t)),
@@ -464,7 +464,7 @@ async function pricing(locale: Locale): Promise<string> {
 
 async function cases(locale: Locale): Promise<string> {
   const t = getStaticTranslator(locale, "cases");
-  const studies = await getCaseStudies(locale);
+  const studies = selectFeaturedCases(await getCaseStudies(locale));
   return doc([
     ...intro(locale, "/realisations", heroTitle(t)),
     t("hero.subtitle"),

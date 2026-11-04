@@ -10,6 +10,7 @@ import { SampleWindow } from "@/components/sections/process-timeline";
 import { Link } from "@/i18n/navigation";
 import { type LocaleParams, resolvePageLocale } from "@/i18n/page-locale";
 import { caseYears, getCaseStudies } from "@/lib/content";
+import { selectFeaturedCases } from "@/lib/home-sections";
 import { buildMetadata } from "@/lib/seo";
 
 export async function generateMetadata({
@@ -28,7 +29,7 @@ export async function generateMetadata({
 export default async function CasesPage({ params }: LocaleParams) {
   const locale = await resolvePageLocale(params);
   const t = await getTranslations({ locale, namespace: "cases" });
-  const cases = await getCaseStudies(locale);
+  const cases = selectFeaturedCases(await getCaseStudies(locale));
 
   return (
     <>

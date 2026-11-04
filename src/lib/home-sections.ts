@@ -1,5 +1,5 @@
 import type { CaseStudyMeta } from "@/lib/content";
-const HOME_CASE_SLUGS = [
+const FEATURED_CASE_SLUGS = [
   "cronolyss",
   "citeme",
   "hop-hop-immo",
@@ -20,8 +20,8 @@ export const ALSO_OFFERS = [
   { key: "useCases", href: "/cas-usage" },
 ] as const;
 
-export function selectHomeCases(cases: CaseStudyMeta[]): CaseStudyMeta[] {
-  return HOME_CASE_SLUGS.flatMap((slug) =>
+export function selectFeaturedCases(cases: CaseStudyMeta[]): CaseStudyMeta[] {
+  return FEATURED_CASE_SLUGS.flatMap((slug) =>
     cases.filter((study) => study.slug === slug),
   );
 }

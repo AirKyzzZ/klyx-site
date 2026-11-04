@@ -193,9 +193,16 @@ for (const { path, host, status } of NO_LIVE_LINK_CASES) {
   });
 }
 
-test("the case index labels Créalogique as in development", async ({ page }) => {
+test("the case index shows the five featured projects, others stay reachable", async ({
+  page,
+}) => {
   await page.goto("/realisations");
-  const card = page.locator('a[href*="/crealogique"]').last();
-  await expect(card).toContainText("En cours de développement");
-  await expect(page.locator('a[href*="/kenzi"]').first()).toBeVisible();
+  for (const slug of ["cronolyss", "citeme", "hop-hop-immo", "2060-io", "pkba"]) {
+    await expect(page.locator(`a[href*="/${slug}"]`).first()).toBeVisible();
+  }
+  for (const slug of ["crealogique", "kenzi", "lady-gallery", "reciproq", "vertiflow"]) {
+    await expect(page.locator(`a[href*="/${slug}"]`)).toHaveCount(0);
+  }
+  const hidden = await page.goto("/realisations/vertiflow");
+  expect(hidden?.status()).toBe(200);
 });

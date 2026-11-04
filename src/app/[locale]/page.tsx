@@ -20,7 +20,7 @@ import { getCaseStudies } from "@/lib/content";
 import {
   ALSO_OFFERS,
   HOME_OFFER_CARDS,
-  selectHomeCases,
+  selectFeaturedCases,
 } from "@/lib/home-sections";
 import { organizationJsonLd } from "@/lib/json-ld";
 import {
@@ -65,7 +65,7 @@ export default async function HomePage({ params }: LocaleParams) {
   const casesT = await getTranslations({ locale, namespace: "cases" });
   const tabs = await getTranslations({ locale, namespace: "liveSystem.tabs" });
   const meta = await getTranslations({ locale, namespace: "meta.home" });
-  const cases = selectHomeCases(await getCaseStudies(locale));
+  const cases = selectFeaturedCases(await getCaseStudies(locale));
   const proof = getVerifiedProof();
   const prices = getPriceValues(locale);
   const price = (id: OfferId) => formatPrice(getOfferPrice(id), locale);

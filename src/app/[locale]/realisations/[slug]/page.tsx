@@ -21,6 +21,7 @@ import { Link } from "@/i18n/navigation";
 import { resolvePageLocale } from "@/i18n/page-locale";
 import { type Locale, routing } from "@/i18n/routing";
 import { getCaseStudies, getCaseStudy } from "@/lib/content";
+import { selectFeaturedCases } from "@/lib/home-sections";
 import { getSiteShot } from "@/lib/proof";
 import { brandedTitle, buildMetadata } from "@/lib/seo";
 
@@ -43,7 +44,9 @@ async function loadCase(locale: Locale, slug: string) {
   const index = cases.findIndex((c) => c.slug === slug);
   if (index === -1) notFound();
   const study = await getCaseStudy(slug, locale);
-  const next = cases.length > 1 ? cases[(index + 1) % cases.length] : null;
+  const featured = selectFeaturedCases(cases);
+  const position = featured.findIndex((c) => c.slug === slug);
+  const next = featured[(position + 1) % featured.length] ?? null;
   return { ...study, next };
 }
 
