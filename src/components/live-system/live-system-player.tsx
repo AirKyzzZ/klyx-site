@@ -5,7 +5,6 @@ import { type ReactNode, useEffect, useRef } from "react";
 import type { ScenarioStep } from "@/lib/scenarios";
 
 export const HOLD_MS = 2500;
-export const MAX_LOOPS = 3;
 const SETTLE_MS = 700;
 
 type VisibilitySubscriber = (
@@ -88,7 +87,6 @@ function play(
   ];
   const passMs = last + HOLD_MS;
   const paused = new Set<string>();
-  let loop = 0;
   let index = 0;
   let elapsed = 0;
   let startedAt = 0;
@@ -103,11 +101,6 @@ function play(
       event.run();
       index += 1;
       schedule();
-      return;
-    }
-    loop += 1;
-    if (loop >= MAX_LOOPS) {
-      root.removeAttribute("data-playing");
       return;
     }
     reset(stage);
@@ -140,7 +133,7 @@ function play(
     resume(reason) {
       if (!paused.delete(reason) || paused.size > 0) return;
       root.removeAttribute("data-paused");
-      if (loop < MAX_LOOPS && !timer) schedule();
+      if (!timer) schedule();
     },
     stop() {
       if (timer) clearTimeout(timer);

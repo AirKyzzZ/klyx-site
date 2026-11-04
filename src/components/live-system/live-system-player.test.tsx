@@ -3,7 +3,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import type { ScenarioStep } from "@/lib/scenarios";
 
-import { HOLD_MS, LiveSystemPlayer, MAX_LOOPS } from "./live-system-player";
+import { HOLD_MS, LiveSystemPlayer } from "./live-system-player";
 
 const steps: ScenarioStep[] = [
   { at: 0, node: "a", line: 0 },
@@ -162,18 +162,20 @@ describe("LiveSystemPlayer", () => {
     ).toBe(false);
   });
 
-  it("stops after three loops with the final state applied", () => {
-    const { state } = renderPlayer();
-    advance(PASS_MS * (MAX_LOOPS - 1) + 10);
-    expect(state('[data-node="b"]')).not.toBe("done");
-
-    advance(PASS_MS);
-    expect(vi.getTimerCount()).toBe(0);
-    expect(state('[data-node="a"]')).toBe("done");
-    expect(state('[data-node="b"]')).toBe("done");
-    expect(state('[data-edge="a>b"]')).toBe("done");
-    expect(state('[data-line="1"]')).toBe("true");
-    expect(state("[data-chip]")).toBe("true");
+  it("keeps looping with no end", () => {
+    const { state, container } = renderPlayer();
+    advance(PASS_MS * 20);
+    expect(vi.getTimerCount()).toBe(1);
+    const seen = new Set<string | null | undefined>();
+    for (let t = 0; t < PASS_MS; t += 100) {
+      advance(100);
+      seen.add(state('[data-node="b"]'));
+    }
+    expect(seen).toContain("idle");
+    expect(seen).toContain("done");
+    expect(
+      container.querySelector("[data-live-system]")?.hasAttribute("data-playing"),
+    ).toBe(true);
   });
 
   it("applies a roving tabindex to the tabs after mount", () => {
