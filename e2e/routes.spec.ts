@@ -168,6 +168,8 @@ const NO_LIVE_LINK_CASES = [
   { path: "/en/work/kenzi", host: "kenzievents.com", status: null },
   { path: "/realisations/reciproq", host: "reciproq.com", status: null },
   { path: "/en/work/reciproq", host: "reciproq.com", status: null },
+  { path: "/realisations/cronolyss", host: "vercel.app", status: null },
+  { path: "/en/work/cronolyss", host: "vercel.app", status: null },
   {
     path: "/realisations/crealogique",
     host: "crealogique.fr",

@@ -8,10 +8,12 @@ const files = readdirSync(dir).filter((f) => f.endsWith(".mdx"));
 const slugs = [...new Set(files.map((f) => f.replace(/\.(fr|en)\.mdx$/, "")))];
 
 describe("case studies", () => {
-  it("has the eight expected slugs", () => {
+  it("has the ten expected slugs", () => {
     expect(slugs.sort()).toEqual([
+      "2060-io",
       "citeme",
       "crealogique",
+      "cronolyss",
       "hop-hop-immo",
       "kenzi",
       "lady-gallery",
@@ -46,7 +48,7 @@ describe("case studies", () => {
   it("sorts by order", async () => {
     const orders = (await getCaseStudies("fr")).map((s) => s.order);
     expect(orders).toEqual([...orders].sort((a, b) => a - b));
-    expect(orders).toHaveLength(8);
+    expect(orders).toHaveLength(10);
   });
 
   it.each(["fr", "en"] as const)(
