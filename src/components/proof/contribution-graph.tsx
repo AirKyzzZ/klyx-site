@@ -4,9 +4,9 @@ const CELL = 10;
 const GAP = 3;
 const LEVEL_FILLS = [
   "var(--surface-3)",
-  "rgb(237 232 222 / 0.22)",
-  "rgb(237 232 222 / 0.45)",
-  "rgb(237 232 222 / 0.7)",
+  "color-mix(in srgb, var(--accent) 28%, var(--surface-3))",
+  "color-mix(in srgb, var(--accent) 52%, var(--surface-3))",
+  "color-mix(in srgb, var(--accent) 76%, var(--surface-3))",
   "var(--accent)",
 ];
 

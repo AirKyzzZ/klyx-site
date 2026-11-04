@@ -1470,7 +1470,7 @@
       "window": "github.com/AirKyzzZ",
       "total": "{total} GitHub contributions in 12 months",
       "label": "Maxime Mansiet's GitHub contribution graph, from {from} to {to}",
-      "caption": "Captured on {date} from his public profile. One square per day: the lighter it is, the more commits, PRs and reviews that day."
+      "caption": "Captured on {date} from his public profile. One square per day: the brighter the orange, the more commits, PRs and reviews that day."
     }
   },
   "bordeaux": {

@@ -1,7 +1,11 @@
 import type { CaseStudyMeta } from "@/lib/content";
-import { getSiteShot } from "@/lib/proof";
-
-const HOME_CASE_COUNT = 4;
+const HOME_CASE_SLUGS = [
+  "cronolyss",
+  "citeme",
+  "hop-hop-immo",
+  "2060-io",
+  "pkba",
+];
 
 export const HOME_OFFER_CARDS = [
   { key: "sites", href: "/services/creation-site-web", offer: "landing" },
@@ -17,7 +21,7 @@ export const ALSO_OFFERS = [
 ] as const;
 
 export function selectHomeCases(cases: CaseStudyMeta[]): CaseStudyMeta[] {
-  return cases
-    .filter((study) => getSiteShot(study.slug) !== null)
-    .slice(0, HOME_CASE_COUNT);
+  return HOME_CASE_SLUGS.flatMap((slug) =>
+    cases.filter((study) => study.slug === slug),
+  );
 }

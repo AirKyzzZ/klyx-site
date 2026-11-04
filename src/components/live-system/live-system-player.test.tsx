@@ -133,15 +133,33 @@ describe("LiveSystemPlayer", () => {
     expect(state('[data-edge="a>b"]')).toBe("active");
   });
 
-  it("pauses on hover inside the frame", () => {
+  it("keeps playing while the pointer is over the frame", () => {
     const { state, container } = renderPlayer();
     advance(0);
     fireEvent.pointerEnter(container.querySelector("[data-ls-frame]")!);
-    advance(5000);
-    expect(state('[data-edge="a>b"]')).toBe("idle");
-    fireEvent.pointerLeave(container.querySelector("[data-ls-frame]")!);
     advance(500);
     expect(state('[data-edge="a>b"]')).toBe("active");
+    expect(
+      container.querySelector("[data-live-system]")?.hasAttribute("data-paused"),
+    ).toBe(false);
+  });
+
+  it("pauses on keyboard focus only", () => {
+    const { state, container } = renderPlayer();
+    advance(0);
+    const target = container.querySelector<HTMLElement>("[data-ls-stage]")!;
+    fireEvent.focusIn(target);
+    advance(500);
+    expect(state('[data-edge="a>b"]')).toBe("active");
+    vi.spyOn(target, "matches").mockReturnValue(true);
+    fireEvent.focusIn(target);
+    expect(
+      container.querySelector("[data-live-system]")?.hasAttribute("data-paused"),
+    ).toBe(true);
+    fireEvent.focusOut(target);
+    expect(
+      container.querySelector("[data-live-system]")?.hasAttribute("data-paused"),
+    ).toBe(false);
   });
 
   it("stops after three loops with the final state applied", () => {

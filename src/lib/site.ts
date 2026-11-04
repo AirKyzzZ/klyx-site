@@ -9,6 +9,7 @@ export const site = {
   legalUpdatedAt: "2026-11-01",
   flags: {
     testimonialsConsented: false,
+    homeProofStrip: false,
   },
   socials: {
     linkedinCompany: "https://www.linkedin.com/company/klyx-studio",
