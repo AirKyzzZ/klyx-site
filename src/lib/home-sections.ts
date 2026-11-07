@@ -8,9 +8,9 @@ const HOME_CASE_SLUGS = [
 ];
 
 export const HOME_OFFER_CARDS = [
-  { key: "sites", href: "/services/creation-site-web", offer: "landing" },
-  { key: "agents", href: "/services/agents-ia", offer: "sprint-ia" },
   { key: "fde", href: "/forward-deployed-engineer", offer: "fde" },
+  { key: "agents", href: "/services/agents-ia", offer: "sprint-ia" },
+  { key: "sites", href: "/services/creation-site-web", offer: "landing" },
 ] as const;
 
 export const ALSO_OFFERS = [

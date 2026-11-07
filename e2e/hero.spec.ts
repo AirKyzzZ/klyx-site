@@ -5,7 +5,7 @@ import fr from "../messages/fr.json";
 import { verifyLighthouse } from "../src/lib/proof";
 import lighthouseData from "../src/lib/proof/klyx-lighthouse.json";
 
-const HOME_TABS = ["agents", "sites", "fde"] as const;
+const HOME_TABS = ["agents", "fde", "sites"] as const;
 const agents = fr.liveSystem.scenarios.agents;
 const PLAYBACK_TIMEOUT_MS = 15_000;
 

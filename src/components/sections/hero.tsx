@@ -122,7 +122,7 @@ export function Hero({
   );
 }
 
-const HOME_SCENARIOS = ["agents", "sites", "fde"] as const;
+const HOME_SCENARIOS = ["agents", "fde", "sites"] as const;
 
 export async function HomeHero({ locale }: { locale: Locale }) {
   const t = await getTranslations({ locale, namespace: "home.hero" });

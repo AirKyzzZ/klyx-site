@@ -107,10 +107,7 @@ export const PRICE_GROUPS: {
   key: "sites" | "ai" | "fde";
   offers: OfferId[];
 }[] = [
-  {
-    key: "sites",
-    offers: ["landing", "site-ia", "site-custom", "geo", "geo-care"],
-  },
+  { key: "fde", offers: ["fde"] },
   {
     key: "ai",
     offers: [
@@ -121,7 +118,10 @@ export const PRICE_GROUPS: {
       "retainer",
     ],
   },
-  { key: "fde", offers: ["fde"] },
+  {
+    key: "sites",
+    offers: ["landing", "site-ia", "site-custom", "geo", "geo-care"],
+  },
 ];
 
 export function formatPrice(amount: number, locale: Locale): string {
