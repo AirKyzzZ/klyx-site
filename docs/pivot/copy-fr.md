@@ -24,7 +24,7 @@ Ordre partout : Forward Deployed Engineer, puis agents et workflows au forfait, 
 
 ## Forward Deployed Engineer `/forward-deployed-engineer`
 
-- H1 : Un Forward Deployed Engineer *dans votre équipe, jusqu'en production.*
+- H1 : Un Forward Deployed Engineer *dans votre équipe.*
 - Sous-titre : Un Forward Deployed Engineer (ingénieur intégré à votre équipe) rejoint votre Slack et votre repo 2 à 3 jours par semaine pour livrer vos agents, vos workflows et vos fonctionnalités IA. {prix} par jour, 4 semaines minimum, deux clients au plus en même temps.
 - Définition : se termine par « met vos agents et vos workflows en production, sans recrutement à temps plein ».
 - CTA : Un agent ou un workflow *à livrer ce trimestre ?*

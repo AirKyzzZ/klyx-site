@@ -675,11 +675,11 @@
     "hero": {
       "eyebrow": "Forward Deployed Engineer",
       "title": "A Forward Deployed Engineer",
-      "titleEmphasis": "in your team, all the way to production.",
+      "titleEmphasis": "in your team.",
       "subtitle": "A Forward Deployed Engineer (an engineer embedded in your team) joins your Slack and your repo 2 to 3 days a week to ship your agents, workflows and AI features. {fdeDayPrice} per day, 4 weeks minimum, two clients at most at any time.",
       "ctaPrimary": "Book a call",
       "ctaSecondary": "Get a free quote",
-      "serif": "production"
+      "serif": "team"
     },
     "definition": {
       "title": "What is a",
