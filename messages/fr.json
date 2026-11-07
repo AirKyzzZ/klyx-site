@@ -2,9 +2,9 @@
   "nav": {
     "home": "Accueil",
     "offers": "Offres",
-    "groupBuild": "Construire",
-    "groupAdvise": "Conseiller",
-    "sites": "Sites et landing pages",
+    "groupBuild": "Ingénierie IA",
+    "groupAdvise": "Audit, visibilité et sites",
+    "sites": "Landing pages et sites",
     "agents": "Agents IA",
     "fde": "Forward Deployed Engineer",
     "cases": "Réalisations",
@@ -33,7 +33,7 @@
     "services": "Cabinets et services"
   },
   "footer": {
-    "tagline": "Sites, agents IA et automatisations au forfait. Basés à Bordeaux, on travaille à distance partout en France et en Europe.",
+    "tagline": "Un ingénieur IA dans votre équipe : agents, workflows et automatisations en production, et la page qui les vend. Basés à Bordeaux, à distance partout en France et en Europe.",
     "offersTitle": "Offres",
     "companyTitle": "Klyx",
     "legalTitle": "Informations",
@@ -46,13 +46,13 @@
   },
   "home": {
     "hero": {
-      "title": "Des agents IA qui tournent en production,",
-      "titleEmphasis": "pas des démos.",
-      "subtitle": "Sites, agents et automatisations livrés au forfait pour startups et agences. Devis gratuit, prix publics.",
+      "title": "Un ingénieur IA dans votre équipe,",
+      "titleEmphasis": "jusqu'en production.",
+      "subtitle": "Un Forward Deployed Engineer (ingénieur intégré à votre équipe) met vos agents IA, workflows et automatisations en production, dans votre repo et sur vos outils : Slack, CRM, boîte mail. Et si besoin, la page qui les vend.",
       "ctaPrimary": "Réserver un appel",
       "ctaSecondary": "Demander un devis gratuit",
-      "eyebrow": "Agence IA · Bordeaux",
-      "serif": "démos"
+      "eyebrow": "Forward Deployed Engineering · Bordeaux",
+      "serif": "production"
     },
     "proof": {
       "label": "Livrable réel",
@@ -65,20 +65,20 @@
       "link": "Voir l'offre",
       "cards": {
         "sites": {
-          "name": "Sites et landing pages",
-          "outcome": "Un site rapide et clair, que Google et ChatGPT savent lire. En ligne en 1 à 4 semaines.",
+          "name": "Landing pages et sites",
+          "outcome": "En complément : la page qui explique ce que vos agents font, rapide et lisible par Google et ChatGPT. En ligne en 1 à 4 semaines.",
           "price": "À partir de {price}",
           "duration": "1 à 4 semaines"
         },
         "agents": {
-          "name": "Agents IA",
-          "outcome": "On branche l'IA sur vos outils pour qu'une tâche répétitive se fasse seule. En production en 2 semaines, et le code reste chez vous.",
+          "name": "Agents et workflows IA",
+          "outcome": "Un agent ou un workflow branché sur vos outils, pour qu'une tâche répétitive se fasse seule. En production en 2 semaines, au forfait, et le code reste chez vous.",
           "price": "À partir de {price}",
           "duration": "2 semaines"
         },
         "fde": {
           "name": "Forward Deployed Engineer",
-          "outcome": "Un développeur de l'agence intégré à votre équipe 2 à 3 jours par semaine, pendant 4 semaines ou plus. Il livre vos fonctionnalités IA dans votre propre code.",
+          "outcome": "Un ingénieur de l'agence intégré à votre équipe 2 à 3 jours par semaine, pendant 4 semaines ou plus. Il livre vos agents et vos workflows dans votre propre code.",
           "price": "À partir de {price} / jour",
           "duration": "4 semaines minimum"
         }
@@ -135,7 +135,7 @@
     },
     "cases": {
       "title": "Réalisations",
-      "subtitle": "Des sites livrés pour des clients et des produits sur lesquels on a travaillé. Pour chaque projet, ce qu'on a construit.",
+      "subtitle": "Des produits sur lesquels on a travaillé et des sites livrés pour des clients. Pour chaque projet, ce qu'on a construit.",
       "visit": "Voir le projet",
       "readCase": "Lire l'étude de cas",
       "viewAll": "Toutes les réalisations"
@@ -149,7 +149,7 @@
         },
         "scope": {
           "title": "Audit ou devis",
-          "body": "On passe en revue votre site ou vos process, puis on vous envoie un périmètre écrit et un prix fixe."
+          "body": "On passe en revue vos process et vos outils, puis on vous envoie un périmètre écrit et un prix fixe."
         },
         "build": {
           "title": "Build",
@@ -270,7 +270,7 @@
       "items": {
         "price": {
           "question": "Combien coûte un projet ?",
-          "answer": "Une landing page démarre à {landingPrice}, un site IA à {siteIaPrice}, un audit IA à {auditPrice} et un Sprint IA à {sprintPrice}. Le prix final dépend du périmètre, fixé par écrit avant de commencer. Tous les prix sont sur la page Tarifs."
+          "answer": "Un audit IA démarre à {auditPrice}, un Sprint IA à {sprintPrice}, une landing page à {landingPrice} et un site IA à {siteIaPrice}. Le prix final dépend du périmètre, fixé par écrit avant de commencer. Tous les prix sont sur la page Tarifs."
         },
         "team": {
           "question": "Qui travaille sur notre projet ?",
@@ -290,17 +290,17 @@
         },
         "stack": {
           "question": "Quelle stack utilisez-vous ?",
-          "answer": "Next.js, TypeScript et Supabase pour les produits, WordPress quand votre équipe veut éditer seule. Côté IA : OpenAI, Anthropic et Gemini, des serveurs MCP et des agents branchés sur vos outils."
+          "answer": "Côté IA : OpenAI, Anthropic et Gemini, des serveurs MCP et des agents branchés sur vos outils. Côté produit : Next.js, TypeScript et Supabase, et WordPress quand votre équipe veut éditer seule."
         }
       },
       "titleEmphasis": "fréquentes."
     },
     "finalCta": {
-      "title": "Parlons de votre prochain workflow",
+      "title": "Parlons du workflow",
       "body": "Réservez un appel de 30 minutes. Vous repartez avec un avis clair sur ce qui vaut le coup, même si on ne travaille pas ensemble.",
       "ctaPrimary": "Réserver un appel",
       "ctaSecondary": "Demander un devis gratuit",
-      "titleEmphasis": "ou de votre prochain site."
+      "titleEmphasis": "que vous voulez mettre en production."
     },
     "fold": {
       "label": "Engagements vérifiables",
@@ -406,18 +406,18 @@
   },
   "sites": {
     "hero": {
-      "eyebrow": "Sites et landing pages",
-      "title": "Création de site web à Bordeaux,",
-      "titleEmphasis": "au prix affiché.",
-      "subtitle": "Landing page à partir de {landingPrice}, site de 5 à 8 pages à partir de {siteIaPrice}. Des sites rapides, référencés sur Google et lisibles par ChatGPT ou Perplexity.",
+      "eyebrow": "Création de site web · Landing pages",
+      "title": "La page qui vend",
+      "titleEmphasis": "ce que vos agents font.",
+      "subtitle": "En complément d'un projet IA, ou seule : landing page à partir de {landingPrice}, site de 5 à 8 pages à partir de {siteIaPrice}. Des pages rapides, référencées sur Google et lisibles par ChatGPT ou Perplexity.",
       "ctaPrimary": "Réserver un appel",
       "ctaSecondary": "Demander un devis gratuit",
-      "serif": "affiché"
+      "serif": "vend"
     },
     "problem": {
-      "title": "Pourquoi refaire",
-      "body": "Un site lent ou mal structuré perd ses visiteurs avant qu'ils aient lu votre offre. Et une partie de vos clients pose maintenant ses questions à ChatGPT ou Perplexity, qui citent surtout les sites qu'ils arrivent à lire. On construit des sites pensés pour les deux.",
-      "titleEmphasis": "votre site.",
+      "title": "Votre produit fait plus",
+      "body": "Un agent ou un workflow qui tourne ne se vend pas tout seul. Si la page est lente ou floue, vos visiteurs partent avant de comprendre ce qu'il fait. Et une partie de vos clients pose maintenant ses questions à ChatGPT ou Perplexity, qui citent surtout les sites qu'ils arrivent à lire. On construit des pages pensées pour les deux.",
+      "titleEmphasis": "que ce que dit votre site.",
       "symptoms": {
         "slow": "Un site qui met plus de 3 secondes à s'afficher sur mobile",
         "noPrice": "Des pages qui ne disent ni le prix ni le délai",
@@ -520,7 +520,7 @@
       "titleEmphasis": "fréquentes."
     },
     "cta": {
-      "title": "Votre site,",
+      "title": "Votre page,",
       "body": "Décrivez votre projet, on vous envoie un devis gratuit avec un prix fixe.",
       "ctaPrimary": "Demander un devis gratuit",
       "ctaSecondary": "Réserver un appel",
@@ -534,10 +534,10 @@
   },
   "agents": {
     "hero": {
-      "eyebrow": "Agents IA",
+      "eyebrow": "Agents et workflows IA",
       "title": "Un agent IA en production",
       "titleEmphasis": "en deux semaines.",
-      "subtitle": "Audit à partir de {auditPrice}, Sprint IA à partir de {sprintPrice}. Un workflow branché sur vos outils, avec le code dans votre repo et un journal de chaque action de l'agent.",
+      "subtitle": "Pour les équipes qui veulent un résultat au forfait, sans ingénieur intégré. Audit à partir de {auditPrice}, Sprint IA à partir de {sprintPrice} : un workflow branché sur vos outils, le code dans votre repo et un journal de chaque action de l'agent.",
       "ctaPrimary": "Réserver un appel",
       "ctaSecondary": "Demander un devis gratuit",
       "serif": "production",
@@ -675,27 +675,27 @@
     "hero": {
       "eyebrow": "Forward Deployed Engineer",
       "title": "Un Forward Deployed Engineer",
-      "titleEmphasis": "à temps partagé.",
-      "subtitle": "Notre lead engineer rejoint votre équipe 2 à 3 jours par semaine pour livrer vos fonctionnalités IA. {fdeDayPrice} par jour, 4 semaines minimum, deux clients au plus en même temps.",
+      "titleEmphasis": "dans votre équipe, jusqu'en production.",
+      "subtitle": "Un Forward Deployed Engineer (ingénieur intégré à votre équipe) rejoint votre Slack et votre repo 2 à 3 jours par semaine pour livrer vos agents, vos workflows et vos fonctionnalités IA. {fdeDayPrice} par jour, 4 semaines minimum, deux clients au plus en même temps.",
       "ctaPrimary": "Réserver un appel",
       "ctaSecondary": "Demander un devis gratuit",
-      "serif": "partagé"
+      "serif": "production"
     },
     "definition": {
       "title": "Qu'est-ce qu'un",
-      "body": "Un Forward Deployed Engineer (FDE) est un développeur qui travaille directement avec l'équipe du client, sur son code, pour mettre un produit en production. Le rôle vient d'éditeurs comme Palantir, et les labos d'IA l'utilisent aujourd'hui pour déployer leurs modèles chez leurs clients. Chez Klyx, c'est le même travail à temps partagé : notre lead engineer s'intègre à votre équipe quelques jours par semaine, sans recrutement à temps plein.",
+      "body": "Un Forward Deployed Engineer, ou FDE, est un ingénieur qui travaille directement avec l'équipe du client, sur son code, pour mettre un produit en production. Le rôle vient d'éditeurs comme Palantir, et les labos d'IA l'utilisent aujourd'hui pour déployer leurs modèles chez leurs clients. Chez Klyx, c'est le même travail à temps partagé : notre lead engineer s'intègre à votre équipe quelques jours par semaine et met vos agents et vos workflows en production, sans recrutement à temps plein.",
       "titleEmphasis": "Forward Deployed Engineer ?",
       "term": "forward deployed engineer · nom masculin · FDE"
     },
     "audience": {
       "title": "Pour qui",
-      "body": "Une startup de 2 à 4 personnes qui doit livrer une fonctionnalité IA avant sa prochaine levée et n'a pas le temps de recruter. Ou une agence qui a signé un projet IA et n'a personne pour le coder."
+      "body": "Une startup de 2 à 4 personnes qui doit sortir un agent ou une fonctionnalité IA avant sa prochaine levée et n'a pas le temps de recruter. Ou une agence qui a signé un projet IA et n'a personne pour le coder."
     },
     "deliverables": {
       "title": "Ce qu'on fait",
       "items": {
         "tools": "On travaille dans votre Slack, votre repo et vos points d'équipe",
-        "backlog": "On prend en charge une partie du backlog, de la conception à la mise en production",
+        "backlog": "On prend en charge une partie du backlog IA, de la conception à la mise en production : agents, workflows, intégrations",
         "weekly": "Chaque semaine, un point écrit avec la liste des PR livrées",
         "handover": "Une documentation de passation à la fin de la mission"
       },
@@ -768,7 +768,7 @@
       "titleEmphasis": "fréquentes."
     },
     "cta": {
-      "title": "Une fonctionnalité IA",
+      "title": "Un agent ou un workflow",
       "body": "Réservez un appel. On vous dit vite si on peut prendre la mission, et sur quel rythme.",
       "ctaPrimary": "Réserver un appel",
       "ctaSecondary": "Demander un devis gratuit",
@@ -1274,7 +1274,7 @@
     "hero": {
       "title": "Tous nos tarifs,",
       "titleEmphasis": "affichés.",
-      "subtitle": "Prix en € HT, « à partir de ». Le prix final dépend du périmètre, écrit dans le devis gratuit avant de commencer.",
+      "subtitle": "Prix en € HT, « à partir de » : un Forward Deployed Engineer (ingénieur intégré à votre équipe), un Sprint IA, un audit ou une automatisation, puis les sites. Le prix final dépend du périmètre, écrit dans le devis gratuit avant de commencer.",
       "serif": "affichés"
     },
     "table": {
@@ -1384,7 +1384,7 @@
     "hero": {
       "title": "Une agence IA à Bordeaux,",
       "titleEmphasis": "un seul interlocuteur.",
-      "subtitle": "On construit des sites, des agents IA et des automatisations pour des startups, des agences et des PME. Un lead engineer suit votre projet du premier appel à la passation.",
+      "subtitle": "On met en production des agents IA, des workflows et des automatisations pour des startups, des agences et des PME, et on construit la page qui les vend quand il en faut une. Un lead engineer suit votre projet du premier appel à la passation.",
       "serif": "interlocuteur"
     },
     "story": {
@@ -1478,7 +1478,7 @@
       "eyebrow": "Agence IA à Bordeaux",
       "title": "L'IA pour les PME de Bordeaux,",
       "titleEmphasis": "sans jargon.",
-      "subtitle": "On aide les PME de Bordeaux et de Gironde à automatiser les tâches répétitives : devis, factures, e-mails, reporting. Le prix est fixé avant de commencer.",
+      "subtitle": "On aide les PME de Bordeaux et de Gironde à automatiser les tâches répétitives avec des agents IA et des workflows : devis, factures, e-mails, reporting. On commence par un audit, et le prix est fixé avant de commencer.",
       "ctaPrimary": "Réserver un appel",
       "ctaSecondary": "Demander un devis gratuit",
       "serif": "jargon"
@@ -1631,7 +1631,7 @@
     "hero": {
       "title": "Parlons de",
       "titleEmphasis": "votre projet.",
-      "subtitle": "Réservez un appel de 30 minutes ou décrivez votre besoin ci-dessous. Maxime, notre lead engineer, vous répond en personne.",
+      "subtitle": "Réservez un appel de 30 minutes ou décrivez l'agent, le workflow ou la page dont vous avez besoin. Maxime, notre lead engineer, vous répond en personne.",
       "serif": "projet"
     },
     "booking": {
@@ -2291,7 +2291,7 @@
       "title": "Questions fréquentes",
       "titleEmphasis": "sur nos prix, nos délais et vos données.",
       "serif": "données",
-      "subtitle": "Toutes les réponses du site au même endroit, classées par thème, pour les dirigeants de PME et d'agences. Prix publics en € HT, de {landingPrice} pour une landing page à {sprintPrice} pour un agent IA en production.",
+      "subtitle": "Toutes les réponses du site au même endroit, classées par thème : agents IA, Forward Deployed Engineer (ingénieur intégré à votre équipe), prix, données. Prix publics en € HT, de {landingPrice} pour une landing page à {sprintPrice} pour un agent IA en production.",
       "ctaPrimary": "Réserver un appel",
       "ctaSecondary": "Demander un devis gratuit"
     },
@@ -2387,26 +2387,26 @@
   },
   "meta": {
     "title": "Klyx",
-    "description": "Sites, agents IA et automatisations livrés au forfait pour startups et agences, depuis Bordeaux. Devis gratuit, prix publics.",
+    "description": "Klyx intègre un ingénieur IA à votre équipe pour mettre vos agents, workflows et automatisations en production. Basés à Bordeaux, prix publics.",
     "home": {
-      "title": "Klyx | Agents IA et sites au forfait, Bordeaux",
-      "description": "Des agents IA qui tournent en production, pas des démos. Sites, agents et automatisations au forfait pour startups et agences. Devis gratuit, prix publics."
+      "title": "Klyx | Un ingénieur IA dans votre équipe, Bordeaux",
+      "description": "Un ingénieur IA dans votre équipe, jusqu'en production : agents, workflows et automatisations branchés sur vos outils, code dans votre repo. Prix publics."
     },
     "sites": {
       "title": "Création de site web à Bordeaux, prix affichés | Klyx",
-      "description": "Landing page dès {landingPrice}, site de 5 à 8 pages dès {siteIaPrice}. Des sites rapides, référencés sur Google et lisibles par ChatGPT."
+      "description": "Landing page dès {landingPrice}, site de 5 à 8 pages dès {siteIaPrice}. La page qui explique ce que vos agents font, rapide et lisible par ChatGPT."
     },
     "agents": {
-      "title": "Agents IA et automatisation pour entreprises | Klyx",
+      "title": "Agents et workflows IA en production, au forfait | Klyx",
       "description": "Audit IA dès {auditPrice}, Sprint IA dès {sprintPrice} : un workflow en production en deux semaines, avec le code dans votre repo."
     },
     "fde": {
-      "title": "Forward Deployed Engineer à temps partagé | Klyx",
-      "description": "Qu'est-ce qu'un Forward Deployed Engineer ? Un développeur IA dans votre équipe 2 à 3 jours par semaine, dès {fdeDayPrice} par jour."
+      "title": "Forward Deployed Engineer : ingénieur IA intégré | Klyx",
+      "description": "Un Forward Deployed Engineer dans votre équipe 2 à 3 jours par semaine, pour mettre vos agents IA en production. Dès {fdeDayPrice} par jour."
     },
     "pricing": {
-      "title": "Tarifs : prix d'un site et d'un agent IA | Klyx",
-      "description": "Tous les prix Klyx en € HT : landing page, site IA, audit IA, Sprint IA et Forward Deployed Engineer. Devis gratuit."
+      "title": "Tarifs : agent IA, ingénieur intégré et site | Klyx",
+      "description": "Tous les prix Klyx en € HT : Forward Deployed Engineer, Sprint IA, audit IA, automatisation, landing page et site IA. Devis gratuit."
     },
     "cases": {
       "title": "Réalisations : sites et agents IA livrés | Klyx",
@@ -2422,7 +2422,7 @@
     },
     "contact": {
       "title": "Contact et devis gratuit | Klyx",
-      "description": "Réservez un appel de 30 minutes ou demandez un devis gratuit pour un site, un agent IA ou une mission de Forward Deployed Engineer."
+      "description": "Réservez un appel de 30 minutes ou demandez un devis gratuit pour un agent IA, une mission de Forward Deployed Engineer ou un site."
     },
     "blog": {
       "title": "Blog : agents IA, GEO et sites rapides | Klyx",
