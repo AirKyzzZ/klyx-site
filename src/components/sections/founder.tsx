@@ -82,7 +82,9 @@ export function RosterWindow({ window, file, keys, items }: TeamRoster) {
                     {keys[field]}:
                   </dt>
                   <dd
-                    className={field === "role" ? "text-accent" : "text-text"}
+                    className={
+                      field === "role" ? "text-accent-text" : "text-text"
+                    }
                   >
                     {item[field]}
                   </dd>

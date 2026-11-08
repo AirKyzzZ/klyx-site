@@ -29,7 +29,7 @@ export function NotFoundView({
         "container flex min-h-[80vh] flex-col items-center justify-center pt-28 pb-24 text-center"
       }
     >
-      <p className="type-label text-accent">404</p>
+      <p className="type-label text-accent-text">404</p>
       <h1 className="type-h1 mt-4">{copy.title}</h1>
       <p className="text-text-2 mt-4 max-w-[44ch]">{copy.body}</p>
       <div className="mt-10 w-full max-w-[560px] text-left">

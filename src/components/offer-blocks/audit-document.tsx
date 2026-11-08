@@ -70,7 +70,7 @@ export async function AuditDocument({
                           {column === "process" && (
                             <span
                               className={
-                                i === 0 ? "text-accent" : "text-text-3"
+                                i === 0 ? "text-accent-text" : "text-text-3"
                               }
                             >
                               {i + 1}.{" "}

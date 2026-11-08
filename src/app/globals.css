@@ -25,6 +25,8 @@
   --accent-hover: #ff6413;
   --accent-ink: #141414;
   --accent-soft: rgb(245 78 0 / 0.14);
+  --accent-on-light: #b83a00;
+  --accent-text: var(--accent);
   --glow: rgb(245 78 0 / 0.32);
   --ui-ok: #4cc38a;
   --ui-err: #e5484d;
@@ -81,6 +83,7 @@
   --color-accent-hover: var(--accent-hover);
   --color-accent-ink: var(--accent-ink);
   --color-accent-soft: var(--accent-soft);
+  --color-accent-text: var(--accent-text);
   --color-ui-ok: var(--ui-ok);
   --color-ui-err: var(--ui-err);
 
@@ -295,6 +298,7 @@
   --text: var(--ink);
   --text-2: var(--ink-2);
   --text-3: var(--ink-2);
+  --accent-text: var(--accent-on-light);
   --line: var(--sand-200);
   background-color: var(--sand-50);
   color: var(--text);
@@ -348,6 +352,7 @@
   --text: #edeae3;
   --text-2: #a8a29a;
   --text-3: #948e85;
+  --accent-text: var(--accent);
   --line: rgb(237 232 222 / 0.08);
 }
 

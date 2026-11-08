@@ -77,7 +77,7 @@ function ConnectionMap({ rows, map }: { rows: ToolRow[]; map: ToolMap }) {
       />
       <div className="border-accent/60 bg-surface-2 shadow-window mx-auto w-full max-w-72 rounded-md border p-4 lg:mt-7 lg:w-60">
         <p className="flex items-center gap-2.5">
-          <span className="border-line-strong bg-bg-sunken text-accent flex size-8 items-center justify-center rounded-sm border">
+          <span className="border-line-strong bg-bg-sunken text-accent-text flex size-8 items-center justify-center rounded-sm border">
             <Workflow aria-hidden="true" className="size-4" strokeWidth={1.5} />
           </span>
           <span className="flex flex-col">

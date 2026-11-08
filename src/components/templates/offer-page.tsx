@@ -443,7 +443,7 @@ function FdeTermsCard({
       <article className="bg-surface-1 shadow-card grid gap-10 rounded-[calc(var(--r-md)-1px)] p-5 lg:grid-cols-12 lg:gap-6 lg:p-8">
         <div className="lg:col-span-6">
           <p className="type-label text-text-3">
-            <span className="text-accent">01</span> / {tier.duration}
+            <span className="text-accent-text">01</span> / {tier.duration}
           </p>
           <h3 className="type-h3 mt-6">{tier.name}</h3>
           <p className="text-text-2 mt-2 max-w-[44ch] text-[0.9375rem]">

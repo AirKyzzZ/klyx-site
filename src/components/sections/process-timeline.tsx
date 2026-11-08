@@ -226,7 +226,7 @@ export async function ProcessTimeline({
                   data-active={i === 0 ? "" : undefined}
                   className="group text-text-3 hover:text-text-2 data-active:text-text data-active:before:bg-accent relative flex items-baseline gap-3 py-2.5 pr-6 transition-colors duration-(--d-fast) before:absolute before:top-1/2 before:-right-px before:h-7 before:w-px before:-translate-y-1/2 before:bg-transparent before:transition-colors"
                 >
-                  <span className="group-data-active:text-accent font-mono text-xs transition-colors">
+                  <span className="group-data-active:text-accent-text font-mono text-xs transition-colors">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <span className="text-[1.0625rem] tracking-[-0.015em]">
