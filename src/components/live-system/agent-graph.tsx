@@ -18,6 +18,7 @@ import { ToolLogo } from "@/components/logos/tool-logo";
 import {
   edgeKey,
   type GraphNode,
+  type Lane,
   type NodeIcon,
   type Scenario,
   type ScenarioFinalState,
@@ -152,6 +153,37 @@ function NodeGlyph({ node }: { node: GraphNode }) {
   return <Icon strokeWidth={1.5} />;
 }
 
+function Lanes({
+  lanes,
+  labels,
+}: {
+  lanes: Lane[];
+  labels: Record<string, string>;
+}) {
+  if (lanes.length === 0) return null;
+  return (
+    <ul className="ls-lanes">
+      {lanes.map((lane) => (
+        <li
+          key={lane.id}
+          className="ls-lane"
+          data-lane={lane.id}
+          data-team={lane.team || undefined}
+          style={
+            {
+              "--from": `${lane.from}%`,
+              "--to": `${lane.to}%`,
+              "--lmy": `${lane.my}%`,
+            } as CSSProperties
+          }
+        >
+          {labels[lane.id]}
+        </li>
+      ))}
+    </ul>
+  );
+}
+
 function RunStatus({ active, done }: { active: string; done: string }) {
   return (
     <span className="ls-run">
@@ -169,6 +201,7 @@ export function AgentGraph({
   title,
   labels,
   metas,
+  lanes,
   run,
 }: {
   scenario: Scenario;
@@ -176,6 +209,7 @@ export function AgentGraph({
   title: string;
   labels: Record<string, string>;
   metas: Record<string, string>;
+  lanes: Record<string, string>;
   run: { active: string; done: string };
 }) {
   const terminal = terminalNode(scenario);
@@ -201,6 +235,7 @@ export function AgentGraph({
           parkedOn={parkedOn}
           className="ls-edges-m"
         />
+        <Lanes lanes={scenario.lanes} labels={lanes} />
         <ul className="ls-nodes">
           {scenario.nodes.map((node) => {
             const position = {

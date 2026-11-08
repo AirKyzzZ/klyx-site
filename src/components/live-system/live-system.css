@@ -275,9 +275,38 @@
   opacity: 0;
 }
 
-.ls-nodes {
+.ls-nodes,
+.ls-lanes {
   position: absolute;
   inset: 0;
+}
+
+.ls-lanes {
+  pointer-events: none;
+}
+
+.ls-lane {
+  position: absolute;
+  top: var(--lmy);
+  left: 50%;
+  padding: 3px 7px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-xs);
+  background: var(--surface-2);
+  color: var(--text-3);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transform: translate(-50%, -50%);
+}
+
+.ls-lane[data-team] {
+  border-color: rgb(245 78 0 / 0.4);
+  color: var(--accent);
 }
 
 .ls-node {
@@ -747,6 +776,23 @@
 
   .ls-edges-m {
     display: none;
+  }
+
+  .ls-lane {
+    top: 5%;
+    left: calc(var(--from) + 1.5%);
+    width: calc(var(--to) - var(--from) - 3%);
+    padding: 0 0 7px;
+    border: 0;
+    border-bottom: 1px solid var(--line-strong);
+    border-radius: 0;
+    background: none;
+    text-align: center;
+    transform: none;
+  }
+
+  .ls-lane[data-team] {
+    border-bottom-color: rgb(245 78 0 / 0.45);
   }
 
   .ls-node {

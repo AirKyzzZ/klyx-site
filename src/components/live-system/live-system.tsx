@@ -123,6 +123,9 @@ export async function LiveSystem({
                   labels={Object.fromEntries(
                     scenario.nodes.map((node) => [node.id, t(node.labelKey)]),
                   )}
+                  lanes={Object.fromEntries(
+                    scenario.lanes.map((lane) => [lane.id, t(lane.labelKey)]),
+                  )}
                 />
                 <TerminalTrace
                   title={`${t("liveSystem.trace")} · ${title}`}

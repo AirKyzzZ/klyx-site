@@ -56,6 +56,15 @@ export type TraceLine = {
   mobile: boolean;
 };
 
+export type Lane = {
+  id: string;
+  labelKey: string;
+  from: number;
+  to: number;
+  my: number;
+  team: boolean;
+};
+
 export type StaticPathname = Exclude<AppPathname, `${string}[${string}`>;
 
 export type Scenario = {
@@ -68,6 +77,7 @@ export type Scenario = {
   steps: ScenarioStep[];
   chipKey: string;
   illustration: boolean;
+  lanes: Lane[];
 };
 
 type NodeSpec = [
@@ -80,6 +90,7 @@ type NodeSpec = [
   tool?: ToolLogoId | "models",
 ];
 type TraceSpec = [t: string, key: string, tone?: TraceLine["tone"]];
+type LaneSpec = [id: string, from: number, to: number, my: number];
 
 function scenario(
   id: ScenarioId,
@@ -92,6 +103,8 @@ function scenario(
     desktopOnly: string[];
     steps: ScenarioStep[];
     illustration?: boolean;
+    lanes?: LaneSpec[];
+    team?: string;
   },
 ): Scenario {
   const base = `liveSystem.scenarios.${id}`;
@@ -121,6 +134,14 @@ function scenario(
     steps: config.steps,
     chipKey: `${base}.chip`,
     illustration: config.illustration ?? true,
+    lanes: (config.lanes ?? []).map(([laneId, from, to, my]) => ({
+      id: laneId,
+      labelKey: `${base}.lanes.${laneId}`,
+      from,
+      to,
+      my,
+      team: laneId === config.team,
+    })),
   };
 }
 
@@ -269,21 +290,25 @@ export const scenarios: Record<ScenarioId, Scenario> = {
   fde: scenario("fde", {
     href: "/forward-deployed-engineer",
     agent: "engineer",
+    team: "team",
     desktopOnly: ["read", "branch"],
+    lanes: [
+      ["backlog", 0, 25, 2.5],
+      ["team", 25, 75, 20],
+      ["prod", 75, 100, 70.5],
+    ],
     nodes: [
-      ["ticket", "inbox", 12.5, 72, 50, 7],
-      ["repo", "git", 12.5, 28, 50, 23, "git"],
-      ["engineer", "user-check", 38, 28, 50, 38, "models"],
-      ["pr", "git", 38, 72, 50, 54],
-      ["review", "search", 62, 72, 50, 69],
-      ["deploy", "rocket", 87, 28, 50, 85],
+      ["ticket", "inbox", 12.5, 28, 50, 11],
+      ["repo", "git", 37, 72, 50, 29, "git"],
+      ["engineer", "user-check", 50, 28, 50, 45, "models"],
+      ["pr", "git", 63, 72, 50, 61],
+      ["deploy", "rocket", 87, 28, 50, 79],
     ],
     edges: [
       ["ticket", "repo"],
       ["repo", "engineer"],
       ["engineer", "pr"],
-      ["pr", "review"],
-      ["review", "deploy"],
+      ["pr", "deploy"],
     ],
     trace: [
       ["09:02", "ticket"],
@@ -307,10 +332,9 @@ export const scenarios: Record<ScenarioId, Scenario> = {
       { at: 5700, line: 5 },
       { at: 6100, edge: ["engineer", "pr"] },
       { at: 7300, node: "pr", line: 6 },
-      { at: 7800, edge: ["pr", "review"] },
-      { at: 9000, node: "review", line: 7 },
-      { at: 9500, edge: ["review", "deploy"] },
-      { at: 10700, node: "deploy", line: 8, chip: true },
+      { at: 8300, line: 7 },
+      { at: 8800, edge: ["pr", "deploy"] },
+      { at: 10000, node: "deploy", line: 8, chip: true },
     ],
   }),
   audit: scenario("audit", {

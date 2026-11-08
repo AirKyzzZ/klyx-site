@@ -88,6 +88,7 @@ describe("scenarios", () => {
       `liveSystem.tabs.${scenario.id}`,
       ...scenario.nodes.map((node) => node.labelKey),
       ...scenario.nodes.map((node) => node.metaKey),
+      ...scenario.lanes.map((lane) => lane.labelKey),
       ...scenario.trace.map((line) => line.key),
     ];
     for (const key of keys) {

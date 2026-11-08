@@ -2567,34 +2567,37 @@
       "fde": {
         "title": "ENG-142 · CSV export",
         "nodes": {
-          "ticket": "Request",
-          "repo": "Your code",
-          "engineer": "Dev + AI agent",
-          "pr": "Fix",
-          "review": "Review",
+          "ticket": "Ticket",
+          "repo": "Your repo",
+          "engineer": "Engineer",
+          "pr": "Pull request",
           "deploy": "Shipped"
         },
         "meta": {
           "ticket": "ENG-142",
           "repo": "git repo",
-          "engineer": "paired",
+          "engineer": "+ AI agent",
           "pr": "PR #87",
-          "review": "1 comment",
           "deploy": "prod"
         },
+        "lanes": {
+          "backlog": "Your backlog",
+          "team": "Your team + Klyx",
+          "prod": "Your prod"
+        },
         "trace": {
-          "ticket": "Ticket: CSV export is slow",
-          "branch": "Fix under way on the CSV export",
+          "ticket": "Picked up ticket ENG-142",
+          "branch": "Branch opened in your repo",
           "read": "AI agent · reads 14 files",
           "testFail": "A test fails, we fix it",
           "fix": "Export split into batches",
           "testPass": "128 tests pass",
-          "pr": "Fix sent for review",
-          "review": "Reviewed, 1 comment handled",
-          "merged": "Approved and shipped"
+          "pr": "PR #87 opened, CI green",
+          "review": "Reviewed by your team",
+          "merged": "PR merged, shipped"
         },
-        "chip": "Fix shipped · tests ✓",
-        "caption": "Sample FDE day: a developer from the agency fixes a problem in your code, and the fix ships the same afternoon. Names and values are fictional."
+        "chip": "PR merged · in prod",
+        "caption": "Sample day: the Klyx engineer works inside your team and your repo with an AI agent, and the fix ships the same afternoon. Names and values are fictional."
       },
       "audit": {
         "title": "audit · sample-sme",

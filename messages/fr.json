@@ -2567,34 +2567,37 @@
       "fde": {
         "title": "ENG-142 · export CSV",
         "nodes": {
-          "ticket": "Demande",
-          "repo": "Votre code",
-          "engineer": "Dev + agent IA",
-          "pr": "Correctif",
-          "review": "Relecture",
-          "deploy": "Livré"
+          "ticket": "Ticket",
+          "repo": "Votre repo",
+          "engineer": "Ingénieur",
+          "pr": "Pull request",
+          "deploy": "Mise en prod"
         },
         "meta": {
           "ticket": "ENG-142",
           "repo": "dépôt git",
-          "engineer": "en binôme",
+          "engineer": "+ agent IA",
           "pr": "PR #87",
-          "review": "1 remarque",
           "deploy": "prod"
         },
+        "lanes": {
+          "backlog": "Votre backlog",
+          "team": "Votre équipe + Klyx",
+          "prod": "Votre prod"
+        },
         "trace": {
-          "ticket": "Ticket : l'export CSV est lent",
-          "branch": "Correctif en cours sur l'export CSV",
+          "ticket": "Ticket ENG-142 pris en charge",
+          "branch": "Branche ouverte dans votre repo",
           "read": "agent IA · lit 14 fichiers",
           "testFail": "Un test échoue, on corrige",
           "fix": "Export découpé en petits lots",
           "testPass": "128 tests passent",
-          "pr": "Correctif envoyé en relecture",
-          "review": "Relu, 1 remarque traitée",
-          "merged": "Validé et mis en prod"
+          "pr": "PR #87 ouverte, CI verte",
+          "review": "Relue par votre équipe",
+          "merged": "PR mergée, en prod"
         },
-        "chip": "Correctif en prod · tests ✓",
-        "caption": "Exemple de journée en FDE : un développeur de l'agence corrige un problème dans votre code, et le correctif part en production l'après-midi même. Noms et valeurs fictifs."
+        "chip": "PR mergée · en prod",
+        "caption": "Exemple de journée : l'ingénieur Klyx travaille dans votre équipe et votre repo avec un agent IA, et le correctif part en production l'après-midi même. Noms et valeurs fictifs."
       },
       "audit": {
         "title": "audit · pme-exemple",
