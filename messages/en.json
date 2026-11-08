@@ -316,7 +316,8 @@
       "process": "Method",
       "founder": "Team",
       "testimonials": "Clients",
-      "faq": "Questions"
+      "faq": "Questions",
+      "worklog": "Work log"
     },
     "proofStrip": {
       "title": "What we've shipped,",
@@ -2837,7 +2838,8 @@
         "automation-examples": "Examples",
         "geo-visibility": "Measurement"
       },
-      "stack": "Stack"
+      "stack": "Stack",
+      "worklog": "Work log"
     },
     "ledger": {
       "offer": "Package",
@@ -2862,5 +2864,55 @@
       "note": "Brands mentioned belong to their respective owners. Klyx is neither affiliated with nor a partner of these vendors."
     },
     "sectors": "By sector"
+  },
+  "workLog": {
+    "title": "A sample week,",
+    "titleEmphasis": "action by action.",
+    "body": "The engineer works in your repo and your Slack. Every action, theirs and the agent's, goes into a log your team reads, along with the list of PRs shipped each week.",
+    "window": "log · sample week",
+    "repo": "your-org/app",
+    "label": "Illustration · names and values are fictional",
+    "actors": {
+      "human": "human",
+      "klyx": "klyx",
+      "agent": "agent"
+    },
+    "entries": {
+      "ticket": {
+        "time": "Mon 09:10",
+        "title": "Ticket opened",
+        "detail": "OPS-142 · invoice reminders"
+      },
+      "branch": {
+        "time": "Mon 11:40",
+        "title": "Branch opened",
+        "detail": "feat/invoice-agent"
+      },
+      "wired": {
+        "time": "Tue 15:02",
+        "title": "Agent wired",
+        "detail": "gmail → extraction → erp"
+      },
+      "red": {
+        "time": "Wed 10:18",
+        "title": "Test red",
+        "detail": "VAT total misread"
+      },
+      "fixed": {
+        "time": "Wed 14:55",
+        "title": "Fixed",
+        "detail": "tests ✓ 42/42"
+      },
+      "review": {
+        "time": "Thu 16:30",
+        "title": "PR reviewed",
+        "detail": "human approval step added"
+      },
+      "deployed": {
+        "time": "Fri 10:05",
+        "title": "Deployed",
+        "detail": "✓ in production"
+      }
+    }
   }
 }

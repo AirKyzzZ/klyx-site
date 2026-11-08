@@ -316,7 +316,8 @@
       "process": "Méthode",
       "founder": "L'équipe",
       "testimonials": "Clients",
-      "faq": "Questions"
+      "faq": "Questions",
+      "worklog": "Journal"
     },
     "proofStrip": {
       "title": "Ce qu'on a livré,",
@@ -2837,7 +2838,8 @@
         "automation-examples": "Exemples",
         "geo-visibility": "Mesure"
       },
-      "stack": "Stack"
+      "stack": "Stack",
+      "worklog": "Journal"
     },
     "ledger": {
       "offer": "Offre",
@@ -2862,5 +2864,55 @@
       "note": "Les marques citées appartiennent à leurs propriétaires respectifs. Klyx n'est ni affilié ni partenaire de ces éditeurs."
     },
     "sectors": "Par secteur"
+  },
+  "workLog": {
+    "title": "Une semaine type,",
+    "titleEmphasis": "action par action.",
+    "body": "L'ingénieur travaille dans votre repo et votre Slack. Chaque action, la sienne comme celle de l'agent, est notée dans un journal que votre équipe lit, avec la liste des PR livrées chaque semaine.",
+    "window": "journal · semaine type",
+    "repo": "votre-org/app",
+    "label": "Illustration · noms et valeurs fictifs",
+    "actors": {
+      "human": "humain",
+      "klyx": "klyx",
+      "agent": "agent"
+    },
+    "entries": {
+      "ticket": {
+        "time": "lun 09:10",
+        "title": "Ticket ouvert",
+        "detail": "OPS-142 · relances factures"
+      },
+      "branch": {
+        "time": "lun 11:40",
+        "title": "Branche ouverte",
+        "detail": "feat/invoice-agent"
+      },
+      "wired": {
+        "time": "mar 15:02",
+        "title": "Agent branché",
+        "detail": "gmail → extraction → erp"
+      },
+      "red": {
+        "time": "mer 10:18",
+        "title": "Test rouge",
+        "detail": "montant TTC mal lu"
+      },
+      "fixed": {
+        "time": "mer 14:55",
+        "title": "Corrigé",
+        "detail": "tests ✓ 42/42"
+      },
+      "review": {
+        "time": "jeu 16:30",
+        "title": "PR relue",
+        "detail": "validation humaine ajoutée"
+      },
+      "deployed": {
+        "time": "ven 10:05",
+        "title": "Déployé",
+        "detail": "✓ en production"
+      }
+    }
   }
 }

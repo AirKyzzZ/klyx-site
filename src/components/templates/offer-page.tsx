@@ -21,6 +21,7 @@ import { OfferLedger } from "@/components/sections/offer-ledger";
 import { ProcessLine } from "@/components/sections/process-line";
 import { FeatureList, TierCards } from "@/components/sections/tier-cards";
 import { ToolsSection } from "@/components/sections/tools-section";
+import { WorkLog } from "@/components/sections/work-log";
 import {
   messageList,
   messageStrings,
@@ -61,6 +62,7 @@ type SectionId =
   | "deliverables"
   | "process"
   | "block"
+  | "worklog"
   | "stack"
   | "proof"
   | "pricing"
@@ -71,6 +73,7 @@ const SECTIONS: SectionId[] = [
   "deliverables",
   "process",
   "block",
+  "worklog",
   "stack",
   "proof",
   "pricing",
@@ -157,6 +160,7 @@ export async function OfferPage({
     ...(config.stack ? [] : (["stack"] as const)),
     ...(config.process ? [] : (["process"] as const)),
     ...(config.pricing ? [] : (["pricing"] as const)),
+    ...(isFde ? [] : (["worklog"] as const)),
   ]);
   const sections = SECTIONS.filter((id) => !hidden.has(id));
   const pricingLinks = (
@@ -299,6 +303,8 @@ export async function OfferPage({
       )}
 
       <Block locale={locale} {...section("block")} />
+
+      {isFde && <WorkLog locale={locale} {...section("worklog")} />}
 
       {config.stack && (
         <ToolsSection
