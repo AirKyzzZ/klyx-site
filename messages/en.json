@@ -2117,7 +2117,7 @@
       "pricing": {
         "title": "What it costs,",
         "titleEmphasis": "excl. VAT.",
-        "body": "Landing page from {landingPrice}, AI-ready site from {siteIaPrice}, AI Sprint from {sprintPrice}. To strengthen your team over time, FDE is {fdeDayPrice} a day, 4 weeks minimum. You set your own resale price.",
+        "body": "Landing page from {landingPrice}, AI-ready site from {siteIaPrice}, AI Sprint from {sprintPrice}. To strengthen your team over time, a Forward Deployed Engineer (an engineer embedded in your team) is {fdeDayPrice} a day, 4 weeks minimum. You set your own resale price.",
         "link": "All prices"
       },
       "faq": {

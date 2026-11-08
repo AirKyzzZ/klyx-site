@@ -2117,7 +2117,7 @@
       "pricing": {
         "title": "Ce que ça coûte,",
         "titleEmphasis": "en € HT.",
-        "body": "Landing page à partir de {landingPrice}, Site IA à partir de {siteIaPrice}, Sprint IA à partir de {sprintPrice}. Pour renforcer votre équipe sur la durée, le FDE est à {fdeDayPrice} par jour, 4 semaines minimum. Vous fixez votre propre prix de revente.",
+        "body": "Landing page à partir de {landingPrice}, Site IA à partir de {siteIaPrice}, Sprint IA à partir de {sprintPrice}. Pour renforcer votre équipe sur la durée, un Forward Deployed Engineer (ingénieur intégré à votre équipe) est à {fdeDayPrice} par jour, 4 semaines minimum. Vous fixez votre propre prix de revente.",
         "link": "Tous les tarifs"
       },
       "faq": {
