@@ -7,7 +7,7 @@ Ordre partout : Forward Deployed Engineer, puis agents et workflows au forfait, 
 - Eyebrow : Forward Deployed Engineering · Bordeaux
 - H1 : Un ingénieur IA dans votre équipe, *jusqu'en production.*
 - Sous-titre : Un Forward Deployed Engineer (ingénieur intégré à votre équipe) met vos agents IA, workflows et automatisations en production, dans votre repo et sur vos outils : Slack, CRM, boîte mail. Et si besoin, la page qui les vend.
-- Onglets du hero : Agents IA, FDE, Sites
+- Onglets du hero : FDE, Agents IA, Sites
 - Offres (« Trois façons de travailler ensemble ») :
   1. Forward Deployed Engineer : Un ingénieur de l'agence intégré à votre équipe 2 à 3 jours par semaine, pendant 4 semaines ou plus. Il livre vos agents et vos workflows dans votre propre code.
   2. Agents et workflows IA : Un agent ou un workflow branché sur vos outils, pour qu'une tâche répétitive se fasse seule. En production en 2 semaines, au forfait, et le code reste chez vous.

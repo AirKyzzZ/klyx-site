@@ -122,7 +122,7 @@ export function Hero({
   );
 }
 
-const HOME_SCENARIOS = ["agents", "fde", "sites"] as const;
+const HOME_SCENARIOS = ["fde", "agents", "sites"] as const;
 
 export async function HomeHero({ locale }: { locale: Locale }) {
   const t = await getTranslations({ locale, namespace: "home.hero" });
@@ -183,7 +183,7 @@ export async function HomeHero({ locale }: { locale: Locale }) {
         <div className="hero-in mt-10 md:mt-6" style={delay(0.6)}>
           <LiveSystem
             scenarioIds={[...HOME_SCENARIOS]}
-            initial="agents"
+            initial="fde"
             priority
             locale={locale}
           />
