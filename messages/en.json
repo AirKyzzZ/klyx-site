@@ -407,12 +407,12 @@
   "sites": {
     "hero": {
       "eyebrow": "Website design · Landing pages",
-      "title": "The page that sells",
-      "titleEmphasis": "what your agents do.",
-      "subtitle": "Alongside an AI project, or on its own: landing pages from {landingPrice}, 5 to 8 page sites from {siteIaPrice}. Fast pages that rank on Google and that ChatGPT or Perplexity can read.",
+      "title": "Website design",
+      "titleEmphasis": "in Bordeaux.",
+      "subtitle": "The page that sells what your agents do. Alongside an AI project, or on its own: landing pages from {landingPrice}, 5 to 8 page sites from {siteIaPrice}. Fast pages that rank on Google and that ChatGPT or Perplexity can read.",
       "ctaPrimary": "Book a call",
       "ctaSecondary": "Get a free quote",
-      "serif": "sells"
+      "serif": "Bordeaux"
     },
     "problem": {
       "title": "Your product does more",

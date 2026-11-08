@@ -37,8 +37,8 @@ Ordre partout : Forward Deployed Engineer, puis agents et workflows au forfait, 
 ## Sites `/services/creation-site-web`
 
 - Eyebrow : Création de site web · Landing pages
-- H1 : La page qui vend *ce que vos agents font.*
-- Sous-titre : En complément d'un projet IA, ou seule : landing page à partir de {prix}, site de 5 à 8 pages à partir de {prix}. Des pages rapides, référencées sur Google et lisibles par ChatGPT ou Perplexity.
+- H1 : Création de site web *à Bordeaux.*
+- Sous-titre : La page qui vend ce que vos agents font. En complément d'un projet IA, ou seule : landing page à partir de {prix}, site de 5 à 8 pages à partir de {prix}. Des pages rapides, référencées sur Google et lisibles par ChatGPT ou Perplexity.
 - Problème : Votre produit fait plus *que ce que dit votre site.* Un agent ou un workflow qui tourne ne se vend pas tout seul…
 - CTA : Votre page, *livrée au prix annoncé.*
 
