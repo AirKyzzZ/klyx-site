@@ -1363,6 +1363,7 @@
       "back": "All work",
       "url": "URL",
       "next": "Next project",
+      "more": "More work",
       "outcome": "Outcome",
       "noOutcome": "No published figure yet",
       "status": "Status"
@@ -1718,7 +1719,8 @@
     "rss": "RSS feed",
     "readingTime": "{minutes} min",
     "emptyCount": "0 posts published",
-    "sources": "Sources"
+    "sources": "Sources",
+    "related": "Read next"
   },
   "legal": {
     "title": "Legal notice",
@@ -2815,6 +2817,7 @@
     "tokensApprox": "≈{count} tokens"
   },
   "offerPage": {
+    "relatedPost": "Read next",
     "breadcrumb": "Breadcrumb",
     "symptoms": "Symptoms",
     "seeOffer": "See the offer",

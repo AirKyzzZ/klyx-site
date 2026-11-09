@@ -1363,6 +1363,7 @@
       "back": "Toutes les réalisations",
       "url": "URL",
       "next": "Projet suivant",
+      "more": "Autres projets",
       "outcome": "Résultat",
       "noOutcome": "Pas encore de chiffre publié",
       "status": "Statut"
@@ -1718,7 +1719,8 @@
     "rss": "Flux RSS",
     "readingTime": "{minutes} min",
     "emptyCount": "0 article publié",
-    "sources": "Sources"
+    "sources": "Sources",
+    "related": "À lire aussi"
   },
   "legal": {
     "title": "Mentions légales",
@@ -2815,6 +2817,7 @@
     "tokensApprox": "≈{count} tokens"
   },
   "offerPage": {
+    "relatedPost": "À lire aussi",
     "breadcrumb": "Fil d'Ariane",
     "symptoms": "Symptômes",
     "seeOffer": "Voir l'offre",

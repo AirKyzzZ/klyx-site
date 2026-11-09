@@ -13,6 +13,7 @@ import { resolvePageLocale } from "@/i18n/page-locale";
 import { type Locale, routing } from "@/i18n/routing";
 import { getMdxBody, getPost, getPosts, readingMinutes } from "@/lib/content";
 import { blogPostingJsonLd } from "@/lib/json-ld";
+import { followingItems } from "@/lib/related-content";
 import { brandedTitle, buildMetadata } from "@/lib/seo";
 import { site } from "@/lib/site";
 
@@ -33,7 +34,8 @@ export async function generateStaticParams({
 async function loadPost(locale: Locale, slug: string) {
   const posts = await getPosts(locale);
   if (!posts.some((post) => post.slug === slug)) notFound();
-  return getPost(slug, locale);
+  const post = await getPost(slug, locale);
+  return { ...post, related: followingItems(posts, slug, 3) };
 }
 
 export async function generateMetadata({
@@ -55,7 +57,7 @@ export async function generateMetadata({
 export default async function PostPage({ params }: PostPageProps) {
   const locale = await resolvePageLocale(params);
   const { slug } = await params;
-  const { meta, Content } = await loadPost(locale, slug);
+  const { meta, Content, related } = await loadPost(locale, slug);
   const t = await getTranslations({ locale, namespace: "blog" });
   const cta = await getTranslations({ locale, namespace: "home.finalCta" });
   const minutes = readingMinutes(await getMdxBody("blog", slug, locale));
@@ -136,6 +138,26 @@ export default async function PostPage({ params }: PostPageProps) {
                   </li>
                 ))}
               </ol>
+            </aside>
+          )}
+          {related.length > 0 && (
+            <aside className="border-line mt-16 max-w-[66ch] border-t pt-6">
+              <h2 className="type-label text-text-3">{t("related")}</h2>
+              <ul className="mt-4 space-y-3">
+                {related.map((post) => (
+                  <li key={post.slug}>
+                    <Link
+                      href={{
+                        pathname: "/blog/[slug]",
+                        params: { slug: post.slug },
+                      }}
+                      className="text-text-2 hover:text-text underline underline-offset-4 transition-colors"
+                    >
+                      {post.title}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </aside>
           )}
         </div>

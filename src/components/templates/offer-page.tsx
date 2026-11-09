@@ -28,7 +28,7 @@ import {
 } from "@/i18n/message-list";
 import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
-import { getCaseStudies } from "@/lib/content";
+import { getCaseStudies, getPosts } from "@/lib/content";
 import { offerPageJsonLd } from "@/lib/json-ld";
 import { getOfferCopy } from "@/lib/offer-copy";
 import type {
@@ -37,6 +37,7 @@ import type {
   OfferPageConfig,
 } from "@/lib/offer-pages";
 import { getPriceValues } from "@/lib/offers";
+import { OFFER_POST_SLUGS } from "@/lib/related-content";
 import { sectorPages } from "@/lib/sector-pages";
 import { buildMetadata } from "@/lib/seo";
 import { DEPLOYED_TECH } from "@/lib/tools";
@@ -130,6 +131,9 @@ export async function OfferPage({
     namespace: "offers",
   })) as Translate;
   const casesT = await getTranslations({ locale, namespace: "cases.labels" });
+  const relatedPost = (await getPosts(locale)).find(
+    (post) => post.slug === OFFER_POST_SLUGS[config.key],
+  );
   const prices = getPriceValues(locale);
   const faq = messageList(t, "faq.items", ["question", "answer"], prices);
   const tiers = config.tiers.map((id) => getOfferCopy(offersT, locale, id));
@@ -409,6 +413,23 @@ export async function OfferPage({
         bookLabel={actionLabel(t, config.cta, "book")}
         openFirst
       />
+
+      {relatedPost && (
+        <section className="relative z-1">
+          <div className="container pb-16 md:pb-24">
+            <h2 className="type-label text-text-3">{page("relatedPost")}</h2>
+            <Link
+              href={{
+                pathname: "/blog/[slug]",
+                params: { slug: relatedPost.slug },
+              }}
+              className="text-text-2 hover:text-text mt-4 inline-block underline underline-offset-4 transition-colors"
+            >
+              {relatedPost.title}
+            </Link>
+          </div>
+        </section>
+      )}
 
       <Cta
         title={cta.lead}
