@@ -9,6 +9,7 @@ import { ActionButton } from "@/components/action-button";
 import { AbstractBackdrop } from "@/components/backdrop/abstract-backdrop";
 import { EmphasisTitle } from "@/components/emphasis-title";
 import { GirondeMap } from "@/components/gironde-map";
+import { JsonLd } from "@/components/json-ld";
 import { AutomationExamples } from "@/components/offer-blocks/automation-examples";
 import { Section, SectionHeading } from "@/components/section";
 import { Cta } from "@/components/sections/cta";
@@ -17,6 +18,7 @@ import { ProcessLine } from "@/components/sections/process-line";
 import { messageList, messageStrings } from "@/i18n/message-list";
 import { type LocaleParams, resolvePageLocale } from "@/i18n/page-locale";
 import { HERO_BACKDROP } from "@/lib/hero-backdrop";
+import { organizationJsonLd, trailPageJsonLd } from "@/lib/json-ld";
 import { getPriceValues } from "@/lib/offers";
 import { buildMetadata } from "@/lib/seo";
 import { cn } from "@/lib/utils";
@@ -71,11 +73,22 @@ function Painting() {
 export default async function BordeauxPage({ params }: LocaleParams) {
   const locale = await resolvePageLocale(params);
   const t = await getTranslations({ locale, namespace: "bordeaux" });
+  const meta = await getTranslations({ locale, namespace: "meta.bordeaux" });
+  const nav = await getTranslations({ locale, namespace: "nav" });
   const prices = getPriceValues(locale);
   const painting = HERO_BACKDROP === "painting";
 
   return (
     <>
+      <JsonLd
+        data={[
+          organizationJsonLd(meta("description")),
+          ...trailPageJsonLd({
+            locale,
+            trail: [{ name: nav("bordeaux"), pathname: "/agence-ia-bordeaux" }],
+          }),
+        ]}
+      />
       <section
         data-shot="hero"
         className="relative pt-24 pb-16 md:pt-28 md:pb-20"

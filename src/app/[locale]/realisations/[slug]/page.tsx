@@ -22,6 +22,7 @@ import { resolvePageLocale } from "@/i18n/page-locale";
 import { type Locale, routing } from "@/i18n/routing";
 import { getCaseStudies, getCaseStudy } from "@/lib/content";
 import { getSiteShot } from "@/lib/proof";
+import { followingItems } from "@/lib/related-content";
 import { brandedTitle, buildMetadata } from "@/lib/seo";
 
 type CasePageProps = {
@@ -40,11 +41,10 @@ export async function generateStaticParams({
 
 async function loadCase(locale: Locale, slug: string) {
   const cases = await getCaseStudies(locale);
-  const index = cases.findIndex((c) => c.slug === slug);
-  if (index === -1) notFound();
+  if (!cases.some((c) => c.slug === slug)) notFound();
   const study = await getCaseStudy(slug, locale);
-  const next = cases.length > 1 ? cases[(index + 1) % cases.length] : null;
-  return { ...study, next };
+  const [next, ...more] = followingItems(cases, slug, 3);
+  return { ...study, next, more };
 }
 
 export async function generateMetadata({
@@ -66,7 +66,7 @@ export async function generateMetadata({
 export default async function CasePage({ params }: CasePageProps) {
   const locale = await resolvePageLocale(params);
   const { slug } = await params;
-  const { meta, Content, next } = await loadCase(locale, slug);
+  const { meta, Content, next, more } = await loadCase(locale, slug);
   const t = await getTranslations({ locale, namespace: "cases" });
   const shot = getSiteShot(meta.slug);
 
@@ -223,6 +223,26 @@ export default async function CasePage({ params }: CasePageProps) {
               sizes="(min-width: 1024px) 680px, 90vw"
             />
           </div>
+          {more.length > 0 && (
+            <div className="mt-10">
+              <h3 className="type-label text-text-3">{t("labels.more")}</h3>
+              <ul className="mt-4 space-y-3">
+                {more.map((item) => (
+                  <li key={item.slug}>
+                    <Link
+                      href={{
+                        pathname: "/realisations/[slug]",
+                        params: { slug: item.slug },
+                      }}
+                      className="text-text-2 hover:text-text underline underline-offset-4 transition-colors"
+                    >
+                      {item.title}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </Section>
       )}
 

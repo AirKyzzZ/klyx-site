@@ -99,6 +99,7 @@ export function ViewToggle({
   return (
     <a
       href={markdownHref}
+      rel="nofollow"
       role={hydrated ? "switch" : undefined}
       aria-checked={hydrated ? machine : undefined}
       aria-label={t("machine")}
