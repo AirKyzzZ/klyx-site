@@ -21,6 +21,7 @@ import { OfferLedger } from "@/components/sections/offer-ledger";
 import { ProcessLine } from "@/components/sections/process-line";
 import { FeatureList, TierCards } from "@/components/sections/tier-cards";
 import { ToolsSection } from "@/components/sections/tools-section";
+import { WorkLog } from "@/components/sections/work-log";
 import {
   messageList,
   messageStrings,
@@ -62,6 +63,7 @@ type SectionId =
   | "deliverables"
   | "process"
   | "block"
+  | "worklog"
   | "stack"
   | "proof"
   | "pricing"
@@ -72,6 +74,7 @@ const SECTIONS: SectionId[] = [
   "deliverables",
   "process",
   "block",
+  "worklog",
   "stack",
   "proof",
   "pricing",
@@ -161,6 +164,7 @@ export async function OfferPage({
     ...(config.stack ? [] : (["stack"] as const)),
     ...(config.process ? [] : (["process"] as const)),
     ...(config.pricing ? [] : (["pricing"] as const)),
+    ...(isFde ? [] : (["worklog"] as const)),
   ]);
   const sections = SECTIONS.filter((id) => !hidden.has(id));
   const pricingLinks = (
@@ -303,6 +307,8 @@ export async function OfferPage({
       )}
 
       <Block locale={locale} {...section("block")} />
+
+      {isFde && <WorkLog locale={locale} {...section("worklog")} />}
 
       {config.stack && (
         <ToolsSection
@@ -458,7 +464,7 @@ function FdeTermsCard({
       <article className="bg-surface-1 shadow-card grid gap-10 rounded-[calc(var(--r-md)-1px)] p-5 lg:grid-cols-12 lg:gap-6 lg:p-8">
         <div className="lg:col-span-6">
           <p className="type-label text-text-3">
-            <span className="text-accent">01</span> / {tier.duration}
+            <span className="text-accent-text">01</span> / {tier.duration}
           </p>
           <h3 className="type-h3 mt-6">{tier.name}</h3>
           <p className="text-text-2 mt-2 max-w-[44ch] text-[0.9375rem]">

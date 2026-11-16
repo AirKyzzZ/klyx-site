@@ -16,7 +16,7 @@ function slugify(text: string): string {
 function TodoNote({ text }: { text: string }) {
   return (
     <p className="border-accent type-data text-text rounded-sm border px-4 py-3 text-[0.8125rem]">
-      <span className="text-accent">{TODO_PREFIX}</span>
+      <span className="text-accent-text">{TODO_PREFIX}</span>
       {text.slice(TODO_PREFIX.length)}
     </p>
   );

@@ -48,7 +48,7 @@ function OutreachHero({ config }: { config: OutreachPageConfig }) {
     >
       <div className="container grid gap-12 xl:grid-cols-12 xl:items-center xl:gap-6">
         <div className="xl:col-span-5">
-          <p className="hero-in type-label text-accent" style={delay(0)}>
+          <p className="hero-in type-label text-accent-text" style={delay(0)}>
             {hero.anchor}
           </p>
           <h1 className="type-h1 mt-3 max-w-[20ch]">
@@ -102,7 +102,7 @@ async function SectionBody({ section }: { section: OutreachSection }) {
               key={item.body}
               className="border-line flex gap-4 border-b py-4 first:border-t"
             >
-              <span className="text-accent w-6 shrink-0">
+              <span className="text-accent-text w-6 shrink-0">
                 {String(i + 1).padStart(2, "0")}
               </span>
               <div className="font-sans text-[0.9375rem] leading-snug">

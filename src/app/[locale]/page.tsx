@@ -13,6 +13,7 @@ import { ProcessTimeline } from "@/components/sections/process-timeline";
 import { hasProofStrip, ProofStrip } from "@/components/sections/proof-strip";
 import { Testimonials } from "@/components/sections/testimonials";
 import { ToolsSection } from "@/components/sections/tools-section";
+import { WorkLog } from "@/components/sections/work-log";
 import { SpotlightPointer } from "@/components/spotlight-pointer";
 import { messageList } from "@/i18n/message-list";
 import { type LocaleParams, resolvePageLocale } from "@/i18n/page-locale";
@@ -37,6 +38,7 @@ import { CONNECTED_TOOLS } from "@/lib/tools";
 
 type SectionId =
   | "proof"
+  | "worklog"
   | "offers"
   | "tools"
   | "cases"
@@ -74,6 +76,7 @@ export default async function HomePage({ params }: LocaleParams) {
 
   const candidates: (SectionId | false)[] = [
     showProof && "proof",
+    "worklog",
     "offers",
     "tools",
     cases.length > 0 && "cases",
@@ -105,6 +108,8 @@ export default async function HomePage({ params }: LocaleParams) {
           emphasis={t("proofStrip.titleEmphasis")}
         />
       )}
+
+      <WorkLog {...section("worklog")} locale={locale} />
 
       <OfferCards
         {...section("offers")}

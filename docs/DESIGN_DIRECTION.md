@@ -43,6 +43,7 @@ All tokens live in `src/app/globals.css` as custom properties on `:root`, mapped
 | `--accent` | `#F54E00` | burnt orange: primary CTA, active state, packets, one highlight per UI card |
 | `--accent-hover` | `#FF6413` | primary CTA hover |
 | `--accent-ink` | `#141414` | text on accent (white on `#F54E00` is about 3.8:1 and fails AA; `#141414` is about 4.9:1) |
+| `--accent-on-light` | `#B83A00` | orange text on sand (5.0:1 on `--sand-50`); `.tone-sand` points `--accent-text` (the `text-accent-text` utility) at it, the brand orange stays for fills |
 | `--accent-soft` | `rgb(245 78 0 / 0.14)` | active tab fill, chip background |
 | `--glow` | `rgb(245 78 0 / 0.32)` | bloom behind lit frames |
 | `--ui-ok` | `#4CC38A` | success dot, check, diff plus (inside UI windows only) |

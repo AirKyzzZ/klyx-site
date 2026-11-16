@@ -70,7 +70,7 @@ export function OfferHero({
             </ol>
           </nav>
           <p
-            className="hero-in type-label text-accent mt-6"
+            className="hero-in type-label text-accent-text mt-6"
             style={delay(0.08)}
           >
             {anchorPrice}

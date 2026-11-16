@@ -232,7 +232,7 @@ export async function SectorPage({
                     key={term}
                     className="border-line border-b first:border-t"
                   >
-                    <td className="text-accent w-10 py-3.5 align-top">
+                    <td className="text-accent-text w-10 py-3.5 align-top">
                       {String(i + 1).padStart(2, "0")}
                     </td>
                     <td className="text-text py-3.5 font-sans text-[0.9375rem] leading-snug">

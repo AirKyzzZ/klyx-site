@@ -94,7 +94,7 @@ function FlowGlyph({
             >
               <Icon
                 className={
-                  last ? "text-accent size-3.5" : "text-text-3 size-3.5"
+                  last ? "text-accent-text size-3.5" : "text-text-3 size-3.5"
                 }
                 strokeWidth={1.5}
               />

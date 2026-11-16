@@ -23,6 +23,7 @@ const PAIRS = [
   ["ink-2", "sand-50"],
   ["ink", "sand-200"],
   ["ink-2", "sand-200"],
+  ["accent-on-light", "sand-50"],
   ["accent-ink", "accent"],
   ["accent-ink", "accent-hover"],
 ];

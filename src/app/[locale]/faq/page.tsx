@@ -54,7 +54,7 @@ export default async function FaqPage({ params }: LocaleParams) {
       >
         <div className="container grid gap-10 lg:grid-cols-12 lg:items-end lg:gap-6">
           <div className="lg:col-span-7">
-            <p className="hero-in type-label text-accent">
+            <p className="hero-in type-label text-accent-text">
               {t("count", { count: items.length, themes: themes.length })}
             </p>
             <h1 className="type-h1 mt-4 max-w-[20ch]">

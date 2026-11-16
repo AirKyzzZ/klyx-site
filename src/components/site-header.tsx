@@ -27,10 +27,12 @@ export async function SiteHeader() {
             label: t("groupBuild"),
             items: [
               {
-                href: "/services/creation-site-web",
-                title: t("sites"),
-                description: cards("sites.outcome"),
-                price: from(getOfferPrice("landing")),
+                href: "/forward-deployed-engineer",
+                title: t("fde"),
+                description: cards("fde.outcome"),
+                price: prices("perDay", {
+                  price: formatPrice(getOfferPrice("fde"), locale),
+                }),
               },
               {
                 href: "/services/agents-ia",
@@ -62,12 +64,10 @@ export async function SiteHeader() {
                 price: from(getOfferPrice("geo")),
               },
               {
-                href: "/forward-deployed-engineer",
-                title: t("fde"),
-                description: cards("fde.outcome"),
-                price: prices("perDay", {
-                  price: formatPrice(getOfferPrice("fde"), locale),
-                }),
+                href: "/services/creation-site-web",
+                title: t("sites"),
+                description: cards("sites.outcome"),
+                price: from(getOfferPrice("landing")),
               },
             ],
           },

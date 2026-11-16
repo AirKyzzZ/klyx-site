@@ -140,7 +140,7 @@ export default async function UseCasesPage({ params }: LocaleParams) {
                 >
                   <div className="md:col-span-3">
                     <p className="type-label text-text-3">
-                      <span className="text-accent">
+                      <span className="text-accent-text">
                         {String(i + 1).padStart(2, "0")}
                       </span>{" "}
                       / {t(`${key}.hero.eyebrow`)}

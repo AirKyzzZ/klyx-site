@@ -2,9 +2,9 @@
   "nav": {
     "home": "Home",
     "offers": "Services",
-    "groupBuild": "Build",
-    "groupAdvise": "Advise",
-    "sites": "Websites and landing pages",
+    "groupBuild": "AI engineering",
+    "groupAdvise": "Audit, visibility and sites",
+    "sites": "Landing pages and websites",
     "agents": "AI agents",
     "fde": "Forward Deployed Engineer",
     "cases": "Work",
@@ -33,7 +33,7 @@
     "services": "Professional services"
   },
   "footer": {
-    "tagline": "Websites, AI agents and automations at a fixed price. Based in Bordeaux, working remotely across France and Europe.",
+    "tagline": "An AI engineer in your team: agents, workflows and automations in production, and the page that sells them. Based in Bordeaux, working remotely across France and Europe.",
     "offersTitle": "Services",
     "companyTitle": "Klyx",
     "legalTitle": "Legal",
@@ -46,13 +46,13 @@
   },
   "home": {
     "hero": {
-      "title": "AI agents that run in production,",
-      "titleEmphasis": "not demos.",
-      "subtitle": "Websites, agents and automations delivered at a fixed price for startups and agencies. Free quote, public prices.",
+      "title": "An AI engineer in your team,",
+      "titleEmphasis": "all the way to production.",
+      "subtitle": "A Forward Deployed Engineer (an engineer embedded in your team) puts your AI agents, workflows and automations into production, in your repo and on your tools: Slack, CRM, inbox. And if you need it, the page that sells them.",
       "ctaPrimary": "Book a call",
       "ctaSecondary": "Get a free quote",
-      "eyebrow": "AI agency · Bordeaux",
-      "serif": "demos"
+      "eyebrow": "Forward Deployed Engineering · Bordeaux",
+      "serif": "production"
     },
     "proof": {
       "label": "Real deliverable",
@@ -65,20 +65,20 @@
       "link": "See the offer",
       "cards": {
         "sites": {
-          "name": "Websites and landing pages",
-          "outcome": "A fast, clear site that Google and ChatGPT can read. Live in 1 to 4 weeks.",
+          "name": "Landing pages and websites",
+          "outcome": "As an add-on: the page that explains what your agents do, fast and readable by Google and ChatGPT. Live in 1 to 4 weeks.",
           "price": "From {price}",
           "duration": "1 to 4 weeks"
         },
         "agents": {
-          "name": "AI agents",
-          "outcome": "We plug AI into your tools so a repetitive task runs on its own. In production in 2 weeks, and the code stays yours.",
+          "name": "AI agents and workflows",
+          "outcome": "An agent or a workflow wired into your tools so a repetitive task runs on its own. In production in 2 weeks, at a fixed price, and the code stays yours.",
           "price": "From {price}",
           "duration": "2 weeks"
         },
         "fde": {
           "name": "Forward Deployed Engineer",
-          "outcome": "A developer from the agency inside your team 2 to 3 days a week, for 4 weeks or more, shipping your AI features in your own code.",
+          "outcome": "An engineer from the agency inside your team 2 to 3 days a week, for 4 weeks or more, shipping your agents and workflows in your own code.",
           "price": "From {price} / day",
           "duration": "4 weeks minimum"
         }
@@ -135,7 +135,7 @@
     },
     "cases": {
       "title": "Work",
-      "subtitle": "Sites shipped for clients and products we've worked on. For each project, what we built.",
+      "subtitle": "Products we've worked on and sites shipped for clients. For each project, what we built.",
       "visit": "See the project",
       "readCase": "Read the case study",
       "viewAll": "All work"
@@ -149,7 +149,7 @@
         },
         "scope": {
           "title": "Audit or quote",
-          "body": "We review your site or your processes, then send you a written scope and a fixed price."
+          "body": "We review your processes and your tools, then send you a written scope and a fixed price."
         },
         "build": {
           "title": "Build",
@@ -270,7 +270,7 @@
       "items": {
         "price": {
           "question": "How much does a project cost?",
-          "answer": "A landing page starts at {landingPrice}, an AI-ready site at {siteIaPrice}, an AI audit at {auditPrice} and an AI Sprint at {sprintPrice}. The final price depends on scope, which is agreed in writing before work starts. Every price is on the pricing page."
+          "answer": "An AI audit starts at {auditPrice}, an AI Sprint at {sprintPrice}, a landing page at {landingPrice} and an AI-ready site at {siteIaPrice}. The final price depends on scope, which is agreed in writing before work starts. Every price is on the pricing page."
         },
         "team": {
           "question": "Who works on our project?",
@@ -290,17 +290,17 @@
         },
         "stack": {
           "question": "What stack do you use?",
-          "answer": "Next.js, TypeScript and Supabase for products, WordPress when your team wants to edit on its own. On the AI side: OpenAI, Anthropic and Gemini, MCP servers, and agents connected to your tools."
+          "answer": "On the AI side: OpenAI, Anthropic and Gemini, MCP servers, and agents connected to your tools. On the product side: Next.js, TypeScript and Supabase, and WordPress when your team wants to edit on its own."
         }
       },
       "titleEmphasis": "asked questions."
     },
     "finalCta": {
-      "title": "Let's talk about your next workflow",
+      "title": "Let's talk about the workflow",
       "body": "Book a 30-minute call. You'll come away with a clear view of what's worth doing, whether or not we end up working together.",
       "ctaPrimary": "Book a call",
       "ctaSecondary": "Get a free quote",
-      "titleEmphasis": "or site."
+      "titleEmphasis": "you want in production."
     },
     "fold": {
       "label": "Verifiable commitments",
@@ -316,7 +316,8 @@
       "process": "Method",
       "founder": "Team",
       "testimonials": "Clients",
-      "faq": "Questions"
+      "faq": "Questions",
+      "worklog": "Work log"
     },
     "proofStrip": {
       "title": "What we've shipped,",
@@ -406,18 +407,18 @@
   },
   "sites": {
     "hero": {
-      "eyebrow": "Websites and landing pages",
-      "title": "Websites built in Bordeaux,",
-      "titleEmphasis": "at the listed price.",
-      "subtitle": "Landing pages from {landingPrice}, 5 to 8 page sites from {siteIaPrice}. Fast sites that rank on Google and that ChatGPT or Perplexity can read.",
+      "eyebrow": "Website design · Landing pages",
+      "title": "Website design",
+      "titleEmphasis": "in Bordeaux.",
+      "subtitle": "The page that sells what your agents do. Alongside an AI project, or on its own: landing pages from {landingPrice}, 5 to 8 page sites from {siteIaPrice}. Fast pages that rank on Google and that ChatGPT or Perplexity can read.",
       "ctaPrimary": "Book a call",
       "ctaSecondary": "Get a free quote",
-      "serif": "listed"
+      "serif": "Bordeaux"
     },
     "problem": {
-      "title": "Why rebuild",
-      "body": "A slow or badly structured site loses visitors before they've read your offer. And some of your customers now ask ChatGPT or Perplexity instead of searching, and those tools mostly cite sites they can parse. We build sites that work for both.",
-      "titleEmphasis": "your site.",
+      "title": "Your product does more",
+      "body": "An agent or a workflow that runs doesn't sell itself. If the page is slow or vague, visitors leave before they understand what it does. And some of your customers now ask ChatGPT or Perplexity instead of searching, and those tools mostly cite sites they can parse. We build pages that work for both.",
+      "titleEmphasis": "than your site says.",
       "symptoms": {
         "slow": "A site that takes over 3 seconds to show on mobile",
         "noPrice": "Pages that state neither price nor timeline",
@@ -520,7 +521,7 @@
       "titleEmphasis": "questions."
     },
     "cta": {
-      "title": "Your site,",
+      "title": "Your page,",
       "body": "Tell us about your project and we'll send a free quote with a fixed price.",
       "ctaPrimary": "Get a free quote",
       "ctaSecondary": "Book a call",
@@ -534,10 +535,10 @@
   },
   "agents": {
     "hero": {
-      "eyebrow": "AI agents",
+      "eyebrow": "AI agents and workflows",
       "title": "An AI agent in production",
       "titleEmphasis": "in two weeks.",
-      "subtitle": "Audits from {auditPrice}, AI Sprints from {sprintPrice}. One workflow wired into your tools, with the code in your repo and a log of every action the agent takes.",
+      "subtitle": "For teams that want a fixed-price result without an embedded engineer. Audits from {auditPrice}, AI Sprints from {sprintPrice}: one workflow wired into your tools, the code in your repo and a log of every action the agent takes.",
       "ctaPrimary": "Book a call",
       "ctaSecondary": "Get a free quote",
       "serif": "production",
@@ -674,28 +675,28 @@
   "fde": {
     "hero": {
       "eyebrow": "Forward Deployed Engineer",
-      "title": "A fractional",
-      "titleEmphasis": "Forward Deployed Engineer.",
-      "subtitle": "Our lead engineer joins your team 2 to 3 days a week to ship your AI features. {fdeDayPrice} per day, 4 weeks minimum, two clients at most at any time.",
+      "title": "A Forward Deployed Engineer",
+      "titleEmphasis": "in your team.",
+      "subtitle": "A Forward Deployed Engineer (an engineer embedded in your team) joins your Slack and your repo 2 to 3 days a week to ship your agents, workflows and AI features. {fdeDayPrice} per day, 4 weeks minimum, two clients at most at any time.",
       "ctaPrimary": "Book a call",
       "ctaSecondary": "Get a free quote",
-      "serif": "fractional"
+      "serif": "team"
     },
     "definition": {
       "title": "What is a",
-      "body": "A Forward Deployed Engineer (FDE) is a developer who works directly with a customer's team, on their codebase, to get a product into production. The role comes from software companies like Palantir, and AI labs now use it to deploy their models with customers. At Klyx it's the same work on a fractional basis: our lead engineer joins your team a few days a week, without you making a full-time hire.",
+      "body": "A Forward Deployed Engineer, or FDE, is an engineer who works directly with a customer's team, on their codebase, to get a product into production. The role comes from software companies like Palantir, and AI labs now use it to deploy their models with customers. At Klyx it's the same work on a fractional basis: our lead engineer joins your team a few days a week and puts your agents and workflows into production, without you making a full-time hire.",
       "titleEmphasis": "Forward Deployed Engineer?",
       "term": "forward deployed engineer · noun · FDE"
     },
     "audience": {
       "title": "Who it's for",
-      "body": "A 2 to 4 person startup that has to ship an AI feature before its next round and has no time to hire. Or an agency that signed an AI project and has nobody to build it."
+      "body": "A 2 to 4 person startup that has to ship an agent or an AI feature before its next round and has no time to hire. Or an agency that signed an AI project and has nobody to build it."
     },
     "deliverables": {
       "title": "What we do",
       "items": {
         "tools": "We work in your Slack, your repo and your stand-ups",
-        "backlog": "We own part of the backlog, from design to production",
+        "backlog": "We own part of the AI backlog, from design to production: agents, workflows, integrations",
         "weekly": "A written update every week with the list of merged PRs",
         "handover": "Handover documentation at the end of the engagement"
       },
@@ -768,7 +769,7 @@
       "titleEmphasis": "questions."
     },
     "cta": {
-      "title": "An AI feature",
+      "title": "An agent or a workflow",
       "body": "Book a call. We'll tell you quickly whether we can take it on, and at what pace.",
       "ctaPrimary": "Book a call",
       "ctaSecondary": "Get a free quote",
@@ -1274,7 +1275,7 @@
     "hero": {
       "title": "Every price,",
       "titleEmphasis": "in the open.",
-      "subtitle": "Prices exclude VAT and are starting prices. The final price depends on scope, written into the free quote before work starts.",
+      "subtitle": "Prices exclude VAT and are starting prices: a Forward Deployed Engineer (an engineer embedded in your team), an AI Sprint, an audit or an automation, then websites. The final price depends on scope, written into the free quote before work starts.",
       "serif": "open"
     },
     "table": {
@@ -1385,7 +1386,7 @@
     "hero": {
       "title": "An AI agency in Bordeaux,",
       "titleEmphasis": "one point of contact.",
-      "subtitle": "We build websites, AI agents and automations for startups, agencies and small businesses. One lead engineer follows your project from the first call to the handover.",
+      "subtitle": "We put AI agents, workflows and automations into production for startups, agencies and small businesses, and we build the page that sells them when one is needed. One lead engineer follows your project from the first call to the handover.",
       "serif": "contact"
     },
     "story": {
@@ -1479,7 +1480,7 @@
       "eyebrow": "AI agency in Bordeaux",
       "title": "AI for Bordeaux businesses,",
       "titleEmphasis": "without the jargon.",
-      "subtitle": "We help small and mid-sized companies in Bordeaux and Gironde automate repetitive work: quotes, invoices, emails, reporting. The price is fixed before work starts.",
+      "subtitle": "We help small and mid-sized companies in Bordeaux and Gironde automate repetitive work with AI agents and workflows: quotes, invoices, emails, reporting. We start with an audit, and the price is fixed before work starts.",
       "ctaPrimary": "Book a call",
       "ctaSecondary": "Get a free quote",
       "serif": "jargon"
@@ -1632,7 +1633,7 @@
     "hero": {
       "title": "Let's talk about",
       "titleEmphasis": "your project.",
-      "subtitle": "Book a 30-minute call or describe what you need below. Maxime, our lead engineer, answers every message himself.",
+      "subtitle": "Book a 30-minute call or describe the agent, workflow or page you need. Maxime, our lead engineer, answers every message himself.",
       "serif": "project"
     },
     "booking": {
@@ -2118,7 +2119,7 @@
       "pricing": {
         "title": "What it costs,",
         "titleEmphasis": "excl. VAT.",
-        "body": "Landing page from {landingPrice}, AI-ready site from {siteIaPrice}, AI Sprint from {sprintPrice}. To strengthen your team over time, FDE is {fdeDayPrice} a day, 4 weeks minimum. You set your own resale price.",
+        "body": "Landing page from {landingPrice}, AI-ready site from {siteIaPrice}, AI Sprint from {sprintPrice}. To strengthen your team over time, a Forward Deployed Engineer (an engineer embedded in your team) is {fdeDayPrice} a day, 4 weeks minimum. You set your own resale price.",
         "link": "All prices"
       },
       "faq": {
@@ -2293,7 +2294,7 @@
       "title": "Frequently asked questions",
       "titleEmphasis": "about our prices, timelines and your data.",
       "serif": "data",
-      "subtitle": "Every answer on the site in one place, grouped by theme, for SME and agency owners. Public prices excl. VAT, from {landingPrice} for a landing page to {sprintPrice} for an AI agent in production.",
+      "subtitle": "Every answer on the site in one place, grouped by theme: AI agents, Forward Deployed Engineer (an engineer embedded in your team), prices, data. Public prices excl. VAT, from {landingPrice} for a landing page to {sprintPrice} for an AI agent in production.",
       "ctaPrimary": "Book a call",
       "ctaSecondary": "Get a free quote"
     },
@@ -2389,26 +2390,26 @@
   },
   "meta": {
     "title": "Klyx",
-    "description": "Websites, AI agents and automations delivered at a fixed price for startups and agencies, from Bordeaux. Free quote, public prices.",
+    "description": "Klyx embeds an AI engineer in your team to put your agents, workflows and automations into production. Based in Bordeaux, public prices.",
     "home": {
-      "title": "Klyx | Fixed-price AI agents and websites, Bordeaux",
-      "description": "AI agents that run in production, not demos. Websites, agents and automations at a fixed price for startups and agencies. Free quote, public prices."
+      "title": "Klyx | An AI engineer in your team, Bordeaux",
+      "description": "An AI engineer in your team, all the way to production: agents, workflows and automations wired into your tools, code in your repo. Public prices."
     },
     "sites": {
       "title": "Website design in Bordeaux, public prices | Klyx",
-      "description": "Landing pages from {landingPrice}, 5 to 8 page sites from {siteIaPrice}. Fast sites that rank on Google and that ChatGPT can read."
+      "description": "Landing pages from {landingPrice}, 5 to 8 page sites from {siteIaPrice}. The page that explains what your agents do, fast and readable by ChatGPT."
     },
     "agents": {
-      "title": "AI agents and automation for businesses | Klyx",
+      "title": "AI agents and workflows in production, fixed price | Klyx",
       "description": "AI audits from {auditPrice}, AI Sprints from {sprintPrice}: one workflow in production in two weeks, with the code in your repo."
     },
     "fde": {
-      "title": "Fractional Forward Deployed Engineer | Klyx",
-      "description": "What is a Forward Deployed Engineer? An AI developer inside your team 2 to 3 days a week, from {fdeDayPrice} per day."
+      "title": "Forward Deployed Engineer: an embedded AI engineer | Klyx",
+      "description": "A Forward Deployed Engineer inside your team 2 to 3 days a week, putting your AI agents into production. From {fdeDayPrice} per day."
     },
     "pricing": {
-      "title": "Pricing: what a website or AI agent costs | Klyx",
-      "description": "Every Klyx price, excluding VAT: landing page, AI-ready site, AI audit, AI Sprint and Forward Deployed Engineer. Free quote."
+      "title": "Pricing: AI agents, embedded engineers and sites | Klyx",
+      "description": "Every Klyx price, excluding VAT: Forward Deployed Engineer, AI Sprint, AI audit, automation, landing page and AI-ready site. Free quote."
     },
     "cases": {
       "title": "Work: websites and AI agents shipped | Klyx",
@@ -2424,7 +2425,7 @@
     },
     "contact": {
       "title": "Contact and free quote | Klyx",
-      "description": "Book a 30-minute call or get a free quote for a website, an AI agent or a Forward Deployed Engineer engagement."
+      "description": "Book a 30-minute call or get a free quote for an AI agent, a Forward Deployed Engineer engagement or a website, at public prices."
     },
     "blog": {
       "title": "Blog: AI agents, GEO and fast websites | Klyx",
@@ -2569,34 +2570,37 @@
       "fde": {
         "title": "ENG-142 · CSV export",
         "nodes": {
-          "ticket": "Request",
-          "repo": "Your code",
-          "engineer": "Dev + AI agent",
-          "pr": "Fix",
-          "review": "Review",
+          "ticket": "Ticket",
+          "repo": "Your repo",
+          "engineer": "Engineer",
+          "pr": "Pull request",
           "deploy": "Shipped"
         },
         "meta": {
           "ticket": "ENG-142",
           "repo": "git repo",
-          "engineer": "paired",
+          "engineer": "+ AI agent",
           "pr": "PR #87",
-          "review": "1 comment",
           "deploy": "prod"
         },
+        "lanes": {
+          "backlog": "Your backlog",
+          "team": "Your team + Klyx",
+          "prod": "Your prod"
+        },
         "trace": {
-          "ticket": "Ticket: CSV export is slow",
-          "branch": "Fix under way on the CSV export",
+          "ticket": "Picked up ticket ENG-142",
+          "branch": "Branch opened in your repo",
           "read": "AI agent · reads 14 files",
           "testFail": "A test fails, we fix it",
           "fix": "Export split into batches",
           "testPass": "128 tests pass",
-          "pr": "Fix sent for review",
-          "review": "Reviewed, 1 comment handled",
-          "merged": "Approved and shipped"
+          "pr": "PR #87 opened, CI green",
+          "review": "Reviewed by your team",
+          "merged": "PR merged, shipped"
         },
-        "chip": "Fix shipped · tests ✓",
-        "caption": "Sample FDE day: a developer from the agency fixes a problem in your code, and the fix ships the same afternoon. Names and values are fictional."
+        "chip": "PR merged · in prod",
+        "caption": "Sample day: the Klyx engineer works inside your team and your repo with an AI agent, and the fix ships the same afternoon. Names and values are fictional."
       },
       "audit": {
         "title": "audit · sample-sme",
@@ -2837,7 +2841,8 @@
         "automation-examples": "Examples",
         "geo-visibility": "Measurement"
       },
-      "stack": "Stack"
+      "stack": "Stack",
+      "worklog": "Work log"
     },
     "ledger": {
       "offer": "Package",
@@ -2862,5 +2867,55 @@
       "note": "Brands mentioned belong to their respective owners. Klyx is neither affiliated with nor a partner of these vendors."
     },
     "sectors": "By sector"
+  },
+  "workLog": {
+    "title": "A sample week,",
+    "titleEmphasis": "action by action.",
+    "body": "The engineer works in your repo and your Slack. Every action, theirs and the agent's, goes into a log your team reads, along with the list of PRs shipped each week.",
+    "window": "log · sample week",
+    "repo": "your-org/app",
+    "label": "Illustration · names and values are fictional",
+    "actors": {
+      "human": "human",
+      "klyx": "klyx",
+      "agent": "agent"
+    },
+    "entries": {
+      "ticket": {
+        "time": "Mon 09:10",
+        "title": "Ticket opened",
+        "detail": "OPS-142 · invoice reminders"
+      },
+      "branch": {
+        "time": "Mon 11:40",
+        "title": "Branch opened",
+        "detail": "feat/invoice-agent"
+      },
+      "wired": {
+        "time": "Tue 15:02",
+        "title": "Agent wired",
+        "detail": "gmail → extraction → erp"
+      },
+      "red": {
+        "time": "Wed 10:18",
+        "title": "Test red",
+        "detail": "VAT total misread"
+      },
+      "fixed": {
+        "time": "Wed 14:55",
+        "title": "Fixed",
+        "detail": "tests ✓ 42/42"
+      },
+      "review": {
+        "time": "Thu 16:30",
+        "title": "PR reviewed",
+        "detail": "human approval step added"
+      },
+      "deployed": {
+        "time": "Fri 10:05",
+        "title": "Deployed",
+        "detail": "✓ in production"
+      }
+    }
   }
 }

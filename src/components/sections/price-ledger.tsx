@@ -50,7 +50,7 @@ export function PriceLedger({
                 colSpan={4}
                 className="type-label text-text-2 block px-5 py-3 font-medium lg:table-cell lg:px-7"
               >
-                <span className="text-accent">
+                <span className="text-accent-text">
                   {String(g + 1).padStart(2, "0")}
                 </span>
                 <span className="text-text-3"> / </span>

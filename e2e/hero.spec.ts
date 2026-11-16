@@ -5,8 +5,8 @@ import fr from "../messages/fr.json";
 import { verifyLighthouse } from "../src/lib/proof";
 import lighthouseData from "../src/lib/proof/klyx-lighthouse.json";
 
-const HOME_TABS = ["agents", "sites", "fde"] as const;
-const agents = fr.liveSystem.scenarios.agents;
+const HOME_TABS = ["fde", "agents", "sites"] as const;
+const fde = fr.liveSystem.scenarios.fde;
 const PLAYBACK_TIMEOUT_MS = 15_000;
 
 test.describe("home hero", () => {
@@ -35,9 +35,9 @@ test.describe("home hero", () => {
       }) => {
         await page.setViewportSize(viewport);
         await page.goto("/");
-        const stage = page.locator('[data-ls-stage="agents"]');
+        const stage = page.locator('[data-ls-stage="fde"]');
         await expect(stage.locator("[data-line]")).toHaveCount(
-          Object.keys(agents.trace).length,
+          Object.keys(fde.trace).length,
         );
         const fit = await stage.evaluate((el) => {
           const clip = el
@@ -68,7 +68,7 @@ test.describe("home hero", () => {
             truncated: false,
           });
         }
-        await expect(stage.locator("[data-chip]")).toHaveText(agents.chip);
+        await expect(stage.locator("[data-chip]")).toHaveText(fde.chip);
         await expect(stage.locator("[data-chip]")).toBeVisible();
         for (const id of HOME_TABS) {
           const tab = page.getByRole("tab", { name: fr.liveSystem.tabs[id] });
@@ -95,8 +95,8 @@ test.describe("home hero", () => {
       expect(await page.evaluate(() => document.getAnimations().length)).toBe(
         0,
       );
-      const stage = page.locator('[data-ls-stage="agents"]');
-      await expect(stage.locator('[data-node="slack"]')).toHaveAttribute(
+      const stage = page.locator('[data-ls-stage="fde"]');
+      await expect(stage.locator('[data-node="deploy"]')).toHaveAttribute(
         "data-state",
         "done",
       );
@@ -130,7 +130,7 @@ test.describe("home hero", () => {
       await system.scrollIntoViewIfNeeded();
       await expect(system).toHaveAttribute("data-playing", "");
       await expect(
-        page.locator('[data-ls-stage="agents"] [data-chip]'),
+        page.locator('[data-ls-stage="fde"] [data-chip]'),
       ).toHaveAttribute("data-shown", "true", { timeout: PLAYBACK_TIMEOUT_MS });
       const sitesTab = page.getByRole("tab", {
         name: fr.liveSystem.tabs.sites,
@@ -171,7 +171,7 @@ test.describe("home hero", () => {
     await sitesTab.click();
     await expect(sitesTab).toHaveAttribute("aria-selected", "true");
     await expect(
-      page.getByRole("tab", { name: en.liveSystem.tabs.agents }),
+      page.getByRole("tab", { name: en.liveSystem.tabs.fde }),
     ).toHaveAttribute("aria-selected", "false");
     await expect(page).toHaveURL(/\/en$/);
     const sites = page.locator('[data-ls-stage="sites"]');
@@ -181,7 +181,7 @@ test.describe("home hero", () => {
         exact: true,
       }),
     ).toBeVisible();
-    await expect(page.locator('[data-ls-stage="agents"]')).toBeHidden();
+    await expect(page.locator('[data-ls-stage="fde"]')).toBeHidden();
   });
 
   test("the Sites tab shows a Lighthouse score only from a live klyx.fr run", async ({
