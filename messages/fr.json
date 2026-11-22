@@ -1701,7 +1701,7 @@
       }
     },
     "direct": {
-      "title": "Ou par e-mail",
+      "title": "Ou en direct",
       "location": "Klyx, Bordeaux"
     }
   },
@@ -1729,6 +1729,7 @@
       "body": "Klyx, activité de Maxime Mansiet, entrepreneur individuel, Bordeaux, France.",
       "siret": "SIRET : {siret}",
       "email": "Contact : {email}",
+      "phone": "Téléphone : {phone}",
       "director": "Directeur de la publication : Maxime Mansiet"
     },
     "hosting": {

@@ -144,6 +144,22 @@ export async function SiteFooter() {
           <p>{t("copyright", { year: new Date().getFullYear() })}</p>
           <ul className="flex flex-wrap items-center gap-x-5 gap-y-2">
             <li className="tabular-nums">
+              <a
+                href={`tel:${site.phoneE164}`}
+                className="hover:text-text transition-colors duration-(--d-fast)"
+              >
+                {site.phone}
+              </a>
+            </li>
+            <li>
+              <a
+                href={`mailto:${site.email}`}
+                className="hover:text-text transition-colors duration-(--d-fast)"
+              >
+                {site.email}
+              </a>
+            </li>
+            <li className="tabular-nums">
               {t("siret", { siret: site.siret })}
             </li>
             <li>
