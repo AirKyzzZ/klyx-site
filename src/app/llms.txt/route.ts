@@ -66,6 +66,7 @@ export function GET() {
     "## Contact",
     "",
     `- E-mail : ${site.email}`,
+    `- Téléphone : ${site.phone}`,
     `- [${nav("quote")}](${absoluteUrl("fr", "/contact")})`,
     ...(site.calUrl ? [`- [${nav("book")}](${site.calUrl})`] : []),
     "",

@@ -31,6 +31,7 @@ export function organizationJsonLd(description?: string): JsonLdObject {
     image: `${site.url}/brand/klyx-black.png`,
     ...(description ? { description } : {}),
     email: site.email,
+    telephone: site.phoneE164,
     address: {
       "@type": "PostalAddress",
       addressLocality: site.city,

@@ -119,6 +119,12 @@ export default async function ContactPage({ params }: LocaleParams) {
             >
               {site.email}
             </a>
+            <a
+              href={`tel:${site.phoneE164}`}
+              className="type-data text-text hover:text-text-2 mt-1 block w-fit underline underline-offset-4 transition-colors"
+            >
+              {site.phone}
+            </a>
             <p className="type-data text-text-3 mt-1">{t("direct.location")}</p>
             <ul className="mt-5 flex gap-5">
               {socialLinks.map(({ name, href }) => {

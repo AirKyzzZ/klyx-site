@@ -1701,7 +1701,7 @@
       }
     },
     "direct": {
-      "title": "Or by email",
+      "title": "Or directly",
       "location": "Klyx, Bordeaux"
     }
   },
@@ -1729,6 +1729,7 @@
       "body": "Klyx, a business of Maxime Mansiet, sole trader (entrepreneur individuel), Bordeaux, France.",
       "siret": "SIRET: {siret}",
       "email": "Contact: {email}",
+      "phone": "Phone: {phone}",
       "director": "Publication director: Maxime Mansiet"
     },
     "hosting": {

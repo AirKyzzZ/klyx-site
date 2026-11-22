@@ -2,6 +2,8 @@ export const site = {
   name: "Klyx",
   url: "https://klyx.fr",
   email: "contact@klyx.fr",
+  phone: "+33 7 83 97 23 60",
+  phoneE164: "+33783972360",
   founder: "Maxime Mansiet",
   siret: "941 572 364 00029",
   city: "Bordeaux",
