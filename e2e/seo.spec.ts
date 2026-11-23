@@ -1,3 +1,5 @@
+import { readdirSync } from "node:fs";
+
 import { expect, type Page, test } from "@playwright/test";
 
 import { formatPrice } from "../src/lib/offers";
@@ -357,4 +359,14 @@ test("every sitemap entry carries a lastmod", async ({ request }) => {
   for (const entry of entries) {
     expect(entry).toMatch(/<lastmod>\d{4}-\d{2}-\d{2}/);
   }
+});
+
+test("the IndexNow key file is served at the root", async ({ request }) => {
+  const keyFile = readdirSync("public").find((file) =>
+    /^[0-9a-f]{32}\.txt$/.test(file),
+  );
+  expect(keyFile).toBeDefined();
+  const response = await request.get(`/${keyFile}`);
+  expect(response.status()).toBe(200);
+  expect((await response.text()).trim()).toBe(keyFile?.replace(".txt", ""));
 });
