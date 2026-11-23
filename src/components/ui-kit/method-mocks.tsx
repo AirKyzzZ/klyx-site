@@ -98,9 +98,11 @@ export function QuoteMock({
           {excluded}
         </li>
       </ul>
-      <div className="border-line flex items-baseline justify-between gap-3 border-t pt-3">
-        <span className="text-text-2 text-[0.8125rem]">{total}</span>
-        <span className="text-text text-xl font-semibold tracking-[-0.5px]">
+      <div className="border-line flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1 border-t pt-3">
+        <span className="text-text-2 text-[0.8125rem] whitespace-nowrap">
+          {total}
+        </span>
+        <span className="text-text text-xl font-semibold tracking-[-0.5px] whitespace-nowrap">
           {price}
         </span>
       </div>

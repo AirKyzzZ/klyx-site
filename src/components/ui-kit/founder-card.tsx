@@ -65,7 +65,7 @@ export function FounderCard({
           {stats.map((stat) => (
             <div
               key={stat.label}
-              className="flex flex-col-reverse gap-1 py-[18px] pr-3 pl-3 first:pl-0 sm:pl-6"
+              className="flex flex-col-reverse justify-end gap-1 py-[18px] pr-3 pl-3 first:pl-0 sm:pl-6"
             >
               <dt className="text-text-3 text-[0.8125rem] leading-snug">
                 {stat.label}
