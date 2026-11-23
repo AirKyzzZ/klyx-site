@@ -21,7 +21,7 @@ import { organizationJsonLd, websiteJsonLd } from "@/lib/json-ld";
 import { site } from "@/lib/site";
 import { THEME_COLORS } from "@/lib/theme";
 
-import { mono, sans, serif } from "../fonts";
+import { mono, sans } from "../fonts";
 import "../globals.css";
 
 type LayoutProps = {
@@ -60,7 +60,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
       lang={locale}
       data-theme="light"
       suppressHydrationWarning
-      className={`${sans.variable} ${mono.variable} ${serif.variable}`}
+      className={`${sans.variable} ${mono.variable}`}
     >
       <head>
         <ThemeScript />

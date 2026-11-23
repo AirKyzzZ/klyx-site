@@ -8,7 +8,7 @@ import type { Locale } from "@/i18n/routing";
 import { THEME_COLORS } from "@/lib/theme";
 
 import fr from "../../messages/fr.json";
-import { mono, sans, serif } from "./fonts";
+import { mono, sans } from "./fonts";
 import "./globals.css";
 
 export const viewport: Viewport = {
@@ -50,7 +50,7 @@ export default function GlobalNotFound() {
       lang="fr"
       data-theme="light"
       suppressHydrationWarning
-      className={`${sans.variable} ${mono.variable} ${serif.variable}`}
+      className={`${sans.variable} ${mono.variable}`}
     >
       <head>
         <ThemeScript />

@@ -167,7 +167,6 @@
 
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
-  --font-serif: var(--font-instrument-serif), ui-serif, Georgia, serif;
 
   --animate-accordion-down: accordion-down var(--d-ui) var(--ease-out);
   --animate-accordion-up: accordion-up var(--d-ui) var(--ease-out);

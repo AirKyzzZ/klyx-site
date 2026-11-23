@@ -11,7 +11,7 @@ import { ThemeScript } from "@/components/theme/theme-script";
 import { site } from "@/lib/site";
 import { THEME_COLORS } from "@/lib/theme";
 
-import { mono, sans, serif } from "../fonts";
+import { mono, sans } from "../fonts";
 import "../globals.css";
 
 export const viewport: Viewport = {
@@ -31,7 +31,7 @@ export default function OutreachLayout({
       lang="fr"
       data-theme="light"
       suppressHydrationWarning
-      className={`${sans.variable} ${mono.variable} ${serif.variable}`}
+      className={`${sans.variable} ${mono.variable}`}
     >
       <head>
         <ThemeScript />
