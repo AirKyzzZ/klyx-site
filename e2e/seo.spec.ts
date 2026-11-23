@@ -3,7 +3,7 @@ import { readdirSync } from "node:fs";
 import { expect, type Page, test } from "@playwright/test";
 
 import { formatPrice, offers } from "../src/lib/offers";
-import { site } from "../src/lib/site";
+import { SITE_DESCRIPTIONS, site } from "../src/lib/site";
 
 type JsonLdNode = Record<string, unknown>;
 
@@ -291,7 +291,7 @@ for (const path of ["/", "/agence-ia-bordeaux", "/en/pricing", "/blog"]) {
     expect(organizations).toHaveLength(1);
     expect(organizations[0]).toMatchObject({
       "@id": "https://klyx.fr/#organization",
-      description: site.description,
+      description: SITE_DESCRIPTIONS[path.startsWith("/en") ? "en" : "fr"],
       sameAs: [site.socials.linkedinCompany, site.socials.instagram],
     });
     expect(nodes.filter((node) => hasType(node, "WebSite"))).toHaveLength(1);
