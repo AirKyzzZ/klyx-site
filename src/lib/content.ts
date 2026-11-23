@@ -16,7 +16,8 @@ export type CaseStatus = "inDevelopment";
 export type CaseStudyMeta = {
   slug: string;
   title: string;
-  serif?: string;
+  name: string;
+  kind: string;
   client: string;
   url: string;
   live?: boolean;

@@ -1,6 +1,7 @@
 export const metadata = {
   title: "Hoppy, the AI assistant for Hop Hop Immo",
-  serif: "assistant",
+  name: "Hoppy for Hop Hop Immo",
+  kind: "AI assistant, new-build homes",
   client: "Hop Hop Immo",
   url: "https://www.hophopimmo.com",
   year: 2026,
@@ -35,23 +36,25 @@ export const metadata = {
   },
 };
 
-Hop Hop Immo tracks new-build programmes across south-west France, from Bordeaux to Toulouse, with their full price history. We designed Hoppy, the site's AI assistant, which answers visitors' questions about those programmes.
+## The need
 
-## Context
-
-On the site, you look for a new home the way you would on a property portal: a town, a département on the map, or an area you draw yourself. Hoppy adds another way in: describe what you are looking for in your own words, out loud or in writing.
+Hop Hop Immo tracks new-build programmes across south-west France, from Bordeaux to Toulouse, with their full price history. On the site, you look for a new home the way you would on a property portal: a town, a département on the map, or an area you draw yourself. Buyers needed help finding their way through all those programmes.
 
 ## What we built
 
-The Hoppy assistant, from design to production.
+Hoppy, the site's AI assistant, from design to launch. It adds another way to search: describe what you are looking for in your own words, out loud or in writing. It answers visitors' questions and points them to the right programme.
 
-## What visitors see
+### What visitors see
 
 1. On the home page, next to the regular search, a "Rechercher avec Hoppy" (search with Hoppy) button.
 2. The button opens the assistant page: the map on one side, Hoppy on the other, and a "Critères de recherche" (search criteria) panel to fill in by talking.
 3. Visitors choose to talk to Hoppy or to write to it.
 4. Before voice mode, a window explains that the voice is processed by ElevenLabs, a provider based in the United States, and that recordings are not kept after processing. Visitors can accept or decline.
 
-## Stack
+### The tools
 
 The live site runs on Next.js. Hoppy's voice goes through ElevenLabs, as the site tells its visitors. The map shows OpenStreetMap data.
+
+## The result
+
+Buyers get an answer right away, without waiting for an advisor.
