@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { ArrowUpRight, Check } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 
+import { JsonLd } from "@/components/json-ld";
 import { Cta } from "@/components/sections/cta";
 import { Faq } from "@/components/sections/faq";
 import { Hero } from "@/components/sections/hero";
@@ -13,6 +14,7 @@ import {
   type Translate,
 } from "@/i18n/message-list";
 import { type LocaleParams, resolvePageLocale } from "@/i18n/page-locale";
+import { pricingPageJsonLd } from "@/lib/json-ld";
 import { getPriceValues } from "@/lib/offers";
 import { buildMetadata } from "@/lib/seo";
 
@@ -44,6 +46,7 @@ export default async function PricingPage({ params }: LocaleParams) {
 
   return (
     <>
+      <JsonLd data={pricingPageJsonLd(locale)} />
       <Hero
         title={t("hero.title")}
         emphasis={t("hero.titleEmphasis")}

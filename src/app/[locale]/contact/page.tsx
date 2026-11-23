@@ -5,9 +5,11 @@ import { FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa6";
 
 import { CalBooking } from "@/components/cal-booking";
 import { ContactForm } from "@/components/contact-form";
+import { JsonLd } from "@/components/json-ld";
 import { Hero } from "@/components/sections/hero";
 import { messageKeys } from "@/i18n/message-list";
 import { type LocaleParams, resolvePageLocale } from "@/i18n/page-locale";
+import { contactPageJsonLd } from "@/lib/json-ld";
 import { buildMetadata } from "@/lib/seo";
 import { site, socialLinks } from "@/lib/site";
 
@@ -53,6 +55,7 @@ export default async function ContactPage({ params }: LocaleParams) {
       subtitle={t("hero.subtitle")}
       className="pb-24 md:pb-32"
     >
+      <JsonLd data={contactPageJsonLd(locale)} />
       <div className="grid gap-6 lg:grid-cols-12 lg:items-start">
         <section
           id="contact-form"

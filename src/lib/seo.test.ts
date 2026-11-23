@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 
-import { brandedTitle, buildMetadata } from "./seo";
+import { blogPostingJsonLd } from "./json-ld";
+import { brandedTitle, buildMetadata, ogImageUrl } from "./seo";
 
 describe("buildMetadata", () => {
   it("sets the canonical and hreflang alternates for a localized route", () => {
@@ -97,6 +98,33 @@ describe("buildMetadata", () => {
     expect(metadata.alternates?.languages).toMatchObject({
       en: "https://klyx.fr/en/work/citeme",
     });
+  });
+});
+
+describe("ogImageUrl", () => {
+  it("gives each blog post its own image, shared by OpenGraph and JSON-LD", () => {
+    const params = { slug: "cout-agent-ia-pme" };
+    const url = ogImageUrl("fr", "/blog/[slug]", params);
+    expect(url).toBe(
+      "https://klyx.fr/fr/blog/cout-agent-ia-pme/opengraph-image",
+    );
+    const metadata = buildMetadata({
+      locale: "fr",
+      pathname: "/blog/[slug]",
+      params,
+      title: "Titre",
+      description: "Résumé",
+      type: "article",
+    });
+    expect(metadata.openGraph).toMatchObject({ images: [{ url }] });
+    const [article] = blogPostingJsonLd({
+      locale: "fr",
+      slug: params.slug,
+      title: "Titre",
+      summary: "Résumé",
+      date: "2026-11-03",
+    });
+    expect(article.image).toBe(url);
   });
 });
 

@@ -23,6 +23,12 @@ describe("proxy legacy redirects", () => {
     );
   });
 
+  it("redirects a legacy path with a trailing slash in one hop", () => {
+    const response = run("/agence-web-bordeaux/");
+    expect(response.status).toBe(308);
+    expect(new URL(response.headers.get("location") ?? "").pathname).toBe("/");
+  });
+
   it("still returns 410 for WordPress internals", () => {
     expect(run("/wp-login.php").status).toBe(410);
   });
@@ -39,5 +45,26 @@ describe("proxy legacy redirects", () => {
     expect(response.headers.get("x-middleware-rewrite")).toContain(
       "/fr/tarifs",
     );
+  });
+});
+
+describe("proxy canonical redirects", () => {
+  it.each([
+    ["/tarifs/", "https://klyx.fr/tarifs"],
+    ["/en/pricing/?ref=x", "https://klyx.fr/en/pricing?ref=x"],
+    ["/pour/agences/", "https://klyx.fr/pour/agences"],
+    ["//evil.example/", "https://klyx.fr/evil.example"],
+    ["/fr/tarifs", "https://klyx.fr/tarifs"],
+    ["/fr", "https://klyx.fr/"],
+    ["/en/tarifs", "https://klyx.fr/en/pricing"],
+  ])("answers %s with a 308 to %s", (path, destination) => {
+    const response = run(path);
+    expect(response.status).toBe(308);
+    expect(response.headers.get("location")).toBe(destination);
+  });
+
+  it("leaves the root and slashless pages alone", () => {
+    expect(run("/").status).toBe(200);
+    expect(run("/en").headers.get("location")).toBeNull();
   });
 });

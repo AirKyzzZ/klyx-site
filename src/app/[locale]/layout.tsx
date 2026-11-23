@@ -10,10 +10,12 @@ import {
 import { notFound } from "next/navigation";
 
 import { AnalyticsIsland } from "@/components/analytics/analytics-island";
+import { JsonLd } from "@/components/json-ld";
 import { MachineView } from "@/components/machine-view/machine-view";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { routing } from "@/i18n/routing";
+import { organizationJsonLd, websiteJsonLd } from "@/lib/json-ld";
 import { site } from "@/lib/site";
 
 import { mono, sans, serif } from "../fonts";
@@ -57,6 +59,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
       className={`${sans.variable} ${mono.variable} ${serif.variable}`}
     >
       <body>
+        <JsonLd data={[organizationJsonLd(), websiteJsonLd()]} />
         <NextIntlClientProvider messages={{ machine }}>
           <div className="relative isolate">
             <div className="rails" aria-hidden="true">

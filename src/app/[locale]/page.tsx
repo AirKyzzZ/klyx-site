@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 
-import { JsonLd } from "@/components/json-ld";
 import { ContributionWindow } from "@/components/proof/contribution-window";
 import { CaseBand } from "@/components/sections/case-grid";
 import { Cta } from "@/components/sections/cta";
@@ -22,7 +21,6 @@ import {
   HOME_OFFER_CARDS,
   selectHomeCases,
 } from "@/lib/home-sections";
-import { organizationJsonLd } from "@/lib/json-ld";
 import {
   formatPrice,
   getOfferPrice,
@@ -64,7 +62,6 @@ export default async function HomePage({ params }: LocaleParams) {
   const nav = await getTranslations({ locale, namespace: "nav" });
   const casesT = await getTranslations({ locale, namespace: "cases" });
   const tabs = await getTranslations({ locale, namespace: "liveSystem.tabs" });
-  const meta = await getTranslations({ locale, namespace: "meta.home" });
   const cases = selectHomeCases(await getCaseStudies(locale));
   const proof = getVerifiedProof();
   const prices = getPriceValues(locale);
@@ -92,7 +89,6 @@ export default async function HomePage({ params }: LocaleParams) {
 
   return (
     <>
-      <JsonLd data={organizationJsonLd(meta("description"))} />
       <SpotlightPointer />
       <HomeHero locale={locale} />
 

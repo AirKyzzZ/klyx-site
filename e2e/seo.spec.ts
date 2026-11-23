@@ -1,4 +1,21 @@
-import { expect, test } from "@playwright/test";
+import { readdirSync } from "node:fs";
+
+import { expect, type Page, test } from "@playwright/test";
+
+import { formatPrice } from "../src/lib/offers";
+import { site } from "../src/lib/site";
+
+type JsonLdNode = Record<string, unknown>;
+
+async function jsonLdNodes(page: Page): Promise<JsonLdNode[]> {
+  const scripts = await page
+    .locator('script[type="application/ld+json"]')
+    .allTextContents();
+  return scripts.flatMap((text) => [JSON.parse(text)].flat() as JsonLdNode[]);
+}
+
+const hasType = (node: JsonLdNode, type: string) =>
+  [node["@type"]].flat().includes(type);
 
 test("robots, sitemap and llms.txt are served", async ({ request }) => {
   const robots = await request.get("/robots.txt");
@@ -75,6 +92,7 @@ test("home and offer pages embed JSON-LD", async ({ page }) => {
     .locator('script[type="application/ld+json"]')
     .allTextContents();
   expect(home.join()).toContain('"ProfessionalService"');
+  expect(home.join()).toContain('"WebSite"');
 
   await page.goto("/services/agents-ia");
   const agents = await page
@@ -262,3 +280,108 @@ test("sitemap and llms.txt list the use-case and faq pages", async ({
     expect(sitemap).toContain(`https://klyx.fr${useCase.en}`);
   }
 });
+
+for (const path of ["/", "/agence-ia-bordeaux", "/en/pricing", "/blog"]) {
+  test(`${path} declares the organization and website once`, async ({
+    page,
+  }) => {
+    await page.goto(path);
+    const nodes = await jsonLdNodes(page);
+    const organizations = nodes.filter((node) => hasType(node, "Organization"));
+    expect(organizations).toHaveLength(1);
+    expect(organizations[0]).toMatchObject({
+      "@id": "https://klyx.fr/#organization",
+      description: site.description,
+      sameAs: [site.socials.linkedinCompany, site.socials.instagram],
+    });
+    expect(nodes.filter((node) => hasType(node, "WebSite"))).toHaveLength(1);
+  });
+}
+
+const PAGE_TYPES = [
+  { path: "/a-propos", types: ["AboutPage", "Person"] },
+  { path: "/en/about", types: ["AboutPage", "Person"] },
+  { path: "/tarifs", types: ["OfferCatalog", "FAQPage"] },
+  { path: "/realisations", types: ["CollectionPage"] },
+  { path: "/en/work/citeme", types: ["CreativeWork", "BreadcrumbList"] },
+  { path: "/blog", types: ["Blog"] },
+  { path: "/contact", types: ["ContactPage"] },
+  { path: "/blog/cout-agent-ia-pme", types: ["BlogPosting", "BreadcrumbList"] },
+];
+
+for (const { path, types } of PAGE_TYPES) {
+  test(`${path} declares ${types.join(" and ")}`, async ({ page }) => {
+    await page.goto(path);
+    const nodes = await jsonLdNodes(page);
+    for (const type of types) {
+      expect(
+        nodes.some((node) => hasType(node, type)),
+        `${path} ${type}`,
+      ).toBe(true);
+    }
+  });
+}
+
+test("/tarifs JSON-LD matches the visible prices and FAQ", async ({ page }) => {
+  await page.goto("/tarifs");
+  const jsonLd = (
+    await page.locator('script[type="application/ld+json"]').allTextContents()
+  ).join();
+  const questions = await page.locator("main details").count();
+  expect(questions).toBeGreaterThan(0);
+  expect(jsonLd.match(/"@type":"Question"/g)?.length).toBe(questions);
+  const table = await page.locator("main table").textContent();
+  for (const price of [900, 2900, 4500, 700]) {
+    expect(jsonLd).toContain(`"price":${price}`);
+    expect(table).toContain(formatPrice(price, "fr"));
+  }
+});
+
+test("blog posts use their own share image in JSON-LD", async ({ page }) => {
+  await page.goto("/en/blog/cout-agent-ia-pme");
+  const article = (await jsonLdNodes(page)).find((node) =>
+    hasType(node, "BlogPosting"),
+  );
+  const ogImage = await page
+    .locator('meta[property="og:image"]')
+    .first()
+    .getAttribute("content");
+  expect(article?.image).toBe(ogImage);
+  expect(article?.image).toBe(
+    "https://klyx.fr/en/blog/cout-agent-ia-pme/opengraph-image",
+  );
+});
+
+test("every sitemap entry carries a lastmod", async ({ request }) => {
+  const sitemap = await (await request.get("/sitemap.xml")).text();
+  const entries = sitemap.match(/<url>[\s\S]*?<\/url>/g) ?? [];
+  expect(entries.length).toBeGreaterThan(0);
+  for (const entry of entries) {
+    expect(entry).toMatch(/<lastmod>\d{4}-\d{2}-\d{2}/);
+  }
+});
+
+test("the IndexNow key file is served at the root", async ({ request }) => {
+  const keyFile = readdirSync("public").find((file) =>
+    /^[0-9a-f]{32}\.txt$/.test(file),
+  );
+  expect(keyFile).toBeDefined();
+  const response = await request.get(`/${keyFile}`);
+  expect(response.status()).toBe(200);
+  expect((await response.text()).trim()).toBe(keyFile?.replace(".txt", ""));
+});
+
+for (const [path, destination] of [
+  ["/tarifs/", "/tarifs"],
+  ["/en/pricing/", "/en/pricing"],
+  ["/fr/tarifs", "/tarifs"],
+  ["/fr", "/"],
+]) {
+  test(`${path} answers a 308 to ${destination}`, async ({ request }) => {
+    const response = await request.get(path, { maxRedirects: 0 });
+    expect(response.status()).toBe(308);
+    expect(new URL(response.headers().location, "http://x").pathname).toBe(
+      destination,
+    );
+  });
+}
