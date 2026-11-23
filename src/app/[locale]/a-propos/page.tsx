@@ -98,7 +98,7 @@ export default async function AboutPage({ params }: LocaleParams) {
             </Button>
           </div>
         </SectionHeader>
-        <FounderPanel locale={locale} className="mt-12 lg:mt-16" />
+        <FounderPanel locale={locale} as="h2" className="mt-12 lg:mt-16" />
       </PageSection>
 
       <PageSection id="equipe">

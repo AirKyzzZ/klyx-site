@@ -33,11 +33,13 @@ export function CaseCard({
   item,
   readLabel,
   sizes = "(min-width: 768px) 500px, 90vw",
+  as: Heading = "h3",
   className,
 }: {
   item: CaseStudyMeta;
   readLabel: string;
   sizes?: string;
+  as?: "h2" | "h3";
   className?: string;
 }) {
   const image = getSiteShot(item.slug)?.image ?? item.image;
@@ -66,9 +68,9 @@ export function CaseCard({
           <p className="text-text-3 text-sm">{item.kind}</p>
           {item.status && <CaseStatusBadge status={item.status} />}
         </div>
-        <h3 className="text-text group-hover:text-accent text-[1.3125rem] leading-tight font-semibold tracking-[-0.4px] transition-colors duration-(--d-fast)">
+        <Heading className="text-text group-hover:text-accent text-[1.3125rem] leading-tight font-semibold tracking-[-0.4px] transition-colors duration-(--d-fast)">
           {item.name}
-        </h3>
+        </Heading>
         <p className="text-text-2 text-[0.9375rem] leading-normal">
           {item.summary}
         </p>
@@ -104,7 +106,7 @@ export function CaseList({
     <ul className={cn("grid gap-5 md:grid-cols-2 lg:gap-6", className)}>
       {items.map((item) => (
         <li key={item.slug}>
-          <CaseCard item={item} readLabel={readLabel} />
+          <CaseCard item={item} readLabel={readLabel} as="h2" />
         </li>
       ))}
     </ul>

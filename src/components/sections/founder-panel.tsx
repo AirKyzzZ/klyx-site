@@ -16,9 +16,11 @@ export const FOUNDER_PHOTO = "/team/maxime-mansiet.jpg";
 
 export async function FounderPanel({
   locale,
+  as,
   className,
 }: {
   locale: Locale;
+  as?: "h2" | "h3";
   className?: string;
 }) {
   const t = await getTranslations({ locale, namespace: "home.team" });
@@ -34,6 +36,7 @@ export async function FounderPanel({
 
   return (
     <FounderCard
+      as={as}
       className={className}
       name={t("name")}
       role={t("role")}
