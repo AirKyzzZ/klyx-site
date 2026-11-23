@@ -1,5 +1,6 @@
 import { expect, type Page, test } from "@playwright/test";
 
+import { THEME_COLORS } from "../src/lib/theme";
 import { NOT_FOUND_PATH, pagePaths } from "./route-paths";
 
 const ORIGIN = "https://klyx.fr";
@@ -86,8 +87,8 @@ test("favicon set and web manifest are served", async ({ request }) => {
   expect(manifest).toMatchObject({
     name: "Klyx",
     short_name: "Klyx",
-    theme_color: "#141414",
-    background_color: "#141414",
+    theme_color: THEME_COLORS.light,
+    background_color: THEME_COLORS.light,
     icons: [
       { src: "/icon-192.png", sizes: "192x192" },
       { src: "/icon-512.png", sizes: "512x512" },
