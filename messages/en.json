@@ -110,77 +110,13 @@
       "title": "Works with the tools you already use",
       "more": "and {count} more"
     },
-    "cases": {
-      "title": "Work",
-      "subtitle": "Sites shipped for clients and products we've worked on. For each project, what we built.",
-      "visit": "See the project",
-      "readCase": "Read the case study",
-      "viewAll": "All work"
-    },
     "process": {
-      "title": "How it works,",
-      "steps": {
-        "call": {
-          "title": "A scoping call",
-          "body": "30 minutes to understand your product, your stack and your deadline, and to see where AI could save you time."
-        },
-        "scope": {
-          "title": "Audit or quote",
-          "body": "We review your site or your processes, then send you a written scope and a fixed price."
-        },
-        "build": {
-          "title": "Build",
-          "body": "We build in short steps, with a check-in every week and tests on your real data. The code lives in your repo from day one."
-        },
-        "measure": {
-          "title": "Measure and hand over",
-          "body": "After launch, we check together that everything runs and give you a written handover. If you want us to keep monitoring and improving it, that's the monthly run."
-        }
-      },
-      "titleEmphasis": "in four steps.",
       "sample": "Sample",
       "call": {
         "file": "calendar",
         "title": "Scoping call",
         "meta": "30 min · video",
         "pick": "Pick a slot"
-      },
-      "scope": {
-        "file": "scope.md",
-        "title": "AI Sprint · inbound request triage",
-        "inLabel": "In scope",
-        "in": {
-          "a": "read the contact@ inbox",
-          "b": "sort into lead, support or spam",
-          "c": "update the CRM record"
-        },
-        "outLabel": "Out of scope",
-        "out": {
-          "a": "automatic reply to the customer"
-        },
-        "price": "Fixed price"
-      },
-      "build": {
-        "file": "weekly-update.md",
-        "title": "Weekly update · week 1",
-        "items": {
-          "a": "Inbox connected",
-          "b": "Classifier tested on real emails",
-          "c": "CRM update"
-        },
-        "done": "done",
-        "doing": "in progress",
-        "next": "Demo on Friday, on your data"
-      },
-      "measure": {
-        "file": "HANDOVER.md",
-        "title": "Handover",
-        "items": {
-          "a": "Code and accounts in your name",
-          "b": "Runbook: restart, monitor, switch off",
-          "c": "Test set in the repo",
-          "d": "Monthly follow-up, if you want it"
-        }
       }
     },
     "founder": {
@@ -282,22 +218,6 @@
       "ctaPrimary": "Book a call",
       "ctaSecondary": "Get a free quote",
       "titleEmphasis": "or site."
-    },
-    "fold": {
-      "label": "Verifiable commitments",
-      "repo": "Code in your repo from day 1",
-      "prices": "Public prices, excl. VAT",
-      "base": "Based in Bordeaux, remote across France"
-    },
-    "eyebrows": {
-      "proof": "Proof",
-      "offers": "Offers",
-      "tools": "Tools",
-      "cases": "Work",
-      "process": "Method",
-      "founder": "Team",
-      "testimonials": "Clients",
-      "faq": "Questions"
     },
     "proofStrip": {
       "title": "What we've shipped,",

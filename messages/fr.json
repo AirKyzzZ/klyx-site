@@ -110,77 +110,13 @@
       "title": "Fonctionne avec les outils que vous avez déjà",
       "more": "et {count} autres"
     },
-    "cases": {
-      "title": "Réalisations",
-      "subtitle": "Des sites livrés pour des clients et des produits sur lesquels on a travaillé. Pour chaque projet, ce qu'on a construit.",
-      "visit": "Voir le projet",
-      "readCase": "Lire l'étude de cas",
-      "viewAll": "Toutes les réalisations"
-    },
     "process": {
-      "title": "Comment ça se passe,",
-      "steps": {
-        "call": {
-          "title": "Un appel pour cadrer",
-          "body": "30 minutes pour comprendre votre produit, votre stack et votre échéance, et voir où l'IA peut vous faire gagner du temps."
-        },
-        "scope": {
-          "title": "Audit ou devis",
-          "body": "On passe en revue votre site ou vos process, puis on vous envoie un périmètre écrit et un prix fixe."
-        },
-        "build": {
-          "title": "Build",
-          "body": "On construit par étapes courtes, avec un point chaque semaine et des tests sur vos vraies données. Le code est dans votre repo dès le premier jour."
-        },
-        "measure": {
-          "title": "Mesure et passation",
-          "body": "Après la mise en ligne, on vérifie avec vous que tout tourne et on vous remet une passation écrite. Si vous voulez qu'on continue à suivre et à améliorer, c'est le suivi mensuel."
-        }
-      },
-      "titleEmphasis": "en quatre étapes.",
       "sample": "Exemple",
       "call": {
         "file": "agenda",
         "title": "Appel de cadrage",
         "meta": "30 min · visio",
         "pick": "Choisir un créneau"
-      },
-      "scope": {
-        "file": "perimetre.md",
-        "title": "Sprint IA · tri des demandes entrantes",
-        "inLabel": "Inclus",
-        "in": {
-          "a": "lecture de la boîte contact@",
-          "b": "classement lead, support ou spam",
-          "c": "fiche CRM mise à jour"
-        },
-        "outLabel": "Hors périmètre",
-        "out": {
-          "a": "réponse automatique au client"
-        },
-        "price": "Prix fixe"
-      },
-      "build": {
-        "file": "point-hebdo.md",
-        "title": "Point hebdo · semaine 1",
-        "items": {
-          "a": "Connexion à la boîte mail",
-          "b": "Classifieur testé sur de vrais emails",
-          "c": "Mise à jour du CRM"
-        },
-        "done": "fait",
-        "doing": "en cours",
-        "next": "Démo vendredi, sur vos données"
-      },
-      "measure": {
-        "file": "PASSATION.md",
-        "title": "Passation",
-        "items": {
-          "a": "Code et accès à votre nom",
-          "b": "Runbook : relancer, surveiller, couper",
-          "c": "Jeu de tests dans le repo",
-          "d": "Suivi mensuel, si vous le voulez"
-        }
       }
     },
     "founder": {
@@ -282,22 +218,6 @@
       "ctaPrimary": "Réserver un appel",
       "ctaSecondary": "Demander un devis gratuit",
       "titleEmphasis": "ou de votre prochain site."
-    },
-    "fold": {
-      "label": "Engagements vérifiables",
-      "repo": "Code dans votre repo dès le jour 1",
-      "prices": "Prix publics, en € HT",
-      "base": "Basés à Bordeaux, à distance partout en France"
-    },
-    "eyebrows": {
-      "proof": "Preuves",
-      "offers": "Offres",
-      "tools": "Outils",
-      "cases": "Réalisations",
-      "process": "Méthode",
-      "founder": "L'équipe",
-      "testimonials": "Clients",
-      "faq": "Questions"
     },
     "proofStrip": {
       "title": "Ce qu'on a livré,",

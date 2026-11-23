@@ -5,9 +5,7 @@ import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { useTranslations } from "next-intl";
 
-import { ChamferBreak } from "@/components/chamfer-break";
 import { BrowserFrame } from "@/components/proof/browser-frame";
-import { Section, SectionHeading } from "@/components/section";
 import { Link } from "@/i18n/navigation";
 import type { CaseStatus, CaseStudyMeta } from "@/lib/content";
 import { getSiteShot } from "@/lib/proof";
@@ -233,60 +231,5 @@ export function CaseList({
         );
       })}
     </ul>
-  );
-}
-
-export function CaseBand({
-  index,
-  eyebrow,
-  title,
-  emphasis,
-  subtitle,
-  viewAllLabel,
-  readLabel,
-  items,
-}: {
-  index?: string;
-  eyebrow?: string;
-  title: string;
-  emphasis?: string;
-  subtitle: string;
-  viewAllLabel: string;
-  readLabel: string;
-  items: CaseStudyMeta[];
-}) {
-  return (
-    <>
-      <ChamferBreak edge="top" />
-      <Section tone="sand" index={index} eyebrow={eyebrow}>
-        <div className="reveal grid gap-6 lg:grid-cols-12 lg:items-end">
-          <SectionHeading
-            lead={title}
-            rest={emphasis}
-            className="lg:col-span-7"
-          />
-          <div className="space-y-5 lg:col-span-4 lg:col-start-9">
-            <p className="text-text-2 max-w-[44ch]">{subtitle}</p>
-            <Link
-              href="/realisations"
-              className="group border-ink/20 text-text hover:bg-sand-200 inline-flex h-11 items-center gap-2 rounded-sm border px-4.5 text-[0.9375rem] font-medium transition-colors duration-(--d-fast)"
-            >
-              {viewAllLabel}
-              <ArrowRight
-                aria-hidden="true"
-                className="size-4 transition-transform duration-(--d-fast) group-hover:translate-x-0.5"
-              />
-            </Link>
-          </div>
-        </div>
-
-        <CaseList
-          items={items}
-          readLabel={readLabel}
-          className="mt-12 md:mt-16"
-        />
-      </Section>
-      <ChamferBreak edge="bottom" />
-    </>
   );
 }
