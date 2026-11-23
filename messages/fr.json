@@ -17,7 +17,6 @@
     "quote": "Demander un devis gratuit",
     "openMenu": "Ouvrir le menu",
     "closeMenu": "Fermer le menu",
-    "switchLanguage": "English",
     "audit": "Audit IA",
     "automation": "Automatisation IA",
     "geo": "Référencement IA",
@@ -42,7 +41,6 @@
     "tagline": "Sites, agents IA et automatisations au forfait. Basés à Bordeaux, on travaille à distance partout en France et en Europe.",
     "offersTitle": "Offres",
     "companyTitle": "Klyx",
-    "legalTitle": "Informations",
     "sisterSitesTitle": "Les autres activités Klyx",
     "estate": "Klyx Estate : des films et des visuels pour lancer les mandats immobiliers de prestige.",
     "legal": "Mentions légales",
@@ -57,11 +55,6 @@
       "ctaPrimary": "Réserver un appel de 30 min",
       "ctaSecondary": "Voir nos réalisations",
       "clients": "Ils nous ont confié un projet"
-    },
-    "proof": {
-      "label": "Livrable réel",
-      "title": "Ce qu'on a livré récemment",
-      "body": "TODO(maxime): choisir l'artefact affiché ici (liste de PR CiteMe, score Lighthouse d'un site client en ligne ou journal d'exécution d'un agent). Rien ne s'affiche tant que ce n'est pas un vrai livrable."
     },
     "offers": {
       "title": "Trois façons de travailler avec nous.",
@@ -110,74 +103,6 @@
       "title": "Fonctionne avec les outils que vous avez déjà",
       "more": "et {count} autres"
     },
-    "process": {
-      "sample": "Exemple",
-      "call": {
-        "file": "agenda",
-        "title": "Appel de cadrage",
-        "meta": "30 min · visio",
-        "pick": "Choisir un créneau"
-      }
-    },
-    "founder": {
-      "title": "Qui est derrière",
-      "body": "Klyx est une agence IA basée à Bordeaux. Maxime Mansiet, notre lead engineer, est votre interlocuteur direct du premier appel à la passation : il cadre le projet et le suit jusqu'à la mise en production.",
-      "experience": "Maxime a aussi cofondé CiteMe, un outil qui mesure la visibilité des marques dans ChatGPT et Perplexity.",
-      "github": "GitHub de Maxime",
-      "linkedin": "LinkedIn de Maxime",
-      "about": "Voir l'équipe",
-      "titleEmphasis": "votre projet.",
-      "products": "Cofondé par Maxime",
-      "caption": "Klyx · Bordeaux",
-      "roster": {
-        "window": "klyx: ~/équipe",
-        "file": "team.yml",
-        "keys": {
-          "role": "rôle",
-          "who": "qui",
-          "scope": "périmètre"
-        },
-        "items": {
-          "lead": {
-            "role": "lead engineer",
-            "who": "Maxime Mansiet",
-            "scope": "votre interlocuteur, cadrage, suivi, mise en prod"
-          },
-          "agents": {
-            "role": "agents",
-            "who": "agents de code IA",
-            "scope": "tâches cadrées, code relu avant la mise en prod"
-          },
-          "partners": {
-            "role": "spécialistes",
-            "who": "au cas par cas",
-            "scope": "si le projet le demande, on vous le dit avant"
-          }
-        }
-      }
-    },
-    "testimonials": {
-      "title": "Ce qu'en disent",
-      "note": "TODO(maxime): accord de chaque client pour réutiliser sa citation sur le nouveau site.",
-      "items": {
-        "david": {
-          "quote": "Service impeccable. Le site reflète enfin la qualité de nos services et nos prospects le remarquent. Communication transparente, respect des délais, rien à redire.",
-          "author": "David A.",
-          "company": "PKBA"
-        },
-        "antoni": {
-          "quote": "Collaboration fluide du début à la fin. Le site est clair, rapide et bien structuré. Klyx a parfaitement compris nos besoins sans jamais perdre de temps, une équipe jeune mais déjà très pro.",
-          "author": "Antoni V.",
-          "company": "Kenzi"
-        },
-        "clement": {
-          "quote": "Je recommande Klyx sans hésiter. Le suivi a été top, le design est moderne et adapté à notre activité. On sent une vraie passion derrière chaque détail.",
-          "author": "Clément D.",
-          "company": "Reciproq"
-        }
-      },
-      "titleEmphasis": "nos clients."
-    },
     "faq": {
       "title": "Questions fréquentes.",
       "items": {
@@ -211,34 +136,6 @@
         }
       },
       "intro": "Une autre question ? Posez-la pendant l'appel."
-    },
-    "finalCta": {
-      "title": "Parlons de votre prochain workflow",
-      "body": "Réservez un appel de 30 minutes. Vous repartez avec un avis clair sur ce qui vaut le coup, même si on ne travaille pas ensemble.",
-      "ctaPrimary": "Réserver un appel",
-      "ctaSecondary": "Demander un devis gratuit",
-      "titleEmphasis": "ou de votre prochain site."
-    },
-    "proofStrip": {
-      "title": "Ce qu'on a livré,",
-      "titleEmphasis": "vérifiable en un clic.",
-      "kinds": {
-        "lighthouse": "Lighthouse",
-        "prList": "Pull requests",
-        "runLog": "Journal d'exécution",
-        "siteShot": "Site en ligne"
-      },
-      "scores": {
-        "performance": "Performance",
-        "accessibility": "Accessibilité",
-        "bestPractices": "Bonnes pratiques",
-        "seo": "SEO"
-      },
-      "measured": "Mesuré le {date}",
-      "merged": "fusionnée le {date}",
-      "anonymised": "Anonymisé",
-      "live": "En ligne",
-      "open": "Ouvrir {host}"
     },
     "useCases": {
       "title": "Ce que l'IA peut faire dans votre entreprise.",

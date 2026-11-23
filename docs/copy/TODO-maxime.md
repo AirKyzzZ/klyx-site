@@ -1,6 +1,6 @@
 # TODO(maxime): claims to confirm before launch
 
-No public page shows a `TODO(maxime)` marker any more (controller ruling, 2026-11-01; `e2e/pending-markers.spec.ts` crawls every route and case study in both locales). Each claim below was softened to what is true today, or removed, and still needs your answer before the stronger wording can come back. The only markers left in `messages/*.json` are `home.proof.body` and `home.testimonials.note`, which do not render.
+No public page shows a `TODO(maxime)` marker any more (controller ruling, 2026-11-01; `e2e/pending-markers.spec.ts` crawls every route and case study in both locales). Each claim below was softened to what is true today, or removed, and still needs your answer before the stronger wording can come back. No marker is left in `messages/*.json`.
 
 Rows written before the sweep still describe the original claim; the sweep section at the end says what the page shows now.
 
@@ -35,8 +35,6 @@ Do not put the site live until each of these is answered and the page updated.
 | Home, À propos | `home.founder.roster.items.agents`, `about.team.agents`, `home.faq.items.team.answer`, `meta.about.description` | Claude Code agents take scoped tasks and every change is reviewed by Maxime before production | Still how you work; OK to name Claude Code on the site? Softened: visible copy now says « agents de code IA » and « le code qu'ils produisent est relu avant la mise en production », without naming Claude Code or Maxime as the reviewer |
 | À propos | `about.story.work` | Same Verana / 2060.io sentence | Same as above. Softened: visible text names neither Verana nor 2060.io (« une infrastructure européenne d'identité numérique ») |
 | À propos | `about.story.citeme` | Co-founded CiteMe, tracks brand citations in ChatGPT, Gemini, Perplexity | Wording OK? Marker removed (CiteMe co-founding is already shown on the home products row) |
-| Home | `home.proof.body` | Proof artefact next to the hero | Pick a real one: CiteMe PR list (count on GitHub first), Lighthouse score of a live client site, or a real agent run log |
-| Home | `home.testimonials.note` | 3 quotes reused verbatim (David A./PKBA, Antoni V./Kenzi, Clément D./Reciproq) | Consent from each client, initials vs full names, willing to take a reference call? Antoni's quote had an em dash, replaced with a comma: OK with him? EN versions are translations: OK? |
 | Home, Offres IA, Bordeaux | `home.faq.items.data.answer`, `agents.faq.items.data.answer`, `bordeaux.faq.items.data.answer` | Data goes through a model provider's API (e.g. OpenAI, Anthropic), which by default does not train on API data | Which providers you use by default, and that their API terms still say this. Marker removed from the home FAQ (the sentence only states the providers' public API defaults) |
 | Offres IA | `agents.proof.body` | Hoppy (Hop Hop Immo) and CiteMe are "already in production" | Naming resolved: Julien gave consent on 2026-11-03 (relayed by Maxime) to keep Hop Hop Immo on the site. Still open: what exactly was built on Hoppy |
 | Réalisations | `content/realisations/cronolyss.*.mdx` | Internal software for a high-end watchmaker, client not named, dashboard shown on the cover | Is the client OK with the product name and the screenshot being public? Is the scope wording « l'interface, à plusieurs » right? |

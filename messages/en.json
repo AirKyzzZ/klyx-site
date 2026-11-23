@@ -17,7 +17,6 @@
     "quote": "Get a free quote",
     "openMenu": "Open menu",
     "closeMenu": "Close menu",
-    "switchLanguage": "Français",
     "audit": "AI audit",
     "automation": "AI automation",
     "geo": "AI search visibility",
@@ -42,7 +41,6 @@
     "tagline": "Websites, AI agents and automations at a fixed price. Based in Bordeaux, working remotely across France and Europe.",
     "offersTitle": "Services",
     "companyTitle": "Klyx",
-    "legalTitle": "Legal",
     "sisterSitesTitle": "Other Klyx lines",
     "estate": "Klyx Estate: films and visuals to launch high-end property listings.",
     "legal": "Legal notice",
@@ -57,11 +55,6 @@
       "ctaPrimary": "Book a 30-minute call",
       "ctaSecondary": "See our work",
       "clients": "Teams who trusted us with a project"
-    },
-    "proof": {
-      "label": "Real deliverable",
-      "title": "Something we shipped recently",
-      "body": "TODO(maxime): pick the artefact shown here (a CiteMe PR list, the Lighthouse score of a live client site, or an agent run log). Nothing shows until it is a real deliverable."
     },
     "offers": {
       "title": "Three ways to work with us.",
@@ -110,74 +103,6 @@
       "title": "Works with the tools you already use",
       "more": "and {count} more"
     },
-    "process": {
-      "sample": "Sample",
-      "call": {
-        "file": "calendar",
-        "title": "Scoping call",
-        "meta": "30 min · video",
-        "pick": "Pick a slot"
-      }
-    },
-    "founder": {
-      "title": "Who's behind",
-      "body": "Klyx is an AI agency based in Bordeaux. Maxime Mansiet, our lead engineer, is your direct contact from the first call to the handover: he scopes the project and follows it through to production.",
-      "experience": "Maxime also co-founded CiteMe, a tool that tracks how often brands get cited in ChatGPT and Perplexity.",
-      "github": "Maxime's GitHub",
-      "linkedin": "Maxime's LinkedIn",
-      "about": "Meet the team",
-      "titleEmphasis": "your project.",
-      "products": "Co-founded by Maxime",
-      "caption": "Klyx · Bordeaux",
-      "roster": {
-        "window": "klyx: ~/team",
-        "file": "team.yml",
-        "keys": {
-          "role": "role",
-          "who": "who",
-          "scope": "scope"
-        },
-        "items": {
-          "lead": {
-            "role": "lead engineer",
-            "who": "Maxime Mansiet",
-            "scope": "your contact, scoping, follow-up, shipping"
-          },
-          "agents": {
-            "role": "agents",
-            "who": "AI coding agents",
-            "scope": "scoped tasks, code reviewed before release"
-          },
-          "partners": {
-            "role": "specialists",
-            "who": "case by case",
-            "scope": "if the project needs one, we tell you first"
-          }
-        }
-      }
-    },
-    "testimonials": {
-      "title": "What clients",
-      "note": "TODO(maxime): each client's consent to reuse their quote on the new site. Quotes are translated from French.",
-      "items": {
-        "david": {
-          "quote": "Flawless service. The site finally reflects the quality of what we do, and our prospects notice. Clear communication, deadlines met, nothing to fault.",
-          "author": "David A.",
-          "company": "PKBA"
-        },
-        "antoni": {
-          "quote": "Smooth from start to finish. The site is clear, fast and well structured. Klyx understood exactly what we needed without wasting any time, a young team that is already very professional.",
-          "author": "Antoni V.",
-          "company": "Kenzi"
-        },
-        "clement": {
-          "quote": "I recommend Klyx without hesitation. The follow-up was great, and the design is modern and suits our business. You can feel real passion behind every detail.",
-          "author": "Clément D.",
-          "company": "Reciproq"
-        }
-      },
-      "titleEmphasis": "say."
-    },
     "faq": {
       "title": "Frequently asked questions.",
       "items": {
@@ -211,34 +136,6 @@
         }
       },
       "intro": "Another question? Ask it on the call."
-    },
-    "finalCta": {
-      "title": "Let's talk about your next workflow",
-      "body": "Book a 30-minute call. You'll come away with a clear view of what's worth doing, whether or not we end up working together.",
-      "ctaPrimary": "Book a call",
-      "ctaSecondary": "Get a free quote",
-      "titleEmphasis": "or site."
-    },
-    "proofStrip": {
-      "title": "What we've shipped,",
-      "titleEmphasis": "verifiable in one click.",
-      "kinds": {
-        "lighthouse": "Lighthouse",
-        "prList": "Pull requests",
-        "runLog": "Run log",
-        "siteShot": "Live site"
-      },
-      "scores": {
-        "performance": "Performance",
-        "accessibility": "Accessibility",
-        "bestPractices": "Best practices",
-        "seo": "SEO"
-      },
-      "measured": "Measured on {date}",
-      "merged": "merged {date}",
-      "anonymised": "Anonymised",
-      "live": "Live",
-      "open": "Open {host}"
     },
     "useCases": {
       "title": "What AI can do for your business.",
