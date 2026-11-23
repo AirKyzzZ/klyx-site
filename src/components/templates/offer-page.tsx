@@ -32,7 +32,7 @@ import {
 } from "@/i18n/message-list";
 import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
-import { getCaseStudies, getPosts } from "@/lib/content";
+import { type CaseStudyMeta, getCaseStudies, getPosts } from "@/lib/content";
 import { offerPageJsonLd } from "@/lib/json-ld";
 import { getOfferCopy } from "@/lib/offer-copy";
 import type { OfferBlock, OfferPageConfig } from "@/lib/offer-pages";
@@ -62,7 +62,15 @@ const BLOCKS: Record<
 const LINK_CLASS =
   "text-text hover:text-accent font-medium underline decoration-1 underline-offset-[3px] transition-colors duration-(--d-fast)";
 
-export function offerPriceParts(
+function caseLabels(study: CaseStudyMeta) {
+  const [name, ...rest] = study.title.split(", ");
+  const kind = rest.join(", ");
+  return kind
+    ? { name, kind: kind.charAt(0).toUpperCase() + kind.slice(1) }
+    : { name: study.title, kind: study.client };
+}
+
+function offerPriceParts(
   id: OfferId,
   locale: Locale,
   page: Translate,
@@ -129,21 +137,23 @@ export async function OfferPage({
     before: t(`problem.items.${key}.before`),
     after: t(`problem.items.${key}.after`),
   }));
-  const tiers = config.tiers.map((id) => {
-    const copy = getOfferCopy(offersT, locale, id);
-    return {
-      id,
-      name: copy.name,
-      audience: t(`deliverables.tiers.${copy.key}.audience`),
-      summary: copy.summary,
-      duration: copy.duration,
-      ...offerPriceParts(id, locale, page, offersT),
-      features: messageStrings(t, `deliverables.tiers.${copy.key}.items`),
-      href: copy.href === config.pathname ? undefined : copy.href,
-    };
-  });
   const fde =
     config.key === "fde" ? getOfferCopy(offersT, locale, "fde") : null;
+  const tiers = fde
+    ? []
+    : config.tiers.map((id) => {
+        const copy = getOfferCopy(offersT, locale, id);
+        return {
+          id,
+          name: copy.name,
+          audience: t(`deliverables.tiers.${copy.key}.audience`),
+          summary: copy.summary,
+          duration: copy.duration,
+          ...offerPriceParts(id, locale, page, offersT),
+          features: messageStrings(t, `deliverables.tiers.${copy.key}.items`),
+          href: copy.href === config.pathname ? undefined : copy.href,
+        };
+      });
 
   return (
     <>
@@ -267,8 +277,7 @@ export async function OfferPage({
               <CaseRow
                 key={study.slug}
                 slug={study.slug}
-                name={study.client}
-                kind={study.title}
+                {...caseLabels(study)}
                 summary={study.summary}
                 meta={[...study.stack.slice(0, 2), study.year].join(", ")}
                 image={study.image}

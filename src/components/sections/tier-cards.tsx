@@ -61,7 +61,9 @@ function PriceBlock({
 }) {
   return (
     <div className="flex flex-col gap-1">
-      {label && <p className="text-text-3 text-[0.8125rem]">{label}</p>}
+      <p aria-hidden={!label} className="text-text-3 text-[0.8125rem]">
+        {label ?? "\u00a0"}
+      </p>
       <p className="text-text flex flex-wrap items-baseline text-[1.875rem] leading-none font-semibold tracking-[-1px]">
         {price}
         {unit && (
@@ -88,7 +90,10 @@ function TierCard({
   seeOfferLabel: string;
 }) {
   return (
-    <article data-tier-card className="flex flex-col gap-6 p-6 lg:p-8">
+    <article
+      data-tier-card
+      className="flex flex-col gap-6 p-6 lg:row-span-4 lg:grid lg:grid-rows-subgrid lg:p-8"
+    >
       <div className="flex flex-col gap-2">
         <h3 className="text-text text-[1.375rem] leading-tight font-semibold tracking-[-0.5px]">
           {tier.name}
@@ -108,7 +113,7 @@ function TierCard({
       />
       <FeatureList
         items={tier.features}
-        className="border-line flex-1 border-t pt-5"
+        className="border-line border-t pt-5"
       />
       <div className="flex flex-wrap items-center gap-x-5 gap-y-3">
         <ActionButton
