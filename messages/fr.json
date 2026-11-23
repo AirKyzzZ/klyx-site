@@ -2638,11 +2638,17 @@
   },
   "notFound": {
     "title": "Page introuvable",
-    "body": "Cette page n'existe pas ou a été déplacée.",
+    "body": "Cette page n'existe pas ou a été déplacée. Les liens ci-dessous vous ramènent au bon endroit.",
     "home": "Retour à l'accueil",
     "contact": "Nous contacter",
-    "unknown": "route inconnue",
-    "suggested": "redirection proposée :",
+    "offers": "Ou partez de nos offres",
+    "price": "À partir de {price}{unit, select, day { / jour} other {}}",
+    "pricing": "Voir tous les tarifs",
+    "names": {
+      "sites": "Site web",
+      "agents": "Agent IA",
+      "fde": "Développeur dédié"
+    },
     "english": "English version",
     "french": "Version française"
   },

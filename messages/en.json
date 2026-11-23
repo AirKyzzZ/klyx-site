@@ -2638,11 +2638,17 @@
   },
   "notFound": {
     "title": "Page not found",
-    "body": "This page doesn't exist or has moved.",
+    "body": "This page doesn't exist or has moved. The links below will get you back on track.",
     "home": "Back to home",
     "contact": "Contact us",
-    "unknown": "unknown route",
-    "suggested": "suggested redirect:",
+    "offers": "Or start from our services",
+    "price": "From {price}{unit, select, day { per day} other {}}",
+    "pricing": "See all prices",
+    "names": {
+      "sites": "Website",
+      "agents": "AI agent",
+      "fde": "Dedicated developer"
+    },
     "english": "English version",
     "french": "Version française"
   },
