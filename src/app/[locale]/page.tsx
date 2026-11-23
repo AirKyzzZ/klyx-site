@@ -5,18 +5,16 @@ import {
   Globe,
   KeyRound,
   List,
-  MessageSquareQuote,
   Shield,
   UserCheck,
 } from "lucide-react";
 import { getTranslations } from "next-intl/server";
-import { FaGithub, FaLinkedin } from "react-icons/fa6";
 
 import { ActionButton } from "@/components/action-button";
 import {
-  ACCENT_LEVEL_FILLS,
-  ContributionGraph,
-} from "@/components/proof/contribution-graph";
+  FOUNDER_PHOTO,
+  FounderPanel,
+} from "@/components/sections/founder-panel";
 import { Button } from "@/components/ui/button";
 import { CaseCarousel } from "@/components/ui-kit/case-carousel";
 import { CaseRow } from "@/components/ui-kit/case-row";
@@ -24,7 +22,6 @@ import { CenteredHero } from "@/components/ui-kit/centered-hero";
 import { ClientsRow } from "@/components/ui-kit/clients-row";
 import { ConstellationBackdrop } from "@/components/ui-kit/constellation-backdrop";
 import { FaqList } from "@/components/ui-kit/faq-list";
-import { FounderCard } from "@/components/ui-kit/founder-card";
 import {
   CallMock,
   HandoverMock,
@@ -67,11 +64,7 @@ import {
   selectHomeCases,
 } from "@/lib/home-sections";
 import { formatPrice, getOfferPrice, getPriceValues } from "@/lib/offers";
-import { getGithubContributions, getSiteShot } from "@/lib/proof";
 import { buildMetadata } from "@/lib/seo";
-import { site } from "@/lib/site";
-
-const FOUNDER_PHOTO = "/team/maxime-mansiet.jpg";
 
 const TRUST_ICONS = {
   owned: KeyRound,
@@ -99,16 +92,7 @@ export default async function HomePage({ params }: LocaleParams) {
   const locale = await resolvePageLocale(params);
   const t = await getTranslations({ locale, namespace: "home" });
   const cases = selectHomeCases(await getCaseStudies(locale));
-  const contributions = getGithubContributions();
-  const citeme = getSiteShot("citeme");
   const prices = getPriceValues(locale);
-  const formatNumber = (value: number) =>
-    new Intl.NumberFormat(locale).format(value).replaceAll("\u202f", "\u00a0");
-  const day = (date: string) =>
-    new Intl.DateTimeFormat(locale, {
-      dateStyle: "long",
-      timeZone: "UTC",
-    }).format(new Date(date));
 
   const casesBySlug = new Map(cases.map((study) => [study.slug, study]));
   const carousel = HOME_CAROUSEL.filter(({ slug }) => casesBySlug.has(slug));
@@ -382,72 +366,7 @@ export default async function HomePage({ params }: LocaleParams) {
 
       <PageSection id="equipe">
         <SectionHeader title={t("team.title")} intro={t("team.intro")} />
-        <FounderCard
-          className="mt-12"
-          name={t("team.name")}
-          role={t("team.role")}
-          bio={t("team.bio")}
-          photo={FOUNDER_PHOTO}
-          photoAlt={t("team.photoAlt")}
-          stats={[
-            ...(contributions
-              ? [
-                  {
-                    value: formatNumber(contributions.total),
-                    label: t("team.stats.contributions"),
-                  },
-                ]
-              : []),
-            {
-              value: formatNumber(cases.length),
-              label: t("team.stats.projects"),
-            },
-            { value: formatNumber(1), label: t("team.stats.contact") },
-          ]}
-          graph={
-            contributions && (
-              <ContributionGraph
-                data={contributions}
-                fills={ACCENT_LEVEL_FILLS}
-                cell={9}
-                label={t("team.graph", {
-                  from: day(contributions.from),
-                  to: day(contributions.to),
-                })}
-              />
-            )
-          }
-          links={[
-            ...(contributions
-              ? [
-                  {
-                    label: t("team.links.github"),
-                    detail: `@${contributions.user}`,
-                    href: site.socials.github,
-                    icon: <FaGithub className="text-text size-4" />,
-                  },
-                ]
-              : []),
-            {
-              label: t("team.links.linkedin"),
-              detail: site.founder,
-              href: site.socials.linkedinFounder,
-              icon: <FaLinkedin className="size-4 text-[#0a66c2]" />,
-            },
-            ...(citeme
-              ? [
-                  {
-                    label: t("team.links.citeme"),
-                    detail: new URL(citeme.url).host.replace(/^www\./, ""),
-                    href: citeme.url,
-                    icon: (
-                      <MessageSquareQuote className="size-4 text-[#7c3aed]" />
-                    ),
-                  },
-                ]
-              : []),
-          ]}
-        />
+        <FounderPanel locale={locale} className="mt-12" />
       </PageSection>
 
       <PageSection id="faq">
