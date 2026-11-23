@@ -1484,130 +1484,123 @@
   },
   "cases": {
     "hero": {
-      "title": "Ce qu'on a",
-      "titleEmphasis": "construit.",
-      "subtitle": "Des sites livrés pour des clients et des produits sur lesquels on a travaillé. Pour chaque projet, ce qu'on a fait exactement.",
-      "serif": "construit",
-      "window": "realisations/"
+      "title": "Nos réalisations : sites, logiciels et assistants IA.",
+      "subtitle": "Des sites livrés pour des clients, des logiciels internes et des produits sur lesquels on a travaillé. Pour chaque projet : le besoin, ce qu'on a construit et, quand on peut le dire, le résultat."
     },
     "labels": {
       "client": "Client",
       "year": "Année",
-      "stack": "Stack",
+      "stack": "Technologies",
       "visit": "Voir le site",
       "read": "Lire l'étude de cas",
-      "back": "Toutes les réalisations",
-      "url": "URL",
-      "next": "Projet suivant",
-      "more": "Autres projets",
-      "outcome": "Résultat",
+      "all": "Toutes les réalisations",
+      "url": "Site",
+      "next": "D'autres projets.",
+      "nextIntro": "Chaque étude dit ce qu'on a fait exactement, et ce qu'on n'a pas fait.",
+      "outcome": "Chiffres",
       "noOutcome": "Pas encore de chiffre publié",
-      "status": "Statut"
+      "status": "Statut",
+      "shot": "Capture de {name}",
+      "mobileShot": "Capture de {name} sur téléphone"
     },
     "status": {
       "inDevelopment": "En cours de développement"
     },
     "cta": {
-      "title": "Votre projet peut",
-      "body": "Réservez un appel ou demandez un devis gratuit.",
-      "ctaPrimary": "Réserver un appel",
-      "ctaSecondary": "Demander un devis gratuit",
-      "titleEmphasis": "rejoindre cette liste."
-    },
-    "count": "{count, plural, one {# projet} other {# projets}} · {years}",
-    "eyebrow": "Projets"
+      "title": "Votre projet pourrait être le prochain.",
+      "body": "30 minutes en visio pour en parler, gratuit. Vous repartez avec un avis clair sur ce qui est faisable, en combien de temps et pour combien.",
+      "secondary": "Plutôt par écrit ? Demander un devis"
+    }
   },
   "about": {
     "hero": {
-      "title": "Une agence IA à Bordeaux,",
-      "titleEmphasis": "un seul interlocuteur.",
-      "subtitle": "On construit des sites, des agents IA et des automatisations pour des startups, des agences et des PME. Un lead engineer suit votre projet du premier appel à la passation.",
-      "serif": "interlocuteur"
+      "title": "Un seul interlocuteur, du premier appel à la mise en ligne.",
+      "subtitle": "Pas de commercial, pas de chef de projet entre vous et la personne qui construit. Voici qui travaille sur votre projet, et comment.",
+      "ctaPrimary": "Réserver un appel de 30 min",
+      "ctaSecondary": "Voir nos réalisations"
+    },
+    "team": {
+      "title": "Qui travaille sur votre projet.",
+      "intro": "Une petite équipe, et vous savez toujours qui fait quoi.",
+      "items": {
+        "lead": {
+          "title": "Maxime, votre interlocuteur",
+          "body": "Il fait le premier appel, écrit le devis, code et suit votre projet jusqu'à la passation. C'est lui que vous avez au téléphone."
+        },
+        "agents": {
+          "title": "Des agents de code IA, toujours relus",
+          "body": "Ils prennent les tâches bien délimitées : un composant, un test, une mise à jour. Maxime relit chaque modification avant la mise en ligne."
+        },
+        "specialists": {
+          "title": "Des spécialistes au cas par cas",
+          "body": "Si le projet demande une compétence en plus, on fait appel à un spécialiste. Vous le savez avant de signer, jamais après."
+        }
+      }
     },
     "story": {
-      "title": "Maxime Mansiet,",
-      "intro": "Maxime a fondé Klyx à Bordeaux. Il suit chaque projet en lead engineer, du premier appel à la mise en production.",
-      "work": "En parallèle, il développe des serveurs MCP et des agents IA pour une infrastructure européenne d'identité numérique.",
-      "citeme": "Il a cofondé CiteMe, un outil qui suit les citations des marques dans ChatGPT, Gemini et Perplexity.",
-      "titleEmphasis": "lead engineer."
-    },
-    "facts": {
-      "items": {
-        "role": {
-          "label": "studio",
-          "value": "Klyx, agence IA"
+      "title": "D'où vient Klyx.",
+      "intro": "Maxime a fondé Klyx à Bordeaux pour construire des sites, des agents IA et des automatisations pour des startups, des agences et des PME.",
+      "body": "Il suit chaque projet lui-même, du premier appel à la mise en ligne. En parallèle, il développe des serveurs MCP et des agents IA pour une infrastructure européenne d'identité numérique.",
+      "facts": {
+        "company": {
+          "label": "Entreprise",
+          "value": "Klyx"
         },
         "location": {
-          "label": "base",
+          "label": "Base",
           "value": "Bordeaux, France"
         },
         "languages": {
-          "label": "langues",
-          "value": "français, anglais"
+          "label": "Langues",
+          "value": "Français, anglais"
         },
-        "focus": {
-          "label": "stack",
+        "tools": {
+          "label": "Outils",
           "value": "Next.js, TypeScript, agents IA, serveurs MCP"
         }
       }
     },
+    "products": {
+      "title": "Un produit cofondé par Maxime.",
+      "citeme": "CiteMe mesure si une marque est citée par ChatGPT, Gemini et Perplexity, et indique quoi corriger pour l'être davantage.",
+      "lines": "Les autres activités Klyx",
+      "estate": "Des films et des visuels pour lancer les mandats immobiliers de prestige."
+    },
     "trust": {
-      "title": "Pourquoi nous",
-      "body": "Vous n'avez pas à nous croire sur parole. Tout ce qui suit se vérifie avant de signer, et dès le premier appel, nous vous disons ce que nous ne faisons pas.",
-      "titleEmphasis": "faire confiance.",
+      "title": "Pourquoi nous faire confiance.",
+      "intro": "Vous n'avez pas à nous croire sur parole : tout ce qui suit se vérifie avant de signer.",
+      "pricing": "Voir tous les tarifs",
       "items": {
         "code": {
-          "label": "Code public",
-          "value": "{github}"
+          "title": "Du code public",
+          "body": "Le profil GitHub de Maxime est public. Vous voyez comment il travaille avant de lui confier quoi que ce soit."
         },
         "prices": {
-          "label": "Prix publics",
-          "value": "Tous les tarifs, en € HT"
+          "title": "Des prix affichés",
+          "body": "Un site à partir de {landingPrice}, un audit IA à {auditPrice}, un agent IA à partir de {sprintPrice}. Tous les tarifs sont en ligne."
+        },
+        "quote": {
+          "title": "Un devis écrit, à prix fixe",
+          "body": "Ce qui est inclus, le délai et le prix sont écrits avant de commencer. Le prix ne bouge plus ensuite."
+        },
+        "owned": {
+          "title": "Tout est à votre nom",
+          "body": "Le code est dans votre dépôt dès le premier jour. Les comptes et les accès sont à votre nom."
         },
         "handover": {
-          "label": "Passation",
-          "value": "Votre repo dès le jour 1, passation écrite"
+          "title": "Une passation écrite",
+          "body": "À la fin, un guide écrit permet à n'importe quel développeur de reprendre, sans dépendre de nous."
+        },
+        "honest": {
+          "title": "Un avis franc dès le premier appel",
+          "body": "Si l'IA ne vaut pas le coup pour votre tâche, on vous le dit. Et on vous dit ce qu'on ne fait pas."
         }
       }
     },
-    "lines": {
-      "title": "Les autres activités Klyx",
-      "estate": "Klyx Estate : des films et des visuels pour lancer les mandats immobiliers de prestige."
-    },
     "cta": {
-      "title": "On en parle ?",
-      "body": "Un appel de 30 minutes suffit pour savoir si on peut vous aider.",
-      "ctaPrimary": "Réserver un appel",
-      "ctaSecondary": "Demander un devis gratuit"
-    },
-    "eyebrows": {
-      "team": "Équipe",
-      "story": "Lead engineer",
-      "products": "Produits",
-      "trust": "Confiance"
-    },
-    "info": {
-      "window": "klyx: ~",
-      "command": "klyx --info",
-      "caption": "Klyx · Bordeaux"
-    },
-    "team": {
-      "title": "Qui travaille",
-      "titleEmphasis": "sur votre projet.",
-      "intro": "Chaque projet a un lead engineer, Maxime Mansiet. Il fait le premier appel, écrit le périmètre, et c'est lui que vous avez au téléphone jusqu'à la passation.",
-      "agents": "Des agents de code IA prennent les tâches bien délimitées : un composant, un test, une migration. Le code qu'ils produisent est relu avant la mise en production.",
-      "partners": "Si le projet le demande, on s'associe à un spécialiste, et on vous le dit avant.",
-      "handover": "Le code est dans votre repo dès le premier jour. À la fin, une passation écrite permet à n'importe quel développeur de reprendre."
-    },
-    "products": {
-      "title": "Un produit",
-      "titleEmphasis": "cofondé par Maxime."
-    },
-    "contributions": {
-      "window": "github.com/AirKyzzZ",
-      "total": "{total} contributions sur GitHub en 12 mois",
-      "label": "Graphe des contributions GitHub de Maxime Mansiet, du {from} au {to}",
-      "caption": "Relevé le {date} sur son profil public. Une case par jour : plus elle est orange vif, plus il y a eu de commits, de PR et de revues."
+      "title": "On en parle ?",
+      "body": "Un appel de 30 minutes suffit pour savoir si on peut vous aider. C'est gratuit et sans engagement.",
+      "secondary": "Plutôt par écrit ? Demander un devis"
     }
   },
   "bordeaux": {
@@ -1766,17 +1759,18 @@
   },
   "contact": {
     "hero": {
-      "title": "Parlons de",
-      "titleEmphasis": "votre projet.",
-      "subtitle": "Réservez un appel de 30 minutes ou décrivez votre besoin ci-dessous. Maxime, notre lead engineer, vous répond en personne.",
-      "serif": "projet"
+      "title": "Parlons de votre projet.",
+      "subtitle": "Réservez un appel de 30 minutes ou décrivez votre besoin par écrit. Maxime, le fondateur de Klyx, vous répond lui-même."
     },
     "booking": {
       "title": "Réserver un appel",
-      "body": "Choisissez un créneau. L'appel est gratuit.",
-      "duration": "30 min",
+      "role": "Fondateur de Klyx, c'est lui qui vous répond",
+      "message": "Racontez-moi votre projet : un site, un agent IA ou une tâche à automatiser. En 30 minutes, je vous dis ce qui est faisable, en combien de temps et pour combien.",
       "next": "Ensuite, un devis écrit et gratuit avant de commencer.",
-      "frame": "Calendrier de réservation"
+      "frame": "Calendrier de réservation",
+      "video": "Visio, 30 min",
+      "free": "Gratuit",
+      "noCommitment": "Sans engagement"
     },
     "form": {
       "title": "Demander un devis gratuit",
@@ -1797,10 +1791,10 @@
           "label": "Votre besoin *",
           "placeholder": "Choisissez une option",
           "options": {
-            "site": "Un site ou une landing page",
+            "site": "Un site web",
             "agents": "Un agent IA ou une automatisation",
             "audit": "Un audit IA",
-            "fde": "Un Forward Deployed Engineer",
+            "fde": "Un développeur dédié",
             "other": "Autre chose"
           }
         },
@@ -1817,7 +1811,7 @@
         },
         "message": {
           "label": "Votre message *",
-          "placeholder": "Décrivez votre produit et ce que vous voulez construire."
+          "placeholder": "Votre activité, ce que vous voulez construire ou automatiser, vos délais."
         },
         "honeypot": {
           "label": "Laissez ce champ vide"
@@ -1832,13 +1826,17 @@
         "required": "Ce champ est obligatoire.",
         "email": "Cette adresse e-mail n'est pas valide.",
         "generic": "L'envoi a échoué. Réessayez, ou écrivez-nous à {email}.",
-        "invalid": "Vérifiez ce champ : il est trop court, trop long ou invalide.",
+        "invalid": "Vérifiez ce champ : il est trop court, trop long ou invalide.",
         "unavailable": "Le formulaire est indisponible pour le moment. Écrivez-nous à {email}, ou réservez un appel."
-      }
+      },
+      "intro": "Décrivez votre besoin en quelques lignes. On vous répond par e-mail."
     },
     "direct": {
       "title": "Ou en direct",
-      "location": "Klyx, Bordeaux"
+      "email": "E-mail",
+      "phone": "Téléphone",
+      "location": "Klyx, Bordeaux",
+      "socials": "Klyx sur les réseaux"
     }
   },
   "blog": {
@@ -2454,15 +2452,11 @@
   },
   "faqPage": {
     "hero": {
-      "eyebrow": "FAQ",
-      "title": "Questions fréquentes",
-      "titleEmphasis": "sur nos prix, nos délais et vos données.",
-      "serif": "données",
-      "subtitle": "Toutes les réponses du site au même endroit, classées par thème, pour les dirigeants de PME et d'agences. Prix publics en € HT, de {landingPrice} pour une landing page à {sprintPrice} pour un agent IA en production.",
-      "ctaPrimary": "Réserver un appel",
+      "title": "Questions fréquentes sur nos prix, nos délais et vos données.",
+      "subtitle": "Toutes les réponses du site au même endroit, classées par thème. Prix publics en € HT, de {landingPrice} pour un site à {sprintPrice} pour un agent IA en production.",
+      "ctaPrimary": "Réserver un appel de 30 min",
       "ctaSecondary": "Demander un devis gratuit"
     },
-    "count": "{count} questions · {themes} thèmes",
     "themesLabel": "Thèmes",
     "source": "Voir la page {page}",
     "themes": {
@@ -2471,7 +2465,7 @@
       "data": "Données et RGPD",
       "ai": "IA et agents",
       "geo": "Référencement IA",
-      "fde": "Forward Deployed Engineer",
+      "fde": "Développeur dédié",
       "tech": "Technique",
       "bordeaux": "Bordeaux et équipe",
       "agencies": "Agences et marque blanche"
@@ -2479,77 +2473,79 @@
     "faq": {
       "items": {
         "roi": {
-          "question": "Comment savoir si l'IA vaut le coût pour nous ?",
-          "answer": "En comparant deux chiffres : le temps que prend la tâche aujourd'hui et le prix du workflow. Si une personne passe cinq heures par semaine à saisir des factures, l'automatisation se compare à ces heures. L'audit IA fait ce calcul process par process. Nos prix sont fixés par écrit avant de commencer, donc le coût ne bouge pas en cours de route."
+          "question": "Comment savoir si l'IA vaut le coût pour nous ?",
+          "answer": "En comparant deux chiffres : le temps que prend la tâche aujourd'hui et le prix de l'automatisation. Si une personne passe cinq heures par semaine à saisir des factures, l'automatisation se compare à ces heures. L'audit IA fait ce calcul tâche par tâche. Nos prix sont fixés par écrit avant de commencer, donc le coût ne bouge pas en cours de route."
         },
         "rgpd": {
-          "question": "Un projet IA est-il compatible avec le RGPD ?",
-          "answer": "Oui, s'il est conçu pour. Avant d'écrire le code, on liste les données personnelles que le workflow traite, on ne garde que celles qui servent, et on fixe une durée de conservation. Les comptes restent à votre nom. Si vos données sont sensibles, on choisit un hébergement dans l'UE ou on masque certains champs avant l'envoi au modèle."
+          "question": "Un projet IA est-il compatible avec le RGPD ?",
+          "answer": "Oui, s'il est conçu pour. Avant d'écrire le code, on liste les données personnelles que l'automatisation traite, on ne garde que celles qui servent, et on fixe une durée de conservation. Les comptes restent à votre nom. Si vos données sont sensibles, on choisit un hébergement dans l'UE ou on masque certains champs avant l'envoi au modèle."
         },
         "aiAct": {
-          "question": "L'AI Act concerne-t-il notre projet ?",
+          "question": "L'AI Act concerne-t-il notre projet ?",
           "answer": "Rarement de façon lourde pour une PME. Trier des e-mails, extraire des factures ou répondre aux questions sur un produit ne fait pas partie des usages à haut risque. Le tri de CV ou l'évaluation de la solvabilité de particuliers, si. Un assistant qui parle à vos clients doit dire qu'il est une IA, et l'équipe qui utilise un outil d'IA doit en connaître les limites. On prévoit les deux. Pour un avis juridique, voyez votre avocat."
         },
         "expertise": {
-          "question": "Nous n'avons aucune compétence en IA, est-ce un problème ?",
-          "answer": "Non, c'est le cas de la plupart des PME. On s'occupe de la technique, votre équipe garde ses outils habituels et valide ce que l'IA prépare. Chaque livraison comprend une prise en main et une documentation écrite, et ce qu'on construit reste chez vous : le code dans votre repo, les workflows n8n ou Make dans vos comptes. Personne n'a besoin de savoir écrire un prompt."
+          "question": "Nous n'avons aucune compétence en IA, est-ce un problème ?",
+          "answer": "Non, c'est le cas de la plupart des PME. On s'occupe de la technique, votre équipe garde ses outils habituels et valide ce que l'IA prépare. Chaque livraison comprend une prise en main et une documentation écrite, et ce qu'on construit reste chez vous : le code dans votre dépôt, les automatisations n8n ou Make dans vos comptes. Personne n'a besoin de savoir écrire un prompt."
         },
         "useful": {
-          "question": "Comment savoir si l'IA peut servir dans notre entreprise ?",
-          "answer": "Pensez à une tâche qui revient chaque semaine : lire des e-mails, ressaisir des documents, relancer des clients. Si elle suit à peu près toujours les mêmes étapes, elle peut sans doute être automatisée en partie. Réservez un appel de 30 minutes : on en choisit une avec vous et on vous dit franchement si ça vaut le coup."
+          "question": "Comment savoir si l'IA peut servir dans notre entreprise ?",
+          "answer": "Pensez à une tâche qui revient chaque semaine : lire des e-mails, ressaisir des documents, relancer des clients. Si elle suit à peu près toujours les mêmes étapes, elle peut sans doute être automatisée en partie. Réservez un appel de 30 minutes : on en choisit une avec vous et on vous dit franchement si ça vaut le coup."
         },
         "continuity": {
-          "question": "Que se passe-t-il si Klyx n'est plus disponible ?",
-          "answer": "Votre projet continue de tourner. Le code est dans votre repo dès le premier jour, les workflows n8n ou Make sont dans vos comptes avec leur export, les outils sont à votre nom, et chaque projet se termine par une passation écrite. N'importe quel développeur peut reprendre à partir de cette documentation, sans dépendre de nous."
+          "question": "Que se passe-t-il si Klyx n'est plus disponible ?",
+          "answer": "Votre projet continue de tourner. Le code est dans votre dépôt dès le premier jour, les automatisations n8n ou Make sont dans vos comptes avec leur export, les outils sont à votre nom, et chaque projet se termine par une passation écrite. N'importe quel développeur peut reprendre à partir de cette documentation, sans dépendre de nous."
         }
       }
     },
-    "cta": {
-      "title": "Votre question",
-      "titleEmphasis": "n'est pas dans la liste ?",
-      "body": "Réservez un appel de 30 minutes ou écrivez-nous. On répond à tout, y compris quand la réponse est qu'on n'est pas le bon prestataire.",
-      "ctaPrimary": "Réserver un appel",
-      "ctaSecondary": "Demander un devis gratuit"
-    },
     "questions": {
       "automation": {
-        "runCost": "Combien coûte une automatisation IA une fois en ligne ?",
-        "upgrade": "Après une Automatisation IA, et si j'ai besoin de plus ?",
-        "tools": "Dans quel outil une automatisation IA tourne-t-elle ?"
+        "runCost": "Combien coûte une automatisation IA une fois en ligne ?",
+        "upgrade": "Après une Automatisation IA, et si j'ai besoin de plus ?",
+        "tools": "Dans quel outil une automatisation IA tourne-t-elle ?"
       },
       "audit": {
-        "next": "Après l'audit IA, dois-je vous confier la suite ?",
-        "duration": "Combien de temps dure l'audit IA ?",
-        "deliverable": "Que reçoit-on à la fin d'un audit IA ?"
+        "next": "Après l'audit IA, dois-je vous confier la suite ?",
+        "duration": "Combien de temps dure l'audit IA ?",
+        "deliverable": "Que reçoit-on à la fin d'un audit IA ?"
       },
       "bordeaux": {
-        "delay": "Combien de temps faut-il pour automatiser un premier processus ?"
+        "delay": "Combien de temps faut-il pour automatiser un premier processus ?"
       },
       "geo": {
-        "delay": "En combien de temps le GEO a-t-il un effet ?",
-        "platforms": "Le GEO marche-t-il avec un site WordPress ou Webflow ?"
+        "delay": "En combien de temps le référencement IA a-t-il un effet ?",
+        "platforms": "Le référencement IA marche-t-il avec un site WordPress ou Webflow ?"
       },
       "agents": {
-        "maintenance": "Qui maintient l'agent après le Sprint IA ?",
-        "nothingFound": "Et si l'audit IA ne trouve rien d'utile ?"
+        "maintenance": "Qui maintient l'agent après le Sprint IA ?",
+        "nothingFound": "Et si l'audit IA ne trouve rien d'utile ?"
       },
       "sites": {
-        "content": "Qui écrit les textes du site ?",
-        "after": "Et après la mise en ligne du site ?"
+        "content": "Qui écrit les textes du site ?",
+        "after": "Et après la mise en ligne du site ?"
       },
       "fde": {
-        "vsFreelance": "Quelle différence entre un FDE et un freelance classique ?",
-        "minimum": "Pourquoi une mission FDE dure-t-elle 4 semaines minimum ?",
-        "days": "Un FDE peut-il passer à plus de 3 jours par semaine ?",
-        "remote": "En FDE, travaillez-vous sur place ?"
+        "vsFreelance": "Quelle différence entre un développeur dédié et un freelance classique ?",
+        "minimum": "Pourquoi une mission de développeur dédié dure-t-elle 4 semaines minimum ?",
+        "days": "Un développeur dédié peut-il passer à plus de 3 jours par semaine ?",
+        "remote": "Le développeur dédié travaille-t-il sur place ?",
+        "vsSprint": "Développeur dédié ou Sprint IA ?"
       },
       "agencies": {
-        "maintenance": "En marque blanche, qui maintient le projet après la livraison ?",
-        "capacity": "Combien de projets d'agence pouvez-vous prendre en même temps ?"
+        "maintenance": "En marque blanche, qui maintient le projet après la livraison ?",
+        "capacity": "Combien de projets d'agence pouvez-vous prendre en même temps ?"
       },
       "services": {
-        "staff": "Nos collaborateurs doivent-ils être formés à l'automatisation ?"
+        "staff": "Nos collaborateurs doivent-ils être formés à l'automatisation ?"
+      },
+      "pricing": {
+        "sprintVsFde": "Pourquoi le Sprint IA coûte-t-il moins cher que 10 jours de développeur dédié ?"
       }
+    },
+    "cta": {
+      "title": "Votre question n'est pas dans la liste ?",
+      "body": "Réservez un appel de 30 minutes ou écrivez-nous. On répond à tout, y compris quand la réponse est qu'on n'est pas le bon prestataire.",
+      "secondary": "Plutôt par écrit ? Demander un devis"
     }
   },
   "meta": {
@@ -2576,12 +2572,12 @@
       "description": "Tous les prix Klyx en € HT : landing page, site IA, audit IA, Sprint IA et Forward Deployed Engineer. Devis gratuit."
     },
     "cases": {
-      "title": "Réalisations : sites et agents IA livrés | Klyx",
-      "description": "Les sites, logiciels et produits de Klyx : Cronolyss, CiteMe, Hoppy, 2060.io, PKBA. Ce qui a été fait, projet par projet."
+      "title": "Réalisations : sites, logiciels et assistants IA | Klyx",
+      "description": "Les projets de Klyx : Cronolyss, CiteMe, Hoppy pour Hop Hop Immo, 2060.io, PKBA et d'autres. Le besoin, ce qu'on a construit et le résultat."
     },
     "about": {
-      "title": "L'équipe Klyx, agence IA à Bordeaux | Klyx",
-      "description": "Chez Klyx : un lead engineer, Maxime Mansiet, des agents IA dont le code est relu avant la production, et un spécialiste si le projet le demande."
+      "title": "À propos : Maxime Mansiet, votre seul interlocuteur | Klyx",
+      "description": "Qui travaille sur votre projet chez Klyx : Maxime Mansiet, qui cadre, code et suit tout, des agents de code IA toujours relus, des spécialistes annoncés."
     },
     "bordeaux": {
       "title": "Agence IA à Bordeaux pour les PME | Klyx",
@@ -2589,7 +2585,7 @@
     },
     "contact": {
       "title": "Contact et devis gratuit | Klyx",
-      "description": "Réservez un appel de 30 minutes ou demandez un devis gratuit pour un site, un agent IA ou une mission de Forward Deployed Engineer."
+      "description": "Réservez un appel de 30 minutes ou demandez un devis gratuit pour un site, un agent IA ou un développeur dédié. Maxime vous répond lui-même."
     },
     "blog": {
       "title": "Blog : agents IA, GEO et sites rapides | Klyx",
@@ -2632,8 +2628,8 @@
       "description": "Tri des e-mails, extraction de factures, relances et reporting pour cabinets et services B2B en Nouvelle-Aquitaine. Audit dès {auditPrice}."
     },
     "faq": {
-      "title": "FAQ : prix, délais, données et IA en PME | Klyx",
-      "description": "Les questions des PME et des agences sur nos prix, nos délais, le RGPD, les agents IA, le FDE et le GEO, avec des réponses courtes et chiffrées."
+      "title": "FAQ : prix, délais, données et IA en PME | Klyx",
+      "description": "Les questions des PME et des agences sur nos prix, nos délais, le RGPD, les agents IA, le développeur dédié et le référencement IA, en réponses courtes."
     }
   },
   "notFound": {

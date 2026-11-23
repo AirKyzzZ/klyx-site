@@ -33,6 +33,8 @@ describe("case studies", () => {
       const { meta } = await getCaseStudy(slug, locale);
       for (const key of [
         "title",
+        "name",
+        "kind",
         "client",
         "url",
         "summary",

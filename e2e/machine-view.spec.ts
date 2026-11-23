@@ -285,6 +285,8 @@ test("every page links a markdown alternate that starts with its h1", async ({
       mdPath,
     );
     const markdown = await (await request.get(mdPath)).text();
-    expect(markdown.split("\n")[0], route).toBe(`# ${await h1Text(page)}`);
+    expect(squash(markdown.split("\n")[0]), route).toBe(
+      `# ${await h1Text(page)}`,
+    );
   }
 });

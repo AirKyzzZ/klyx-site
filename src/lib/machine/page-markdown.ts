@@ -8,7 +8,6 @@ import { type Locale, routing } from "@/i18n/routing";
 import { getStaticTranslator } from "@/i18n/static-translator";
 import { getPostSummaries, postServices } from "@/lib/blog";
 import {
-  caseYears,
   getCaseStudies,
   getMdxBody,
   getPosts,
@@ -38,12 +37,9 @@ import {
 } from "@/lib/offers";
 import { type AppPathname, absoluteUrl } from "@/lib/seo";
 import { CREDITS } from "@/lib/credits";
-import {
-  getGithubContributions,
-  getSiteShot,
-  getVerifiedProof,
-} from "@/lib/proof";
+import { getGithubContributions, getVerifiedProof } from "@/lib/proof";
 import { faqThemes } from "@/lib/faq-page";
+import { followingItems } from "@/lib/related-content";
 import { scenarios } from "@/lib/scenarios";
 import {
   SECTOR_KEYS,
@@ -51,7 +47,6 @@ import {
   sectorPages,
 } from "@/lib/sector-pages";
 import { site, socialLinks } from "@/lib/site";
-import { type TeamRoster, teamRoster } from "@/lib/team-roster";
 import { DEPLOYED_TECH, type ToolGroup } from "@/lib/tools";
 
 import type { MachinePage } from "./markdown-href";
@@ -65,6 +60,16 @@ type Action = "book" | "quote";
 type Faq = { question: string; answer: string };
 
 const METHOD_STEPS = ["call", "quote", "build", "handover"] as const;
+const ABOUT_TEAM = ["lead", "agents", "specialists"] as const;
+const ABOUT_FACTS = ["company", "location", "languages", "tools"] as const;
+const ABOUT_TRUST = [
+  "code",
+  "prices",
+  "quote",
+  "owned",
+  "handover",
+  "honest",
+] as const;
 
 function doc(blocks: Block[]): string {
   return `${blocks.filter((block): block is string => Boolean(block)).join("\n\n")}\n`;
@@ -148,6 +153,20 @@ function ctaBlocks(
     list([
       link(t(`${key}.ctaPrimary`), actionUrl(locale, actions[0])),
       link(t(`${key}.ctaSecondary`), actionUrl(locale, actions[1])),
+    ]),
+  ];
+}
+
+function siteCtaBlocks(locale: Locale, t: Translate): Block[] {
+  return [
+    `## ${t("cta.title")}`,
+    t("cta.body"),
+    list([
+      link(
+        getStaticTranslator(locale, "home")("hero.ctaPrimary"),
+        actionUrl(locale, "book"),
+      ),
+      link(t("cta.secondary"), actionUrl(locale, "quote")),
     ]),
   ];
 }
@@ -250,7 +269,11 @@ async function home(locale: Locale): Promise<string> {
     ...HOME_USE_CASES.flatMap(({ key }) => [
       `### ${t(`useCases.items.${key}.title`)} (${t(`useCases.items.${key}.category`)})`,
       list([
-        labelled(locale, t("useCases.before"), t(`useCases.items.${key}.before`)),
+        labelled(
+          locale,
+          t("useCases.before"),
+          t(`useCases.items.${key}.before`),
+        ),
         labelled(locale, t("useCases.after"), t(`useCases.items.${key}.after`)),
       ]),
     ]),
@@ -337,14 +360,6 @@ async function home(locale: Locale): Promise<string> {
       link(t("cta.secondary"), actionUrl(locale, "quote")),
     ]),
   ]);
-}
-
-function rosterList(locale: Locale, roster: TeamRoster): string {
-  return list(
-    roster.items.map((item) =>
-      labelled(locale, `**${item.role}**`, `${item.who} · ${item.scope}`),
-    ),
-  );
 }
 
 function hasChild(t: Translate, key: string, child: string): boolean {
@@ -574,11 +589,10 @@ async function cases(locale: Locale): Promise<string> {
   const t = getStaticTranslator(locale, "cases");
   const studies = await getCaseStudies(locale);
   return doc([
-    ...intro(locale, "/realisations", heroTitle(t)),
+    ...intro(locale, "/realisations", t("hero.title")),
     t("hero.subtitle"),
-    t("count", { count: studies.length, years: caseYears(studies) }),
     caseList(locale, studies),
-    ...ctaBlocks(locale, t, "cta", ["book", "quote"]),
+    ...siteCtaBlocks(locale, t),
   ]);
 }
 
@@ -586,11 +600,11 @@ async function caseStudy(
   locale: Locale,
   params: Params,
 ): Promise<string | null> {
-  const meta = (await getCaseStudies(locale)).find(
-    (c) => c.slug === params.slug,
-  );
+  const cases = await getCaseStudies(locale);
+  const meta = cases.find((c) => c.slug === params.slug);
   if (!meta) return null;
   const t = getStaticTranslator(locale, "cases");
+  const following = followingItems(cases, meta.slug, 3);
 
   return doc([
     ...intro(locale, "/realisations/[slug]", meta.title, params),
@@ -601,73 +615,117 @@ async function caseStudy(
       labelled(locale, t("labels.stack"), meta.stack.join(", ")),
       labelled(locale, t("labels.outcome"), t("labels.noOutcome")),
       ...(meta.status
-        ? [
-            labelled(
-              locale,
-              t("labels.status"),
-              t(`status.${meta.status}`),
-            ),
-          ]
+        ? [labelled(locale, t("labels.status"), t(`status.${meta.status}`))]
         : []),
     ]),
     meta.live !== false && link(t("labels.visit"), meta.url),
     await getMdxBody("realisations", meta.slug, locale),
     meta.flow && `## ${meta.flow.title}`,
-    meta.flow && list(meta.flow.steps.map((step) => step.caption)),
     meta.flow?.caption,
-    ...ctaBlocks(locale, t, "cta", ["book", "quote"]),
+    meta.flow && list(meta.flow.steps.map((step) => step.caption)),
+    following.length > 0 && `## ${t("labels.next")}`,
+    following.length > 0 && caseList(locale, following),
+    following.length > 0 &&
+      link(t("labels.all"), absoluteUrl(locale, "/realisations")),
+    ...siteCtaBlocks(locale, t),
   ]);
 }
 
 async function about(locale: Locale): Promise<string> {
   const t = getStaticTranslator(locale, "about");
-  const founder = getStaticTranslator(locale, "home.founder");
-  const facts = messageList(t, "facts.items", ["label", "value"]);
-  const trust = messageList(t, "trust.items", ["label", "value"], {
-    github: site.socials.github.replace("https://", ""),
-  });
+  const team = getStaticTranslator(locale, "home.team");
+  const prices = getPriceValues(locale);
+  const projects = selectHomeCases(await getCaseStudies(locale)).length;
+  const citeme = (await getCaseStudies(locale)).find(
+    (study) => study.slug === "citeme",
+  );
+  const contributions = getGithubContributions();
   const sisterText: Partial<
     Record<(typeof site.sisterSites)[number]["name"], string>
   > = {
-    "Klyx Estate": t("lines.estate"),
+    "Klyx Estate": t("products.estate"),
   };
-  const citeme = getSiteShot("citeme");
-  const contributions = getGithubContributions();
 
   return doc([
-    ...intro(locale, "/a-propos", heroTitle(t)),
+    ...intro(locale, "/a-propos", t("hero.title")),
     t("hero.subtitle"),
-    list(facts.map((fact) => labelled(locale, fact.label, fact.value))),
-    `## ${sectionTitle(t, "team")}`,
-    rosterList(locale, teamRoster(founder, "roster")),
-    t("team.intro"),
-    t("team.agents"),
-    t("team.partners"),
-    t("team.handover"),
-    `## ${sectionTitle(t, "story")}`,
-    t("story.intro"),
-    t("story.work"),
     list([
-      link(founder("github"), site.socials.github),
-      link(founder("linkedin"), site.socials.linkedinFounder),
+      link(t("hero.ctaPrimary"), actionUrl(locale, "book")),
+      link(t("hero.ctaSecondary"), absoluteUrl(locale, "/realisations")),
     ]),
-    contributions &&
-      `${t("contributions.total", { total: new Intl.NumberFormat(locale).format(contributions.total) })}. ${t("contributions.caption", { date: formatDate(locale, contributions.capturedAt) })}`,
-    citeme && `## ${sectionTitle(t, "products")}`,
-    citeme && link("CiteMe", citeme.url),
-    citeme && t("story.citeme"),
-    `## ${t("lines.title")}`,
+    `**${team("name")}**, ${team("role")}`,
+    team("bio"),
+    list([
+      ...(contributions
+        ? [
+            `${new Intl.NumberFormat(locale).format(contributions.total)} ${team("stats.contributions")}`,
+          ]
+        : []),
+      `${projects} ${team("stats.projects")}`,
+      `1 ${team("stats.contact")}`,
+    ]),
+    list([
+      link(team("links.github"), site.socials.github),
+      link(team("links.linkedin"), site.socials.linkedinFounder),
+    ]),
+    `## ${t("team.title")}`,
+    t("team.intro"),
     list(
-      site.sisterSites.map((sister) =>
-        [sisterText[sister.name], link(new URL(sister.url).host, sister.url)]
-          .filter(Boolean)
-          .join(" "),
+      ABOUT_TEAM.map((key) =>
+        labelled(
+          locale,
+          `**${t(`team.items.${key}.title`)}**`,
+          t(`team.items.${key}.body`),
+        ),
       ),
     ),
-    `## ${sectionTitle(t, "trust")}`,
-    t("trust.body"),
-    list(trust.map((item) => labelled(locale, item.label, item.value))),
-    ...ctaBlocks(locale, t, "cta", ["book", "quote"]),
+    `## ${t("story.title")}`,
+    t("story.intro"),
+    t("story.body"),
+    list(
+      ABOUT_FACTS.map((key) =>
+        labelled(
+          locale,
+          t(`story.facts.${key}.label`),
+          t(`story.facts.${key}.value`),
+        ),
+      ),
+    ),
+    citeme && `## ${t("products.title")}`,
+    citeme && t("products.citeme"),
+    citeme &&
+      labelled(
+        locale,
+        link(
+          citeme.name,
+          absoluteUrl(locale, "/realisations/[slug]", { slug: citeme.slug }),
+        ),
+        `${citeme.kind}. ${citeme.summary}`,
+      ),
+    `### ${t("products.lines")}`,
+    list(
+      site.sisterSites.map((sister) =>
+        [
+          link(sister.name, sister.url),
+          sisterText[sister.name] && `: ${sisterText[sister.name]}`,
+        ]
+          .filter(Boolean)
+          .join(""),
+      ),
+    ),
+    `## ${t("trust.title")}`,
+    t("trust.intro"),
+    list(
+      ABOUT_TRUST.map((key) =>
+        labelled(
+          locale,
+          `**${t(`trust.items.${key}.title`)}**`,
+          t(`trust.items.${key}.body`, prices),
+        ),
+      ),
+    ),
+    link(t("trust.pricing"), absoluteUrl(locale, "/tarifs")),
+    ...siteCtaBlocks(locale, t),
   ]);
 }
 
@@ -837,15 +895,15 @@ async function useCases(locale: Locale): Promise<string> {
 async function faqPage(locale: Locale): Promise<string> {
   const t = getStaticTranslator(locale, "faqPage");
   const nav = getStaticTranslator(locale, "nav");
-  const themes = faqThemes(
-    getStaticTranslator(locale, ""),
-    getPriceValues(locale),
-  );
-  const count = themes.reduce((sum, theme) => sum + theme.items.length, 0);
+  const prices = getPriceValues(locale);
+  const themes = faqThemes(getStaticTranslator(locale, ""), prices);
   return doc([
-    ...intro(locale, "/faq", heroTitle(t)),
-    t("count", { count, themes: themes.length }),
-    t("hero.subtitle", getPriceValues(locale)),
+    ...intro(locale, "/faq", t("hero.title")),
+    t("hero.subtitle", prices),
+    list([
+      link(t("hero.ctaPrimary"), actionUrl(locale, "book")),
+      link(t("hero.ctaSecondary"), actionUrl(locale, "quote")),
+    ]),
     ...themes.flatMap((theme) => [
       `## ${t(`themes.${theme.key}`)}`,
       ...theme.items.flatMap((item) => [
@@ -858,25 +916,43 @@ async function faqPage(locale: Locale): Promise<string> {
           ),
       ]),
     ]),
-    ...ctaBlocks(locale, t, "cta", ["book", "quote"]),
+    ...siteCtaBlocks(locale, t),
   ]);
 }
 
 async function contact(locale: Locale): Promise<string> {
   const t = getStaticTranslator(locale, "contact");
+  const team = getStaticTranslator(locale, "home.team");
   return doc([
-    ...intro(locale, "/contact", heroTitle(t)),
+    ...intro(locale, "/contact", t("hero.title")),
     t("hero.subtitle"),
     `## ${t("booking.title")}`,
-    `${t("booking.duration")} · ${t("booking.body")}`,
-    t("booking.next"),
+    `**${team("name")}**, ${t("booking.role")}`,
+    t("booking.message"),
+    [t("booking.video"), t("booking.free"), t("booking.noCommitment")].join(
+      " · ",
+    ),
     link(t("booking.title"), actionUrl(locale, "book")),
-    `## ${t("direct.title")}`,
-    list([link(site.email, `mailto:${site.email}`), link(site.phone, `tel:${site.phoneE164}`), t("direct.location")]),
-    `## ${site.name}`,
-    list(socialLinks.map((social) => link(social.name, social.href))),
+    t("booking.next"),
     `## ${t("form.title")}`,
+    t("form.intro"),
     `<${absoluteUrl(locale, "/contact")}>`,
+    `## ${t("direct.title")}`,
+    list([
+      labelled(
+        locale,
+        t("direct.email"),
+        link(site.email, `mailto:${site.email}`),
+      ),
+      labelled(
+        locale,
+        t("direct.phone"),
+        link(site.phone, `tel:${site.phoneE164}`),
+      ),
+      t("direct.location"),
+    ]),
+    `### ${t("direct.socials")}`,
+    list(socialLinks.map((social) => link(social.name, social.href))),
   ]);
 }
 

@@ -1484,130 +1484,123 @@
   },
   "cases": {
     "hero": {
-      "title": "What we've",
-      "titleEmphasis": "built.",
-      "subtitle": "Sites shipped for clients and products we've worked on. For each project, exactly what we did.",
-      "serif": "built",
-      "window": "work/"
+      "title": "Our work: websites, software and AI assistants.",
+      "subtitle": "Websites shipped for clients, internal software and products we've worked on. For each project: the need, what we built and, when we can say it, the result."
     },
     "labels": {
       "client": "Client",
       "year": "Year",
-      "stack": "Stack",
+      "stack": "Technologies",
       "visit": "Visit the site",
       "read": "Read the case study",
-      "back": "All work",
-      "url": "URL",
-      "next": "Next project",
-      "more": "More work",
-      "outcome": "Outcome",
+      "all": "See all our work",
+      "url": "Site",
+      "next": "More projects.",
+      "nextIntro": "Each case study says exactly what we did, and what we didn't.",
+      "outcome": "Figures",
       "noOutcome": "No published figure yet",
-      "status": "Status"
+      "status": "Status",
+      "shot": "Screenshot of {name}",
+      "mobileShot": "Screenshot of {name} on a phone"
     },
     "status": {
       "inDevelopment": "In development"
     },
     "cta": {
-      "title": "Your project could be",
-      "body": "Book a call or ask for a free quote.",
-      "ctaPrimary": "Book a call",
-      "ctaSecondary": "Get a free quote",
-      "titleEmphasis": "next on this list."
-    },
-    "count": "{count, plural, one {# project} other {# projects}} · {years}",
-    "eyebrow": "Projects"
+      "title": "Your project could be next.",
+      "body": "A 30-minute video call to talk it through, free. You leave with a clear view of what's doable, how long it takes and what it costs.",
+      "secondary": "Prefer writing? Get a quote"
+    }
   },
   "about": {
     "hero": {
-      "title": "An AI agency in Bordeaux,",
-      "titleEmphasis": "one point of contact.",
-      "subtitle": "We build websites, AI agents and automations for startups, agencies and small businesses. One lead engineer follows your project from the first call to the handover.",
-      "serif": "contact"
+      "title": "One point of contact, from the first call to go-live.",
+      "subtitle": "No salesperson, no project manager between you and the person who builds. Here is who works on your project, and how.",
+      "ctaPrimary": "Book a 30-minute call",
+      "ctaSecondary": "See our work"
+    },
+    "team": {
+      "title": "Who works on your project.",
+      "intro": "A small team, and you always know who does what.",
+      "items": {
+        "lead": {
+          "title": "Maxime, your point of contact",
+          "body": "He takes the first call, writes the quote, codes and follows your project until the handover. He is the person you talk to."
+        },
+        "agents": {
+          "title": "AI coding agents, always reviewed",
+          "body": "They take well-bounded tasks: a component, a test, an update. Maxime reviews every change before it goes live."
+        },
+        "specialists": {
+          "title": "Specialists when needed",
+          "body": "If the project needs an extra skill, we bring in a specialist. You know before you sign, never after."
+        }
+      }
     },
     "story": {
-      "title": "Maxime Mansiet,",
-      "intro": "Maxime founded Klyx in Bordeaux. He leads every project as lead engineer, from the first call to production.",
-      "work": "Alongside Klyx, he builds MCP servers and AI agents for a European digital identity infrastructure.",
-      "citeme": "He co-founded CiteMe, a tool that tracks how brands get cited in ChatGPT, Gemini and Perplexity.",
-      "titleEmphasis": "lead engineer."
-    },
-    "facts": {
-      "items": {
-        "role": {
-          "label": "studio",
-          "value": "Klyx, AI agency"
+      "title": "Where Klyx comes from.",
+      "intro": "Maxime founded Klyx in Bordeaux to build websites, AI agents and automations for startups, agencies and small businesses.",
+      "body": "He follows every project himself, from the first call to go-live. Alongside Klyx, he builds MCP servers and AI agents for a European digital identity infrastructure.",
+      "facts": {
+        "company": {
+          "label": "Company",
+          "value": "Klyx"
         },
         "location": {
-          "label": "base",
+          "label": "Based in",
           "value": "Bordeaux, France"
         },
         "languages": {
-          "label": "languages",
+          "label": "Languages",
           "value": "French, English"
         },
-        "focus": {
-          "label": "stack",
+        "tools": {
+          "label": "Tools",
           "value": "Next.js, TypeScript, AI agents, MCP servers"
         }
       }
     },
+    "products": {
+      "title": "A product co-founded by Maxime.",
+      "citeme": "CiteMe measures whether a brand gets cited by ChatGPT, Gemini and Perplexity, and shows what to fix to be cited more.",
+      "lines": "Other Klyx lines",
+      "estate": "Films and visuals to launch high-end property listings."
+    },
     "trust": {
-      "title": "Why",
-      "body": "We don't ask you to take our word for it. Everything below can be checked before you sign, and we tell you on the first call what we don't do.",
-      "titleEmphasis": "trust us.",
+      "title": "Why trust us.",
+      "intro": "You don't have to take our word for it: everything below can be checked before you sign.",
+      "pricing": "See all prices",
       "items": {
         "code": {
-          "label": "Public code",
-          "value": "{github}"
+          "title": "Public code",
+          "body": "Maxime's GitHub profile is public. You can see how he works before you trust him with anything."
         },
         "prices": {
-          "label": "Public prices",
-          "value": "Every price, excl. VAT"
+          "title": "Prices on the site",
+          "body": "A website from {landingPrice}, an AI audit at {auditPrice}, an AI agent from {sprintPrice}. Every price is online."
+        },
+        "quote": {
+          "title": "A written, fixed-price quote",
+          "body": "What's included, the timeline and the price are written down before we start. The price doesn't move after that."
+        },
+        "owned": {
+          "title": "Everything in your name",
+          "body": "The code is in your repository from day one. Accounts and access are in your name."
         },
         "handover": {
-          "label": "Handover",
-          "value": "Your repo from day one, written handover"
+          "title": "A written handover",
+          "body": "At the end, a written guide lets any developer take over, without depending on us."
+        },
+        "honest": {
+          "title": "A straight answer on the first call",
+          "body": "If AI isn't worth it for your task, we tell you. And we tell you what we don't do."
         }
       }
     },
-    "lines": {
-      "title": "Other Klyx lines",
-      "estate": "Klyx Estate: films and visuals to launch high-end property listings."
-    },
     "cta": {
       "title": "Shall we talk?",
-      "body": "A 30-minute call is enough to know whether we can help.",
-      "ctaPrimary": "Book a call",
-      "ctaSecondary": "Get a free quote"
-    },
-    "eyebrows": {
-      "team": "Team",
-      "story": "Lead engineer",
-      "products": "Products",
-      "trust": "Trust"
-    },
-    "info": {
-      "window": "klyx: ~",
-      "command": "klyx --info",
-      "caption": "Klyx · Bordeaux"
-    },
-    "team": {
-      "title": "Who works",
-      "titleEmphasis": "on your project.",
-      "intro": "Every project has one lead engineer, Maxime Mansiet. He takes the first call, writes the scope, and he is the person you talk to until the handover.",
-      "agents": "AI coding agents take well-bounded tasks: a component, a test, a migration. The code they write is reviewed before it goes to production.",
-      "partners": "If the project needs it, we team up with a specialist, and we tell you first.",
-      "handover": "The code is in your repo from day one. At the end, a written handover lets any developer pick it up."
-    },
-    "products": {
-      "title": "A product",
-      "titleEmphasis": "co-founded by Maxime."
-    },
-    "contributions": {
-      "window": "github.com/AirKyzzZ",
-      "total": "{total} GitHub contributions in 12 months",
-      "label": "Maxime Mansiet's GitHub contribution graph, from {from} to {to}",
-      "caption": "Captured on {date} from his public profile. One square per day: the brighter the orange, the more commits, PRs and reviews that day."
+      "body": "A 30-minute call is enough to know whether we can help. It's free, with no commitment.",
+      "secondary": "Prefer writing? Get a quote"
     }
   },
   "bordeaux": {
@@ -1766,17 +1759,18 @@
   },
   "contact": {
     "hero": {
-      "title": "Let's talk about",
-      "titleEmphasis": "your project.",
-      "subtitle": "Book a 30-minute call or describe what you need below. Maxime, our lead engineer, answers every message himself.",
-      "serif": "project"
+      "title": "Let's talk about your project.",
+      "subtitle": "Book a 30-minute call or describe what you need in writing. Maxime, the founder of Klyx, answers you himself."
     },
     "booking": {
       "title": "Book a call",
-      "body": "Pick a slot. The call is free.",
-      "duration": "30 min",
+      "role": "Founder of Klyx, he's the one who answers",
+      "message": "Tell me about your project: a website, an AI agent or a task to automate. In 30 minutes, I'll tell you what's doable, how long it takes and what it costs.",
       "next": "Next, a free written quote before any work starts.",
-      "frame": "Booking calendar"
+      "frame": "Booking calendar",
+      "video": "Video call, 30 min",
+      "free": "Free",
+      "noCommitment": "No commitment"
     },
     "form": {
       "title": "Get a free quote",
@@ -1797,10 +1791,10 @@
           "label": "What you need *",
           "placeholder": "Pick an option",
           "options": {
-            "site": "A website or landing page",
-            "agents": "An AI agent or automation",
+            "site": "A website",
+            "agents": "An AI agent or an automation",
             "audit": "An AI audit",
-            "fde": "A Forward Deployed Engineer",
+            "fde": "A dedicated developer",
             "other": "Something else"
           }
         },
@@ -1817,7 +1811,7 @@
         },
         "message": {
           "label": "Your message *",
-          "placeholder": "Describe your product and what you want to build."
+          "placeholder": "Your business, what you want to build or automate, your timeline."
         },
         "honeypot": {
           "label": "Leave this field empty"
@@ -1834,11 +1828,15 @@
         "generic": "Sending failed. Try again, or email us at {email}.",
         "invalid": "Check this field: it's too short, too long or invalid.",
         "unavailable": "The form is unavailable right now. Email us at {email}, or book a call."
-      }
+      },
+      "intro": "Describe what you need in a few lines. We'll reply by email."
     },
     "direct": {
       "title": "Or directly",
-      "location": "Klyx, Bordeaux"
+      "email": "Email",
+      "phone": "Phone",
+      "location": "Klyx, Bordeaux",
+      "socials": "Klyx on social media"
     }
   },
   "blog": {
@@ -2454,15 +2452,11 @@
   },
   "faqPage": {
     "hero": {
-      "eyebrow": "FAQ",
-      "title": "Frequently asked questions",
-      "titleEmphasis": "about our prices, timelines and your data.",
-      "serif": "data",
-      "subtitle": "Every answer on the site in one place, grouped by theme, for SME and agency owners. Public prices excl. VAT, from {landingPrice} for a landing page to {sprintPrice} for an AI agent in production.",
-      "ctaPrimary": "Book a call",
+      "title": "Frequently asked questions about our prices, timelines and your data.",
+      "subtitle": "Every answer on the site in one place, grouped by theme. Public prices excl. VAT, from {landingPrice} for a website to {sprintPrice} for an AI agent in production.",
+      "ctaPrimary": "Book a 30-minute call",
       "ctaSecondary": "Get a free quote"
     },
-    "count": "{count} questions · {themes} themes",
     "themesLabel": "Themes",
     "source": "See the {page} page",
     "themes": {
@@ -2471,7 +2465,7 @@
       "data": "Data and GDPR",
       "ai": "AI and agents",
       "geo": "AI search visibility",
-      "fde": "Forward Deployed Engineer",
+      "fde": "Dedicated developer",
       "tech": "Technical",
       "bordeaux": "Bordeaux and team",
       "agencies": "Agencies and white label"
@@ -2480,11 +2474,11 @@
       "items": {
         "roi": {
           "question": "How do we know whether AI is worth the cost?",
-          "answer": "By comparing two numbers: the time the task takes today and the price of the workflow. If someone spends five hours a week keying in invoices, the automation is measured against those hours. The AI audit does that calculation process by process. Our prices are set in writing before we start, so the cost doesn't move along the way."
+          "answer": "By comparing two numbers: the time the task takes today and the price of the automation. If someone spends five hours a week keying in invoices, the automation is measured against those hours. The AI audit does that calculation task by task. Our prices are set in writing before we start, so the cost doesn't move along the way."
         },
         "rgpd": {
           "question": "Can an AI project comply with GDPR?",
-          "answer": "Yes, if it is designed to. Before writing code, we list the personal data the workflow handles, keep only what it needs, and set a retention period. Accounts stay in your name. If your data is sensitive, we choose EU hosting or mask some fields before they are sent to the model."
+          "answer": "Yes, if it is designed to. Before writing code, we list the personal data the automation handles, keep only what it needs, and set a retention period. Accounts stay in your name. If your data is sensitive, we choose EU hosting or mask some fields before they are sent to the model."
         },
         "aiAct": {
           "question": "Does the AI Act apply to our project?",
@@ -2492,7 +2486,7 @@
         },
         "expertise": {
           "question": "We have no AI skills at all. Is that a problem?",
-          "answer": "No, that is the case for most SMEs. We handle the technical side, your team keeps its usual tools and approves what the AI prepares. Every delivery includes onboarding and written documentation, and what we build stays with you: the code in your repo, the n8n or Make workflows in your accounts. Nobody needs to know how to write a prompt."
+          "answer": "No, that is the case for most SMEs. We handle the technical side, your team keeps its usual tools and approves what the AI prepares. Every delivery includes onboarding and written documentation, and what we build stays with you: the code in your repository, the n8n or Make automations in your accounts. Nobody needs to know how to write a prompt."
         },
         "useful": {
           "question": "How do we know whether AI can help our business?",
@@ -2500,16 +2494,9 @@
         },
         "continuity": {
           "question": "What happens if Klyx is no longer available?",
-          "answer": "Your project keeps running. The code is in your repo from day one, the n8n or Make workflows sit in your accounts with their export, the tools are in your name, and every project ends with a written handover. Any developer can take over from that documentation, without depending on us."
+          "answer": "Your project keeps running. The code is in your repository from day one, the n8n or Make automations sit in your accounts with their export, the tools are in your name, and every project ends with a written handover. Any developer can take over from that documentation, without depending on us."
         }
       }
-    },
-    "cta": {
-      "title": "Your question",
-      "titleEmphasis": "isn't on the list?",
-      "body": "Book a 30-minute call or write to us. We answer everything, including when the answer is that we're not the right provider.",
-      "ctaPrimary": "Book a call",
-      "ctaSecondary": "Get a free quote"
     },
     "questions": {
       "automation": {
@@ -2526,8 +2513,8 @@
         "delay": "How long does it take to automate a first process?"
       },
       "geo": {
-        "delay": "How long before GEO has an effect?",
-        "platforms": "Does GEO work with a WordPress or Webflow site?"
+        "delay": "How long before AI search work has an effect?",
+        "platforms": "Does AI search work pay off on a WordPress or Webflow site?"
       },
       "agents": {
         "maintenance": "Who maintains the agent after the AI Sprint?",
@@ -2538,10 +2525,11 @@
         "after": "What happens after the site goes live?"
       },
       "fde": {
-        "vsFreelance": "How is an FDE different from a regular freelancer?",
-        "minimum": "Why does an FDE engagement last 4 weeks minimum?",
-        "days": "Can an FDE go beyond 3 days a week?",
-        "remote": "As an FDE, do you work on site?"
+        "vsFreelance": "What's the difference between a dedicated developer and a regular freelancer?",
+        "minimum": "Why does a dedicated developer engagement last at least 4 weeks?",
+        "days": "Can a dedicated developer go beyond 3 days a week?",
+        "remote": "Does the dedicated developer work on site?",
+        "vsSprint": "Dedicated developer or AI Sprint?"
       },
       "agencies": {
         "maintenance": "In white label, who maintains the project after delivery?",
@@ -2549,7 +2537,15 @@
       },
       "services": {
         "staff": "Does our staff need training on the automation?"
+      },
+      "pricing": {
+        "sprintVsFde": "Why does an AI Sprint cost less than 10 days of a dedicated developer?"
       }
+    },
+    "cta": {
+      "title": "Your question isn't on the list?",
+      "body": "Book a 30-minute call or write to us. We answer everything, including when the answer is that we're not the right provider.",
+      "secondary": "Prefer writing? Get a quote"
     }
   },
   "meta": {
@@ -2576,12 +2572,12 @@
       "description": "Every Klyx price, excluding VAT: landing page, AI-ready site, AI audit, AI Sprint and Forward Deployed Engineer. Free quote."
     },
     "cases": {
-      "title": "Work: websites and AI agents shipped | Klyx",
-      "description": "Sites, software and products by Klyx: Cronolyss, CiteMe, Hoppy, 2060.io, PKBA. What was built, project by project."
+      "title": "Our work: websites, software and AI assistants | Klyx",
+      "description": "Klyx projects: Cronolyss, CiteMe, Hoppy for Hop Hop Immo, 2060.io, PKBA and more. The need, what we built and the result."
     },
     "about": {
-      "title": "The Klyx team, AI agency in Bordeaux | Klyx",
-      "description": "At Klyx: one lead engineer, Maxime Mansiet, AI agents whose code is reviewed before release, and a specialist when a project needs one."
+      "title": "About: Maxime Mansiet, your single point of contact | Klyx",
+      "description": "Who works on your project at Klyx: Maxime Mansiet, who scopes, codes and follows everything, AI coding agents always reviewed, specialists named upfront."
     },
     "bordeaux": {
       "title": "AI agency in Bordeaux for small businesses | Klyx",
@@ -2589,7 +2585,7 @@
     },
     "contact": {
       "title": "Contact and free quote | Klyx",
-      "description": "Book a 30-minute call or get a free quote for a website, an AI agent or a Forward Deployed Engineer engagement."
+      "description": "Book a 30-minute call or get a free quote for a website, an AI agent or a dedicated developer. Maxime answers you himself."
     },
     "blog": {
       "title": "Blog: AI agents, GEO and fast websites | Klyx",
@@ -2633,7 +2629,7 @@
     },
     "faq": {
       "title": "FAQ: prices, timelines, data and AI for SMEs | Klyx",
-      "description": "What SMEs and agencies ask about our prices, timelines, GDPR, AI agents, FDE and GEO, with short answers and real numbers."
+      "description": "What SMEs and agencies ask about our prices, timelines, GDPR, AI agents, dedicated developers and AI search visibility, with short answers."
     }
   },
   "notFound": {

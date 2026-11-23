@@ -235,6 +235,8 @@ describe("page JSON-LD", () => {
   const study: CaseStudyMeta = {
     slug: "citeme",
     title: "CiteMe, mesurer sa visibilité",
+    name: "CiteMe",
+    kind: "Produit SaaS",
     client: "CiteMe",
     url: "https://www.citeme.io",
     year: 2026,
