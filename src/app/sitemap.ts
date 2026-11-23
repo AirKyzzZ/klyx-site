@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 
 import { type Locale, routing } from "@/i18n/routing";
 import { getCaseStudies, getPosts } from "@/lib/content";
+import { gitLastModified } from "@/lib/git-last-modified";
 import { type AppPathname, absoluteUrl, languageAlternates } from "@/lib/seo";
 import { site } from "@/lib/site";
 
@@ -14,8 +15,8 @@ const LEGAL_PATHNAMES: AppPathname[] = [
 
 function localizedEntries(
   pathname: AppPathname,
-  params: Record<string, string> = {},
-  lastModified?: string,
+  params: Record<string, string>,
+  lastModified: string | undefined,
 ): Entry[] {
   const languages = languageAlternates(pathname, params);
   return routing.locales.map((locale) => ({
@@ -47,14 +48,28 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       localizedEntries(
         pathname,
         {},
-        LEGAL_PATHNAMES.includes(pathname) ? site.legalUpdatedAt : undefined,
+        LEGAL_PATHNAMES.includes(pathname)
+          ? site.legalUpdatedAt
+          : site.pagesUpdatedAt,
       ),
     ),
     ...cases.flatMap((study) =>
-      localizedEntries("/realisations/[slug]", { slug: study.slug }),
+      localizedEntries(
+        "/realisations/[slug]",
+        { slug: study.slug },
+        gitLastModified(
+          routing.locales.map(
+            (locale) => `content/realisations/${study.slug}.${locale}.mdx`,
+          ),
+        ),
+      ),
     ),
     ...posts.flatMap((post) =>
-      localizedEntries("/blog/[slug]", { slug: post.slug }, post.date),
+      localizedEntries(
+        "/blog/[slug]",
+        { slug: post.slug },
+        post.updated ?? post.date,
+      ),
     ),
   ];
 }

@@ -12,6 +12,7 @@ export const site = {
   city: "Bordeaux",
   calUrl: process.env.NEXT_PUBLIC_CAL_URL,
   legalUpdatedAt: "2026-11-01",
+  pagesUpdatedAt: "2026-11-23",
   flags: {
     testimonialsConsented: false,
     homeProofStrip: false,

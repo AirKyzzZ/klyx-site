@@ -349,3 +349,12 @@ test("blog posts use their own share image in JSON-LD", async ({ page }) => {
     "https://klyx.fr/en/blog/cout-agent-ia-pme/opengraph-image",
   );
 });
+
+test("every sitemap entry carries a lastmod", async ({ request }) => {
+  const sitemap = await (await request.get("/sitemap.xml")).text();
+  const entries = sitemap.match(/<url>[\s\S]*?<\/url>/g) ?? [];
+  expect(entries.length).toBeGreaterThan(0);
+  for (const entry of entries) {
+    expect(entry).toMatch(/<lastmod>\d{4}-\d{2}-\d{2}/);
+  }
+});
