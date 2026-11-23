@@ -68,12 +68,7 @@ export const TOOLS = {
   mcp: { name: "MCP", logo: "mcp" },
 } as const satisfies Record<string, Tool>;
 
-export const WORKFLOW_TOOL_LOGOS: Partial<Record<string, ToolLogoId[]>> = {
-  "useCases.realEstate.workflows.visits": ["google", "outlook"],
-  "useCases.agencies.workflows.leads": ["hubspot", "pipedrive"],
-  "useCases.agencies.workflows.site": ["figma", "github"],
-  "useCases.services.workflows.triage": ["outlook", "gmail"],
-};
+export const WORKFLOW_TOOL_LOGOS: Partial<Record<string, ToolLogoId[]>> = {};
 
 export const CONNECTED_TOOLS: ToolGroup[] = [
   { key: "email", tools: [TOOLS.gmail, TOOLS.outlook] },

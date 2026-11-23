@@ -1611,157 +1611,252 @@
     }
   },
   "bordeaux": {
+    "labels": {
+      "book": "Réserver un appel de 30 min",
+      "quote": "Demander un devis gratuit",
+      "audience": "Pour qui",
+      "zone": "Où",
+      "from": "À partir de",
+      "before": "Avant",
+      "after": "Avec l'IA",
+      "agent": "L'IA",
+      "team": "Votre équipe",
+      "agentPill": "Agent IA",
+      "viewOffer": "Voir l'offre en détail",
+      "allPricing": "Voir tous les tarifs",
+      "allCases": "Voir toutes les réalisations"
+    },
     "hero": {
-      "eyebrow": "Agence IA à Bordeaux",
-      "title": "L'IA pour les PME de Bordeaux,",
-      "titleEmphasis": "sans jargon.",
-      "subtitle": "On aide les PME de Bordeaux et de Gironde à automatiser les tâches répétitives : devis, factures, e-mails, reporting. Le prix est fixé avant de commencer.",
-      "ctaPrimary": "Réserver un appel",
-      "ctaSecondary": "Demander un devis gratuit",
-      "serif": "jargon"
+      "title": "Agence IA à Bordeaux pour les PME de Gironde.",
+      "subtitle": "On branche l'IA sur les outils de votre équipe pour les tâches qui reviennent chaque semaine : devis, factures, e-mails, reporting. Le prix est fixé par écrit avant de commencer.",
+      "audience": "TPE et PME de Bordeaux, de la métropole et de Gironde",
+      "zone": "À Bordeaux, en Gironde, et à distance partout en France",
+      "map": "Carte de la Gironde avec Bordeaux Métropole et le Bassin d'Arcachon",
+      "mapBordeaux": "Bordeaux",
+      "mapBassin": "Bassin d'Arcachon"
     },
     "problem": {
-      "title": "Vous avez essayé ChatGPT,",
-      "body": "C'est le cas de la plupart des entreprises. En 2026, 40 % des TPE-PME françaises utilisent l'IA, mais seulement 11 % s'en servent pour automatiser une tâche (baromètre France Num 2026). L'outil est là, mais personne n'a eu le temps de le brancher sur les devis, les factures ou le suivi client. On s'en occupe : on choisit ensemble une tâche qui vous prend du temps chaque semaine, on l'automatise, et votre équipe garde la main sur ce qui part chez vos clients.",
-      "titleEmphasis": "mais rien n'a changé dans votre façon de travailler ?",
+      "title": "Vous avez essayé ChatGPT, mais rien n'a changé dans votre façon de travailler ?",
+      "intro": "En 2026, 40 % des TPE-PME françaises utilisent l'IA, mais seulement 11 % s'en servent pour automatiser une tâche. L'outil est là. Personne n'a eu le temps de le brancher sur les devis, les factures ou le suivi client.",
       "source": "Baromètre France Num 2026, entreprises.gouv.fr",
-      "sourceUrl": "https://www.entreprises.gouv.fr/espace-presse/barometre-france-num-2026-quatre-tpe-pme-sur-dix-utilisent-desormais-lintelligence"
-    },
-    "examples": {
-      "title": "Ce qu'on peut automatiser",
+      "sourceUrl": "https://www.entreprises.gouv.fr/espace-presse/barometre-france-num-2026-quatre-tpe-pme-sur-dix-utilisent-desormais-lintelligence",
       "items": {
-        "quotes": "Préparer un devis à partir d'une demande client",
-        "invoices": "Relancer les factures impayées",
-        "emails": "Trier les e-mails et préparer les réponses",
-        "reporting": "Assembler le reporting de la semaine"
+        "quotes": {
+          "title": "Les devis",
+          "before": "Chaque demande est relue, puis le devis est monté à la main.",
+          "after": "L'IA prépare le devis à partir de la demande et de vos prix. Vous le relisez avant l'envoi."
+        },
+        "invoices": {
+          "title": "Les factures impayées",
+          "before": "Quelqu'un vérifie les échéances et relance chaque client un par un.",
+          "after": "Les retards sont repérés et la relance est prête. Vous validez l'envoi."
+        },
+        "emails": {
+          "title": "Les e-mails",
+          "before": "La boîte commune est triée à la main chaque matin.",
+          "after": "Chaque e-mail est classé, résumé et transmis à la bonne personne."
+        },
+        "reporting": {
+          "title": "Le reporting",
+          "before": "Chaque lundi, quelqu'un rassemble les chiffres de plusieurs tableurs.",
+          "after": "Les chiffres sont compilés et un résumé part à l'équipe."
+        }
       }
     },
-    "process": {
-      "title": "Du premier échange au suivi,",
+    "examples": {
+      "title": "Quatre métiers de la région, quatre tâches qu'on automatise.",
+      "intro": "Des exemples types pour des entreprises de Gironde, pas des projets clients. Chacun garde une validation humaine avant ce qui part chez le client.",
+      "link": "Voir les cas d'usage par secteur",
+      "items": {
+        "wine": {
+          "category": "Négoce de vin",
+          "title": "Saisir les commandes export",
+          "agent": "Lit le bon de commande de l'importateur, saisit la commande et prépare les documents export.",
+          "team": "Le service commercial contrôle avant l'envoi."
+        },
+        "building": {
+          "category": "BTP",
+          "title": "Chiffrer un devis de chantier",
+          "agent": "Lit la demande et ses photos, puis chiffre le devis à partir de votre bibliothèque de prix.",
+          "team": "Le conducteur de travaux relit avant l'envoi."
+        },
+        "accounting": {
+          "category": "Cabinet comptable",
+          "title": "Ranger les pièces des clients",
+          "agent": "Range les pièces reçues dans le bon dossier et relance ce qui manque.",
+          "team": "Le collaborateur contrôle avant la relance."
+        },
+        "realEstate": {
+          "category": "Agence immobilière",
+          "title": "Trier les leads des portails",
+          "agent": "Rattache chaque demande au bon bien et crée la fiche dans le CRM.",
+          "team": "Le négociateur vérifie avant de rappeler."
+        }
+      }
+    },
+    "consultant": {
+      "title": "Consultant IA à Bordeaux : l'audit avant le code.",
+      "intro": "Vous cherchez un consultant IA à Bordeaux plutôt qu'une agence ? Chez Klyx, c'est la même personne qui fait le diagnostic et qui construit. Vous repartez avec un plan, que vous alliez plus loin avec nous ou non.",
+      "items": {
+        "audit": {
+          "title": "Un audit à prix fixe",
+          "body": "{auditPrice}, en 1 à 2 semaines. On passe en revue vos tâches, on classe ce qui vaut la peine d'être automatisé et on vous remet une roadmap sur 90 jours."
+        },
+        "person": {
+          "title": "Un seul interlocuteur",
+          "body": "Maxime Mansiet, fondateur de Klyx, basé à Bordeaux, fait l'audit et écrit le code. Il confie des tâches précises à des agents de code IA et relit tout. Si un projet demande une autre spécialité, on vous le dit avant."
+        },
+        "owned": {
+          "title": "Tout reste à votre nom",
+          "body": "Les comptes, le code et les accès vous appartiennent. Vous pouvez arrêter quand vous voulez, sans dépendre de nous."
+        }
+      },
+      "blogLead": "Pour préparer l'appel, lisez notre méthode :",
+      "blogLink": "comment intégrer l'IA dans une PME, en 4 étapes",
+      "auditLink": "Voir l'audit IA en détail"
+    },
+    "pricing": {
+      "title": "Ce que ça coûte.",
+      "intro": "Des prix de départ en € HT. Le prix exact est écrit dans le devis, avant de commencer.",
+      "cards": {
+        "audit-ia": {
+          "audience": "Pour savoir par où commencer.",
+          "body": "Vos tâches passées en revue, les automatisations classées, une roadmap sur 90 jours."
+        },
+        "automation": {
+          "audience": "Pour une tâche précise.",
+          "body": "Un enchaînement simple branché sur vos outils, comme la relance des factures."
+        },
+        "sprint-ia": {
+          "audience": "Pour un agent qui agit dans plusieurs outils.",
+          "body": "Un agent qui lit, prépare et transmet, testé sur vos vrais exemples."
+        }
+      }
+    },
+    "method": {
+      "title": "Du premier échange au suivi, en quatre étapes.",
+      "intro": "À chaque étape, vous recevez quelque chose de concret.",
       "steps": {
         "call": {
+          "when": "Avant de commencer",
           "title": "Un premier échange gratuit",
-          "body": "Par téléphone ou en visio, vous nous expliquez votre activité et ce qui vous prend du temps."
+          "body": "En visio ou par téléphone, vous nous expliquez votre activité et ce qui vous prend du temps. 30 minutes, sans engagement."
         },
         "audit": {
+          "when": "En 1 à 2 semaines",
           "title": "Un audit à prix fixe",
           "body": "On observe comment vous travaillez et on vous dit ce qui vaut la peine d'être automatisé, chiffres à l'appui."
         },
         "build": {
+          "when": "Ensuite, environ 2 semaines",
           "title": "La mise en place",
-          "body": "On installe l'automatisation sur vos outils et on forme votre équipe à l'utiliser."
+          "body": "On installe l'automatisation sur vos outils, on la teste sur vos vrais exemples et on forme votre équipe."
         },
         "followUp": {
-          "title": "Le suivi",
-          "body": "Une fois l'automatisation en place, on vérifie avec vous qu'elle tourne et on vous remet une passation écrite. Si vous voulez qu'on continue à la suivre et à la corriger, c'est le suivi mensuel."
+          "when": "Après la mise en ligne",
+          "title": "Passation, puis suivi si vous voulez",
+          "body": "On vérifie avec vous que tout tourne et on vous remet un guide écrit. Le suivi mensuel est en option."
         }
       },
-      "titleEmphasis": "en quatre étapes."
+      "quote": {
+        "title": "Audit IA de votre PME",
+        "items": {
+          "a": "Vos tâches passées en revue",
+          "b": "Automatisations classées par gain",
+          "c": "Roadmap sur 90 jours"
+        },
+        "excluded": "Non inclus : la mise en place"
+      },
+      "update": {
+        "a": "Connexion à votre messagerie",
+        "b": "Relances testées sur de vraies factures",
+        "c": "Formation de votre équipe"
+      }
+    },
+    "zone": {
+      "title": "Zone d'intervention : Bordeaux, la Gironde et à distance.",
+      "intro": "On travaille depuis Bordeaux. Le cadrage se fait en visio ou en rendez-vous, comme vous préférez, et on se déplace dans la région bordelaise si besoin.",
+      "places": {
+        "bordeaux": {
+          "name": "Bordeaux",
+          "note": "Rendez-vous possible"
+        },
+        "merignac": {
+          "name": "Mérignac",
+          "note": "Bordeaux Métropole"
+        },
+        "pessac": {
+          "name": "Pessac",
+          "note": "Bordeaux Métropole"
+        },
+        "talence": {
+          "name": "Talence",
+          "note": "Bordeaux Métropole"
+        },
+        "begles": {
+          "name": "Bègles",
+          "note": "Bordeaux Métropole"
+        },
+        "arcachon": {
+          "name": "Bassin d'Arcachon",
+          "note": "Deux sites déjà livrés"
+        },
+        "gironde": {
+          "name": "Toute la Gironde",
+          "note": "En visio ou en rendez-vous"
+        },
+        "remote": {
+          "name": "À distance",
+          "note": "Partout en France, en visio"
+        }
+      }
     },
     "local": {
-      "title": "Basés à Bordeaux,",
-      "body": "On travaille depuis Bordeaux, avec des PME de la métropole et de Gironde. Le lieu du cadrage, à distance ou en rendez-vous, se décide avec vous.",
-      "card": {
-        "city": {
-          "label": "Ville",
-          "value": "Bordeaux (33)"
-        },
-        "zone": {
-          "label": "Zone servie",
-          "value": "Bordeaux Métropole et Gironde"
-        },
-        "travel": {
-          "label": "Déplacements",
-          "value": "À convenir avec vous"
-        }
-      },
-      "map": "Carte de la Gironde avec Bordeaux",
-      "titleEmphasis": "à distance partout en France."
-    },
-    "trust": {
-      "title": "Pourquoi",
-      "body": "Le prix et le périmètre sont écrits avant de commencer. Si vous payez l'audit, vous repartez avec le plan, même si vous n'allez pas plus loin. Les outils et les comptes sont à votre nom, et un suivi mensuel couvre la continuité.",
-      "titleEmphasis": "nous faire confiance."
+      "title": "Des projets livrés en Gironde et dans le Sud-Ouest.",
+      "intro": "Trois sites pour des structures de Bordeaux et du Bassin d'Arcachon, et un assistant IA pour Hop Hop Immo, qui suit l'immobilier neuf du Sud-Ouest. Les trois sites n'ont pas de composant IA, Hoppy si.",
+      "cases": {
+        "pkba": "Bassin d'Arcachon, club de parkour",
+        "vertiflow": "Bassin d'Arcachon, vêtements de parkour",
+        "lady-gallery": "Bordeaux, événement étudiant",
+        "hop-hop-immo": "Sud-Ouest, immobilier neuf"
+      }
     },
     "faq": {
-      "title": "Questions",
+      "title": "Questions fréquentes.",
       "items": {
         "price": {
-          "question": "Combien ça coûte ?",
-          "answer": "L'audit démarre à {auditPrice}. La mise en place d'une automatisation démarre à {automationPrice}. Vous connaissez le prix exact avant de signer."
+          "question": "Combien ça coûte ?",
+          "answer": "L'audit démarre à {auditPrice}. La mise en place d'une automatisation démarre à {automationPrice}, et un agent qui agit dans plusieurs outils à {sprintPrice}. Vous connaissez le prix exact avant de signer."
+        },
+        "consultant": {
+          "question": "Êtes-vous une agence ou un consultant IA à Bordeaux ?",
+          "answer": "Les deux, avec un seul interlocuteur. L'audit IA, à {auditPrice}, est la partie conseil : on passe en revue vos tâches et on vous remet un plan sur 90 jours. Si vous voulez aller plus loin, la même personne construit les automatisations. Vous pouvez aussi vous arrêter à l'audit et garder le plan."
+        },
+        "meeting": {
+          "question": "Peut-on se rencontrer à Bordeaux ?",
+          "answer": "Oui, si vous le souhaitez. Klyx est basé à Bordeaux et on se déplace dans la région bordelaise si besoin. La plupart des échanges se font en visio, ce qui permet aussi de travailler avec des entreprises du reste de la Gironde et de toute la France."
         },
         "it": {
-          "question": "Faut-il un service informatique ?",
+          "question": "Faut-il un service informatique ?",
           "answer": "Non. On s'occupe de la technique, et votre équipe apprend à utiliser l'outil. Vous n'avez rien à installer vous-même."
         },
         "data": {
-          "question": "Nos données clients restent-elles confidentielles ?",
+          "question": "Nos données clients restent-elles confidentielles ?",
           "answer": "Vos comptes et vos outils restent à votre nom. Pour que l'IA traite une demande, les données passent par le service d'un fournisseur de modèle, qui par défaut ne les utilise pas pour entraîner ses modèles. On vérifie ce que chaque outil fait de vos données avant de l'utiliser, et un hébergement en Europe est possible."
         },
         "subsidy": {
-          "question": "Est-ce subventionné ?",
+          "question": "Est-ce subventionné ?",
           "answer": "Nos prix sont affichés sans aide publique. Klyx n'est pas référencé par Bpifrance, donc notre audit n'est pas un Diag Data IA."
         },
         "delay": {
-          "question": "Combien de temps faut-il ?",
+          "question": "Combien de temps faut-il ?",
           "answer": "1 à 2 semaines pour l'audit, puis environ 2 semaines pour mettre une première automatisation en place."
         }
-      },
-      "titleEmphasis": "fréquentes."
+      }
     },
     "cta": {
-      "title": "Une tâche vous prend",
-      "body": "Parlons-en 30 minutes. C'est gratuit, et vous saurez si elle vaut la peine d'être automatisée.",
-      "ctaPrimary": "Réserver un appel",
-      "ctaSecondary": "Demander un devis gratuit",
-      "titleEmphasis": "trop de temps ?"
-    },
-    "eyebrows": {
-      "problem": "Le problème",
-      "examples": "Exemples",
-      "process": "Méthode",
-      "local": "Local",
-      "trust": "Confiance",
-      "faq": "Questions"
-    },
-    "block": {
-      "title": "Trois métiers de la région,",
-      "titleEmphasis": "trois tâches qu'on automatise.",
-      "body": "Des exemples types pour des entreprises de Gironde, pas des projets clients. Chacun garde une validation humaine avant ce qui part chez le client.",
-      "human": "validation humaine",
-      "examples": {
-        "wine": {
-          "title": "Négoce de vin : commandes export",
-          "body": "Le bon de commande d'un importateur devient une commande saisie, avec les documents export préparés.",
-          "steps": {
-            "trigger": "Bon de commande",
-            "ai": "Lecture IA",
-            "human": "Contrôle ADV",
-            "action": "Commande saisie"
-          }
-        },
-        "building": {
-          "title": "BTP : devis de chantier",
-          "body": "La demande reçue avec ses photos devient un devis chiffré à partir de votre bibliothèque de prix.",
-          "steps": {
-            "trigger": "Demande + photos",
-            "ai": "Chiffrage IA",
-            "human": "Relecture conducteur",
-            "action": "Devis envoyé"
-          }
-        },
-        "accounting": {
-          "title": "Cabinet comptable : pièces clients",
-          "body": "Les pièces envoyées par les clients sont rangées par dossier, et ce qui manque est relancé.",
-          "steps": {
-            "trigger": "Pièces reçues",
-            "ai": "Classement IA",
-            "human": "Contrôle collaborateur",
-            "action": "Relance envoyée"
-          }
-        }
-      },
-      "limit": "Une tâche simple, c'est l'automatisation IA à prix fixe. Un agent qui touche plusieurs outils, c'est le Sprint IA."
+      "title": "Une tâche vous prend trop de temps ?",
+      "body": "Parlons-en 30 minutes, en visio. C'est gratuit, et vous saurez si elle vaut la peine d'être automatisée."
     }
   },
   "contact": {
@@ -1942,58 +2037,120 @@
   "useCases": {
     "labels": {
       "breadcrumb": "Fil d'Ariane",
-      "symptoms": "Ce qu'on voit souvent",
-      "tools": "Outils",
-      "illustration": "Illustration",
-      "human": "validation humaine",
-      "problem": "Le problème",
-      "build": "Ce qu'on construit",
-      "price": "Prix de départ",
+      "book": "Réserver un appel de 30 min",
+      "quote": "Demander un devis gratuit",
+      "before": "Avant",
+      "after": "Avec l'agent",
+      "agent": "L'agent",
+      "builder": "Klyx",
+      "team": "Votre équipe",
+      "agentPill": "Agent IA",
+      "from": "À partir de",
+      "perDay": "/ jour",
+      "audience": "Pour qui",
+      "offer": "Ce qu'on fait",
       "see": "Voir le cas d'usage",
-      "offer": "Offre",
-      "duration": "Durée",
-      "amount": "Prix"
-    },
-    "eyebrows": {
-      "sectors": "Secteurs",
-      "other": "Autres secteurs",
-      "problems": "Le problème",
-      "workflows": "Workflows",
-      "data": "Données",
-      "terms": "Marque blanche",
-      "process": "Méthode",
-      "proof": "Preuves",
-      "pricing": "Prix",
-      "faq": "Questions"
+      "viewOffer": "Voir l'offre en détail",
+      "allCases": "Voir toutes les réalisations",
+      "allPricing": "Voir tous les tarifs",
+      "tools": "Exemples d'outils concernés"
     },
     "hero": {
-      "eyebrow": "Cas d'usage",
-      "title": "Ce que l'IA fait concrètement",
-      "titleEmphasis": "dans votre secteur.",
-      "serif": "secteur",
-      "subtitle": "Pour les dirigeants de PME et d'agences qui veulent savoir quoi automatiser avant de payer. Trois secteurs, des workflows décrits étape par étape, et des prix publics : de {auditPrice} pour un audit à {sprintPrice} pour un agent en production.",
-      "ctaPrimary": "Réserver un appel",
-      "ctaSecondary": "Demander un devis gratuit",
-      "window": "secteurs.csv"
+      "title": "Cas d'usage de l'IA en PME, secteur par secteur.",
+      "subtitle": "Pour les dirigeants qui veulent savoir quoi confier à l'IA avant de payer. Trois secteurs, des tâches décrites pas à pas et des prix affichés : de {auditPrice} pour un audit à {sprintPrice} pour un agent IA en place."
     },
     "sectors": {
-      "title": "Trois secteurs,",
-      "titleEmphasis": "trois façons de s'y prendre.",
-      "body": "Pour chacun : ce qui coince, ce qu'on construit, les outils concernés et le prix de départ. Un seul de ces secteurs a déjà un cas client publié chez nous, l'immobilier, et on le dit sur chaque page."
+      "title": "Trois secteurs, trois façons de s'y prendre.",
+      "intro": "Pour chacun : ce qui coince, ce qu'on construit, les outils concernés et le prix de départ. Un seul a déjà un cas client publié, l'immobilier, et chaque page le dit."
     },
-    "other": {
-      "title": "Votre secteur n'est pas",
-      "titleEmphasis": "dans la liste ?",
-      "body": "Les mêmes briques servent ailleurs : trier des demandes, lire des documents, relancer des clients, préparer un reporting. En 30 minutes d'appel, on regarde si un de vos processus vaut la peine d'être automatisé, et à quel prix.",
+    "common": {
+      "title": "Les mêmes tâches reviennent dans tous les métiers.",
+      "intro": "Votre secteur n'est pas dans la liste ? Ces quatre tâches se retrouvent partout. En 30 minutes d'appel, on regarde si l'une d'elles vaut la peine d'être confiée à un agent chez vous, et à quel prix.",
       "faq": "Lire la FAQ",
-      "pricing": "Voir tous les tarifs"
+      "items": {
+        "quotes": {
+          "category": "Ventes",
+          "title": "Préparer un devis à partir d'une demande",
+          "before": "Chaque demande est relue, puis le devis est monté à la main dans un tableur.",
+          "after": "L'agent lit la demande, reprend vos prix et prépare le devis. Vous le relisez avant l'envoi."
+        },
+        "invoices": {
+          "category": "Finance",
+          "title": "Relancer les factures impayées",
+          "before": "Quelqu'un vérifie les échéances et écrit chaque relance à la main.",
+          "after": "L'agent repère les factures en retard et prépare la relance. Vous la validez avant l'envoi."
+        },
+        "inbox": {
+          "category": "Accueil",
+          "title": "Trier la boîte mail commune",
+          "before": "Chaque matin, quelqu'un lit tout et transfère les messages un par un.",
+          "after": "L'agent classe chaque e-mail, le résume et le transmet à la bonne personne sur Teams."
+        },
+        "whatsapp": {
+          "category": "Service client",
+          "title": "Répondre aux messages WhatsApp",
+          "before": "Les mêmes questions arrivent le soir et attendent une réponse jusqu'au lendemain.",
+          "after": "L'agent répond à partir de vos documents et passe la main à votre équipe quand il ne sait pas."
+        }
+      }
+    },
+    "method": {
+      "title": "Comment ça se passe.",
+      "intro": "Quatre étapes, du premier appel à la mise en ligne. À chaque étape, vous recevez quelque chose de concret.",
+      "steps": {
+        "call": {
+          "when": "Avant de commencer",
+          "title": "Un appel de 30 minutes",
+          "body": "Vous nous montrez la tâche qui vous prend du temps. On vous dit franchement si un agent peut la prendre en charge, ou pas. C'est gratuit."
+        },
+        "quote": {
+          "when": "Sous quelques jours",
+          "title": "Un devis écrit, à prix fixe",
+          "body": "Ce qui est inclus, ce qui ne l'est pas, le délai et le prix, par écrit. Le prix ne bouge plus ensuite."
+        },
+        "build": {
+          "when": "Pendant 1 à 4 semaines",
+          "title": "On construit, vous suivez",
+          "body": "Un point chaque semaine et des tests sur vos vrais exemples. Le code est à votre nom dès le premier jour."
+        },
+        "handover": {
+          "when": "À la mise en ligne",
+          "title": "Passation, puis suivi si vous voulez",
+          "body": "On vérifie avec vous que tout tourne, on forme votre équipe et on vous remet un guide écrit. Le suivi mensuel est en option."
+        }
+      },
+      "mocks": {
+        "call": {
+          "month": "mar.",
+          "day": "3",
+          "title": "Appel de cadrage avec Klyx",
+          "time": "11:00 à 11:30, en visio",
+          "people": "Maxime et vous"
+        },
+        "quoteLabel": "Devis",
+        "total": "Prix fixe, {duration}",
+        "update": {
+          "from": "Maxime",
+          "time": "vendredi 16:02",
+          "title": "Point de la semaine 1 :",
+          "next": "Démo vendredi prochain, sur vos données.",
+          "channel": "#projet-klyx dans votre Slack"
+        },
+        "handover": {
+          "title": "Passation",
+          "live": "En ligne",
+          "items": {
+            "a": "Code et accès à votre nom",
+            "b": "Guide : relancer, surveiller, arrêter",
+            "c": "Tests automatiques dans votre code",
+            "d": "Formation de votre équipe"
+          }
+        }
+      }
     },
     "cta": {
-      "title": "Un processus",
-      "titleEmphasis": "vous coûte des heures chaque semaine ?",
-      "body": "Réservez un appel de 30 minutes. On vous dit s'il vaut la peine d'être automatisé, et à quel prix.",
-      "ctaPrimary": "Réserver un appel",
-      "ctaSecondary": "Demander un devis gratuit"
+      "title": "Une tâche vous coûte des heures chaque semaine ?",
+      "body": "Réservez un appel de 30 minutes. On vous dit si elle vaut la peine d'être confiée à un agent, et à quel prix."
     },
     "realEstate": {
       "card": {
@@ -2001,426 +2158,489 @@
         "build": "Un assistant qui répond sur vos annonces, le tri des leads et la mise à jour du CRM."
       },
       "hero": {
-        "eyebrow": "Immobilier",
-        "title": "Une réponse à chaque acheteur,",
-        "titleEmphasis": "chaque lead dans votre CRM.",
-        "serif": "réponse",
-        "subtitle": "Pour les agences immobilières, réseaux de mandataires et promoteurs du neuf qui perdent des contacts entre les portails, le site et le téléphone. Audit à partir de {auditPrice}, agent en production à partir de {sprintPrice}.",
-        "ctaPrimary": "Réserver un appel",
-        "ctaSecondary": "Demander un devis gratuit"
+        "title": "Agents IA pour les agences immobilières.",
+        "subtitle": "Pour les agences, réseaux de mandataires et promoteurs du neuf qui perdent des contacts entre les portails, le site et le téléphone. L'agent répond, trie et met votre CRM à jour. Vos négociateurs gardent les visites.",
+        "audience": "Agences immobilières, mandataires, promoteurs du neuf",
+        "offer": "Réponses aux acheteurs, tri des leads des portails, prise de rendez-vous"
       },
       "problems": {
-        "title": "Les leads arrivent vite,",
-        "titleEmphasis": "les réponses moins.",
-        "body": "Un agent IA immobilier répond aux acheteurs, qualifie leur demande et la range dans votre CRM, à toute heure. Dans une agence, les demandes arrivent par un portail, le site, un formulaire ou un appel manqué, souvent le soir ou le week-end. Le temps de vérifier le bien et de proposer un créneau, l'acheteur a contacté d'autres agences. L'agent prend la partie répétitive. Vos négociateurs gardent les visites et la négociation.",
+        "title": "Les leads arrivent vite, les réponses moins.",
+        "intro": "Les demandes tombent le soir et le week-end, par un portail, le site ou un appel manqué. Le temps de rappeler, l'acheteur a contacté d'autres agences.",
         "items": {
-          "leads": "Des leads dispersés entre portails, site et e-mails",
-          "visits": "Des visites calées par téléphone, en plusieurs allers-retours",
-          "questions": "Les mêmes questions sur chaque annonce : charges, DPE, stationnement",
-          "crm": "Un CRM rempli à la main, en fin de journée, quand il l'est"
+          "leads": {
+            "title": "Des leads dispersés",
+            "before": "Les demandes arrivent par les portails, le site et les e-mails, et se perdent entre les boîtes.",
+            "after": "Chaque demande est rattachée au bon bien et créée dans le CRM pour le bon négociateur."
+          },
+          "questions": {
+            "title": "Les mêmes questions sur chaque annonce",
+            "before": "Charges, DPE, stationnement : vos équipes répondent aux mêmes questions plusieurs fois par jour.",
+            "after": "L'agent répond à partir de la fiche du bien, et passe la main dès que la question sort de la fiche."
+          },
+          "visits": {
+            "title": "Des visites calées par téléphone",
+            "before": "Trouver un créneau prend plusieurs appels et plusieurs messages.",
+            "after": "L'agent propose les créneaux libres du négociateur et envoie un rappel la veille."
+          },
+          "crm": {
+            "title": "Un CRM rempli en fin de journée",
+            "before": "Le CRM est mis à jour le soir, quand il l'est.",
+            "after": "Les fiches se remplissent au fil des échanges. Le négociateur n'a plus qu'à vérifier."
+          }
         }
       },
       "workflows": {
-        "title": "Trois workflows",
-        "titleEmphasis": "qu'on met en place dans une agence.",
-        "body": "Chaque workflow garde une personne dans la boucle là où une erreur coûte cher. Ce sont des exemples types, pas des projets clients.",
-        "examples": {
+        "title": "Quatre tâches qu'on confie à un agent dans une agence.",
+        "intro": "Ce sont des exemples types, pas des projets clients. Une personne garde la main là où une erreur coûte cher.",
+        "items": {
           "listing": {
-            "title": "Questions sur une annonce",
-            "body": "L'assistant répond à partir de la fiche du bien (prix, surface, charges, DPE) et passe la main à un négociateur dès que la question sort de la fiche.",
-            "tools": "Site, fiches des biens, CRM",
-            "steps": {
-              "trigger": "Question sur le site",
-              "ai": "Réponse depuis la fiche",
-              "human": "Négociateur si besoin",
-              "action": "Contact enregistré"
-            }
+            "category": "Annonces",
+            "title": "Répondre aux questions sur un bien",
+            "agent": "Répond à partir de la fiche du bien : prix, surface, charges, DPE.",
+            "team": "Le négociateur reprend la conversation dès que la question sort de la fiche."
           },
           "leads": {
-            "title": "Tri des leads des portails",
-            "body": "Chaque demande reçue d'un portail est rattachée au bon bien, notée selon le projet (budget, délai, financement), puis créée dans le CRM pour le bon négociateur.",
-            "tools": "Portails d'annonces, boîte mail, CRM",
-            "steps": {
-              "trigger": "E-mail d'un portail",
-              "ai": "Lead qualifié",
-              "human": "Contrôle de l'agent",
-              "action": "Fiche CRM créée"
-            }
+            "category": "Portails",
+            "title": "Trier les leads des portails",
+            "agent": "Lit l'e-mail du portail, rattache la demande au bien et note le projet : budget, délai, financement.",
+            "team": "Un négociateur vérifie la fiche avant qu'elle parte dans le CRM."
           },
           "visits": {
-            "title": "Prise de rendez-vous de visite",
-            "body": "L'agent propose des créneaux libres dans l'agenda du négociateur, envoie la confirmation puis un rappel la veille. Le négociateur valide avant l'envoi.",
-            "tools": "Agenda Google ou Outlook, e-mail ou SMS",
-            "steps": {
-              "trigger": "Acheteur qualifié",
-              "ai": "Créneaux proposés",
-              "human": "Accord du négociateur",
-              "action": "Visite au calendrier"
-            }
-          }
-        },
-        "limit": "Un seul workflow linéaire, comme le tri des leads, c'est une Automatisation IA. Un assistant qui répond sur vos annonces et agit dans plusieurs outils, avec un jeu de tests, c'est un Sprint IA."
-      },
-      "data": {
-        "title": "Les données",
-        "titleEmphasis": "et les outils concernés.",
-        "body": "Un agent immobilier traite des données personnelles d'acheteurs : nom, téléphone, budget, parfois le financement. On les liste avant d'écrire le code, et on ne garde que ce qui sert au suivi.",
-        "rows": {
-          "data": {
-            "label": "Données",
-            "value": "Coordonnées et projet de l'acheteur, fiches des biens, disponibilités des négociateurs"
+            "category": "Visites",
+            "title": "Caler les rendez-vous de visite",
+            "agent": "Propose des créneaux libres dans l'agenda du négociateur, puis envoie la confirmation et un rappel.",
+            "team": "Le négociateur valide le créneau avant l'envoi."
           },
-          "tools": {
-            "label": "Outils",
-            "value": "Votre site, vos portails d'annonces, votre CRM, votre agenda"
-          },
-          "hosting": {
-            "label": "Hébergement",
-            "value": "Comptes à votre nom, hébergement dans l'UE possible et prévu dans le devis"
-          },
-          "rgpd": {
-            "label": "RGPD",
-            "value": "Mention d'information sur le formulaire, durée de conservation fixée avec vous, données de financement collectées seulement si elles servent"
+          "owners": {
+            "category": "Mandats",
+            "title": "Tenir les vendeurs informés",
+            "agent": "Rassemble chaque semaine les visites et les retours des acheteurs, et rédige un point pour le vendeur.",
+            "team": "Le négociateur relit et complète avant l'envoi."
           }
         }
       },
       "proof": {
-        "title": "Un cas réel :",
-        "titleEmphasis": "Hoppy, pour Hop Hop Immo.",
-        "body": "Hop Hop Immo suit les programmes neufs du Sud-Ouest. On a conçu Hoppy, l'assistant IA du site, qui répond aux questions des visiteurs sur ces programmes. Le tri des leads et la mise à jour du CRM décrits plus haut ne font pas partie de ce projet.",
-        "link": "Voir toutes les réalisations"
+        "title": "Un cas réel : Hoppy, pour Hop Hop Immo.",
+        "intro": "Hop Hop Immo suit les programmes neufs du Sud-Ouest. On a conçu Hoppy, l'assistant IA du site, qui répond aux visiteurs à l'écrit ou à la voix. Le tri des leads et le CRM décrits plus haut ne font pas partie de ce projet."
       },
       "pricing": {
-        "title": "Ce que ça coûte,",
-        "titleEmphasis": "en € HT.",
-        "body": "Un audit à {auditPrice} si vous ne savez pas par où commencer. Une Automatisation IA à {automationPrice} pour un workflow comme le tri des leads. Un Sprint IA à {sprintPrice} pour un assistant qui répond sur vos annonces et agit dans vos outils.",
-        "link": "Tous les tarifs"
+        "title": "Ce que ça coûte.",
+        "intro": "Des prix de départ en € HT. Le prix exact est écrit dans le devis, avant de commencer.",
+        "note": "Le suivi d'une automatisation démarre à {automationCarePrice} par mois, 3 mois minimum.",
+        "cards": {
+          "audit-ia": {
+            "audience": "Si vous ne savez pas par où commencer.",
+            "body": "On passe en revue vos demandes, vos outils et votre CRM, et on classe ce qui vaut la peine d'être automatisé."
+          },
+          "automation": {
+            "audience": "Pour une tâche précise, comme le tri des leads.",
+            "body": "Un enchaînement simple branché sur vos outils : l'e-mail du portail arrive, la fiche est créée."
+          },
+          "sprint-ia": {
+            "audience": "Pour un assistant qui répond et agit.",
+            "body": "Un agent qui répond sur vos annonces, propose des visites et remplit le CRM, testé sur de vraies questions."
+          }
+        }
+      },
+      "method": {
+        "quote": {
+          "title": "Tri des leads des portails",
+          "items": {
+            "a": "Lecture des e-mails des portails",
+            "b": "Lead rattaché au bon bien",
+            "c": "Fiche CRM pour le bon négociateur"
+          },
+          "excluded": "Non inclus : réponse automatique à l'acheteur"
+        },
+        "update": {
+          "a": "Connexion aux e-mails des portails",
+          "b": "Tri testé sur de vraies demandes",
+          "c": "Création des fiches dans le CRM"
+        }
+      },
+      "data": {
+        "title": "Les données et les outils concernés.",
+        "intro": "Un agent immobilier traite des données d'acheteurs : nom, téléphone, budget, parfois le financement. On les liste avant d'écrire le code et on ne garde que ce qui sert au suivi.",
+        "items": {
+          "data": {
+            "title": "Les données concernées",
+            "body": "Coordonnées et projet de l'acheteur, fiches des biens, disponibilités des négociateurs."
+          },
+          "hosting": {
+            "title": "Où elles sont hébergées",
+            "body": "Les comptes sont à votre nom. Un hébergement dans l'UE est possible et prévu dans le devis."
+          },
+          "rgpd": {
+            "title": "RGPD",
+            "body": "Une mention d'information sur le formulaire, une durée de conservation fixée avec vous, et le financement demandé seulement s'il sert."
+          }
+        }
       },
       "faq": {
-        "title": "Questions",
-        "titleEmphasis": "sur l'IA en agence immobilière.",
+        "title": "Questions sur l'IA en agence immobilière.",
         "items": {
           "portals": {
-            "question": "Peut-on brancher l'agent sur nos portails et notre CRM ?",
-            "answer": "En général, oui. La plupart des portails envoient leurs demandes par e-mail, et l'agent sait lire ces e-mails. Pour le CRM, on passe par son API quand il en a une, sinon par un import de fichiers ou un outil comme Make. On vérifie vos outils pendant l'appel, avant de chiffrer quoi que ce soit."
+            "question": "Peut-on brancher l'agent sur nos portails et notre CRM ?",
+            "answer": "En général, oui. La plupart des portails envoient leurs demandes par e-mail, et l'agent sait lire ces e-mails. Pour le CRM, on passe par sa connexion officielle (API) quand il en a une, sinon par un import de fichiers ou un outil comme Make. On vérifie vos outils pendant l'appel, avant de chiffrer quoi que ce soit."
           },
           "replace": {
-            "question": "L'assistant remplace-t-il nos négociateurs ?",
+            "question": "L'assistant remplace-t-il nos négociateurs ?",
             "answer": "Non. Il répond aux questions dont la réponse est dans la fiche du bien, qualifie la demande et propose un créneau. Dès qu'une question demande un avis, une négociation ou une information absente de la fiche, il passe la main à un négociateur, avec l'historique de l'échange. Vos équipes passent moins de temps au téléphone et plus en visite."
           },
           "errors": {
-            "question": "Et si l'assistant donne une mauvaise information sur un bien ?",
+            "question": "Et si l'assistant donne une mauvaise information sur un bien ?",
             "answer": "Il répond seulement à partir des données que vous lui donnez, et dit qu'il ne sait pas quand l'information manque. Avant la mise en ligne, on le teste sur de vraies questions d'acheteurs. Chaque échange est enregistré dans un journal, ce qui permet de corriger une fiche ou une consigne dès qu'une réponse ne convient pas."
           }
         }
       },
       "cta": {
-        "title": "Commencez par",
-        "titleEmphasis": "les demandes que vous perdez.",
-        "body": "Réservez un appel de 30 minutes. On regarde d'où viennent vos leads et ce qu'un agent peut prendre en charge.",
-        "ctaPrimary": "Réserver un appel",
-        "ctaSecondary": "Demander un devis gratuit"
+        "title": "Commencez par les demandes que vous perdez.",
+        "body": "Réservez un appel de 30 minutes. On regarde d'où viennent vos leads et ce qu'un agent peut prendre en charge."
       }
     },
     "agencies": {
       "card": {
-        "problem": "Vos clients demandent de l'IA, et personne dans l'équipe n'en a encore mis en production.",
-        "build": "Agents IA, automatisations et sites Next.js, livrés en marque blanche."
+        "problem": "Vos clients demandent de l'IA, et personne dans l'équipe n'en a encore mis en ligne.",
+        "build": "Agents IA, automatisations et sites Next.js, livrés sous votre marque."
       },
       "hero": {
-        "eyebrow": "Agences web et marketing",
-        "title": "L'IA de vos clients,",
-        "titleEmphasis": "en marque blanche.",
-        "serif": "marque",
-        "subtitle": "Pour les agences web, marketing et les collectifs de freelances qui ont un brief IA ou Next.js sans personne pour le livrer. Landing page à partir de {landingPrice}, Site IA à partir de {siteIaPrice}, Sprint IA à partir de {sprintPrice}.",
-        "ctaPrimary": "Réserver un appel",
-        "ctaSecondary": "Demander un devis gratuit"
+        "title": "Sous-traitance IA en marque blanche pour les agences.",
+        "subtitle": "Pour les agences web, marketing et les collectifs de freelances qui ont un projet IA ou Next.js sans personne pour le livrer. Vous gardez le client, la relation et la marge. On livre la partie technique.",
+        "audience": "Agences web et marketing, collectifs de freelances",
+        "offer": "Agents IA, automatisations et sites Next.js, sous votre marque"
       },
       "problems": {
-        "title": "Le brief arrive,",
-        "titleEmphasis": "l'équipe n'est pas là.",
-        "body": "La sous-traitance IA en marque blanche permet à une agence de vendre un agent, une automatisation ou un site Next.js sans recruter. Les clients d'agence demandent de plus en plus un chatbot, un tri des demandes ou un site lisible par ChatGPT. Recruter pour deux projets coûte cher, et livrer sous son nom un agent qui se trompe coûte plus cher encore. Votre agence garde le client, la relation et la marge. On livre la partie technique dans votre process.",
+        "title": "Le brief arrive, l'équipe n'est pas là.",
+        "intro": "Vos clients demandent un assistant, un tri des demandes ou un site lisible par ChatGPT. Recruter pour deux projets coûte cher. Livrer sous votre nom un agent qui se trompe coûte plus cher encore.",
         "items": {
-          "brief": "Un brief IA ou GEO que personne en interne ne sait chiffrer",
-          "peak": "Un pic de charge sur le développement Next.js",
-          "risk": "La crainte de livrer un agent instable sous votre marque",
-          "dev": "Un développeur qui part en cours de projet"
+          "brief": {
+            "title": "Un brief IA difficile à chiffrer",
+            "before": "Personne en interne ne sait dire combien de temps ça prendra, ni si c'est faisable.",
+            "after": "On vous rend un périmètre et un prix écrits avant que vous chiffriez votre client."
+          },
+          "peak": {
+            "title": "Un pic de charge",
+            "before": "Trois projets Next.js tombent le même mois, et l'équipe est déjà pleine.",
+            "after": "On prend un projet entier ou une partie, dans vos outils et à votre rythme."
+          },
+          "risk": {
+            "title": "La crainte d'un agent instable",
+            "before": "Un agent qui répond n'importe quoi sous votre marque abîme la relation client.",
+            "after": "Chaque agent est testé sur de vrais exemples avant la mise en ligne, et votre équipe valide."
+          },
+          "dev": {
+            "title": "Un développeur qui part",
+            "before": "Le projet s'arrête au milieu, et personne ne connaît le code.",
+            "after": "Une passation écrite à chaque livraison, pour qu'un autre développeur puisse reprendre."
+          }
         }
       },
       "workflows": {
-        "title": "Ce qu'on livre",
-        "titleEmphasis": "pour les clients de votre agence.",
-        "body": "Trois demandes fréquentes de clients d'agence, décrites étape par étape. Ce sont des exemples types, pas des projets clients.",
-        "examples": {
+        "title": "Ce qu'on livre pour les clients de votre agence.",
+        "intro": "Quatre demandes fréquentes de clients d'agence. Ce sont des exemples types, pas des projets clients.",
+        "items": {
           "assistant": {
-            "title": "Assistant sur le site du client",
-            "body": "Un assistant qui répond à partir des pages et des documents du client, et transmet la demande à son équipe quand il ne sait pas.",
-            "tools": "Site du client, ses documents, e-mail ou CRM",
-            "steps": {
-              "trigger": "Question d'un visiteur",
-              "ai": "Réponse depuis ses contenus",
-              "human": "Relais vers le client",
-              "action": "Demande transmise"
-            }
+            "category": "Site du client",
+            "title": "Un assistant sur le site du client",
+            "agent": "Répond à partir des pages et des documents du client.",
+            "team": "L'équipe du client reprend la demande quand l'assistant ne sait pas."
           },
           "leads": {
-            "title": "Tri des demandes entrantes",
-            "body": "Les demandes du formulaire et de la boîte mail sont classées, résumées et créées dans le CRM du client, avec une validation de son équipe.",
-            "tools": "Formulaire, boîte mail, CRM comme HubSpot ou Pipedrive",
-            "steps": {
-              "trigger": "Formulaire ou e-mail",
-              "ai": "Demande classée",
-              "human": "Validation du client",
-              "action": "CRM mis à jour"
-            }
+            "category": "Demandes entrantes",
+            "title": "Le tri des demandes entrantes",
+            "agent": "Classe et résume les demandes du formulaire et de la boîte mail, puis les crée dans le CRM du client.",
+            "team": "L'équipe du client valide avant que la fiche parte."
+          },
+          "products": {
+            "category": "E-commerce",
+            "title": "Les fiches produits d'une boutique",
+            "agent": "Rédige les fiches produits à partir du fichier fournisseur, dans le ton de la marque.",
+            "team": "L'équipe du client relit chaque fiche avant la mise en ligne sur Shopify."
           },
           "site": {
-            "title": "Site Next.js prêt pour l'IA",
-            "body": "Votre maquette intégrée en Next.js, avec données structurées et llms.txt pour les moteurs IA. Votre équipe fait la recette avant la mise en ligne.",
-            "tools": "Figma, GitHub, l'hébergeur du client",
-            "steps": {
-              "trigger": "Maquette de l'agence",
-              "ai": "Intégration Next.js",
-              "human": "Recette agence",
-              "action": "Mise en ligne"
-            }
-          }
-        },
-        "limit": "Le périmètre et le prix sont fixés par écrit avant de commencer, pour que vous puissiez revendre au forfait sans surprise."
-      },
-      "data": {
-        "title": "Les données",
-        "titleEmphasis": "de vos clients.",
-        "body": "On travaille sur les comptes et les données de vos clients, pas sur les nôtres. Ce qui y circule et l'endroit où c'est hébergé sont décidés avec vous avant le premier commit.",
-        "rows": {
-          "data": {
-            "label": "Données",
-            "value": "Contenus du site, demandes des visiteurs, contacts du CRM du client"
-          },
-          "tools": {
-            "label": "Outils",
-            "value": "Votre repo ou celui du client, votre gestion de projet, votre canal d'échange"
-          },
-          "hosting": {
-            "label": "Hébergement",
-            "value": "Comptes au nom du client ou de l'agence, à convenir avec vous"
-          },
-          "rgpd": {
-            "label": "RGPD",
-            "value": "Données listées avant le build, mentions et durées de conservation fournies pour le registre du client"
+            "category": "Site web",
+            "title": "Un site Next.js prêt pour l'IA",
+            "agent": "Intègre votre maquette en Next.js, lisible par Google et par les moteurs IA.",
+            "team": "Votre équipe fait la recette avant la mise en ligne."
           }
         }
       },
       "terms": {
-        "title": "La marque blanche,",
-        "titleEmphasis": "noir sur blanc.",
-        "body": "Les règles de la marque blanche se fixent par écrit avec vous avant le premier brief. Voici ce qu'on vous propose d'y mettre.",
+        "title": "La marque blanche, noir sur blanc.",
+        "intro": "Ces règles s'écrivent avec vous avant le premier brief. Voici ce qu'on vous propose d'y mettre.",
         "items": {
-          "nda": "Un accord de confidentialité avant le brief, si vous le souhaitez.",
-          "brand": "Votre marque sur ce qu'on livre : on convient avec vous de ce qui peut mentionner notre nom, et de ce qui ne le mentionne pas.",
-          "client": "La relation client reste la vôtre. Les échanges directs avec votre client se décident avec vous.",
-          "repo": "Le code dans votre repo ou celui du client, comme on en convient avec vous.",
-          "handover": "Une passation écrite à chaque livraison, pour qu'un autre développeur puisse reprendre.",
-          "pricing": "Nos prix publics servent de base à votre devis. Pour un volume régulier, on en parle pendant l'appel."
-        }
-      },
-      "process": {
-        "title": "Comment on se branche",
-        "titleEmphasis": "sur votre production.",
-        "steps": {
-          "brief": {
-            "title": "Brief",
-            "body": "Vous nous transmettez le brief, ou on le cadre ensemble. On vous rend un périmètre et un prix écrits avant que vous chiffriez votre client."
+          "nda": {
+            "title": "Confidentialité",
+            "body": "Un accord de confidentialité signé avant le brief, si vous le souhaitez."
           },
-          "build": {
-            "title": "Développement",
-            "body": "On travaille dans vos outils quand c'est possible : votre repo, votre gestion de projet. Un point d'avancement régulier, au rythme fixé avec vous."
+          "brand": {
+            "title": "Votre marque",
+            "body": "On convient avec vous de ce qui peut mentionner notre nom, et de ce qui ne le mentionne pas."
           },
-          "review": {
-            "title": "Recette",
-            "body": "Votre équipe teste et valide avant que le client ne voie quoi que ce soit."
+          "client": {
+            "title": "Votre relation client",
+            "body": "Le client reste le vôtre. Les échanges directs avec lui se décident avec vous."
+          },
+          "repo": {
+            "title": "Votre code",
+            "body": "Le code va dans votre dépôt ou dans celui du client, comme on en convient ensemble."
           },
           "handover": {
-            "title": "Livraison",
-            "body": "Mise en ligne, documentation et passation écrite, pour que votre équipe puisse reprendre."
+            "title": "Une passation écrite",
+            "body": "À chaque livraison, pour qu'un autre développeur puisse reprendre sans nous."
+          },
+          "pricing": {
+            "title": "Votre prix de revente",
+            "body": "Nos prix publics servent de base à votre devis. Pour un volume régulier, on en parle pendant l'appel."
           }
         }
       },
       "proof": {
-        "title": "Ce que vous pouvez",
-        "titleEmphasis": "vérifier avant de signer.",
-        "body": "On n'affiche ici aucun projet en marque blanche. Pour nous juger, regardez les sites livrés sous notre nom, ou commencez par un premier projet limité, comme une landing page.",
-        "link": "Voir toutes les réalisations"
+        "title": "Ce que vous pouvez vérifier avant de signer.",
+        "intro": "Aucun projet en marque blanche n'est montré ici : par définition, ils ne portent pas notre nom. Voici deux sites livrés sous le nôtre, en ligne aujourd'hui."
       },
       "pricing": {
-        "title": "Ce que ça coûte,",
-        "titleEmphasis": "en € HT.",
-        "body": "Landing page à partir de {landingPrice}, Site IA à partir de {siteIaPrice}, Sprint IA à partir de {sprintPrice}. Pour renforcer votre équipe sur la durée, le FDE est à {fdeDayPrice} par jour, 4 semaines minimum. Vous fixez votre propre prix de revente.",
-        "link": "Tous les tarifs"
+        "title": "Nos prix publics, votre prix de revente.",
+        "intro": "Des prix de départ en € HT, qui servent de base à votre devis. Vous fixez votre marge.",
+        "note": "Besoin d'un renfort sur la durée ? Un développeur dédié rejoint votre équipe à {fdeDayPrice} par jour, 4 semaines minimum.",
+        "noteLink": "Voir le développeur dédié",
+        "cards": {
+          "landing": {
+            "audience": "Pour tester la collaboration.",
+            "body": "Une page qui présente une offre, intégrée depuis votre maquette."
+          },
+          "site-ia": {
+            "audience": "Pour un site complet.",
+            "body": "5 à 8 pages rapides, lisibles par Google et par les moteurs IA."
+          },
+          "sprint-ia": {
+            "audience": "Pour un agent sur le site ou les outils du client.",
+            "body": "Un agent branché sur les outils du client, testé sur de vrais exemples, livré avec un guide écrit."
+          }
+        }
+      },
+      "method": {
+        "title": "Comment on se branche sur votre agence.",
+        "intro": "Quatre étapes, du brief à la livraison. Votre équipe valide avant que le client voie quoi que ce soit.",
+        "steps": {
+          "brief": {
+            "when": "Avant de chiffrer",
+            "title": "On lit le brief avec vous",
+            "body": "Vous nous transmettez le brief, ou on le cadre ensemble pendant un appel de 30 minutes."
+          },
+          "quote": {
+            "when": "Sous quelques jours",
+            "title": "Un périmètre et un prix écrits",
+            "body": "Vous les recevez avant de chiffrer votre client. Le prix ne bouge plus ensuite."
+          },
+          "build": {
+            "when": "Pendant le projet",
+            "title": "On construit dans vos outils",
+            "body": "Votre dépôt, votre gestion de projet et votre canal d'échange quand c'est possible. Un point régulier, au rythme fixé avec vous."
+          },
+          "handover": {
+            "when": "À la livraison",
+            "title": "Recette, puis passation",
+            "body": "Votre équipe teste et valide, puis on met en ligne et on vous remet une passation écrite."
+          }
+        },
+        "quote": {
+          "title": "Assistant IA pour le site d'un client",
+          "items": {
+            "a": "Réponses à partir des pages du site",
+            "b": "Relais vers l'équipe du client",
+            "c": "Tests sur de vraies questions"
+          },
+          "excluded": "Non inclus : maintenance après la livraison"
+        },
+        "update": {
+          "a": "Connexion aux contenus du client",
+          "b": "Réponses testées sur de vraies questions",
+          "c": "Recette avec votre équipe"
+        }
+      },
+      "data": {
+        "title": "Les données de vos clients.",
+        "intro": "On travaille sur les comptes et les données de vos clients, pas sur les nôtres. Ce qui y circule et l'endroit où c'est hébergé se décident avec vous avant de commencer.",
+        "items": {
+          "data": {
+            "title": "Les données concernées",
+            "body": "Contenus du site, demandes des visiteurs, contacts du CRM du client."
+          },
+          "hosting": {
+            "title": "Des comptes à leur nom",
+            "body": "Comptes au nom du client ou de l'agence, comme on en convient avec vous."
+          },
+          "rgpd": {
+            "title": "RGPD",
+            "body": "Données listées avant de coder, mentions et durées de conservation fournies pour le registre du client."
+          }
+        }
       },
       "faq": {
-        "title": "Questions",
-        "titleEmphasis": "sur la sous-traitance.",
+        "title": "Questions sur la sous-traitance.",
         "items": {
           "meetings": {
-            "question": "Pouvez-vous participer aux réunions avec notre client ?",
+            "question": "Pouvez-vous participer aux réunions avec notre client ?",
             "answer": "Si vous le souhaitez, on peut se joindre aux réunions. La façon de nous présenter se décide avec vous et s'écrit avant le début du projet. Sinon, on reste en coulisses et vous portez seul la relation avec votre client. Ces règles figurent dans le même document que le périmètre et le prix."
           },
           "maintenance": {
-            "question": "Qui maintient le projet après la livraison ?",
-            "answer": "Votre équipe, avec la passation écrite et le code dans le repo. Un suivi par nos soins, que vous refacturez, se discute projet par projet. Si on arrête de travailler ensemble, la documentation permet à un autre développeur Next.js de reprendre le projet sans dépendre de nous."
+            "question": "Qui maintient le projet après la livraison ?",
+            "answer": "Votre équipe, avec la passation écrite et le code dans votre dépôt. Un suivi par nos soins, que vous refacturez, se discute projet par projet. Si on arrête de travailler ensemble, la documentation permet à un autre développeur Next.js de reprendre le projet sans dépendre de nous."
           },
           "capacity": {
-            "question": "Combien de projets pouvez-vous prendre en même temps ?",
-            "answer": "Peu, et on le dit avant de signer. En FDE, on prend deux clients au plus en même temps. Pour un Sprint IA ou un site, le devis donne une date de début. Si on ne peut pas tenir votre calendrier, on vous le dit tout de suite plutôt que de prendre le projet et de le livrer en retard."
+            "question": "Combien de projets pouvez-vous prendre en même temps ?",
+            "answer": "Peu, et on le dit avant de signer. En développeur dédié, on prend deux clients au plus en même temps. Pour un agent IA ou un site, le devis donne une date de début. Si on ne peut pas tenir votre calendrier, on vous le dit tout de suite plutôt que de prendre le projet et de le livrer en retard."
           }
         }
       },
       "cta": {
-        "title": "Un brief IA",
-        "titleEmphasis": "que personne ne peut livrer chez vous ?",
-        "body": "Réservez un appel de 30 minutes. On lit le brief avec vous et on vous dit ce qu'on peut livrer, en combien de temps et à quel prix.",
-        "ctaPrimary": "Réserver un appel",
-        "ctaSecondary": "Demander un devis gratuit"
+        "title": "Un brief IA que personne ne peut livrer chez vous ?",
+        "body": "Réservez un appel de 30 minutes. On lit le brief avec vous et on vous dit ce qu'on peut livrer, en combien de temps et à quel prix."
       }
     },
     "services": {
       "card": {
         "problem": "Des heures chaque semaine à trier des e-mails, ressaisir des pièces et relancer des clients.",
-        "build": "Le tri des e-mails, l'extraction de documents, les relances et le reporting, avec validation humaine."
+        "build": "Le tri des e-mails, la lecture des factures, les relances et le reporting, validés par vos équipes."
       },
       "hero": {
-        "eyebrow": "Cabinets et services B2B",
-        "title": "Moins de saisie,",
-        "titleEmphasis": "plus de temps pour vos clients.",
-        "serif": "temps",
-        "subtitle": "Pour les cabinets d'expertise comptable, d'avocats, de conseil et les sociétés de services B2B de Bordeaux et de Nouvelle-Aquitaine. Audit à partir de {auditPrice}, premier workflow à partir de {automationPrice}.",
-        "ctaPrimary": "Réserver un appel",
-        "ctaSecondary": "Demander un devis gratuit"
+        "title": "Automatisation IA pour cabinets comptables et services B2B.",
+        "subtitle": "Pour les cabinets d'expertise comptable, d'avocats, de conseil et les sociétés de services B2B de Bordeaux et de Nouvelle-Aquitaine. L'IA lit et prépare la saisie. Un collaborateur valide chaque étape sensible.",
+        "audience": "Cabinets comptables, d'avocats, de conseil, services B2B",
+        "offer": "Tri des e-mails, lecture des factures, relances, reporting"
       },
       "problems": {
-        "title": "Le travail répétitif",
-        "titleEmphasis": "mange les heures facturables.",
-        "body": "L'automatisation IA d'un cabinet comptable ou juridique prend en charge la lecture et la saisie, et un collaborateur valide chaque étape sensible. Dans un cabinet de 10 à 50 personnes, une part de la semaine part dans le tri de la boîte mail commune, la ressaisie de factures et de relevés, la relance des pièces manquantes et le même tableau de bord chaque mois. Ce sont des tâches qui suivent toujours les mêmes étapes.",
+        "title": "Le travail répétitif mange les heures facturables.",
+        "intro": "Dans un cabinet de 10 à 50 personnes, une part de la semaine part dans des tâches qui suivent toujours les mêmes étapes.",
         "items": {
-          "inbox": "Une boîte mail commune triée à la main chaque matin",
-          "docs": "Factures, relevés et justificatifs ressaisis dans le logiciel",
-          "chase": "Des relances de pièces manquantes écrites une par une",
-          "report": "Le même reporting mensuel refait dans un tableur"
+          "inbox": {
+            "title": "La boîte mail commune",
+            "before": "Elle est triée à la main chaque matin, message par message.",
+            "after": "Chaque e-mail est rattaché au bon client et au bon dossier, avec un résumé."
+          },
+          "docs": {
+            "title": "Les pièces ressaisies",
+            "before": "Factures, relevés et justificatifs sont recopiés dans le logiciel.",
+            "after": "Montants, dates et TVA sont lus dans le PDF et proposés à la saisie."
+          },
+          "chase": {
+            "title": "Les relances de pièces",
+            "before": "Chaque relance de pièce manquante est écrite une par une.",
+            "after": "La relance est rédigée selon l'historique du client. Le responsable l'approuve."
+          },
+          "report": {
+            "title": "Le reporting mensuel",
+            "before": "Le même tableau de bord est refait chaque mois dans un tableur.",
+            "after": "Les chiffres sont rassemblés dans le même modèle, avec un commentaire à relire."
+          }
         }
       },
       "workflows": {
-        "title": "Quatre workflows,",
-        "titleEmphasis": "illustrés étape par étape.",
-        "body": "Ces workflows sont des illustrations de ce qu'on construit, pas des projets clients. Chacun garde une validation humaine là où une erreur coûte cher.",
-        "examples": {
+        "title": "Quatre tâches, décrites pas à pas.",
+        "intro": "Ce sont des illustrations de ce qu'on construit, pas des projets clients. Une validation humaine reste là où une erreur coûte cher.",
+        "note": "Pas encore de cas client publié dans ce secteur : ces tâches sont des illustrations. L'audit vérifie sur vos documents ce qui vaut la peine d'être automatisé.",
+        "noteLink": "Voir l'audit IA",
+        "items": {
           "triage": {
-            "title": "Tri de la boîte mail commune",
-            "body": "Chaque e-mail est rattaché au bon client et au bon dossier, avec un résumé et une priorité. Les cas douteux restent dans une file à vérifier.",
-            "tools": "Outlook ou Gmail, liste des clients et des dossiers",
-            "steps": {
-              "trigger": "E-mail entrant",
-              "ai": "Classé par dossier",
-              "human": "Contrôle du secrétariat",
-              "action": "Transmis au collaborateur"
-            }
+            "category": "Secrétariat",
+            "title": "Trier la boîte mail commune",
+            "agent": "Rattache chaque e-mail au bon client et au bon dossier, avec un résumé et une priorité.",
+            "team": "Le secrétariat vérifie les cas douteux, puis le message part au collaborateur."
           },
           "extraction": {
-            "title": "Extraction de factures et relevés",
-            "body": "Montants, dates, TVA et fournisseur sont extraits du PDF, contrôlés, puis proposés à la saisie. Le collaborateur corrige si besoin et valide.",
-            "tools": "Boîte mail ou GED, logiciel comptable ou tableur",
-            "steps": {
-              "trigger": "PDF reçu",
-              "ai": "Champs extraits",
-              "human": "Contrôle du collaborateur",
-              "action": "Saisie dans le logiciel"
-            }
+            "category": "Comptabilité",
+            "title": "Lire les factures et les relevés",
+            "agent": "Extrait montants, dates, TVA et fournisseur du PDF, puis propose la saisie.",
+            "team": "Le collaborateur corrige si besoin et valide."
           },
           "chase": {
-            "title": "Relance des pièces manquantes",
-            "body": "Quand une pièce manque au dossier, une relance est rédigée selon l'historique du client. Le responsable du dossier l'approuve avant l'envoi.",
-            "tools": "Tableau de suivi des dossiers, e-mail",
-            "steps": {
-              "trigger": "Pièce manquante",
-              "ai": "Relance rédigée",
-              "human": "Accord du responsable",
-              "action": "E-mail au client"
-            }
+            "category": "Dossiers",
+            "title": "Relancer les pièces manquantes",
+            "agent": "Repère la pièce qui manque et rédige la relance selon l'historique du client.",
+            "team": "Le responsable du dossier approuve avant l'envoi."
           },
           "reporting": {
-            "title": "Reporting mensuel",
-            "body": "Les chiffres du mois sont rassemblés dans le même modèle, avec un commentaire rédigé que l'associé relit avant l'envoi au client.",
-            "tools": "Logiciel de gestion, tableur, modèle de rapport",
-            "steps": {
-              "trigger": "Fin de mois",
-              "ai": "Chiffres consolidés",
-              "human": "Relecture de l'associé",
-              "action": "Rapport envoyé"
-            }
-          }
-        },
-        "limit": "Illustration : étapes et outils donnés à titre d'exemple. On adapte chaque workflow à vos logiciels pendant l'audit ou le cadrage."
-      },
-      "data": {
-        "title": "Secret professionnel",
-        "titleEmphasis": "et données clients.",
-        "body": "Un cabinet traite des données couvertes par le secret professionnel et des données personnelles de ses clients. On cartographie ces données avant d'écrire la première étape, et on choisit l'hébergement en fonction.",
-        "rows": {
-          "data": {
-            "label": "Données",
-            "value": "Pièces comptables, e-mails des clients, données de dossiers"
-          },
-          "tools": {
-            "label": "Outils",
-            "value": "Votre messagerie, votre GED, votre logiciel comptable ou de gestion"
-          },
-          "hosting": {
-            "label": "Hébergement",
-            "value": "Comptes à votre nom, fournisseur de modèle hébergé dans l'UE ou champs masqués si les documents sont sensibles"
-          },
-          "rgpd": {
-            "label": "RGPD",
-            "value": "Données limitées au nécessaire, traitement décrit pour votre registre, durée de conservation fixée avec vous"
+            "category": "Associés",
+            "title": "Préparer le reporting mensuel",
+            "agent": "Rassemble les chiffres du mois dans le même modèle et rédige un commentaire.",
+            "team": "L'associé relit avant l'envoi au client."
           }
         }
       },
-      "proof": {
-        "title": "Pas encore de cas client",
-        "titleEmphasis": "dans ce secteur.",
-        "body": "On préfère le dire : on n'a pas encore de cas client publié pour un cabinet comptable, juridique ou de conseil. Les workflows de cette page sont des illustrations. L'audit sert justement à vérifier, sur vos vrais documents, ce qui vaut la peine d'être automatisé avant que vous payiez un développement.",
-        "link": "Voir l'audit IA",
-        "line": "Pas encore de cas client publié dans ce secteur : ces workflows sont des illustrations, et l'audit vérifie sur vos documents ce qui vaut la peine d'être automatisé."
-      },
       "pricing": {
-        "title": "Ce que ça coûte,",
-        "titleEmphasis": "en € HT.",
-        "body": "Commencez par l'audit à {auditPrice} : vos process passés en revue et une roadmap sur 90 jours. Un premier workflow, comme l'extraction de factures, démarre à {automationPrice}, avec un suivi à partir de {automationCarePrice} par mois. Un agent qui agit dans plusieurs outils, c'est un Sprint IA à partir de {sprintPrice}.",
-        "link": "Tous les tarifs"
+        "title": "Ce que ça coûte.",
+        "intro": "Commencez par l'audit si vous ne savez pas par où commencer. Prix de départ en € HT, fixés par écrit avant de commencer.",
+        "note": "Le suivi d'une automatisation démarre à {automationCarePrice} par mois, 3 mois minimum.",
+        "cards": {
+          "audit-ia": {
+            "audience": "Pour savoir quoi automatiser en premier.",
+            "body": "On passe en revue vos tâches sur vos vrais documents et on vous remet un plan sur 90 jours."
+          },
+          "automation": {
+            "audience": "Pour une tâche précise, comme la lecture des factures.",
+            "body": "Un enchaînement simple branché sur vos outils, validé par vos collaborateurs."
+          },
+          "sprint-ia": {
+            "audience": "Pour un agent qui agit dans plusieurs outils.",
+            "body": "Un agent qui trie, prépare et transmet, testé sur de vrais dossiers avant la mise en ligne."
+          }
+        }
+      },
+      "method": {
+        "quote": {
+          "title": "Lecture des factures fournisseurs",
+          "items": {
+            "a": "Factures lues depuis la boîte mail",
+            "b": "Montant, date, TVA et fournisseur extraits",
+            "c": "Saisie proposée au collaborateur"
+          },
+          "excluded": "Non inclus : validation sans relecture"
+        },
+        "update": {
+          "a": "Connexion à la boîte mail",
+          "b": "Lecture testée sur de vraies factures",
+          "c": "Envoi vers le logiciel comptable"
+        }
+      },
+      "data": {
+        "title": "Secret professionnel et données clients.",
+        "intro": "Un cabinet traite des données couvertes par le secret professionnel. On les cartographie avant d'écrire la première étape, et on choisit l'hébergement en fonction.",
+        "items": {
+          "data": {
+            "title": "Les données concernées",
+            "body": "Pièces comptables, e-mails des clients, données des dossiers."
+          },
+          "hosting": {
+            "title": "Un hébergement adapté",
+            "body": "Comptes à votre nom, fournisseur hébergé dans l'UE ou champs masqués si les documents sont sensibles."
+          },
+          "rgpd": {
+            "title": "RGPD et secret",
+            "body": "Données limitées au nécessaire, traitement décrit pour votre registre, durée de conservation fixée avec vous."
+          }
+        }
       },
       "faq": {
-        "title": "Questions",
-        "titleEmphasis": "des cabinets.",
+        "title": "Questions des cabinets.",
         "items": {
           "secret": {
-            "question": "Le secret professionnel est-il compatible avec un outil d'IA ?",
+            "question": "Le secret professionnel est-il compatible avec un outil d'IA ?",
             "answer": "Oui, si les données sont traitées dans un cadre que vous maîtrisez. Les comptes restent à votre nom, on peut choisir un fournisseur de modèle hébergé dans l'UE, masquer les noms et les montants avant l'envoi, ou garder certaines étapes sans IA. On fixe ce cadre avec vous pendant l'audit. Les règles de votre profession restent la référence."
           },
           "software": {
-            "question": "Ça marche avec notre logiciel comptable ?",
-            "answer": "Souvent, mais pas toujours directement. Quand le logiciel a une API ou un import de fichiers, le workflow y dépose les écritures à valider. Sinon, il prépare un fichier prêt à importer à la main. On vérifie votre logiciel pendant l'audit, et on vous dit ce qui est possible avant de chiffrer le workflow."
+            "question": "Ça marche avec notre logiciel comptable ?",
+            "answer": "Souvent, mais pas toujours directement. Quand le logiciel a une connexion (API) ou un import de fichiers, l'automatisation y dépose les écritures à valider. Sinon, elle prépare un fichier prêt à importer à la main. On vérifie votre logiciel pendant l'audit, et on vous dit ce qui est possible avant de chiffrer quoi que ce soit."
           },
           "staff": {
-            "question": "Nos collaborateurs doivent-ils être formés ?",
-            "answer": "Un peu. Ils gardent leurs outils habituels et valident ce que le workflow prépare pour eux. On prévoit une prise en main à la livraison et une documentation courte, écrite pour eux. Si un collaborateur doit modifier une étape lui-même, on lui montre comment faire dans votre outil d'automatisation."
+            "question": "Nos collaborateurs doivent-ils être formés ?",
+            "answer": "Un peu. Ils gardent leurs outils habituels et valident ce que l'automatisation prépare pour eux. On prévoit une prise en main à la livraison et une documentation courte, écrite pour eux. Si un collaborateur doit modifier une étape lui-même, on lui montre comment faire dans votre outil d'automatisation."
           }
         }
       },
       "cta": {
-        "title": "Quel processus",
-        "titleEmphasis": "vous prend le plus d'heures ?",
-        "body": "Réservez un appel de 30 minutes. On vous dit si l'audit vaut le coup pour votre cabinet, avant tout engagement.",
-        "ctaPrimary": "Réserver un appel",
-        "ctaSecondary": "Demander un devis gratuit"
+        "title": "Quelle tâche vous prend le plus d'heures ?",
+        "body": "Réservez un appel de 30 minutes. On vous dit si l'audit vaut le coup pour votre cabinet, avant tout engagement."
       }
     }
   },
@@ -2556,8 +2776,8 @@
       "description": "Chez Klyx : un lead engineer, Maxime Mansiet, des agents IA dont le code est relu avant la production, et un spécialiste si le projet le demande."
     },
     "bordeaux": {
-      "title": "Agence IA à Bordeaux pour les PME | Klyx",
-      "description": "Automatiser devis, factures, e-mails et reporting dans votre PME à Bordeaux et en Gironde. Prix fixe annoncé avant de commencer."
+      "title": "Agence IA à Bordeaux, consultant IA pour PME | Klyx",
+      "description": "Agence et consultant IA à Bordeaux : audit dès {auditPrice}, puis devis, factures et e-mails automatisés. Bordeaux, Gironde et à distance."
     },
     "contact": {
       "title": "Contact et devis gratuit | Klyx",
@@ -2589,10 +2809,10 @@
     },
     "useCases": {
       "title": "Cas d'usage de l'IA en PME, par secteur | Klyx",
-      "description": "Ce qu'un agent IA ou une automatisation fait dans l'immobilier, une agence web ou un cabinet : workflows, outils et prix publics en € HT."
+      "description": "Ce qu'un agent IA fait dans l'immobilier, une agence web ou un cabinet : tâches décrites pas à pas, outils concernés et prix publics en € HT."
     },
     "realEstate": {
-      "title": "Agent IA pour l'immobilier : leads et visites | Klyx",
+      "title": "Agent IA pour l'immobilier : leads et visites | Klyx",
       "description": "Un agent IA qui répond aux acheteurs, trie les leads des portails et met votre CRM à jour. Pour agences et promoteurs, audit dès {auditPrice}."
     },
     "agencies": {
@@ -2601,7 +2821,7 @@
     },
     "services": {
       "title": "Automatisation IA pour cabinet comptable | Klyx",
-      "description": "Tri des e-mails, extraction de factures, relances et reporting pour cabinets et services B2B en Nouvelle-Aquitaine. Audit dès {auditPrice}."
+      "description": "Tri des e-mails, lecture des factures, relances et reporting pour cabinets et services B2B en Nouvelle-Aquitaine. Audit dès {auditPrice}."
     },
     "faq": {
       "title": "FAQ : prix, délais, données et IA en PME | Klyx",

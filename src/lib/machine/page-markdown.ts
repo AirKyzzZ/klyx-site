@@ -27,6 +27,7 @@ import {
   formatPrice,
   getOfferPrice,
   getPriceValues,
+  type OfferId,
   PRICE_GROUPS,
 } from "@/lib/offers";
 import { type AppPathname, absoluteUrl } from "@/lib/seo";
@@ -39,8 +40,17 @@ import {
 import { faqThemes } from "@/lib/faq-page";
 import { scenarios } from "@/lib/scenarios";
 import {
+  BORDEAUX_BLOG_PILLAR,
+  BORDEAUX_EXAMPLES,
+  BORDEAUX_OFFERS,
+  BORDEAUX_PLACES,
+  LOCAL_CASES,
+} from "@/lib/bordeaux-page";
+import {
+  COMMON_TASKS,
   SECTOR_KEYS,
   type SectorPageConfig,
+  type SectorWorkflow,
   sectorPages,
 } from "@/lib/sector-pages";
 import { site, socialLinks } from "@/lib/site";
@@ -243,7 +253,11 @@ async function home(locale: Locale): Promise<string> {
     ...HOME_USE_CASES.flatMap(({ key }) => [
       `### ${t(`useCases.items.${key}.title`)} (${t(`useCases.items.${key}.category`)})`,
       list([
-        labelled(locale, t("useCases.before"), t(`useCases.items.${key}.before`)),
+        labelled(
+          locale,
+          t("useCases.before"),
+          t(`useCases.items.${key}.before`),
+        ),
         labelled(locale, t("useCases.after"), t(`useCases.items.${key}.after`)),
       ]),
     ]),
@@ -594,13 +608,7 @@ async function caseStudy(
       labelled(locale, t("labels.stack"), meta.stack.join(", ")),
       labelled(locale, t("labels.outcome"), t("labels.noOutcome")),
       ...(meta.status
-        ? [
-            labelled(
-              locale,
-              t("labels.status"),
-              t(`status.${meta.status}`),
-            ),
-          ]
+        ? [labelled(locale, t("labels.status"), t(`status.${meta.status}`))]
         : []),
     ]),
     meta.live !== false && link(t("labels.visit"), meta.url),
@@ -664,58 +672,185 @@ async function about(locale: Locale): Promise<string> {
   ]);
 }
 
-async function bordeaux(locale: Locale): Promise<string> {
-  const t = getStaticTranslator(locale, "bordeaux");
-  return doc([
-    ...intro(locale, "/agence-ia-bordeaux", heroTitle(t)),
-    t("hero.subtitle"),
-    `## ${sectionTitle(t, "problem")}`,
-    t("problem.body"),
-    link(t("problem.source"), t("problem.sourceUrl")),
-    `### ${t("examples.title")}`,
-    list(messageStrings(t, "examples.items")),
-    ...automationExampleBlocks(t),
-    ...processBlocks(locale, t),
-    `## ${sectionTitle(t, "local")}`,
-    t("local.body"),
-    list(
-      ["city", "zone", "travel"].map((key) =>
-        labelled(
-          locale,
-          t(`local.card.${key}.label`),
-          t(`local.card.${key}.value`),
-        ),
-      ),
-    ),
-    `## ${sectionTitle(t, "trust")}`,
-    t("trust.body"),
-    ...faqBlocks(
-      sectionTitle(t, "faq"),
-      messageList(
-        t,
-        "faq.items",
-        ["question", "answer"],
-        getPriceValues(locale),
-      ),
-    ),
-    ...ctaBlocks(locale, t, "cta", ["book", "quote"]),
+function comparisonBlocks(
+  locale: Locale,
+  t: Translate,
+  path: string,
+  labels: [string, string],
+): Block[] {
+  return messageKeys(t.raw(path)).flatMap((key) => [
+    `### ${t(`${path}.${key}.title`)}`,
+    list([
+      labelled(locale, labels[0], t(`${path}.${key}.before`)),
+      labelled(locale, labels[1], t(`${path}.${key}.after`)),
+    ]),
   ]);
 }
 
-function workflowBlocks(locale: Locale, t: Translate, labels: Translate) {
-  return [
-    `## ${sectionTitle(t, "workflows")}`,
-    t("workflows.body"),
-    ...messageKeys(t.raw("workflows.examples")).flatMap((id) => [
-      `### ${t(`workflows.examples.${id}.title`)}`,
-      ["trigger", "ai", "human", "action"]
-        .map((step) => t(`workflows.examples.${id}.steps.${step}`))
-        .join(" → "),
-      t(`workflows.examples.${id}.body`),
-      labelled(locale, labels("tools"), t(`workflows.examples.${id}.tools`)),
+function taskBlocks(
+  locale: Locale,
+  t: Translate,
+  path: string,
+  tasks: SectorWorkflow[],
+  labels: { agent: string; builder?: string; team: string },
+): Block[] {
+  return tasks.flatMap(({ id, builtByUs }) => [
+    `### ${t(`${path}.${id}.title`)} (${t(`${path}.${id}.category`)})`,
+    list([
+      labelled(
+        locale,
+        builtByUs && labels.builder ? labels.builder : labels.agent,
+        t(`${path}.${id}.agent`),
+      ),
+      labelled(locale, labels.team, t(`${path}.${id}.team`)),
     ]),
-    t("workflows.limit"),
+  ]);
+}
+
+function priceCardBlocks(
+  locale: Locale,
+  t: Translate,
+  ids: readonly OfferId[],
+): Block {
+  const offersT = getStaticTranslator(locale, "offers");
+  return list(
+    ids.map((id) => {
+      const tier = getOfferCopy(offersT, locale, id);
+      return labelled(
+        locale,
+        link(tier.name, absoluteUrl(locale, tier.href)),
+        `${tier.price} · ${tier.duration}. ${t(`pricing.cards.${id}.audience`)} ${t(`pricing.cards.${id}.body`)}`,
+      );
+    }),
+  );
+}
+
+function methodBlocks(locale: Locale, t: Translate, path: string): Block[] {
+  const steps = messageList(t, `${path}.steps`, ["when", "title", "body"]);
+  return [
+    `## ${t(`${path}.title`)}`,
+    t(`${path}.intro`),
+    steps
+      .map(
+        (step, i) =>
+          `${i + 1}. ${labelled(locale, `**${step.title}**`, `${step.body} (${step.when})`)}`,
+      )
+      .join("\n"),
   ];
+}
+
+function bookBlocks(
+  locale: Locale,
+  t: Translate,
+  labels: { book: string; quote: string },
+): Block[] {
+  return [
+    `## ${t("cta.title")}`,
+    t("cta.body"),
+    list([
+      link(labels.book, actionUrl(locale, "book")),
+      link(labels.quote, actionUrl(locale, "quote")),
+    ]),
+  ];
+}
+
+function caseRowList(
+  locale: Locale,
+  cases: CaseStudyMeta[],
+  kind: (study: CaseStudyMeta) => string,
+): Block {
+  if (cases.length === 0) return null;
+  return list(
+    cases.map((c) =>
+      labelled(
+        locale,
+        link(
+          c.title,
+          absoluteUrl(locale, "/realisations/[slug]", { slug: c.slug }),
+        ),
+        `${kind(c)} · ${c.year}. ${c.summary}`,
+      ),
+    ),
+  );
+}
+
+async function bordeaux(locale: Locale): Promise<string> {
+  const t = getStaticTranslator(locale, "bordeaux");
+  const prices = getPriceValues(locale);
+  const studies = await getCaseStudies(locale);
+  const cases = LOCAL_CASES.flatMap((slug) => {
+    const study = studies.find((c) => c.slug === slug);
+    return study ? [study] : [];
+  });
+  const offersT = getStaticTranslator(locale, "offers");
+  const audit = getOfferCopy(offersT, locale, "audit-ia");
+  return doc([
+    ...intro(locale, "/agence-ia-bordeaux", t("hero.title")),
+    t("hero.subtitle"),
+    list([
+      labelled(locale, t("labels.audience"), t("hero.audience")),
+      labelled(locale, t("labels.zone"), t("hero.zone")),
+      labelled(locale, audit.name, `${audit.price} · ${audit.duration}`),
+    ]),
+    `## ${t("problem.title")}`,
+    t("problem.intro"),
+    link(t("problem.source"), t("problem.sourceUrl")),
+    ...comparisonBlocks(locale, t, "problem.items", [
+      t("labels.before"),
+      t("labels.after"),
+    ]),
+    `## ${t("examples.title")}`,
+    t("examples.intro"),
+    ...taskBlocks(locale, t, "examples.items", BORDEAUX_EXAMPLES, {
+      agent: t("labels.agent"),
+      team: t("labels.team"),
+    }),
+    link(t("examples.link"), absoluteUrl(locale, "/cas-usage")),
+    `## ${t("consultant.title")}`,
+    t("consultant.intro"),
+    list(
+      ["audit", "person", "owned"].map((key) =>
+        labelled(
+          locale,
+          `**${t(`consultant.items.${key}.title`)}**`,
+          t(`consultant.items.${key}.body`, prices),
+        ),
+      ),
+    ),
+    `${t("consultant.blogLead")} ${link(
+      t("consultant.blogLink"),
+      absoluteUrl(locale, "/blog/[slug]", { slug: BORDEAUX_BLOG_PILLAR }),
+    )}`,
+    link(t("consultant.auditLink"), absoluteUrl(locale, "/services/audit-ia")),
+    `## ${t("pricing.title")}`,
+    t("pricing.intro"),
+    priceCardBlocks(locale, t, BORDEAUX_OFFERS),
+    offersT("vatNote"),
+    link(t("labels.allPricing"), absoluteUrl(locale, "/tarifs")),
+    ...methodBlocks(locale, t, "method"),
+    `## ${t("zone.title")}`,
+    t("zone.intro"),
+    list(
+      BORDEAUX_PLACES.map((key) =>
+        labelled(
+          locale,
+          t(`zone.places.${key}.name`),
+          t(`zone.places.${key}.note`),
+        ),
+      ),
+    ),
+    `## ${t("local.title")}`,
+    t("local.intro"),
+    caseRowList(locale, cases, (c) => t(`local.cases.${c.slug}`)),
+    ...faqBlocks(
+      t("faq.title"),
+      messageList(t, "faq.items", ["question", "answer"], prices),
+    ),
+    ...bookBlocks(locale, t, {
+      book: t("labels.book"),
+      quote: t("labels.quote"),
+    }),
+  ]);
 }
 
 async function sectorPageMarkdown(
@@ -726,74 +861,95 @@ async function sectorPageMarkdown(
   const labels = getStaticTranslator(locale, "useCases.labels");
   const offersT = getStaticTranslator(locale, "offers");
   const prices = getPriceValues(locale);
-  const tiers = config.offers.map((id) => getOfferCopy(offersT, locale, id));
+  const anchor = getOfferCopy(offersT, locale, config.anchor);
   const proof = config.proof;
+  const studies = await getCaseStudies(locale);
   const cases =
     proof.kind === "cases"
-      ? (await getCaseStudies(locale)).filter((c) =>
-          proof.slugs.includes(c.slug),
-        )
+      ? proof.slugs.flatMap((slug) => {
+          const study = studies.find((c) => c.slug === slug);
+          return study ? [study] : [];
+        })
       : [];
-  const proofUrl = absoluteUrl(
-    locale,
-    proof.kind === "none" ? proof.href : "/realisations",
-  );
+  const methodPath = config.ownMethod ? "method" : null;
+  const sharedMethod = getStaticTranslator(locale, "useCases");
 
   return doc([
-    ...intro(locale, config.pathname, heroTitle(t)),
-    getOfferCopy(offersT, locale, config.anchor).price,
+    ...intro(locale, config.pathname, t("hero.title")),
     t("hero.subtitle", prices),
-    `## ${sectionTitle(t, "problems")}`,
-    t("problems.body"),
-    list(messageStrings(t, "problems.items")),
-    ...workflowBlocks(locale, t, labels),
+    list([
+      labelled(locale, labels("audience"), t("hero.audience")),
+      labelled(locale, labels("offer"), t("hero.offer")),
+      labelled(locale, anchor.name, `${anchor.price} · ${anchor.duration}`),
+    ]),
+    `## ${t("problems.title")}`,
+    t("problems.intro"),
+    ...comparisonBlocks(locale, t, "problems.items", [
+      labels("before"),
+      labels("after"),
+    ]),
+    `## ${t("workflows.title")}`,
+    t("workflows.intro"),
+    ...taskBlocks(locale, t, "workflows.items", config.workflows, {
+      agent: labels("agent"),
+      builder: labels("builder"),
+      team: labels("team"),
+    }),
     proof.kind === "none" &&
-      `${t("proof.line")} ${link(t("proof.link"), proofUrl)}`,
-    `## ${sectionTitle(t, "data")}`,
-    t("data.body"),
-    list(
-      messageKeys(t.raw("data.rows")).map((row) =>
-        labelled(
-          locale,
-          t(`data.rows.${row}.label`),
-          t(`data.rows.${row}.value`),
-        ),
-      ),
-    ),
+      `${t("workflows.note")} ${link(t("workflows.noteLink"), absoluteUrl(locale, proof.href))}`,
     ...(config.terms
       ? [
-          `## ${sectionTitle(t, "terms")}`,
-          t("terms.body"),
-          list(messageStrings(t, "terms.items")),
-          ...processBlocks(locale, t),
+          `## ${t("terms.title")}`,
+          t("terms.intro"),
+          list(
+            messageKeys(t.raw("terms.items")).map((key) =>
+              labelled(
+                locale,
+                `**${t(`terms.items.${key}.title`)}**`,
+                t(`terms.items.${key}.body`),
+              ),
+            ),
+          ),
         ]
       : []),
-    ...(proof.kind === "cases"
+    ...(cases.length > 0
       ? [
-          `## ${sectionTitle(t, "proof")}`,
-          t("proof.body"),
-          link(t("proof.link"), proofUrl),
-          caseList(locale, cases),
+          `## ${t("proof.title")}`,
+          t("proof.intro"),
+          caseRowList(locale, cases, (c) => c.client),
+          link(labels("allCases"), absoluteUrl(locale, "/realisations")),
         ]
       : []),
-    `## ${sectionTitle(t, "pricing")}`,
-    t("pricing.body", prices),
+    `## ${t("pricing.title")}`,
+    t("pricing.intro", prices),
+    priceCardBlocks(locale, t, config.offers),
+    t("pricing.note", prices),
+    offersT("vatNote"),
+    link(labels("allPricing"), absoluteUrl(locale, "/tarifs")),
+    ...(methodPath
+      ? methodBlocks(locale, t, methodPath)
+      : methodBlocks(locale, sharedMethod, "method")),
+    `## ${t("data.title")}`,
+    t("data.intro"),
     list(
-      tiers.map((tier) =>
+      messageKeys(t.raw("data.items")).map((key) =>
         labelled(
           locale,
-          link(tier.name, absoluteUrl(locale, tier.href)),
-          `${tier.price} · ${tier.duration}`,
+          `**${t(`data.items.${key}.title`)}**`,
+          t(`data.items.${key}.body`),
         ),
       ),
     ),
-    offersT("vatNote"),
-    link(t("pricing.link"), absoluteUrl(locale, "/tarifs")),
+    labelled(
+      locale,
+      labels("tools"),
+      config.tools.map((tool) => tool.name).join(", "),
+    ),
     ...faqBlocks(
-      sectionTitle(t, "faq"),
+      t("faq.title"),
       messageList(t, "faq.items", ["question", "answer"], prices),
     ),
-    ...ctaBlocks(locale, t, "cta", ["book", "quote"]),
+    ...bookBlocks(locale, t, { book: labels("book"), quote: labels("quote") }),
   ]);
 }
 
@@ -802,28 +958,38 @@ async function useCases(locale: Locale): Promise<string> {
   const nav = getStaticTranslator(locale, "nav");
   const offersT = getStaticTranslator(locale, "offers");
   return doc([
-    ...intro(locale, "/cas-usage", heroTitle(t)),
+    ...intro(locale, "/cas-usage", t("hero.title")),
     t("hero.subtitle", getPriceValues(locale)),
-    `## ${sectionTitle(t, "sectors")}`,
-    t("sectors.body"),
+    `## ${t("sectors.title")}`,
+    t("sectors.intro"),
     ...SECTOR_KEYS.flatMap((key) => {
       const config = sectorPages[key];
       const anchor = getOfferCopy(offersT, locale, config.anchor);
       return [
         `### ${nav(key)}`,
-        labelled(locale, t("labels.problem"), t(`${key}.card.problem`)),
-        labelled(locale, t("labels.build"), t(`${key}.card.build`)),
-        labelled(locale, t("labels.price"), `${anchor.price} · ${anchor.name}`),
+        t(`${key}.card.problem`),
+        t(`${key}.card.build`),
+        labelled(locale, anchor.name, anchor.price),
         link(t("labels.see"), absoluteUrl(locale, config.pathname)),
       ];
     }),
-    `## ${sectionTitle(t, "other")}`,
-    t("other.body"),
-    list([
-      link(t("other.faq"), absoluteUrl(locale, "/faq")),
-      link(t("other.pricing"), absoluteUrl(locale, "/tarifs")),
+    `## ${t("common.title")}`,
+    t("common.intro"),
+    ...COMMON_TASKS.flatMap(({ id }) => [
+      `### ${t(`common.items.${id}.title`)} (${t(`common.items.${id}.category`)})`,
+      list([
+        labelled(locale, t("labels.before"), t(`common.items.${id}.before`)),
+        labelled(locale, t("labels.after"), t(`common.items.${id}.after`)),
+      ]),
     ]),
-    ...ctaBlocks(locale, t, "cta", ["book", "quote"]),
+    list([
+      link(t("common.faq"), absoluteUrl(locale, "/faq")),
+      link(t("labels.allPricing"), absoluteUrl(locale, "/tarifs")),
+    ]),
+    ...bookBlocks(locale, t, {
+      book: t("labels.book"),
+      quote: t("labels.quote"),
+    }),
   ]);
 }
 
@@ -865,7 +1031,11 @@ async function contact(locale: Locale): Promise<string> {
     t("booking.next"),
     link(t("booking.title"), actionUrl(locale, "book")),
     `## ${t("direct.title")}`,
-    list([link(site.email, `mailto:${site.email}`), link(site.phone, `tel:${site.phoneE164}`), t("direct.location")]),
+    list([
+      link(site.email, `mailto:${site.email}`),
+      link(site.phone, `tel:${site.phoneE164}`),
+      t("direct.location"),
+    ]),
     `## ${site.name}`,
     list(socialLinks.map((social) => link(social.name, social.href))),
     `## ${t("form.title")}`,
