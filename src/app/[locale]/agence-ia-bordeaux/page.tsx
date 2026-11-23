@@ -27,7 +27,7 @@ const LOCAL_FACTS = ["city", "zone", "travel"] as const;
 
 const BORDEAUX_COORDS = "44.84° N · 0.58° W";
 const FRAME =
-  "border-line-strong overflow-hidden rounded-xl border bg-[linear-gradient(180deg,#1d1915_0%,#15130f_60%,#100f0d_100%)] shadow-[0_0_0_1px_var(--line),0_40px_160px_-40px_var(--glow)] after:absolute after:inset-0 after:-z-1 after:bg-[url(/textures/grain.png)] after:bg-size-[128px] after:mix-blend-overlay";
+  "tone-dark border-line-strong overflow-hidden rounded-xl border bg-[linear-gradient(180deg,#1d1915_0%,#15130f_60%,#100f0d_100%)] shadow-[0_0_0_1px_var(--line),0_40px_160px_-40px_var(--glow)] after:absolute after:inset-0 after:-z-1 after:bg-[url(/textures/grain.png)] after:bg-size-[128px] after:mix-blend-overlay";
 
 const delay = (seconds: number) => ({ "--d": `${seconds}s` }) as CSSProperties;
 
@@ -98,7 +98,7 @@ export default async function BordeauxPage({ params }: LocaleParams) {
             className={cn(
               "relative isolate lg:flex lg:min-h-[600px] lg:items-center",
               painting
-                ? "lg:border-line-strong lg:overflow-hidden lg:rounded-xl lg:border lg:bg-[linear-gradient(180deg,#1d1915_0%,#15130f_60%,#100f0d_100%)] lg:shadow-[0_0_0_1px_var(--line),0_40px_160px_-40px_var(--glow)] lg:after:absolute lg:after:inset-0 lg:after:-z-1 lg:after:bg-[url(/textures/grain.png)] lg:after:bg-size-[128px] lg:after:mix-blend-overlay"
+                ? "lg:tone-dark lg:border-line-strong lg:overflow-hidden lg:rounded-xl lg:border lg:bg-[linear-gradient(180deg,#1d1915_0%,#15130f_60%,#100f0d_100%)] lg:shadow-[0_0_0_1px_var(--line),0_40px_160px_-40px_var(--glow)] lg:after:absolute lg:after:inset-0 lg:after:-z-1 lg:after:bg-[url(/textures/grain.png)] lg:after:bg-size-[128px] lg:after:mix-blend-overlay"
                 : `${FRAME} p-5 sm:p-8 lg:p-0`,
             )}
           >

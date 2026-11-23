@@ -58,7 +58,7 @@ export async function Cta({
   const other = book === primary ? secondary : primary;
   return (
     <Section>
-      <div className="reveal border-line-strong relative isolate overflow-hidden rounded-xl border bg-[linear-gradient(180deg,#1d1915_0%,#15130f_60%,#100f0d_100%)] shadow-[0_0_0_1px_var(--line),0_40px_160px_-40px_var(--glow)] after:absolute after:inset-0 after:-z-1 after:bg-[url(/textures/grain.png)] after:bg-size-[128px] after:mix-blend-overlay">
+      <div className="reveal tone-dark border-line-strong relative isolate overflow-hidden rounded-xl border bg-[linear-gradient(180deg,#1d1915_0%,#15130f_60%,#100f0d_100%)] shadow-[0_0_0_1px_var(--line),0_40px_160px_-40px_var(--glow)] after:absolute after:inset-0 after:-z-1 after:bg-[url(/textures/grain.png)] after:bg-size-[128px] after:mix-blend-overlay">
         {HERO_BACKDROP === "painting" ? (
           <Painting />
         ) : (

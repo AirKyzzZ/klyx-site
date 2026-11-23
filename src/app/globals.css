@@ -492,7 +492,7 @@
   }
 }
 
-.tone-dark {
+@utility tone-dark {
   --text: #edeae3;
   --text-2: #a8a29a;
   --text-3: #948e85;
