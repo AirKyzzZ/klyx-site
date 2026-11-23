@@ -1,14 +1,25 @@
 import { describe, expect, it } from "vitest";
 
+import fr from "../../messages/fr.json";
+
+import type { CaseStudyMeta } from "./content";
 import {
+  aboutPageJsonLd,
+  blogJsonLd,
   blogPostingJsonLd,
   breadcrumbJsonLd,
+  caseListJsonLd,
+  caseStudyJsonLd,
+  contactPageJsonLd,
   faqJsonLd,
   organizationJsonLd,
   personJsonLd,
+  pricingPageJsonLd,
   serviceJsonLd,
   trailPageJsonLd,
+  websiteJsonLd,
 } from "./json-ld";
+import { PRICE_GROUPS } from "./offers";
 import { site } from "./site";
 
 describe("serviceJsonLd", () => {
@@ -108,20 +119,41 @@ describe("organizationJsonLd", () => {
       "@type": ["Organization", "ProfessionalService"],
       "@id": "https://klyx.fr/#organization",
       name: "Klyx",
+      legalName: site.legalName,
+      description: site.description,
       url: "https://klyx.fr",
-      founder: { "@type": "Person", name: "Maxime Mansiet" },
+      founder: { "@id": "https://klyx.fr/#person", name: "Maxime Mansiet" },
+    });
+    expect(organization).not.toHaveProperty("foundingDate");
+    expect(organization.address).toEqual({
+      "@type": "PostalAddress",
+      addressLocality: "Bordeaux",
+      addressCountry: "FR",
     });
     expect(organization.areaServed).toEqual([
       { "@type": "City", name: "Bordeaux" },
-      { "@type": "AdministrativeArea", name: "Nouvelle-Aquitaine" },
+      { "@type": "AdministrativeArea", name: "Gironde" },
       { "@type": "Country", name: "France" },
     ]);
-    expect(organization.sameAs).toEqual(
-      expect.arrayContaining([
-        site.socials.linkedinCompany,
-        site.socials.instagram,
-      ]),
-    );
+  });
+
+  it("lists company profiles only in sameAs", () => {
+    expect(organizationJsonLd().sameAs).toEqual([
+      site.socials.linkedinCompany,
+      site.socials.instagram,
+    ]);
+  });
+});
+
+describe("websiteJsonLd", () => {
+  it("names the site and points at the organization", () => {
+    expect(websiteJsonLd()).toMatchObject({
+      "@type": "WebSite",
+      "@id": "https://klyx.fr/#website",
+      url: "https://klyx.fr",
+      inLanguage: ["fr", "en"],
+      publisher: { "@id": "https://klyx.fr/#organization" },
+    });
   });
 });
 
@@ -129,9 +161,145 @@ describe("personJsonLd", () => {
   it("links the founder to Klyx and his public profiles", () => {
     expect(personJsonLd()).toMatchObject({
       "@type": "Person",
+      "@id": "https://klyx.fr/#person",
       name: "Maxime Mansiet",
+      jobTitle: "Fondateur et lead engineer",
+      image: "https://klyx.fr/team/maxime-mansiet.jpg",
       worksFor: { "@id": "https://klyx.fr/#organization" },
-      sameAs: [site.socials.linkedinFounder, site.socials.github],
+      knowsAbout: expect.arrayContaining(["Agents IA", "Next.js"]),
+      sameAs: [site.socials.github, site.socials.linkedinFounder],
+    });
+  });
+});
+
+describe("page JSON-LD", () => {
+  it("marks /a-propos as an AboutPage with the founder", () => {
+    const [page, person] = aboutPageJsonLd("en");
+    expect(page).toMatchObject({
+      "@type": "AboutPage",
+      "@id": "https://klyx.fr/en/about#webpage",
+      url: "https://klyx.fr/en/about",
+      inLanguage: "en",
+      isPartOf: { "@id": "https://klyx.fr/#website" },
+      about: { "@id": "https://klyx.fr/#organization" },
+    });
+    expect(person).toMatchObject({ "@type": "Person" });
+  });
+
+  it("marks /contact as a ContactPage", () => {
+    expect(contactPageJsonLd("fr")).toMatchObject({
+      "@type": "ContactPage",
+      url: "https://klyx.fr/contact",
+      name: fr.meta.contact.title,
+      description: fr.meta.contact.description,
+    });
+  });
+
+  it("lists every public price and the visible FAQ on /tarifs", () => {
+    const [catalog, faq] = pricingPageJsonLd("fr");
+    const groups = catalog.itemListElement as {
+      name: string;
+      itemListElement: Record<string, unknown>[];
+    }[];
+    expect(catalog).toMatchObject({
+      "@type": "OfferCatalog",
+      url: "https://klyx.fr/tarifs",
+    });
+    expect(groups.map((group) => group.name)).toEqual(
+      PRICE_GROUPS.map((group) => fr.pricing.table.groups[group.key]),
+    );
+    const offers = groups.flatMap((group) => group.itemListElement);
+    expect(offers).toHaveLength(
+      PRICE_GROUPS.flatMap((group) => group.offers).length,
+    );
+    expect(offers).toContainEqual(
+      expect.objectContaining({
+        price: 4500,
+        priceCurrency: "EUR",
+        offeredBy: { "@id": "https://klyx.fr/#organization" },
+        itemOffered: expect.objectContaining({
+          "@id": "https://klyx.fr/services/agents-ia#sprint-ia",
+          name: "Sprint IA",
+        }),
+      }),
+    );
+    expect(faq).toMatchObject({
+      "@type": "FAQPage",
+      mainEntity: Object.values(fr.pricing.faq.items).map((item) => ({
+        name: item.question,
+        acceptedAnswer: { text: item.answer },
+      })),
+    });
+  });
+
+  const study: CaseStudyMeta = {
+    slug: "citeme",
+    title: "CiteMe, mesurer sa visibilité",
+    client: "CiteMe",
+    url: "https://www.citeme.io",
+    year: 2026,
+    summary: "Un outil GEO.",
+    stack: ["Next.js"],
+    image: "/realisations/citeme.png",
+    order: 1,
+  };
+
+  it("lists the case studies on /realisations", () => {
+    expect(caseListJsonLd("en", [study])).toMatchObject({
+      "@type": "CollectionPage",
+      "@id": "https://klyx.fr/en/work#webpage",
+      mainEntity: {
+        "@type": "ItemList",
+        itemListElement: [
+          {
+            position: 1,
+            name: study.title,
+            url: "https://klyx.fr/en/work/citeme",
+          },
+        ],
+      },
+    });
+  });
+
+  it("describes a case study as a CreativeWork with its breadcrumb", () => {
+    const [work, breadcrumb] = caseStudyJsonLd("fr", study);
+    expect(work).toMatchObject({
+      "@type": "CreativeWork",
+      url: "https://klyx.fr/realisations/citeme",
+      name: study.title,
+      image: "https://klyx.fr/realisations/citeme.png",
+      dateCreated: "2026",
+      creator: { "@id": "https://klyx.fr/#organization" },
+      isPartOf: { "@id": "https://klyx.fr/realisations#webpage" },
+    });
+    expect(breadcrumb).toMatchObject({
+      itemListElement: [
+        { position: 1, item: "https://klyx.fr/" },
+        { position: 2, item: "https://klyx.fr/realisations" },
+        { position: 3, item: "https://klyx.fr/realisations/citeme" },
+      ],
+    });
+  });
+
+  it("describes /blog as a Blog listing its posts", () => {
+    const blog = blogJsonLd("fr", [
+      { slug: "a", title: "A", date: "2026-11-03", summary: "" },
+      {
+        slug: "b",
+        title: "B",
+        date: "2026-11-03",
+        updated: "2026-11-20",
+        summary: "",
+      },
+    ]);
+    expect(blog).toMatchObject({
+      "@type": "Blog",
+      "@id": "https://klyx.fr/blog#blog",
+      publisher: { "@id": "https://klyx.fr/#organization" },
+      blogPost: [
+        { url: "https://klyx.fr/blog/a", dateModified: "2026-11-03" },
+        { url: "https://klyx.fr/blog/b", dateModified: "2026-11-20" },
+      ],
     });
   });
 });
@@ -184,8 +352,9 @@ describe("blogPostingJsonLd", () => {
       "@type": "BlogPosting",
       url: "https://klyx.fr/en/blog/cout-agent-ia-pme",
       inLanguage: "en",
-      image: "https://klyx.fr/en/opengraph-image",
+      image: "https://klyx.fr/en/blog/cout-agent-ia-pme/opengraph-image",
       dateModified: "2026-11-03",
+      isPartOf: { "@id": "https://klyx.fr/en/blog#blog" },
       author: { "@id": `${site.url}/#person`, name: site.founder },
       publisher: { "@id": `${site.url}/#organization` },
     });

@@ -3,11 +3,13 @@ import type { Metadata } from "next";
 import { ArrowRight, Rss } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 
+import { JsonLd } from "@/components/json-ld";
 import { Hero } from "@/components/sections/hero";
 import { SampleWindow } from "@/components/sections/process-timeline";
 import { Link } from "@/i18n/navigation";
 import { type LocaleParams, resolvePageLocale } from "@/i18n/page-locale";
 import { getMdxBody, getPosts, readingMinutes } from "@/lib/content";
+import { blogJsonLd } from "@/lib/json-ld";
 import { buildMetadata } from "@/lib/seo";
 
 export async function generateMetadata({
@@ -39,6 +41,7 @@ export default async function BlogPage({ params }: LocaleParams) {
       subtitle={t("hero.subtitle")}
       className="pb-24 md:pb-32"
     >
+      <JsonLd data={blogJsonLd(locale, posts)} />
       {posts.length === 0 ? (
         <div className="max-w-[640px]">
           <SampleWindow file="~/klyx">

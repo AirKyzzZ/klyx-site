@@ -18,7 +18,7 @@ import { Button } from "@/components/ui/button";
 import { messageKeys, messageList } from "@/i18n/message-list";
 import { Link } from "@/i18n/navigation";
 import { type LocaleParams, resolvePageLocale } from "@/i18n/page-locale";
-import { personJsonLd } from "@/lib/json-ld";
+import { aboutPageJsonLd } from "@/lib/json-ld";
 import { getSiteShot } from "@/lib/proof";
 import { buildMetadata } from "@/lib/seo";
 import { site } from "@/lib/site";
@@ -55,7 +55,7 @@ export default async function AboutPage({ params }: LocaleParams) {
 
   return (
     <>
-      <JsonLd data={personJsonLd()} />
+      <JsonLd data={aboutPageJsonLd(locale)} />
       <Hero
         title={t("hero.title")}
         emphasis={t("hero.titleEmphasis")}

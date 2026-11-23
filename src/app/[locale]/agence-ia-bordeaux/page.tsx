@@ -18,7 +18,7 @@ import { ProcessLine } from "@/components/sections/process-line";
 import { messageList, messageStrings } from "@/i18n/message-list";
 import { type LocaleParams, resolvePageLocale } from "@/i18n/page-locale";
 import { HERO_BACKDROP } from "@/lib/hero-backdrop";
-import { organizationJsonLd, trailPageJsonLd } from "@/lib/json-ld";
+import { trailPageJsonLd } from "@/lib/json-ld";
 import { getPriceValues } from "@/lib/offers";
 import { buildMetadata } from "@/lib/seo";
 import { cn } from "@/lib/utils";
@@ -73,7 +73,6 @@ function Painting() {
 export default async function BordeauxPage({ params }: LocaleParams) {
   const locale = await resolvePageLocale(params);
   const t = await getTranslations({ locale, namespace: "bordeaux" });
-  const meta = await getTranslations({ locale, namespace: "meta.bordeaux" });
   const nav = await getTranslations({ locale, namespace: "nav" });
   const prices = getPriceValues(locale);
   const painting = HERO_BACKDROP === "painting";
@@ -81,13 +80,10 @@ export default async function BordeauxPage({ params }: LocaleParams) {
   return (
     <>
       <JsonLd
-        data={[
-          organizationJsonLd(meta("description")),
-          ...trailPageJsonLd({
-            locale,
-            trail: [{ name: nav("bordeaux"), pathname: "/agence-ia-bordeaux" }],
-          }),
-        ]}
+        data={trailPageJsonLd({
+          locale,
+          trail: [{ name: nav("bordeaux"), pathname: "/agence-ia-bordeaux" }],
+        })}
       />
       <section
         data-shot="hero"

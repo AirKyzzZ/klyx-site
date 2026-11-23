@@ -10,12 +10,14 @@ import {
 import { notFound } from "next/navigation";
 
 import { AnalyticsIsland } from "@/components/analytics/analytics-island";
+import { JsonLd } from "@/components/json-ld";
 import { MachineView } from "@/components/machine-view/machine-view";
 import { Rails } from "@/components/rails";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { ThemeScript } from "@/components/theme/theme-script";
 import { routing } from "@/i18n/routing";
+import { organizationJsonLd, websiteJsonLd } from "@/lib/json-ld";
 import { site } from "@/lib/site";
 import { THEME_COLORS } from "@/lib/theme";
 
@@ -64,6 +66,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
         <ThemeScript />
       </head>
       <body>
+        <JsonLd data={[organizationJsonLd(), websiteJsonLd()]} />
         <NextIntlClientProvider messages={{ machine }}>
           <div className="relative isolate">
             <Rails />

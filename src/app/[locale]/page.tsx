@@ -13,7 +13,6 @@ import { getTranslations } from "next-intl/server";
 import { FaGithub, FaLinkedin } from "react-icons/fa6";
 
 import { ActionButton } from "@/components/action-button";
-import { JsonLd } from "@/components/json-ld";
 import {
   ACCENT_LEVEL_FILLS,
   ContributionGraph,
@@ -68,7 +67,6 @@ import {
   OTHER_TOOL_COUNT,
   selectHomeCases,
 } from "@/lib/home-sections";
-import { organizationJsonLd } from "@/lib/json-ld";
 import { formatPrice, getOfferPrice, getPriceValues } from "@/lib/offers";
 import { getGithubContributions, getSiteShot } from "@/lib/proof";
 import { buildMetadata } from "@/lib/seo";
@@ -110,7 +108,6 @@ export async function generateMetadata({
 export default async function HomePage({ params }: LocaleParams) {
   const locale = await resolvePageLocale(params);
   const t = await getTranslations({ locale, namespace: "home" });
-  const meta = await getTranslations({ locale, namespace: "meta.home" });
   const cases = selectHomeCases(await getCaseStudies(locale));
   const contributions = getGithubContributions();
   const citeme = getSiteShot("citeme");
@@ -150,7 +147,6 @@ export default async function HomePage({ params }: LocaleParams) {
 
   return (
     <>
-      <JsonLd data={organizationJsonLd(meta("description"))} />
 
       <CenteredHero
         data-home-hero

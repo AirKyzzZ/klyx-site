@@ -1,7 +1,8 @@
 import { describe, expect, it } from "vitest";
 
 import { routing } from "@/i18n/routing";
-import { getCaseStudies } from "@/lib/content";
+import { getCaseStudies, getPosts } from "@/lib/content";
+import { site } from "@/lib/site";
 
 import sitemap from "./sitemap";
 
@@ -47,6 +48,25 @@ describe("sitemap", () => {
     for (const study of await getCaseStudies("fr")) {
       expect(urls).toContain(`https://klyx.fr/realisations/${study.slug}`);
       expect(urls).toContain(`https://klyx.fr/en/work/${study.slug}`);
+    }
+  });
+
+  it("gives every entry a real lastModified date", async () => {
+    const entries = await sitemap();
+    const byUrl = new Map(entries.map((entry) => [entry.url, entry]));
+    for (const entry of entries) {
+      expect(entry.lastModified, entry.url).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+    }
+    expect(byUrl.get("https://klyx.fr/tarifs")?.lastModified).toBe(
+      site.pagesUpdatedAt,
+    );
+    expect(byUrl.get("https://klyx.fr/en/legal-notice")?.lastModified).toBe(
+      site.legalUpdatedAt,
+    );
+    for (const post of await getPosts("fr")) {
+      expect(byUrl.get(`https://klyx.fr/blog/${post.slug}`)?.lastModified).toBe(
+        post.updated ?? post.date,
+      );
     }
   });
 });
