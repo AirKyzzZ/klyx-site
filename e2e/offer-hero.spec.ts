@@ -12,9 +12,6 @@ const OFFER_PAGES = [
   "/en/services/ai-audit",
   "/en/services/ai-automation",
   "/en/services/ai-search-visibility",
-  "/cas-usage/immobilier",
-  "/cas-usage/agences",
-  "/cas-usage/cabinets-services",
 ];
 
 const VIEWPORTS = [
