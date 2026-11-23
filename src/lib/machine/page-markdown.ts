@@ -25,7 +25,6 @@ import {
   HOME_TOOLS,
   HOME_TRUST,
   HOME_USE_CASES,
-  OTHER_TOOL_COUNT,
   selectHomeCases,
 } from "@/lib/home-sections";
 import { getOfferCopy } from "@/lib/offer-copy";
@@ -269,10 +268,7 @@ async function home(locale: Locale): Promise<string> {
     labelled(
       locale,
       t("tools.title"),
-      [
-        ...HOME_TOOLS.map((tool) => tool.name),
-        t("tools.more", { count: OTHER_TOOL_COUNT }),
-      ].join(", "),
+      HOME_TOOLS.map((tool) => tool.name).join(", "),
     ),
     `## ${t("offers.title")}`,
     t("offers.intro"),

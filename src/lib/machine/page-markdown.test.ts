@@ -14,7 +14,7 @@ import {
 } from "@/lib/offers";
 import type { AppPathname } from "@/lib/seo";
 import { faqPageItems } from "@/lib/faq-page";
-import { HOME_FAQ, HOME_TOOLS, OTHER_TOOL_COUNT } from "@/lib/home-sections";
+import { HOME_FAQ, HOME_TOOLS } from "@/lib/home-sections";
 import { getGithubContributions } from "@/lib/proof";
 import { DEPLOYED_TECH, type ToolGroup } from "@/lib/tools";
 
@@ -271,7 +271,6 @@ describe.each(routing.locales)("pageMarkdown (%s)", (locale) => {
     const home = await pageMarkdown(locale, { pathname: "/" });
     const homeT = getStaticTranslator(locale, "home");
     expect(home).toContain(homeT("tools.title"));
-    expect(home).toContain(homeT("tools.more", { count: OTHER_TOOL_COUNT }));
     for (const { name } of HOME_TOOLS) expect(home).toContain(name);
 
     const page = getStaticTranslator(locale, "offerPage");

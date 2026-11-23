@@ -1,10 +1,5 @@
 import type { CaseStudyMeta } from "@/lib/content";
-import {
-  CONNECTED_TOOLS,
-  TOOLS,
-  type Tool,
-  type ToolLogoId,
-} from "@/lib/tools";
+import { CONNECTED_TOOLS, type Tool, type ToolLogoId } from "@/lib/tools";
 
 const HOME_CASE_SLUGS = [
   "cronolyss",
@@ -69,19 +64,9 @@ export const HERO_DESTINATIONS: ToolLogoId[] = [
   "pennylane",
 ];
 
-export const HOME_TOOLS: Tool[] = [
-  TOOLS.gmail,
-  TOOLS.googleSheets,
-  TOOLS.hubspot,
-  TOOLS.slack,
-  TOOLS.notion,
-  TOOLS.shopify,
-  { ...TOOLS.whatsapp, name: "WhatsApp" },
-  TOOLS.stripe,
-];
-
-export const OTHER_TOOL_COUNT =
-  CONNECTED_TOOLS.flatMap((group) => group.tools).length - HOME_TOOLS.length;
+export const HOME_TOOLS: Tool[] = CONNECTED_TOOLS.flatMap(
+  (group) => group.tools,
+);
 
 export const HOME_OFFER_CARDS = [
   { key: "sites", href: "/services/creation-site-web", offer: "landing" },

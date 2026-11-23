@@ -51,7 +51,6 @@ import {
   HOME_TOOLS,
   HOME_TRUST,
   HOME_USE_CASES,
-  OTHER_TOOL_COUNT,
   selectHomeCases,
 } from "@/lib/home-sections";
 import { getPriceValues } from "@/lib/offers";
@@ -119,11 +118,7 @@ export default async function HomePage({ params }: LocaleParams) {
       />
 
       <PageSection id="outils" containerClassName="py-11 lg:py-11">
-        <ToolsStrip
-          title={t("tools.title")}
-          tools={HOME_TOOLS}
-          more={t("tools.more", { count: OTHER_TOOL_COUNT })}
-        />
+        <ToolsStrip title={t("tools.title")} tools={HOME_TOOLS} />
       </PageSection>
 
       <PageSection id="offres" containerClassName="lg:pt-30">

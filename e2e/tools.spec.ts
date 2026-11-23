@@ -2,8 +2,12 @@ import { expect, test } from "@playwright/test";
 
 import en from "../messages/en.json";
 import fr from "../messages/fr.json";
-import { HOME_TOOLS, OTHER_TOOL_COUNT } from "../src/lib/home-sections";
-import { DEPLOYED_TECH, type ToolGroup } from "../src/lib/tools";
+import { HOME_TOOLS } from "../src/lib/home-sections";
+import {
+  CONNECTED_TOOLS,
+  DEPLOYED_TECH,
+  type ToolGroup,
+} from "../src/lib/tools";
 
 const VIEWPORTS = [
   { width: 1440, height: 900 },
@@ -35,11 +39,7 @@ for (const viewport of VIEWPORTS) {
       for (const { name } of HOME_TOOLS) {
         await expect(items.filter({ hasText: name })).toBeVisible();
       }
-      await expect(
-        strip.getByText(
-          messages.home.tools.more.replace("{count}", String(OTHER_TOOL_COUNT)),
-        ),
-      ).toBeVisible();
+      await expect(strip.locator("ul[aria-hidden='true']")).toBeHidden();
       const logos = await items
         .locator("[data-logo]")
         .evaluateAll((els) => els.map((el) => el.getAttribute("aria-hidden")));
@@ -84,6 +84,45 @@ for (const viewport of VIEWPORTS) {
     });
   }
 }
+
+test("the home strip shows every connected tool", () => {
+  expect(HOME_TOOLS.map((tool) => tool.name)).toEqual(names(CONNECTED_TOOLS));
+});
+
+test.describe("with motion", () => {
+  test.use({ reducedMotion: "no-preference" });
+
+  for (const viewport of VIEWPORTS) {
+    test(`the home tools marquee loops a hidden copy and pauses on hover at ${viewport.width}`, async ({
+      page,
+    }) => {
+      await page.setViewportSize(viewport);
+      await page.goto("/");
+      const strip = page.locator("[data-tools-strip]");
+      await strip.scrollIntoViewIfNeeded();
+      await expect(strip.getByRole("listitem")).toHaveCount(HOME_TOOLS.length);
+      const copy = strip.locator("ul[aria-hidden='true']");
+      await expect(copy).toHaveCount(1);
+      await expect(copy).toHaveAttribute("inert", "");
+      await expect(copy.locator("li")).toHaveCount(HOME_TOOLS.length);
+      await expect(copy.locator("li[data-tool]")).toHaveCount(0);
+
+      const track = strip.locator(".tools-marquee-track");
+      const playState = () =>
+        track.evaluate((el) => el.getAnimations()[0]?.playState);
+      await expect.poll(playState).toBe("running");
+      const marquee = strip.locator("[data-marquee]");
+      expect((await marquee.boundingBox())?.height).toBe(28);
+      await marquee.hover();
+      await expect.poll(playState).toBe("paused");
+
+      const overflow = await page.evaluate(
+        () => document.documentElement.scrollWidth - window.innerWidth,
+      );
+      expect(overflow).toBeLessThanOrEqual(0);
+    });
+  }
+});
 
 test("offer pages outside agents and automation carry no stack strip", async ({
   page,

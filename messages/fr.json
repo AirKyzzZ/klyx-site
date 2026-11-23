@@ -100,8 +100,7 @@
       "from": "À partir de"
     },
     "tools": {
-      "title": "Fonctionne avec les outils que vous avez déjà",
-      "more": "et {count} autres"
+      "title": "Fonctionne avec les outils que vous avez déjà"
     },
     "faq": {
       "title": "Questions fréquentes.",

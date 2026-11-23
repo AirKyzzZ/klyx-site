@@ -100,8 +100,7 @@
       "from": "From"
     },
     "tools": {
-      "title": "Works with the tools you already use",
-      "more": "and {count} more"
+      "title": "Works with the tools you already use"
     },
     "faq": {
       "title": "Frequently asked questions.",
