@@ -17,7 +17,7 @@ const WEBSITE_ID = `${site.url}/#website`;
 const PERSON_ID = `${site.url}/#person`;
 const UNIT_CODES = { day: "DAY", month: "MON" } as const;
 
-const AREA_SERVED = [
+export const AREA_SERVED = [
   { "@type": "City", name: "Bordeaux" },
   { "@type": "AdministrativeArea", name: "Gironde" },
   { "@type": "Country", name: "France" },

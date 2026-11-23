@@ -1,4 +1,6 @@
 import { getStaticTranslator } from "@/i18n/static-translator";
+import { getPosts } from "@/lib/content";
+import { AREA_SERVED } from "@/lib/json-ld";
 import { getOfferCopy } from "@/lib/offer-copy";
 import { offers } from "@/lib/offers";
 import { pageMarkdownHref } from "@/lib/machine/markdown-href";
@@ -26,19 +28,18 @@ const KEY_PAGES: { pathname: AppPathname; metaKey: string }[] = [
   { pathname: "/contact", metaKey: "contact" },
 ];
 
-function markdownUrl(pathname: AppPathname) {
-  return `${site.url}${pageMarkdownHref("fr", { pathname })}`;
+function markdownUrl(pathname: AppPathname, params?: Record<string, string>) {
+  return `${site.url}${pageMarkdownHref("fr", { pathname, params })}`;
 }
 
-export function GET() {
+export async function GET() {
   const offersT = getStaticTranslator("fr", "offers");
   const meta = getStaticTranslator("fr", "meta");
   const nav = getStaticTranslator("fr", "nav");
 
   const offerLines = offers.map((offer) => {
     const copy = getOfferCopy(offersT, "fr", offer.id);
-    const price = offer.priceFrom === null ? "" : ` ${copy.price}.`;
-    return `- [${copy.name}](${absoluteUrl("fr", offer.page)}):${price} ${copy.summary}`;
+    return `- [${copy.name}](${absoluteUrl("fr", offer.page)}): ${copy.price}. ${copy.summary}`;
   });
 
   const pageLines = KEY_PAGES.map(
@@ -46,10 +47,18 @@ export function GET() {
       `- [${meta(`${metaKey}.title`)}](${absoluteUrl("fr", pathname)}) (English: ${absoluteUrl("en", pathname)}) (Markdown : ${markdownUrl(pathname)})`,
   );
 
+  const guideLines = (await getPosts("fr")).map(
+    ({ slug, title }) =>
+      `- [${title}](${absoluteUrl("fr", "/blog/[slug]", { slug })}) (Markdown : ${markdownUrl("/blog/[slug]", { slug })})`,
+  );
+
+  const { street, postalCode, locality } = site.address;
   const lines = [
     `# ${site.name}`,
     "",
     `> ${meta("home.description")}`,
+    "",
+    `${site.description} Fondateur : ${site.founder}. Adresse légale : ${street}, ${postalCode} ${locality} (${site.legalName}, SIRET ${site.siret}). Zone servie : ${AREA_SERVED.map((area) => area.name).join(", ")}.`,
     "",
     `Markdown : ${markdownUrl("/")}`,
     "",
@@ -62,6 +71,10 @@ export function GET() {
     "## Pages clés",
     "",
     ...pageLines,
+    "",
+    "## Guides",
+    "",
+    ...guideLines,
     "",
     "## Contact",
     "",
