@@ -5,6 +5,7 @@ import { LegalArticle, LegalSection } from "@/components/legal-section";
 import { Link } from "@/i18n/navigation";
 import { type LocaleParams, resolvePageLocale } from "@/i18n/page-locale";
 import { CREDITS } from "@/lib/credits";
+import { PROSE_LINK } from "@/lib/prose";
 import { buildMetadata } from "@/lib/seo";
 import { site } from "@/lib/site";
 
@@ -46,13 +47,13 @@ export default async function LegalPage({ params }: LocaleParams) {
       </LegalSection>
       <LegalSection id="credits" title={t("credits.title")}>
         <p>{t("credits.trademarks")}</p>
-        <ul className="list-disc space-y-2 pl-5">
+        <ul className="marker:text-text-3 list-disc space-y-2 pl-5">
           {CREDITS.map((credit) => (
             <li key={credit.key}>
               {t(`credits.items.${credit.key}`)}{" "}
               <a
                 href={credit.source}
-                className="text-text underline underline-offset-4"
+                className={PROSE_LINK}
               >
                 {t("credits.source")}
               </a>
@@ -61,7 +62,7 @@ export default async function LegalPage({ params }: LocaleParams) {
                   {", "}
                   <a
                     href={credit.license}
-                    className="text-text underline underline-offset-4"
+                    className={PROSE_LINK}
                   >
                     {t("credits.license")}
                   </a>
@@ -76,7 +77,7 @@ export default async function LegalPage({ params }: LocaleParams) {
         <p>
           <Link
             href="/confidentialite"
-            className="text-text underline underline-offset-4"
+            className={PROSE_LINK}
           >
             {t("data.link")}
           </Link>
