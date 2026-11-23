@@ -1844,19 +1844,47 @@
   "blog": {
     "hero": {
       "title": "Blog",
-      "subtitle": "Des notes sur les agents IA, le GEO et la construction de sites rapides."
+      "intro": "Des articles pour préparer un projet IA ou un site : ce que ça coûte, comment s'y prendre, ce qui marche vraiment. Chaque chiffre a sa source et sa date."
     },
-    "empty": "Les premiers articles arrivent.",
-    "readMore": "Lire l'article",
+    "og": {
+      "title": "Blog :",
+      "emphasis": "agents IA, référencement dans ChatGPT et sites web, chiffres sourcés."
+    },
+    "empty": "Les premiers articles arrivent bientôt.",
+    "rss": "S'abonner au flux RSS",
+    "readingTime": "{minutes} min de lecture",
+    "back": "Tous les articles",
     "byline": "Par {author}",
     "published": "Publié le {date}",
     "updated": "Mis à jour le {date}",
-    "back": "Tous les articles",
-    "rss": "Flux RSS",
-    "readingTime": "{minutes} min",
-    "emptyCount": "0 article publié",
-    "sources": "Sources",
-    "related": "À lire aussi"
+    "toc": "Dans cet article",
+    "sources": {
+      "title": "Sources",
+      "intro": "Les sources citées dans l'article, avec leur date."
+    },
+    "author": {
+      "label": "Écrit par",
+      "role": "Fondateur de Klyx, à Bordeaux",
+      "bio": "Maxime cadre les projets, écrit le code et les suit jusqu'à la mise en ligne. Il a aussi cofondé CiteMe, un outil qui mesure la visibilité des marques dans ChatGPT.",
+      "photoAlt": "Portrait de Maxime Mansiet",
+      "about": "En savoir plus sur Maxime"
+    },
+    "services": {
+      "title": "Nos offres sur ce sujet",
+      "price": "À partir de {price}{unit, select, day { / jour} other {}}",
+      "names": {
+        "sites": "Site web",
+        "agents": "Agent IA",
+        "fde": "Développeur dédié",
+        "audit": "Audit IA",
+        "automation": "Automatisation IA",
+        "geo": "Référencement sur ChatGPT"
+      }
+    },
+    "related": {
+      "title": "À lire aussi",
+      "intro": "D'autres articles pour avancer sur votre projet, avec la même règle : chaque chiffre a sa source."
+    }
   },
   "legal": {
     "title": "Mentions légales",
@@ -2565,7 +2593,7 @@
     },
     "blog": {
       "title": "Blog : agents IA, GEO et sites rapides | Klyx",
-      "description": "Des notes de Maxime Mansiet sur les agents IA en production, le référencement dans les moteurs IA et la construction de sites rapides."
+      "description": "Articles de Maxime Mansiet pour préparer un projet IA ou un site : prix d'un agent IA, intégrer l'IA en PME, être cité par ChatGPT. Sources datées."
     },
     "legal": {
       "title": "Mentions légales | Klyx",

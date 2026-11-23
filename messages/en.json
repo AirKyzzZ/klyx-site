@@ -1844,19 +1844,47 @@
   "blog": {
     "hero": {
       "title": "Blog",
-      "subtitle": "Notes on AI agents, GEO and building fast websites."
+      "intro": "Articles to help you prepare an AI or website project: what it costs, how to go about it, what actually works. Every figure comes with a dated source."
+    },
+    "og": {
+      "title": "Blog:",
+      "emphasis": "AI agents, getting cited by ChatGPT and websites, with sourced figures."
     },
     "empty": "The first posts are on their way.",
-    "readMore": "Read the post",
+    "rss": "Subscribe to the RSS feed",
+    "readingTime": "{minutes} min read",
+    "back": "All posts",
     "byline": "By {author}",
     "published": "Published {date}",
     "updated": "Updated {date}",
-    "back": "All posts",
-    "rss": "RSS feed",
-    "readingTime": "{minutes} min",
-    "emptyCount": "0 posts published",
-    "sources": "Sources",
-    "related": "Read next"
+    "toc": "In this article",
+    "sources": {
+      "title": "Sources",
+      "intro": "The sources cited in the article, with their dates."
+    },
+    "author": {
+      "label": "Written by",
+      "role": "Founder of Klyx, in Bordeaux",
+      "bio": "Maxime scopes each project, writes the code and sees it through to launch. He also co-founded CiteMe, a tool that measures how visible brands are in ChatGPT.",
+      "photoAlt": "Portrait of Maxime Mansiet",
+      "about": "More about Maxime"
+    },
+    "services": {
+      "title": "Our services on this topic",
+      "price": "From {price}{unit, select, day { per day} other {}}",
+      "names": {
+        "sites": "Website",
+        "agents": "AI agent",
+        "fde": "Dedicated developer",
+        "audit": "AI audit",
+        "automation": "AI automation",
+        "geo": "Getting cited by ChatGPT"
+      }
+    },
+    "related": {
+      "title": "Read next",
+      "intro": "More articles to move your project forward, with the same rule: every figure has a source."
+    }
   },
   "legal": {
     "title": "Legal notice",
@@ -2565,7 +2593,7 @@
     },
     "blog": {
       "title": "Blog: AI agents, GEO and fast websites | Klyx",
-      "description": "Notes from Maxime Mansiet on AI agents in production, getting cited by AI engines and building fast websites."
+      "description": "Articles by Maxime Mansiet to prepare an AI or website project: AI agent costs, bringing AI into an SME, getting cited by ChatGPT. Dated sources."
     },
     "legal": {
       "title": "Legal notice | Klyx",

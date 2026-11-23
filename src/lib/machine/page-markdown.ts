@@ -6,7 +6,14 @@ import {
 } from "@/i18n/message-list";
 import { type Locale, routing } from "@/i18n/routing";
 import { getStaticTranslator } from "@/i18n/static-translator";
-import { caseYears, getCaseStudies, getMdxBody, getPosts } from "@/lib/content";
+import { getPostSummaries, postServices } from "@/lib/blog";
+import {
+  caseYears,
+  getCaseStudies,
+  getMdxBody,
+  getPosts,
+  readingMinutes,
+} from "@/lib/content";
 import type { CaseStudyMeta } from "@/lib/content";
 import {
   ALSO_OFFERS,
@@ -875,21 +882,22 @@ async function contact(locale: Locale): Promise<string> {
 
 async function blog(locale: Locale): Promise<string> {
   const t = getStaticTranslator(locale, "blog");
-  const posts = await getPosts(locale);
+  const posts = await getPostSummaries(locale);
   return doc([
     ...intro(locale, "/blog", t("hero.title")),
-    t("hero.subtitle"),
+    t("hero.intro"),
     posts.length === 0
-      ? `${t("emptyCount")}. ${t("empty")}`
+      ? t("empty")
       : list(
           posts.map((post) =>
             labelled(
               locale,
-              `${link(post.title, absoluteUrl(locale, "/blog/[slug]", { slug: post.slug }))} (${formatDate(locale, post.date)})`,
+              `${link(post.title, absoluteUrl(locale, "/blog/[slug]", { slug: post.slug }))} (${formatDate(locale, post.date)}, ${t("readingTime", { minutes: post.minutes })})`,
               post.summary,
             ),
           ),
         ),
+    link(t("rss"), `${site.url}/blog/rss.xml`),
   ]);
 }
 
@@ -900,10 +908,40 @@ async function blogPost(
   const meta = (await getPosts(locale)).find((p) => p.slug === params.slug);
   if (!meta) return null;
   const t = getStaticTranslator(locale, "blog");
+  const body = await getMdxBody("blog", meta.slug, locale);
+  const sources = meta.sources ?? [];
+  const services = postServices(meta.slug);
   return doc([
     ...intro(locale, "/blog/[slug]", meta.title, params),
-    `${t("byline", { author: site.founder })} · ${t("published", { date: formatDate(locale, meta.date) })}`,
-    await getMdxBody("blog", meta.slug, locale),
+    meta.summary,
+    [
+      t("byline", { author: site.founder }),
+      t("published", { date: formatDate(locale, meta.date) }),
+      meta.updated && t("updated", { date: formatDate(locale, meta.updated) }),
+      t("readingTime", { minutes: readingMinutes(body) }),
+    ]
+      .filter(Boolean)
+      .join(" · "),
+    body,
+    sources.length > 0 && `## ${t("sources.title")}`,
+    sources.length > 0 &&
+      sources
+        .map((source, i) => `${i + 1}. ${link(source.title, source.url)}`)
+        .join("\n"),
+    services.length > 0 && `## ${t("services.title")}`,
+    services.length > 0 &&
+      list(
+        services.map(({ key, offer }) =>
+          labelled(
+            locale,
+            link(t(`services.names.${key}`), absoluteUrl(locale, offer.page)),
+            t("services.price", {
+              price: formatPrice(getOfferPrice(offer.id), locale),
+              unit: offer.unit,
+            }),
+          ),
+        ),
+      ),
   ]);
 }
 

@@ -1,22 +1,17 @@
+import Image from "next/image";
 import type { ComponentProps, ReactNode } from "react";
 
 import type { MDXComponents } from "mdx/types";
 
-const TODO_PREFIX = "TODO(maxime)";
+import { bindPunctuation, headingId } from "@/lib/headings";
+import { PROSE_LINK } from "@/lib/prose";
 
-function slugify(text: string): string {
-  return text
-    .toLowerCase()
-    .normalize("NFD")
-    .replace(/\p{M}/gu, "")
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-|-$/g, "");
-}
+const TODO_PREFIX = "TODO(maxime)";
 
 function TodoNote({ text }: { text: string }) {
   return (
-    <p className="border-accent type-data text-text rounded-sm border px-4 py-3 text-[0.8125rem]">
-      <span className="text-accent">{TODO_PREFIX}</span>
+    <p className="border-accent bg-accent-tint text-text rounded-[10px] border px-4 py-3 text-[0.875rem]">
+      <span className="text-accent font-medium">{TODO_PREFIX}</span>
       {text.slice(TODO_PREFIX.length)}
     </p>
   );
@@ -33,21 +28,21 @@ function Paragraph({ children, ...props }: ComponentProps<"p">) {
   );
 }
 
+const H2_CLASS =
+  "text-text scroll-mt-28 pt-8 text-[1.5rem] leading-[1.15] font-semibold tracking-[-0.6px] sm:text-[1.625rem] sm:tracking-[-0.7px]";
+
 function AnchoredHeading({ children }: { children?: ReactNode }) {
   if (typeof children !== "string") {
-    return <h2 className="type-h3 text-text pt-8">{children}</h2>;
+    return <h2 className={H2_CLASS}>{children}</h2>;
   }
-  const id = slugify(children);
+  const id = headingId(children);
   return (
-    <h2 id={id} className="type-h3 text-text scroll-mt-28 pt-8">
-      <a
-        href={`#${id}`}
-        className="group/anchor inline-flex items-baseline gap-2"
-      >
-        {children}
+    <h2 id={id} className={H2_CLASS}>
+      <a href={`#${id}`} className="group/anchor">
+        {bindPunctuation(children)}
         <span
           aria-hidden="true"
-          className="text-text-3 font-mono text-sm opacity-0 transition-opacity duration-(--d-fast) group-hover/anchor:opacity-100 group-focus-visible/anchor:opacity-100"
+          className="text-text-3 ml-2 opacity-0 transition-opacity duration-(--d-fast) group-hover/anchor:opacity-100 group-focus-visible/anchor:opacity-100"
         >
           #
         </span>
@@ -59,41 +54,76 @@ function AnchoredHeading({ children }: { children?: ReactNode }) {
 const proseComponents: MDXComponents = {
   h2: AnchoredHeading,
   h3: ({ children }) => (
-    <h3 className="text-text pt-4 text-[1.0625rem] font-medium">{children}</h3>
+    <h3 className="text-text pt-3 text-[1.1875rem] leading-snug font-semibold tracking-[-0.3px]">
+      {children}
+    </h3>
+  ),
+  h4: ({ children }) => (
+    <h4 className="text-text pt-2 font-semibold">{children}</h4>
   ),
   p: Paragraph,
-  ul: ({ children }) => <ul className="space-y-2">{children}</ul>,
+  ul: ({ children }) => (
+    <ul className="marker:text-text-3 list-disc space-y-2 pl-5">{children}</ul>
+  ),
   ol: ({ children }) => (
-    <ol className="marker:text-text-3 list-decimal space-y-2 pl-6 marker:font-mono">
+    <ol className="marker:text-text-3 list-decimal space-y-2 pl-6 marker:font-medium marker:tabular-nums">
       {children}
     </ol>
   ),
-  li: ({ children }) => (
-    <li className="text-text-2 [ul>&]:before:text-text-3 relative pl-6 [ol>&]:pl-1 [ul>&]:before:absolute [ul>&]:before:left-0 [ul>&]:before:font-mono [ul>&]:before:content-['-']">
-      {children}
-    </li>
-  ),
+  li: ({ children }) => <li className="text-text-2 pl-1.5">{children}</li>,
   a: ({ href, children }) => (
-    <a
-      href={href}
-      className="text-text decoration-text-3 hover:decoration-text underline underline-offset-4 transition-colors"
-    >
+    <a href={href} className={PROSE_LINK}>
       {children}
     </a>
   ),
   strong: ({ children }) => (
-    <strong className="text-text font-medium">{children}</strong>
+    <strong className="text-text font-semibold">{children}</strong>
   ),
+  em: ({ children }) => <em className="italic">{children}</em>,
   code: ({ children }) => (
-    <code className="bg-surface-2 rounded-xs px-1.5 py-0.5 font-mono text-[0.875em]">
+    <code className="border-line bg-surface-2 text-text rounded-[6px] border px-1.5 py-0.5 font-mono text-[0.875em] [pre_&]:border-0 [pre_&]:bg-transparent [pre_&]:p-0 [pre_&]:text-[0.875rem]">
       {children}
     </code>
   ),
+  pre: ({ children }) => (
+    <pre className="border-line bg-surface-2 overflow-x-auto rounded-[12px] border p-4 leading-relaxed">
+      {children}
+    </pre>
+  ),
   blockquote: ({ children }) => (
-    <blockquote className="border-line-strong border-l pl-5">
+    <blockquote className="border-accent bg-surface-2 [&>p]:text-text space-y-3 rounded-r-[12px] border-l-2 px-5 py-4">
       {children}
     </blockquote>
   ),
+  hr: () => <hr className="border-line" />,
+  table: ({ children }) => (
+    <div className="border-line bg-surface-1 overflow-x-auto rounded-[12px] border">
+      <table className="w-full border-collapse text-left text-[0.9375rem] leading-normal">
+        {children}
+      </table>
+    </div>
+  ),
+  th: ({ children }) => (
+    <th className="bg-surface-2 text-text px-4 py-3 text-[0.8125rem] font-medium">
+      {children}
+    </th>
+  ),
+  td: ({ children }) => (
+    <td className="border-line text-text-2 border-t px-4 py-3 align-top">
+      {children}
+    </td>
+  ),
+  img: ({ src, alt }) =>
+    typeof src === "string" ? (
+      <Image
+        src={src}
+        alt={alt ?? ""}
+        width={0}
+        height={0}
+        sizes="(min-width: 1024px) 720px, 100vw"
+        className="border-line bg-surface-2 h-auto w-full rounded-[12px] border"
+      />
+    ) : null,
 };
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
