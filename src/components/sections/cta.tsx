@@ -1,13 +1,13 @@
 import { SiteCta } from "@/components/ui-kit/site-cta";
 
-import type { HeroAction } from "./hero";
+type CtaAction = { action: "book" | "quote"; label: string };
 
 type CtaProps = {
   title: string;
   emphasis?: string;
   body: string;
-  primary: HeroAction;
-  secondary: HeroAction;
+  primary: CtaAction;
+  secondary: CtaAction;
 };
 
 export async function Cta({

@@ -99,13 +99,6 @@ export async function getPosts(locale: Locale): Promise<PostMeta[]> {
   return posts.map((p) => p.meta).sort((a, b) => b.date.localeCompare(a.date));
 }
 
-export function caseYears(cases: CaseStudyMeta[]): string {
-  const years = cases.map((c) => c.year);
-  const first = Math.min(...years);
-  const last = Math.max(...years);
-  return first === last ? String(first) : `${first}-${last}`;
-}
-
 const WORDS_PER_MINUTE = 200;
 
 export function readingMinutes(body: string): number {

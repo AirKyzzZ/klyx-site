@@ -68,8 +68,6 @@ export const TOOLS = {
   mcp: { name: "MCP", logo: "mcp" },
 } as const satisfies Record<string, Tool>;
 
-export const WORKFLOW_TOOL_LOGOS: Partial<Record<string, ToolLogoId[]>> = {};
-
 export const CONNECTED_TOOLS: ToolGroup[] = [
   { key: "email", tools: [TOOLS.gmail, TOOLS.outlook] },
   {
@@ -96,5 +94,3 @@ export const DEPLOYED_TECH: ToolGroup[] = [
   { key: "models", tools: [TOOLS.claude, TOOLS.openai, TOOLS.mistral] },
   { key: "plumbing", tools: [TOOLS.n8n, TOOLS.mcp] },
 ];
-
-export const AI_MODELS: Tool[] = [TOOLS.openai, TOOLS.claude, TOOLS.mistral];
