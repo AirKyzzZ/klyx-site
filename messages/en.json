@@ -335,8 +335,7 @@
       "graph": "Maxime's GitHub contributions, from {from} to {to}",
       "links": {
         "github": "GitHub",
-        "linkedin": "LinkedIn",
-        "citeme": "CiteMe"
+        "linkedin": "LinkedIn"
       }
     },
     "cta": {
