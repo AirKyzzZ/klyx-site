@@ -1,14 +1,13 @@
-import Image from "next/image";
-
 import { ArrowUpRight } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 
+import { KlyxMark } from "@/components/brand/klyx-mark";
 import { PageViewToggle } from "@/components/machine-view/view-toggle";
 import { Hr } from "@/components/section";
 import { Link } from "@/i18n/navigation";
 import { site, socialLinks } from "@/lib/site";
 
-const columnTitle = "type-label text-text-3";
+const columnTitle = "text-text-3 text-[0.8125rem] font-medium";
 const footerLink =
   "text-sm leading-snug text-text-2 transition-colors duration-(--d-fast) hover:text-text";
 
@@ -48,13 +47,7 @@ export async function SiteFooter() {
       <div className="container grid grid-cols-2 gap-x-8 gap-y-12 pt-16 pb-12 md:grid-cols-12 lg:pt-20">
         <div className="col-span-2 flex flex-col gap-6 md:col-span-12 lg:col-span-4">
           <Link href="/" className="flex w-fit items-center gap-2 rounded-sm">
-            <Image
-              src="/brand/klyx-white.png"
-              alt=""
-              width={801}
-              height={759}
-              className="h-5 w-auto"
-            />
+            <KlyxMark className="size-5" />
             <span className="text-[1.0625rem] leading-none font-semibold tracking-[-0.03em]">
               Klyx
             </span>
@@ -69,7 +62,7 @@ export async function SiteFooter() {
                   href={item.href}
                   target="_blank"
                   rel="noopener"
-                  className="text-text-2 hover:text-text inline-flex items-center gap-0.5 font-mono text-xs tracking-[0.06em] uppercase transition-colors duration-(--d-fast)"
+                  className="text-text-2 hover:text-text inline-flex items-center gap-0.5 text-sm transition-colors duration-(--d-fast)"
                 >
                   {item.name}
                   <ArrowUpRight className="size-3.5" />
@@ -140,7 +133,7 @@ export async function SiteFooter() {
       </div>
 
       <div className="container">
-        <div className="border-line text-text-3 flex flex-col gap-3 border-t py-5 font-mono text-xs md:flex-row md:items-center md:justify-between">
+        <div className="border-line text-text-3 flex flex-col gap-3 border-t py-5 text-[0.8125rem] md:flex-row md:items-center md:justify-between">
           <p>{t("copyright", { year: new Date().getFullYear() })}</p>
           <ul className="flex flex-wrap items-center gap-x-5 gap-y-2">
             <li className="tabular-nums">

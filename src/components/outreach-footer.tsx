@@ -17,7 +17,7 @@ export async function OutreachFooter() {
     <footer className="bg-bg-sunken relative z-1">
       <Hr />
       <div className="container">
-        <div className="text-text-3 flex flex-col gap-3 py-6 font-mono text-xs md:flex-row md:items-center md:justify-between">
+        <div className="text-text-3 flex flex-col gap-3 py-6 text-[0.8125rem] md:flex-row md:items-center md:justify-between">
           <p className="tabular-nums">{OUTREACH_PROOF_LINE}</p>
           <ul className="flex flex-wrap items-center gap-x-5 gap-y-2">
             <li>

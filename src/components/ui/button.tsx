@@ -11,14 +11,18 @@ const buttonVariants = cva(
     variants: {
       variant: {
         primary:
-          "bg-accent text-accent-ink shadow-[inset_0_1px_0_rgb(255_255_255/0.22)] hover:bg-accent-hover",
+          "bg-accent text-accent-ink shadow-accent hover:bg-accent-hover",
         secondary:
           "border border-line-strong bg-transparent text-text hover:border-text-3 hover:bg-surface-1",
+        outline:
+          "border border-line-strong bg-surface-1 text-text hover:border-text-3",
+        inverse: "bg-inverse text-inverse-ink hover:bg-inverse/85",
         ghost: "text-text-2 hover:text-text",
       },
       size: {
         md: "h-9 px-3.5 text-sm",
         lg: "h-11 px-4.5 text-[0.9375rem]",
+        xl: "h-[52px] rounded-[12px] px-6 text-[0.9375rem]",
       },
     },
     defaultVariants: {

@@ -14,8 +14,9 @@ import {
 } from "@/lib/offers";
 import type { AppPathname } from "@/lib/seo";
 import { faqPageItems } from "@/lib/faq-page";
-import { teamRoster } from "@/lib/team-roster";
-import { CONNECTED_TOOLS, DEPLOYED_TECH, type ToolGroup } from "@/lib/tools";
+import { HOME_FAQ, HOME_TOOLS, OTHER_TOOL_COUNT } from "@/lib/home-sections";
+import { getGithubContributions } from "@/lib/proof";
+import { DEPLOYED_TECH, type ToolGroup } from "@/lib/tools";
 
 import {
   internalPathname,
@@ -34,11 +35,7 @@ type Expectation = {
   prices?: OfferId[];
   fdeMinimum?: boolean;
   faqNamespace?: string;
-};
-
-const heroTitle = (namespace: string) => (locale: Locale) => {
-  const t = getStaticTranslator(locale, namespace);
-  return `${t("hero.title")} ${t("hero.titleEmphasis")}`;
+  faqKeys?: readonly string[];
 };
 
 const plainTitle = (namespace: string, key: string) => (locale: Locale) =>
@@ -46,43 +43,44 @@ const plainTitle = (namespace: string, key: string) => (locale: Locale) =>
 
 const EXPECTATIONS: Record<AppPathname, Expectation> = {
   "/": {
-    h1: heroTitle("home"),
-    prices: ["landing", "site-ia", "audit-ia", "sprint-ia", "fde"],
+    h1: plainTitle("home", "hero.title"),
+    prices: ["landing", "audit-ia", "sprint-ia", "fde"],
     faqNamespace: "home",
+    faqKeys: HOME_FAQ,
   },
   "/services/creation-site-web": {
-    h1: heroTitle("sites"),
+    h1: plainTitle("sites", "hero.title"),
     prices: ["landing", "site-ia", "site-custom"],
     faqNamespace: "sites",
   },
   "/services/agents-ia": {
-    h1: heroTitle("agents"),
+    h1: plainTitle("agents", "hero.title"),
     prices: ["audit-ia", "sprint-ia"],
     faqNamespace: "agents",
   },
   "/services/audit-ia": {
-    h1: heroTitle("audit"),
+    h1: plainTitle("audit", "hero.title"),
     prices: ["audit-ia", "automation", "sprint-ia"],
     faqNamespace: "audit",
   },
   "/services/automatisation-ia": {
-    h1: heroTitle("automation"),
+    h1: plainTitle("automation", "hero.title"),
     prices: ["automation", "automation-care", "sprint-ia"],
     faqNamespace: "automation",
   },
   "/services/geo-referencement-ia": {
-    h1: heroTitle("geo"),
+    h1: plainTitle("geo", "hero.title"),
     prices: ["geo", "geo-care", "site-ia"],
     faqNamespace: "geo",
   },
   "/forward-deployed-engineer": {
-    h1: heroTitle("fde"),
+    h1: plainTitle("fde", "hero.title"),
     prices: ["fde"],
     fdeMinimum: true,
     faqNamespace: "fde",
   },
   "/tarifs": {
-    h1: heroTitle("pricing"),
+    h1: plainTitle("pricing", "hero.title"),
     prices: [
       "landing",
       "site-ia",
@@ -97,7 +95,7 @@ const EXPECTATIONS: Record<AppPathname, Expectation> = {
     ],
     faqNamespace: "pricing",
   },
-  "/realisations": { h1: heroTitle("cases") },
+  "/realisations": { h1: plainTitle("cases", "hero.title") },
   "/realisations/[slug]": {
     h1: async (locale, page) => {
       const cases = await getCaseStudies(locale);
@@ -106,36 +104,39 @@ const EXPECTATIONS: Record<AppPathname, Expectation> = {
       return study.title;
     },
   },
-  "/a-propos": { h1: heroTitle("about") },
+  "/a-propos": {
+    h1: plainTitle("about", "hero.title"),
+    prices: ["landing", "audit-ia", "sprint-ia"],
+  },
   "/agence-ia-bordeaux": {
-    h1: heroTitle("bordeaux"),
-    prices: ["audit-ia", "automation"],
+    h1: plainTitle("bordeaux", "hero.title"),
+    prices: ["audit-ia", "automation", "sprint-ia"],
     faqNamespace: "bordeaux",
   },
   "/cas-usage": {
-    h1: heroTitle("useCases"),
+    h1: plainTitle("useCases", "hero.title"),
     prices: ["audit-ia", "sprint-ia", "landing"],
   },
   "/cas-usage/immobilier": {
-    h1: heroTitle("useCases.realEstate"),
-    prices: ["audit-ia", "automation", "sprint-ia"],
+    h1: plainTitle("useCases.realEstate", "hero.title"),
+    prices: ["audit-ia", "automation", "automation-care", "sprint-ia"],
     faqNamespace: "useCases.realEstate",
   },
   "/cas-usage/agences": {
-    h1: heroTitle("useCases.agencies"),
+    h1: plainTitle("useCases.agencies", "hero.title"),
     prices: ["landing", "site-ia", "sprint-ia", "fde"],
     faqNamespace: "useCases.agencies",
   },
   "/cas-usage/cabinets-services": {
-    h1: heroTitle("useCases.services"),
+    h1: plainTitle("useCases.services", "hero.title"),
     prices: ["audit-ia", "automation", "automation-care", "sprint-ia"],
     faqNamespace: "useCases.services",
   },
   "/faq": {
-    h1: heroTitle("faqPage"),
-    prices: ["landing", "site-ia", "audit-ia", "sprint-ia"],
+    h1: plainTitle("faqPage", "hero.title"),
+    prices: ["landing", "audit-ia", "sprint-ia"],
   },
-  "/contact": { h1: heroTitle("contact") },
+  "/contact": { h1: plainTitle("contact", "hero.title") },
   "/blog": { h1: plainTitle("blog", "hero.title") },
   "/blog/[slug]": {
     h1: async (locale, page) => {
@@ -193,6 +194,12 @@ describe.each(routing.locales)("pageMarkdown (%s)", (locale) => {
           "faq.items",
           ["question", "answer"],
           getPriceValues(locale),
+        ).filter(
+          (_, i) =>
+            !expectation.faqKeys ||
+            expectation.faqKeys.includes(
+              Object.keys(t.raw("faq.items") as object)[i],
+            ),
         );
         for (const item of faq) {
           expect(markdown, label).toContain(item.question);
@@ -224,17 +231,37 @@ describe.each(routing.locales)("pageMarkdown (%s)", (locale) => {
     expect(resolveMachinePage(locale, ["nope"])).toBeNull();
   });
 
-  it("lists the team roster on home and about", async () => {
-    const roster = teamRoster(
-      getStaticTranslator(locale, "home.founder"),
-      "roster",
-    );
-    for (const pathname of ["/", "/a-propos"] as const) {
-      const markdown = await pageMarkdown(locale, { pathname });
-      for (const item of roster.items) {
-        expect(markdown, pathname).toContain(item.who);
-        expect(markdown, pathname).toContain(item.scope);
-      }
+  it("names who works on a project on about", async () => {
+    const t = getStaticTranslator(locale, "about");
+    const team = getStaticTranslator(locale, "home.team");
+    const markdown = await pageMarkdown(locale, { pathname: "/a-propos" });
+    expect(markdown).toContain(team("name"));
+    expect(markdown).toContain(team("bio"));
+    for (const key of ["lead", "agents", "specialists"]) {
+      expect(markdown).toContain(t(`team.items.${key}.title`));
+      expect(markdown).toContain(t(`team.items.${key}.body`));
+    }
+  });
+
+  it("links the next case studies from each case study", async () => {
+    const cases = await getCaseStudies(locale);
+    const markdown = await pageMarkdown(locale, {
+      pathname: "/realisations/[slug]",
+      params: { slug: cases[0].slug },
+    });
+    expect(markdown).toContain(cases[1].title);
+  });
+
+  it("introduces the founder on home with the measured GitHub total", async () => {
+    const home = await pageMarkdown(locale, { pathname: "/" });
+    const t = getStaticTranslator(locale, "home");
+    const contributions = getGithubContributions();
+    expect(home).toContain(t("team.name"));
+    expect(home).toContain(t("team.bio"));
+    if (contributions) {
+      expect(home).toContain(
+        new Intl.NumberFormat(locale).format(contributions.total),
+      );
     }
   });
 
@@ -243,9 +270,9 @@ describe.each(routing.locales)("pageMarkdown (%s)", (locale) => {
       groups.flatMap((group) => group.tools.map((tool) => tool.name));
     const home = await pageMarkdown(locale, { pathname: "/" });
     const homeT = getStaticTranslator(locale, "home");
-    expect(home).toContain(homeT("tools.label"));
-    expect(home).toContain(homeT("tools.note"));
-    for (const name of names(CONNECTED_TOOLS)) expect(home).toContain(name);
+    expect(home).toContain(homeT("tools.title"));
+    expect(home).toContain(homeT("tools.more", { count: OTHER_TOOL_COUNT }));
+    for (const { name } of HOME_TOOLS) expect(home).toContain(name);
 
     const page = getStaticTranslator(locale, "offerPage");
     for (const pathname of [

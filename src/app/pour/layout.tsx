@@ -6,14 +6,16 @@ import { Suspense } from "react";
 import { AnalyticsIsland } from "@/components/analytics/analytics-island";
 import { OutreachFooter } from "@/components/outreach-footer";
 import { OutreachHeader } from "@/components/outreach-header";
+import { Rails } from "@/components/rails";
+import { ThemeScript } from "@/components/theme/theme-script";
 import { site } from "@/lib/site";
+import { THEME_COLORS } from "@/lib/theme";
 
-import { mono, sans, serif } from "../fonts";
+import { mono, sans } from "../fonts";
 import "../globals.css";
 
 export const viewport: Viewport = {
-  colorScheme: "dark",
-  themeColor: "#141414",
+  themeColor: THEME_COLORS.light,
 };
 
 export const metadata: Metadata = { metadataBase: new URL(site.url) };
@@ -27,14 +29,17 @@ export default function OutreachLayout({
   return (
     <html
       lang="fr"
-      className={`${sans.variable} ${mono.variable} ${serif.variable}`}
+      data-theme="light"
+      suppressHydrationWarning
+      className={`${sans.variable} ${mono.variable}`}
     >
+      <head>
+        <ThemeScript />
+      </head>
       <body>
         <NextIntlClientProvider locale="fr" messages={{}}>
           <div className="relative isolate">
-            <div className="rails" aria-hidden="true">
-              <div className="container" />
-            </div>
+            <Rails />
             <OutreachHeader />
             <main className="relative">{children}</main>
             <OutreachFooter />

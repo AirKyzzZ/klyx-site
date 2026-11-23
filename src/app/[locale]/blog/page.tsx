@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
 
-import { ArrowRight, Rss } from "lucide-react";
+import { Rss } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 
+import { PostCard } from "@/components/blog/post-card";
 import { JsonLd } from "@/components/json-ld";
-import { Hero } from "@/components/sections/hero";
-import { SampleWindow } from "@/components/sections/process-timeline";
-import { Link } from "@/i18n/navigation";
+import { PageSection } from "@/components/ui-kit/page-section";
+import { SectionHeader } from "@/components/ui-kit/section-header";
+import { SiteCta } from "@/components/ui-kit/site-cta";
 import { type LocaleParams, resolvePageLocale } from "@/i18n/page-locale";
-import { getMdxBody, getPosts, readingMinutes } from "@/lib/content";
+import { formatPostDate, getPostSummaries } from "@/lib/blog";
 import { blogJsonLd } from "@/lib/json-ld";
 import { buildMetadata } from "@/lib/seo";
 
@@ -28,61 +29,51 @@ export async function generateMetadata({
 export default async function BlogPage({ params }: LocaleParams) {
   const locale = await resolvePageLocale(params);
   const t = await getTranslations({ locale, namespace: "blog" });
-  const posts = await Promise.all(
-    (await getPosts(locale)).map(async (post) => ({
-      ...post,
-      minutes: readingMinutes(await getMdxBody("blog", post.slug, locale)),
-    })),
-  );
+  const posts = await getPostSummaries(locale);
 
   return (
-    <Hero
-      title={t("hero.title")}
-      subtitle={t("hero.subtitle")}
-      className="pb-24 md:pb-32"
-    >
+    <>
       <JsonLd data={blogJsonLd(locale, posts)} />
-      {posts.length === 0 ? (
-        <div className="max-w-[640px]">
-          <SampleWindow file="~/klyx">
-            <p className="text-text-3">
-              <span aria-hidden="true">$ </span>ls content/blog
-            </p>
-            <p className="text-text mt-2">{t("emptyCount")}</p>
-            <p className="text-text-2">{t("empty")}</p>
-            <a
-              href="/blog/rss.xml"
-              className="text-text-2 hover:text-text mt-4 inline-flex items-center gap-1.5 underline underline-offset-4 transition-colors"
-            >
-              <Rss aria-hidden="true" className="size-3.5" />
-              {t("rss")}
-            </a>
-          </SampleWindow>
-        </div>
-      ) : (
-        <ul className="border-line border-t">
-          {posts.map((post) => (
-            <li key={post.slug} className="border-line border-b">
-              <Link
-                href={{ pathname: "/blog/[slug]", params: { slug: post.slug } }}
-                className="group hover:bg-surface-3 grid gap-2 px-2 py-6 transition-colors duration-(--d-fast) md:grid-cols-12 md:items-baseline md:gap-6 md:px-4"
-              >
-                <p className="type-label text-text-3 md:col-span-3">
-                  {post.date} · {t("readingTime", { minutes: post.minutes })}
-                </p>
-                <div className="md:col-span-8">
-                  <h2 className="type-h3">{post.title}</h2>
-                  <p className="text-text-2 mt-1">{post.summary}</p>
-                </div>
-                <ArrowRight
-                  aria-hidden="true"
-                  className="text-text-3 group-hover:text-text hidden size-4 justify-self-end transition-[color,translate] duration-(--d-fast) group-hover:translate-x-0.5 md:col-span-1 md:block"
+      <PageSection
+        divider={false}
+        containerClassName="pt-32 pb-14 md:pt-40 lg:pt-44 lg:pb-20"
+      >
+        <SectionHeader as="h1" title={t("hero.title")} intro={t("hero.intro")}>
+          <a
+            href="/blog/rss.xml"
+            className="text-text-2 hover:text-text inline-flex w-fit items-center gap-2 text-[0.9375rem] font-medium transition-colors duration-(--d-fast)"
+          >
+            <Rss aria-hidden="true" className="text-accent size-4" />
+            {t("rss")}
+          </a>
+        </SectionHeader>
+      </PageSection>
+
+      <PageSection id="articles" containerClassName="lg:py-20">
+        {posts.length === 0 ? (
+          <p className="border-line bg-surface-1 text-text-2 rounded-[16px] border p-7">
+            {t("empty")}
+          </p>
+        ) : (
+          <ul className="grid gap-5 md:grid-cols-2">
+            {posts.map((post) => (
+              <li key={post.slug}>
+                <PostCard
+                  slug={post.slug}
+                  title={post.title}
+                  summary={post.summary}
+                  date={post.date}
+                  dateLabel={formatPostDate(locale, post.date)}
+                  readingTime={t("readingTime", { minutes: post.minutes })}
+                  tag={post.topic && t(`services.names.${post.topic}`)}
                 />
-              </Link>
-            </li>
-          ))}
-        </ul>
-      )}
-    </Hero>
+              </li>
+            ))}
+          </ul>
+        )}
+      </PageSection>
+
+      <SiteCta />
+    </>
   );
 }

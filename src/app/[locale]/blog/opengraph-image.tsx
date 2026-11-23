@@ -19,5 +19,5 @@ export default async function OpengraphImage({
   params: Promise<{ locale: string }>;
 }) {
   const t = getStaticTranslator(await resolveOgLocale(params), "blog");
-  return renderOg({ title: t("hero.title"), emphasis: t("hero.subtitle") });
+  return renderOg({ title: t("og.title"), emphasis: t("og.emphasis") });
 }

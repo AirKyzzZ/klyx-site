@@ -7,7 +7,7 @@ import type { Locale } from "@/i18n/routing";
 import { getStaticTranslator } from "@/i18n/static-translator";
 import { isVerified, type ProofSource } from "@/lib/proof";
 
-import { BrowserFrame, hostOf } from "./browser-frame";
+import { hostOf, ShotFrame } from "./shot-frame";
 
 type Source<Kind extends ProofSource["kind"]> = Extract<
   ProofSource,
@@ -40,12 +40,9 @@ function Shell({
   children: ReactNode;
 }) {
   return (
-    <figure className="border-line bg-surface-1 shadow-card flex h-full flex-col overflow-hidden rounded-md border">
-      <figcaption className="border-line type-label text-text-3 flex h-9 items-center justify-between gap-3 border-b px-4">
-        <span className="flex items-center gap-2">
-          <span aria-hidden="true" className="bg-ui-ok size-1.5 rounded-full" />
-          {label}
-        </span>
+    <figure className="border-line bg-surface-1 shadow-panel flex h-full flex-col overflow-hidden rounded-[16px] border">
+      <figcaption className="text-text-3 flex items-center justify-between gap-3 px-5 pt-5 text-[0.8125rem] font-medium">
+        <span className="text-text">{label}</span>
         {meta}
       </figcaption>
       {children}
@@ -107,7 +104,7 @@ function Lighthouse({
       label={t("kinds.lighthouse")}
       meta={<span>{hostOf(source.url)}</span>}
     >
-      <div className="grid flex-1 grid-cols-4 gap-2 px-4 py-6">
+      <div className="grid flex-1 grid-cols-4 gap-2 px-5 py-6">
         {SCORE_KEYS.map((key) => (
           <ScoreRing
             key={key}
@@ -120,7 +117,7 @@ function Lighthouse({
         href={source.url}
         target="_blank"
         rel="noopener"
-        className="border-line text-text-3 hover:text-text flex items-center justify-between border-t px-4 py-3 font-mono text-xs transition-colors"
+        className="border-line bg-surface-2 text-text-2 hover:text-text flex items-center justify-between border-t px-5 py-3.5 text-[0.8125rem] transition-colors"
       >
         {t("measured", { date: formatDay(source.date, locale) })}
         <ArrowUpRight aria-hidden="true" className="size-3.5" />
@@ -139,18 +136,15 @@ function PrList({
   t: Translate;
 }) {
   return (
-    <Shell
-      label={t("kinds.prList")}
-      meta={<span className="normal-case">{source.repo}</span>}
-    >
-      <ul className="divide-line flex-1 divide-y">
+    <Shell label={t("kinds.prList")} meta={<span>{source.repo}</span>}>
+      <ul className="divide-line mt-3 flex-1 divide-y">
         {source.items.map((item) => (
           <li key={item.number}>
             <a
               href={item.href}
               target="_blank"
               rel="noopener"
-              className="hover:bg-surface-2 flex items-start gap-3 px-4 py-3 transition-colors"
+              className="hover:bg-surface-2 flex items-start gap-3 px-5 py-3 transition-colors"
             >
               <GitPullRequest
                 aria-hidden="true"
@@ -160,7 +154,7 @@ function PrList({
                 <span className="text-text block truncate text-sm">
                   {item.title}
                 </span>
-                <span className="text-text-3 font-mono text-xs">
+                <span className="text-text-3 text-xs">
                   #{item.number} ·{" "}
                   {t("merged", { date: formatDay(item.mergedAt, locale) })}
                 </span>
@@ -182,8 +176,8 @@ const ROW_TONE = {
 function RunLog({ source, t }: { source: Source<"run-log">; t: Translate }) {
   return (
     <Shell label={t("kinds.runLog")} meta={<span>{t("anonymised")}</span>}>
-      <p className="text-text-2 px-4 pt-3 font-mono text-xs">{source.title}</p>
-      <ol className="type-data flex-1 space-y-1 px-4 py-3 text-[0.8125rem]">
+      <p className="text-text-2 px-5 pt-3 text-[0.8125rem]">{source.title}</p>
+      <ol className="type-data flex-1 space-y-1 px-5 py-4 text-[0.8125rem]">
         {source.rows.map((row, index) => (
           <li key={`${row.t}-${index}`} className="flex gap-3">
             <span className="text-text-3">{row.t}</span>
@@ -207,21 +201,18 @@ function SiteShot({
   const host = hostOf(source.url);
   return (
     <Shell label={t("kinds.siteShot")}>
-      <div className="flex-1 px-4 pt-4">
-        <BrowserFrame
-          url={source.url}
+      <div className="flex-1 p-5">
+        <ShotFrame
           image={source.image}
           alt={host}
           sizes="(min-width: 1024px) 360px, 300px"
-          className="rounded-b-none border-b-0"
-          imageClassName="max-md:aspect-[16/6]"
         />
       </div>
       <a
         href={source.url}
         target="_blank"
         rel="noopener"
-        className="border-line text-text-3 hover:text-text flex items-center justify-between border-t px-4 py-3 font-mono text-xs transition-colors"
+        className="border-line bg-surface-2 text-text-2 hover:text-text flex items-center justify-between border-t px-5 py-3.5 text-[0.8125rem] transition-colors"
       >
         {t("open", { host })}
         <ArrowUpRight aria-hidden="true" className="size-3.5" />

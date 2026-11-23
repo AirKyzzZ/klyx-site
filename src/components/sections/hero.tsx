@@ -1,13 +1,9 @@
 import type { CSSProperties, ReactNode } from "react";
 
 import { ArrowRight } from "lucide-react";
-import { getTranslations } from "next-intl/server";
 
 import { ActionButton } from "@/components/action-button";
 import { EmphasisTitle } from "@/components/emphasis-title";
-import { FoldStrip } from "@/components/fold-strip";
-import { LiveSystem } from "@/components/live-system/live-system";
-import type { Locale } from "@/i18n/routing";
 import { cn } from "@/lib/utils";
 
 const delay = (seconds: number) => ({ "--d": `${seconds}s` }) as CSSProperties;
@@ -117,77 +113,6 @@ export function Hero({
             {children}
           </div>
         )}
-      </div>
-    </section>
-  );
-}
-
-const HOME_SCENARIOS = ["agents", "sites", "fde"] as const;
-
-export async function HomeHero({ locale }: { locale: Locale }) {
-  const t = await getTranslations({ locale, namespace: "home.hero" });
-
-  return (
-    <section
-      data-home-hero
-      data-shot="hero"
-      className="relative pt-28 pb-16 md:pb-24"
-    >
-      <div className="container">
-        <div>
-          <p className="hero-in type-label text-text-3" style={delay(0)}>
-            {t("eyebrow")}
-          </p>
-          <h1 className="type-display mt-4">
-            <EmphasisTitle
-              title={t("title")}
-              emphasis={t("titleEmphasis")}
-              serif={t("serif")}
-            />
-          </h1>
-          <p
-            className="hero-in type-lead text-text-2 mt-5 max-w-[58ch]"
-            style={delay(0.15)}
-          >
-            {t("subtitle")}
-          </p>
-          <div
-            className="hero-in mt-7 flex flex-col gap-3 sm:flex-row sm:items-center"
-            style={delay(0.3)}
-          >
-            <ActionButton
-              trackLocation="hero"
-              action="book"
-              size="lg"
-              className="w-full sm:w-auto"
-            >
-              {t("ctaPrimary")}
-            </ActionButton>
-            <ActionButton
-              trackLocation="hero"
-              action="quote"
-              variant="secondary"
-              size="lg"
-              className="w-full sm:w-auto"
-            >
-              {t("ctaSecondary")}
-              <ArrowRight />
-            </ActionButton>
-          </div>
-        </div>
-        <FoldStrip
-          locale={locale}
-          className="hero-in mt-6"
-          style={delay(0.45)}
-        />
-        <div className="hero-in mt-10 md:mt-6" style={delay(0.6)}>
-          <LiveSystem
-            scenarioIds={[...HOME_SCENARIOS]}
-            initial="agents"
-            priority
-            locale={locale}
-          />
-        </div>
       </div>
     </section>
   );

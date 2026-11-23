@@ -27,7 +27,7 @@ describe("serviceJsonLd", () => {
     const [service] = serviceJsonLd(["sprint-ia"], "fr");
     expect(service).toMatchObject({
       "@type": "Service",
-      name: "Sprint IA",
+      name: "Agent IA",
       url: "https://klyx.fr/services/agents-ia",
       provider: { "@id": "https://klyx.fr/#organization" },
       offers: {
@@ -163,7 +163,7 @@ describe("personJsonLd", () => {
       "@type": "Person",
       "@id": "https://klyx.fr/#person",
       name: "Maxime Mansiet",
-      jobTitle: "Fondateur et lead engineer",
+      jobTitle: "Fondateur et développeur",
       image: "https://klyx.fr/team/maxime-mansiet.jpg",
       worksFor: { "@id": "https://klyx.fr/#organization" },
       knowsAbout: expect.arrayContaining(["Agents IA", "Next.js"]),
@@ -219,7 +219,7 @@ describe("page JSON-LD", () => {
         offeredBy: { "@id": "https://klyx.fr/#organization" },
         itemOffered: expect.objectContaining({
           "@id": "https://klyx.fr/services/agents-ia#sprint-ia",
-          name: "Sprint IA",
+          name: "Agent IA",
         }),
       }),
     );
@@ -235,6 +235,8 @@ describe("page JSON-LD", () => {
   const study: CaseStudyMeta = {
     slug: "citeme",
     title: "CiteMe, mesurer sa visibilité",
+    name: "CiteMe",
+    kind: "Produit SaaS",
     client: "CiteMe",
     url: "https://www.citeme.io",
     year: 2026,

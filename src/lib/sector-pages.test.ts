@@ -7,8 +7,7 @@ import { routing } from "@/i18n/routing";
 import { getStaticTranslator } from "@/i18n/static-translator";
 
 import { getPriceValues } from "./offers";
-import { scenarios } from "./scenarios";
-import { SECTOR_KEYS, sectorPages } from "./sector-pages";
+import { COMMON_TASKS, SECTOR_KEYS, sectorPages } from "./sector-pages";
 
 const MESSAGES = { fr, en } as const;
 const words = (text: string) => text.trim().split(/\s+/).length;
@@ -19,32 +18,35 @@ describe("sectorPages", () => {
       const config = sectorPages[key];
       expect(Object.keys(routing.pathnames)).toContain(config.pathname);
       expect(config.offers, key).toContain(config.anchor);
-      expect(scenarios[config.scenario].href, key).toBe(config.pathname);
+      expect(config.offers, key).toContain(config.quoteOffer);
     }
   });
 
-  it("shows a case card only for real estate, the one sector with a client case", () => {
+  it("shows real cases only where a client case or site exists", () => {
     expect(sectorPages.realEstate.proof).toEqual({
       kind: "cases",
       slugs: ["hop-hop-immo"],
     });
+    expect(sectorPages.agencies.proof).toEqual({
+      kind: "cases",
+      slugs: ["pkba", "vertiflow"],
+    });
     expect(sectorPages.services.proof.kind).toBe("none");
-    expect(sectorPages.services.illustrated).toBe(true);
   });
 
   describe.each(routing.locales)("messages (%s)", (locale) => {
     const prices = getPriceValues(locale);
 
-    it("puts the serif word in each h1", () => {
+    it("gives each use-case page a one-part h1 without eyebrow or serif word", () => {
       for (const key of [
         ...SECTOR_KEYS.map((k) => `useCases.${k}`),
         "useCases",
-        "faqPage",
+        "bordeaux",
       ]) {
-        const t = getStaticTranslator(locale, key);
-        expect(`${t("hero.title")} ${t("hero.titleEmphasis")}`, key).toContain(
-          t("hero.serif"),
-        );
+        const hero = getStaticTranslator(locale, key).raw("hero") as object;
+        expect(Object.keys(hero), key).not.toContain("titleEmphasis");
+        expect(Object.keys(hero), key).not.toContain("eyebrow");
+        expect(Object.keys(hero), key).not.toContain("serif");
       }
     });
 
@@ -61,24 +63,38 @@ describe("sectorPages", () => {
       }
     });
 
-    it("describes 2 to 4 workflows with steps and tools", () => {
+    it("describes four tasks per sector, each with tool logos and a human check", () => {
       for (const key of SECTOR_KEYS) {
+        const { workflows } = sectorPages[key];
         const t = getStaticTranslator(locale, `useCases.${key}.workflows`);
-        const examples = Object.keys(t.raw("examples") as object);
-        expect(examples.length, key).toBeGreaterThanOrEqual(2);
-        expect(examples.length, key).toBeLessThanOrEqual(4);
-        for (const id of examples) {
-          for (const step of ["trigger", "ai", "human", "action"]) {
-            expect(t(`examples.${id}.steps.${step}`)).toBeTruthy();
+        expect(Object.keys(t.raw("items") as object), key).toEqual(
+          workflows.map((task) => task.id),
+        );
+        for (const task of workflows) {
+          expect(task.from.length + task.to.length, task.id).toBeGreaterThan(1);
+          for (const field of ["category", "title", "agent", "team"]) {
+            expect(t(`items.${task.id}.${field}`), task.id).toBeTruthy();
           }
-          expect(t(`examples.${id}.tools`)).toBeTruthy();
         }
+      }
+      const common = getStaticTranslator(locale, "useCases.common");
+      expect(Object.keys(common.raw("items") as object)).toEqual(
+        COMMON_TASKS.map((task) => task.id),
+      );
+    });
+
+    it("writes pricing copy for every offer card it shows", () => {
+      for (const key of SECTOR_KEYS) {
+        const t = getStaticTranslator(locale, `useCases.${key}.pricing`);
+        expect(Object.keys(t.raw("cards") as object), key).toEqual(
+          sectorPages[key].offers,
+        );
       }
     });
 
     it("keeps titles under 60 and descriptions under 155 characters", () => {
       const meta = getStaticTranslator(locale, "meta");
-      for (const key of [...SECTOR_KEYS, "useCases", "faq"]) {
+      for (const key of [...SECTOR_KEYS, "useCases", "faq", "bordeaux"]) {
         expect(meta(`${key}.title`).length, key).toBeLessThanOrEqual(60);
         expect(
           meta(`${key}.description`, prices).length,
@@ -89,7 +105,11 @@ describe("sectorPages", () => {
 
     it("shows no pending marker", () => {
       const messages = MESSAGES[locale];
-      for (const value of [messages.useCases, messages.faqPage]) {
+      for (const value of [
+        messages.useCases,
+        messages.faqPage,
+        messages.bordeaux,
+      ]) {
         expect(JSON.stringify(value)).not.toContain("TODO(maxime)");
       }
     });

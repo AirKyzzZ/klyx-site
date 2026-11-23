@@ -46,6 +46,7 @@ export type ContactFormCopy = {
 };
 
 const INITIAL_STATE: ContactState = { status: "idle" };
+const FIELD_CLASS = "rounded-[10px]";
 
 export function ContactForm({
   copy,
@@ -75,7 +76,7 @@ export function ContactForm({
     return (
       <p
         role="status"
-        className="border-line-strong bg-surface-2 type-lead text-text rounded-sm border px-5 py-6"
+        className="border-line bg-surface-2 text-text rounded-[12px] border px-5 py-6 text-lg leading-normal"
       >
         {copy.success}
       </p>
@@ -107,6 +108,7 @@ export function ContactForm({
             minLength={2}
             maxLength={100}
             placeholder={copy.name.placeholder}
+            className={FIELD_CLASS}
             {...errorProps("contact-name", errors.name)}
           />
         </Field>
@@ -119,6 +121,7 @@ export function ContactForm({
             required
             maxLength={254}
             placeholder={copy.email.placeholder}
+            className={FIELD_CLASS}
             {...errorProps("contact-email", errors.email)}
           />
         </Field>
@@ -135,6 +138,7 @@ export function ContactForm({
           autoComplete="organization"
           maxLength={120}
           placeholder={copy.company.placeholder}
+          className={FIELD_CLASS}
           {...errorProps("contact-company", errors.company)}
         />
       </Field>
@@ -165,7 +169,7 @@ export function ContactForm({
           minLength={10}
           maxLength={5000}
           placeholder={copy.message.placeholder}
-          className="min-h-36 resize-none"
+          className={`${FIELD_CLASS} min-h-36 resize-none`}
           {...errorProps("contact-message", errors.message)}
         />
       </Field>
@@ -207,8 +211,8 @@ export function ContactForm({
       <div className="flex w-full flex-col gap-3 sm:items-end">
         <Button
           type="submit"
-          size="lg"
-          className="w-full sm:w-auto"
+          size="xl"
+          className="h-12 w-full rounded-[10px] sm:w-auto"
           disabled={pending}
         >
           {pending ? copy.sending : copy.submit}
@@ -244,7 +248,11 @@ function SelectField({
   return (
     <Field id={id} label={copy.label} error={error}>
       <Select name={name} required={required}>
-        <SelectTrigger id={id} className="w-full" {...errorProps(id, error)}>
+        <SelectTrigger
+          id={id}
+          className={`${FIELD_CLASS} w-full`}
+          {...errorProps(id, error)}
+        >
           <SelectValue placeholder={copy.placeholder} />
         </SelectTrigger>
         <SelectContent>
@@ -272,12 +280,14 @@ function BudgetPills({
 }) {
   return (
     <fieldset className="grid gap-2" {...errorProps(id, error)}>
-      <legend className="type-label text-text-3 mb-2">{copy.label}</legend>
+      <legend className="text-text mb-2 text-sm font-medium">
+        {copy.label}
+      </legend>
       <div className="flex flex-wrap gap-2">
         {copy.options.map((option) => (
           <label
             key={option.value}
-            className="border-line-strong bg-surface-2 text-text-2 hover:border-text-3 hover:text-text has-checked:border-accent has-checked:bg-accent-soft has-checked:text-text has-focus-visible:outline-accent inline-flex h-9 cursor-pointer items-center rounded-full border px-3.5 font-mono text-[0.8125rem] transition-colors duration-(--d-fast) has-focus-visible:outline-2 has-focus-visible:outline-offset-2"
+            className="border-line bg-surface-1 text-text-2 hover:border-line-strong hover:text-text has-checked:border-accent has-checked:bg-accent-tint has-checked:text-accent-text has-focus-visible:outline-accent inline-flex h-9 cursor-pointer items-center rounded-[8px] border px-3.5 text-[0.8125rem] font-medium transition-colors duration-(--d-fast) has-focus-visible:outline-2 has-focus-visible:outline-offset-2"
           >
             <input
               type="radio"
@@ -307,7 +317,7 @@ function Field({
 }) {
   return (
     <div className="grid w-full gap-2">
-      <Label htmlFor={id} className="type-label text-text-3">
+      <Label htmlFor={id} className="text-text text-sm font-medium">
         {label}
       </Label>
       {children}

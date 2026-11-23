@@ -12,13 +12,16 @@ import { notFound } from "next/navigation";
 import { AnalyticsIsland } from "@/components/analytics/analytics-island";
 import { JsonLd } from "@/components/json-ld";
 import { MachineView } from "@/components/machine-view/machine-view";
+import { Rails } from "@/components/rails";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { ThemeScript } from "@/components/theme/theme-script";
 import { routing } from "@/i18n/routing";
 import { organizationJsonLd, websiteJsonLd } from "@/lib/json-ld";
 import { site } from "@/lib/site";
+import { THEME_COLORS } from "@/lib/theme";
 
-import { mono, sans, serif } from "../fonts";
+import { mono, sans } from "../fonts";
 import "../globals.css";
 
 type LayoutProps = {
@@ -27,8 +30,7 @@ type LayoutProps = {
 };
 
 export const viewport: Viewport = {
-  colorScheme: "dark",
-  themeColor: "#141414",
+  themeColor: THEME_COLORS.light,
 };
 
 export function generateStaticParams() {
@@ -56,15 +58,18 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
   return (
     <html
       lang={locale}
-      className={`${sans.variable} ${mono.variable} ${serif.variable}`}
+      data-theme="light"
+      suppressHydrationWarning
+      className={`${sans.variable} ${mono.variable}`}
     >
+      <head>
+        <ThemeScript />
+      </head>
       <body>
         <JsonLd data={[organizationJsonLd(), websiteJsonLd()]} />
         <NextIntlClientProvider messages={{ machine }}>
           <div className="relative isolate">
-            <div className="rails" aria-hidden="true">
-              <div className="container" />
-            </div>
+            <Rails />
             <SiteHeader />
             <main className="relative">{children}</main>
             <SiteFooter />

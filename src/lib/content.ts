@@ -1,9 +1,10 @@
 import { readFile, readdir } from "node:fs/promises";
 import path from "node:path";
 import type { ComponentType } from "react";
+import type { MDXProps } from "mdx/types";
 import type { Locale } from "@/i18n/routing";
 
-type MdxContent = ComponentType;
+type MdxContent = ComponentType<MDXProps>;
 
 export type CaseFlowStep = {
   image: string;
@@ -16,7 +17,8 @@ export type CaseStatus = "inDevelopment";
 export type CaseStudyMeta = {
   slug: string;
   title: string;
-  serif?: string;
+  name: string;
+  kind: string;
   client: string;
   url: string;
   live?: boolean;

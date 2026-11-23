@@ -1,103 +1,91 @@
-import type { JSX } from "react";
+import { Fragment, type JSX } from "react";
 
 import type { Metadata } from "next";
-import { ArrowRight } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 
 import { ActionButton } from "@/components/action-button";
 import { JsonLd } from "@/components/json-ld";
+import { AgentLog } from "@/components/offer-blocks/agent-log";
 import { AuditDocument } from "@/components/offer-blocks/audit-document";
-import { AutomationExamples } from "@/components/offer-blocks/automation-examples";
+import { AutomationUseCases } from "@/components/offer-blocks/automation-use-cases";
 import { FdeDefinition } from "@/components/offer-blocks/fde-definition";
 import { GeoVisibility } from "@/components/offer-blocks/geo-visibility";
 import { LighthouseBlock } from "@/components/offer-blocks/lighthouse-block";
-import { TraceSpans } from "@/components/offer-blocks/trace-spans";
-import { Section, SectionHeading } from "@/components/section";
-import { CaseCard } from "@/components/sections/case-grid";
+import { BeforeAfterCards } from "@/components/sections/before-after-cards";
 import { Cta } from "@/components/sections/cta";
 import { Faq } from "@/components/sections/faq";
-import { OfferHero } from "@/components/sections/offer-hero";
-import { OfferLedger } from "@/components/sections/offer-ledger";
-import { ProcessLine } from "@/components/sections/process-line";
-import { FeatureList, TierCards } from "@/components/sections/tier-cards";
-import { ToolsSection } from "@/components/sections/tools-section";
 import {
+  OfferPageHero,
+  OfferPriceCard,
+} from "@/components/sections/offer-page-hero";
+import { TermsCard, TierCards } from "@/components/sections/tier-cards";
+import { CaseRow } from "@/components/ui-kit/case-row";
+import { MethodSteps } from "@/components/ui-kit/method-steps";
+import { PageSection } from "@/components/ui-kit/page-section";
+import { SectionHeader } from "@/components/ui-kit/section-header";
+import { ToolsStrip } from "@/components/ui-kit/tools-strip";
+import {
+  messageKeys,
   messageList,
   messageStrings,
   type Translate,
 } from "@/i18n/message-list";
 import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
-import { getCaseStudies, getPosts } from "@/lib/content";
+import { type CaseStudyMeta, getCaseStudies, getPosts } from "@/lib/content";
 import { offerPageJsonLd } from "@/lib/json-ld";
 import { getOfferCopy } from "@/lib/offer-copy";
-import type {
-  OfferAction,
-  OfferBlock,
-  OfferPageConfig,
-} from "@/lib/offer-pages";
-import { getPriceValues } from "@/lib/offers";
+import type { OfferBlock, OfferPageConfig } from "@/lib/offer-pages";
+import {
+  formatPrice,
+  getOffer,
+  getPriceValues,
+  type OfferId,
+} from "@/lib/offers";
 import { OFFER_POST_SLUGS } from "@/lib/related-content";
 import { sectorPages } from "@/lib/sector-pages";
 import { buildMetadata } from "@/lib/seo";
 import { DEPLOYED_TECH } from "@/lib/tools";
-import { cn } from "@/lib/utils";
-
-type BlockProps = { locale: Locale; index: string; eyebrow: string };
 
 const BLOCKS: Record<
   OfferBlock,
-  (props: BlockProps) => Promise<JSX.Element | null>
+  (props: { locale: Locale }) => Promise<JSX.Element | null>
 > = {
-  trace: TraceSpans,
+  trace: AgentLog,
   lighthouse: LighthouseBlock,
   "fde-definition": FdeDefinition,
   "audit-document": AuditDocument,
-  "automation-examples": AutomationExamples,
+  "automation-examples": AutomationUseCases,
   "geo-visibility": GeoVisibility,
 };
 
-type SectionId =
-  | "problem"
-  | "deliverables"
-  | "process"
-  | "block"
-  | "stack"
-  | "proof"
-  | "pricing"
-  | "faq";
+const LINK_CLASS =
+  "text-text hover:text-accent-text font-medium underline decoration-1 underline-offset-[3px] transition-colors duration-(--d-fast)";
 
-const SECTIONS: SectionId[] = [
-  "problem",
-  "deliverables",
-  "process",
-  "block",
-  "stack",
-  "proof",
-  "pricing",
-  "faq",
-];
-
-function hasChild(t: Translate, key: string, child: string) {
-  const raw = t.raw(key);
-  return typeof raw === "object" && raw !== null && child in raw;
+function caseLabels(study: CaseStudyMeta) {
+  const [name, ...rest] = study.title.split(", ");
+  const kind = rest.join(", ");
+  return kind
+    ? { name, kind: kind.charAt(0).toUpperCase() + kind.slice(1) }
+    : { name: study.title, kind: study.client };
 }
 
-function heading(t: Translate, key: string) {
-  return {
-    lead: t(`${key}.title`),
-    rest: hasChild(t, key, "titleEmphasis")
-      ? t(`${key}.titleEmphasis`)
-      : undefined,
-  };
-}
-
-function actionLabel(
-  t: Translate,
-  cta: [OfferAction, OfferAction],
-  action: OfferAction,
+function offerPriceParts(
+  id: OfferId,
+  locale: Locale,
+  page: Translate,
+  offersT: Translate,
 ) {
-  return t(cta[0] === action ? "cta.ctaPrimary" : "cta.ctaSecondary");
+  const offer = getOffer(id);
+  if (offer.priceFrom === null) {
+    return { price: offersT(`items.${offer.durationKey}.price`) };
+  }
+  const units = { day: page("perDay"), month: page("perMonth") };
+  return {
+    priceLabel: page("from"),
+    price: formatPrice(offer.priceFrom, locale),
+    unit: offer.unit === "project" ? undefined : units[offer.unit],
+  };
 }
 
 export async function buildOfferMetadata(
@@ -124,80 +112,48 @@ export async function OfferPage({
     locale,
     namespace: config.namespace,
   })) as Translate;
-  const page = await getTranslations({ locale, namespace: "offerPage" });
+  const page = (await getTranslations({
+    locale,
+    namespace: "offerPage",
+  })) as Translate;
   const nav = await getTranslations({ locale, namespace: "nav" });
   const offersT = (await getTranslations({
     locale,
     namespace: "offers",
   })) as Translate;
-  const casesT = await getTranslations({ locale, namespace: "cases.labels" });
+  const prices = getPriceValues(locale);
+  const faq = messageList(t, "faq.items", ["question", "answer"], prices);
   const relatedPost = (await getPosts(locale)).find(
     (post) => post.slug === OFFER_POST_SLUGS[config.key],
   );
-  const prices = getPriceValues(locale);
-  const faq = messageList(t, "faq.items", ["question", "answer"], prices);
-  const tiers = config.tiers.map((id) => getOfferCopy(offersT, locale, id));
-  const cases = (await getCaseStudies(locale)).filter((study) =>
-    config.proofSlugs.includes(study.slug),
+  const studies = await getCaseStudies(locale);
+  const cases = config.proofSlugs.flatMap((slug) =>
+    studies.filter((study) => study.slug === slug),
   );
-  const anchorPrice = config.anchorLine
-    ? t("hero.anchor", prices)
-    : getOfferCopy(offersT, locale, config.anchor).price;
+  const anchor = offerPriceParts(config.anchor, locale, page, offersT);
   const Block = BLOCKS[config.block];
-  const hero = heading(t, "hero");
-  const problem = heading(t, "problem");
-  const deliverables = heading(t, "deliverables");
-  const process = heading(t, "process");
-  const pricing = heading(t, "pricing");
-  const faqHeading = heading(t, "faq");
-  const cta = heading(t, "cta");
-  const isFde = config.key === "fde";
-  const proofCases = cases.slice(0, 2);
-  const singleProof = proofCases.length === 1;
-
-  const hasProof = config.proofLink !== null;
-  const hidden = new Set<SectionId>([
-    ...(hasProof ? [] : (["proof"] as const)),
-    ...(config.stack ? [] : (["stack"] as const)),
-    ...(config.process ? [] : (["process"] as const)),
-    ...(config.pricing ? [] : (["pricing"] as const)),
-  ]);
-  const sections = SECTIONS.filter((id) => !hidden.has(id));
-  const pricingLinks = (
-    <>
-      <Link
-        href="/tarifs"
-        className="group text-text-2 hover:text-text mt-6 inline-flex items-center gap-1.5 text-sm transition-colors"
-      >
-        {t("pricing.link")}
-        <ArrowRight
-          aria-hidden="true"
-          className="size-3.5 transition-transform duration-(--d-fast) group-hover:translate-x-0.5"
-        />
-      </Link>
-      {config.sectors.length > 0 && (
-        <p className="text-text-3 mt-3 flex flex-wrap gap-x-3 gap-y-1 text-sm">
-          <span className="type-label pt-0.5">{page("sectors")}</span>
-          {config.sectors.map((key) => (
-            <Link
-              key={key}
-              href={sectorPages[key].pathname}
-              className="text-text hover:text-text-2 underline underline-offset-4 transition-colors"
-            >
-              {nav(key)}
-            </Link>
-          ))}
-        </p>
-      )}
-    </>
-  );
-  const section = (id: SectionId) => ({
-    index: String(sections.indexOf(id) + 1).padStart(2, "0"),
-    eyebrow:
-      id === "block"
-        ? page(`eyebrows.block.${config.block}`)
-        : page(`eyebrows.${id}`),
-  });
+  const problems = messageKeys(t.raw("problem.items")).map((key) => ({
+    title: t(`problem.items.${key}.title`),
+    before: t(`problem.items.${key}.before`),
+    after: t(`problem.items.${key}.after`),
+  }));
+  const fde =
+    config.key === "fde" ? getOfferCopy(offersT, locale, "fde") : null;
+  const tiers = fde
+    ? []
+    : config.tiers.map((id) => {
+        const copy = getOfferCopy(offersT, locale, id);
+        return {
+          id,
+          name: copy.name,
+          audience: t(`deliverables.tiers.${copy.key}.audience`),
+          summary: copy.summary,
+          duration: copy.duration,
+          ...offerPriceParts(id, locale, page, offersT),
+          features: messageStrings(t, `deliverables.tiers.${copy.key}.items`),
+          href: copy.href === config.pathname ? undefined : copy.href,
+        };
+      });
 
   return (
     <>
@@ -211,284 +167,185 @@ export async function OfferPage({
         })}
       />
 
-      <OfferHero
-        locale={locale}
-        breadcrumbLabel={page("breadcrumb")}
-        trail={[{ href: "/tarifs", label: nav("offers") }]}
-        current={t("hero.eyebrow")}
-        anchorPrice={anchorPrice}
-        title={hero.lead}
-        emphasis={hero.rest}
-        serif={t("hero.serif")}
+      <OfferPageHero
+        title={t("hero.title")}
         subtitle={t("hero.subtitle", prices)}
-        primaryLabel={t("hero.ctaPrimary")}
-        secondaryLabel={t("hero.ctaSecondary")}
-        scenario={config.scenario}
+        actions={
+          <>
+            <ActionButton action="book" size="xl" trackLocation="offer_page">
+              {page("actions.book")}
+            </ActionButton>
+            <ActionButton
+              action="quote"
+              variant="outline"
+              size="xl"
+              trackLocation="offer_page"
+            >
+              {page("actions.quote")}
+            </ActionButton>
+          </>
+        }
+        aside={
+          <OfferPriceCard
+            label={anchor.priceLabel ?? ""}
+            price={anchor.price}
+            unit={anchor.unit}
+            duration={t("hero.duration")}
+            note={t("hero.note", prices)}
+          />
+        }
       />
 
-      <Section {...section("problem")}>
-        <div className="grid gap-10 lg:grid-cols-12 lg:gap-6">
-          <div className="reveal lg:col-span-8">
-            <SectionHeading
-              lead={problem.lead}
-              rest={problem.rest}
-              className="max-w-[28ch]"
-            />
-            <p className="text-text-2 mt-8 max-w-[62ch]">{t("problem.body")}</p>
-          </div>
-          <aside className="reveal border-line self-end border-t pt-5 lg:col-span-3 lg:col-start-10 lg:border-t-0 lg:border-l lg:pt-0 lg:pl-6">
-            <p className="type-label text-text-3">{page("symptoms")}</p>
-            <ul className="mt-4 space-y-3 text-[0.9375rem] leading-snug">
-              {messageStrings(t, "problem.symptoms").map((symptom, i) => (
-                <li key={symptom} className="text-text-2 flex gap-3">
-                  <span className="type-data text-text-3">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  {symptom}
-                </li>
-              ))}
-            </ul>
-          </aside>
-        </div>
-      </Section>
+      <PageSection id="probleme">
+        <SectionHeader title={t("problem.title")} intro={t("problem.intro")} />
+        <BeforeAfterCards
+          className="mt-12"
+          items={problems}
+          labels={{
+            before: page("problem.before"),
+            after: page("problem.after"),
+          }}
+        />
+      </PageSection>
 
-      <TierCards
-        {...section("deliverables")}
-        title={deliverables.lead}
-        emphasis={deliverables.rest}
-        subtitle={
-          hasChild(t, "deliverables", "subtitle")
-            ? t("deliverables.subtitle")
-            : undefined
-        }
-        quoteLabel={t("hero.ctaSecondary")}
-        seeOfferLabel={page("seeOffer")}
-        moreLabel={(count) => page("moreFeatures", { count })}
-        footnote={offersT("vatNote")}
-        aside={config.pricing ? undefined : pricingLinks}
-        tiers={
-          isFde
-            ? []
-            : tiers.map((tier) => ({
-                id: tier.id,
-                name: tier.name,
-                price: tier.price,
-                duration: tier.duration,
-                summary: tier.summary,
-                features: messageStrings(
-                  t,
-                  `deliverables.tiers.${tier.key}.items`,
-                ),
-                href: tier.href === config.pathname ? undefined : tier.href,
-              }))
-        }
-      >
-        {isFde ? (
-          <FdeTermsCard
-            t={t}
-            prices={prices}
-            tier={tiers[0]}
-            quoteLabel={t("hero.ctaSecondary")}
+      <PageSection id="offre">
+        <SectionHeader
+          title={t("deliverables.title")}
+          intro={t("deliverables.intro")}
+        />
+        {fde ? (
+          <TermsCard
+            className="mt-12"
+            name={fde.name}
+            audience={fde.summary}
+            features={messageStrings(t, "deliverables.items")}
+            termsTitle={t("terms.title")}
+            terms={messageStrings(t, "terms.items", prices)}
+            action={
+              <ActionButton
+                action="quote"
+                variant="outline"
+                trackLocation="offer_page"
+                className="h-10 rounded-[10px] px-4"
+              >
+                {page("tiers.quote")}
+              </ActionButton>
+            }
           />
-        ) : null}
-      </TierCards>
+        ) : (
+          <TierCards
+            className="mt-12"
+            tiers={tiers}
+            quoteLabel={page("tiers.quote")}
+            seeOfferLabel={page("tiers.seeOffer")}
+          />
+        )}
+        <p className="text-text-3 mt-5 text-sm">{offersT("vatNote")}</p>
+      </PageSection>
 
-      {config.process && (
-        <ProcessLine
-          {...section("process")}
-          title={process.lead}
-          emphasis={process.rest}
+      <PageSection id="methode">
+        <SectionHeader title={t("process.title")} intro={t("process.intro")} />
+        <MethodSteps
+          className="mt-12"
           steps={messageList(t, "process.steps", ["title", "body"])}
         />
-      )}
+      </PageSection>
 
-      <Block locale={locale} {...section("block")} />
+      <Block locale={locale} />
 
       {config.stack && (
-        <ToolsSection
-          {...section("stack")}
-          title={page("stack.title")}
-          emphasis={t("stack.titleEmphasis")}
-          body={page("stack.body")}
-          label={page("stack.label")}
-          rows={DEPLOYED_TECH.map((group) => ({
-            ...group,
-            label: page(`stack.groups.${group.key}`),
-          }))}
-          note={page("stack.note")}
-          layout="strip"
-        />
+        <PageSection id="outils" containerClassName="py-11 lg:py-11">
+          <ToolsStrip
+            title={page("stack.label")}
+            tools={DEPLOYED_TECH.flatMap((group) => group.tools)}
+          />
+          <p className="text-text-3 mx-auto mt-5 max-w-[640px] text-center text-xs leading-normal">
+            {page("stack.note")}
+          </p>
+        </PageSection>
       )}
 
-      {hasProof && (
-        <Section {...section("proof")}>
-          <div className="reveal tone-sand relative grid gap-10 rounded-xl p-6 md:p-10 lg:grid-cols-12 lg:gap-6 lg:p-12">
-            <div
-              className={cn(
-                "grid gap-6",
-                singleProof
-                  ? "content-start lg:col-span-5"
-                  : "lg:col-span-12 lg:grid-cols-12 lg:items-end",
-              )}
-            >
-              <SectionHeading
-                lead={heading(t, "proof").lead}
-                rest={heading(t, "proof").rest}
-                className={singleProof ? undefined : "lg:col-span-7"}
+      {cases.length > 0 && (
+        <PageSection id="realisations">
+          <SectionHeader title={t("proof.title")} intro={t("proof.intro")}>
+            <Link href="/realisations" className={`${LINK_CLASS} w-fit`}>
+              {t("proof.link")}
+            </Link>
+          </SectionHeader>
+          <div className="border-line mt-10 flex flex-col border-t">
+            {cases.map((study) => (
+              <CaseRow
+                key={study.slug}
+                slug={study.slug}
+                {...caseLabels(study)}
+                summary={study.summary}
+                meta={[...study.stack.slice(0, 2), study.year].join(", ")}
+                image={study.image}
               />
-              <div
-                className={cn(
-                  "space-y-5",
-                  !singleProof && "lg:col-span-4 lg:col-start-9",
-                )}
-              >
-                <p className="text-text-2 max-w-[44ch]">{t("proof.body")}</p>
+            ))}
+          </div>
+        </PageSection>
+      )}
+
+      <PageSection id="prix">
+        <SectionHeader
+          title={t("pricing.title")}
+          intro={t("pricing.body", prices)}
+        >
+          <ul className="text-text-3 flex flex-col gap-2.5 text-[0.9375rem]">
+            <li>
+              <Link href="/tarifs" className={LINK_CLASS}>
+                {t("pricing.link")}
+              </Link>
+            </li>
+            {relatedPost && (
+              <li>
+                {page("relatedPost")}{" "}
                 <Link
-                  href="/realisations"
-                  className="group border-ink/20 text-text hover:bg-sand-200 inline-flex h-11 items-center gap-2 rounded-sm border px-4.5 text-[0.9375rem] font-medium transition-colors duration-(--d-fast)"
+                  href={{
+                    pathname: "/blog/[slug]",
+                    params: { slug: relatedPost.slug },
+                  }}
+                  className={LINK_CLASS}
                 >
-                  {t("proof.link")}
-                  <ArrowRight
-                    aria-hidden="true"
-                    className="size-4 transition-transform duration-(--d-fast) group-hover:translate-x-0.5"
-                  />
+                  {relatedPost.title}
                 </Link>
-              </div>
-            </div>
-            {proofCases.length > 0 && (
-              <ul
-                className={cn(
-                  "grid gap-x-6 gap-y-12",
-                  singleProof
-                    ? "lg:col-span-6 lg:col-start-7"
-                    : "md:grid-cols-2 lg:col-span-12",
-                )}
-              >
-                {proofCases.map((study) => (
-                  <li key={study.slug}>
-                    <CaseCard
-                      item={study}
-                      readLabel={casesT("read")}
-                      sizes="(min-width: 1024px) 540px, 90vw"
-                    />
-                  </li>
-                ))}
-              </ul>
+              </li>
             )}
-          </div>
-        </Section>
-      )}
-
-      {config.pricing && (
-        <Section {...section("pricing")}>
-          <div className="grid gap-10 lg:grid-cols-12 lg:gap-6">
-            <div className="reveal space-y-6 lg:col-span-5">
-              <SectionHeading lead={pricing.lead} rest={pricing.rest} />
-              <p className="text-text-2 max-w-[48ch]">
-                {t("pricing.body", prices)}
-              </p>
-            </div>
-            <div className="reveal lg:col-span-6 lg:col-start-7">
-              <OfferLedger
-                trackLocation="offer_page"
-                rows={tiers}
-                labels={{
-                  offer: page("ledger.offer"),
-                  duration: page("ledger.duration"),
-                  price: page("ledger.price"),
-                }}
-                caption={offersT("vatNote")}
-              />
-              {pricingLinks}
-            </div>
-          </div>
-        </Section>
-      )}
+            {config.sectors.length > 0 && (
+              <li>
+                {page("sectors")}{" "}
+                {config.sectors.map((key, i) => (
+                  <Fragment key={key}>
+                    {i > 0 && ", "}
+                    <Link
+                      href={sectorPages[key].pathname}
+                      className={LINK_CLASS}
+                    >
+                      {nav(key)}
+                    </Link>
+                  </Fragment>
+                ))}
+              </li>
+            )}
+          </ul>
+        </SectionHeader>
+      </PageSection>
 
       <Faq
-        {...section("faq")}
-        title={faqHeading.lead}
-        emphasis={faqHeading.rest}
+        id="faq"
+        title={t("faq.title")}
         items={faq}
-        bookLabel={actionLabel(t, config.cta, "book")}
+        bookLabel={page("actions.book")}
         openFirst
       />
 
-      {relatedPost && (
-        <section className="relative z-1">
-          <div className="container pb-16 md:pb-24">
-            <h2 className="type-label text-text-3">{page("relatedPost")}</h2>
-            <Link
-              href={{
-                pathname: "/blog/[slug]",
-                params: { slug: relatedPost.slug },
-              }}
-              className="text-text-2 hover:text-text mt-4 inline-block underline underline-offset-4 transition-colors"
-            >
-              {relatedPost.title}
-            </Link>
-          </div>
-        </section>
-      )}
-
       <Cta
-        title={cta.lead}
-        emphasis={cta.rest}
+        title={t("cta.title")}
         body={t("cta.body")}
         primary={{ action: config.cta[0], label: t("cta.ctaPrimary") }}
         secondary={{ action: config.cta[1], label: t("cta.ctaSecondary") }}
       />
     </>
-  );
-}
-
-function FdeTermsCard({
-  t,
-  prices,
-  tier,
-  quoteLabel,
-}: {
-  t: Translate;
-  prices: ReturnType<typeof getPriceValues>;
-  tier: ReturnType<typeof getOfferCopy>;
-  quoteLabel: string;
-}) {
-  return (
-    <div className="reveal beam mt-12 md:mt-16">
-      <article className="bg-surface-1 shadow-card grid gap-10 rounded-[calc(var(--r-md)-1px)] p-5 lg:grid-cols-12 lg:gap-6 lg:p-8">
-        <div className="lg:col-span-6">
-          <p className="type-label text-text-3">
-            <span className="text-accent">01</span> / {tier.duration}
-          </p>
-          <h3 className="type-h3 mt-6">{tier.name}</h3>
-          <p className="text-text-2 mt-2 max-w-[44ch] text-[0.9375rem]">
-            {tier.summary}
-          </p>
-          <div className="mt-6">
-            <FeatureList items={messageStrings(t, "deliverables.items")} />
-          </div>
-          <div className="mt-8">
-            <ActionButton trackLocation="offer_page" action="quote">
-              {quoteLabel}
-            </ActionButton>
-          </div>
-        </div>
-        <div className="lg:col-span-5 lg:col-start-8">
-          <p className="type-label text-text-3">{t("terms.title")}</p>
-          <table className="type-data mt-4 w-full">
-            <tbody>
-              {messageStrings(t, "terms.items", prices).map((term, i) => (
-                <tr key={term} className="border-line border-b last:border-b-0">
-                  <td className="text-text-3 w-10 py-3 align-top">
-                    {String(i + 1).padStart(2, "0")}
-                  </td>
-                  <td className="text-text py-3">{term}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </article>
-    </div>
   );
 }

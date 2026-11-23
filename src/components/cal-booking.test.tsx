@@ -1,11 +1,15 @@
 import { fireEvent, render, screen } from "@testing-library/react";
-import { describe, expect, it } from "vitest";
+import { afterEach, describe, expect, it } from "vitest";
 
 import { CalBooking } from "./cal-booking";
 
 const CAL_URL = "https://cal.com/klyx-studio/30min";
 
 describe("CalBooking", () => {
+  afterEach(() => {
+    delete document.documentElement.dataset.theme;
+  });
+
   it("loads the calendar only after the button is clicked", () => {
     const { container } = render(
       <CalBooking calUrl={CAL_URL} label="Réserver" title="Agenda" />,
@@ -18,6 +22,16 @@ describe("CalBooking", () => {
     expect(frame.tagName).toBe("IFRAME");
     expect(frame.getAttribute("src")).toMatch(
       /^https:\/\/cal\.com\/klyx-studio\/30min\?/,
+    );
+    expect(frame.getAttribute("src")).toContain("theme=light");
+  });
+
+  it("passes the current theme to the calendar", () => {
+    document.documentElement.dataset.theme = "dark";
+    render(<CalBooking calUrl={CAL_URL} label="Réserver" title="Agenda" />);
+    fireEvent.click(screen.getByRole("button", { name: "Réserver" }));
+    expect(screen.getByTitle("Agenda").getAttribute("src")).toContain(
+      "theme=dark",
     );
   });
 

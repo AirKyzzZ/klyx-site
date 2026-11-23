@@ -11,7 +11,6 @@ import {
   outreachPages,
 } from "./outreach-pages";
 import { isOutreachPath, OUTREACH_PATHS } from "./outreach-paths";
-import { scenarios } from "./scenarios";
 import { brandedTitle } from "./seo";
 
 const words = (text: string) => text.trim().split(/\s+/).length;
@@ -56,21 +55,20 @@ describe("outreachPages", () => {
   );
 
   it.each(OUTREACH_KEYS)(
-    "%s puts the serif word in the h1 and shows a real scenario",
+    "%s shows a public price under the CTA and five logos on each side",
     (key) => {
-      const { hero, scenario } = outreachPages[key];
-      expect(`${hero.title} ${hero.emphasis}`).toContain(hero.serif);
-      expect(scenarios[scenario]).toBeDefined();
+      const { hero, backdrop } = outreachPages[key];
+      expect(hero.note).toMatch(/\d\u00a0€\u00a0HT/);
+      expect(backdrop.sources).toHaveLength(5);
+      expect(backdrop.destinations).toHaveLength(5);
     },
   );
 
   it("matches the h1 to the DM noun phrase", () => {
-    const agencies = outreachPages.agencies.hero;
-    const startups = outreachPages.startups.hero;
-    expect(`${agencies.title} ${agencies.emphasis}`).toBe(
+    expect(outreachPages.agencies.hero.title).toBe(
       "Vos clients demandent de l'IA. On la livre sous votre marque.",
     );
-    expect(`${startups.title} ${startups.emphasis}`).toBe(
+    expect(outreachPages.startups.hero.title).toBe(
       "Votre feature IA en production en 2 semaines, pas dans un prototype.",
     );
   });
@@ -89,9 +87,9 @@ describe("outreachPages", () => {
     const pricing = outreachPages.agencies.sections.find(
       (section) => section.kind === "pricing",
     );
-    expect(pricing).toMatchObject({
-      offers: ["landing", "site-ia", "sprint-ia"],
-    });
+    expect(
+      pricing?.kind === "pricing" && pricing.offers.map((offer) => offer.id),
+    ).toEqual(["landing", "site-ia", "sprint-ia"]);
   });
 
   it("frames white-label terms as proposals agreed in writing", () => {

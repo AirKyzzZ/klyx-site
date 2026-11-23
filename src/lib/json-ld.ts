@@ -88,7 +88,7 @@ export function personJsonLd(): JsonLdObject {
     name: site.founder,
     url: absoluteUrl("fr", "/a-propos"),
     image: `${site.url}/team/maxime-mansiet.jpg`,
-    jobTitle: "Fondateur et lead engineer",
+    jobTitle: "Fondateur et développeur",
     worksFor: { "@id": ORGANIZATION_ID },
     knowsAbout: FOUNDER_KNOWS_ABOUT,
     address: ADDRESS,

@@ -2,20 +2,26 @@ import type { Metadata } from "next";
 
 import { getPriceValues, type OfferId } from "./offers";
 import type { OutreachPath } from "./outreach-paths";
-import type { ScenarioId } from "./scenarios";
 import { brandedTitle } from "./seo";
 import { site } from "./site";
+import type { ToolLogoId } from "./tools";
 
 export type OutreachKey = "agencies" | "startups";
 
-type Heading = { eyebrow: string; title: string; emphasis: string };
+type Heading = { title: string; body?: string };
 
 type ListItem = { title?: string; body: string };
 
 export type OutreachSection = Heading &
   (
-    | { kind: "list"; id: string; body?: string; items: ListItem[] }
-    | { kind: "pricing"; id: string; body: string; offers: OfferId[] }
+    | { kind: "list"; id: string; tone?: "check" | "limit"; items: ListItem[] }
+    | { kind: "steps"; id: string; items: Required<ListItem>[] }
+    | {
+        kind: "pricing";
+        id: string;
+        body: string;
+        offers: { id: OfferId; audience: string; body: string }[];
+      }
     | { kind: "cases"; id: string; body: string; slugs: string[] }
   );
 
@@ -23,22 +29,21 @@ export type OutreachPageConfig = {
   key: OutreachKey;
   path: OutreachPath;
   meta: { title: string; description: string };
-  scenario: ScenarioId;
-  hero: {
-    anchor: string;
-    title: string;
-    emphasis: string;
-    serif: string;
-    subtitle: string;
-  };
+  backdrop: { sources: ToolLogoId[]; destinations: ToolLogoId[] };
+  hero: { title: string; subtitle: string; note: string };
   sections: OutreachSection[];
   midCtaAfter: string;
-  booking: Heading & { body: string };
+  booking: { title: string; body: string };
 };
 
 export const OUTREACH_CTA = "Réserver 30 minutes";
 export const OUTREACH_PROOF_LINE = `${site.name} · ${site.city} · SIRET ${site.siret}`;
 export const OUTREACH_EMAIL_LINE = "Vous préférez écrire ?";
+export const OUTREACH_CLIENTS_LABEL = "Ils nous ont confié un projet";
+export const OUTREACH_LABELS = {
+  from: "À partir de",
+  viewOffer: "Voir l'offre en détail",
+} as const;
 
 const prices = getPriceValues("fr");
 
@@ -50,22 +55,21 @@ export const outreachPages: Record<OutreachKey, OutreachPageConfig> = {
       title: "IA et Next.js en marque blanche pour agences",
       description: `Agents IA et sites Next.js livrés sous la marque de votre agence, au forfait, avec des règles de marque blanche fixées par écrit. Prix publics dès ${prices.landingPrice}.`,
     },
-    scenario: "agencies",
+    backdrop: {
+      sources: ["figma", "gmail", "notion", "slack", "wordpress"],
+      destinations: ["nextjs", "hubspot", "openai", "pipedrive", "shopify"],
+    },
     hero: {
-      anchor: "Marque blanche · agences web et marketing",
-      title: "Vos clients demandent de l'IA.",
-      emphasis: "On la livre sous votre marque.",
-      serif: "marque",
+      title: "Vos clients demandent de l'IA. On la livre sous votre marque.",
       subtitle:
-        "Agents IA, automatisations et sites Next.js pour les clients de votre agence, au forfait, avec le code dans votre repo. Vous gardez le client, la relation et la marge.",
+        "Agents IA, automatisations et sites Next.js pour les clients de votre agence, au forfait, avec le code dans votre dépôt. Vous gardez le client, la relation et la marge.",
+      note: `Prix publics dès ${prices.landingPrice}, fixés par écrit avant de commencer.`,
     },
     sections: [
       {
         kind: "list",
         id: "deliver",
-        eyebrow: "Ce qu'on livre",
-        title: "Le brief arrive,",
-        emphasis: "on prend la partie technique.",
+        title: "Le brief arrive, on prend la partie technique.",
         body: "Trois demandes qui reviennent chez les clients d'agence. Le périmètre et le prix sont écrits avant de commencer, pour que vous puissiez revendre au forfait sans surprise.",
         items: [
           {
@@ -78,25 +82,37 @@ export const outreachPages: Record<OutreachKey, OutreachPageConfig> = {
           },
           {
             title: "Site Next.js prêt pour l'IA",
-            body: "Votre maquette intégrée, avec données structurées et llms.txt pour les moteurs IA. Votre équipe fait la recette avant la mise en ligne.",
+            body: "Votre maquette intégrée, lisible par Google et par les moteurs IA. Votre équipe fait la recette avant la mise en ligne.",
           },
         ],
       },
       {
         kind: "pricing",
         id: "pricing",
-        eyebrow: "Prix",
-        title: "Nos prix publics,",
-        emphasis: "votre prix de revente.",
-        body: "Des prix de départ en € HT, qui servent de base à votre devis. Vous fixez votre marge. Pour tester la collaboration, commencez par un projet limité, comme une landing page.",
-        offers: ["landing", "site-ia", "sprint-ia"],
+        title: "Nos prix publics, votre prix de revente.",
+        body: "Des prix de départ en € HT, qui servent de base à votre devis. Vous fixez votre marge. Pour tester la collaboration, commencez par un projet limité, comme une page de présentation.",
+        offers: [
+          {
+            id: "landing",
+            audience: "Pour tester la collaboration.",
+            body: "Une page qui présente une offre, intégrée depuis votre maquette.",
+          },
+          {
+            id: "site-ia",
+            audience: "Pour un site complet.",
+            body: "5 à 8 pages rapides, lisibles par Google et par les moteurs IA.",
+          },
+          {
+            id: "sprint-ia",
+            audience: "Pour un agent sur le site ou les outils du client.",
+            body: "Un agent branché sur les outils du client, testé sur de vrais exemples, livré avec un guide écrit.",
+          },
+        ],
       },
       {
         kind: "list",
         id: "terms",
-        eyebrow: "Marque blanche",
-        title: "La marque blanche,",
-        emphasis: "noir sur blanc.",
+        title: "La marque blanche, noir sur blanc.",
         body: "Ces règles s'écrivent avec vous, par écrit, avant le premier brief. Voici ce qu'on vous propose d'y mettre.",
         items: [
           {
@@ -109,7 +125,7 @@ export const outreachPages: Record<OutreachKey, OutreachPageConfig> = {
             body: "La relation client reste la vôtre. Les échanges directs avec votre client se décident avec vous.",
           },
           {
-            body: "Le code dans votre repo ou celui du client, avec une passation écrite pour qu'un autre développeur puisse reprendre.",
+            body: "Le code dans votre dépôt ou celui du client, avec une passation écrite pour qu'un autre développeur puisse reprendre.",
           },
           {
             body: "Peu de projets en parallèle : si on ne peut pas tenir votre calendrier, on vous le dit avant de signer.",
@@ -119,18 +135,14 @@ export const outreachPages: Record<OutreachKey, OutreachPageConfig> = {
       {
         kind: "cases",
         id: "proof",
-        eyebrow: "Preuves",
-        title: "Ce que vous pouvez",
-        emphasis: "vérifier avant de signer.",
+        title: "Ce que vous pouvez vérifier avant de signer.",
         body: "Aucun projet en marque blanche n'est montré ici : par définition, ils ne portent pas notre nom. Voici deux sites livrés sous le nôtre, en ligne aujourd'hui.",
         slugs: ["pkba", "vertiflow"],
       },
     ],
     midCtaAfter: "pricing",
     booking: {
-      eyebrow: "30 minutes",
-      title: "Un brief IA",
-      emphasis: "que personne ne peut livrer chez vous ?",
+      title: "Un brief IA que personne ne peut livrer chez vous ?",
       body: "On lit le brief avec vous et on vous dit ce qu'on peut livrer, en combien de temps et à quel prix. Si ce n'est pas pour nous, on vous le dit aussi.",
     },
   },
@@ -138,25 +150,31 @@ export const outreachPages: Record<OutreachKey, OutreachPageConfig> = {
     key: "startups",
     path: "/pour/startups-sprint-ia",
     meta: {
-      title: "Sprint IA : votre feature IA en production en 2 semaines",
-      description: `Sprint IA au forfait, à partir de ${prices.sprintPrice} : une feature IA branchée sur votre produit, testée et en production en deux semaines, avec le code dans votre repo.`,
+      title: "Agent IA : votre feature IA en production en 2 semaines",
+      description: `Un agent IA au forfait dès ${prices.sprintPrice} : une feature IA branchée sur votre produit, testée et en production en deux semaines, le code dans votre dépôt.`,
     },
-    scenario: "agents",
+    backdrop: {
+      sources: ["github", "slack", "notion", "gmail", "stripe"],
+      destinations: [
+        "openai",
+        "claude",
+        "mistral-ai",
+        "hubspot",
+        "microsoft-teams",
+      ],
+    },
     hero: {
-      anchor: `Sprint IA · à partir de ${prices.sprintPrice} · 2 semaines`,
-      title: "Votre feature IA en production en 2 semaines,",
-      emphasis: "pas dans un prototype.",
-      serif: "production",
+      title:
+        "Votre feature IA en production en 2 semaines, pas dans un prototype.",
       subtitle:
-        "Un Sprint IA au forfait pour les startups qui ont une feature IA en attente : branchée sur votre produit, testée, en production, avec le code dans votre repo.",
+        "Un agent IA au forfait pour les startups qui ont une feature IA en attente : branchée sur votre produit, testée, en production, avec le code dans votre dépôt.",
+      note: `Agent IA à partir de ${prices.sprintPrice}, 2 semaines, prix fixé avant de commencer.`,
     },
     sections: [
       {
         kind: "list",
         id: "deliverables",
-        eyebrow: "Livrables",
-        title: "Ce que vous recevez",
-        emphasis: "à la fin du Sprint.",
+        title: "Ce que vous recevez au bout des deux semaines.",
         body: `Un forfait à partir de ${prices.sprintPrice}, au périmètre écrit et signé avant de commencer. Le prix ne bouge pas avec le temps passé.`,
         items: [
           {
@@ -173,20 +191,18 @@ export const outreachPages: Record<OutreachKey, OutreachPageConfig> = {
           },
           {
             title: "Un jeu de tests",
-            body: "Pour vérifier les réponses avant chaque changement de modèle ou de prompt.",
+            body: "Pour vérifier les réponses avant chaque changement de modèle ou de consigne.",
           },
           {
-            title: "Le code dans votre repo",
-            body: "Avec un runbook et une prise en main pour votre équipe.",
+            title: "Le code dans votre dépôt",
+            body: "Avec un guide écrit et une prise en main pour votre équipe.",
           },
         ],
       },
       {
-        kind: "list",
+        kind: "steps",
         id: "timeline",
-        eyebrow: "Calendrier",
-        title: "Deux semaines,",
-        emphasis: "une revue à la fin de chacune.",
+        title: "Deux semaines, une revue à la fin de chacune.",
         items: [
           {
             title: "Avant",
@@ -202,24 +218,23 @@ export const outreachPages: Record<OutreachKey, OutreachPageConfig> = {
           },
           {
             title: "Après",
-            body: "Runbook et passation. Votre équipe reprend la main, ou on assure le suivi mensuel, sur devis.",
+            body: "Guide écrit et passation. Votre équipe reprend la main, ou on assure le suivi mensuel, sur devis.",
           },
         ],
       },
       {
         kind: "list",
         id: "limits",
-        eyebrow: "Limites",
-        title: "Ce que le Sprint",
-        emphasis: "ne couvre pas.",
+        tone: "limit",
+        title: "Ce que le forfait ne couvre pas.",
         body: "Mieux vaut le savoir avant l'appel.",
         items: [
           {
-            body: "Une seule feature par Sprint. Plusieurs intégrations ou une recherche dans vos documents passent sur devis.",
+            body: "Une seule feature par forfait. Plusieurs intégrations ou une recherche dans vos documents passent sur devis.",
           },
           { body: "Pas d'astreinte 24 h/24, pas de certification SOC 2." },
           {
-            body: "Peu de Sprints en parallèle : le devis donne une date de début, et on ne la promet pas si on ne peut pas la tenir.",
+            body: "Peu de projets en parallèle : le devis donne une date de début, et on ne la promet pas si on ne peut pas la tenir.",
           },
           {
             body: "Si votre feature ne tient pas en deux semaines, on vous le dit dès l'appel, avec ce qu'il faudrait à la place.",
@@ -229,19 +244,15 @@ export const outreachPages: Record<OutreachKey, OutreachPageConfig> = {
       {
         kind: "cases",
         id: "proof",
-        eyebrow: "Preuves",
-        title: "Ce que vous pouvez",
-        emphasis: "ouvrir avant l'appel.",
-        body: "Hoppy, l'assistant IA de Hop Hop Immo, et CiteMe, cofondé par Maxime Mansiet, notre lead engineer. Les deux sont en ligne.",
+        title: "Ce que vous pouvez ouvrir avant l'appel.",
+        body: "Hoppy, l'assistant IA de Hop Hop Immo, et CiteMe, cofondé par Maxime Mansiet, qui écrit le code chez Klyx. Les deux sont en ligne.",
         slugs: ["hop-hop-immo", "citeme"],
       },
     ],
     midCtaAfter: "deliverables",
     booking: {
-      eyebrow: "30 minutes",
-      title: "Une feature IA",
-      emphasis: "qui attend quelqu'un pour la livrer ?",
-      body: "On regarde la feature avec vous et on vous dit si elle tient dans un Sprint. Sinon, on vous dit ce qu'il faudrait, sans engagement.",
+      title: "Une feature IA qui attend quelqu'un pour la livrer ?",
+      body: "On regarde la feature avec vous et on vous dit si elle tient dans le forfait. Sinon, on vous dit ce qu'il faudrait, sans engagement.",
     },
   },
 };
@@ -251,22 +262,20 @@ export const OUTREACH_KEYS = Object.keys(outreachPages) as OutreachKey[];
 export function outreachCopyText(page: OutreachPageConfig): string {
   const { hero, sections, booking } = page;
   return [
-    hero.anchor,
     hero.title,
-    hero.emphasis,
     hero.subtitle,
+    hero.note,
     ...sections.flatMap((section) => [
-      section.eyebrow,
       section.title,
-      section.emphasis,
-      section.kind === "list" ? (section.body ?? "") : section.body,
-      ...(section.kind === "list"
+      section.body ?? "",
+      ...(section.kind === "list" || section.kind === "steps"
         ? section.items.flatMap((item) => [item.title ?? "", item.body])
         : []),
+      ...(section.kind === "pricing"
+        ? section.offers.flatMap((offer) => [offer.audience, offer.body])
+        : []),
     ]),
-    booking.eyebrow,
     booking.title,
-    booking.emphasis,
     booking.body,
   ]
     .filter(Boolean)

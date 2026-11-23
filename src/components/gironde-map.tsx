@@ -55,12 +55,15 @@ const GIRONDE_PATH = [
 ].join("");
 
 const BORDEAUX = { x: 174.3, y: 260.9 };
+const ARCACHON = { x: 37, y: 326 };
 
 export function GirondeMap({
   label,
+  places,
   className,
 }: {
   label: string;
+  places: { bordeaux: string; arcachon: string };
   className?: string;
 }) {
   return (
@@ -72,28 +75,39 @@ export function GirondeMap({
     >
       <path
         d={GIRONDE_PATH}
-        fill="var(--surface-2)"
-        stroke="var(--line-strong)"
-        strokeWidth="1.5"
+        fill="var(--surface-1)"
+        stroke="var(--text-3)"
+        strokeWidth="1.25"
         strokeLinejoin="round"
       />
       <circle
         cx={BORDEAUX.x}
         cy={BORDEAUX.y}
-        r="18"
+        r="26"
         fill="var(--accent-soft)"
       />
-      <circle cx={BORDEAUX.x} cy={BORDEAUX.y} r="5" fill="var(--accent)" />
-      <text
-        x={BORDEAUX.x + 14}
-        y={BORDEAUX.y - 12}
+      <circle cx={BORDEAUX.x} cy={BORDEAUX.y} r="7" fill="var(--accent)" />
+      <circle
+        cx={ARCACHON.x}
+        cy={ARCACHON.y}
+        r="16"
+        fill="var(--accent-soft)"
+      />
+      <circle cx={ARCACHON.x} cy={ARCACHON.y} r="5.5" fill="var(--accent)" />
+      <g
         fill="var(--text)"
-        fontFamily="var(--font-mono)"
-        fontSize="14"
-        letterSpacing="0.06em"
+        fontFamily="var(--font-sans)"
+        fontSize="30"
+        fontWeight="600"
+        letterSpacing="-0.02em"
       >
-        BORDEAUX
-      </text>
+        <text x={BORDEAUX.x + 18} y={BORDEAUX.y - 18}>
+          {places.bordeaux}
+        </text>
+        <text x={ARCACHON.x + 14} y={ARCACHON.y + 38}>
+          {places.arcachon}
+        </text>
+      </g>
     </svg>
   );
 }

@@ -4,10 +4,11 @@ import { ArrowRight } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 
 import { ActionButton } from "@/components/action-button";
-import { EmphasisTitle } from "@/components/emphasis-title";
 import { JsonLd } from "@/components/json-ld";
-import { Cta } from "@/components/sections/cta";
-import { Faq } from "@/components/sections/faq";
+import { FaqList } from "@/components/ui-kit/faq-list";
+import { PageSection } from "@/components/ui-kit/page-section";
+import { SectionHeader } from "@/components/ui-kit/section-header";
+import { SiteCta } from "@/components/ui-kit/site-cta";
 import type { Translate } from "@/i18n/message-list";
 import { Link } from "@/i18n/navigation";
 import { type LocaleParams, resolvePageLocale } from "@/i18n/page-locale";
@@ -48,109 +49,82 @@ export default async function FaqPage({ params }: LocaleParams) {
         })}
       />
 
-      <section
-        data-shot="hero"
-        className="relative pt-28 pb-12 md:pt-36 md:pb-16"
+      <PageSection
+        id="hero"
+        divider={false}
+        containerClassName="pt-32 md:pt-40 lg:pt-44"
       >
-        <div className="container grid gap-10 lg:grid-cols-12 lg:items-end lg:gap-6">
-          <div className="lg:col-span-7">
-            <p className="hero-in type-label text-accent">
-              {t("count", { count: items.length, themes: themes.length })}
-            </p>
-            <h1 className="type-h1 mt-4 max-w-[20ch]">
-              <EmphasisTitle
-                title={t("hero.title")}
-                emphasis={t("hero.titleEmphasis")}
-                serif={t("hero.serif")}
-              />
-            </h1>
-            <p className="hero-in type-lead text-text-2 mt-5 max-w-[58ch]">
-              {t("hero.subtitle", prices)}
-            </p>
-            <div className="hero-in mt-7 flex flex-col gap-3 sm:flex-row sm:items-center">
-              <ActionButton
-                trackLocation="hero"
-                action="book"
-                size="lg"
-                className="w-full sm:w-auto"
-              >
-                {t("hero.ctaPrimary")}
-              </ActionButton>
-              <ActionButton
-                trackLocation="hero"
-                action="quote"
-                variant="secondary"
-                size="lg"
-                className="w-full sm:w-auto"
-              >
-                {t("hero.ctaSecondary")}
-                <ArrowRight />
-              </ActionButton>
-            </div>
+        <SectionHeader
+          as="h1"
+          title={t("hero.title")}
+          intro={t("hero.subtitle", prices)}
+        >
+          <div className="grid gap-3 sm:max-lg:flex sm:max-lg:flex-wrap">
+            <ActionButton action="book" size="xl" trackLocation="hero">
+              {t("hero.ctaPrimary")}
+            </ActionButton>
+            <ActionButton
+              action="quote"
+              variant="outline"
+              size="xl"
+              trackLocation="hero"
+            >
+              {t("hero.ctaSecondary")}
+            </ActionButton>
           </div>
-          <nav
-            aria-label={t("themesLabel")}
-            className="hero-in lg:col-span-4 lg:col-start-9"
-          >
-            <p className="type-label text-text-3">{t("themesLabel")}</p>
-            <ol className="border-line mt-4 border-t">
-              {themes.map((theme, i) => (
-                <li key={theme.key} className="border-line border-b">
-                  <a
-                    href={`#${theme.key}`}
-                    className="group hover:text-text text-text-2 flex items-baseline justify-between gap-4 py-2.5 text-[0.9375rem] transition-colors"
-                  >
-                    <span>
-                      <span className="type-data text-text-3 mr-3">
-                        {String(i + 1).padStart(2, "0")}
-                      </span>
-                      {t(`themes.${theme.key}`)}
-                    </span>
-                    <span className="type-data text-text-3">
-                      {theme.items.length}
-                    </span>
-                  </a>
-                </li>
-              ))}
-            </ol>
-          </nav>
-        </div>
-      </section>
+        </SectionHeader>
+        <nav aria-label={t("themesLabel")} className="mt-12 lg:mt-16">
+          <ul className="flex flex-wrap gap-2">
+            {themes.map((theme) => (
+              <li key={theme.key}>
+                <a
+                  href={`#${theme.key}`}
+                  className="border-line bg-surface-1 text-text-2 hover:border-line-strong hover:text-text inline-flex h-10 items-center gap-2 rounded-full border px-4 text-sm font-medium transition-colors duration-(--d-fast)"
+                >
+                  {t(`themes.${theme.key}`)}
+                  <span className="text-text-3 font-normal">
+                    {theme.items.length}
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </PageSection>
 
-      {themes.map((theme, i) => (
-        <Faq
+      {themes.map((theme) => (
+        <PageSection
           key={theme.key}
           id={theme.key}
-          index={String(i + 1).padStart(2, "0")}
-          eyebrow={t(`themes.${theme.key}`)}
-          title={t(`themes.${theme.key}`)}
-          openFirst
-          items={theme.items.map((item) => ({
-            id: item.id,
-            question: item.question,
-            answer: item.answer,
-            more: item.source && (
-              <Link
-                href={item.source.pathname}
-                className="group text-text-3 hover:text-text inline-flex items-center gap-1.5 text-sm transition-colors"
-              >
-                {t("source", { page: nav(item.source.navKey) })}
-                <ArrowRight
-                  aria-hidden="true"
-                  className="size-3.5 transition-transform duration-(--d-fast) group-hover:translate-x-0.5"
-                />
-              </Link>
-            ),
-          }))}
-        />
+          containerClassName="lg:py-24"
+        >
+          <FaqList
+            title={t(`themes.${theme.key}`)}
+            items={theme.items.map((item) => ({
+              id: item.id,
+              question: item.question,
+              answer: item.answer,
+              more: item.source && (
+                <Link
+                  href={item.source.pathname}
+                  className="group text-text-3 hover:text-accent-text inline-flex items-center gap-1.5 text-sm transition-colors duration-(--d-fast)"
+                >
+                  {t("source", { page: nav(item.source.navKey) })}
+                  <ArrowRight
+                    aria-hidden="true"
+                    className="size-3.5 transition-transform duration-(--d-fast) group-hover:translate-x-0.5"
+                  />
+                </Link>
+              ),
+            }))}
+          />
+        </PageSection>
       ))}
 
-      <Cta
+      <SiteCta
         title={t("cta.title")}
-        emphasis={t("cta.titleEmphasis")}
         body={t("cta.body")}
-        primary={{ action: "book", label: t("cta.ctaPrimary") }}
-        secondary={{ action: "quote", label: t("cta.ctaSecondary") }}
+        secondaryLabel={t("cta.secondary")}
       />
     </>
   );

@@ -1,6 +1,11 @@
 import { describe, expect, it } from "vitest";
 
+import en from "../../messages/en.json";
+import fr from "../../messages/fr.json";
+
 import { blogPostingJsonLd } from "./json-ld";
+import { getPriceValues } from "./offers";
+import { outreachPages } from "./outreach-pages";
 import { brandedTitle, buildMetadata, ogImageUrl } from "./seo";
 
 describe("buildMetadata", () => {
@@ -136,5 +141,35 @@ describe("brandedTitle", () => {
   it("keeps long titles unbranded", () => {
     const long = "A".repeat(55);
     expect(brandedTitle(long)).toBe(long);
+  });
+});
+
+describe("meta lengths", () => {
+  const MESSAGES = { fr, en } as const;
+  const fill = (text: string, values: Record<string, string>) =>
+    text.replace(/\{(\w+)\}/g, (_, name: string) => values[name] ?? "");
+
+  it.each(["fr", "en"] as const)(
+    "keeps %s titles within 60 and descriptions within 160 characters",
+    (locale) => {
+      const values: Record<string, string> = getPriceValues(locale);
+      for (const [key, entry] of Object.entries(MESSAGES[locale].meta)) {
+        if (typeof entry !== "object") continue;
+        const title = fill(entry.title, values);
+        const description = fill(entry.description, values);
+        expect(title.length, `${key}.title: ${title}`).toBeLessThanOrEqual(60);
+        expect(
+          description.length,
+          `${key}.description: ${description}`,
+        ).toBeLessThanOrEqual(160);
+      }
+    },
+  );
+
+  it("keeps outreach page titles and descriptions within limits", () => {
+    for (const [key, page] of Object.entries(outreachPages)) {
+      expect(page.meta.title.length, key).toBeLessThanOrEqual(60);
+      expect(page.meta.description.length, key).toBeLessThanOrEqual(160);
+    }
   });
 });

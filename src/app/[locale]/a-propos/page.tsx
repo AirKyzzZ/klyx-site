@@ -1,28 +1,53 @@
 import type { Metadata } from "next";
 
-import { ArrowRight, ArrowUpRight } from "lucide-react";
+import {
+  ArrowUpRight,
+  BookOpen,
+  Bot,
+  CodeXml,
+  FileText,
+  KeyRound,
+  MessageCircle,
+  Tag,
+  UserRound,
+  UsersRound,
+} from "lucide-react";
 import { getTranslations } from "next-intl/server";
 
+import { ActionButton } from "@/components/action-button";
 import { JsonLd } from "@/components/json-ld";
-import { hostOf } from "@/components/proof/browser-frame";
-import { ContributionWindow } from "@/components/proof/contribution-window";
-import { Section, SectionHeading } from "@/components/section";
-import { Cta } from "@/components/sections/cta";
-import {
-  FactRows,
-  RosterWindow,
-  TerminalWindow,
-} from "@/components/sections/founder";
-import { Hero } from "@/components/sections/hero";
+import { hostOf } from "@/components/proof/shot-frame";
+import { CaseCard } from "@/components/sections/case-grid";
+import { FounderPanel } from "@/components/sections/founder-panel";
 import { Button } from "@/components/ui/button";
-import { messageKeys, messageList } from "@/i18n/message-list";
+import { PageSection } from "@/components/ui-kit/page-section";
+import { SectionHeader } from "@/components/ui-kit/section-header";
+import { SiteCta } from "@/components/ui-kit/site-cta";
+import { TrustGrid } from "@/components/ui-kit/trust-grid";
 import { Link } from "@/i18n/navigation";
 import { type LocaleParams, resolvePageLocale } from "@/i18n/page-locale";
+import { getCaseStudies } from "@/lib/content";
 import { aboutPageJsonLd } from "@/lib/json-ld";
-import { getSiteShot } from "@/lib/proof";
+import { getPriceValues } from "@/lib/offers";
 import { buildMetadata } from "@/lib/seo";
 import { site } from "@/lib/site";
-import { teamRoster } from "@/lib/team-roster";
+
+const TEAM = [
+  { key: "lead", icon: UserRound },
+  { key: "agents", icon: Bot },
+  { key: "specialists", icon: UsersRound },
+] as const;
+
+const FACTS = ["company", "location", "languages", "tools"] as const;
+
+const TRUST = [
+  { key: "code", icon: CodeXml },
+  { key: "prices", icon: Tag },
+  { key: "quote", icon: FileText },
+  { key: "owned", icon: KeyRound },
+  { key: "handover", icon: BookOpen },
+  { key: "honest", icon: MessageCircle },
+] as const;
 
 export async function generateMetadata({
   params,
@@ -40,212 +65,160 @@ export async function generateMetadata({
 export default async function AboutPage({ params }: LocaleParams) {
   const locale = await resolvePageLocale(params);
   const t = await getTranslations({ locale, namespace: "about" });
-  const founder = await getTranslations({ locale, namespace: "home.founder" });
-  const facts = messageList(t, "facts.items", ["label", "value"]);
-  const trustValues = {
-    github: site.socials.github.replace("https://", ""),
-  };
-  const trustKeys = messageKeys(t.raw("trust.items"));
+  const cases = await getTranslations({ locale, namespace: "cases.labels" });
+  const prices = getPriceValues(locale);
+  const citeme = (await getCaseStudies(locale)).find(
+    (study) => study.slug === "citeme",
+  );
   const sisterText: Partial<
     Record<(typeof site.sisterSites)[number]["name"], string>
   > = {
-    "Klyx Estate": t("lines.estate"),
+    "Klyx Estate": t("products.estate"),
   };
-  const citeme = getSiteShot("citeme");
 
   return (
     <>
       <JsonLd data={aboutPageJsonLd(locale)} />
-      <Hero
-        title={t("hero.title")}
-        emphasis={t("hero.titleEmphasis")}
-        serif={t("hero.serif")}
-        subtitle={t("hero.subtitle")}
-        primary={{ action: "book", label: t("cta.ctaPrimary") }}
-        secondary={{ action: "quote", label: t("cta.ctaSecondary") }}
-        aside={<ContributionWindow locale={locale} />}
-      />
+      <PageSection
+        id="hero"
+        divider={false}
+        containerClassName="pt-32 md:pt-40 lg:pt-44"
+      >
+        <SectionHeader
+          as="h1"
+          title={t("hero.title")}
+          intro={t("hero.subtitle")}
+        >
+          <div className="grid gap-3 sm:max-lg:flex sm:max-lg:flex-wrap">
+            <ActionButton action="book" size="xl" trackLocation="hero">
+              {t("hero.ctaPrimary")}
+            </ActionButton>
+            <Button variant="outline" size="xl" asChild>
+              <Link href="/realisations">{t("hero.ctaSecondary")}</Link>
+            </Button>
+          </div>
+        </SectionHeader>
+        <FounderPanel locale={locale} className="mt-12 lg:mt-16" />
+      </PageSection>
 
-      <Section index="01" eyebrow={t("eyebrows.team")}>
-        <div className="grid gap-12 lg:grid-cols-12 lg:gap-6">
-          <div className="reveal lg:col-span-5 lg:pt-3">
-            <RosterWindow {...teamRoster(founder, "roster")} />
-          </div>
-          <div className="reveal lg:col-span-6 lg:col-start-7">
-            <SectionHeading
-              lead={t("team.title")}
-              rest={t("team.titleEmphasis")}
-            />
-            <div className="mt-8 max-w-[58ch] space-y-5">
-              <p className="type-lead text-text">{t("team.intro")}</p>
-              <p className="text-text-2">{t("team.agents")}</p>
-              <p className="text-text-2">{t("team.partners")}</p>
-              <p className="text-text-2">{t("team.handover")}</p>
-            </div>
-          </div>
-        </div>
-      </Section>
-
-      <Section index="02" eyebrow={t("eyebrows.story")}>
-        <div className="reveal grid gap-8 lg:grid-cols-12 lg:items-end lg:gap-6">
-          <div className="lg:col-span-6">
-            <SectionHeading
-              lead={t("story.title")}
-              rest={t("story.titleEmphasis")}
-            />
-            <div className="mt-8 max-w-[62ch] space-y-5">
-              <p className="type-lead text-text">{t("story.intro")}</p>
-              <p className="text-text-2">{t("story.work")}</p>
-            </div>
-          </div>
-          <div className="space-y-6 lg:col-span-5 lg:col-start-8">
-            <figure>
-              <TerminalWindow
-                title={t("info.window")}
-                command={t("info.command")}
-              >
-                <FactRows
-                  rows={facts.map((fact) => ({
-                    key: fact.label,
-                    value: fact.value,
-                  }))}
+      <PageSection id="equipe">
+        <SectionHeader title={t("team.title")} intro={t("team.intro")} />
+        <ul className="mt-12 grid gap-5 md:grid-cols-3 lg:gap-6">
+          {TEAM.map(({ key, icon: Icon }) => (
+            <li
+              key={key}
+              className="border-line bg-surface-1 shadow-panel flex flex-col gap-3.5 rounded-[16px] border p-6 sm:p-8"
+            >
+              <span className="bg-accent-tint text-accent grid size-10 place-items-center rounded-[10px]">
+                <Icon
+                  aria-hidden="true"
+                  className="size-5"
+                  strokeWidth={1.75}
                 />
-              </TerminalWindow>
-              <figcaption className="type-label text-text-3 mt-4">
-                {t("info.caption")}
-              </figcaption>
-            </figure>
-            <div className="flex flex-wrap gap-3">
-              <Button variant="secondary" size="lg" asChild>
-                <a href={site.socials.github} target="_blank" rel="noopener">
-                  {founder("github")} <ArrowUpRight />
-                </a>
-              </Button>
-              <Button variant="secondary" size="lg" asChild>
-                <a
-                  href={site.socials.linkedinFounder}
-                  target="_blank"
-                  rel="noopener"
-                >
-                  {founder("linkedin")} <ArrowUpRight />
-                </a>
-              </Button>
+              </span>
+              <h3 className="text-text text-lg leading-tight font-semibold tracking-[-0.3px]">
+                {t(`team.items.${key}.title`)}
+              </h3>
+              <p className="text-text-2 text-[0.9375rem] leading-[1.55]">
+                {t(`team.items.${key}.body`)}
+              </p>
+            </li>
+          ))}
+        </ul>
+      </PageSection>
+
+      <PageSection id="histoire">
+        <SectionHeader title={t("story.title")} intro={t("story.intro")}>
+          <p className="type-intro text-text-2">{t("story.body")}</p>
+        </SectionHeader>
+        <dl className="border-line bg-line mt-12 grid gap-px overflow-hidden rounded-[16px] border sm:grid-cols-2 lg:grid-cols-4">
+          {FACTS.map((key) => (
+            <div
+              key={key}
+              className="bg-surface-1 flex flex-col gap-1.5 px-6 py-5 sm:px-8 sm:py-6"
+            >
+              <dt className="text-text-3 text-[0.8125rem]">
+                {t(`story.facts.${key}.label`)}
+              </dt>
+              <dd className="text-text text-base font-medium">
+                {t(`story.facts.${key}.value`)}
+              </dd>
+            </div>
+          ))}
+        </dl>
+      </PageSection>
+
+      {citeme && (
+        <PageSection id="produits">
+          <SectionHeader
+            title={t("products.title")}
+            intro={t("products.citeme")}
+          />
+          <div className="mt-12 grid gap-5 lg:grid-cols-[minmax(0,1fr)_380px] lg:gap-6">
+            <CaseCard
+              item={citeme}
+              readLabel={cases("read")}
+              sizes="(min-width: 1024px) 640px, 90vw"
+            />
+            <div className="border-line bg-surface-1 flex flex-col self-start rounded-[20px] border p-6 sm:p-8">
+              <h3 className="text-text text-lg leading-tight font-semibold tracking-[-0.3px]">
+                {t("products.lines")}
+              </h3>
+              <ul className="mt-4 flex flex-col">
+                {site.sisterSites.map((sister) => (
+                  <li
+                    key={sister.url}
+                    className="border-line flex flex-col gap-1.5 border-t py-5 last:pb-0"
+                  >
+                    <a
+                      href={sister.url}
+                      target="_blank"
+                      rel="noopener"
+                      className="group text-text hover:text-accent-text flex items-center justify-between gap-3 font-medium transition-colors duration-(--d-fast)"
+                    >
+                      {sister.name}
+                      <span className="text-text-3 group-hover:text-accent-text inline-flex items-center gap-1.5 text-[0.8125rem] font-normal">
+                        {hostOf(sister.url)}
+                        <ArrowUpRight aria-hidden="true" className="size-3.5" />
+                      </span>
+                    </a>
+                    {sisterText[sister.name] && (
+                      <p className="text-text-2 text-[0.9375rem] leading-normal">
+                        {sisterText[sister.name]}
+                      </p>
+                    )}
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
-        </div>
-      </Section>
+        </PageSection>
+      )}
 
-      <Section index="03" eyebrow={t("eyebrows.products")}>
-        <div className="grid gap-12 lg:grid-cols-12 lg:gap-6">
-          <div className="reveal lg:col-span-7">
-            <SectionHeading
-              lead={t("products.title")}
-              rest={t("products.titleEmphasis")}
-            />
-            {citeme && (
-              <a
-                href={citeme.url}
-                target="_blank"
-                rel="noopener"
-                className="border-line-strong bg-surface-1 hover:bg-surface-2 shadow-card mt-10 flex flex-wrap items-baseline gap-x-4 gap-y-1 rounded-md border px-5 py-4 transition-colors duration-(--d-fast)"
-              >
-                <span className="text-text font-medium">CiteMe</span>
-                <span className="type-data text-text-3 inline-flex items-center gap-1.5">
-                  {hostOf(citeme.url)}
-                  <ArrowUpRight aria-hidden="true" className="size-3.5" />
-                </span>
-                <span className="text-text-2 w-full text-[0.9375rem] leading-snug">
-                  {t("story.citeme")}
-                </span>
-              </a>
-            )}
-          </div>
-          <div className="reveal lg:col-span-4 lg:col-start-9 lg:self-end">
-            <h3 className="type-h3">{t("lines.title")}</h3>
-            <ul className="border-line mt-6 border-t">
-              {site.sisterSites.map((sister) => (
-                <li key={sister.url} className="border-line border-b py-5">
-                  <a
-                    href={sister.url}
-                    target="_blank"
-                    rel="noopener"
-                    className="type-data text-text hover:text-text-2 inline-flex items-center gap-1.5 transition-colors"
-                  >
-                    {new URL(sister.url).host}
-                    <ArrowUpRight aria-hidden="true" className="size-3.5" />
-                  </a>
-                  {sisterText[sister.name] && (
-                    <p className="text-text-2 mt-2 text-[0.9375rem] leading-normal">
-                      {sisterText[sister.name]}
-                    </p>
-                  )}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </Section>
+      <PageSection id="confiance">
+        <SectionHeader title={t("trust.title")} intro={t("trust.intro")}>
+          <Button
+            variant="outline"
+            asChild
+            className="h-11 self-start rounded-[10px] px-5"
+          >
+            <Link href="/tarifs">{t("trust.pricing")}</Link>
+          </Button>
+        </SectionHeader>
+        <TrustGrid
+          className="mt-12"
+          items={TRUST.map(({ key, icon }) => ({
+            icon,
+            title: t(`trust.items.${key}.title`),
+            body: t(`trust.items.${key}.body`, prices),
+          }))}
+        />
+      </PageSection>
 
-      <Section index="04" eyebrow={t("eyebrows.trust")}>
-        <div className="grid gap-12 lg:grid-cols-12 lg:gap-6">
-          <div className="reveal lg:col-span-7">
-            <SectionHeading
-              lead={t("trust.title")}
-              rest={t("trust.titleEmphasis")}
-            />
-            <p className="text-text-2 mt-6 max-w-[62ch]">{t("trust.body")}</p>
-          </div>
-          <div className="reveal lg:col-span-4 lg:col-start-9 lg:pt-3">
-            <dl className="border-line bg-surface-1 shadow-card rounded-md border p-5 lg:p-7">
-              {trustKeys.map((key) => {
-                const value = t(`trust.items.${key}.value`, trustValues);
-                return (
-                  <div
-                    key={key}
-                    className="border-line border-t pt-4 not-first:mt-4 first:border-t-0 first:pt-0"
-                  >
-                    <dt className="type-label text-text-3">
-                      {t(`trust.items.${key}.label`)}
-                    </dt>
-                    <dd className="type-data text-text mt-1.5">
-                      {key === "code" && (
-                        <a
-                          href={site.socials.github}
-                          target="_blank"
-                          rel="noopener"
-                          className="hover:text-text-2 inline-flex items-center gap-1.5 transition-colors"
-                        >
-                          {value}
-                          <ArrowUpRight
-                            aria-hidden="true"
-                            className="size-3.5"
-                          />
-                        </a>
-                      )}
-                      {key === "prices" && (
-                        <Link
-                          href="/tarifs"
-                          className="hover:text-text-2 inline-flex items-center gap-1.5 transition-colors"
-                        >
-                          {value}
-                          <ArrowRight aria-hidden="true" className="size-3.5" />
-                        </Link>
-                      )}
-                      {key !== "code" && key !== "prices" && value}
-                    </dd>
-                  </div>
-                );
-              })}
-            </dl>
-          </div>
-        </div>
-      </Section>
-
-      <Cta
+      <SiteCta
         title={t("cta.title")}
         body={t("cta.body")}
-        primary={{ action: "book", label: t("cta.ctaPrimary") }}
-        secondary={{ action: "quote", label: t("cta.ctaSecondary") }}
+        secondaryLabel={t("cta.secondary")}
       />
     </>
   );

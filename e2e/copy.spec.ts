@@ -17,6 +17,12 @@ const PAGES = [
   "/en/use-cases/professional-services",
   "/faq",
   "/en/faq",
+  "/blog",
+  "/en/blog",
+  "/blog/cout-agent-ia-pme",
+  "/en/blog/cout-agent-ia-pme",
+  "/confidentialite",
+  "/en/privacy",
 ];
 
 for (const path of PAGES) {

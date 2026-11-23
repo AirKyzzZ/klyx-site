@@ -29,14 +29,14 @@ export async function SiteHeader() {
               {
                 href: "/services/creation-site-web",
                 title: t("sites"),
-                description: cards("sites.outcome"),
+                description: cards("sites.audience"),
                 price: from(getOfferPrice("landing")),
               },
               {
                 href: "/services/agents-ia",
                 title: t("agents"),
-                description: cards("agents.outcome"),
-                price: from(getOfferPrice("audit-ia")),
+                description: cards("agents.audience"),
+                price: from(getOfferPrice("sprint-ia")),
               },
               {
                 href: "/services/automatisation-ia",
@@ -64,7 +64,7 @@ export async function SiteHeader() {
               {
                 href: "/forward-deployed-engineer",
                 title: t("fde"),
-                description: cards("fde.outcome"),
+                description: cards("fde.audience"),
                 price: prices("perDay", {
                   price: formatPrice(getOfferPrice("fde"), locale),
                 }),
@@ -80,6 +80,12 @@ export async function SiteHeader() {
         bookLabel={t("book")}
         openMenuLabel={t("openMenu")}
         closeMenuLabel={t("closeMenu")}
+        languageLabel={t("language")}
+        themeLabels={{
+          label: t("theme.label"),
+          light: t("theme.light"),
+          dark: t("theme.dark"),
+        }}
       />
     </header>
   );

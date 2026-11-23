@@ -1,12 +1,16 @@
 import { expect, test } from "@playwright/test";
 
-const EN_PAGES = ["/en/pricing", "/en/about", "/en/work"];
+const EN_PAGES = [
+  { path: "/en/pricing", fr: "/tarifs" },
+  { path: "/en/about", fr: "/a-propos" },
+  { path: "/en/work", fr: "/realisations" },
+];
 const MAX_REQUESTS_PER_URL = 3;
 const LOOP_OBSERVATION_MS = 3000;
 
 test.use({ viewport: { width: 1440, height: 900 } });
 
-for (const path of EN_PAGES) {
+for (const { path, fr } of EN_PAGES) {
   test(`${path} settles without a prefetch loop`, async ({ page }) => {
     await page.goto(path);
     await page.waitForLoadState("networkidle");
@@ -16,8 +20,17 @@ for (const path of EN_PAGES) {
     });
     await page.reload();
     await page.waitForLoadState("networkidle", { timeout: 10_000 });
-    await page.getByRole("link", { name: "FR", exact: true }).first().hover();
+
+    const menu = page.locator("header details").filter({
+      has: page.locator("summary", { hasText: "Language" }),
+    });
+    await menu.locator("summary").click();
+    const frLink = menu.locator('a[hreflang="fr"]');
+    await expect(frLink).toBeVisible();
+    await expect(frLink).toHaveAttribute("href", fr);
+    await frLink.hover();
     await page.waitForTimeout(LOOP_OBSERVATION_MS);
+
     const repeated = [...counts].filter(
       ([, count]) => count > MAX_REQUESTS_PER_URL,
     );

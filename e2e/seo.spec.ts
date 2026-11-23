@@ -352,6 +352,20 @@ test("blog posts use their own share image in JSON-LD", async ({ page }) => {
   );
 });
 
+test("blog post JSON-LD matches the visible article", async ({ page }) => {
+  await page.goto("/blog/cout-agent-ia-pme");
+  const article = (await jsonLdNodes(page)).find((node) =>
+    hasType(node, "BlogPosting"),
+  );
+  await expect(page.locator("h1")).toHaveText(String(article?.headline));
+  const dates = await page
+    .locator("[data-post-meta] time")
+    .evaluateAll((times) => times.map((time) => time.getAttribute("datetime")));
+  expect(article?.datePublished).toBe(dates[0]);
+  expect(article?.dateModified).toBe(dates[1] ?? dates[0]);
+  await expect(page.locator("main")).toContainText(site.founder);
+});
+
 test("every sitemap entry carries a lastmod", async ({ request }) => {
   const sitemap = await (await request.get("/sitemap.xml")).text();
   const entries = sitemap.match(/<url>[\s\S]*?<\/url>/g) ?? [];
