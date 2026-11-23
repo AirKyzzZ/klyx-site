@@ -328,6 +328,60 @@
   }
 }
 
+.rail-lights {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  margin-inline: -1px;
+}
+
+.rail-light {
+  position: absolute;
+  inset-block: 0;
+  width: 1px;
+  overflow: hidden;
+
+  &[data-side="left"] {
+    left: 0;
+  }
+  &[data-side="right"] {
+    right: 0;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      transparent calc(100% - 240px),
+      var(--accent) calc(100% - 16px),
+      transparent
+    );
+    transform: translateY(-100%);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .rail-light::before {
+    animation: rail-light var(--rail-loop, 12s) var(--ease-in-out) infinite;
+  }
+
+  .rail-light[data-side="right"]::before {
+    animation-delay: calc(var(--rail-loop, 12s) / -2);
+  }
+}
+
+@keyframes rail-light {
+  0% {
+    transform: translateY(-100%);
+  }
+  50%,
+  100% {
+    transform: translateY(calc(100% + 240px));
+  }
+}
+
 .tone-sand {
   --text: var(--ink);
   --text-2: var(--ink-2);

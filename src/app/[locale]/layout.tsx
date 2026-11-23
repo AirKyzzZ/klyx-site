@@ -11,6 +11,7 @@ import { notFound } from "next/navigation";
 
 import { AnalyticsIsland } from "@/components/analytics/analytics-island";
 import { MachineView } from "@/components/machine-view/machine-view";
+import { Rails } from "@/components/rails";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { ThemeScript } from "@/components/theme/theme-script";
@@ -65,9 +66,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
       <body>
         <NextIntlClientProvider messages={{ machine }}>
           <div className="relative isolate">
-            <div className="rails" aria-hidden="true">
-              <div className="container" />
-            </div>
+            <Rails />
             <SiteHeader />
             <main className="relative">{children}</main>
             <SiteFooter />

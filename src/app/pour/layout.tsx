@@ -6,6 +6,7 @@ import { Suspense } from "react";
 import { AnalyticsIsland } from "@/components/analytics/analytics-island";
 import { OutreachFooter } from "@/components/outreach-footer";
 import { OutreachHeader } from "@/components/outreach-header";
+import { Rails } from "@/components/rails";
 import { ThemeScript } from "@/components/theme/theme-script";
 import { site } from "@/lib/site";
 import { THEME_COLORS } from "@/lib/theme";
@@ -38,9 +39,7 @@ export default function OutreachLayout({
       <body>
         <NextIntlClientProvider locale="fr" messages={{}}>
           <div className="relative isolate">
-            <div className="rails" aria-hidden="true">
-              <div className="container" />
-            </div>
+            <Rails />
             <OutreachHeader />
             <main className="relative">{children}</main>
             <OutreachFooter />
