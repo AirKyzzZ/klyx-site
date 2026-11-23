@@ -4,6 +4,7 @@ import path from "node:path";
 import { hasLocale } from "next-intl";
 import { ImageResponse } from "next/og";
 
+import { KLYX_MARK_PATH } from "@/components/brand/klyx-mark";
 import { type Locale, routing } from "@/i18n/routing";
 import { getStaticTranslator } from "@/i18n/static-translator";
 import { site } from "@/lib/site";
@@ -11,97 +12,131 @@ import { site } from "@/lib/site";
 export const OG_SIZE = { width: 1200, height: 630 };
 
 const COLORS = {
-  bg: "#141414",
-  surface: "#211F1D",
-  line: "rgba(237,232,222,0.14)",
-  text: "#EDEAE3",
-  text2: "#A8A29A",
-  text3: "#948E85",
+  bg: "#FBFAF8",
+  line: "#E9E5DD",
+  lineStrong: "#D6D0C4",
+  text: "#1A1917",
+  text2: "#5E5850",
+  text3: "#8F887E",
   accent: "#F54E00",
 };
 
-const NODES = [
-  { x: 40, y: 60, label: "trigger" },
-  { x: 230, y: 190, label: "agent" },
-  { x: 40, y: 320, label: "tool" },
-  { x: 230, y: 450, label: "result" },
-];
-
-const EDGES = [
-  "M150 100 C 200 100, 190 230, 230 230",
-  "M230 230 C 180 230, 200 360, 150 360",
-  "M150 360 C 200 360, 190 490, 230 490",
-];
+const RAIL = 64;
+const BAND = 104;
+const CONTENT_X = RAIL + 44;
 
 function asset(file: string) {
   return readFile(path.join(process.cwd(), "public", file));
 }
 
 async function grainDataUrl() {
-  const png = await asset("textures/grain.png");
+  const png = await asset("textures/grain-sand.png");
   return `data:image/png;base64,${png.toString("base64")}`;
 }
 
 function words(text: string | undefined): string[] {
-  return text ? text.split(/\s+/).filter(Boolean) : [];
+  if (!text) return [];
+  return text
+    .split(/[ \t\n]+/)
+    .filter(Boolean)
+    .reduce<string[]>((acc, word) => {
+      if (/^[?:!;»]$/.test(word) && acc.length > 0) {
+        acc[acc.length - 1] += ` ${word}`;
+      } else {
+        acc.push(word);
+      }
+      return acc;
+    }, []);
 }
 
-function GraphGlyph() {
+function titleSize(length: number): number {
+  if (length <= 28) return 88;
+  if (length <= 52) return 74;
+  if (length <= 84) return 62;
+  return 54;
+}
+
+function Cross({ x, y }: { x: number; y: number }) {
   return (
     <div
-      style={{ display: "flex", position: "relative", width: 360, height: 540 }}
+      style={{
+        position: "absolute",
+        left: x - 6,
+        top: y - 6,
+        width: 13,
+        height: 13,
+        display: "flex",
+      }}
     >
-      <svg
-        width="360"
-        height="540"
-        viewBox="0 0 360 540"
-        style={{ position: "absolute", top: 0, left: 0 }}
-      >
-        {EDGES.map((d) => (
-          <path
-            key={d}
-            d={d}
-            fill="none"
-            stroke={COLORS.line}
-            strokeWidth="2"
-          />
-        ))}
-        <circle cx="196" cy="160" r="16" fill="rgba(245,78,0,0.25)" />
-        <circle cx="196" cy="160" r="6" fill={COLORS.accent} />
-      </svg>
-      {NODES.map((node, i) => (
+      <div
+        style={{
+          position: "absolute",
+          left: 6,
+          top: 0,
+          width: 1,
+          height: 13,
+          background: COLORS.lineStrong,
+        }}
+      />
+      <div
+        style={{
+          position: "absolute",
+          left: 0,
+          top: 6,
+          width: 13,
+          height: 1,
+          background: COLORS.lineStrong,
+        }}
+      />
+    </div>
+  );
+}
+
+function Frame() {
+  const right = OG_SIZE.width - RAIL;
+  const bottom = OG_SIZE.height - BAND;
+  return (
+    <>
+      {[RAIL, right].map((x) => (
         <div
-          key={node.label}
+          key={x}
           style={{
             position: "absolute",
-            left: node.x,
-            top: node.y,
-            width: 110,
-            height: 80,
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "space-between",
-            padding: "12px 14px",
-            borderRadius: 10,
-            border: `1px solid ${i === 1 ? COLORS.accent : COLORS.line}`,
-            background: COLORS.surface,
-            fontFamily: "Geist Mono",
-            fontSize: 15,
-            color: COLORS.text2,
+            left: x,
+            top: 0,
+            width: 1,
+            height: OG_SIZE.height,
+            background: COLORS.line,
           }}
-        >
-          <div
-            style={{
-              width: 8,
-              height: 8,
-              borderRadius: 999,
-              background: i === 1 ? COLORS.accent : COLORS.text3,
-            }}
-          />
-          {node.label}
-        </div>
+        />
       ))}
-    </div>
+      {[BAND, bottom].map((y) => (
+        <div
+          key={y}
+          style={{
+            position: "absolute",
+            left: RAIL,
+            top: y,
+            width: right - RAIL,
+            height: 1,
+            background: COLORS.line,
+          }}
+        />
+      ))}
+      <div
+        style={{
+          position: "absolute",
+          left: RAIL - 1,
+          top: 170,
+          width: 3,
+          height: 230,
+          backgroundImage: `linear-gradient(to bottom, rgba(245,78,0,0), ${COLORS.accent}, rgba(245,78,0,0))`,
+        }}
+      />
+      {[RAIL, right].flatMap((x) =>
+        [BAND, bottom].map((y) => <Cross key={`${x}-${y}`} x={x} y={y} />),
+      )}
+    </>
   );
 }
 
@@ -112,11 +147,16 @@ export async function renderOg({
   title: string;
   emphasis?: string;
 }) {
-  const [sans, mono, grain] = await Promise.all([
+  const [regular, semibold, grain] = await Promise.all([
+    asset("fonts/geist-400.ttf"),
     asset("fonts/geist-600.ttf"),
-    asset("fonts/geist-mono-400.ttf"),
     grainDataUrl(),
   ]);
+  const tokens = [
+    ...words(title).map((word) => ({ word, color: COLORS.text })),
+    ...words(emphasis).map((word) => ({ word, color: COLORS.text2 })),
+  ];
+  const size = titleSize(tokens.map(({ word }) => word).join(" ").length);
 
   return new ImageResponse(
     <div
@@ -130,74 +170,103 @@ export async function renderOg({
         backgroundRepeat: "repeat",
         backgroundSize: "128px 128px",
         color: COLORS.text,
-        padding: "72px 72px 64px",
+        fontFamily: "Geist",
       }}
     >
+      <Frame />
       <div
         style={{
+          position: "absolute",
+          left: CONTENT_X,
+          right: CONTENT_X,
+          top: 0,
+          height: BAND,
           display: "flex",
-          flexDirection: "column",
+          alignItems: "center",
           justifyContent: "space-between",
-          width: 700,
         }}
       >
-        <div
-          style={{
-            display: "flex",
-            fontFamily: "Geist Mono",
-            fontSize: 20,
-            letterSpacing: "0.06em",
-            color: COLORS.text3,
-          }}
-        >
-          {`KLYX · ${site.city.toUpperCase()}`}
+        <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
+          <svg width="38" height="38" viewBox="0 0 900 900">
+            <path
+              transform="translate(49.5 829.5) scale(0.1 -0.1)"
+              d={KLYX_MARK_PATH}
+              fill={COLORS.text}
+            />
+          </svg>
+          <div
+            style={{
+              fontSize: 34,
+              fontWeight: 600,
+              letterSpacing: "-0.03em",
+            }}
+          >
+            {site.name}
+          </div>
         </div>
-        <div
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-            fontFamily: "Geist",
-            fontSize: 64,
-            lineHeight: 1.05,
-            letterSpacing: "-0.04em",
-          }}
-        >
-          {[
-            ...words(title).map((word) => ({ word, color: COLORS.text })),
-            ...words(emphasis).map((word) => ({ word, color: COLORS.text2 })),
-          ].map(({ word, color }, i) => (
-            <span key={i} style={{ color, marginRight: 16 }}>
-              {word}
-            </span>
-          ))}
-        </div>
-        <div
-          style={{
-            display: "flex",
-            fontFamily: "Geist Mono",
-            fontSize: 24,
-            color: COLORS.text3,
-          }}
-        >
+        <div style={{ fontSize: 24, fontWeight: 400, color: COLORS.text3 }}>
           {site.url.replace("https://", "")}
         </div>
       </div>
       <div
         style={{
-          display: "flex",
           position: "absolute",
-          right: 72,
-          top: 45,
+          left: CONTENT_X,
+          right: CONTENT_X,
+          top: BAND,
+          bottom: BAND,
+          display: "flex",
+          alignItems: "center",
         }}
       >
-        <GraphGlyph />
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            fontSize: size,
+            fontWeight: 600,
+            lineHeight: 1.04,
+            letterSpacing: "-0.042em",
+          }}
+        >
+          {tokens.map(({ word, color }, i) => (
+            <span key={i} style={{ color, marginRight: size * 0.2 }}>
+              {word}
+            </span>
+          ))}
+        </div>
+      </div>
+      <div
+        style={{
+          position: "absolute",
+          left: CONTENT_X,
+          right: CONTENT_X,
+          bottom: 0,
+          height: BAND,
+          display: "flex",
+          alignItems: "center",
+          gap: 12,
+          fontSize: 24,
+          fontWeight: 400,
+          color: COLORS.text2,
+        }}
+      >
+        <div
+          style={{
+            width: 10,
+            height: 10,
+            borderRadius: 999,
+            background: COLORS.accent,
+          }}
+        />
+        {site.city}
       </div>
     </div>,
     {
       ...OG_SIZE,
       fonts: [
-        { name: "Geist", data: sans, weight: 600, style: "normal" },
-        { name: "Geist Mono", data: mono, weight: 400, style: "normal" },
+        { name: "Geist", data: regular, weight: 400, style: "normal" },
+        { name: "Geist", data: semibold, weight: 600, style: "normal" },
       ],
     },
   );
