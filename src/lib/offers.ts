@@ -129,8 +129,10 @@ export function formatPrice(amount: number, locale: Locale): string {
     style: "currency",
     currency: "EUR",
     maximumFractionDigits: 0,
-  }).format(amount);
-  return locale === "fr" ? `${formatted} HT` : `${formatted} excl. VAT`;
+  })
+    .format(amount)
+    .replaceAll("\u202f", "\u00a0");
+  return locale === "fr" ? `${formatted}\u00a0HT` : `${formatted} excl. VAT`;
 }
 
 export const FDE_MIN_DAYS_PER_WEEK = 2;
