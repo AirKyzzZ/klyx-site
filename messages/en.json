@@ -2817,7 +2817,7 @@
     "title": "Klyx",
     "description": "Websites, AI agents and automations delivered at a fixed price for startups and agencies, from Bordeaux. Free quote, public prices.",
     "home": {
-      "title": "Klyx | AI agency in Bordeaux, AI agents and websites at fixed prices",
+      "title": "Klyx | AI agency in Bordeaux, fixed-price agents and sites",
       "description": "AI agency in Bordeaux: we connect AI agents to your email, CRM, spreadsheets and accounting. Live in 2 weeks at a fixed price. Public prices, free quote."
     },
     "sites": {
@@ -2834,7 +2834,7 @@
     },
     "pricing": {
       "title": "Pricing: what a website or an AI agent costs | Klyx",
-      "description": "Every Klyx price excluding VAT: websites from {landingPrice}, AI audit from {auditPrice}, AI agent from {sprintPrice}, dedicated developer at {fdeDayPrice} per day. Free quote."
+      "description": "Klyx prices: websites from {landingPrice}, AI audit {auditPrice}, AI agent from {sprintPrice}, dedicated developer {fdeDayPrice} a day. Free quote."
     },
     "cases": {
       "title": "Our work: websites, software and AI assistants | Klyx",

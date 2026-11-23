@@ -150,9 +150,8 @@ export const outreachPages: Record<OutreachKey, OutreachPageConfig> = {
     key: "startups",
     path: "/pour/startups-sprint-ia",
     meta: {
-      title:
-        "Agent IA au forfait : votre feature IA en production en 2 semaines",
-      description: `Un agent IA au forfait, à partir de ${prices.sprintPrice} : une feature IA branchée sur votre produit, testée et en production en deux semaines, avec le code dans votre dépôt.`,
+      title: "Agent IA : votre feature IA en production en 2 semaines",
+      description: `Un agent IA au forfait dès ${prices.sprintPrice} : une feature IA branchée sur votre produit, testée et en production en deux semaines, le code dans votre dépôt.`,
     },
     backdrop: {
       sources: ["github", "slack", "notion", "gmail", "stripe"],
