@@ -27,7 +27,7 @@ export function CenteredHero({
       {...props}
     >
       <div className="relative container">
-        <div className="relative isolate flex flex-col items-center pt-32 pb-14 text-center md:pt-40 lg:h-[692px] lg:pt-[222px] lg:pb-0">
+        <div className="relative isolate flex flex-col items-center pt-32 pb-14 text-center md:pt-40 lg:min-h-[692px] lg:pt-[222px] lg:pb-12">
           {backdrop && (
             <div className="absolute inset-y-0 right-[calc(-1*var(--content-x))] left-[calc(-1*var(--content-x))] -z-1">
               {backdrop}

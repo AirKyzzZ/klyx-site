@@ -64,10 +64,10 @@ function PriceBlock({
       <p aria-hidden={!label} className="text-text-3 text-[0.8125rem]">
         {label ?? "\u00a0"}
       </p>
-      <p className="text-text flex flex-wrap items-baseline text-[1.875rem] leading-none font-semibold tracking-[-1px]">
+      <p className="text-text flex flex-wrap items-baseline gap-x-1 text-[1.875rem] leading-none font-semibold tracking-[-1px]">
         {price}
         {unit && (
-          <span className="text-text-2 ml-1 text-[0.9375rem] font-normal tracking-normal">
+          <span className="text-text-2 text-[0.9375rem] font-normal tracking-normal">
             {unit}
           </span>
         )}
@@ -127,7 +127,7 @@ function TierCard({
         {tier.href && (
           <Link
             href={tier.href}
-            className="text-accent hover:text-accent-hover text-sm font-medium underline decoration-1 underline-offset-[3px]"
+            className="text-accent-text hover:text-accent text-sm font-medium underline decoration-1 underline-offset-[3px]"
           >
             {seeOfferLabel}
           </Link>

@@ -27,7 +27,7 @@ export async function FdeDefinition({ locale }: { locale: Locale }) {
               pathname: "/blog/[slug]",
               params: { slug: FDE_DEFINITION_SLUG },
             }}
-            className="text-accent hover:text-accent-hover inline-flex w-fit items-center gap-1.5 text-[0.9375rem] font-medium underline decoration-1 underline-offset-[3px]"
+            className="text-accent-text hover:text-accent inline-flex w-fit items-center gap-1.5 text-[0.9375rem] font-medium underline decoration-1 underline-offset-[3px]"
           >
             {t("definition.link")}
             <ArrowRight aria-hidden="true" className="size-4" />
