@@ -82,6 +82,8 @@ Server components unless noted. All take `className`.
 | `PageSection` | `page-section.tsx` | `id?`, `divider?` (default true), `containerClassName?`, `children` | Section wrapper with separator, rail markers and default padding. Override padding through `containerClassName` (e.g. `lg:pt-30`). |
 | `SectionHeader` | `section-header.tsx` | `title`, `intro?`, `as?` (`h2` default, `h1` for inner-page heroes), `children?` | H2 left, intro right. `children` go under the intro (buttons, links). |
 | `CenteredHero` | `centered-hero.tsx` | `title` (h1), `subtitle?`, `actions?`, `backdrop?`, `footer?`, any `<section>` attribute | Home hero layout; reuse for inner pages with another backdrop. |
+| `SplitHero` | `split-hero.tsx` | `title` (h1), `subtitle?`, `actions?`, `aside?`, `breadcrumb?` | Text left, 440px aside right (stacks under `lg`). Inner-page hero for `/cas-usage`, the sector pages and `/agence-ia-bordeaux`. |
+| `FactCard` | `fact-card.tsx` | `visual?`, `facts: { label, value }[]`, `price?: { label, value, unit?, note? }` | Key facts as a label/value list with an optional inset visual and price footer. Used as the `SplitHero` aside. |
 | `ConstellationBackdrop` | `constellation-backdrop.tsx` | `sources`, `destinations` (5 `ToolLogoId` each) | 40px grid, dotted wires, orange nodes, floating white logo tiles at the Figma positions. Decorative (`aria-hidden`). |
 | `ClientsRow` | `clients-row.tsx` | `label`, `names` | Text wordmarks of real clients only. |
 | `ToolsStrip` | `tools-strip.tsx` | `title`, `tools: Tool[]`, `more?` | Centered logo and name row. |
@@ -89,23 +91,34 @@ Server components unless noted. All take `className`.
 | `AgentPill`, `FlowLine` | `agent-pill.tsx` | `label` | Orange "Agent IA" pill and the 1.5px connector. |
 | `FlowRow` | `flow-row.tsx` | `from`, `to` (logo ids), `agentLabel` | Logo, pill, logos chain used in use cases. |
 | `OfferCard`, `OfferRow`, `CatalogueLinks` | `offer-card.tsx` | card: `name`, `audience`, `body`, `priceLabel?`, `price`, `unit?`, `duration`, `href`, `linkLabel`, `illustration?`; links: `label`, `items` | `OfferRow` is the bordered 3-column table. |
+| `OfferLink` | `offer-link.tsx` | `href`, `name`, `price` | Compact link card (name, price, arrow circle). Plain `next/link`, so pass an already localized `href`. Used on the 404 and in the blog service links. |
 | `SiteIllustration`, `AgentIllustration`, `TeamIllustration` | `offer-illustrations.tsx` | see file | The three offer illustrations. Team uses generic avatars plus Maxime's real photo, never stock faces. |
 | `UseCaseCard`, `BeforeAfterRows` | `use-case-card.tsx` | `category`, `title`, `from`, `to`, `agentLabel`, `before`, `after` (`{ label, text }`) | `BeforeAfterRows` also works on its own. |
+| `ComparisonList` | `comparison-list.tsx` | `items: { title, before, after }[]` (`before`/`after` are `{ label, text }`) | One bordered list: title left, `BeforeAfterRows` right. The before/after block on sector pages and `/agence-ia-bordeaux`. |
 | `CaseCarousel` (client) | `case-carousel.tsx` | `items: CarouselCase[]`, `labels`, `interval?` (ms, 4000) | Tabs below the slide, progress-driven advance. |
 | `CaseRow` | `case-row.tsx` | `slug`, `name`, `kind`, `summary`, `meta`, `image` | One "other project" row linking to its case study. |
-| `MethodSteps` | `method-steps.tsx` | `steps: { when?, title, body, mock? }[]` | Numbered rows, mock panel on the right. |
+| `MethodSteps` | `method-steps.tsx` | `steps: { when?, title, body, mock? }[]` | With a mock on any step: numbered rows, mock panel on the right. With no mock at all: columns instead (2 from `sm`, 4 on `lg` when there are more than 3 steps, else 3), the numbers joined by a line on desktop. Offer pages and `/tarifs` use the column layout. |
 | `CallMock`, `QuoteMock`, `UpdateMock`, `HandoverMock` | `method-mocks.tsx` | see file | Mock cards for the four steps. |
 | `TrustGrid` | `trust-grid.tsx` | `items: { icon, title, body }[]`, `footer?: { label, models }` | Données et sécurité panel. |
-| `FounderCard` | `founder-card.tsx` | `name`, `role`, `bio`, `photo`, `photoAlt`, `stats`, `graph?`, `links` (`{ label, detail, href, icon }`) | Pass `ContributionGraph` with `fills={ACCENT_LEVEL_FILLS}` and `cell={9}` as `graph`. Stats come from data (GitHub JSON, case count), never typed in. |
+| `FounderCard` | `founder-card.tsx` | `name`, `role`, `bio`, `photo`, `photoAlt`, `stats`, `graph?`, `links` (`{ label, detail, href, icon }`) | Pass `ContributionGraph` with `fills={ACCENT_LEVEL_FILLS}` and `cell={9}` as `graph`. Stats come from data (GitHub JSON, case count), never typed in. Use `FounderPanel` instead of filling it by hand. |
 | `FaqList` | `faq-list.tsx` | `title`, `intro?`, `items: { question, answer, id? }[]`, `openFirst?` | Native `<details class="faq-item">` with the answer as the direct `<p>` child (quality.spec relies on it). |
 | `FinalCta` | `final-cta.tsx` | `title`, `body`, `actions?`, `aside` | White panel with the soft orange glow. |
 | `BookingCard` (client) | `booking-card.tsx` | `labels`, `avatar`, `days`, `slots`, `buttonTemplate` (`{day} {date} {time}`, pass `t.raw`) | Day and slot pickers are marked "Exemple"; the button always opens `site.calUrl` (or `/contact`). |
+
+Page-level pieces built on the kit, outside `ui-kit/`:
+
+| Component | File | Props | Notes |
+|---|---|---|---|
+| `MethodSection` | `src/components/templates/method-section.tsx` | `locale`, `title`, `intro`, `steps` (exactly 4 `{ when, title, body }`, check with `fourSteps()`), `quote: { title, items, excluded, offer }`, `updates` (3 strings) | The four-step method with the call, quote, update and handover mocks. Mock labels come from `useCases.method.mocks`; the quote price and duration from the `offer`. Sector pages and `/agence-ia-bordeaux`. |
+| `PriceCards` | `src/components/templates/price-cards.tsx` | `locale`, `cards: { id: OfferId, audience, body }[]`, `labels: { from, perDay, viewOffer }` | An `OfferRow` of `OfferCard`s whose name, price, unit, duration and link come from `offers.ts` and `offers.items`. Sector pages, `/agence-ia-bordeaux`, outreach pages. |
+| `ShotFrame` | `src/components/proof/shot-frame.tsx` | `image`, `alt`, `sizes`, `device?` (`desktop` 16:10, `mobile` 390:844), `eager?` | A real screenshot in a plain bordered frame, no window chrome. Case studies and proof cards. `hostOf(url)` gives the bare host for captions. |
+| `FounderPanel` | `src/components/sections/founder-panel.tsx` | `locale`, `className?` | Fills `FounderCard` from `home.team`, the GitHub JSON and the case count. The home and `/a-propos` both render it so they stay identical. Also exports `FOUNDER_PHOTO`. |
 
 Elsewhere: `ThemeToggle` and `ThemeScript` (`src/components/theme/`), `KlyxMark` (`src/components/brand/klyx-mark.tsx`, inline SVG logo in `currentColor`), `LanguageMenu` (globe pill in the nav, `src/components/language-switcher.tsx`), `Rails` (`src/components/rails.tsx`), button variants `outline`, `inverse` and size `xl` in `src/components/ui/button.tsx`. Home data (logos, cases, FAQ keys) lives in `src/lib/home-sections.ts`.
 
 ## 7. Rules for Phase B pages
 
-- No eyebrows or index strings, no three-dot window chrome, no terminal, no sand band. `Eyebrow`, `SampleWindow`, `LiveSystem`, `tone-sand` still exist only because inner pages have not moved yet; do not use them in new work.
+- No eyebrows or index strings, no three-dot window chrome, no terminal, no sand band. No page renders `Section`/`Eyebrow`, `LiveSystem` or the `tone-sand` styles any more; they wait for deletion, do not use them in new work.
 - One h1 per page carrying the page keyword; the hero can be `CenteredHero` or `SectionHeader as="h1"`.
 - Each block says who it is for, what we do and what it costs. No jargon in visible copy ("workflow", "repo", "prod", "FDE"); "Forward Deployed Engineer" is shown as "Développeur dédié".
 - Real proof only: real client names, real screenshots from `public/realisations`, numbers read from data files.
