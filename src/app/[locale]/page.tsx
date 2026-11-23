@@ -18,14 +18,12 @@ import {
   ContributionGraph,
 } from "@/components/proof/contribution-graph";
 import { Button } from "@/components/ui/button";
-import { BookingCard } from "@/components/ui-kit/booking-card";
 import { CaseCarousel } from "@/components/ui-kit/case-carousel";
 import { CaseRow } from "@/components/ui-kit/case-row";
 import { CenteredHero } from "@/components/ui-kit/centered-hero";
 import { ClientsRow } from "@/components/ui-kit/clients-row";
 import { ConstellationBackdrop } from "@/components/ui-kit/constellation-backdrop";
 import { FaqList } from "@/components/ui-kit/faq-list";
-import { FinalCta } from "@/components/ui-kit/final-cta";
 import { FounderCard } from "@/components/ui-kit/founder-card";
 import {
   CallMock,
@@ -45,6 +43,7 @@ import {
   TeamIllustration,
 } from "@/components/ui-kit/offer-illustrations";
 import { PageSection } from "@/components/ui-kit/page-section";
+import { SiteCta } from "@/components/ui-kit/site-cta";
 import { SectionHeader } from "@/components/ui-kit/section-header";
 import { ToolsStrip } from "@/components/ui-kit/tools-strip";
 import { TrustGrid } from "@/components/ui-kit/trust-grid";
@@ -74,14 +73,6 @@ import { site } from "@/lib/site";
 
 const FOUNDER_PHOTO = "/team/maxime-mansiet.jpg";
 
-const BOOKING_DAYS = [
-  { id: "mon", date: 2 },
-  { id: "tue", date: 3 },
-  { id: "wed", date: 4 },
-  { id: "thu", date: 5 },
-] as const;
-const BOOKING_SLOTS = ["09:30", "11:00", "14:00", "16:30"];
-
 const TRUST_ICONS = {
   owned: KeyRound,
   training: Shield,
@@ -90,7 +81,6 @@ const TRUST_ICONS = {
   log: List,
   tested: CircleCheck,
 } as const;
-
 
 export async function generateMetadata({
   params,
@@ -147,7 +137,6 @@ export default async function HomePage({ params }: LocaleParams) {
 
   return (
     <>
-
       <CenteredHero
         data-home-hero
         title={t("hero.title")}
@@ -472,46 +461,7 @@ export default async function HomePage({ params }: LocaleParams) {
         />
       </PageSection>
 
-      <PageSection id="contact">
-        <FinalCta
-          title={t("cta.title")}
-          body={t("cta.body")}
-          actions={
-            <ActionButton
-              action="quote"
-              variant="outline"
-              size="xl"
-              trackLocation="final-cta"
-              className="h-12 rounded-[10px] px-[22px]"
-            >
-              {t("cta.secondary")}
-            </ActionButton>
-          }
-          aside={
-            <BookingCard
-              avatar={FOUNDER_PHOTO}
-              labels={{
-                name: t("team.name"),
-                role: t("cta.booking.role"),
-                message: t("cta.booking.message"),
-                pick: t("cta.booking.pick"),
-                sample: t("cta.booking.sample"),
-                video: t("cta.booking.video"),
-                free: t("cta.booking.free"),
-                noCommitment: t("cta.booking.noCommitment"),
-              }}
-              days={BOOKING_DAYS.map(({ id, date }) => ({
-                id,
-                date,
-                short: t(`cta.booking.days.${id}.short`),
-                long: t(`cta.booking.days.${id}.long`),
-              }))}
-              slots={BOOKING_SLOTS}
-              buttonTemplate={String(t.raw("cta.booking.button"))}
-            />
-          }
-        />
-      </PageSection>
+      <SiteCta />
     </>
   );
 }
