@@ -39,7 +39,6 @@ describe("sectorPages", () => {
       for (const key of [
         ...SECTOR_KEYS.map((k) => `useCases.${k}`),
         "useCases",
-        "faqPage",
       ]) {
         const t = getStaticTranslator(locale, key);
         expect(`${t("hero.title")} ${t("hero.titleEmphasis")}`, key).toContain(

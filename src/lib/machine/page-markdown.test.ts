@@ -16,7 +16,6 @@ import type { AppPathname } from "@/lib/seo";
 import { faqPageItems } from "@/lib/faq-page";
 import { HOME_FAQ, HOME_TOOLS, OTHER_TOOL_COUNT } from "@/lib/home-sections";
 import { getGithubContributions } from "@/lib/proof";
-import { teamRoster } from "@/lib/team-roster";
 import { DEPLOYED_TECH, type ToolGroup } from "@/lib/tools";
 
 import {
@@ -101,7 +100,7 @@ const EXPECTATIONS: Record<AppPathname, Expectation> = {
     ],
     faqNamespace: "pricing",
   },
-  "/realisations": { h1: heroTitle("cases") },
+  "/realisations": { h1: plainTitle("cases", "hero.title") },
   "/realisations/[slug]": {
     h1: async (locale, page) => {
       const cases = await getCaseStudies(locale);
@@ -110,7 +109,10 @@ const EXPECTATIONS: Record<AppPathname, Expectation> = {
       return study.title;
     },
   },
-  "/a-propos": { h1: heroTitle("about") },
+  "/a-propos": {
+    h1: plainTitle("about", "hero.title"),
+    prices: ["landing", "audit-ia", "sprint-ia"],
+  },
   "/agence-ia-bordeaux": {
     h1: heroTitle("bordeaux"),
     prices: ["audit-ia", "automation"],
@@ -136,10 +138,10 @@ const EXPECTATIONS: Record<AppPathname, Expectation> = {
     faqNamespace: "useCases.services",
   },
   "/faq": {
-    h1: heroTitle("faqPage"),
+    h1: plainTitle("faqPage", "hero.title"),
     prices: ["landing", "audit-ia", "sprint-ia"],
   },
-  "/contact": { h1: heroTitle("contact") },
+  "/contact": { h1: plainTitle("contact", "hero.title") },
   "/blog": { h1: plainTitle("blog", "hero.title") },
   "/blog/[slug]": {
     h1: async (locale, page) => {
@@ -234,16 +236,25 @@ describe.each(routing.locales)("pageMarkdown (%s)", (locale) => {
     expect(resolveMachinePage(locale, ["nope"])).toBeNull();
   });
 
-  it("lists the team roster on about", async () => {
-    const roster = teamRoster(
-      getStaticTranslator(locale, "home.founder"),
-      "roster",
-    );
+  it("names who works on a project on about", async () => {
+    const t = getStaticTranslator(locale, "about");
+    const team = getStaticTranslator(locale, "home.team");
     const markdown = await pageMarkdown(locale, { pathname: "/a-propos" });
-    for (const item of roster.items) {
-      expect(markdown).toContain(item.who);
-      expect(markdown).toContain(item.scope);
+    expect(markdown).toContain(team("name"));
+    expect(markdown).toContain(team("bio"));
+    for (const key of ["lead", "agents", "specialists"]) {
+      expect(markdown).toContain(t(`team.items.${key}.title`));
+      expect(markdown).toContain(t(`team.items.${key}.body`));
     }
+  });
+
+  it("links the next case studies from each case study", async () => {
+    const cases = await getCaseStudies(locale);
+    const markdown = await pageMarkdown(locale, {
+      pathname: "/realisations/[slug]",
+      params: { slug: cases[0].slug },
+    });
+    expect(markdown).toContain(cases[1].title);
   });
 
   it("introduces the founder on home with the measured GitHub total", async () => {

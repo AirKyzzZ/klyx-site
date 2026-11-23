@@ -1,23 +1,19 @@
-import type { CSSProperties } from "react";
-
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-import { ArrowLeft, ArrowUpRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { hasLocale } from "next-intl";
 import { getTranslations } from "next-intl/server";
 
-import { ChamferBreak } from "@/components/chamfer-break";
 import { JsonLd } from "@/components/json-ld";
-import { BrowserFrame, hostOf } from "@/components/proof/browser-frame";
-import { Section } from "@/components/section";
-import {
-  BandPicture,
-  CaseCard,
-  CaseStatusBadge,
-} from "@/components/sections/case-grid";
-import { Cta } from "@/components/sections/cta";
-import { Hero } from "@/components/sections/hero";
+import { hostOf, ShotFrame } from "@/components/proof/shot-frame";
+import { CaseStatusBadge } from "@/components/sections/case-grid";
+import { caseProseComponents } from "@/components/sections/case-prose";
+import { Button } from "@/components/ui/button";
+import { CaseRow } from "@/components/ui-kit/case-row";
+import { PageSection } from "@/components/ui-kit/page-section";
+import { SectionHeader } from "@/components/ui-kit/section-header";
+import { SiteCta } from "@/components/ui-kit/site-cta";
 import { Link } from "@/i18n/navigation";
 import { resolvePageLocale } from "@/i18n/page-locale";
 import { type Locale, routing } from "@/i18n/routing";
@@ -26,6 +22,7 @@ import { caseStudyJsonLd } from "@/lib/json-ld";
 import { getSiteShot } from "@/lib/proof";
 import { followingItems } from "@/lib/related-content";
 import { brandedTitle, buildMetadata } from "@/lib/seo";
+import { cn } from "@/lib/utils";
 
 type CasePageProps = {
   params: Promise<{ locale: string; slug: string }>;
@@ -45,8 +42,7 @@ async function loadCase(locale: Locale, slug: string) {
   const cases = await getCaseStudies(locale);
   if (!cases.some((c) => c.slug === slug)) notFound();
   const study = await getCaseStudy(slug, locale);
-  const [next, ...more] = followingItems(cases, slug, 3);
-  return { ...study, next, more };
+  return { ...study, following: followingItems(cases, slug, 3) };
 }
 
 export async function generateMetadata({
@@ -68,9 +64,10 @@ export async function generateMetadata({
 export default async function CasePage({ params }: CasePageProps) {
   const locale = await resolvePageLocale(params);
   const { slug } = await params;
-  const { meta, Content, next, more } = await loadCase(locale, slug);
+  const { meta, Content, following } = await loadCase(locale, slug);
   const t = await getTranslations({ locale, namespace: "cases" });
   const shot = getSiteShot(meta.slug);
+  const liveUrl = meta.live === false ? null : meta.url;
 
   const facts = [
     { label: t("labels.client"), value: meta.client },
@@ -81,180 +78,154 @@ export default async function CasePage({ params }: CasePageProps) {
       ? [{ label: t("labels.status"), value: t(`status.${meta.status}`) }]
       : []),
   ];
-  const [titleLead, ...titleRest] = meta.title.split(", ");
-
-  const liveUrl = meta.live === false ? null : meta.url;
 
   return (
     <>
       <JsonLd data={caseStudyJsonLd(locale, meta)} />
-      <Hero
-        eyebrow={
-          <Link
-            href="/realisations"
-            className="hover:text-text inline-flex items-center gap-1.5 transition-colors"
-          >
-            <ArrowLeft aria-hidden="true" className="size-3.5" />
-            {t("labels.back")}
-          </Link>
-        }
-        title={titleRest.length > 0 ? `${titleLead},` : meta.title}
-        emphasis={titleRest.length > 0 ? titleRest.join(", ") : undefined}
-        serif={meta.serif}
-        subtitle={meta.summary}
-        meta={meta.status && <CaseStatusBadge status={meta.status} />}
-      />
-
-      <ChamferBreak edge="top" />
-      <section
-        data-shot="case-hero"
-        data-tone="sand"
-        className="tone-sand relative z-1"
+      <PageSection
+        id="hero"
+        divider={false}
+        containerClassName="pt-32 md:pt-40 lg:pt-44"
       >
-        <div className="relative container pt-6 pb-12 md:pt-10 md:pb-16">
-          <div
-            className="case-cover tone-dark border-line-strong aspect-[4/3] rounded-xl border shadow-[0_0_0_1px_var(--line),0_40px_160px_-40px_var(--glow)] sm:aspect-[16/10] lg:aspect-[16/8]"
-            style={{ "--band-x": "38%" } as CSSProperties}
-          >
-            <BandPicture />
-            <div className="absolute inset-x-[6%] top-[8%] lg:right-[16%] lg:left-[6%]">
-              <BrowserFrame
-                url={liveUrl}
-                image={shot?.image ?? meta.image}
-                alt={meta.client}
-                sizes="(min-width: 1024px) 820px, 90vw"
-              />
+        <SectionHeader as="h1" title={meta.title} intro={meta.summary}>
+          {(meta.status || liveUrl) && (
+            <div className="flex flex-wrap items-center gap-3">
+              {meta.status && <CaseStatusBadge status={meta.status} />}
+              {liveUrl && (
+                <Button
+                  variant="outline"
+                  asChild
+                  className="h-11 rounded-[10px] px-5"
+                >
+                  <a href={liveUrl} target="_blank" rel="noopener">
+                    {t("labels.visit")}
+                    <ArrowUpRight aria-hidden="true" />
+                  </a>
+                </Button>
+              )}
             </div>
-            {shot && (
-              <div className="absolute top-[34%] right-[5%] z-1 hidden w-[19%] lg:block">
-                <BrowserFrame
-                  url={liveUrl}
-                  image={`/realisations/${meta.slug}-390.png`}
-                  alt=""
-                  sizes="200px"
-                  imageClassName="aspect-[390/844]"
-                  compact
-                />
-              </div>
-            )}
-          </div>
+          )}
+        </SectionHeader>
+        <div
+          data-shot="case-hero"
+          className="bg-surface-2 border-line mt-12 flex items-end gap-6 overflow-hidden rounded-[20px] border px-5 pt-5 sm:px-10 sm:pt-10 lg:mt-16 lg:gap-10 lg:px-14 lg:pt-14"
+        >
+          <ShotFrame
+            image={shot?.image ?? meta.image}
+            alt={t("labels.shot", { name: meta.name })}
+            sizes="(min-width: 1024px) 820px, 90vw"
+            eager
+            className="min-w-0 flex-1 rounded-b-none border-b-0"
+          />
+          {shot && (
+            <ShotFrame
+              device="mobile"
+              image={`/realisations/${meta.slug}-390.png`}
+              alt={t("labels.mobileShot", { name: meta.name })}
+              sizes="240px"
+              className="hidden w-[22%] max-w-60 shrink-0 rounded-b-none border-b-0 sm:block"
+            />
+          )}
+        </div>
+      </PageSection>
 
-          <dl className="border-ink/15 mt-10 grid grid-cols-2 gap-x-6 gap-y-6 border-t pt-6 lg:grid-cols-5">
+      <PageSection id="projet">
+        <div className="grid gap-10 lg:grid-cols-[340px_minmax(0,684px)] lg:justify-between lg:gap-16">
+          <dl className="border-line bg-surface-1 flex flex-col self-start rounded-[16px] border px-6 py-2 lg:sticky lg:top-28">
             {facts.map((fact) => (
-              <div key={fact.label}>
-                <dt className="type-label text-text-3">{fact.label}</dt>
-                <dd className="type-data text-text mt-2">{fact.value}</dd>
+              <div
+                key={fact.label}
+                className="border-line flex flex-col gap-1 border-t py-4 first:border-t-0"
+              >
+                <dt className="text-text-3 text-[0.8125rem]">{fact.label}</dt>
+                <dd className="text-text text-[0.9375rem]">{fact.value}</dd>
               </div>
             ))}
-            {meta.live !== false && (
-              <div>
-                <dt className="type-label text-text-3">{t("labels.url")}</dt>
-                <dd className="type-data mt-2">
+            {liveUrl && (
+              <div className="border-line flex flex-col gap-1 border-t py-4">
+                <dt className="text-text-3 text-[0.8125rem]">
+                  {t("labels.url")}
+                </dt>
+                <dd className="text-[0.9375rem]">
                   <a
-                    href={meta.url}
+                    href={liveUrl}
                     target="_blank"
                     rel="noopener"
-                    aria-label={`${t("labels.visit")} ${hostOf(meta.url)}`}
-                    className="text-text hover:text-text-2 inline-flex items-center gap-1 underline underline-offset-4 transition-colors"
+                    className="text-text hover:text-accent inline-flex items-center gap-1 underline decoration-1 underline-offset-[3px] transition-colors duration-(--d-fast)"
                   >
-                    {hostOf(meta.url)}
+                    {hostOf(liveUrl)}
                     <ArrowUpRight aria-hidden="true" className="size-3.5" />
                   </a>
                 </dd>
               </div>
             )}
           </dl>
-        </div>
-      </section>
-      <ChamferBreak edge="bottom" />
-
-      <section data-shot="case-body" className="relative z-1">
-        <div className="container py-16 md:py-24">
-          <article className="max-w-[64ch] space-y-5">
-            <Content />
+          <article data-shot="case-body">
+            <Content components={caseProseComponents} />
           </article>
         </div>
-      </section>
+      </PageSection>
 
       {meta.flow && (
-        <section data-shot="case-flow" className="relative z-1">
-          <div className="container pb-16 md:pb-24">
-            <h2 className="type-label text-text-3">{meta.flow.title}</h2>
-            <ol className="mt-6 grid gap-x-6 gap-y-10 lg:grid-cols-12">
-              {meta.flow.steps.map((step, i) => {
-                const mobile = step.device === "mobile";
-                return (
-                  <li
-                    key={step.image}
-                    className={mobile ? "lg:col-span-2" : "lg:col-span-5"}
-                  >
-                    <figure>
-                      <BrowserFrame
-                        url={liveUrl}
-                        image={step.image}
-                        alt={step.caption}
-                        sizes={
-                          mobile ? "240px" : "(min-width: 1024px) 480px, 90vw"
-                        }
-                        imageClassName={mobile ? "aspect-[390/844]" : undefined}
-                        className={mobile ? "mx-auto max-w-60" : undefined}
-                        compact={mobile}
-                      />
-                      <figcaption className="text-text-2 mt-4 flex gap-3 text-[0.9375rem] leading-snug">
-                        <span className="type-data text-text-3">
-                          {String(i + 1).padStart(2, "0")}
-                        </span>
-                        {step.caption}
-                      </figcaption>
-                    </figure>
-                  </li>
-                );
-              })}
-            </ol>
-            <p className="text-text-3 mt-8 text-xs">{meta.flow.caption}</p>
-          </div>
-        </section>
+        <PageSection id="captures">
+          <SectionHeader title={meta.flow.title} intro={meta.flow.caption} />
+          <ol className="mt-12 grid gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_200px]">
+            {meta.flow.steps.map((step) => {
+              const mobile = step.device === "mobile";
+              return (
+                <li key={step.image}>
+                  <figure>
+                    <ShotFrame
+                      image={step.image}
+                      alt={step.caption}
+                      device={step.device}
+                      sizes={
+                        mobile ? "240px" : "(min-width: 1024px) 460px, 90vw"
+                      }
+                      className={cn(mobile && "mx-auto max-w-60 sm:mx-0")}
+                    />
+                    <figcaption className="text-text-2 mt-4 text-[0.9375rem] leading-normal">
+                      {step.caption}
+                    </figcaption>
+                  </figure>
+                </li>
+              );
+            })}
+          </ol>
+        </PageSection>
       )}
 
-      {next && (
-        <Section index="01" eyebrow={t("labels.next")}>
-          <div className="reveal">
-            <CaseCard
-              item={next}
-              readLabel={t("labels.read")}
-              layout="wide"
-              sizes="(min-width: 1024px) 680px, 90vw"
-            />
+      {following.length > 0 && (
+        <PageSection id="autres-projets">
+          <SectionHeader title={t("labels.next")} intro={t("labels.nextIntro")}>
+            <Button
+              variant="outline"
+              asChild
+              className="h-11 self-start rounded-[10px] px-5"
+            >
+              <Link href="/realisations">{t("labels.all")}</Link>
+            </Button>
+          </SectionHeader>
+          <div className="mt-8 flex flex-col">
+            {following.map((item) => (
+              <CaseRow
+                key={item.slug}
+                slug={item.slug}
+                name={item.name}
+                kind={item.kind}
+                summary={item.summary}
+                meta={[...item.stack.slice(0, 2), item.year].join(", ")}
+                image={getSiteShot(item.slug)?.image ?? item.image}
+              />
+            ))}
           </div>
-          {more.length > 0 && (
-            <div className="mt-10">
-              <h3 className="type-label text-text-3">{t("labels.more")}</h3>
-              <ul className="mt-4 space-y-3">
-                {more.map((item) => (
-                  <li key={item.slug}>
-                    <Link
-                      href={{
-                        pathname: "/realisations/[slug]",
-                        params: { slug: item.slug },
-                      }}
-                      className="text-text-2 hover:text-text underline underline-offset-4 transition-colors"
-                    >
-                      {item.title}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-        </Section>
+        </PageSection>
       )}
 
-      <Cta
+      <SiteCta
         title={t("cta.title")}
-        emphasis={t("cta.titleEmphasis")}
         body={t("cta.body")}
-        primary={{ action: "book", label: t("cta.ctaPrimary") }}
-        secondary={{ action: "quote", label: t("cta.ctaSecondary") }}
+        secondaryLabel={t("cta.secondary")}
       />
     </>
   );
