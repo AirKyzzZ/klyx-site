@@ -1,4 +1,4 @@
-import { NextResponse, type NextRequest } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import createMiddleware from "next-intl/middleware";
 
 import { routing } from "./i18n/routing";
@@ -22,20 +22,26 @@ function permanent(response: NextResponse): NextResponse {
   return new NextResponse(null, { status: 308, headers: response.headers });
 }
 
+function localeRedirect(url: URL, request: NextRequest): string | null {
+  if (isOutreachPath(url.pathname)) return null;
+  const response = handleI18nRouting(
+    new NextRequest(url, { headers: request.headers }),
+  );
+  return response.status === 307 ? response.headers.get("location") : null;
+}
+
 export default function proxy(request: NextRequest) {
   const { pathname, search, searchParams } = request.nextUrl;
   if (isGone(pathname)) return new NextResponse(null, { status: 410 });
   if (pathname === LEAD_MAGNET_PATH) return NextResponse.next();
+  const legacy = findLegacyRedirect(pathname, searchParams);
   const canonical = withoutTrailingSlash(pathname);
-  const destination =
-    findLegacyRedirect(pathname, searchParams) ??
-    (canonical === pathname ? null : canonical);
+  const destination = legacy ?? (canonical === pathname ? null : canonical);
   if (destination) {
     // NextURL re-adds the request's trailing slash to any pathname set on it.
-    return NextResponse.redirect(
-      new URL(`${destination}${search}`, request.url),
-      308,
-    );
+    const url = new URL(`${destination}${search}`, request.url);
+    const next = legacy ? null : localeRedirect(url, request);
+    return NextResponse.redirect(next ?? url, 308);
   }
   if (isOutreachPath(pathname)) return NextResponse.next();
   return permanent(handleI18nRouting(request));

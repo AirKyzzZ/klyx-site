@@ -26,6 +26,7 @@ export type CaseStudyMeta = {
   status?: CaseStatus;
   year: number;
   summary: string;
+  description?: string;
   stack: string[];
   image: string;
   order: number;

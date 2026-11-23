@@ -23,6 +23,7 @@ export function FounderCard({
   stats,
   graph,
   links,
+  as: Heading = "h3",
   className,
 }: {
   name: string;
@@ -33,6 +34,7 @@ export function FounderCard({
   stats: FounderStat[];
   graph?: ReactNode;
   links: FounderLink[];
+  as?: "h2" | "h3";
   className?: string;
 }) {
   return (
@@ -53,9 +55,9 @@ export function FounderCard({
       />
       <div className="flex min-w-0 flex-col gap-6 lg:pt-6 lg:pb-2">
         <div className="flex flex-col gap-1.5">
-          <h3 className="text-text text-[2rem] leading-none font-semibold tracking-[-1px]">
+          <Heading className="text-text text-[2rem] leading-none font-semibold tracking-[-1px]">
             {name}
-          </h3>
+          </Heading>
           <p className="text-text-2 text-base">{role}</p>
         </div>
         <p className="text-text-2 max-w-[680px] text-base leading-[1.6]">
@@ -67,7 +69,7 @@ export function FounderCard({
               key={stat.label}
               className="flex flex-col-reverse justify-end gap-1 py-[18px] pr-3 pl-3 first:pl-0 sm:pl-6"
             >
-              <dt className="text-text-3 text-[0.8125rem] leading-snug">
+              <dt className="text-text-3 text-[0.8125rem] leading-snug hyphens-auto [hyphenate-limit-chars:10_4_4]">
                 {stat.label}
               </dt>
               <dd className="text-text text-2xl leading-none font-semibold tracking-[-1px] sm:text-[1.75rem]">

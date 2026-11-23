@@ -3,7 +3,7 @@ import { readdirSync } from "node:fs";
 import { expect, type Page, test } from "@playwright/test";
 
 import { formatPrice, offers } from "../src/lib/offers";
-import { site } from "../src/lib/site";
+import { SITE_DESCRIPTIONS, site } from "../src/lib/site";
 
 type JsonLdNode = Record<string, unknown>;
 
@@ -101,7 +101,7 @@ test("home and offer pages embed JSON-LD", async ({ page }) => {
   const joined = agents.join();
   expect(joined).toContain('"FAQPage"');
   expect(joined).toContain('"BreadcrumbList"');
-  expect(joined).toContain('"price":4500');
+  expect(joined).toContain('"minPrice":4500');
 });
 
 const NEW_SERVICES = [
@@ -131,7 +131,7 @@ for (const service of NEW_SERVICES) {
       ).join();
       expect(jsonLd, path).toContain('"Service"');
       expect(jsonLd, path).toContain('"FAQPage"');
-      expect(jsonLd, path).toContain(`"price":${service.price}`);
+      expect(jsonLd, path).toContain(`"minPrice":${service.price}`);
       await expect(
         page.locator('link[rel="alternate"][hreflang="fr"]'),
       ).toHaveAttribute("href", `https://klyx.fr${service.fr}`);
@@ -232,7 +232,7 @@ for (const useCase of USE_CASE_PAGES) {
         expect(jsonLd, `${path} ${type}`).toContain(`"@type":"${type}"`);
       }
       if (useCase.price) {
-        expect(jsonLd, path).toContain(`"price":${useCase.price}`);
+        expect(jsonLd, path).toContain(`"minPrice":${useCase.price}`);
       }
       await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
         "href",
@@ -291,7 +291,7 @@ for (const path of ["/", "/agence-ia-bordeaux", "/en/pricing", "/blog"]) {
     expect(organizations).toHaveLength(1);
     expect(organizations[0]).toMatchObject({
       "@id": "https://klyx.fr/#organization",
-      description: site.description,
+      description: SITE_DESCRIPTIONS[path.startsWith("/en") ? "en" : "fr"],
       sameAs: [site.socials.linkedinCompany, site.socials.instagram],
     });
     expect(nodes.filter((node) => hasType(node, "WebSite"))).toHaveLength(1);
@@ -333,7 +333,7 @@ test("/tarifs JSON-LD matches the visible prices and FAQ", async ({ page }) => {
   const catalogue = await page.locator("#catalogue").textContent();
   for (const { priceFrom } of offers) {
     if (priceFrom === null) continue;
-    expect(jsonLd).toContain(`"price":${priceFrom}`);
+    expect(jsonLd).toContain(`"minPrice":${priceFrom}`);
     expect(catalogue).toContain(formatPrice(priceFrom, "fr"));
   }
 });

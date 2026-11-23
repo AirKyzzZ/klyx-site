@@ -29,7 +29,7 @@ export async function GET() {
     })
     .join("");
 
-  const feed = `<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"><channel><title>Klyx</title><link>${site.url}/blog</link><description>Le blog de Klyx, agence web et IA à Bordeaux.</description><language>fr-FR</language>${items}</channel></rss>`;
+  const feed = `<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"><channel><title>Klyx</title><link>${site.url}/blog</link><description>${escapeXml(site.description)}</description><language>fr-FR</language>${items}</channel></rss>`;
 
   return new Response(feed, {
     headers: { "content-type": "application/rss+xml; charset=utf-8" },

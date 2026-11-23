@@ -48,7 +48,7 @@ export async function GeoVisibility({ locale }: { locale: Locale }) {
                 <p className="text-text text-[0.9375rem] leading-snug">
                   {quote(t(`card.prompts.${row.prompt}`))}
                 </p>
-                <ul className="grid grid-cols-2 gap-2 sm:grid-cols-4">
+                <ul className="grid grid-cols-2 gap-2 sm:grid-cols-4 lg:grid-cols-2 xl:grid-cols-4">
                   {row.states.map((state, i) => (
                     <li
                       key={GEO_ENGINES[i]}

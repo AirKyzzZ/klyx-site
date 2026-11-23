@@ -98,7 +98,7 @@ export default async function AboutPage({ params }: LocaleParams) {
             </Button>
           </div>
         </SectionHeader>
-        <FounderPanel locale={locale} className="mt-12 lg:mt-16" />
+        <FounderPanel locale={locale} as="h2" className="mt-12 lg:mt-16" />
       </PageSection>
 
       <PageSection id="equipe">
@@ -128,7 +128,8 @@ export default async function AboutPage({ params }: LocaleParams) {
       </PageSection>
 
       <PageSection id="histoire">
-        <SectionHeader title={t("story.title")} intro={t("story.intro")}>
+        <SectionHeader title={t("story.title")} intro={t("story.entity")}>
+          <p className="type-intro text-text-2">{t("story.intro")}</p>
           <p className="type-intro text-text-2">{t("story.body")}</p>
         </SectionHeader>
         <dl className="border-line bg-line mt-12 grid gap-px overflow-hidden rounded-[16px] border sm:grid-cols-2 lg:grid-cols-4">

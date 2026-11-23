@@ -25,8 +25,8 @@ import {
   HOME_TOOLS,
   HOME_TRUST,
   HOME_USE_CASES,
-  OTHER_TOOL_COUNT,
   selectHomeCases,
+  selectHomeGuides,
 } from "@/lib/home-sections";
 import { getOfferCopy } from "@/lib/offer-copy";
 import {
@@ -269,10 +269,7 @@ async function home(locale: Locale): Promise<string> {
     labelled(
       locale,
       t("tools.title"),
-      [
-        ...HOME_TOOLS.map((tool) => tool.name),
-        t("tools.more", { count: OTHER_TOOL_COUNT }),
-      ].join(", "),
+      HOME_TOOLS.map((tool) => tool.name).join(", "),
     ),
     `## ${t("offers.title")}`,
     t("offers.intro"),
@@ -373,6 +370,18 @@ async function home(locale: Locale): Promise<string> {
       })),
     ),
     t("faq.intro"),
+    labelled(
+      locale,
+      t("faq.further"),
+      selectHomeGuides(await getPosts(locale))
+        .map((post) =>
+          link(
+            post.title,
+            absoluteUrl(locale, "/blog/[slug]", { slug: post.slug }),
+          ),
+        )
+        .join(" · "),
+    ),
     `## ${t("cta.title")}`,
     t("cta.body"),
     list([
@@ -799,6 +808,7 @@ async function about(locale: Locale): Promise<string> {
       ),
     ),
     `## ${t("story.title")}`,
+    t("story.entity"),
     t("story.intro"),
     t("story.body"),
     list(

@@ -35,7 +35,7 @@ export function LanguageSwitcher() {
   return (
     <nav
       aria-label="Language"
-      className="flex gap-2 font-mono text-xs tracking-[0.06em]"
+      className="-mx-1.5 flex font-mono text-xs tracking-[0.06em]"
     >
       {links.map((link) => (
         <NextLink
@@ -43,11 +43,12 @@ export function LanguageSwitcher() {
           href={link.href}
           hrefLang={link.locale}
           aria-current={link.current ? "true" : undefined}
-          className={
+          className={cn(
+            "inline-flex min-h-6 items-center px-1.5",
             link.current
               ? "text-text"
-              : "text-text-3 hover:text-text transition-colors"
-          }
+              : "text-text-3 hover:text-text transition-colors",
+          )}
         >
           {link.locale.toUpperCase()}
         </NextLink>

@@ -11,6 +11,7 @@ import {
 import { getTranslations } from "next-intl/server";
 
 import { ActionButton } from "@/components/action-button";
+import { JsonLd } from "@/components/json-ld";
 import {
   FOUNDER_PHOTO,
   FounderPanel,
@@ -39,7 +40,7 @@ import { TrustGrid } from "@/components/ui-kit/trust-grid";
 import { UseCaseCard } from "@/components/ui-kit/use-case-card";
 import { Link } from "@/i18n/navigation";
 import { type LocaleParams, resolvePageLocale } from "@/i18n/page-locale";
-import { getCaseStudies } from "@/lib/content";
+import { getCaseStudies, getPosts } from "@/lib/content";
 import {
   ALSO_OFFERS,
   HERO_DESTINATIONS,
@@ -51,9 +52,10 @@ import {
   HOME_TOOLS,
   HOME_TRUST,
   HOME_USE_CASES,
-  OTHER_TOOL_COUNT,
   selectHomeCases,
+  selectHomeGuides,
 } from "@/lib/home-sections";
+import { faqJsonLd } from "@/lib/json-ld";
 import { getPriceValues } from "@/lib/offers";
 import { buildMetadata } from "@/lib/seo";
 
@@ -84,6 +86,7 @@ export default async function HomePage({ params }: LocaleParams) {
   const t = await getTranslations({ locale, namespace: "home" });
   const cases = selectHomeCases(await getCaseStudies(locale));
   const prices = getPriceValues(locale);
+  const guides = selectHomeGuides(await getPosts(locale));
 
   const casesBySlug = new Map(cases.map((study) => [study.slug, study]));
   const carousel = HOME_CAROUSEL.filter(({ slug }) => casesBySlug.has(slug));
@@ -91,9 +94,18 @@ export default async function HomePage({ params }: LocaleParams) {
     const item = casesBySlug.get(slug);
     return item ? [{ item, name }] : [];
   });
+  const faq = HOME_FAQ.map((key) => ({
+    question: t(`faq.items.${key}.question`),
+    answer: t(`faq.items.${key}.answer`, prices),
+  }));
 
   return (
     <>
+      <JsonLd
+        data={faqJsonLd(
+          faq.map((item) => ({ q: item.question, a: item.answer })),
+        )}
+      />
       <CenteredHero
         data-home-hero
         intro
@@ -119,11 +131,7 @@ export default async function HomePage({ params }: LocaleParams) {
       />
 
       <PageSection id="outils" containerClassName="py-11 lg:py-11">
-        <ToolsStrip
-          title={t("tools.title")}
-          tools={HOME_TOOLS}
-          more={t("tools.more", { count: OTHER_TOOL_COUNT })}
-        />
+        <ToolsStrip title={t("tools.title")} tools={HOME_TOOLS} />
       </PageSection>
 
       <PageSection id="offres" containerClassName="lg:pt-30">
@@ -326,12 +334,13 @@ export default async function HomePage({ params }: LocaleParams) {
       </PageSection>
 
       <PageSection id="faq">
-        <FaqList
-          title={t("faq.title")}
-          intro={t("faq.intro")}
-          items={HOME_FAQ.map((key) => ({
-            question: t(`faq.items.${key}.question`),
-            answer: t(`faq.items.${key}.answer`, prices),
+        <FaqList title={t("faq.title")} intro={t("faq.intro")} items={faq} />
+        <CatalogueLinks
+          className="mt-10"
+          label={t("faq.further")}
+          items={guides.map((post) => ({
+            label: post.title,
+            href: { pathname: "/blog/[slug]", params: { slug: post.slug } },
           }))}
         />
       </PageSection>

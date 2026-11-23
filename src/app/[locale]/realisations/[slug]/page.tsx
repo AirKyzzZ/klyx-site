@@ -56,7 +56,7 @@ export async function generateMetadata({
     pathname: "/realisations/[slug]",
     params: { slug },
     title: brandedTitle(meta.title),
-    description: meta.summary,
+    description: meta.description ?? meta.summary,
     type: "article",
   });
 }

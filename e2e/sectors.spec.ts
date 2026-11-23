@@ -106,7 +106,7 @@ test("/agence-ia-bordeaux owns agence IA Bordeaux and consultant IA Bordeaux", a
   for (const type of ["Service", "FAQPage", "BreadcrumbList"]) {
     expect(data).toContain(`"@type":"${type}"`);
   }
-  expect(data).toContain(`"price":${getOfferPrice("audit-ia")}`);
+  expect(data).toContain(`"minPrice":${getOfferPrice("audit-ia")}`);
   const questions = await page.locator("details.faq-item").count();
   expect(data.match(/"@type":"Question"/g)?.length).toBe(questions);
 });

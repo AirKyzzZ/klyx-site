@@ -100,12 +100,15 @@
       "from": "À partir de"
     },
     "tools": {
-      "title": "Fonctionne avec les outils que vous avez déjà",
-      "more": "et {count} autres"
+      "title": "Fonctionne avec les outils que vous avez déjà"
     },
     "faq": {
       "title": "Questions fréquentes.",
       "items": {
+        "who": {
+          "question": "Qui est Klyx ?",
+          "answer": "Klyx est une agence IA à Bordeaux : sites, agents IA et automatisations livrés au forfait pour les PME, startups et agences, avec des prix publics. Le projet est porté par Maxime Mansiet, qui fait le premier appel, écrit le code et suit la mise en ligne."
+        },
         "price": {
           "question": "Combien coûte un projet ?",
           "answer": "Un site démarre à {landingPrice}, un audit IA à {auditPrice} et un agent IA à {sprintPrice}. Le prix final est fixé par écrit avant de commencer. Tous les prix sont sur la page Tarifs."
@@ -135,7 +138,8 @@
           "answer": "Non. On branche l'IA sur ce que vous utilisez déjà : votre messagerie, vos tableurs, votre CRM, votre compta. Votre équipe garde ses habitudes."
         }
       },
-      "intro": "Une autre question ? Posez-la pendant l'appel."
+      "intro": "Une autre question ? Posez-la pendant l'appel.",
+      "further": "Pour aller plus loin"
     },
     "useCases": {
       "title": "Ce que l'IA peut faire dans votre entreprise.",
@@ -567,6 +571,10 @@
         "after": {
           "question": "Et après la mise en ligne ?",
           "answer": "Vous modifiez vos contenus seul. Pour une nouvelle page ou une nouvelle fonction, on vous envoie un devis."
+        },
+        "landingPrice": {
+          "question": "Combien coûte une landing page ?",
+          "answer": "Un site une page, ce qu'on appelle souvent une landing page, démarre à {landingPrice} et se fait en 1 à 2 semaines. Il présente une offre et donne envie de vous contacter. Le prix final est fixé dans le devis avant de commencer."
         }
       }
     },
@@ -846,6 +854,10 @@
         "vsSprint": {
           "question": "Développeur dédié ou agent IA au forfait ?",
           "answer": "L'offre Agent IA livre un agent précis au forfait, en deux semaines. Le développeur dédié convient quand vos priorités bougent et que vous avez besoin de quelqu'un dans l'équipe pendant plusieurs semaines."
+        },
+        "freelance": {
+          "question": "Travaillez-vous comme développeur IA freelance ?",
+          "answer": "Oui. Maxime travaille en indépendant et rejoint votre équipe comme développeur IA dédié : il code dans vos outils, sur vos priorités, et livre chaque semaine. C'est {fdeDayPrice} par jour, 4 semaines minimum à 2 jours par semaine, soit au moins {fdeMinimum}."
         }
       }
     },
@@ -1335,7 +1347,7 @@
   },
   "pricing": {
     "hero": {
-      "title": "Tarifs",
+      "title": "Tarifs : prix d'un site web, d'un agent IA et d'un développeur dédié",
       "subtitle": "Le prix de départ de chaque offre, en € HT. Le prix final dépend du périmètre, écrit dans un devis gratuit avant de commencer."
     },
     "catalogue": {
@@ -1497,6 +1509,7 @@
     },
     "story": {
       "title": "D'où vient Klyx.",
+      "entity": "Klyx est une agence IA à Bordeaux : sites, agents IA et automatisations livrés au forfait pour les PME, startups et agences, avec des prix publics.",
       "intro": "Maxime a fondé Klyx à Bordeaux pour construire des sites, des agents IA et des automatisations pour des startups, des agences et des PME.",
       "body": "Il suit chaque projet lui-même, du premier appel à la mise en ligne. En parallèle, il développe des serveurs MCP et des agents IA pour une infrastructure européenne d'identité numérique.",
       "facts": {

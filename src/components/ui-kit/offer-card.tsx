@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import type { ComponentProps, ReactNode } from "react";
 
 import { Clock } from "lucide-react";
 
@@ -112,7 +112,7 @@ export function CatalogueLinks({
   className,
 }: {
   label: string;
-  items: { label: string; href: Offer["page"] | "/cas-usage" }[];
+  items: { label: string; href: ComponentProps<typeof Link>["href"] }[];
   className?: string;
 }) {
   return (
@@ -125,7 +125,7 @@ export function CatalogueLinks({
       <p className="text-text-3">{label}</p>
       <ul className="contents">
         {items.map((item) => (
-          <li key={item.href}>
+          <li key={item.label}>
             <Link
               href={item.href}
               className="text-text hover:text-accent-text font-medium underline decoration-1 underline-offset-[3px] transition-colors duration-(--d-fast)"

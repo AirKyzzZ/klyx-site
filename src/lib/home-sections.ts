@@ -1,10 +1,5 @@
-import type { CaseStudyMeta } from "@/lib/content";
-import {
-  CONNECTED_TOOLS,
-  TOOLS,
-  type Tool,
-  type ToolLogoId,
-} from "@/lib/tools";
+import type { CaseStudyMeta, PostMeta } from "@/lib/content";
+import { CONNECTED_TOOLS, type Tool, type ToolLogoId } from "@/lib/tools";
 
 const HOME_CASE_SLUGS = [
   "cronolyss",
@@ -69,19 +64,9 @@ export const HERO_DESTINATIONS: ToolLogoId[] = [
   "pennylane",
 ];
 
-export const HOME_TOOLS: Tool[] = [
-  TOOLS.gmail,
-  TOOLS.googleSheets,
-  TOOLS.hubspot,
-  TOOLS.slack,
-  TOOLS.notion,
-  TOOLS.shopify,
-  { ...TOOLS.whatsapp, name: "WhatsApp" },
-  TOOLS.stripe,
-];
-
-export const OTHER_TOOL_COUNT =
-  CONNECTED_TOOLS.flatMap((group) => group.tools).length - HOME_TOOLS.length;
+export const HOME_TOOLS: Tool[] = CONNECTED_TOOLS.flatMap(
+  (group) => group.tools,
+);
 
 export const HOME_OFFER_CARDS = [
   { key: "sites", href: "/services/creation-site-web", offer: "landing" },
@@ -121,7 +106,19 @@ export const HOME_CAROUSEL = [
   },
 ] as const;
 
-export const HOME_FAQ = ["price", "tools", "data", "team", "remote"] as const;
+export const HOME_FAQ = [
+  "who",
+  "price",
+  "tools",
+  "data",
+  "team",
+  "remote",
+] as const;
+
+export const HOME_GUIDES = [
+  "cout-agent-ia-pme",
+  "integrer-ia-pme-methode",
+] as const;
 
 export const HOME_TRUST = [
   "owned",
@@ -136,6 +133,12 @@ export const HOME_CASE_ROWS = [
   { slug: "2060-io", name: "2060.io" },
   { slug: "pkba", name: "PKBA" },
 ] as const;
+
+export function selectHomeGuides(posts: PostMeta[]): PostMeta[] {
+  return HOME_GUIDES.flatMap((slug) =>
+    posts.filter((post) => post.slug === slug),
+  );
+}
 
 export function selectHomeCases(cases: CaseStudyMeta[]): CaseStudyMeta[] {
   return HOME_CASE_SLUGS.flatMap((slug) =>
