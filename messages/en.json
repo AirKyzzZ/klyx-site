@@ -6,7 +6,7 @@
     "groupAdvise": "Advise",
     "sites": "Websites and landing pages",
     "agents": "AI agents",
-    "fde": "Forward Deployed Engineer",
+    "fde": "Dedicated developer",
     "cases": "Work",
     "pricing": "Pricing",
     "about": "About",
@@ -52,13 +52,11 @@
   },
   "home": {
     "hero": {
-      "title": "AI agents that run in production,",
-      "titleEmphasis": "not demos.",
-      "subtitle": "Websites, agents and automations delivered at a fixed price for startups and agencies. Free quote, public prices.",
-      "ctaPrimary": "Book a call",
-      "ctaSecondary": "Get a free quote",
-      "eyebrow": "AI agency · Bordeaux",
-      "serif": "demos"
+      "title": "Your repetitive work, handled by AI.",
+      "subtitle": "We connect AI agents to the tools your teams already use: email, CRM, spreadsheets, accounting. They sort, enter and follow up so your people don't have to. Live in 2 weeks, at a fixed price.",
+      "ctaPrimary": "Book a 30-minute call",
+      "ctaSecondary": "See our work",
+      "clients": "Teams who trusted us with a project"
     },
     "proof": {
       "label": "Real deliverable",
@@ -66,78 +64,51 @@
       "body": "TODO(maxime): pick the artefact shown here (a CiteMe PR list, the Lighthouse score of a live client site, or an agent run log). Nothing shows until it is a real deliverable."
     },
     "offers": {
-      "title": "Three ways",
-      "subtitle": "Prices are on the site, excl. VAT. The quote is free, and we agree the scope in writing before we start.",
-      "link": "See the offer",
+      "title": "Three ways to work with us.",
+      "intro": "Prices are public. Quotes are free, and we agree in writing on what's included before we start.",
+      "link": "See the full offer",
       "cards": {
         "sites": {
-          "name": "Websites and landing pages",
-          "outcome": "A fast, clear site that Google and ChatGPT can read. Live in 1 to 4 weeks.",
-          "price": "From {price}",
-          "duration": "1 to 4 weeks"
+          "name": "Website",
+          "audience": "To be found on Google and cited by ChatGPT.",
+          "body": "A fast, clear website you can edit yourself.",
+          "price": "{price}",
+          "duration": "Live in 1 to 4 weeks"
         },
         "agents": {
-          "name": "AI agents",
-          "outcome": "We plug AI into your tools so a repetitive task runs on its own. In production in 2 weeks, and the code stays yours.",
-          "price": "From {price}",
-          "duration": "2 weeks"
+          "name": "AI agent",
+          "audience": "To stop doing repetitive tasks by hand.",
+          "body": "We plug AI into your tools. It sorts, fills in and passes things on for you. You keep the code.",
+          "price": "{price}",
+          "duration": "Up and running in 2 weeks"
         },
         "fde": {
-          "name": "Forward Deployed Engineer",
-          "outcome": "A developer from the agency inside your team 2 to 3 days a week, for 4 weeks or more, shipping your AI features in your own code.",
-          "price": "From {price} / day",
-          "duration": "4 weeks minimum"
+          "name": "Dedicated developer",
+          "audience": "To move fast on your AI projects.",
+          "body": "One of our developers joins your team 2 to 3 days a week and ships in your own codebase.",
+          "price": "{price}",
+          "duration": "4 weeks minimum",
+          "unit": "/ day"
         }
       },
-      "titleEmphasis": "to work together.",
       "also": {
-        "label": "Also",
+        "label": "Also available",
         "audit": "AI audit",
-        "automation": "AI automation",
-        "geo": "AI search (GEO)",
-        "useCases": "Use cases by sector"
+        "automation": "Automations",
+        "geo": "Getting cited by ChatGPT",
+        "useCases": "Examples by industry"
       },
-      "steps": {
-        "sites": {
-          "a": "Brief",
-          "b": "Build",
-          "c": "Live"
-        },
-        "agents": {
-          "a": "Tools",
-          "b": "Agent",
-          "c": "In prod"
-        },
-        "fde": {
-          "a": "Request",
-          "b": "Code",
-          "c": "Shipped"
-        }
-      }
+      "art": {
+        "domain": "your-site.com",
+        "agent": "AI agent",
+        "agentCaption": "The email is read, the record is created.",
+        "teamCaption": "Your team, plus one Klyx developer"
+      },
+      "from": "From"
     },
     "tools": {
-      "title": "Your tools,",
-      "titleEmphasis": "connected.",
-      "body": "We plug AI into what you already use: your inbox, your spreadsheets, your CRM. You keep your tools.",
-      "label": "Tools we connect",
-      "groups": {
-        "email": "Email",
-        "data": "Data",
-        "crm": "CRM",
-        "team": "Team",
-        "commerce": "Site, store",
-        "finance": "Accounting",
-        "automation": "Automation"
-      },
-      "note": "Brands mentioned belong to their respective owners. Klyx is neither affiliated with nor a partner of these vendors.",
-      "map": {
-        "inputs": "What comes in",
-        "outputs": "Where it goes",
-        "hub": "AI agent",
-        "hubMeta": "reads · sorts · drafts",
-        "under": "runs on",
-        "details": "All {count} tools, one by one"
-      }
+      "title": "Works with the tools you already use",
+      "more": "and {count} more"
     },
     "cases": {
       "title": "Work",
@@ -272,34 +243,38 @@
       "titleEmphasis": "say."
     },
     "faq": {
-      "title": "Frequently",
+      "title": "Frequently asked questions.",
       "items": {
         "price": {
           "question": "How much does a project cost?",
-          "answer": "A landing page starts at {landingPrice}, an AI-ready site at {siteIaPrice}, an AI audit at {auditPrice} and an AI Sprint at {sprintPrice}. The final price depends on scope, which is agreed in writing before work starts. Every price is on the pricing page."
+          "answer": "A website starts at {landingPrice}, an AI audit at {auditPrice} and an AI agent at {sprintPrice}. The final price is fixed in writing before we start. All prices are on the Pricing page."
         },
         "team": {
           "question": "Who works on our project?",
-          "answer": "Maxime Mansiet, our lead engineer, from the first call to the handover. He hands well-bounded tasks to AI coding agents, and the code they write is reviewed before it goes to production. If the project needs design or a specialty, we team up with a specialist and tell you first. The code is in your repo from day one, and every project ends with a written handover so another developer can pick it up. For Forward Deployed Engineer work, we take on two clients at most at a time, and we don't offer 24/7 on-call."
+          "answer": "Maxime Mansiet, our lead engineer, from the first call to handover. He hands well-defined tasks to AI coding agents and reviews everything they produce. If the project needs design or a specialist skill, we bring in a specialist and tell you first. The code is in your name from day one, and every project ends with a written handover so another developer can take over."
         },
         "production": {
-          "question": "What do you mean by \"in production\"?",
-          "answer": "An agent or automation wired into your real tools and data, used by your team every day, with a log of what the agent does. A demo running on test data doesn't count."
+          "question": "What does “in production” mean?",
+          "answer": "The agent is connected to your real tools and your real data, and your team uses it every day. Every action is written to a log. A demo on test data doesn't count."
         },
         "data": {
           "question": "What happens to our data?",
-          "answer": "Your accounts and tools stay in your name. For the AI to handle a request, data goes through a model provider's API, such as OpenAI or Anthropic, which by default doesn't use it to train its models. If you need EU hosting or a local model, we plan for it in the quote."
+          "answer": "Your accounts and tools stay in your name. To handle a request, data goes through an AI provider such as OpenAI, Anthropic or Mistral AI, which doesn't train its models on it under business plans. If your data has to stay in Europe, we plan for it in the quote."
         },
         "remote": {
-          "question": "Do you work with teams outside Bordeaux?",
-          "answer": "Yes. Klyx is based in Bordeaux and we work remotely with teams across France and Europe, in French or English."
+          "question": "Do you work outside Bordeaux?",
+          "answer": "Yes. Klyx is based in Bordeaux and we work remotely with teams across France and Europe, in French or English. We can come on site around Bordeaux if needed."
         },
         "stack": {
-          "question": "What stack do you use?",
-          "answer": "Next.js, TypeScript and Supabase for products, WordPress when your team wants to edit on its own. On the AI side: OpenAI, Anthropic and Gemini, MCP servers, and agents connected to your tools."
+          "question": "Which tools do you work with?",
+          "answer": "We plug AI into what you already use: Gmail or Outlook, Google Sheets or Excel, your CRM, Slack or Teams, your accounting tool. On the AI side, we pick between OpenAI, Anthropic and Mistral AI depending on the project. For websites, we build with Next.js, or WordPress if you want to edit everything yourself."
+        },
+        "tools": {
+          "question": "Do we need to change our tools?",
+          "answer": "No. We plug AI into what you already use: your email, spreadsheets, CRM and accounting tool. Your team keeps its habits."
         }
       },
-      "titleEmphasis": "asked questions."
+      "intro": "Another question? Ask it on the call."
     },
     "finalCta": {
       "title": "Let's talk about your next workflow",
@@ -344,6 +319,241 @@
       "anonymised": "Anonymised",
       "live": "Live",
       "open": "Open {host}"
+    },
+    "useCases": {
+      "title": "What AI can do for your business.",
+      "intro": "Four examples of tasks we hand to an AI agent. Your team stays in charge of the decisions.",
+      "agent": "AI agent",
+      "before": "Before",
+      "after": "With the agent",
+      "items": {
+        "sales": {
+          "category": "Sales",
+          "title": "Qualify incoming requests",
+          "before": "Someone reads every email and copies the details into the CRM.",
+          "after": "The agent reads the request, creates the record in HubSpot and pings the right salesperson on Slack."
+        },
+        "support": {
+          "category": "Customer service",
+          "title": "Answer frequent questions",
+          "before": "The same questions land in the support inbox every day.",
+          "after": "The agent drafts a reply from your documents. A person reviews it before it goes out."
+        },
+        "finance": {
+          "category": "Finance",
+          "title": "Process supplier invoices",
+          "before": "Invoices arrive by email and are typed in by hand.",
+          "after": "The agent reads the amount, date and supplier, then files the invoice in Pennylane."
+        },
+        "management": {
+          "category": "Management",
+          "title": "Prepare the weekly report",
+          "before": "Every Monday, someone pulls together numbers from several spreadsheets.",
+          "after": "The agent compiles the numbers and sends a clear summary to the team on Teams."
+        }
+      }
+    },
+    "work": {
+      "title": "Projects in production, used every day.",
+      "intro": "Websites, internal software and AI assistants. For each project: the need, what we built, the result.",
+      "need": "The need",
+      "built": "What we built",
+      "result": "The result",
+      "viewAll": "See all our work",
+      "tabs": "Projects",
+      "items": {
+        "cronolyss": {
+          "tab": "Cronolyss",
+          "client": "Luxury watchmaking",
+          "title": "Cronolyss, the workshop's software",
+          "need": "Know at any moment where every watch left with the workshop stands.",
+          "built": "In-house software that tracks each watch step by step: diagnosis, repair, waiting for parts, delivery.",
+          "result": "The team sees at a glance what's moving and what's stuck.",
+          "alt": "Cronolyss dashboard"
+        },
+        "citeme": {
+          "tab": "CiteMe",
+          "client": "SaaS product, co-founded by Maxime",
+          "title": "CiteMe, your brand in ChatGPT's answers",
+          "need": "Know whether AI search engines cite a brand when a customer asks them a question.",
+          "built": "A tool that queries ChatGPT, Gemini, Perplexity and other engines, and tracks citations over time.",
+          "result": "Brands see where they're cited and what to fix to be cited more.",
+          "alt": "CiteMe home page"
+        },
+        "hoppy": {
+          "tab": "Hoppy for Hop Hop Immo",
+          "client": "AI assistant, new-build homes",
+          "title": "Hoppy, Hop Hop Immo's assistant",
+          "need": "Help buyers find their way through new-build projects in south-west France.",
+          "built": "An AI assistant, by text and voice, that answers questions and points to the right project.",
+          "result": "Buyers get an answer right away, without waiting for an advisor.",
+          "alt": "Hoppy assistant page on Hop Hop Immo"
+        }
+      },
+      "rows": {
+        "2060-io": {
+          "kind": "Consulting, verifiable AI agents",
+          "summary": "Agents, demos and a mobile app for the trust layer of AI agents."
+        },
+        "pkba": {
+          "kind": "Website, parkour club",
+          "summary": "Classes, events, sign-ups and a shop for a non-profit club."
+        }
+      },
+      "read": "Read the case study"
+    },
+    "method": {
+      "title": "How it works.",
+      "intro": "Four steps, from the first call to go-live. At every step, you get something concrete.",
+      "steps": {
+        "call": {
+          "when": "Before we start",
+          "title": "A 30-minute call",
+          "body": "Show us what eats your time. We'll tell you straight what AI can do, or can't. It's free."
+        },
+        "quote": {
+          "when": "Within a few days",
+          "title": "A written quote, at a fixed price",
+          "body": "You get in writing what's included, what isn't, the timeline and the price. It doesn't move after that."
+        },
+        "build": {
+          "when": "Over 1 to 4 weeks",
+          "title": "We build, you follow along",
+          "body": "A check-in every week and tests on your real data. The code is yours from day one."
+        },
+        "handover": {
+          "when": "At go-live",
+          "title": "Handover, then support if you want it",
+          "body": "We check with you that everything runs, train your team and hand you a written guide. Monthly support is optional."
+        }
+      },
+      "mocks": {
+        "call": {
+          "month": "Tue",
+          "day": "3",
+          "title": "Scoping call with Klyx",
+          "time": "11:00 to 11:30, on video",
+          "people": "Maxime and you"
+        },
+        "quote": {
+          "label": "Quote",
+          "title": "Incoming request sorting agent",
+          "items": {
+            "a": "Reads the contact@ inbox",
+            "b": "Sorts into lead, support or spam",
+            "c": "Updates the CRM record"
+          },
+          "excluded": "Not included: automatic reply to the customer",
+          "total": "Fixed price, 2 weeks"
+        },
+        "build": {
+          "from": "Maxime",
+          "time": "Friday 16:02",
+          "title": "Week 1 update:",
+          "items": {
+            "a": "Connected to the inbox",
+            "b": "Sorting tested on real emails",
+            "c": "CRM updates"
+          },
+          "next": "Demo next Friday, on your data.",
+          "channel": "#klyx-project in your Slack"
+        },
+        "handover": {
+          "title": "Handover",
+          "live": "Live",
+          "items": {
+            "a": "Code and access in your name",
+            "b": "Guide: restart, monitor, stop",
+            "c": "Automated tests in your code",
+            "d": "Training for your team"
+          }
+        }
+      }
+    },
+    "trust": {
+      "title": "Your data stays yours.",
+      "intro": "The questions IT and legal teams always ask, and our answers.",
+      "items": {
+        "owned": {
+          "title": "Everything is in your name",
+          "body": "Your tools, the code and the access belong to you. You can stop whenever you like, without depending on us."
+        },
+        "training": {
+          "title": "No training on your data",
+          "body": "We use the business plans of model providers, which by default don't use your data to train their models."
+        },
+        "europe": {
+          "title": "Hosting in Europe if needed",
+          "body": "For sensitive documents, we pick an EU-hosted provider or mask certain fields. GDPR questions are settled before we write code."
+        },
+        "human": {
+          "title": "A person signs off",
+          "body": "When the agent touches sensitive data, someone on your team approves before the action goes out."
+        },
+        "log": {
+          "title": "A log of every action",
+          "body": "You see what the agent did, when, and on which data."
+        },
+        "tested": {
+          "title": "Tested before go-live",
+          "body": "A set of 20 to 50 real cases checks that the agent does what we expect, before and after every change."
+        }
+      },
+      "models": "Models we use, depending on the project",
+      "anthropic": "Anthropic (Claude)",
+      "french": "French company"
+    },
+    "team": {
+      "title": "One point of contact, from the first call to go-live.",
+      "intro": "No salesperson, no project manager between you and the person who builds.",
+      "name": "Maxime Mansiet",
+      "role": "Founder and lead engineer at Klyx, in Bordeaux",
+      "bio": "Maxime scopes your project from the first call, writes the code and sees it through to go-live. When a project needs other skills, he brings in specialists and tells you first. He also co-founded CiteMe, a tool that measures how visible brands are in ChatGPT.",
+      "photoAlt": "Maxime Mansiet, founder of Klyx",
+      "stats": {
+        "contributions": "GitHub contributions in 12 months",
+        "projects": "live projects featured here",
+        "contact": "single point of contact for you"
+      },
+      "graph": "Maxime's GitHub contributions, from {from} to {to}",
+      "links": {
+        "github": "GitHub",
+        "linkedin": "LinkedIn",
+        "citeme": "CiteMe"
+      }
+    },
+    "cta": {
+      "title": "Let's talk about what you want to automate.",
+      "body": "30 minutes on video, free. You leave with a clear view of what's worth doing, even if we don't end up working together.",
+      "secondary": "Prefer writing? Request a quote",
+      "booking": {
+        "role": "Founder of Klyx, he's the one who answers",
+        "message": "Show me the task that wastes the most of your time. In 30 minutes, I'll tell you whether AI can take it on, and for how much.",
+        "pick": "Pick a slot",
+        "sample": "Example",
+        "days": {
+          "mon": {
+            "short": "Mon",
+            "long": "Monday"
+          },
+          "tue": {
+            "short": "Tue",
+            "long": "Tuesday"
+          },
+          "wed": {
+            "short": "Wed",
+            "long": "Wednesday"
+          },
+          "thu": {
+            "short": "Thu",
+            "long": "Thursday"
+          }
+        },
+        "button": "Book {day} {date} at {time}",
+        "video": "Video, 30 min",
+        "free": "Free",
+        "noCommitment": "No commitment"
+      }
     }
   },
   "offers": {

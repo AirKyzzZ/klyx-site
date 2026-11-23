@@ -1,49 +1,97 @@
 import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
 
+import {
+  CircleCheck,
+  Globe,
+  KeyRound,
+  List,
+  MessageSquareQuote,
+  Shield,
+  UserCheck,
+} from "lucide-react";
+import { getTranslations } from "next-intl/server";
+import { FaGithub, FaLinkedin } from "react-icons/fa6";
+
+import { ActionButton } from "@/components/action-button";
 import { JsonLd } from "@/components/json-ld";
-import { ContributionWindow } from "@/components/proof/contribution-window";
-import { CaseBand } from "@/components/sections/case-grid";
-import { Cta } from "@/components/sections/cta";
-import { Faq } from "@/components/sections/faq";
-import { Founder } from "@/components/sections/founder";
-import { HomeHero } from "@/components/sections/hero";
-import { OfferCards } from "@/components/sections/offer-cards";
-import { ProcessTimeline } from "@/components/sections/process-timeline";
-import { hasProofStrip, ProofStrip } from "@/components/sections/proof-strip";
-import { Testimonials } from "@/components/sections/testimonials";
-import { ToolsSection } from "@/components/sections/tools-section";
-import { SpotlightPointer } from "@/components/spotlight-pointer";
-import { messageList } from "@/i18n/message-list";
+import {
+  ACCENT_LEVEL_FILLS,
+  ContributionGraph,
+} from "@/components/proof/contribution-graph";
+import { Button } from "@/components/ui/button";
+import { BookingCard } from "@/components/ui-kit/booking-card";
+import { CaseCarousel } from "@/components/ui-kit/case-carousel";
+import { CaseRow } from "@/components/ui-kit/case-row";
+import { CenteredHero } from "@/components/ui-kit/centered-hero";
+import { ClientsRow } from "@/components/ui-kit/clients-row";
+import { ConstellationBackdrop } from "@/components/ui-kit/constellation-backdrop";
+import { FaqList } from "@/components/ui-kit/faq-list";
+import { FinalCta } from "@/components/ui-kit/final-cta";
+import { FounderCard } from "@/components/ui-kit/founder-card";
+import {
+  CallMock,
+  HandoverMock,
+  QuoteMock,
+  UpdateMock,
+} from "@/components/ui-kit/method-mocks";
+import { MethodSteps } from "@/components/ui-kit/method-steps";
+import {
+  CatalogueLinks,
+  OfferCard,
+  OfferRow,
+} from "@/components/ui-kit/offer-card";
+import {
+  AgentIllustration,
+  SiteIllustration,
+  TeamIllustration,
+} from "@/components/ui-kit/offer-illustrations";
+import { PageSection } from "@/components/ui-kit/page-section";
+import { SectionHeader } from "@/components/ui-kit/section-header";
+import { ToolsStrip } from "@/components/ui-kit/tools-strip";
+import { TrustGrid } from "@/components/ui-kit/trust-grid";
+import { UseCaseCard } from "@/components/ui-kit/use-case-card";
+import { Link } from "@/i18n/navigation";
 import { type LocaleParams, resolvePageLocale } from "@/i18n/page-locale";
 import { getCaseStudies } from "@/lib/content";
 import {
   ALSO_OFFERS,
+  HERO_DESTINATIONS,
+  HERO_SOURCES,
+  HOME_CAROUSEL,
+  HOME_CASE_ROWS,
+  HOME_CLIENTS,
   HOME_OFFER_CARDS,
+  HOME_TOOLS,
+  HOME_USE_CASES,
+  OTHER_TOOL_COUNT,
   selectHomeCases,
 } from "@/lib/home-sections";
 import { organizationJsonLd } from "@/lib/json-ld";
-import {
-  formatPrice,
-  getOfferPrice,
-  getPriceValues,
-  type OfferId,
-} from "@/lib/offers";
-import { getSiteShot, getVerifiedProof } from "@/lib/proof";
+import { formatPrice, getOfferPrice, getPriceValues } from "@/lib/offers";
+import { getGithubContributions, getSiteShot } from "@/lib/proof";
 import { buildMetadata } from "@/lib/seo";
 import { site } from "@/lib/site";
-import { teamRoster } from "@/lib/team-roster";
-import { CONNECTED_TOOLS } from "@/lib/tools";
 
-type SectionId =
-  | "proof"
-  | "offers"
-  | "tools"
-  | "cases"
-  | "process"
-  | "founder"
-  | "testimonials"
-  | "faq";
+const FOUNDER_PHOTO = "/team/maxime-mansiet.jpg";
+
+const BOOKING_DAYS = [
+  { id: "mon", date: 2 },
+  { id: "tue", date: 3 },
+  { id: "wed", date: 4 },
+  { id: "thu", date: 5 },
+] as const;
+const BOOKING_SLOTS = ["09:30", "11:00", "14:00", "16:30"];
+
+const TRUST_ITEMS = [
+  { key: "owned", icon: KeyRound },
+  { key: "training", icon: Shield },
+  { key: "europe", icon: Globe },
+  { key: "human", icon: UserCheck },
+  { key: "log", icon: List },
+  { key: "tested", icon: CircleCheck },
+] as const;
+
+const HOME_FAQ = ["price", "tools", "data", "team", "remote"] as const;
 
 export async function generateMetadata({
   params,
@@ -61,168 +109,412 @@ export async function generateMetadata({
 export default async function HomePage({ params }: LocaleParams) {
   const locale = await resolvePageLocale(params);
   const t = await getTranslations({ locale, namespace: "home" });
-  const nav = await getTranslations({ locale, namespace: "nav" });
-  const casesT = await getTranslations({ locale, namespace: "cases" });
-  const tabs = await getTranslations({ locale, namespace: "liveSystem.tabs" });
   const meta = await getTranslations({ locale, namespace: "meta.home" });
   const cases = selectHomeCases(await getCaseStudies(locale));
-  const proof = getVerifiedProof();
+  const contributions = getGithubContributions();
+  const citeme = getSiteShot("citeme");
   const prices = getPriceValues(locale);
-  const price = (id: OfferId) => formatPrice(getOfferPrice(id), locale);
+  const formatNumber = (value: number) =>
+    new Intl.NumberFormat(locale).format(value).replaceAll("\u202f", "\u00a0");
+  const day = (date: string) =>
+    new Intl.DateTimeFormat(locale, {
+      dateStyle: "long",
+      timeZone: "UTC",
+    }).format(new Date(date));
 
-  const showProof = site.flags.homeProofStrip && hasProofStrip(proof);
-
-  const candidates: (SectionId | false)[] = [
-    showProof && "proof",
-    "offers",
-    "tools",
-    cases.length > 0 && "cases",
-    "process",
-    "founder",
-    site.flags.testimonialsConsented && "testimonials",
-    "faq",
-  ];
-  const order = candidates.filter((id): id is SectionId => id !== false);
-  const section = (id: SectionId) => ({
-    index: String(order.indexOf(id) + 1).padStart(2, "0"),
-    eyebrow: t(`eyebrows.${id}`),
+  const casesBySlug = new Map(cases.map((study) => [study.slug, study]));
+  const carousel = HOME_CAROUSEL.filter(({ slug }) => casesBySlug.has(slug));
+  const rows = HOME_CASE_ROWS.flatMap(({ slug, name }) => {
+    const item = casesBySlug.get(slug);
+    return item ? [{ item, name }] : [];
   });
 
-  const citeme = getSiteShot("citeme");
+  const illustrations = {
+    sites: <SiteIllustration domain={t("offers.art.domain")} />,
+    agents: (
+      <AgentIllustration
+        from="gmail"
+        to="hubspot"
+        label={t("offers.art.agent")}
+        caption={t("offers.art.agentCaption")}
+      />
+    ),
+    fde: (
+      <TeamIllustration
+        photo={FOUNDER_PHOTO}
+        caption={t("offers.art.teamCaption")}
+      />
+    ),
+  };
 
   return (
     <>
       <JsonLd data={organizationJsonLd(meta("description"))} />
-      <SpotlightPointer />
-      <HomeHero locale={locale} />
 
-      {showProof && (
-        <ProofStrip
-          {...section("proof")}
-          sources={proof}
-          locale={locale}
-          title={t("proofStrip.title")}
-          emphasis={t("proofStrip.titleEmphasis")}
+      <CenteredHero
+        data-home-hero
+        title={t("hero.title")}
+        subtitle={t("hero.subtitle")}
+        backdrop={
+          <ConstellationBackdrop
+            sources={HERO_SOURCES}
+            destinations={HERO_DESTINATIONS}
+          />
+        }
+        actions={
+          <>
+            <ActionButton action="book" size="xl" trackLocation="hero">
+              {t("hero.ctaPrimary")}
+            </ActionButton>
+            <Button variant="outline" size="xl" asChild>
+              <Link href="/realisations">{t("hero.ctaSecondary")}</Link>
+            </Button>
+          </>
+        }
+        footer={<ClientsRow label={t("hero.clients")} names={HOME_CLIENTS} />}
+      />
+
+      <PageSection id="outils" containerClassName="py-11 lg:py-11">
+        <ToolsStrip
+          title={t("tools.title")}
+          tools={HOME_TOOLS}
+          more={t("tools.more", { count: OTHER_TOOL_COUNT })}
         />
-      )}
+      </PageSection>
 
-      <OfferCards
-        {...section("offers")}
-        title={t("offers.title")}
-        emphasis={t("offers.titleEmphasis")}
-        subtitle={t("offers.subtitle")}
-        items={HOME_OFFER_CARDS.map(({ key, href, offer }) => ({
-          href,
-          glyph: key,
-          tag: tabs(key),
-          name: t(`offers.cards.${key}.name`),
-          outcome: t(`offers.cards.${key}.outcome`),
-          price: t(`offers.cards.${key}.price`, { price: price(offer) }),
-          duration: t(`offers.cards.${key}.duration`),
-          steps: [
-            t(`offers.steps.${key}.a`),
-            t(`offers.steps.${key}.b`),
-            t(`offers.steps.${key}.c`),
-          ],
-        }))}
-        also={{
-          label: t("offers.also.label"),
-          items: ALSO_OFFERS.map(({ key, href }) => ({
+      <PageSection id="offres" containerClassName="lg:pt-30">
+        <SectionHeader title={t("offers.title")} intro={t("offers.intro")} />
+        <OfferRow className="mt-12">
+          {HOME_OFFER_CARDS.map(({ key, href, offer }) => (
+            <OfferCard
+              key={key}
+              name={t(`offers.cards.${key}.name`)}
+              audience={t(`offers.cards.${key}.audience`)}
+              body={t(`offers.cards.${key}.body`)}
+              priceLabel={t("offers.from")}
+              price={t(`offers.cards.${key}.price`, {
+                price: formatPrice(getOfferPrice(offer), locale),
+              })}
+              unit={key === "fde" ? t("offers.cards.fde.unit") : undefined}
+              duration={t(`offers.cards.${key}.duration`)}
+              href={href}
+              linkLabel={t("offers.link")}
+              illustration={illustrations[key]}
+            />
+          ))}
+        </OfferRow>
+        <CatalogueLinks
+          className="mt-8"
+          label={t("offers.also.label")}
+          items={ALSO_OFFERS.map(({ key, href }) => ({
             label: t(`offers.also.${key}`),
             href,
-          })),
-        }}
-      />
+          }))}
+        />
+      </PageSection>
 
-      <ToolsSection
-        {...section("tools")}
-        title={t("tools.title")}
-        emphasis={t("tools.titleEmphasis")}
-        body={t("tools.body")}
-        label={t("tools.label")}
-        rows={CONNECTED_TOOLS.map((group) => ({
-          ...group,
-          label: t(`tools.groups.${group.key}`),
-        }))}
-        note={t("tools.note")}
-        map={{
-          inputs: ["email", "data", "commerce"],
-          outputs: ["crm", "team", "finance"],
-          hub: "automation",
-          labels: {
-            inputs: t("tools.map.inputs"),
-            outputs: t("tools.map.outputs"),
-            hub: t("tools.map.hub"),
-            hubMeta: t("tools.map.hubMeta"),
-            under: t("tools.map.under"),
-            details: t("tools.map.details", {
-              count: CONNECTED_TOOLS.flatMap((group) => group.tools).length,
-            }),
-          },
-        }}
-      />
+      <PageSection id="cas-usage">
+        <SectionHeader
+          title={t("useCases.title")}
+          intro={t("useCases.intro")}
+        />
+        <div className="mt-12 grid gap-5 md:grid-cols-2">
+          {HOME_USE_CASES.map(({ key, from, to }) => (
+            <UseCaseCard
+              key={key}
+              category={t(`useCases.items.${key}.category`)}
+              title={t(`useCases.items.${key}.title`)}
+              from={from}
+              to={to}
+              agentLabel={t("useCases.agent")}
+              before={{
+                label: t("useCases.before"),
+                text: t(`useCases.items.${key}.before`),
+              }}
+              after={{
+                label: t("useCases.after"),
+                text: t(`useCases.items.${key}.after`),
+              }}
+            />
+          ))}
+        </div>
+      </PageSection>
 
       {cases.length > 0 && (
-        <CaseBand
-          {...section("cases")}
-          title={casesT("hero.title")}
-          emphasis={casesT("hero.titleEmphasis")}
-          subtitle={t("cases.subtitle")}
-          viewAllLabel={t("cases.viewAll")}
-          readLabel={t("cases.readCase")}
-          items={cases}
-        />
+        <PageSection id="realisations" containerClassName="lg:pt-30">
+          <SectionHeader title={t("work.title")} intro={t("work.intro")} />
+          {carousel.length > 0 && (
+            <CaseCarousel
+              className="mt-8"
+              labels={{
+                tabs: t("work.tabs"),
+                need: t("work.need"),
+                built: t("work.built"),
+                result: t("work.result"),
+                read: t("work.read"),
+              }}
+              items={carousel.map(({ key, slug, image }) => ({
+                id: key,
+                slug,
+                image,
+                stack: casesBySlug.get(slug)?.stack.join(", ") ?? "",
+                tab: t(`work.items.${key}.tab`),
+                client: t(`work.items.${key}.client`),
+                title: t(`work.items.${key}.title`),
+                need: t(`work.items.${key}.need`),
+                built: t(`work.items.${key}.built`),
+                result: t(`work.items.${key}.result`),
+                alt: t(`work.items.${key}.alt`),
+              }))}
+            />
+          )}
+          {rows.length > 0 && (
+            <div className="mt-8 flex flex-col">
+              {rows.map(({ item, name }) => (
+                <CaseRow
+                  key={item.slug}
+                  slug={item.slug}
+                  name={name}
+                  kind={t(`work.rows.${item.slug}.kind`)}
+                  summary={t(`work.rows.${item.slug}.summary`)}
+                  meta={[...item.stack.slice(0, 2), item.year].join(", ")}
+                  image={item.image}
+                />
+              ))}
+            </div>
+          )}
+          <div className="mt-6 flex justify-end">
+            <Button
+              variant="outline"
+              asChild
+              className="h-11 rounded-[10px] px-5"
+            >
+              <Link href="/realisations">{t("work.viewAll")}</Link>
+            </Button>
+          </div>
+        </PageSection>
       )}
 
-      <ProcessTimeline {...section("process")} locale={locale} />
+      <PageSection id="methode">
+        <SectionHeader title={t("method.title")} intro={t("method.intro")} />
+        <MethodSteps
+          className="mt-12"
+          steps={[
+            {
+              when: t("method.steps.call.when"),
+              title: t("method.steps.call.title"),
+              body: t("method.steps.call.body"),
+              mock: (
+                <CallMock
+                  month={t("method.mocks.call.month")}
+                  day={t("method.mocks.call.day")}
+                  title={t("method.mocks.call.title")}
+                  time={t("method.mocks.call.time")}
+                  people={t("method.mocks.call.people")}
+                  avatar={FOUNDER_PHOTO}
+                />
+              ),
+            },
+            {
+              when: t("method.steps.quote.when"),
+              title: t("method.steps.quote.title"),
+              body: t("method.steps.quote.body"),
+              mock: (
+                <QuoteMock
+                  label={t("method.mocks.quote.label")}
+                  title={t("method.mocks.quote.title")}
+                  items={["a", "b", "c"].map((id) =>
+                    t(`method.mocks.quote.items.${id}`),
+                  )}
+                  excluded={t("method.mocks.quote.excluded")}
+                  total={t("method.mocks.quote.total")}
+                  price={prices.sprintPrice}
+                />
+              ),
+            },
+            {
+              when: t("method.steps.build.when"),
+              title: t("method.steps.build.title"),
+              body: t("method.steps.build.body"),
+              mock: (
+                <UpdateMock
+                  from={t("method.mocks.build.from")}
+                  time={t("method.mocks.build.time")}
+                  title={t("method.mocks.build.title")}
+                  next={t("method.mocks.build.next")}
+                  channel={t("method.mocks.build.channel")}
+                  avatar={FOUNDER_PHOTO}
+                  items={[
+                    { label: t("method.mocks.build.items.a"), done: true },
+                    { label: t("method.mocks.build.items.b"), done: true },
+                    { label: t("method.mocks.build.items.c"), done: false },
+                  ]}
+                />
+              ),
+            },
+            {
+              when: t("method.steps.handover.when"),
+              title: t("method.steps.handover.title"),
+              body: t("method.steps.handover.body"),
+              mock: (
+                <HandoverMock
+                  title={t("method.mocks.handover.title")}
+                  live={t("method.mocks.handover.live")}
+                  items={["a", "b", "c", "d"].map((id) =>
+                    t(`method.mocks.handover.items.${id}`),
+                  )}
+                />
+              ),
+            },
+          ]}
+        />
+      </PageSection>
 
-      <Founder
-        {...section("founder")}
-        title={t("founder.title")}
-        emphasis={t("founder.titleEmphasis")}
-        body={t("founder.body")}
-        experience={t("founder.experience")}
-        caption={t("founder.caption")}
-        roster={teamRoster(t, "founder.roster")}
-        products={{
-          label: t("founder.products"),
-          items: citeme ? [{ name: "CiteMe", url: citeme.url }] : [],
-        }}
-        proof={<ContributionWindow locale={locale} />}
-        links={[
-          { label: t("founder.github"), href: site.socials.github },
-          { label: t("founder.linkedin"), href: site.socials.linkedinFounder },
-        ]}
-        aboutLabel={t("founder.about")}
-      />
+      <PageSection id="donnees">
+        <SectionHeader title={t("trust.title")} intro={t("trust.intro")} />
+        <TrustGrid
+          className="mt-12"
+          items={TRUST_ITEMS.map(({ key, icon }) => ({
+            icon,
+            title: t(`trust.items.${key}.title`),
+            body: t(`trust.items.${key}.body`),
+          }))}
+          footer={{
+            label: t("trust.models"),
+            models: [
+              { logo: "openai", name: "OpenAI" },
+              { logo: "claude", name: t("trust.anthropic") },
+              {
+                logo: "mistral-ai",
+                name: "Mistral AI",
+                note: t("trust.french"),
+              },
+            ],
+          }}
+        />
+      </PageSection>
 
-      <Testimonials
-        {...section("testimonials")}
-        title={t("testimonials.title")}
-        emphasis={t("testimonials.titleEmphasis")}
-        items={messageList(t, "testimonials.items", [
-          "quote",
-          "author",
-          "company",
-        ])}
-      />
+      <PageSection id="equipe">
+        <SectionHeader title={t("team.title")} intro={t("team.intro")} />
+        <FounderCard
+          className="mt-12"
+          name={t("team.name")}
+          role={t("team.role")}
+          bio={t("team.bio")}
+          photo={FOUNDER_PHOTO}
+          photoAlt={t("team.photoAlt")}
+          stats={[
+            ...(contributions
+              ? [
+                  {
+                    value: formatNumber(contributions.total),
+                    label: t("team.stats.contributions"),
+                  },
+                ]
+              : []),
+            {
+              value: formatNumber(cases.length),
+              label: t("team.stats.projects"),
+            },
+            { value: formatNumber(1), label: t("team.stats.contact") },
+          ]}
+          graph={
+            contributions && (
+              <ContributionGraph
+                data={contributions}
+                fills={ACCENT_LEVEL_FILLS}
+                cell={9}
+                label={t("team.graph", {
+                  from: day(contributions.from),
+                  to: day(contributions.to),
+                })}
+              />
+            )
+          }
+          links={[
+            ...(contributions
+              ? [
+                  {
+                    label: t("team.links.github"),
+                    detail: `@${contributions.user}`,
+                    href: site.socials.github,
+                    icon: <FaGithub className="text-text size-4" />,
+                  },
+                ]
+              : []),
+            {
+              label: t("team.links.linkedin"),
+              detail: site.founder,
+              href: site.socials.linkedinFounder,
+              icon: <FaLinkedin className="size-4 text-[#0a66c2]" />,
+            },
+            ...(citeme
+              ? [
+                  {
+                    label: t("team.links.citeme"),
+                    detail: new URL(citeme.url).host.replace(/^www\./, ""),
+                    href: citeme.url,
+                    icon: (
+                      <MessageSquareQuote className="size-4 text-[#7c3aed]" />
+                    ),
+                  },
+                ]
+              : []),
+          ]}
+        />
+      </PageSection>
 
-      <Faq
-        {...section("faq")}
-        title={t("faq.title")}
-        emphasis={t("faq.titleEmphasis")}
-        items={messageList(t, "faq.items", ["question", "answer"], prices)}
-        bookLabel={nav("book")}
-        openFirst
-      />
+      <PageSection id="faq">
+        <FaqList
+          title={t("faq.title")}
+          intro={t("faq.intro")}
+          items={HOME_FAQ.map((key) => ({
+            question: t(`faq.items.${key}.question`),
+            answer: t(`faq.items.${key}.answer`, prices),
+          }))}
+        />
+      </PageSection>
 
-      <Cta
-        title={t("finalCta.title")}
-        emphasis={t("finalCta.titleEmphasis")}
-        body={t("finalCta.body")}
-        primary={{ action: "book", label: t("finalCta.ctaPrimary") }}
-        secondary={{ action: "quote", label: t("finalCta.ctaSecondary") }}
-      />
+      <PageSection id="contact">
+        <FinalCta
+          title={t("cta.title")}
+          body={t("cta.body")}
+          actions={
+            <ActionButton
+              action="quote"
+              variant="outline"
+              size="xl"
+              trackLocation="final-cta"
+              className="h-12 rounded-[10px] px-[22px]"
+            >
+              {t("cta.secondary")}
+            </ActionButton>
+          }
+          aside={
+            <BookingCard
+              avatar={FOUNDER_PHOTO}
+              labels={{
+                name: t("team.name"),
+                role: t("cta.booking.role"),
+                message: t("cta.booking.message"),
+                pick: t("cta.booking.pick"),
+                sample: t("cta.booking.sample"),
+                video: t("cta.booking.video"),
+                free: t("cta.booking.free"),
+                noCommitment: t("cta.booking.noCommitment"),
+              }}
+              days={BOOKING_DAYS.map(({ id, date }) => ({
+                id,
+                date,
+                short: t(`cta.booking.days.${id}.short`),
+                long: t(`cta.booking.days.${id}.long`),
+              }))}
+              slots={BOOKING_SLOTS}
+              buttonTemplate={String(t.raw("cta.booking.button"))}
+            />
+          }
+        />
+      </PageSection>
     </>
   );
 }

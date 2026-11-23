@@ -6,7 +6,7 @@
     "groupAdvise": "Conseiller",
     "sites": "Sites et landing pages",
     "agents": "Agents IA",
-    "fde": "Forward Deployed Engineer",
+    "fde": "Développeur dédié",
     "cases": "Réalisations",
     "pricing": "Tarifs",
     "about": "À propos",
@@ -52,13 +52,11 @@
   },
   "home": {
     "hero": {
-      "title": "Des agents IA qui tournent en production,",
-      "titleEmphasis": "pas des démos.",
-      "subtitle": "Sites, agents et automatisations livrés au forfait pour startups et agences. Devis gratuit, prix publics.",
-      "ctaPrimary": "Réserver un appel",
-      "ctaSecondary": "Demander un devis gratuit",
-      "eyebrow": "Agence IA · Bordeaux",
-      "serif": "démos"
+      "title": "Vos tâches répétitives, automatisées par l'IA.",
+      "subtitle": "On branche des agents IA sur les outils de vos équipes : emails, CRM, tableurs, compta. Ils trient, saisissent et relancent à leur place. En production en 2 semaines, à prix fixe.",
+      "ctaPrimary": "Réserver un appel de 30 min",
+      "ctaSecondary": "Voir nos réalisations",
+      "clients": "Ils nous ont confié un projet"
     },
     "proof": {
       "label": "Livrable réel",
@@ -66,78 +64,51 @@
       "body": "TODO(maxime): choisir l'artefact affiché ici (liste de PR CiteMe, score Lighthouse d'un site client en ligne ou journal d'exécution d'un agent). Rien ne s'affiche tant que ce n'est pas un vrai livrable."
     },
     "offers": {
-      "title": "Trois façons",
-      "subtitle": "Les prix sont affichés, en € HT. Le devis est gratuit, et on fixe le périmètre par écrit avant de commencer.",
-      "link": "Voir l'offre",
+      "title": "Trois façons de travailler avec nous.",
+      "intro": "Les prix sont affichés. Le devis est gratuit, et on fixe ensemble ce qui est inclus, par écrit, avant de commencer.",
+      "link": "Voir l'offre en détail",
       "cards": {
         "sites": {
-          "name": "Sites et landing pages",
-          "outcome": "Un site rapide et clair, que Google et ChatGPT savent lire. En ligne en 1 à 4 semaines.",
-          "price": "À partir de {price}",
-          "duration": "1 à 4 semaines"
+          "name": "Site web",
+          "audience": "Pour être trouvé sur Google et cité par ChatGPT.",
+          "body": "Un site rapide et clair, que vous pouvez modifier vous-même.",
+          "price": "{price}",
+          "duration": "En ligne en 1 à 4 semaines"
         },
         "agents": {
-          "name": "Agents IA",
-          "outcome": "On branche l'IA sur vos outils pour qu'une tâche répétitive se fasse seule. En production en 2 semaines, et le code reste chez vous.",
-          "price": "À partir de {price}",
-          "duration": "2 semaines"
+          "name": "Agent IA",
+          "audience": "Pour ne plus faire les tâches répétitives à la main.",
+          "body": "On branche l'IA sur vos outils. Elle trie, remplit et transmet à votre place. Le code reste chez vous.",
+          "price": "{price}",
+          "duration": "En place en 2 semaines"
         },
         "fde": {
-          "name": "Forward Deployed Engineer",
-          "outcome": "Un développeur de l'agence intégré à votre équipe 2 à 3 jours par semaine, pendant 4 semaines ou plus. Il livre vos fonctionnalités IA dans votre propre code.",
-          "price": "À partir de {price} / jour",
-          "duration": "4 semaines minimum"
+          "name": "Développeur dédié",
+          "audience": "Pour avancer vite sur vos projets IA.",
+          "body": "Un de nos développeurs rejoint votre équipe 2 à 3 jours par semaine et livre dans votre propre code.",
+          "price": "{price}",
+          "duration": "4 semaines minimum",
+          "unit": "/ jour"
         }
       },
-      "titleEmphasis": "de travailler ensemble.",
       "also": {
-        "label": "Aussi",
+        "label": "Aussi au catalogue",
         "audit": "Audit IA",
-        "automation": "Automatisation IA",
-        "geo": "Référencement IA",
-        "useCases": "Cas d'usage par secteur"
+        "automation": "Automatisations",
+        "geo": "Référencement sur ChatGPT",
+        "useCases": "Exemples par secteur"
       },
-      "steps": {
-        "sites": {
-          "a": "Brief",
-          "b": "Site",
-          "c": "En ligne"
-        },
-        "agents": {
-          "a": "Outils",
-          "b": "Agent",
-          "c": "En prod"
-        },
-        "fde": {
-          "a": "Demande",
-          "b": "Code",
-          "c": "Livré"
-        }
-      }
+      "art": {
+        "domain": "votre-site.fr",
+        "agent": "Agent IA",
+        "agentCaption": "Le mail est lu, la fiche est créée.",
+        "teamCaption": "Votre équipe, plus un développeur de Klyx"
+      },
+      "from": "À partir de"
     },
     "tools": {
-      "title": "Vos outils,",
-      "titleEmphasis": "branchés.",
-      "body": "On branche l'IA sur ce que vous utilisez déjà : votre messagerie, vos tableurs, votre CRM. Vous ne changez pas d'outil.",
-      "label": "Outils que nous connectons",
-      "groups": {
-        "email": "Email",
-        "data": "Données",
-        "crm": "CRM",
-        "team": "Équipe",
-        "commerce": "Site, boutique",
-        "finance": "Compta",
-        "automation": "Automatisation"
-      },
-      "note": "Les marques citées appartiennent à leurs propriétaires respectifs. Klyx n'est ni affilié ni partenaire de ces éditeurs.",
-      "map": {
-        "inputs": "Ce qui arrive",
-        "outputs": "Où ça repart",
-        "hub": "Agent IA",
-        "hubMeta": "lit · trie · prépare",
-        "under": "tourne sur",
-        "details": "Les {count} outils, un par un"
-      }
+      "title": "Fonctionne avec les outils que vous avez déjà",
+      "more": "et {count} autres"
     },
     "cases": {
       "title": "Réalisations",
@@ -272,34 +243,38 @@
       "titleEmphasis": "nos clients."
     },
     "faq": {
-      "title": "Questions",
+      "title": "Questions fréquentes.",
       "items": {
         "price": {
-          "question": "Combien coûte un projet ?",
-          "answer": "Une landing page démarre à {landingPrice}, un site IA à {siteIaPrice}, un audit IA à {auditPrice} et un Sprint IA à {sprintPrice}. Le prix final dépend du périmètre, fixé par écrit avant de commencer. Tous les prix sont sur la page Tarifs."
+          "question": "Combien coûte un projet ?",
+          "answer": "Un site démarre à {landingPrice}, un audit IA à {auditPrice} et un agent IA à {sprintPrice}. Le prix final est fixé par écrit avant de commencer. Tous les prix sont sur la page Tarifs."
         },
         "team": {
-          "question": "Qui travaille sur notre projet ?",
-          "answer": "Maxime Mansiet, notre lead engineer, du premier appel à la passation. Il confie des tâches bien délimitées à des agents de code IA, et le code qu'ils produisent est relu avant la mise en production. Si le projet demande du design ou une spécialité, on s'associe à un spécialiste et on vous le dit avant. Le code est dans votre repo dès le premier jour, et chaque projet se termine par une passation écrite pour qu'un autre développeur puisse reprendre. En Forward Deployed Engineer, on prend deux clients au plus en même temps, et on ne propose pas d'astreinte 24 h/24."
+          "question": "Qui travaille sur notre projet ?",
+          "answer": "Maxime Mansiet, notre lead engineer, du premier appel à la passation. Il confie des tâches bien délimitées à des agents de code IA et relit tout ce qu'ils produisent. Si le projet demande du design ou une autre spécialité, on fait appel à un spécialiste et on vous le dit avant. Le code est à votre nom dès le premier jour, et chaque projet se termine par une passation écrite pour qu'un autre développeur puisse reprendre."
         },
         "production": {
           "question": "Que veut dire « en production » ?",
-          "answer": "Un agent ou une automatisation branché sur vos vrais outils et vos vraies données, que votre équipe utilise au quotidien, avec un journal de ce que fait l'agent. Une démo sur un jeu de test ne compte pas."
+          "answer": "L'agent est branché sur vos vrais outils et vos vraies données, et votre équipe s'en sert tous les jours. Chaque action est notée dans un journal. Une démo sur des données de test ne compte pas."
         },
         "data": {
-          "question": "Que deviennent nos données ?",
-          "answer": "Vos comptes et vos outils restent à votre nom. Pour que l'IA traite une demande, les données passent par l'API d'un fournisseur de modèle, comme OpenAI ou Anthropic, qui par défaut ne les utilise pas pour entraîner ses modèles. Si vous avez besoin d'un hébergement dans l'UE ou d'un modèle local, on le prévoit dans le devis."
+          "question": "Que deviennent nos données ?",
+          "answer": "Vos comptes et vos outils restent à votre nom. Pour traiter une demande, les données passent par un fournisseur d'IA comme OpenAI, Anthropic ou Mistral AI, qui n'entraîne pas ses modèles dessus avec les offres professionnelles. Si vos données doivent rester en Europe, on le prévoit dans le devis."
         },
         "remote": {
-          "question": "Travaillez-vous avec des équipes hors de Bordeaux ?",
-          "answer": "Oui. Klyx est basé à Bordeaux et on travaille à distance avec des équipes partout en France et en Europe, en français ou en anglais."
+          "question": "Travaillez-vous en dehors de Bordeaux ?",
+          "answer": "Oui. Klyx est basé à Bordeaux et on travaille à distance avec des équipes partout en France et en Europe, en français ou en anglais. On se déplace dans la région bordelaise si besoin."
         },
         "stack": {
-          "question": "Quelle stack utilisez-vous ?",
-          "answer": "Next.js, TypeScript et Supabase pour les produits, WordPress quand votre équipe veut éditer seule. Côté IA : OpenAI, Anthropic et Gemini, des serveurs MCP et des agents branchés sur vos outils."
+          "question": "Avec quels outils travaillez-vous ?",
+          "answer": "On branche l'IA sur ce que vous utilisez déjà : Gmail ou Outlook, Google Sheets ou Excel, votre CRM, Slack ou Teams, votre compta. Côté IA, on choisit entre OpenAI, Anthropic et Mistral AI selon le projet. Pour les sites, on travaille en Next.js, ou en WordPress si vous voulez tout modifier vous-même."
+        },
+        "tools": {
+          "question": "Faut-il changer nos outils ?",
+          "answer": "Non. On branche l'IA sur ce que vous utilisez déjà : votre messagerie, vos tableurs, votre CRM, votre compta. Votre équipe garde ses habitudes."
         }
       },
-      "titleEmphasis": "fréquentes."
+      "intro": "Une autre question ? Posez-la pendant l'appel."
     },
     "finalCta": {
       "title": "Parlons de votre prochain workflow",
@@ -344,6 +319,241 @@
       "anonymised": "Anonymisé",
       "live": "En ligne",
       "open": "Ouvrir {host}"
+    },
+    "useCases": {
+      "title": "Ce que l'IA peut faire dans votre entreprise.",
+      "intro": "Quatre exemples de tâches qu'on confie à un agent IA. Votre équipe garde la main sur les décisions.",
+      "agent": "Agent IA",
+      "before": "Avant",
+      "after": "Avec l'agent",
+      "items": {
+        "sales": {
+          "category": "Commercial",
+          "title": "Qualifier les demandes entrantes",
+          "before": "Quelqu'un lit chaque email et recopie les infos dans le CRM.",
+          "after": "L'agent lit la demande, crée la fiche dans HubSpot et prévient le bon commercial sur Slack."
+        },
+        "support": {
+          "category": "Service client",
+          "title": "Répondre aux questions fréquentes",
+          "before": "Les mêmes questions reviennent chaque jour dans la boîte support.",
+          "after": "L'agent prépare une réponse à partir de vos documents. Une personne la relit avant l'envoi."
+        },
+        "finance": {
+          "category": "Finance",
+          "title": "Traiter les factures fournisseurs",
+          "before": "Les factures arrivent par email et sont saisies à la main.",
+          "after": "L'agent lit montant, date et fournisseur, puis range la facture dans Pennylane."
+        },
+        "management": {
+          "category": "Direction",
+          "title": "Préparer le reporting de la semaine",
+          "before": "Chaque lundi, quelqu'un rassemble les chiffres de plusieurs tableurs.",
+          "after": "L'agent compile les chiffres et envoie un résumé clair à l'équipe sur Teams."
+        }
+      }
+    },
+    "work": {
+      "title": "Des projets en production, utilisés tous les jours.",
+      "intro": "Sites, logiciels internes et assistants IA. Pour chaque projet : le besoin, ce qu'on a construit, le résultat.",
+      "need": "Le besoin",
+      "built": "Ce qu'on a construit",
+      "result": "Le résultat",
+      "viewAll": "Voir toutes les réalisations",
+      "tabs": "Projets",
+      "items": {
+        "cronolyss": {
+          "tab": "Cronolyss",
+          "client": "Horlogerie de luxe",
+          "title": "Cronolyss, le logiciel de l'atelier",
+          "need": "Savoir à tout moment où en est chaque montre confiée à l'atelier.",
+          "built": "Un logiciel interne qui suit chaque montre étape par étape : diagnostic, réparation, attente de pièces, livraison.",
+          "result": "L'équipe voit d'un coup d'œil ce qui avance et ce qui bloque.",
+          "alt": "Tableau de bord de Cronolyss"
+        },
+        "citeme": {
+          "tab": "CiteMe",
+          "client": "Produit SaaS, cofondé par Maxime",
+          "title": "CiteMe, votre marque dans les réponses de ChatGPT",
+          "need": "Savoir si les moteurs IA citent une marque quand un client leur pose une question.",
+          "built": "Un outil qui interroge ChatGPT, Gemini, Perplexity et d'autres moteurs, et suit les citations dans le temps.",
+          "result": "Les marques voient où elles sont citées et quoi corriger pour l'être davantage.",
+          "alt": "Page d'accueil de CiteMe"
+        },
+        "hoppy": {
+          "tab": "Hoppy pour Hop Hop Immo",
+          "client": "Assistant IA, immobilier neuf",
+          "title": "Hoppy, l'assistant de Hop Hop Immo",
+          "need": "Aider les acheteurs à s'y retrouver parmi les programmes neufs du Sud-Ouest.",
+          "built": "Un assistant IA, à l'écrit et à la voix, qui répond aux questions et oriente vers le bon programme.",
+          "result": "Les acheteurs ont une réponse tout de suite, sans attendre un conseiller.",
+          "alt": "Page de l'assistant Hoppy sur Hop Hop Immo"
+        }
+      },
+      "rows": {
+        "2060-io": {
+          "kind": "Conseil, agents IA vérifiables",
+          "summary": "Agents, démos et application mobile pour la couche de confiance des agents IA."
+        },
+        "pkba": {
+          "kind": "Site web, club de parkour",
+          "summary": "Cours, événements, préinscriptions et boutique pour un club associatif."
+        }
+      },
+      "read": "Lire l'étude de cas"
+    },
+    "method": {
+      "title": "Comment ça se passe.",
+      "intro": "Quatre étapes, du premier appel à la mise en ligne. À chaque étape, vous recevez quelque chose de concret.",
+      "steps": {
+        "call": {
+          "when": "Avant de commencer",
+          "title": "Un appel de 30 minutes",
+          "body": "Vous nous montrez ce qui vous prend du temps. On vous dit franchement ce que l'IA peut faire, ou pas. C'est gratuit."
+        },
+        "quote": {
+          "when": "Sous quelques jours",
+          "title": "Un devis écrit, à prix fixe",
+          "body": "Vous recevez par écrit ce qui est inclus, ce qui ne l'est pas, le délai et le prix. Il ne bouge plus ensuite."
+        },
+        "build": {
+          "when": "Pendant 1 à 4 semaines",
+          "title": "On construit, vous suivez",
+          "body": "Un point chaque semaine et des tests sur vos vraies données. Le code est chez vous dès le premier jour."
+        },
+        "handover": {
+          "when": "À la mise en ligne",
+          "title": "Passation, puis suivi si vous voulez",
+          "body": "On vérifie avec vous que tout tourne, on forme votre équipe et on vous remet un guide écrit. Le suivi mensuel est en option."
+        }
+      },
+      "mocks": {
+        "call": {
+          "month": "mar.",
+          "day": "3",
+          "title": "Appel de cadrage avec Klyx",
+          "time": "11:00 à 11:30, en visio",
+          "people": "Maxime et vous"
+        },
+        "quote": {
+          "label": "Devis",
+          "title": "Agent de tri des demandes entrantes",
+          "items": {
+            "a": "Lecture de la boîte contact@",
+            "b": "Classement : prospect, support ou spam",
+            "c": "Fiche CRM mise à jour"
+          },
+          "excluded": "Non inclus : réponse automatique au client",
+          "total": "Prix fixe, 2 semaines"
+        },
+        "build": {
+          "from": "Maxime",
+          "time": "vendredi 16:02",
+          "title": "Point de la semaine 1 :",
+          "items": {
+            "a": "Connexion à la boîte mail",
+            "b": "Tri testé sur de vrais emails",
+            "c": "Mise à jour du CRM"
+          },
+          "next": "Démo vendredi prochain, sur vos données.",
+          "channel": "#projet-klyx dans votre Slack"
+        },
+        "handover": {
+          "title": "Passation",
+          "live": "En ligne",
+          "items": {
+            "a": "Code et accès à votre nom",
+            "b": "Guide : relancer, surveiller, arrêter",
+            "c": "Tests automatiques dans votre code",
+            "d": "Formation de votre équipe"
+          }
+        }
+      }
+    },
+    "trust": {
+      "title": "Vos données restent à vous.",
+      "intro": "Les questions que posent toujours les équipes IT et juridiques, et nos réponses.",
+      "items": {
+        "owned": {
+          "title": "Tout est à votre nom",
+          "body": "Vos outils, le code et les accès vous appartiennent. Vous pouvez arrêter quand vous voulez, sans dépendre de nous."
+        },
+        "training": {
+          "title": "Pas d'entraînement sur vos données",
+          "body": "On passe par les offres professionnelles des fournisseurs de modèles, qui par défaut n'utilisent pas vos données pour entraîner leurs modèles."
+        },
+        "europe": {
+          "title": "Hébergement en Europe si besoin",
+          "body": "Pour les documents sensibles, on choisit un fournisseur hébergé dans l'UE ou on masque certains champs. Les points RGPD sont réglés avant de coder."
+        },
+        "human": {
+          "title": "Une personne valide",
+          "body": "Quand l'agent touche à des données sensibles, quelqu'un de votre équipe valide avant que l'action parte."
+        },
+        "log": {
+          "title": "Un journal de chaque action",
+          "body": "Vous voyez ce que l'agent a fait, quand et sur quelle donnée."
+        },
+        "tested": {
+          "title": "Testé avant la mise en ligne",
+          "body": "Un jeu de 20 à 50 cas réels vérifie que l'agent fait ce qu'on attend, avant et après chaque modification."
+        }
+      },
+      "models": "Modèles utilisés selon le projet",
+      "anthropic": "Anthropic (Claude)",
+      "french": "entreprise française"
+    },
+    "team": {
+      "title": "Un seul interlocuteur, du premier appel à la mise en ligne.",
+      "intro": "Pas de commercial, pas de chef de projet entre vous et la personne qui construit.",
+      "name": "Maxime Mansiet",
+      "role": "Fondateur et lead engineer de Klyx, à Bordeaux",
+      "bio": "Maxime cadre votre projet dès le premier appel, écrit le code et le suit jusqu'à la mise en ligne. Quand un projet demande d'autres compétences, il fait appel à des spécialistes et vous le dit avant. Il a aussi cofondé CiteMe, un outil qui mesure la visibilité des marques dans ChatGPT.",
+      "photoAlt": "Maxime Mansiet, fondateur de Klyx",
+      "stats": {
+        "contributions": "contributions sur GitHub en 12 mois",
+        "projects": "projets en ligne présentés ici",
+        "contact": "seul interlocuteur pour vous"
+      },
+      "graph": "Contributions GitHub de Maxime, du {from} au {to}",
+      "links": {
+        "github": "GitHub",
+        "linkedin": "LinkedIn",
+        "citeme": "CiteMe"
+      }
+    },
+    "cta": {
+      "title": "Parlons de ce que vous voulez automatiser.",
+      "body": "30 minutes en visio, gratuit. Vous repartez avec un avis clair sur ce qui vaut le coup, même si on ne travaille pas ensemble.",
+      "secondary": "Plutôt par écrit ? Demander un devis",
+      "booking": {
+        "role": "Fondateur de Klyx, c'est lui qui vous répond",
+        "message": "Montrez-moi la tâche qui vous fait perdre le plus de temps. En 30 minutes, je vous dis si l'IA peut la prendre en charge, et pour combien.",
+        "pick": "Choisissez un créneau",
+        "sample": "Exemple",
+        "days": {
+          "mon": {
+            "short": "lun.",
+            "long": "lundi"
+          },
+          "tue": {
+            "short": "mar.",
+            "long": "mardi"
+          },
+          "wed": {
+            "short": "mer.",
+            "long": "mercredi"
+          },
+          "thu": {
+            "short": "jeu.",
+            "long": "jeudi"
+          }
+        },
+        "button": "Réserver {day} {date} à {time}",
+        "video": "Visio, 30 min",
+        "free": "Gratuit",
+        "noCommitment": "Sans engagement"
+      }
     }
   },
   "offers": {
