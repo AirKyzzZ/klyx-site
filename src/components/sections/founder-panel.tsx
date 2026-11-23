@@ -1,4 +1,3 @@
-import { MessageSquareQuote } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import { FaGithub, FaLinkedin } from "react-icons/fa6";
 
@@ -10,7 +9,7 @@ import { FounderCard } from "@/components/ui-kit/founder-card";
 import type { Locale } from "@/i18n/routing";
 import { getCaseStudies } from "@/lib/content";
 import { countLiveHomeCases } from "@/lib/home-sections";
-import { getGithubContributions, getSiteShot } from "@/lib/proof";
+import { getGithubContributions } from "@/lib/proof";
 import { site } from "@/lib/site";
 
 export const FOUNDER_PHOTO = "/team/maxime-mansiet.jpg";
@@ -25,7 +24,6 @@ export async function FounderPanel({
   const t = await getTranslations({ locale, namespace: "home.team" });
   const projects = countLiveHomeCases(await getCaseStudies(locale));
   const contributions = getGithubContributions();
-  const citeme = getSiteShot("citeme");
   const formatNumber = (value: number) =>
     new Intl.NumberFormat(locale).format(value).replaceAll(" ", " ");
   const day = (date: string) =>
@@ -84,16 +82,6 @@ export async function FounderPanel({
           href: site.socials.linkedinFounder,
           icon: <FaLinkedin className="size-4 text-[#0a66c2]" />,
         },
-        ...(citeme
-          ? [
-              {
-                label: t("links.citeme"),
-                detail: new URL(citeme.url).host.replace(/^www\./, ""),
-                href: citeme.url,
-                icon: <MessageSquareQuote className="size-4 text-[#7c3aed]" />,
-              },
-            ]
-          : []),
       ]}
     />
   );
