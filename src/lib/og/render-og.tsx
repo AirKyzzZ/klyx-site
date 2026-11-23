@@ -221,9 +221,12 @@ export function pageOgImage(namespace: string) {
     params: Promise<{ locale: string }>;
   }) {
     const t = getStaticTranslator(await resolveOgLocale(params), namespace);
+    const hero = t.raw("hero");
+    const split =
+      typeof hero === "object" && hero !== null && "titleEmphasis" in hero;
     return renderOg({
       title: t("hero.title"),
-      emphasis: t("hero.titleEmphasis"),
+      emphasis: split ? t("hero.titleEmphasis") : undefined,
     });
   };
 }
