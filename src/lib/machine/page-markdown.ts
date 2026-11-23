@@ -50,7 +50,8 @@ import {
   getOfferPrice,
   getPriceValues,
   type OfferId,
-  PRICE_GROUPS,
+  PRICE_CATALOGUE,
+  type PriceGroupKey,
 } from "@/lib/offers";
 import { type AppPathname, absoluteUrl } from "@/lib/seo";
 import { CREDITS } from "@/lib/credits";
@@ -226,6 +227,22 @@ function formatDate(locale: Locale, date: string): string {
   }).format(new Date(date));
 }
 
+function mainOfferBlocks(locale: Locale, heading: "##" | "###"): Block[] {
+  const t = getStaticTranslator(locale, "home");
+  return HOME_OFFER_CARDS.flatMap(({ key, href, offer }) => {
+    const price = t(`offers.cards.${key}.price`, {
+      price: formatPrice(getOfferPrice(offer), locale),
+    });
+    const unit = key === "fde" ? ` ${t("offers.cards.fde.unit")}` : "";
+    return [
+      `${heading} ${t(`offers.cards.${key}.name`)}`,
+      `**${t(`offers.cards.${key}.audience`)}** ${t(`offers.cards.${key}.body`)}`,
+      `${t("offers.from")} ${price}${unit} · ${t(`offers.cards.${key}.duration`)}`,
+      link(t("offers.link"), absoluteUrl(locale, href)),
+    ];
+  });
+}
+
 async function home(locale: Locale): Promise<string> {
   const t = getStaticTranslator(locale, "home");
   const prices = getPriceValues(locale);
@@ -259,18 +276,7 @@ async function home(locale: Locale): Promise<string> {
     ),
     `## ${t("offers.title")}`,
     t("offers.intro"),
-    ...HOME_OFFER_CARDS.flatMap(({ key, href, offer }) => {
-      const price = t(`offers.cards.${key}.price`, {
-        price: formatPrice(getOfferPrice(offer), locale),
-      });
-      const unit = key === "fde" ? ` ${t("offers.cards.fde.unit")}` : "";
-      return [
-        `### ${t(`offers.cards.${key}.name`)}`,
-        `**${t(`offers.cards.${key}.audience`)}** ${t(`offers.cards.${key}.body`)}`,
-        `${t("offers.from")} ${price}${unit} · ${t(`offers.cards.${key}.duration`)}`,
-        link(t("offers.link"), absoluteUrl(locale, href)),
-      ];
-    }),
+    ...mainOfferBlocks(locale, "###"),
     labelled(
       locale,
       t("offers.also.label"),
@@ -622,17 +628,26 @@ async function offerPageMarkdown(
 
 async function pricing(locale: Locale): Promise<string> {
   const t = getStaticTranslator(locale, "pricing");
+  const home = getStaticTranslator(locale, "home");
   const offersT = getStaticTranslator(locale, "offers");
   const page = getStaticTranslator(locale, "offerPage");
   const guide = (await getPosts(locale)).find(
     (post) => post.slug === PRICING_POST_SLUG,
   );
-  const header = [
-    t("table.offer"),
-    t("table.includes"),
-    t("table.duration"),
-    t("table.price"),
-  ];
+  const notes: Partial<Record<PriceGroupKey, Block>> = {
+    sites: t("catalogue.notes.sites"),
+    ai:
+      guide &&
+      `${t("guide")} ${link(
+        guide.title,
+        absoluteUrl(locale, "/blog/[slug]", { slug: guide.slug }),
+      )}`,
+    fde: labelled(
+      locale,
+      t("catalogue.compare"),
+      `${t("market.line", getPriceValues(locale))} ${link(t("market.sourceLabel"), t("market.url"))}`,
+    ),
+  };
 
   return doc([
     ...intro(locale, "/tarifs", t("hero.title")),
@@ -641,25 +656,30 @@ async function pricing(locale: Locale): Promise<string> {
       link(page("actions.quote"), actionUrl(locale, "quote")),
       link(page("actions.book"), actionUrl(locale, "book")),
     ]),
+    ...mainOfferBlocks(locale, "##"),
     offersT("vatNote"),
-    ...PRICE_GROUPS.flatMap((group) => [
-      `## ${t(`table.groups.${group.key}`)}`,
-      [
-        `| ${header.join(" | ")} |`,
-        `| ${header.map(() => "---").join(" | ")} |`,
-        ...group.offers.map((id) => {
-          const row = getOfferCopy(offersT, locale, id);
-          const name = link(row.name, absoluteUrl(locale, row.href));
-          return `| ${[name, row.summary, row.duration, row.price].map(cell).join(" | ")} |`;
-        }),
-      ].join("\n"),
+    `## ${t("catalogue.title")}`,
+    t("catalogue.intro"),
+    ...PRICE_CATALOGUE.flatMap((group) => [
+      `### ${t(`catalogue.groups.${group.key}`)}`,
+      notes[group.key],
+      ...group.cards.flatMap(({ id, care }) => {
+        const copy = getOfferCopy(offersT, locale, id);
+        const option = care && getOfferCopy(offersT, locale, care);
+        return [
+          `#### ${copy.name}`,
+          `**${t(`catalogue.audience.${copy.key}`)}** ${copy.summary}`,
+          `${copy.price} · ${copy.duration}`,
+          option &&
+            labelled(
+              locale,
+              t("catalogue.option"),
+              `${option.name}, ${option.price} · ${option.duration}`,
+            ),
+          link(home("offers.link"), absoluteUrl(locale, copy.href)),
+        ];
+      }),
     ]),
-    `${t("market.line", getPriceValues(locale))} ${link(t("market.sourceLabel"), t("market.url"))}`,
-    guide &&
-      `${t("guide")} ${link(
-        guide.title,
-        absoluteUrl(locale, "/blog/[slug]", { slug: guide.slug }),
-      )}`,
     `## ${t("included.title")}`,
     t("included.intro"),
     list(

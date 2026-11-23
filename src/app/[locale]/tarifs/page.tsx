@@ -15,8 +15,9 @@ import { ActionButton } from "@/components/action-button";
 import { JsonLd } from "@/components/json-ld";
 import { Cta } from "@/components/sections/cta";
 import { Faq } from "@/components/sections/faq";
+import { MainOffers } from "@/components/sections/main-offers";
 import { OfferPageHero } from "@/components/sections/offer-page-hero";
-import { PriceLedger } from "@/components/sections/price-ledger";
+import { PriceCatalogue } from "@/components/sections/price-catalogue";
 import { MethodSteps } from "@/components/ui-kit/method-steps";
 import { PageSection } from "@/components/ui-kit/page-section";
 import { SectionHeader } from "@/components/ui-kit/section-header";
@@ -90,37 +91,63 @@ export default async function PricingPage({ params }: LocaleParams) {
           </>
         }
       >
-        <PriceLedger locale={locale} className="mt-12 lg:mt-16" />
+        <MainOffers locale={locale} as="h2" className="mt-12 lg:mt-16" />
         <p className="text-text-3 mt-4 text-sm">{offersT("vatNote")}</p>
-        <div className="text-text-2 mt-8 grid gap-4 text-[0.9375rem] leading-normal lg:grid-cols-2 lg:gap-16">
-          <p>
-            {t("market.line", getPriceValues(locale))}{" "}
-            <a
-              href={t("market.url")}
-              target="_blank"
-              rel="noopener"
-              className={`${LINK_CLASS} inline-flex items-center gap-1`}
-            >
-              {t("market.sourceLabel")}
-              <ArrowUpRight aria-hidden="true" className="size-3.5" />
-            </a>
-          </p>
-          {guide && (
-            <p>
-              {t("guide")}{" "}
-              <Link
-                href={{
-                  pathname: "/blog/[slug]",
-                  params: { slug: guide.slug },
-                }}
-                className={LINK_CLASS}
-              >
-                {guide.title}
-              </Link>
-            </p>
-          )}
-        </div>
       </OfferPageHero>
+
+      <PageSection id="catalogue">
+        <SectionHeader
+          title={t("catalogue.title")}
+          intro={t("catalogue.intro")}
+        />
+        <PriceCatalogue
+          locale={locale}
+          className="mt-12"
+          notes={{
+            sites: t("catalogue.notes.sites"),
+            ai: guide && (
+              <>
+                {t("guide")}{" "}
+                <Link
+                  href={{
+                    pathname: "/blog/[slug]",
+                    params: { slug: guide.slug },
+                  }}
+                  className={LINK_CLASS}
+                >
+                  {guide.title}
+                </Link>
+              </>
+            ),
+          }}
+          asides={{
+            fde: (
+              <div
+                data-market-note
+                className="bg-surface-2 flex flex-col items-start gap-5 p-6 lg:p-8"
+              >
+                <div className="flex flex-col gap-3">
+                  <p className="text-text-3 text-[0.8125rem]">
+                    {t("catalogue.compare")}
+                  </p>
+                  <p className="text-text-2 max-w-[460px] text-[0.9375rem] leading-normal">
+                    {t("market.line", getPriceValues(locale))}
+                  </p>
+                </div>
+                <a
+                  href={t("market.url")}
+                  target="_blank"
+                  rel="noopener"
+                  className={`${LINK_CLASS} inline-flex items-center gap-1 text-sm`}
+                >
+                  {t("market.sourceLabel")}
+                  <ArrowUpRight aria-hidden="true" className="size-3.5" />
+                </a>
+              </div>
+            ),
+          }}
+        />
+      </PageSection>
 
       <PageSection id="compris">
         <SectionHeader

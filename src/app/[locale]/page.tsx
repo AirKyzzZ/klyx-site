@@ -15,6 +15,7 @@ import {
   FOUNDER_PHOTO,
   FounderPanel,
 } from "@/components/sections/founder-panel";
+import { MainOffers } from "@/components/sections/main-offers";
 import { Button } from "@/components/ui/button";
 import { CaseCarousel } from "@/components/ui-kit/case-carousel";
 import { CaseRow } from "@/components/ui-kit/case-row";
@@ -29,16 +30,7 @@ import {
   UpdateMock,
 } from "@/components/ui-kit/method-mocks";
 import { MethodSteps } from "@/components/ui-kit/method-steps";
-import {
-  CatalogueLinks,
-  OfferCard,
-  OfferRow,
-} from "@/components/ui-kit/offer-card";
-import {
-  AgentIllustration,
-  SiteIllustration,
-  TeamIllustration,
-} from "@/components/ui-kit/offer-illustrations";
+import { CatalogueLinks } from "@/components/ui-kit/offer-card";
 import { PageSection } from "@/components/ui-kit/page-section";
 import { SiteCta } from "@/components/ui-kit/site-cta";
 import { SectionHeader } from "@/components/ui-kit/section-header";
@@ -56,14 +48,13 @@ import {
   HOME_CASE_ROWS,
   HOME_CLIENTS,
   HOME_FAQ,
-  HOME_OFFER_CARDS,
   HOME_TOOLS,
   HOME_TRUST,
   HOME_USE_CASES,
   OTHER_TOOL_COUNT,
   selectHomeCases,
 } from "@/lib/home-sections";
-import { formatPrice, getOfferPrice, getPriceValues } from "@/lib/offers";
+import { getPriceValues } from "@/lib/offers";
 import { buildMetadata } from "@/lib/seo";
 
 const TRUST_ICONS = {
@@ -101,24 +92,6 @@ export default async function HomePage({ params }: LocaleParams) {
     return item ? [{ item, name }] : [];
   });
 
-  const illustrations = {
-    sites: <SiteIllustration domain={t("offers.art.domain")} />,
-    agents: (
-      <AgentIllustration
-        from="gmail"
-        to="hubspot"
-        label={t("offers.art.agent")}
-        caption={t("offers.art.agentCaption")}
-      />
-    ),
-    fde: (
-      <TeamIllustration
-        photo={FOUNDER_PHOTO}
-        caption={t("offers.art.teamCaption")}
-      />
-    ),
-  };
-
   return (
     <>
       <CenteredHero
@@ -155,25 +128,7 @@ export default async function HomePage({ params }: LocaleParams) {
 
       <PageSection id="offres" containerClassName="lg:pt-30">
         <SectionHeader title={t("offers.title")} intro={t("offers.intro")} />
-        <OfferRow className="mt-12">
-          {HOME_OFFER_CARDS.map(({ key, href, offer }) => (
-            <OfferCard
-              key={key}
-              name={t(`offers.cards.${key}.name`)}
-              audience={t(`offers.cards.${key}.audience`)}
-              body={t(`offers.cards.${key}.body`)}
-              priceLabel={t("offers.from")}
-              price={t(`offers.cards.${key}.price`, {
-                price: formatPrice(getOfferPrice(offer), locale),
-              })}
-              unit={key === "fde" ? t("offers.cards.fde.unit") : undefined}
-              duration={t(`offers.cards.${key}.duration`)}
-              href={href}
-              linkLabel={t("offers.link")}
-              illustration={illustrations[key]}
-            />
-          ))}
-        </OfferRow>
+        <MainOffers locale={locale} className="mt-12" />
         <CatalogueLinks
           className="mt-8"
           label={t("offers.also.label")}

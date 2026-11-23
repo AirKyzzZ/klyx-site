@@ -141,20 +141,22 @@ test("an unknown case study renders the localized 404 page", async ({
   await expect(page.locator("main a[href='/en/contact']")).toHaveCount(1);
 });
 
-test("/tarifs ledger cells never clip at 390px", async ({ page }) => {
-  await page.setViewportSize({ width: 390, height: 844 });
-  await page.goto("/tarifs");
-  const clipped = await page
-    .locator("main table")
-    .first()
-    .locator("tbody th, tbody td")
-    .evaluateAll((cells) =>
-      cells
-        .filter((cell) => cell.scrollWidth > cell.clientWidth)
-        .map((cell) => cell.textContent),
-    );
-  expect(clipped).toEqual([]);
-});
+for (const path of ["/tarifs", "/en/pricing"]) {
+  test(`${path} price cards never clip at 390px`, async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto(path);
+    const cards = page.locator("main [data-offer-card]");
+    await expect(cards).toHaveCount(11);
+    const clipped = await cards
+      .locator("h2, h4, p, a")
+      .evaluateAll((els) =>
+        els
+          .filter((el) => el.scrollWidth > el.clientWidth + 1)
+          .map((el) => el.textContent),
+      );
+    expect(clipped).toEqual([]);
+  });
+}
 
 for (const path of [...routePaths, NOT_FOUND_PATH]) {
   test(`${path} has no horizontal overflow at 390px`, async ({ page }) => {
@@ -179,7 +181,11 @@ const NO_LIVE_LINK_CASES = [
     host: "crealogique.fr",
     status: "En cours de développement",
   },
-  { path: "/en/work/crealogique", host: "crealogique.fr", status: "In development" },
+  {
+    path: "/en/work/crealogique",
+    host: "crealogique.fr",
+    status: "In development",
+  },
 ];
 
 for (const { path, host, status } of NO_LIVE_LINK_CASES) {
@@ -197,7 +203,9 @@ for (const { path, host, status } of NO_LIVE_LINK_CASES) {
   });
 }
 
-test("the case index labels Créalogique as in development", async ({ page }) => {
+test("the case index labels Créalogique as in development", async ({
+  page,
+}) => {
   await page.goto("/realisations");
   const card = page.locator('a[href*="/crealogique"]').last();
   await expect(card).toContainText("En cours de développement");

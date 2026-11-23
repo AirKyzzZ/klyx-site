@@ -2,7 +2,7 @@ import { readdirSync } from "node:fs";
 
 import { expect, type Page, test } from "@playwright/test";
 
-import { formatPrice } from "../src/lib/offers";
+import { formatPrice, offers } from "../src/lib/offers";
 import { site } from "../src/lib/site";
 
 type JsonLdNode = Record<string, unknown>;
@@ -330,10 +330,11 @@ test("/tarifs JSON-LD matches the visible prices and FAQ", async ({ page }) => {
   const questions = await page.locator("main details").count();
   expect(questions).toBeGreaterThan(0);
   expect(jsonLd.match(/"@type":"Question"/g)?.length).toBe(questions);
-  const table = await page.locator("main table").textContent();
-  for (const price of [900, 2900, 4500, 700]) {
-    expect(jsonLd).toContain(`"price":${price}`);
-    expect(table).toContain(formatPrice(price, "fr"));
+  const catalogue = await page.locator("#catalogue").textContent();
+  for (const { priceFrom } of offers) {
+    if (priceFrom === null) continue;
+    expect(jsonLd).toContain(`"price":${priceFrom}`);
+    expect(catalogue).toContain(formatPrice(priceFrom, "fr"));
   }
 });
 
