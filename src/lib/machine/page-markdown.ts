@@ -10,7 +10,15 @@ import { caseYears, getCaseStudies, getMdxBody, getPosts } from "@/lib/content";
 import type { CaseStudyMeta } from "@/lib/content";
 import {
   ALSO_OFFERS,
+  HOME_CAROUSEL,
+  HOME_CASE_ROWS,
+  HOME_CLIENTS,
+  HOME_FAQ,
   HOME_OFFER_CARDS,
+  HOME_TOOLS,
+  HOME_TRUST,
+  HOME_USE_CASES,
+  OTHER_TOOL_COUNT,
   selectHomeCases,
 } from "@/lib/home-sections";
 import { getOfferCopy } from "@/lib/offer-copy";
@@ -19,7 +27,6 @@ import {
   formatPrice,
   getOfferPrice,
   getPriceValues,
-  type OfferId,
   PRICE_GROUPS,
 } from "@/lib/offers";
 import { type AppPathname, absoluteUrl } from "@/lib/seo";
@@ -38,7 +45,7 @@ import {
 } from "@/lib/sector-pages";
 import { site, socialLinks } from "@/lib/site";
 import { type TeamRoster, teamRoster } from "@/lib/team-roster";
-import { CONNECTED_TOOLS, DEPLOYED_TECH, type ToolGroup } from "@/lib/tools";
+import { DEPLOYED_TECH, type ToolGroup } from "@/lib/tools";
 
 import type { MachinePage } from "./markdown-href";
 
@@ -49,6 +56,8 @@ type Builder = (locale: Locale, params: Params) => Promise<string | null>;
 type Block = string | null | undefined | false;
 type Action = "book" | "quote";
 type Faq = { question: string; answer: string };
+
+const METHOD_STEPS = ["call", "quote", "build", "handover"] as const;
 
 function doc(blocks: Block[]): string {
   return `${blocks.filter((block): block is string => Boolean(block)).join("\n\n")}\n`;
@@ -185,23 +194,43 @@ function formatDate(locale: Locale, date: string): string {
 
 async function home(locale: Locale): Promise<string> {
   const t = getStaticTranslator(locale, "home");
-  const casesT = getStaticTranslator(locale, "cases");
   const prices = getPriceValues(locale);
-  const price = (id: OfferId) => formatPrice(getOfferPrice(id), locale);
   const cases = selectHomeCases(await getCaseStudies(locale));
+  const bySlug = new Map(cases.map((study) => [study.slug, study]));
+  const contributions = getGithubContributions();
+  const caseUrl = (slug: string) =>
+    absoluteUrl(locale, "/realisations/[slug]", { slug });
 
   return doc([
-    ...intro(locale, "/", heroTitle(t)),
+    ...intro(locale, "/", t("hero.title")),
     t("hero.subtitle"),
-    list([t("fold.repo"), t("fold.prices"), t("fold.base")]),
-    `## ${sectionTitle(t, "offers")}`,
-    t("offers.subtitle"),
-    ...HOME_OFFER_CARDS.flatMap((card) => [
-      `### ${t(`offers.cards.${card.key}.name`)}`,
-      `${t(`offers.cards.${card.key}.price`, { price: price(card.offer) })} · ${t(`offers.cards.${card.key}.duration`)}`,
-      t(`offers.cards.${card.key}.outcome`),
-      link(t("offers.link"), absoluteUrl(locale, card.href)),
+    list([
+      link(t("hero.ctaPrimary"), actionUrl(locale, "book")),
+      link(t("hero.ctaSecondary"), absoluteUrl(locale, "/realisations")),
     ]),
+    labelled(locale, t("hero.clients"), HOME_CLIENTS.join(", ")),
+    labelled(
+      locale,
+      t("tools.title"),
+      [
+        ...HOME_TOOLS.map((tool) => tool.name),
+        t("tools.more", { count: OTHER_TOOL_COUNT }),
+      ].join(", "),
+    ),
+    `## ${t("offers.title")}`,
+    t("offers.intro"),
+    ...HOME_OFFER_CARDS.flatMap(({ key, href, offer }) => {
+      const price = t(`offers.cards.${key}.price`, {
+        price: formatPrice(getOfferPrice(offer), locale),
+      });
+      const unit = key === "fde" ? ` ${t("offers.cards.fde.unit")}` : "";
+      return [
+        `### ${t(`offers.cards.${key}.name`)}`,
+        `**${t(`offers.cards.${key}.audience`)}** ${t(`offers.cards.${key}.body`)}`,
+        `${t("offers.from")} ${price}${unit} · ${t(`offers.cards.${key}.duration`)}`,
+        link(t("offers.link"), absoluteUrl(locale, href)),
+      ];
+    }),
     labelled(
       locale,
       t("offers.also.label"),
@@ -209,25 +238,97 @@ async function home(locale: Locale): Promise<string> {
         link(t(`offers.also.${key}`), absoluteUrl(locale, href)),
       ).join(" · "),
     ),
-    ...toolBlocks(locale, t, "tools", CONNECTED_TOOLS),
-    cases.length > 0 && `## ${heroTitle(casesT)}`,
-    cases.length > 0 && t("cases.subtitle"),
-    caseList(locale, cases),
-    ...processBlocks(locale, t),
-    `## ${sectionTitle(t, "founder")}`,
-    t("founder.body"),
-    rosterList(locale, teamRoster(t, "founder.roster")),
-    t("founder.experience"),
+    `## ${t("useCases.title")}`,
+    t("useCases.intro"),
+    ...HOME_USE_CASES.flatMap(({ key }) => [
+      `### ${t(`useCases.items.${key}.title`)} (${t(`useCases.items.${key}.category`)})`,
+      list([
+        labelled(locale, t("useCases.before"), t(`useCases.items.${key}.before`)),
+        labelled(locale, t("useCases.after"), t(`useCases.items.${key}.after`)),
+      ]),
+    ]),
+    cases.length > 0 && `## ${t("work.title")}`,
+    cases.length > 0 && t("work.intro"),
+    ...HOME_CAROUSEL.filter(({ slug }) => bySlug.has(slug)).flatMap(
+      ({ key, slug }) => [
+        `### ${t(`work.items.${key}.title`)}`,
+        list([
+          labelled(locale, t("work.need"), t(`work.items.${key}.need`)),
+          labelled(locale, t("work.built"), t(`work.items.${key}.built`)),
+          labelled(locale, t("work.result"), t(`work.items.${key}.result`)),
+        ]),
+        link(t("work.read"), caseUrl(slug)),
+      ],
+    ),
+    list(
+      HOME_CASE_ROWS.filter(({ slug }) => bySlug.has(slug)).map(
+        ({ slug, name }) =>
+          labelled(
+            locale,
+            link(name, caseUrl(slug)),
+            `${t(`work.rows.${slug}.kind`)}. ${t(`work.rows.${slug}.summary`)}`,
+          ),
+      ),
+    ),
+    cases.length > 0 &&
+      link(t("work.viewAll"), absoluteUrl(locale, "/realisations")),
+    `## ${t("method.title")}`,
+    t("method.intro"),
+    METHOD_STEPS.map(
+      (step, i) =>
+        `${i + 1}. ${labelled(
+          locale,
+          `**${t(`method.steps.${step}.title`)}**`,
+          `${t(`method.steps.${step}.when`)}. ${t(`method.steps.${step}.body`)}`,
+        )}`,
+    ).join("\n"),
+    `## ${t("trust.title")}`,
+    t("trust.intro"),
+    list(
+      HOME_TRUST.map((key) =>
+        labelled(
+          locale,
+          `**${t(`trust.items.${key}.title`)}**`,
+          t(`trust.items.${key}.body`),
+        ),
+      ),
+    ),
+    labelled(
+      locale,
+      t("trust.models"),
+      `OpenAI, ${t("trust.anthropic")}, Mistral AI (${t("trust.french")})`,
+    ),
+    `## ${t("team.title")}`,
+    t("team.intro"),
+    `**${t("team.name")}**, ${t("team.role")}`,
+    t("team.bio"),
     list([
-      link(t("founder.github"), site.socials.github),
-      link(t("founder.linkedin"), site.socials.linkedinFounder),
-      link(t("founder.about"), absoluteUrl(locale, "/a-propos")),
+      ...(contributions
+        ? [
+            `${new Intl.NumberFormat(locale).format(contributions.total)} ${t("team.stats.contributions")}`,
+          ]
+        : []),
+      `${cases.length} ${t("team.stats.projects")}`,
+      `1 ${t("team.stats.contact")}`,
+    ]),
+    list([
+      link(t("team.links.github"), site.socials.github),
+      link(t("team.links.linkedin"), site.socials.linkedinFounder),
     ]),
     ...faqBlocks(
-      sectionTitle(t, "faq"),
-      messageList(t, "faq.items", ["question", "answer"], prices),
+      t("faq.title"),
+      HOME_FAQ.map((key) => ({
+        question: t(`faq.items.${key}.question`),
+        answer: t(`faq.items.${key}.answer`, prices),
+      })),
     ),
-    ...ctaBlocks(locale, t, "finalCta", ["book", "quote"]),
+    t("faq.intro"),
+    `## ${t("cta.title")}`,
+    t("cta.body"),
+    list([
+      link(t("hero.ctaPrimary"), actionUrl(locale, "book")),
+      link(t("cta.secondary"), actionUrl(locale, "quote")),
+    ]),
   ]);
 }
 

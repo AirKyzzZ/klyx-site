@@ -14,8 +14,10 @@ import {
 } from "@/lib/offers";
 import type { AppPathname } from "@/lib/seo";
 import { faqPageItems } from "@/lib/faq-page";
+import { HOME_FAQ, HOME_TOOLS, OTHER_TOOL_COUNT } from "@/lib/home-sections";
+import { getGithubContributions } from "@/lib/proof";
 import { teamRoster } from "@/lib/team-roster";
-import { CONNECTED_TOOLS, DEPLOYED_TECH, type ToolGroup } from "@/lib/tools";
+import { DEPLOYED_TECH, type ToolGroup } from "@/lib/tools";
 
 import {
   internalPathname,
@@ -34,6 +36,7 @@ type Expectation = {
   prices?: OfferId[];
   fdeMinimum?: boolean;
   faqNamespace?: string;
+  faqKeys?: readonly string[];
 };
 
 const heroTitle = (namespace: string) => (locale: Locale) => {
@@ -46,9 +49,10 @@ const plainTitle = (namespace: string, key: string) => (locale: Locale) =>
 
 const EXPECTATIONS: Record<AppPathname, Expectation> = {
   "/": {
-    h1: heroTitle("home"),
-    prices: ["landing", "site-ia", "audit-ia", "sprint-ia", "fde"],
+    h1: plainTitle("home", "hero.title"),
+    prices: ["landing", "audit-ia", "sprint-ia", "fde"],
     faqNamespace: "home",
+    faqKeys: HOME_FAQ,
   },
   "/services/creation-site-web": {
     h1: heroTitle("sites"),
@@ -133,7 +137,7 @@ const EXPECTATIONS: Record<AppPathname, Expectation> = {
   },
   "/faq": {
     h1: heroTitle("faqPage"),
-    prices: ["landing", "site-ia", "audit-ia", "sprint-ia"],
+    prices: ["landing", "audit-ia", "sprint-ia"],
   },
   "/contact": { h1: heroTitle("contact") },
   "/blog": { h1: plainTitle("blog", "hero.title") },
@@ -193,6 +197,12 @@ describe.each(routing.locales)("pageMarkdown (%s)", (locale) => {
           "faq.items",
           ["question", "answer"],
           getPriceValues(locale),
+        ).filter(
+          (_, i) =>
+            !expectation.faqKeys ||
+            expectation.faqKeys.includes(
+              Object.keys(t.raw("faq.items") as object)[i],
+            ),
         );
         for (const item of faq) {
           expect(markdown, label).toContain(item.question);
@@ -224,17 +234,28 @@ describe.each(routing.locales)("pageMarkdown (%s)", (locale) => {
     expect(resolveMachinePage(locale, ["nope"])).toBeNull();
   });
 
-  it("lists the team roster on home and about", async () => {
+  it("lists the team roster on about", async () => {
     const roster = teamRoster(
       getStaticTranslator(locale, "home.founder"),
       "roster",
     );
-    for (const pathname of ["/", "/a-propos"] as const) {
-      const markdown = await pageMarkdown(locale, { pathname });
-      for (const item of roster.items) {
-        expect(markdown, pathname).toContain(item.who);
-        expect(markdown, pathname).toContain(item.scope);
-      }
+    const markdown = await pageMarkdown(locale, { pathname: "/a-propos" });
+    for (const item of roster.items) {
+      expect(markdown).toContain(item.who);
+      expect(markdown).toContain(item.scope);
+    }
+  });
+
+  it("introduces the founder on home with the measured GitHub total", async () => {
+    const home = await pageMarkdown(locale, { pathname: "/" });
+    const t = getStaticTranslator(locale, "home");
+    const contributions = getGithubContributions();
+    expect(home).toContain(t("team.name"));
+    expect(home).toContain(t("team.bio"));
+    if (contributions) {
+      expect(home).toContain(
+        new Intl.NumberFormat(locale).format(contributions.total),
+      );
     }
   });
 
@@ -243,9 +264,9 @@ describe.each(routing.locales)("pageMarkdown (%s)", (locale) => {
       groups.flatMap((group) => group.tools.map((tool) => tool.name));
     const home = await pageMarkdown(locale, { pathname: "/" });
     const homeT = getStaticTranslator(locale, "home");
-    expect(home).toContain(homeT("tools.label"));
-    expect(home).toContain(homeT("tools.note"));
-    for (const name of names(CONNECTED_TOOLS)) expect(home).toContain(name);
+    expect(home).toContain(homeT("tools.title"));
+    expect(home).toContain(homeT("tools.more", { count: OTHER_TOOL_COUNT }));
+    for (const { name } of HOME_TOOLS) expect(home).toContain(name);
 
     const page = getStaticTranslator(locale, "offerPage");
     for (const pathname of [

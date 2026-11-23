@@ -81,6 +81,17 @@ export const HOME_CAROUSEL = [
   },
 ] as const;
 
+export const HOME_FAQ = ["price", "tools", "data", "team", "remote"] as const;
+
+export const HOME_TRUST = [
+  "owned",
+  "training",
+  "europe",
+  "human",
+  "log",
+  "tested",
+] as const;
+
 export const HOME_CASE_ROWS = [
   { slug: "2060-io", name: "2060.io" },
   { slug: "pkba", name: "PKBA" },

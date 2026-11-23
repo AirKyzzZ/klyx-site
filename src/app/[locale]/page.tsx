@@ -60,8 +60,10 @@ import {
   HOME_CAROUSEL,
   HOME_CASE_ROWS,
   HOME_CLIENTS,
+  HOME_FAQ,
   HOME_OFFER_CARDS,
   HOME_TOOLS,
+  HOME_TRUST,
   HOME_USE_CASES,
   OTHER_TOOL_COUNT,
   selectHomeCases,
@@ -82,16 +84,15 @@ const BOOKING_DAYS = [
 ] as const;
 const BOOKING_SLOTS = ["09:30", "11:00", "14:00", "16:30"];
 
-const TRUST_ITEMS = [
-  { key: "owned", icon: KeyRound },
-  { key: "training", icon: Shield },
-  { key: "europe", icon: Globe },
-  { key: "human", icon: UserCheck },
-  { key: "log", icon: List },
-  { key: "tested", icon: CircleCheck },
-] as const;
+const TRUST_ICONS = {
+  owned: KeyRound,
+  training: Shield,
+  europe: Globe,
+  human: UserCheck,
+  log: List,
+  tested: CircleCheck,
+} as const;
 
-const HOME_FAQ = ["price", "tools", "data", "team", "remote"] as const;
 
 export async function generateMetadata({
   params,
@@ -374,8 +375,8 @@ export default async function HomePage({ params }: LocaleParams) {
         <SectionHeader title={t("trust.title")} intro={t("trust.intro")} />
         <TrustGrid
           className="mt-12"
-          items={TRUST_ITEMS.map(({ key, icon }) => ({
-            icon,
+          items={HOME_TRUST.map((key) => ({
+            icon: TRUST_ICONS[key],
             title: t(`trust.items.${key}.title`),
             body: t(`trust.items.${key}.body`),
           }))}
