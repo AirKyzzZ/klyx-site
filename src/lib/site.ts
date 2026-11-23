@@ -18,10 +18,6 @@ export const site = {
   calUrl: process.env.NEXT_PUBLIC_CAL_URL,
   legalUpdatedAt: "2026-11-01",
   pagesUpdatedAt: "2026-11-23",
-  flags: {
-    testimonialsConsented: false,
-    homeProofStrip: false,
-  },
   socials: {
     linkedinCompany: "https://www.linkedin.com/company/klyx-studio",
     linkedinFounder: "https://www.linkedin.com/in/maxime-mansiet",

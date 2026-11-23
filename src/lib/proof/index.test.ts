@@ -4,12 +4,8 @@ import {
   getGithubContributions,
   getSiteShot,
   getVerifiedProof,
-  type ProofSource,
-  selectStripProof,
   verifyContributions,
   verifyLighthouse,
-  verifyPrList,
-  verifyRunLog,
   verifySiteShots,
 } from "./index";
 import lighthouseData from "./klyx-lighthouse.json";
@@ -64,46 +60,6 @@ describe("verifyLighthouse", () => {
   });
 });
 
-describe("verifyPrList", () => {
-  it("excludes a list Maxime has not confirmed", () => {
-    expect(verifyPrList({ status: "pending" })).toBeNull();
-  });
-
-  it("excludes a confirmed list with no items", () => {
-    expect(
-      verifyPrList({ status: "confirmed", repo: "klyx/site", items: [] }),
-    ).toBeNull();
-  });
-
-  it("keeps a confirmed list", () => {
-    const item = {
-      title: "feat: add citation tracker",
-      number: 412,
-      mergedAt: "2026-10-20",
-      href: "https://github.com/klyx/site/pull/412",
-    };
-    expect(
-      verifyPrList({ status: "confirmed", repo: "klyx/site", items: [item] }),
-    ).toEqual({ kind: "pr-list", repo: "klyx/site", items: [item] });
-  });
-});
-
-describe("verifyRunLog", () => {
-  it("excludes a log that is not marked anonymised", () => {
-    expect(
-      verifyRunLog({
-        status: "confirmed",
-        title: "run",
-        rows: [{ t: "00:01", text: "ok" }],
-      }),
-    ).toBeNull();
-  });
-
-  it("excludes a pending log", () => {
-    expect(verifyRunLog({ status: "pending" })).toBeNull();
-  });
-});
-
 describe("verifySiteShots", () => {
   it("maps captured sites to their 1440 screenshot", () => {
     expect(
@@ -144,27 +100,6 @@ describe("getVerifiedProof", () => {
 describe("getSiteShot", () => {
   it("returns null for a site that was not captured", () => {
     expect(getSiteShot("does-not-exist")).toBeNull();
-  });
-});
-
-describe("selectStripProof", () => {
-  const shot = (slug: string): ProofSource => ({
-    kind: "site-shot",
-    slug,
-    url: `https://${slug}.fr`,
-    image: `/realisations/${slug}-1440.png`,
-  });
-
-  it("keeps one source per kind, in strip order", () => {
-    const lighthouse = verifyLighthouse(measured);
-    if (!lighthouse) throw new Error("fixture");
-    expect(
-      selectStripProof([shot("a"), shot("b"), lighthouse]).map((s) => s.kind),
-    ).toEqual(["lighthouse", "site-shot"]);
-  });
-
-  it("returns a single site shot when nothing else is verified", () => {
-    expect(selectStripProof([shot("a"), shot("b")])).toHaveLength(1);
   });
 });
 

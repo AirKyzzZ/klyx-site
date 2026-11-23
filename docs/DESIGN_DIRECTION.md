@@ -72,7 +72,6 @@ CSS only. Everything is off under `prefers-reduced-motion` (global rule in `glob
 - Rail light: a 1x200 orange line with a 9x260 blurred halo descends each rail in a 6s loop, the right rail half a cycle behind. It travels the viewport (sticky), so it is visible wherever you are on the page.
 - Hero: logo tiles float on their own rhythm (5 to 7.8s, alternate), orange dots pulse (2.4s).
 - Réalisations carousel: 4s per slide (12s loop), crossfade, screenshot rises, the progress bar under the active tab drives the advance (`animationend`). Pauses on hover, focus and when offscreen; tabs are clickable and arrow-key operable; no auto-advance with reduced motion.
-- `.reveal` on scroll is allowed for inner pages; the home does not use it.
 
 ## 6. Shared components (`src/components/ui-kit/`)
 
@@ -112,14 +111,14 @@ Page-level pieces built on the kit, outside `ui-kit/`:
 |---|---|---|---|
 | `MethodSection` | `src/components/templates/method-section.tsx` | `locale`, `title`, `intro`, `steps` (exactly 4 `{ when, title, body }`, check with `fourSteps()`), `quote: { title, items, excluded, offer }`, `updates` (3 strings) | The four-step method with the call, quote, update and handover mocks. Mock labels come from `useCases.method.mocks`; the quote price and duration from the `offer`. Sector pages and `/agence-ia-bordeaux`. |
 | `PriceCards` | `src/components/templates/price-cards.tsx` | `locale`, `cards: { id: OfferId, audience, body }[]`, `labels: { from, perDay, viewOffer }` | An `OfferRow` of `OfferCard`s whose name, price, unit, duration and link come from `offers.ts` and `offers.items`. Sector pages, `/agence-ia-bordeaux`, outreach pages. |
-| `ShotFrame` | `src/components/proof/shot-frame.tsx` | `image`, `alt`, `sizes`, `device?` (`desktop` 16:10, `mobile` 390:844), `eager?` | A real screenshot in a plain bordered frame, no window chrome. Case studies and proof cards. `hostOf(url)` gives the bare host for captions. |
+| `ShotFrame` | `src/components/proof/shot-frame.tsx` | `image`, `alt`, `sizes`, `device?` (`desktop` 16:10, `mobile` 390:844), `eager?` | A real screenshot in a plain bordered frame, no window chrome. Case studies. `hostOf(url)` gives the bare host for captions. |
 | `FounderPanel` | `src/components/sections/founder-panel.tsx` | `locale`, `className?` | Fills `FounderCard` from `home.team`, the GitHub JSON and the case count. The home and `/a-propos` both render it so they stay identical. Also exports `FOUNDER_PHOTO`. |
 
 Elsewhere: `ThemeToggle` and `ThemeScript` (`src/components/theme/`), `KlyxMark` (`src/components/brand/klyx-mark.tsx`, inline SVG logo in `currentColor`), `LanguageMenu` (globe pill in the nav, `src/components/language-switcher.tsx`), `Rails` (`src/components/rails.tsx`), button variants `outline`, `inverse` and size `xl` in `src/components/ui/button.tsx`. Home data (logos, cases, FAQ keys) lives in `src/lib/home-sections.ts`.
 
 ## 7. Rules for Phase B pages
 
-- No eyebrows or index strings, no three-dot window chrome, no terminal, no sand band. No page renders `Section`/`Eyebrow`, `LiveSystem` or the `tone-sand` styles any more; they wait for deletion, do not use them in new work.
+- No eyebrows or index strings, no three-dot window chrome, no terminal, no sand band.
 - One h1 per page carrying the page keyword; the hero can be `CenteredHero` or `SectionHeader as="h1"`.
 - Each block says who it is for, what we do and what it costs. No jargon in visible copy ("workflow", "repo", "prod", "FDE"); "Forward Deployed Engineer" is shown as "Développeur dédié".
 - Real proof only: real client names, real screenshots from `public/realisations`, numbers read from data files.
