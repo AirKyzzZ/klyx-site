@@ -9,7 +9,7 @@ import {
 import { FounderCard } from "@/components/ui-kit/founder-card";
 import type { Locale } from "@/i18n/routing";
 import { getCaseStudies } from "@/lib/content";
-import { selectHomeCases } from "@/lib/home-sections";
+import { countLiveHomeCases } from "@/lib/home-sections";
 import { getGithubContributions, getSiteShot } from "@/lib/proof";
 import { site } from "@/lib/site";
 
@@ -23,7 +23,7 @@ export async function FounderPanel({
   className?: string;
 }) {
   const t = await getTranslations({ locale, namespace: "home.team" });
-  const projects = selectHomeCases(await getCaseStudies(locale)).length;
+  const projects = countLiveHomeCases(await getCaseStudies(locale));
   const contributions = getGithubContributions();
   const citeme = getSiteShot("citeme");
   const formatNumber = (value: number) =>

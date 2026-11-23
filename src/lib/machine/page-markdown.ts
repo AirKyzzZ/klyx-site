@@ -16,6 +16,7 @@ import {
 import type { CaseStudyMeta } from "@/lib/content";
 import {
   ALSO_OFFERS,
+  countLiveHomeCases,
   HOME_CAROUSEL,
   HOME_CASE_ROWS,
   HOME_CLIENTS,
@@ -345,7 +346,7 @@ async function home(locale: Locale): Promise<string> {
             `${new Intl.NumberFormat(locale).format(contributions.total)} ${t("team.stats.contributions")}`,
           ]
         : []),
-      `${cases.length} ${t("team.stats.projects")}`,
+      `${countLiveHomeCases(cases)} ${t("team.stats.projects")}`,
       `1 ${t("team.stats.contact")}`,
     ]),
     list([
@@ -727,7 +728,7 @@ async function about(locale: Locale): Promise<string> {
   const t = getStaticTranslator(locale, "about");
   const team = getStaticTranslator(locale, "home.team");
   const prices = getPriceValues(locale);
-  const projects = selectHomeCases(await getCaseStudies(locale)).length;
+  const projects = countLiveHomeCases(await getCaseStudies(locale));
   const citeme = (await getCaseStudies(locale)).find(
     (study) => study.slug === "citeme",
   );

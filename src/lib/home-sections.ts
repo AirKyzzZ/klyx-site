@@ -110,3 +110,7 @@ export function selectHomeCases(cases: CaseStudyMeta[]): CaseStudyMeta[] {
     cases.filter((study) => study.slug === slug),
   );
 }
+
+export function countLiveHomeCases(cases: CaseStudyMeta[]): number {
+  return selectHomeCases(cases).filter((study) => study.live !== false).length;
+}
