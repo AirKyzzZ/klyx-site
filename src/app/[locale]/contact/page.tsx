@@ -85,42 +85,7 @@ export default async function ContactPage({ params }: LocaleParams) {
           intro={t("hero.subtitle")}
         />
         <div className="mt-12 grid gap-6 lg:mt-16 lg:grid-cols-[minmax(0,1fr)_460px] lg:items-start">
-          <section
-            id="contact-form"
-            aria-labelledby="contact-form-title"
-            className="border-line bg-surface-1 order-2 scroll-mt-28 rounded-[24px] border p-6 sm:p-10 lg:order-1"
-          >
-            <h2
-              id="contact-form-title"
-              className="text-text text-2xl leading-[1.15] font-semibold tracking-[-0.8px] sm:text-[1.75rem]"
-            >
-              {t("form.title")}
-            </h2>
-            <p className="text-text-2 mt-2 text-base leading-normal">
-              {t("form.intro")}
-            </p>
-            <div className="mt-8">
-              <ContactForm
-                copy={{
-                  name: field("name"),
-                  email: field("email"),
-                  company: field("company"),
-                  need: selectField("need"),
-                  budget: selectField("budget"),
-                  message: field("message"),
-                  honeypot: t("form.fields.honeypot.label"),
-                  consent: t("form.consent"),
-                  privacyLink: t("form.privacyLink"),
-                  submit: t("form.submit"),
-                  sending: t("form.sending"),
-                  success: t("form.success"),
-                }}
-                locale={locale}
-              />
-            </div>
-          </section>
-
-          <div className="order-1 flex flex-col gap-6 lg:order-2">
+          <div className="flex flex-col gap-6 lg:order-2">
             <section
               id="booking"
               aria-labelledby="booking-title"
@@ -247,6 +212,41 @@ export default async function ContactPage({ params }: LocaleParams) {
               </div>
             </section>
           </div>
+
+          <section
+            id="contact-form"
+            aria-labelledby="contact-form-title"
+            className="border-line bg-surface-1 scroll-mt-28 rounded-[24px] border p-6 sm:p-10 lg:order-1"
+          >
+            <h2
+              id="contact-form-title"
+              className="text-text text-2xl leading-[1.15] font-semibold tracking-[-0.8px] sm:text-[1.75rem]"
+            >
+              {t("form.title")}
+            </h2>
+            <p className="text-text-2 mt-2 text-base leading-normal">
+              {t("form.intro")}
+            </p>
+            <div className="mt-8">
+              <ContactForm
+                copy={{
+                  name: field("name"),
+                  email: field("email"),
+                  company: field("company"),
+                  need: selectField("need"),
+                  budget: selectField("budget"),
+                  message: field("message"),
+                  honeypot: t("form.fields.honeypot.label"),
+                  consent: t("form.consent"),
+                  privacyLink: t("form.privacyLink"),
+                  submit: t("form.submit"),
+                  sending: t("form.sending"),
+                  success: t("form.success"),
+                }}
+                locale={locale}
+              />
+            </div>
+          </section>
         </div>
       </PageSection>
     </>
