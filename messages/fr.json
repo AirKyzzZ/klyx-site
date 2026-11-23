@@ -85,7 +85,7 @@
         "fde": {
           "name": "Développeur dédié",
           "audience": "Pour avancer vite sur vos projets IA.",
-          "body": "Un de nos développeurs rejoint votre équipe 2 à 3 jours par semaine et livre dans votre propre code.",
+          "body": "Maxime rejoint votre équipe 2 à 3 jours par semaine et livre dans votre propre code.",
           "price": "{price}",
           "duration": "4 semaines minimum",
           "unit": "/ jour"
@@ -287,7 +287,7 @@
           "client": "Horlogerie de luxe",
           "title": "Cronolyss, le logiciel de l'atelier",
           "need": "Savoir à tout moment où en est chaque montre confiée à l'atelier.",
-          "built": "Un logiciel interne qui suit chaque montre étape par étape : diagnostic, réparation, attente de pièces, livraison.",
+          "built": "L'interface d'un logiciel interne, construite à plusieurs, qui suit chaque montre étape par étape : diagnostic, réparation, attente de pièces, livraison.",
           "result": "L'équipe voit d'un coup d'œil ce qui avance et ce qui bloque.",
           "alt": "Tableau de bord de Cronolyss"
         },

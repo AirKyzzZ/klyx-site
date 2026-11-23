@@ -85,7 +85,7 @@
         "fde": {
           "name": "Dedicated developer",
           "audience": "To move fast on your AI projects.",
-          "body": "One of our developers joins your team 2 to 3 days a week and ships in your own codebase.",
+          "body": "Maxime joins your team 2 to 3 days a week and ships in your own codebase.",
           "price": "{price}",
           "duration": "4 weeks minimum",
           "unit": "/ day"
@@ -287,7 +287,7 @@
           "client": "Luxury watchmaking",
           "title": "Cronolyss, the workshop's software",
           "need": "Know at any moment where every watch left with the workshop stands.",
-          "built": "In-house software that tracks each watch step by step: diagnosis, repair, waiting for parts, delivery.",
+          "built": "The interface of in-house software, built as part of a team, that tracks each watch step by step: diagnosis, repair, waiting for parts, delivery.",
           "result": "The team sees at a glance what's moving and what's stuck.",
           "alt": "Cronolyss dashboard"
         },
