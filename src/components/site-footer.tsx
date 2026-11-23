@@ -7,7 +7,7 @@ import { Hr } from "@/components/section";
 import { Link } from "@/i18n/navigation";
 import { site, socialLinks } from "@/lib/site";
 
-const columnTitle = "type-label text-text-3";
+const columnTitle = "text-text-3 text-[0.8125rem] font-medium";
 const footerLink =
   "text-sm leading-snug text-text-2 transition-colors duration-(--d-fast) hover:text-text";
 
@@ -62,7 +62,7 @@ export async function SiteFooter() {
                   href={item.href}
                   target="_blank"
                   rel="noopener"
-                  className="text-text-2 hover:text-text inline-flex items-center gap-0.5 font-mono text-xs tracking-[0.06em] uppercase transition-colors duration-(--d-fast)"
+                  className="text-text-2 hover:text-text inline-flex items-center gap-0.5 text-sm transition-colors duration-(--d-fast)"
                 >
                   {item.name}
                   <ArrowUpRight className="size-3.5" />
@@ -133,7 +133,7 @@ export async function SiteFooter() {
       </div>
 
       <div className="container">
-        <div className="border-line text-text-3 flex flex-col gap-3 border-t py-5 font-mono text-xs md:flex-row md:items-center md:justify-between">
+        <div className="border-line text-text-3 flex flex-col gap-3 border-t py-5 text-[0.8125rem] md:flex-row md:items-center md:justify-between">
           <p>{t("copyright", { year: new Date().getFullYear() })}</p>
           <ul className="flex flex-wrap items-center gap-x-5 gap-y-2">
             <li className="tabular-nums">
