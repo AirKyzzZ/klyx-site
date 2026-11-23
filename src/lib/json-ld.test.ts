@@ -127,7 +127,9 @@ describe("organizationJsonLd", () => {
     expect(organization).not.toHaveProperty("foundingDate");
     expect(organization.address).toEqual({
       "@type": "PostalAddress",
-      addressLocality: "Bordeaux",
+      streetAddress: "22 avenue Victor Hugo",
+      postalCode: "33120",
+      addressLocality: "Arcachon",
       addressCountry: "FR",
     });
     expect(organization.areaServed).toEqual([
