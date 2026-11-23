@@ -108,14 +108,14 @@ export default async function CasePage({ params }: CasePageProps) {
         </SectionHeader>
         <div
           data-shot="case-hero"
-          className="bg-surface-2 border-line mt-12 flex items-end gap-6 overflow-hidden rounded-[20px] border px-5 pt-5 sm:px-10 sm:pt-10 lg:mt-16 lg:gap-10 lg:px-14 lg:pt-14"
+          className="bg-surface-2 border-line mt-12 flex items-end justify-center gap-6 overflow-hidden rounded-[20px] border px-5 pt-5 sm:px-10 sm:pt-10 lg:mt-16 lg:gap-10 lg:px-14 lg:pt-14"
         >
           <ShotFrame
             image={shot?.image ?? meta.image}
             alt={t("labels.shot", { name: meta.name })}
             sizes="(min-width: 1024px) 820px, 90vw"
             eager
-            className="min-w-0 flex-1 rounded-b-none border-b-0"
+            className="max-w-[880px] min-w-0 flex-1 rounded-b-none border-b-0"
           />
           {shot && (
             <ShotFrame
