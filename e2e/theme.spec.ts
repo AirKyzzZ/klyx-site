@@ -9,6 +9,16 @@ const theme = (page: Page) =>
 const themeColor = (page: Page) =>
   page.locator('meta[name="theme-color"]').getAttribute("content");
 
+const themeColors = async (page: Page) => [
+  ...new Set(
+    await page
+      .locator('meta[name="theme-color"]')
+      .evaluateAll((metas) =>
+        metas.map((meta) => meta.getAttribute("content")),
+      ),
+  ),
+];
+
 async function storeTheme(page: Page, value: string) {
   await page.addInitScript(
     ([key, stored]) => {
@@ -89,6 +99,14 @@ test("the switch persists across reload and client navigation", async ({
     .click();
   await expect(page).toHaveURL(/\/tarifs$/);
   expect(await theme(page)).toBe("dark");
+  await expect.poll(() => themeColors(page)).toEqual([THEME_COLORS.dark]);
+
+  await page
+    .locator("header")
+    .getByRole("link", { name: fr.nav.cases, exact: true })
+    .click();
+  await expect(page).toHaveURL(/\/realisations$/);
+  await expect.poll(() => themeColors(page)).toEqual([THEME_COLORS.dark]);
 
   await page
     .getByRole("group", { name: fr.nav.theme.label })
@@ -158,9 +176,9 @@ for (const value of ["light", "dark"] as const) {
           await storeTheme(page, value);
           await page.goto("/");
           await page.waitForLoadState("load");
-          expect(await page.evaluate(() => document.getAnimations().length)).toBe(
-            0,
-          );
+          expect(
+            await page.evaluate(() => document.getAnimations().length),
+          ).toBe(0);
         });
       });
     });

@@ -3,6 +3,7 @@
 import { useLayoutEffect, useSyncExternalStore } from "react";
 
 import { Moon, Sun } from "lucide-react";
+import { usePathname } from "next/navigation";
 
 import {
   applyTheme,
@@ -39,10 +40,12 @@ export function ThemeToggle({
     () => DEFAULT_THEME,
   );
 
+  const pathname = usePathname();
+
   useLayoutEffect(() => {
-    // React's dev remount resets <html> attributes the inline script set.
+    // React's dev remount and Next's head metadata swap on navigation undo the inline script.
     applyTheme(readStoredTheme());
-  }, []);
+  }, [pathname]);
 
   const select = (next: Theme) => {
     if (next !== readTheme()) saveTheme(next);
