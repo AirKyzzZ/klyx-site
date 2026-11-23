@@ -4,7 +4,7 @@
     "offers": "Offres",
     "groupBuild": "Construire",
     "groupAdvise": "Conseiller",
-    "sites": "Sites et landing pages",
+    "sites": "Sites internet",
     "agents": "Agents IA",
     "fde": "Développeur dédié",
     "cases": "Réalisations",
@@ -22,8 +22,8 @@
     "automation": "Automatisation IA",
     "geo": "Référencement IA",
     "hints": {
-      "audit": "Vos process passés en revue et une roadmap sur 90 jours.",
-      "automation": "Un workflow IA branché sur vos outils en une semaine.",
+      "audit": "Vos process passés en revue et un plan sur 90 jours.",
+      "automation": "Une automatisation IA branchée sur vos outils en une semaine.",
       "geo": "Être cité par ChatGPT et Perplexity, mesuré avant et après."
     },
     "useCases": "Cas d'usage",
@@ -187,7 +187,7 @@
         },
         "team": {
           "question": "Qui travaille sur notre projet ?",
-          "answer": "Maxime Mansiet, notre lead engineer, du premier appel à la passation. Il confie des tâches bien délimitées à des agents de code IA et relit tout ce qu'ils produisent. Si le projet demande du design ou une autre spécialité, on fait appel à un spécialiste et on vous le dit avant. Le code est à votre nom dès le premier jour, et chaque projet se termine par une passation écrite pour qu'un autre développeur puisse reprendre."
+          "answer": "Maxime Mansiet, fondateur et développeur de Klyx, du premier appel à la passation. Il confie des tâches bien délimitées à des agents de code IA et relit tout ce qu'ils produisent. Si le projet demande du design ou une autre spécialité, on fait appel à un spécialiste et on vous le dit avant. Le code est à votre nom dès le premier jour, et chaque projet se termine par une passation écrite pour qu'un autre développeur puisse reprendre."
         },
         "production": {
           "question": "Que veut dire « en production » ?",
@@ -427,7 +427,7 @@
       "title": "Un seul interlocuteur, du premier appel à la mise en ligne.",
       "intro": "Pas de commercial, pas de chef de projet entre vous et la personne qui construit.",
       "name": "Maxime Mansiet",
-      "role": "Fondateur et lead engineer de Klyx, à Bordeaux",
+      "role": "Fondateur et développeur de Klyx, à Bordeaux",
       "bio": "Maxime cadre votre projet dès le premier appel, écrit le code et le suit jusqu'à la mise en ligne. Quand un projet demande d'autres compétences, il fait appel à des spécialistes et vous le dit avant. Il a aussi cofondé CiteMe, un outil qui mesure la visibilité des marques dans ChatGPT.",
       "photoAlt": "Maxime Mansiet, fondateur de Klyx",
       "stats": {
@@ -483,12 +483,12 @@
     "vatNote": "Tous les prix sont en € HT.",
     "items": {
       "landing": {
-        "name": "Landing page",
+        "name": "Site une page",
         "summary": "Une page qui présente une offre et donne envie de vous contacter.",
         "duration": "1 à 2 semaines"
       },
       "siteIa": {
-        "name": "Site IA",
+        "name": "Site complet",
         "summary": "5 à 8 pages, bien référencées sur Google et lisibles par les moteurs IA.",
         "duration": "3 à 4 semaines"
       },
@@ -503,7 +503,7 @@
         "duration": "1 à 2 semaines"
       },
       "sprintIa": {
-        "name": "Sprint IA",
+        "name": "Agent IA",
         "summary": "Un agent IA en service, au périmètre fixé avant de commencer.",
         "duration": "2 semaines"
       },
@@ -642,7 +642,7 @@
     },
     "pricing": {
       "title": "Combien coûte un site ?",
-      "body": "Une landing page démarre à {landingPrice}, un site de 5 à 8 pages à {siteIaPrice} et un site sur mesure à {siteCustomPrice}. Le devis est gratuit, et le prix ne bouge plus une fois le périmètre signé.",
+      "body": "Un site une page démarre à {landingPrice}, un site de 5 à 8 pages à {siteIaPrice} et un site sur mesure à {siteCustomPrice}. Le devis est gratuit, et le prix ne bouge plus une fois le périmètre signé.",
       "link": "Voir tous les tarifs"
     },
     "faq": {
@@ -650,7 +650,7 @@
       "items": {
         "delay": {
           "question": "Combien de temps faut-il pour créer un site ?",
-          "answer": "Comptez 1 à 2 semaines pour une landing page et 3 à 4 semaines pour un site de 5 à 8 pages. Le calendrier est écrit dans le devis."
+          "answer": "Comptez 1 à 2 semaines pour un site une page et 3 à 4 semaines pour un site de 5 à 8 pages. Le calendrier est écrit dans le devis."
         },
         "stack": {
           "question": "Next.js ou WordPress ?",
@@ -769,7 +769,7 @@
     },
     "block": {
       "title": "Chaque action de l'agent, notée.",
-      "intro": "Avec le Sprint IA, vous recevez un journal : ce que l'agent a fait, quand, et les erreurs rattrapées. Ici, un exemple fictif.",
+      "intro": "Avec l'offre Agent IA, vous recevez un journal : ce que l'agent a fait, quand, et les erreurs rattrapées. Ici, un exemple fictif.",
       "log": {
         "title": "Tri d'une demande entrante",
         "items": {
@@ -787,8 +787,8 @@
       }
     },
     "credit": {
-      "title": "L'audit est déduit du Sprint",
-      "body": "Si vous enchaînez sur un Sprint IA, le devis tient compte de l'audit déjà payé. Les conditions sont écrites avant que vous signiez."
+      "title": "L'audit est déduit de l'agent",
+      "body": "Si vous enchaînez sur un agent IA, le devis tient compte de l'audit déjà payé. Les conditions sont écrites avant que vous signiez."
     },
     "proof": {
       "title": "Déjà en service.",
@@ -797,7 +797,7 @@
     },
     "pricing": {
       "title": "Combien coûte un agent IA ?",
-      "body": "Un audit IA démarre à {auditPrice}. Un Sprint IA, qui met un agent en service en deux semaines, démarre à {sprintPrice}. Les projets plus larges, avec plusieurs outils à brancher ou une recherche dans vos documents, font l'objet d'un devis.",
+      "body": "Un audit IA démarre à {auditPrice}. Un agent IA, mis en service en deux semaines, démarre à {sprintPrice}. Les projets plus larges, avec plusieurs outils à brancher ou une recherche dans vos documents, font l'objet d'un devis.",
       "link": "Voir tous les tarifs"
     },
     "faq": {
@@ -824,8 +824,8 @@
           "answer": "Vos comptes et vos outils restent à votre nom, et on fait la liste des données avant d'écrire le code. Les données traitées par l'agent passent par le fournisseur du modèle d'IA, qui par défaut ne les utilise pas pour entraîner ses modèles. Si vous avez besoin d'un hébergement dans l'UE ou d'un modèle local, on le prévoit dans le devis."
         },
         "maintenance": {
-          "question": "Qui s'occupe de l'agent après le Sprint ?",
-          "answer": "Votre équipe, avec le guide écrit et la prise en main prévus dans le Sprint, ou nous, avec le suivi mensuel."
+          "question": "Qui s'occupe de l'agent après la livraison ?",
+          "answer": "Votre équipe, avec le guide écrit et la prise en main prévus dans l'offre, ou nous, avec le suivi mensuel."
         }
       }
     },
@@ -907,7 +907,7 @@
     },
     "definition": {
       "title": "D'où vient ce rôle.",
-      "body": "En anglais, on parle de Forward Deployed Engineer : un développeur qui travaille directement avec l'équipe du client, sur son code, jusqu'à la mise en ligne. Chez Klyx, c'est le même travail à temps partagé, quelques jours par semaine, sans recrutement.",
+      "body": "Le rôle est né dans les éditeurs de logiciels américains : un développeur qui travaille directement avec l'équipe du client, sur son code, jusqu'à la mise en ligne. Chez Klyx, c'est le même travail à temps partagé, quelques jours par semaine, sans recrutement.",
       "link": "Lire la définition complète"
     },
     "audience": {
@@ -948,8 +948,8 @@
           "answer": "À distance par défaut. Si votre équipe est à Bordeaux, on peut venir dans vos locaux."
         },
         "vsSprint": {
-          "question": "Développeur dédié ou Sprint IA ?",
-          "answer": "Le Sprint IA livre un agent précis au forfait, en deux semaines. Le développeur dédié convient quand vos priorités bougent et que vous avez besoin de quelqu'un dans l'équipe pendant plusieurs semaines."
+          "question": "Développeur dédié ou agent IA au forfait ?",
+          "answer": "L'offre Agent IA livre un agent précis au forfait, en deux semaines. Le développeur dédié convient quand vos priorités bougent et que vous avez besoin de quelqu'un dans l'équipe pendant plusieurs semaines."
         }
       }
     },
@@ -990,7 +990,7 @@
     },
     "deliverables": {
       "title": "Ce que vous recevez, et ce qui peut suivre.",
-      "intro": "L'audit se vend seul. Si un projet en sort, vous choisissez la suite : une automatisation simple ou un Sprint IA.",
+      "intro": "L'audit se vend seul. Si un projet en sort, vous choisissez la suite : une automatisation simple ou un agent IA.",
       "tiers": {
         "auditIa": {
           "audience": "Pour savoir quoi automatiser en premier.",
@@ -1073,7 +1073,7 @@
           "emails": {
             "process": "Tri des e-mails clients",
             "hours": "~3 h / sem.",
-            "offer": "Sprint IA",
+            "offer": "Agent IA",
             "risk": "Moyen",
             "when": "Mois 3"
           }
@@ -1082,7 +1082,7 @@
       },
       "credit": {
         "title": "L'audit est déduit de la suite",
-        "body": "Si vous enchaînez sur une Automatisation IA ou un Sprint IA, le devis tient compte de l'audit déjà payé. Les conditions sont écrites avant que vous signiez."
+        "body": "Si vous enchaînez sur une automatisation ou un agent IA, le devis tient compte de l'audit déjà payé. Les conditions sont écrites avant que vous signiez."
       },
       "bpifrance": {
         "title": "Et le Diagnostic Data IA de Bpifrance ?",
@@ -1093,7 +1093,7 @@
     },
     "pricing": {
       "title": "Combien coûte un audit IA ?",
-      "body": "L'audit IA démarre à {auditPrice}, pour 1 à 2 semaines. Si une automatisation en sort, une Automatisation IA démarre à {automationPrice} et un Sprint IA à {sprintPrice}.",
+      "body": "L'audit IA démarre à {auditPrice}, pour 1 à 2 semaines. Si une automatisation en sort, une Automatisation IA démarre à {automationPrice} et un agent IA à {sprintPrice}.",
       "link": "Voir tous les tarifs"
     },
     "faq": {
@@ -1162,7 +1162,7 @@
     },
     "deliverables": {
       "title": "Ce que vous recevez, au forfait.",
-      "intro": "Une automatisation simple à prix fixe, un suivi léger si vous le voulez, et le Sprint IA quand le besoin va plus loin.",
+      "intro": "Une automatisation simple à prix fixe, un suivi léger si vous le voulez, et l'offre Agent IA quand le besoin va plus loin.",
       "tiers": {
         "automation": {
           "audience": "Pour un processus simple et répétitif.",
@@ -1189,7 +1189,7 @@
           "items": {
             "agent": "Un agent qui décide, ou un processus qui traverse plusieurs outils",
             "evals": "20 à 50 cas de test et un journal des actions",
-            "credit": "Le prix de l'Automatisation IA déduit à 100 % si le Sprint est signé sous 60 jours"
+            "credit": "Le prix de l'Automatisation IA déduit à 100 % si l'agent est signé sous 60 jours"
           }
         }
       }
@@ -1242,7 +1242,7 @@
           "after": "Une facture échue déclenche une relance adaptée au client, envoyée après votre accord."
         }
       },
-      "limit": "Un agent qui décide seul, des tests poussés ou plusieurs outils à relier sortent du forfait : c'est le Sprint IA."
+      "limit": "Un agent qui décide seul, des tests poussés ou plusieurs outils à relier sortent du forfait : c'est l'offre Agent IA."
     },
     "pricing": {
       "title": "Combien coûte une automatisation IA ?",
@@ -1253,8 +1253,8 @@
       "title": "Questions sur l'automatisation.",
       "items": {
         "vsSprint": {
-          "question": "Quelle différence entre l'Automatisation IA et le Sprint IA ?",
-          "answer": "L'Automatisation IA, c'est une seule chaîne simple : un déclencheur, une étape IA qui lit ou rédige, une action. L'IA n'y prend pas de décision seule et l'automatisation ne relie pas cinq logiciels. Dès que le processus demande de choisir entre plusieurs actions, ou d'agir dans plusieurs outils avec des tests poussés, c'est un Sprint IA, livré en deux semaines."
+          "question": "Quelle différence entre l'Automatisation IA et l'Agent IA ?",
+          "answer": "L'Automatisation IA, c'est une seule chaîne simple : un déclencheur, une étape IA qui lit ou rédige, une action. L'IA n'y prend pas de décision seule et l'automatisation ne relie pas cinq logiciels. Dès que le processus demande de choisir entre plusieurs actions, ou d'agir dans plusieurs outils avec des tests poussés, c'est un agent IA, livré en deux semaines."
         },
         "tools": {
           "question": "Dans quel outil l'automatisation tourne-t-elle ?",
@@ -1274,7 +1274,7 @@
         },
         "upgrade": {
           "question": "Et si j'ai besoin de plus ensuite ?",
-          "answer": "Le prix de l'Automatisation IA est déduit à 100 % d'un Sprint IA signé dans les 60 jours. Vous pouvez donc commencer petit, voir l'automatisation tourner sur vos vrais documents, puis passer à un agent plus complet sans payer deux fois la découverte de vos process. Au-delà de 60 jours, les deux restent des forfaits séparés."
+          "answer": "Le prix de l'Automatisation IA est déduit à 100 % d'un agent IA signé dans les 60 jours. Vous pouvez donc commencer petit, voir l'automatisation tourner sur vos vrais documents, puis passer à un agent plus complet sans payer deux fois la découverte de vos process. Au-delà de 60 jours, les deux restent des forfaits séparés."
         }
       }
     },
@@ -1315,7 +1315,7 @@
     },
     "deliverables": {
       "title": "Ce que vous recevez, mesuré avant et après.",
-      "intro": "Pour un site existant. Si vous refaites votre site, le Site IA inclut déjà ce travail.",
+      "intro": "Pour un site existant. Si vous refaites votre site, le Site complet inclut déjà ce travail.",
       "tiers": {
         "geo": {
           "audience": "Pour un site existant qui n'est pas cité.",
@@ -1398,7 +1398,7 @@
     },
     "pricing": {
       "title": "Combien coûte le référencement sur ChatGPT ?",
-      "body": "L'audit et la mise en place démarrent à {geoPrice}, en 2 semaines. Le suivi coûte {geoCarePrice} par mois, 3 mois minimum. Pour un nouveau site, le Site IA à partir de {siteIaPrice} inclut déjà ce travail.",
+      "body": "L'audit et la mise en place démarrent à {geoPrice}, en 2 semaines. Le suivi coûte {geoCarePrice} par mois, 3 mois minimum. Pour un nouveau site, le Site complet à partir de {siteIaPrice} inclut déjà ce travail.",
       "link": "Voir tous les tarifs"
     },
     "faq": {
@@ -1511,8 +1511,8 @@
       "title": "Questions sur les prix.",
       "items": {
         "sprintVsFde": {
-          "question": "Pourquoi le Sprint IA coûte-t-il moins cher que 10 jours de développeur dédié ?",
-          "answer": "Le Sprint IA est vendu au résultat : un seul agent, avec un périmètre fixé avant de commencer. On réutilise des briques déjà construites, et les deux semaines servent à ce seul livrable. Avec un développeur dédié, vous payez du temps passé dans votre équipe sur une liste de tâches ouverte, qui change d'une semaine à l'autre."
+          "question": "Pourquoi un agent IA au forfait coûte-t-il moins cher que 10 jours de développeur dédié ?",
+          "answer": "L'agent IA est vendu au résultat : un seul agent, avec un périmètre fixé avant de commencer. On réutilise des briques déjà construites, et les deux semaines servent à ce seul livrable. Avec un développeur dédié, vous payez du temps passé dans votre équipe sur une liste de tâches ouverte, qui change d'une semaine à l'autre."
         },
         "final": {
           "question": "Le prix peut-il augmenter en cours de projet ?",
@@ -1738,7 +1738,7 @@
       "items": {
         "audit": {
           "title": "Un audit à prix fixe",
-          "body": "{auditPrice}, en 1 à 2 semaines. On passe en revue vos tâches, on classe ce qui vaut la peine d'être automatisé et on vous remet une roadmap sur 90 jours."
+          "body": "{auditPrice}, en 1 à 2 semaines. On passe en revue vos tâches, on classe ce qui vaut la peine d'être automatisé et on vous remet un plan sur 90 jours."
         },
         "person": {
           "title": "Un seul interlocuteur",
@@ -1759,7 +1759,7 @@
       "cards": {
         "audit-ia": {
           "audience": "Pour savoir par où commencer.",
-          "body": "Vos tâches passées en revue, les automatisations classées, une roadmap sur 90 jours."
+          "body": "Vos tâches passées en revue, les automatisations classées, un plan sur 90 jours."
         },
         "automation": {
           "audience": "Pour une tâche précise.",
@@ -1801,7 +1801,7 @@
         "items": {
           "a": "Vos tâches passées en revue",
           "b": "Automatisations classées par gain",
-          "c": "Roadmap sur 90 jours"
+          "c": "Plan sur 90 jours"
         },
         "excluded": "Non inclus : la mise en place"
       },
@@ -2782,7 +2782,7 @@
         "platforms": "Le référencement IA marche-t-il avec un site WordPress ou Webflow ?"
       },
       "agents": {
-        "maintenance": "Qui maintient l'agent après le Sprint IA ?",
+        "maintenance": "Qui s'occupe de l'agent après la livraison ?",
         "nothingFound": "Et si l'audit IA ne trouve rien d'utile ?"
       },
       "sites": {
@@ -2794,7 +2794,7 @@
         "minimum": "Pourquoi une mission de développeur dédié dure-t-elle 4 semaines minimum ?",
         "days": "Un développeur dédié peut-il passer à plus de 3 jours par semaine ?",
         "remote": "Le développeur dédié travaille-t-il sur place ?",
-        "vsSprint": "Développeur dédié ou Sprint IA ?"
+        "vsSprint": "Développeur dédié ou agent IA au forfait ?"
       },
       "agencies": {
         "maintenance": "En marque blanche, qui maintient le projet après la livraison ?",
@@ -2804,7 +2804,7 @@
         "staff": "Nos collaborateurs doivent-ils être formés à l'automatisation ?"
       },
       "pricing": {
-        "sprintVsFde": "Pourquoi le Sprint IA coûte-t-il moins cher que 10 jours de développeur dédié ?"
+        "sprintVsFde": "Pourquoi un agent IA au forfait coûte-t-il moins cher que 10 jours de développeur dédié ?"
       }
     },
     "cta": {
@@ -2822,7 +2822,7 @@
     },
     "sites": {
       "title": "Création de site web à Bordeaux, prix affichés | Klyx",
-      "description": "Landing page dès {landingPrice}, site de 5 à 8 pages dès {siteIaPrice}. Des sites rapides, bien référencés sur Google et lisibles par ChatGPT."
+      "description": "Site une page dès {landingPrice}, site de 5 à 8 pages dès {siteIaPrice}. Des sites rapides, bien référencés sur Google et lisibles par ChatGPT."
     },
     "agents": {
       "title": "Agent IA pour entreprise, en place en 2 semaines | Klyx",

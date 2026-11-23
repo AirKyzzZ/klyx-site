@@ -150,8 +150,9 @@ export const outreachPages: Record<OutreachKey, OutreachPageConfig> = {
     key: "startups",
     path: "/pour/startups-sprint-ia",
     meta: {
-      title: "Sprint IA : votre feature IA en production en 2 semaines",
-      description: `Sprint IA au forfait, à partir de ${prices.sprintPrice} : une feature IA branchée sur votre produit, testée et en production en deux semaines, avec le code dans votre dépôt.`,
+      title:
+        "Agent IA au forfait : votre feature IA en production en 2 semaines",
+      description: `Un agent IA au forfait, à partir de ${prices.sprintPrice} : une feature IA branchée sur votre produit, testée et en production en deux semaines, avec le code dans votre dépôt.`,
     },
     backdrop: {
       sources: ["github", "slack", "notion", "gmail", "stripe"],
@@ -167,14 +168,14 @@ export const outreachPages: Record<OutreachKey, OutreachPageConfig> = {
       title:
         "Votre feature IA en production en 2 semaines, pas dans un prototype.",
       subtitle:
-        "Un Sprint IA au forfait pour les startups qui ont une feature IA en attente : branchée sur votre produit, testée, en production, avec le code dans votre dépôt.",
-      note: `Sprint IA à partir de ${prices.sprintPrice}, 2 semaines, prix fixé avant de commencer.`,
+        "Un agent IA au forfait pour les startups qui ont une feature IA en attente : branchée sur votre produit, testée, en production, avec le code dans votre dépôt.",
+      note: `Agent IA à partir de ${prices.sprintPrice}, 2 semaines, prix fixé avant de commencer.`,
     },
     sections: [
       {
         kind: "list",
         id: "deliverables",
-        title: "Ce que vous recevez à la fin du Sprint.",
+        title: "Ce que vous recevez au bout des deux semaines.",
         body: `Un forfait à partir de ${prices.sprintPrice}, au périmètre écrit et signé avant de commencer. Le prix ne bouge pas avec le temps passé.`,
         items: [
           {
@@ -226,15 +227,15 @@ export const outreachPages: Record<OutreachKey, OutreachPageConfig> = {
         kind: "list",
         id: "limits",
         tone: "limit",
-        title: "Ce que le Sprint ne couvre pas.",
+        title: "Ce que le forfait ne couvre pas.",
         body: "Mieux vaut le savoir avant l'appel.",
         items: [
           {
-            body: "Une seule feature par Sprint. Plusieurs intégrations ou une recherche dans vos documents passent sur devis.",
+            body: "Une seule feature par forfait. Plusieurs intégrations ou une recherche dans vos documents passent sur devis.",
           },
           { body: "Pas d'astreinte 24 h/24, pas de certification SOC 2." },
           {
-            body: "Peu de Sprints en parallèle : le devis donne une date de début, et on ne la promet pas si on ne peut pas la tenir.",
+            body: "Peu de projets en parallèle : le devis donne une date de début, et on ne la promet pas si on ne peut pas la tenir.",
           },
           {
             body: "Si votre feature ne tient pas en deux semaines, on vous le dit dès l'appel, avec ce qu'il faudrait à la place.",
@@ -252,7 +253,7 @@ export const outreachPages: Record<OutreachKey, OutreachPageConfig> = {
     midCtaAfter: "deliverables",
     booking: {
       title: "Une feature IA qui attend quelqu'un pour la livrer ?",
-      body: "On regarde la feature avec vous et on vous dit si elle tient dans un Sprint. Sinon, on vous dit ce qu'il faudrait, sans engagement.",
+      body: "On regarde la feature avec vous et on vous dit si elle tient dans le forfait. Sinon, on vous dit ce qu'il faudrait, sans engagement.",
     },
   },
 };

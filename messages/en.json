@@ -4,7 +4,7 @@
     "offers": "Services",
     "groupBuild": "Build",
     "groupAdvise": "Advise",
-    "sites": "Websites and landing pages",
+    "sites": "Websites",
     "agents": "AI agents",
     "fde": "Dedicated developer",
     "cases": "Work",
@@ -22,8 +22,8 @@
     "automation": "AI automation",
     "geo": "AI search visibility",
     "hints": {
-      "audit": "Your processes reviewed and a 90-day roadmap.",
-      "automation": "One AI workflow wired into your tools in a week.",
+      "audit": "Your processes reviewed and a 90-day plan.",
+      "automation": "One AI automation wired into your tools in a week.",
       "geo": "Get cited by ChatGPT and Perplexity, measured before and after."
     },
     "useCases": "Use cases",
@@ -187,7 +187,7 @@
         },
         "team": {
           "question": "Who works on our project?",
-          "answer": "Maxime Mansiet, our lead engineer, from the first call to handover. He hands well-defined tasks to AI coding agents and reviews everything they produce. If the project needs design or a specialist skill, we bring in a specialist and tell you first. The code is in your name from day one, and every project ends with a written handover so another developer can take over."
+          "answer": "Maxime Mansiet, founder and developer at Klyx, from the first call to handover. He hands well-defined tasks to AI coding agents and reviews everything they produce. If the project needs design or a specialist skill, we bring in a specialist and tell you first. The code is in your name from day one, and every project ends with a written handover so another developer can take over."
         },
         "production": {
           "question": "What does “in production” mean?",
@@ -427,7 +427,7 @@
       "title": "One point of contact, from the first call to go-live.",
       "intro": "No salesperson, no project manager between you and the person who builds.",
       "name": "Maxime Mansiet",
-      "role": "Founder and lead engineer at Klyx, in Bordeaux",
+      "role": "Founder and developer at Klyx, in Bordeaux",
       "bio": "Maxime scopes your project from the first call, writes the code and sees it through to go-live. When a project needs other skills, he brings in specialists and tells you first. He also co-founded CiteMe, a tool that measures how visible brands are in ChatGPT.",
       "photoAlt": "Maxime Mansiet, founder of Klyx",
       "stats": {
@@ -483,12 +483,12 @@
     "vatNote": "All prices exclude VAT.",
     "items": {
       "landing": {
-        "name": "Landing page",
+        "name": "One-page site",
         "summary": "One page that presents an offer and makes people want to get in touch.",
         "duration": "1 to 2 weeks"
       },
       "siteIa": {
-        "name": "AI-ready site",
+        "name": "Full website",
         "summary": "5 to 8 pages that rank on Google and that AI engines can read.",
         "duration": "3 to 4 weeks"
       },
@@ -503,7 +503,7 @@
         "duration": "1 to 2 weeks"
       },
       "sprintIa": {
-        "name": "AI Sprint",
+        "name": "AI agent",
         "summary": "An AI agent in daily use, with the scope fixed before work starts.",
         "duration": "2 weeks"
       },
@@ -642,7 +642,7 @@
     },
     "pricing": {
       "title": "How much does a website cost?",
-      "body": "A landing page starts at {landingPrice}, a 5 to 8 page site at {siteIaPrice} and a custom site at {siteCustomPrice}. The quote is free, and the price no longer moves once the scope is signed.",
+      "body": "A one-page site starts at {landingPrice}, a 5 to 8 page site at {siteIaPrice} and a custom site at {siteCustomPrice}. The quote is free, and the price no longer moves once the scope is signed.",
       "link": "See all prices"
     },
     "faq": {
@@ -650,7 +650,7 @@
       "items": {
         "delay": {
           "question": "How long does it take to build a site?",
-          "answer": "Allow 1 to 2 weeks for a landing page and 3 to 4 weeks for a 5 to 8 page site. The schedule is written into the quote."
+          "answer": "Allow 1 to 2 weeks for a one-page site and 3 to 4 weeks for a 5 to 8 page site. The schedule is written into the quote."
         },
         "stack": {
           "question": "Next.js or WordPress?",
@@ -769,7 +769,7 @@
     },
     "block": {
       "title": "Every action the agent takes, logged.",
-      "intro": "With the AI Sprint you get a log: what the agent did, when, and the errors it recovered from. Here, a made-up example.",
+      "intro": "With the AI agent offer you get a log: what the agent did, when, and the errors it recovered from. Here, a made-up example.",
       "log": {
         "title": "Sorting an incoming request",
         "items": {
@@ -787,8 +787,8 @@
       }
     },
     "credit": {
-      "title": "The audit is credited against the Sprint",
-      "body": "If you go on to an AI Sprint, the quote takes the audit you already paid into account. The terms are written down before you sign."
+      "title": "The audit is credited against the agent",
+      "body": "If you go on to an AI agent, the quote takes the audit you already paid into account. The terms are written down before you sign."
     },
     "proof": {
       "title": "Already in use.",
@@ -797,7 +797,7 @@
     },
     "pricing": {
       "title": "How much does an AI agent cost?",
-      "body": "An AI audit starts at {auditPrice}. An AI Sprint, which puts an agent to work in two weeks, starts at {sprintPrice}. Larger projects, with several tools to connect or search across your documents, are quoted separately.",
+      "body": "An AI audit starts at {auditPrice}. An AI agent, put to work in two weeks, starts at {sprintPrice}. Larger projects, with several tools to connect or search across your documents, are quoted separately.",
       "link": "See all prices"
     },
     "faq": {
@@ -824,8 +824,8 @@
           "answer": "Your accounts and tools stay in your name, and we list the data involved before writing any code. Data the agent handles goes through the AI model provider, which by default doesn't use it to train its models. If you need EU hosting or a local model, we plan for it in the quote."
         },
         "maintenance": {
-          "question": "Who looks after the agent after the Sprint?",
-          "answer": "Your team, with the written guide and walkthrough included in the Sprint, or us, through the monthly follow-up."
+          "question": "Who looks after the agent after delivery?",
+          "answer": "Your team, with the written guide and walkthrough included in the offer, or us, through the monthly follow-up."
         }
       }
     },
@@ -907,7 +907,7 @@
     },
     "definition": {
       "title": "Where the role comes from.",
-      "body": "The role is known as a Forward Deployed Engineer: a developer who works directly with the client's team, in their code, until the product is live. At Klyx it is the same work on a part-time basis, a few days a week, without a hire.",
+      "body": "The role was born at American software companies: a developer who works directly with the client's team, in their code, until the product is live. At Klyx it is the same work on a part-time basis, a few days a week, without a hire.",
       "link": "Read the full definition"
     },
     "audience": {
@@ -948,8 +948,8 @@
           "answer": "Remote by default. If your team is in Bordeaux, we can come to your office."
         },
         "vsSprint": {
-          "question": "Dedicated developer or AI Sprint?",
-          "answer": "The AI Sprint delivers one defined agent at a fixed price in two weeks. A dedicated developer fits when your priorities keep changing and you need someone inside the team for several weeks."
+          "question": "Dedicated developer or a fixed-price AI agent?",
+          "answer": "The AI agent offer delivers one defined agent at a fixed price in two weeks. A dedicated developer fits when your priorities keep changing and you need someone inside the team for several weeks."
         }
       }
     },
@@ -990,7 +990,7 @@
     },
     "deliverables": {
       "title": "What you get, and what can follow.",
-      "intro": "The audit is sold on its own. If a project comes out of it, you choose what's next: a simple automation or an AI Sprint.",
+      "intro": "The audit is sold on its own. If a project comes out of it, you choose what's next: a simple automation or an AI agent.",
       "tiers": {
         "auditIa": {
           "audience": "To know what to automate first.",
@@ -1073,7 +1073,7 @@
           "emails": {
             "process": "Sorting customer emails",
             "hours": "~3 h / week",
-            "offer": "AI Sprint",
+            "offer": "AI agent",
             "risk": "Medium",
             "when": "Month 3"
           }
@@ -1082,7 +1082,7 @@
       },
       "credit": {
         "title": "The audit is credited against what follows",
-        "body": "If you go on to an AI automation or an AI Sprint, the quote takes the audit you already paid into account. The terms are written down before you sign."
+        "body": "If you go on to an automation or an AI agent, the quote takes the audit you already paid into account. The terms are written down before you sign."
       },
       "bpifrance": {
         "title": "What about Bpifrance's Diagnostic Data IA?",
@@ -1093,7 +1093,7 @@
     },
     "pricing": {
       "title": "How much does an AI audit cost?",
-      "body": "The AI audit starts at {auditPrice}, for 1 to 2 weeks. If an automation comes out of it, an AI automation starts at {automationPrice} and an AI Sprint at {sprintPrice}.",
+      "body": "The AI audit starts at {auditPrice}, for 1 to 2 weeks. If an automation comes out of it, an AI automation starts at {automationPrice} and an AI agent at {sprintPrice}.",
       "link": "See all prices"
     },
     "faq": {
@@ -1162,7 +1162,7 @@
     },
     "deliverables": {
       "title": "What you get, at a fixed price.",
-      "intro": "One simple automation at a fixed price, a light follow-up if you want it, and the AI Sprint when you need more.",
+      "intro": "One simple automation at a fixed price, a light follow-up if you want it, and the AI agent offer when you need more.",
       "tiers": {
         "automation": {
           "audience": "For a simple, repetitive process.",
@@ -1189,7 +1189,7 @@
           "items": {
             "agent": "An agent that decides, or a process that goes across several tools",
             "evals": "20 to 50 test cases and a log of actions",
-            "credit": "The AI automation price credited 100% if the Sprint is signed within 60 days"
+            "credit": "The AI automation price credited 100% if the agent is signed within 60 days"
           }
         }
       }
@@ -1242,7 +1242,7 @@
           "after": "An overdue invoice triggers a follow-up tailored to the client, sent once you approve."
         }
       },
-      "limit": "An agent that decides on its own, in-depth testing or several tools to connect are outside the fixed price: that's the AI Sprint."
+      "limit": "An agent that decides on its own, in-depth testing or several tools to connect are outside the fixed price: that's the AI agent offer."
     },
     "pricing": {
       "title": "How much does an AI automation cost?",
@@ -1253,8 +1253,8 @@
       "title": "Questions about automation.",
       "items": {
         "vsSprint": {
-          "question": "What is the difference between AI automation and the AI Sprint?",
-          "answer": "AI automation is one simple chain: a trigger, an AI step that reads or drafts, an action. The AI makes no decision on its own and the automation does not connect five tools. As soon as the process needs to choose between several actions, or act across several tools with in-depth testing, it is an AI Sprint, delivered in two weeks."
+          "question": "What is the difference between AI automation and an AI agent?",
+          "answer": "AI automation is one simple chain: a trigger, an AI step that reads or drafts, an action. The AI makes no decision on its own and the automation does not connect five tools. As soon as the process needs to choose between several actions, or act across several tools with in-depth testing, it is an AI agent, delivered in two weeks."
         },
         "tools": {
           "question": "Which tool does the automation run in?",
@@ -1274,7 +1274,7 @@
         },
         "upgrade": {
           "question": "What if I need more later?",
-          "answer": "The AI automation price is credited 100% against an AI Sprint signed within 60 days. So you can start small, watch the automation run on your real documents, then move to a fuller agent without paying twice for the discovery of your processes. After 60 days, the two stay separate fixed-price packages."
+          "answer": "The AI automation price is credited 100% against an AI agent signed within 60 days. So you can start small, watch the automation run on your real documents, then move to a fuller agent without paying twice for the discovery of your processes. After 60 days, the two stay separate fixed-price packages."
         }
       }
     },
@@ -1315,7 +1315,7 @@
     },
     "deliverables": {
       "title": "What you get, measured before and after.",
-      "intro": "For an existing site. If you are rebuilding your site, the AI-ready site already includes this work.",
+      "intro": "For an existing site. If you are rebuilding your site, the Full website already includes this work.",
       "tiers": {
         "geo": {
           "audience": "For an existing site that doesn't get cited.",
@@ -1398,7 +1398,7 @@
     },
     "pricing": {
       "title": "How much does ChatGPT search visibility cost?",
-      "body": "The audit and fixes start at {geoPrice}, in 2 weeks. The follow-up costs {geoCarePrice} per month, 3 months minimum. For a new site, the AI-ready site from {siteIaPrice} already includes this work.",
+      "body": "The audit and fixes start at {geoPrice}, in 2 weeks. The follow-up costs {geoCarePrice} per month, 3 months minimum. For a new site, the Full website from {siteIaPrice} already includes this work.",
       "link": "See all prices"
     },
     "faq": {
@@ -1511,8 +1511,8 @@
       "title": "Questions about pricing.",
       "items": {
         "sprintVsFde": {
-          "question": "Why does an AI Sprint cost less than 10 days of a dedicated developer?",
-          "answer": "The AI Sprint is sold on the outcome: one agent, with a scope we fix before work starts. We reuse building blocks we've already made, and the two weeks go into that single deliverable. With a dedicated developer you pay for time inside your team on an open list of tasks that changes from week to week."
+          "question": "Why does a fixed-price AI agent cost less than 10 days of a dedicated developer?",
+          "answer": "The AI agent is sold on the outcome: one agent, with a scope we fix before work starts. We reuse building blocks we've already made, and the two weeks go into that single deliverable. With a dedicated developer you pay for time inside your team on an open list of tasks that changes from week to week."
         },
         "final": {
           "question": "Can the price go up during the project?",
@@ -1738,7 +1738,7 @@
       "items": {
         "audit": {
           "title": "A fixed-price audit",
-          "body": "{auditPrice}, in 1 to 2 weeks. We review your tasks, rank what is worth automating and hand you a 90-day roadmap."
+          "body": "{auditPrice}, in 1 to 2 weeks. We review your tasks, rank what is worth automating and hand you a 90-day plan."
         },
         "person": {
           "title": "One point of contact",
@@ -1759,7 +1759,7 @@
       "cards": {
         "audit-ia": {
           "audience": "To know where to start.",
-          "body": "Your tasks reviewed, automations ranked, a 90-day roadmap."
+          "body": "Your tasks reviewed, automations ranked, a 90-day plan."
         },
         "automation": {
           "audience": "For one specific task.",
@@ -1801,7 +1801,7 @@
         "items": {
           "a": "Your tasks reviewed",
           "b": "Automations ranked by gain",
-          "c": "90-day roadmap"
+          "c": "90-day plan"
         },
         "excluded": "Not included: setting it up"
       },
@@ -2782,7 +2782,7 @@
         "platforms": "Does AI search work pay off on a WordPress or Webflow site?"
       },
       "agents": {
-        "maintenance": "Who maintains the agent after the AI Sprint?",
+        "maintenance": "Who looks after the agent after delivery?",
         "nothingFound": "What if the AI audit finds nothing useful?"
       },
       "sites": {
@@ -2794,7 +2794,7 @@
         "minimum": "Why does a dedicated developer engagement last at least 4 weeks?",
         "days": "Can a dedicated developer go beyond 3 days a week?",
         "remote": "Does the dedicated developer work on site?",
-        "vsSprint": "Dedicated developer or AI Sprint?"
+        "vsSprint": "Dedicated developer or a fixed-price AI agent?"
       },
       "agencies": {
         "maintenance": "In white label, who maintains the project after delivery?",
@@ -2804,7 +2804,7 @@
         "staff": "Does our staff need training on the automation?"
       },
       "pricing": {
-        "sprintVsFde": "Why does an AI Sprint cost less than 10 days of a dedicated developer?"
+        "sprintVsFde": "Why does a fixed-price AI agent cost less than 10 days of a dedicated developer?"
       }
     },
     "cta": {
@@ -2822,7 +2822,7 @@
     },
     "sites": {
       "title": "Website design in Bordeaux, public prices | Klyx",
-      "description": "Landing pages from {landingPrice}, 5 to 8 page sites from {siteIaPrice}. Fast sites that rank on Google and that ChatGPT can read."
+      "description": "One-page sites from {landingPrice}, 5 to 8 page sites from {siteIaPrice}. Fast sites that rank on Google and that ChatGPT can read."
     },
     "agents": {
       "title": "AI agents for businesses, live in 2 weeks | Klyx",
