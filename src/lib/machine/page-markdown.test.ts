@@ -114,26 +114,26 @@ const EXPECTATIONS: Record<AppPathname, Expectation> = {
     prices: ["landing", "audit-ia", "sprint-ia"],
   },
   "/agence-ia-bordeaux": {
-    h1: heroTitle("bordeaux"),
-    prices: ["audit-ia", "automation"],
+    h1: plainTitle("bordeaux", "hero.title"),
+    prices: ["audit-ia", "automation", "sprint-ia"],
     faqNamespace: "bordeaux",
   },
   "/cas-usage": {
-    h1: heroTitle("useCases"),
+    h1: plainTitle("useCases", "hero.title"),
     prices: ["audit-ia", "sprint-ia", "landing"],
   },
   "/cas-usage/immobilier": {
-    h1: heroTitle("useCases.realEstate"),
-    prices: ["audit-ia", "automation", "sprint-ia"],
+    h1: plainTitle("useCases.realEstate", "hero.title"),
+    prices: ["audit-ia", "automation", "automation-care", "sprint-ia"],
     faqNamespace: "useCases.realEstate",
   },
   "/cas-usage/agences": {
-    h1: heroTitle("useCases.agencies"),
+    h1: plainTitle("useCases.agencies", "hero.title"),
     prices: ["landing", "site-ia", "sprint-ia", "fde"],
     faqNamespace: "useCases.agencies",
   },
   "/cas-usage/cabinets-services": {
-    h1: heroTitle("useCases.services"),
+    h1: plainTitle("useCases.services", "hero.title"),
     prices: ["audit-ia", "automation", "automation-care", "sprint-ia"],
     faqNamespace: "useCases.services",
   },

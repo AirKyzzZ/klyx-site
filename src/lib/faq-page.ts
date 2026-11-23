@@ -200,6 +200,8 @@ export const FAQ_THEMES: { key: FaqThemeKey; items: FaqRef[] }[] = [
     key: "bordeaux",
     items: [
       ["home", "remote"],
+      ["bordeaux", "consultant"],
+      ["bordeaux", "meeting"],
       ["home", "team"],
       ["bordeaux", "it"],
     ],

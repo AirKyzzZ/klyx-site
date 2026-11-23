@@ -27,7 +27,7 @@ export function TrustGrid({
         className,
       )}
     >
-      <ul className="bg-line grid gap-px sm:grid-cols-2 lg:grid-cols-3">
+      <ul className="bg-line grid gap-px sm:grid-cols-2 lg:grid-cols-3 sm:[&>li:last-child:nth-child(odd)]:col-span-2 lg:[&>li:last-child:nth-child(odd)]:col-span-1">
         {items.map(({ icon: Icon, title, body }) => (
           <li
             key={title}
@@ -46,7 +46,7 @@ export function TrustGrid({
         ))}
       </ul>
       {footer && (
-        <div className="border-line bg-surface-2 flex flex-col gap-4 border-t px-6 py-5 md:flex-row md:items-center sm:px-8">
+        <div className="border-line bg-surface-2 flex flex-col gap-4 border-t px-6 py-5 sm:px-8 md:flex-row md:items-center">
           <p className="text-text-3 text-sm">{footer.label}</p>
           <ul className="flex flex-wrap items-center gap-x-4 gap-y-3">
             {footer.models.map((model) => (
