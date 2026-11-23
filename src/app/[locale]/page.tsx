@@ -141,7 +141,7 @@ export default async function HomePage({ params }: LocaleParams) {
             </Button>
           </>
         }
-        footer={<ClientsRow label={t("hero.clients")} names={HOME_CLIENTS} />}
+        footer={<ClientsRow label={t("hero.clients")} clients={HOME_CLIENTS} />}
       />
 
       <PageSection id="outils" containerClassName="py-11 lg:py-11">

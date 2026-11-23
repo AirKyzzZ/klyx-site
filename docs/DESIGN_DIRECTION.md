@@ -85,7 +85,7 @@ Server components unless noted. All take `className`.
 | `SplitHero` | `split-hero.tsx` | `title` (h1), `subtitle?`, `actions?`, `aside?`, `breadcrumb?` | Text left, 440px aside right (stacks under `lg`). Inner-page hero for `/cas-usage`, the sector pages and `/agence-ia-bordeaux`. |
 | `FactCard` | `fact-card.tsx` | `visual?`, `facts: { label, value }[]`, `price?: { label, value, unit?, note? }` | Key facts as a label/value list with an optional inset visual and price footer. Used as the `SplitHero` aside. |
 | `ConstellationBackdrop` | `constellation-backdrop.tsx` | `sources`, `destinations` (5 `ToolLogoId` each) | 40px grid, dotted wires, orange nodes, floating white logo tiles at the Figma positions. Decorative (`aria-hidden`). |
-| `ClientsRow` | `clients-row.tsx` | `label`, `names` | Text wordmarks of real clients only. |
+| `ClientsRow` | `clients-row.tsx` | `label`, `clients` (`HOME_CLIENTS`: `name`, `slug`, `logo`, `ratio`, `height`) | Real client logos only, each linking to its case study. The SVGs in `public/clients/` are single-colour masks painted with `currentColor` (`text-3`, `text` on hover), so they follow both themes. `height` is the optical size on desktop (80% on phones), `ratio` comes from the SVG viewBox (unit-tested). |
 | `ToolsStrip` | `tools-strip.tsx` | `title`, `tools: Tool[]`, `more?` | Centered logo and name row. |
 | `LogoTile` | `logo-tile.tsx` | `logo`, `size?` (`sm` 28, `md` 40, `lg` 48) | White tile, brand-coloured glyph, both themes. |
 | `AgentPill`, `FlowLine` | `agent-pill.tsx` | `label` | Orange "Agent IA" pill and the 1.5px connector. |

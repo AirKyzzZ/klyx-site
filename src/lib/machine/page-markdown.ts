@@ -242,7 +242,13 @@ async function home(locale: Locale): Promise<string> {
       link(t("hero.ctaPrimary"), actionUrl(locale, "book")),
       link(t("hero.ctaSecondary"), absoluteUrl(locale, "/realisations")),
     ]),
-    labelled(locale, t("hero.clients"), HOME_CLIENTS.join(", ")),
+    labelled(
+      locale,
+      t("hero.clients"),
+      HOME_CLIENTS.map((client) =>
+        link(client.name, caseUrl(client.slug)),
+      ).join(", "),
+    ),
     labelled(
       locale,
       t("tools.title"),

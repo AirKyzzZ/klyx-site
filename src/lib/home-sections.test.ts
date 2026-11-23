@@ -1,3 +1,6 @@
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
+
 import { describe, expect, it } from "vitest";
 
 import { routing } from "@/i18n/routing";
@@ -7,6 +10,7 @@ import { formatPrice, getOfferPrice } from "@/lib/offers";
 
 import {
   countLiveHomeCases,
+  HOME_CLIENTS,
   HOME_OFFER_CARDS,
   selectHomeCases,
 } from "./home-sections";
@@ -41,5 +45,30 @@ describe("countLiveHomeCases", () => {
     const offline = home.filter((study) => study.live === false);
     expect(offline.map((study) => study.slug)).toContain("cronolyss");
     expect(countLiveHomeCases(cases)).toBe(home.length - offline.length);
+  });
+});
+
+describe("HOME_CLIENTS", () => {
+  it.each(routing.locales)(
+    "links every client logo to a case study in %s",
+    async (locale) => {
+      const slugs = (await getCaseStudies(locale)).map((study) => study.slug);
+      for (const client of HOME_CLIENTS) {
+        expect(slugs, client.name).toContain(client.slug);
+      }
+    },
+  );
+
+  it("keeps CiteMe out, it is our own product", () => {
+    expect(HOME_CLIENTS.map((client) => client.slug)).not.toContain("citeme");
+  });
+
+  it.each(HOME_CLIENTS)("sizes $name from its own SVG", (client) => {
+    const svg = readFileSync(join("public", client.logo), "utf8");
+    const viewBox = /viewBox="0 0 ([\d.]+) ([\d.]+)"/.exec(svg);
+    expect(viewBox, client.logo).not.toBeNull();
+    const [, width, height] = viewBox!;
+    expect(client.ratio).toBeCloseTo(Number(width) / Number(height), 3);
+    expect(svg).not.toMatch(/<script|on[a-z]+=|href=/i);
   });
 });
