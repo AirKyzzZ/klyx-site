@@ -105,6 +105,10 @@
     "faq": {
       "title": "Frequently asked questions.",
       "items": {
+        "who": {
+          "question": "Who is Klyx?",
+          "answer": "Klyx is an AI agency in Bordeaux: websites, AI agents and automations delivered at a fixed price for small businesses, startups and agencies, with public prices. The project is run by Maxime Mansiet, who takes the first call, writes the code and sees it through to launch."
+        },
         "price": {
           "question": "How much does a project cost?",
           "answer": "A website starts at {landingPrice}, an AI audit at {auditPrice} and an AI agent at {sprintPrice}. The final price is fixed in writing before we start. All prices are on the Pricing page."
@@ -1496,6 +1500,7 @@
     },
     "story": {
       "title": "Where Klyx comes from.",
+      "entity": "Klyx is an AI agency in Bordeaux: websites, AI agents and automations delivered at a fixed price for small businesses, startups and agencies, with public prices.",
       "intro": "Maxime founded Klyx in Bordeaux to build websites, AI agents and automations for startups, agencies and small businesses.",
       "body": "He follows every project himself, from the first call to go-live. Alongside Klyx, he builds MCP servers and AI agents for a European digital identity infrastructure.",
       "facts": {

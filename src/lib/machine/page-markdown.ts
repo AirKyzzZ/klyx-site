@@ -795,6 +795,7 @@ async function about(locale: Locale): Promise<string> {
       ),
     ),
     `## ${t("story.title")}`,
+    t("story.entity"),
     t("story.intro"),
     t("story.body"),
     list(

@@ -106,7 +106,14 @@ export const HOME_CAROUSEL = [
   },
 ] as const;
 
-export const HOME_FAQ = ["price", "tools", "data", "team", "remote"] as const;
+export const HOME_FAQ = [
+  "who",
+  "price",
+  "tools",
+  "data",
+  "team",
+  "remote",
+] as const;
 
 export const HOME_TRUST = [
   "owned",

@@ -105,6 +105,10 @@
     "faq": {
       "title": "Questions fréquentes.",
       "items": {
+        "who": {
+          "question": "Qui est Klyx ?",
+          "answer": "Klyx est une agence IA à Bordeaux : sites, agents IA et automatisations livrés au forfait pour les PME, startups et agences, avec des prix publics. Le projet est porté par Maxime Mansiet, qui fait le premier appel, écrit le code et suit la mise en ligne."
+        },
         "price": {
           "question": "Combien coûte un projet ?",
           "answer": "Un site démarre à {landingPrice}, un audit IA à {auditPrice} et un agent IA à {sprintPrice}. Le prix final est fixé par écrit avant de commencer. Tous les prix sont sur la page Tarifs."
@@ -1496,6 +1500,7 @@
     },
     "story": {
       "title": "D'où vient Klyx.",
+      "entity": "Klyx est une agence IA à Bordeaux : sites, agents IA et automatisations livrés au forfait pour les PME, startups et agences, avec des prix publics.",
       "intro": "Maxime a fondé Klyx à Bordeaux pour construire des sites, des agents IA et des automatisations pour des startups, des agences et des PME.",
       "body": "Il suit chaque projet lui-même, du premier appel à la mise en ligne. En parallèle, il développe des serveurs MCP et des agents IA pour une infrastructure européenne d'identité numérique.",
       "facts": {

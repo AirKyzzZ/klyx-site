@@ -1,8 +1,10 @@
+import type { Locale } from "@/i18n/routing";
+
 export const site = {
   name: "Klyx",
   legalName: "Maxime Mansiet EI",
   description:
-    "Klyx est une agence IA à Bordeaux : sites, agents IA et automatisations livrés au forfait pour les PME, startups et agences, avec des prix publics.",
+    "Klyx est une agence IA à Bordeaux\u00a0: sites, agents IA et automatisations livrés au forfait pour les PME, startups et agences, avec des prix publics.",
   url: "https://klyx.fr",
   email: "contact@klyx.fr",
   phone: "+33 7 83 97 23 60",
@@ -29,6 +31,11 @@ export const site = {
     { name: "Klyx Estate", url: "https://estate.klyx.fr" },
   ],
 } as const;
+
+export const SITE_DESCRIPTIONS = {
+  fr: site.description,
+  en: "Klyx is an AI agency in Bordeaux: websites, AI agents and automations delivered at a fixed price for small businesses, startups and agencies, with public prices.",
+} as const satisfies Record<Locale, string>;
 
 export const socialLinks = [
   { name: "LinkedIn", href: site.socials.linkedinCompany },

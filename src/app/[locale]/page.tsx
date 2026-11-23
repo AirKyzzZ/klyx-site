@@ -11,6 +11,7 @@ import {
 import { getTranslations } from "next-intl/server";
 
 import { ActionButton } from "@/components/action-button";
+import { JsonLd } from "@/components/json-ld";
 import {
   FOUNDER_PHOTO,
   FounderPanel,
@@ -53,6 +54,7 @@ import {
   HOME_USE_CASES,
   selectHomeCases,
 } from "@/lib/home-sections";
+import { faqJsonLd } from "@/lib/json-ld";
 import { getPriceValues } from "@/lib/offers";
 import { buildMetadata } from "@/lib/seo";
 
@@ -90,9 +92,18 @@ export default async function HomePage({ params }: LocaleParams) {
     const item = casesBySlug.get(slug);
     return item ? [{ item, name }] : [];
   });
+  const faq = HOME_FAQ.map((key) => ({
+    question: t(`faq.items.${key}.question`),
+    answer: t(`faq.items.${key}.answer`, prices),
+  }));
 
   return (
     <>
+      <JsonLd
+        data={faqJsonLd(
+          faq.map((item) => ({ q: item.question, a: item.answer })),
+        )}
+      />
       <CenteredHero
         data-home-hero
         intro
@@ -321,14 +332,7 @@ export default async function HomePage({ params }: LocaleParams) {
       </PageSection>
 
       <PageSection id="faq">
-        <FaqList
-          title={t("faq.title")}
-          intro={t("faq.intro")}
-          items={HOME_FAQ.map((key) => ({
-            question: t(`faq.items.${key}.question`),
-            answer: t(`faq.items.${key}.answer`, prices),
-          }))}
-        />
+        <FaqList title={t("faq.title")} intro={t("faq.intro")} items={faq} />
       </PageSection>
 
       <SiteCta />
