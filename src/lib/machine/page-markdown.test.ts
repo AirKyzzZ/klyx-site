@@ -38,11 +38,6 @@ type Expectation = {
   faqKeys?: readonly string[];
 };
 
-const heroTitle = (namespace: string) => (locale: Locale) => {
-  const t = getStaticTranslator(locale, namespace);
-  return `${t("hero.title")} ${t("hero.titleEmphasis")}`;
-};
-
 const plainTitle = (namespace: string, key: string) => (locale: Locale) =>
   getStaticTranslator(locale, namespace)(key);
 
