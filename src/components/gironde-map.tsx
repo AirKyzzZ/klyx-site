@@ -76,8 +76,8 @@ export function GirondeMap({
       <path
         d={GIRONDE_PATH}
         fill="var(--surface-1)"
-        stroke="var(--line-strong)"
-        strokeWidth="1.5"
+        stroke="var(--text-3)"
+        strokeWidth="1.25"
         strokeLinejoin="round"
       />
       <circle

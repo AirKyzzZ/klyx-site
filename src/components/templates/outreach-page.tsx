@@ -8,7 +8,6 @@ import { CenteredHero } from "@/components/ui-kit/centered-hero";
 import { ClientsRow } from "@/components/ui-kit/clients-row";
 import { ConstellationBackdrop } from "@/components/ui-kit/constellation-backdrop";
 import { FinalCta } from "@/components/ui-kit/final-cta";
-import { MethodSteps } from "@/components/ui-kit/method-steps";
 import { PageSection } from "@/components/ui-kit/page-section";
 import { SectionHeader } from "@/components/ui-kit/section-header";
 import { getCaseStudies } from "@/lib/content";
@@ -102,12 +101,31 @@ async function SectionBody({ section }: { section: OutreachSection }) {
 
   if (section.kind === "steps") {
     return (
-      <MethodSteps
-        steps={section.items.map((item) => ({
-          title: item.title,
-          body: item.body,
-        }))}
-      />
+      <ol className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        {section.items.map((item, i) => (
+          <li
+            key={item.title}
+            className="border-line bg-surface-1 shadow-panel flex flex-col gap-3 rounded-[16px] border p-6"
+          >
+            <span
+              className={cn(
+                "grid size-10 place-items-center rounded-full text-base font-semibold tabular-nums",
+                i === 0
+                  ? "bg-accent text-accent-ink"
+                  : "border-line-strong text-text bg-surface-1 border",
+              )}
+            >
+              {i + 1}
+            </span>
+            <h3 className="text-text mt-2 text-[1.3125rem] leading-tight font-semibold tracking-[-0.4px]">
+              {item.title}
+            </h3>
+            <p className="text-text-2 text-[0.9375rem] leading-normal">
+              {item.body}
+            </p>
+          </li>
+        ))}
+      </ol>
     );
   }
 
