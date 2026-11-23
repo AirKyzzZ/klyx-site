@@ -229,6 +229,11 @@
 
 .case-stage {
   background:
+    linear-gradient(rgb(20 20 20 / 0.35), rgb(20 20 20 / 0.1)), #141414;
+}
+
+[data-armed] .case-stage {
+  background:
     linear-gradient(rgb(20 20 20 / 0.35), rgb(20 20 20 / 0.1)),
     image-set(
         url("/backdrop/band-1600.avif") type("image/avif"),

@@ -48,6 +48,7 @@ export function CaseCarousel({
   const [hovered, setHovered] = useState(false);
   const [focused, setFocused] = useState(false);
   const [visible, setVisible] = useState(true);
+  const [armed, setArmed] = useState(false);
 
   useEffect(() => {
     const node = root.current;
@@ -55,8 +56,20 @@ export function CaseCarousel({
     const observer = new IntersectionObserver(([entry]) =>
       setVisible(entry.isIntersecting),
     );
+    const preloader = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        setArmed(true);
+        preloader.disconnect();
+      },
+      { rootMargin: "1200px 0px" },
+    );
     observer.observe(node);
-    return () => observer.disconnect();
+    preloader.observe(node);
+    return () => {
+      observer.disconnect();
+      preloader.disconnect();
+    };
   }, []);
 
   const paused = hovered || focused || !visible;
@@ -67,6 +80,7 @@ export function CaseCarousel({
       ref={root}
       data-case-carousel
       data-paused={paused ? "" : undefined}
+      data-armed={armed ? "" : undefined}
       style={{ "--carousel-interval": `${interval}ms` } as CSSProperties}
       className={className}
       onPointerEnter={() => setHovered(true)}
