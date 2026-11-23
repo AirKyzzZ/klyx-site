@@ -7,6 +7,7 @@ import { ThemeScript } from "@/components/theme/theme-script";
 import type { Locale } from "@/i18n/routing";
 import { THEME_COLORS } from "@/lib/theme";
 
+import en from "../../messages/en.json";
 import fr from "../../messages/fr.json";
 import { mono, sans } from "./fonts";
 import "./globals.css";
@@ -57,7 +58,11 @@ export default function GlobalNotFound() {
       </head>
       <body>
         <main className="relative">
-          <NotFoundLocale fr={renderView("fr")} en={renderView("en")} />
+          <NotFoundLocale
+            fr={renderView("fr")}
+            en={renderView("en")}
+            enTitle={`${en.notFound.title} | Klyx`}
+          />
         </main>
       </body>
     </html>

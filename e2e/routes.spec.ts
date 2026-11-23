@@ -126,6 +126,7 @@ test("an unknown /en path renders the English 404 only", async ({ page }) => {
   const response = await page.goto("/en/page-not-here");
   expect(response?.status()).toBe(404);
   await expect(page.locator("h1:visible")).toHaveText("Page not found");
+  await expect(page).toHaveTitle("Page not found | Klyx");
   await expect(page.locator("main a[href='/en/contact']:visible")).toHaveCount(
     1,
   );
