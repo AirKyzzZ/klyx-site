@@ -124,7 +124,7 @@
   --color-foreground: var(--text);
   --color-card: var(--surface-1);
   --color-card-foreground: var(--text);
-  --color-popover: var(--surface-2);
+  --color-popover: var(--surface-1);
   --color-popover-foreground: var(--text);
   --color-primary: var(--accent);
   --color-primary-foreground: var(--accent-ink);

@@ -30,7 +30,13 @@
     "faq": "FAQ",
     "realEstate": "Real estate",
     "agencies": "Web agencies",
-    "services": "Professional services"
+    "services": "Professional services",
+    "theme": {
+      "label": "Theme",
+      "light": "Light theme",
+      "dark": "Dark theme"
+    },
+    "language": "Language"
   },
   "footer": {
     "tagline": "Websites, AI agents and automations at a fixed price. Based in Bordeaux, working remotely across France and Europe.",

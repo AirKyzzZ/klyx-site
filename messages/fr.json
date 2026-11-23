@@ -30,7 +30,13 @@
     "faq": "FAQ",
     "realEstate": "Immobilier",
     "agencies": "Agences web",
-    "services": "Cabinets et services"
+    "services": "Cabinets et services",
+    "theme": {
+      "label": "Thème",
+      "light": "Thème clair",
+      "dark": "Thème sombre"
+    },
+    "language": "Langue"
   },
   "footer": {
     "tagline": "Sites, agents IA et automatisations au forfait. Basés à Bordeaux, on travaille à distance partout en France et en Europe.",

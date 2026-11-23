@@ -1,8 +1,7 @@
-import Image from "next/image";
-
 import { ArrowUpRight } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 
+import { KlyxMark } from "@/components/brand/klyx-mark";
 import { PageViewToggle } from "@/components/machine-view/view-toggle";
 import { Hr } from "@/components/section";
 import { Link } from "@/i18n/navigation";
@@ -48,13 +47,7 @@ export async function SiteFooter() {
       <div className="container grid grid-cols-2 gap-x-8 gap-y-12 pt-16 pb-12 md:grid-cols-12 lg:pt-20">
         <div className="col-span-2 flex flex-col gap-6 md:col-span-12 lg:col-span-4">
           <Link href="/" className="flex w-fit items-center gap-2 rounded-sm">
-            <Image
-              src="/brand/klyx-white.png"
-              alt=""
-              width={801}
-              height={759}
-              className="h-5 w-auto"
-            />
+            <KlyxMark className="size-5" />
             <span className="text-[1.0625rem] leading-none font-semibold tracking-[-0.03em]">
               Klyx
             </span>

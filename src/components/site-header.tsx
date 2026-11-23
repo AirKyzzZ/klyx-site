@@ -36,7 +36,7 @@ export async function SiteHeader() {
                 href: "/services/agents-ia",
                 title: t("agents"),
                 description: cards("agents.outcome"),
-                price: from(getOfferPrice("audit-ia")),
+                price: from(getOfferPrice("sprint-ia")),
               },
               {
                 href: "/services/automatisation-ia",
@@ -80,6 +80,12 @@ export async function SiteHeader() {
         bookLabel={t("book")}
         openMenuLabel={t("openMenu")}
         closeMenuLabel={t("closeMenu")}
+        languageLabel={t("language")}
+        themeLabels={{
+          label: t("theme.label"),
+          light: t("theme.light"),
+          dark: t("theme.dark"),
+        }}
       />
     </header>
   );
