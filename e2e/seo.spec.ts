@@ -370,3 +370,18 @@ test("the IndexNow key file is served at the root", async ({ request }) => {
   expect(response.status()).toBe(200);
   expect((await response.text()).trim()).toBe(keyFile?.replace(".txt", ""));
 });
+
+for (const [path, destination] of [
+  ["/tarifs/", "/tarifs"],
+  ["/en/pricing/", "/en/pricing"],
+  ["/fr/tarifs", "/tarifs"],
+  ["/fr", "/"],
+]) {
+  test(`${path} answers a 308 to ${destination}`, async ({ request }) => {
+    const response = await request.get(path, { maxRedirects: 0 });
+    expect(response.status()).toBe(308);
+    expect(new URL(response.headers().location, "http://x").pathname).toBe(
+      destination,
+    );
+  });
+}
