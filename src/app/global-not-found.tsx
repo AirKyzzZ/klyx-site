@@ -1,16 +1,22 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import Link from "next/link";
 
 import { ArrowRight } from "lucide-react";
 
 import { NotFoundLocale } from "@/components/not-found-locale";
 import { NotFoundView } from "@/components/not-found-view";
+import { ThemeScript } from "@/components/theme/theme-script";
 import { Button } from "@/components/ui/button";
+import { THEME_COLORS } from "@/lib/theme";
 
 import en from "../../messages/en.json";
 import fr from "../../messages/fr.json";
 import { mono, sans, serif } from "./fonts";
 import "./globals.css";
+
+export const viewport: Viewport = {
+  themeColor: THEME_COLORS.light,
+};
 
 export const metadata: Metadata = {
   title: `${fr.notFound.title} | Klyx`,
@@ -72,8 +78,13 @@ export default function GlobalNotFound() {
   return (
     <html
       lang="fr"
+      data-theme="light"
+      suppressHydrationWarning
       className={`${sans.variable} ${mono.variable} ${serif.variable}`}
     >
+      <head>
+        <ThemeScript />
+      </head>
       <body>
         <main className="relative">
           <NotFoundLocale fr={renderView(VIEWS[0])} en={renderView(VIEWS[1])} />

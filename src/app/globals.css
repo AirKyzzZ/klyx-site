@@ -1,33 +1,39 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-@custom-variant dark (&:is(.dark *));
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
 :root {
-  color-scheme: dark;
+  color-scheme: light;
 
-  --bg: #141414;
-  --bg-sunken: #0f0f0e;
-  --surface-1: #1a1918;
-  --surface-2: #211f1d;
-  --surface-3: #2a2825;
-  --line: rgb(237 232 222 / 0.08);
-  --line-strong: rgb(237 232 222 / 0.14);
-  --highlight: rgb(255 255 255 / 0.06);
-  --text: #edeae3;
-  --text-2: #a8a29a;
-  --text-3: #948e85;
+  --bg: #fbfaf8;
+  --bg-sunken: #f6f4f0;
+  --surface-1: #ffffff;
+  --surface-2: #f3f1ec;
+  --surface-3: #ece9e2;
+  --line: #e9e5dd;
+  --line-strong: #d6d0c4;
+  --highlight: rgb(255 255 255 / 0.7);
+  --text: #1a1917;
+  --text-2: #5e5850;
+  --text-3: #8f887e;
   --sand-50: #f3efe7;
   --sand-200: #e3dccf;
   --ink: #1a1917;
   --ink-2: #5e5850;
   --accent: #f54e00;
   --accent-hover: #ff6413;
-  --accent-ink: #141414;
-  --accent-soft: rgb(245 78 0 / 0.14);
-  --glow: rgb(245 78 0 / 0.32);
-  --ui-ok: #4cc38a;
+  --accent-ink: #ffffff;
+  --accent-soft: rgb(245 78 0 / 0.1);
+  --accent-tint: #fdf0e9;
+  --glow: rgb(245 78 0 / 0.18);
+  --nav-fill: rgb(255 255 255 / 0.78);
+  --inverse: #1a1917;
+  --inverse-ink: #fbfaf8;
+  --shadow-color: rgb(26 25 23 / 0.08);
+  --ui-ok: #00a17d;
   --ui-err: #e5484d;
+  --grain: url("/textures/grain-sand.png");
 
   --r-xs: 4px;
   --r-sm: 6px;
@@ -61,6 +67,32 @@
   }
 }
 
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  --bg: #141414;
+  --bg-sunken: #0f0f0e;
+  --surface-1: #1a1918;
+  --surface-2: #211f1d;
+  --surface-3: #2a2825;
+  --line: #282624;
+  --line-strong: #3a3632;
+  --highlight: rgb(255 255 255 / 0.06);
+  --text: #edeae3;
+  --text-2: #a8a29a;
+  --text-3: #857f77;
+  --accent-ink: #ffffff;
+  --accent-soft: rgb(245 78 0 / 0.14);
+  --accent-tint: #2a1a11;
+  --glow: rgb(245 78 0 / 0.32);
+  --nav-fill: rgb(26 25 24 / 0.78);
+  --inverse: #edeae3;
+  --inverse-ink: #141414;
+  --shadow-color: rgb(0 0 0 / 0.5);
+  --ui-ok: #4cc38a;
+  --grain: url("/textures/grain.png");
+}
+
 @theme inline {
   --color-bg: var(--bg);
   --color-bg-sunken: var(--bg-sunken);
@@ -81,6 +113,10 @@
   --color-accent-hover: var(--accent-hover);
   --color-accent-ink: var(--accent-ink);
   --color-accent-soft: var(--accent-soft);
+  --color-accent-tint: var(--accent-tint);
+  --color-nav-fill: var(--nav-fill);
+  --color-inverse: var(--inverse);
+  --color-inverse-ink: var(--inverse-ink);
   --color-ui-ok: var(--ui-ok);
   --color-ui-err: var(--ui-err);
 
@@ -114,7 +150,8 @@
 
   --shadow-card: inset 0 1px 0 var(--highlight);
   --shadow-window:
-    inset 0 1px 0 var(--highlight), 0 24px 48px -24px rgb(0 0 0 / 0.6);
+    inset 0 1px 0 var(--highlight), 0 24px 48px -24px var(--shadow-color);
+  --shadow-soft: 0 1px 2px var(--shadow-color), 0 8px 24px -12px var(--shadow-color);
 
   --spacing-section: var(--section-y);
 
@@ -231,7 +268,7 @@
 
   body {
     background-color: var(--bg);
-    background-image: url("/textures/grain.png");
+    background-image: var(--grain);
     background-size: 128px 128px;
     color: var(--text);
     font-family: var(--font-sans);

@@ -13,8 +13,10 @@ import { AnalyticsIsland } from "@/components/analytics/analytics-island";
 import { MachineView } from "@/components/machine-view/machine-view";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { ThemeScript } from "@/components/theme/theme-script";
 import { routing } from "@/i18n/routing";
 import { site } from "@/lib/site";
+import { THEME_COLORS } from "@/lib/theme";
 
 import { mono, sans, serif } from "../fonts";
 import "../globals.css";
@@ -25,8 +27,7 @@ type LayoutProps = {
 };
 
 export const viewport: Viewport = {
-  colorScheme: "dark",
-  themeColor: "#141414",
+  themeColor: THEME_COLORS.light,
 };
 
 export function generateStaticParams() {
@@ -54,8 +55,13 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
   return (
     <html
       lang={locale}
+      data-theme="light"
+      suppressHydrationWarning
       className={`${sans.variable} ${mono.variable} ${serif.variable}`}
     >
+      <head>
+        <ThemeScript />
+      </head>
       <body>
         <NextIntlClientProvider messages={{ machine }}>
           <div className="relative isolate">
