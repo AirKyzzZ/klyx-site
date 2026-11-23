@@ -10,6 +10,11 @@ export const site = {
   founder: "Maxime Mansiet",
   siret: "941 572 364 00029",
   city: "Bordeaux",
+  address: {
+    street: "22 avenue Victor Hugo",
+    postalCode: "33120",
+    locality: "Arcachon",
+  },
   calUrl: process.env.NEXT_PUBLIC_CAL_URL,
   legalUpdatedAt: "2026-11-01",
   pagesUpdatedAt: "2026-11-23",

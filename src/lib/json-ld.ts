@@ -25,7 +25,9 @@ const AREA_SERVED = [
 
 const ADDRESS = {
   "@type": "PostalAddress",
-  addressLocality: site.city,
+  streetAddress: site.address.street,
+  postalCode: site.address.postalCode,
+  addressLocality: site.address.locality,
   addressCountry: "FR",
 };
 
