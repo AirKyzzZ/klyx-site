@@ -115,6 +115,10 @@ test.describe("an unknown path without JavaScript", () => {
       1,
     );
     await expect(page.locator("main a[href='/en']:visible")).toHaveCount(1);
+    await expect(
+      page.locator("main a[href='/services/agents-ia']:visible"),
+    ).toHaveCount(1);
+    await expect(page.locator("main a[href='/tarifs']:visible")).toHaveCount(1);
   });
 });
 

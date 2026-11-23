@@ -28,6 +28,13 @@ const caseSlugs = [
   ),
 ];
 
+export const postPaths = readdirSync("content/blog").flatMap((file) => {
+  const match = /^(.+)\.(fr|en)\.mdx$/.exec(file);
+  if (!match) return [];
+  const [, slug, locale] = match;
+  return [locale === "fr" ? `/blog/${slug}` : `/en/blog/${slug}`];
+});
+
 export const pagePaths = [
   ...new Set([
     ...routePaths,
@@ -35,6 +42,7 @@ export const pagePaths = [
       `/realisations/${slug}`,
       `/en/work/${slug}`,
     ]),
+    ...postPaths,
     NOT_FOUND_PATH,
   ]),
 ];

@@ -2,7 +2,7 @@ import { readdirSync } from "node:fs";
 
 import { expect, test } from "@playwright/test";
 
-import { outreachPaths, routePaths } from "./route-paths";
+import { outreachPaths, postPaths, routePaths } from "./route-paths";
 
 const caseSlugs = [
   ...new Set(
@@ -14,6 +14,7 @@ const paths = new Set([
   ...routePaths,
   ...outreachPaths,
   ...caseSlugs.flatMap((slug) => [`/realisations/${slug}`, `/en/work/${slug}`]),
+  ...postPaths,
 ]);
 
 for (const path of paths) {
