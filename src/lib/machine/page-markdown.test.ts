@@ -151,7 +151,7 @@ const EXPECTATIONS: Record<AppPathname, Expectation> = {
 };
 
 const RAW_KEY =
-  /\b(nav|footer|home|offers|offerPage|useCases|faqPage|sites|agents|fde|audit|automation|geo|liveSystem|pricing|cases|about|bordeaux|contact|blog|legal|privacy|meta|machine)\.[a-z][A-Za-z]*(\.[A-Za-z]+)*\b/;
+  /\b(nav|footer|home|offers|offerPage|useCases|faqPage|sites|agents|fde|audit|automation|geo|pricing|cases|about|bordeaux|contact|blog|legal|privacy|meta|machine)\.[a-z][A-Za-z]*(\.[A-Za-z]+)*\b/;
 
 describe.each(routing.locales)("pageMarkdown (%s)", (locale) => {
   it("covers every route pathname", async () => {

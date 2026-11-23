@@ -1,7 +1,9 @@
 import type { Translate } from "@/i18n/message-list";
 
 import type { getPriceValues } from "./offers";
-import type { StaticPathname } from "./scenarios";
+import type { AppPathname } from "./seo";
+
+type StaticPathname = Exclude<AppPathname, `${string}[${string}`>;
 
 type FaqSourceKey =
   | "home"
