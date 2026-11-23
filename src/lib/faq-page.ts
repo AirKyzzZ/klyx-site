@@ -108,6 +108,7 @@ export const FAQ_THEMES: { key: FaqThemeKey; items: FaqRef[] }[] = [
     key: "pricing",
     items: [
       ["home", "price"],
+      ["sites", "landingPrice"],
       ["faqPage", "roi"],
       ["pricing", "final"],
       ["pricing", "sprintVsFde"],
@@ -170,6 +171,7 @@ export const FAQ_THEMES: { key: FaqThemeKey; items: FaqRef[] }[] = [
     key: "fde",
     items: [
       ["fde", "vsFreelance"],
+      ["fde", "freelance"],
       ["fde", "minimum"],
       ["fde", "days"],
       ["fde", "remote"],

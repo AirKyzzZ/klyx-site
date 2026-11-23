@@ -570,6 +570,10 @@
         "after": {
           "question": "Et après la mise en ligne ?",
           "answer": "Vous modifiez vos contenus seul. Pour une nouvelle page ou une nouvelle fonction, on vous envoie un devis."
+        },
+        "landingPrice": {
+          "question": "Combien coûte une landing page ?",
+          "answer": "Un site une page, ce qu'on appelle souvent une landing page, démarre à {landingPrice} et se fait en 1 à 2 semaines. Il présente une offre et donne envie de vous contacter. Le prix final est fixé dans le devis avant de commencer."
         }
       }
     },
@@ -849,6 +853,10 @@
         "vsSprint": {
           "question": "Développeur dédié ou agent IA au forfait ?",
           "answer": "L'offre Agent IA livre un agent précis au forfait, en deux semaines. Le développeur dédié convient quand vos priorités bougent et que vous avez besoin de quelqu'un dans l'équipe pendant plusieurs semaines."
+        },
+        "freelance": {
+          "question": "Travaillez-vous comme développeur IA freelance ?",
+          "answer": "Oui. Maxime travaille en indépendant et rejoint votre équipe comme développeur IA dédié : il code dans vos outils, sur vos priorités, et livre chaque semaine. C'est {fdeDayPrice} par jour, 4 semaines minimum à 2 jours par semaine, soit au moins {fdeMinimum}."
         }
       }
     },

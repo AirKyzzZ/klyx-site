@@ -570,6 +570,10 @@
         "after": {
           "question": "What happens after launch?",
           "answer": "You edit your content yourself. For a new page or a new feature, we send you a quote."
+        },
+        "landingPrice": {
+          "question": "How much does a landing page cost?",
+          "answer": "A one-page site, what most people call a landing page, starts at {landingPrice} and takes 1 to 2 weeks. It presents one offer and makes people want to get in touch. The final price is set in the quote before we start."
         }
       }
     },
@@ -849,6 +853,10 @@
         "vsSprint": {
           "question": "Dedicated developer or a fixed-price AI agent?",
           "answer": "The AI agent offer delivers one defined agent at a fixed price in two weeks. A dedicated developer fits when your priorities keep changing and you need someone inside the team for several weeks."
+        },
+        "freelance": {
+          "question": "Do you work as a freelance AI developer?",
+          "answer": "Yes. Maxime works as an independent developer and joins your team as a dedicated AI developer: he codes in your tools, on your priorities, and ships every week. It's {fdeDayPrice} per day, 4 weeks minimum at 2 days a week, so at least {fdeMinimum}."
         }
       }
     },
