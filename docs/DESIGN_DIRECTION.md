@@ -72,7 +72,6 @@ CSS only. Everything is off under `prefers-reduced-motion` (global rule in `glob
 - Rail light: a 1x200 orange line with a 9x260 blurred halo descends each rail in a 6s loop, the right rail half a cycle behind. It travels the viewport (sticky), so it is visible wherever you are on the page.
 - Hero: logo tiles float on their own rhythm (5 to 7.8s, alternate), orange dots pulse (2.4s).
 - Réalisations carousel: 4s per slide (12s loop), crossfade, screenshot rises, the progress bar under the active tab drives the advance (`animationend`). Pauses on hover, focus and when offscreen; tabs are clickable and arrow-key operable; no auto-advance with reduced motion.
-- `.reveal` on scroll is allowed for inner pages; the home does not use it.
 
 ## 6. Shared components (`src/components/ui-kit/`)
 
@@ -119,7 +118,7 @@ Elsewhere: `ThemeToggle` and `ThemeScript` (`src/components/theme/`), `KlyxMark`
 
 ## 7. Rules for Phase B pages
 
-- No eyebrows or index strings, no three-dot window chrome, no terminal, no sand band. No page renders `Section`/`Eyebrow`, `LiveSystem` or the `tone-sand` styles any more; they wait for deletion, do not use them in new work.
+- No eyebrows or index strings, no three-dot window chrome, no terminal, no sand band.
 - One h1 per page carrying the page keyword; the hero can be `CenteredHero` or `SectionHeader as="h1"`.
 - Each block says who it is for, what we do and what it costs. No jargon in visible copy ("workflow", "repo", "prod", "FDE"); "Forward Deployed Engineer" is shown as "Développeur dédié".
 - Real proof only: real client names, real screenshots from `public/realisations`, numbers read from data files.

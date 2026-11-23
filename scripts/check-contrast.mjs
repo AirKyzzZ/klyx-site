@@ -19,10 +19,6 @@ const PAIRS = [
     "accent",
     bg,
   ]),
-  ["ink", "sand-50"],
-  ["ink-2", "sand-50"],
-  ["ink", "sand-200"],
-  ["ink-2", "sand-200"],
   ["accent-ink", "accent"],
   ["accent-ink", "accent-hover"],
 ];
