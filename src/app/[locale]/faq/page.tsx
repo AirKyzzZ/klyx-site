@@ -107,7 +107,7 @@ export default async function FaqPage({ params }: LocaleParams) {
               more: item.source && (
                 <Link
                   href={item.source.pathname}
-                  className="group text-text-3 hover:text-accent inline-flex items-center gap-1.5 text-sm transition-colors duration-(--d-fast)"
+                  className="group text-text-3 hover:text-accent-text inline-flex items-center gap-1.5 text-sm transition-colors duration-(--d-fast)"
                 >
                   {t("source", { page: nav(item.source.navKey) })}
                   <ArrowRight

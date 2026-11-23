@@ -32,7 +32,7 @@ export const caseProseComponents: MDXComponents = {
   a: ({ href, children }) => (
     <a
       href={href}
-      className="text-accent underline decoration-1 underline-offset-[3px]"
+      className="text-accent-text underline decoration-1 underline-offset-[3px]"
     >
       {children}
     </a>

@@ -29,10 +29,11 @@ All in `src/app/globals.css`, light on `:root`, dark under `[data-theme="dark"]`
 | `--line-strong` | `#D6D0C4` | `#3A3632` | button borders, carousel tracks, number circles |
 | `--text` | `#1A1917` | `#EDEAE3` | headings, primary text |
 | `--text-2` | `#5E5850` | `#A8A29A` | body |
-| `--text-3` | `#8F887E` | `#857F77` | labels, meta |
+| `--text-3` | `#6F685F` | `#948E85` | labels, meta. Darker than the Figma (`#8F887E` / `#857F77`) so small text reaches 4.5:1 on every surface |
 | `--accent` | `#F54E00` | `#F54E00` | primary buttons, links, Agent IA pill |
 | `--accent-ink` | `#FFFFFF` | `#141414` | `color/on-accent`, text on orange (dark text in dark mode) |
 | `--accent-tint` | `#FFF0E8` | `#2A1A11` | `color/accent-soft`, icon tiles, date tile, selected slot |
+| `--accent-text` | `#C23D00` | `#F54E00` | small orange text (links, category labels, tags, selected slot): 4.5:1 on bg, surfaces and accent tint. Buttons and the Agent IA pill keep `--accent` |
 | `--ui-ok` | `#1F9D63` | `#4CC38A` | "En ligne", online dot, checks |
 | `--inverse` / `--inverse-ink` | `#1A1917` / `#FBFAF8` | `#EDEAE3` / `#141414` | nav CTA (dark button in light, light button in dark) |
 | `--nav-fill` | white 78% | `#1A1918` 78% | nav bar, with 16px backdrop blur |

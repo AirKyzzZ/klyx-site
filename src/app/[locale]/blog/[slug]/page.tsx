@@ -30,7 +30,7 @@ import { site } from "@/lib/site";
 
 const FOUNDER_PHOTO = "/team/maxime-mansiet.jpg";
 const AUTHOR_LINK =
-  "text-text hover:text-accent inline-flex items-center gap-1.5 transition-colors duration-(--d-fast)";
+  "text-text hover:text-accent-text inline-flex items-center gap-1.5 transition-colors duration-(--d-fast)";
 
 type PostPageProps = {
   params: Promise<{ locale: string; slug: string }>;
@@ -113,7 +113,7 @@ export default async function PostPage({ params }: PostPageProps) {
         <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-3 text-sm">
           <Link
             href="/a-propos"
-            className="text-text hover:text-accent inline-flex items-center gap-2.5 font-medium transition-colors duration-(--d-fast)"
+            className="text-text hover:text-accent-text inline-flex items-center gap-2.5 font-medium transition-colors duration-(--d-fast)"
           >
             <Image
               src={FOUNDER_PHOTO}

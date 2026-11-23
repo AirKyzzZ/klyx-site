@@ -190,7 +190,7 @@
 }
 
 .mv-verb {
-  color: var(--accent);
+  color: var(--accent-text);
   font-weight: 500;
 }
 
@@ -291,7 +291,7 @@
 }
 
 .mv-heading {
-  color: var(--accent);
+  color: var(--accent-text);
   font-weight: 500;
 }
 

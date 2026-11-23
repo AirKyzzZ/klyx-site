@@ -74,7 +74,7 @@ export function OfferCard({
       </div>
       <Link
         href={href}
-        className="text-accent hover:text-accent-hover w-fit text-sm font-medium underline decoration-1 underline-offset-[3px]"
+        className="text-accent-text w-fit text-sm font-medium underline decoration-1 underline-offset-[3px] hover:decoration-2"
       >
         {linkLabel}
       </Link>
@@ -123,7 +123,7 @@ export function CatalogueLinks({
           <li key={item.href}>
             <Link
               href={item.href}
-              className="text-text hover:text-accent font-medium underline decoration-1 underline-offset-[3px] transition-colors duration-(--d-fast)"
+              className="text-text hover:text-accent-text font-medium underline decoration-1 underline-offset-[3px] transition-colors duration-(--d-fast)"
             >
               {item.label}
             </Link>

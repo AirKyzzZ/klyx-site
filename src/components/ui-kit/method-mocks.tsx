@@ -35,7 +35,7 @@ export function CallMock({
   return (
     <div className={cn(card, "flex flex-col gap-3.5 px-[22px] py-5")}>
       <div className="flex items-center gap-3.5">
-        <span className="bg-accent-tint text-accent flex w-12 shrink-0 flex-col items-center rounded-[10px] py-1.5 leading-none">
+        <span className="bg-accent-tint text-accent-text flex w-12 shrink-0 flex-col items-center rounded-[10px] py-1.5 leading-none">
           <span className="text-[0.625rem] font-medium uppercase">{month}</span>
           <span className="mt-1 text-xl font-semibold">{day}</span>
         </span>
@@ -190,7 +190,10 @@ export function HandoverMock({
       </div>
       <ul className="flex flex-col gap-2">
         {items.map((item) => (
-          <li key={item} className="text-text-2 flex items-center gap-2.5 text-sm">
+          <li
+            key={item}
+            className="text-text-2 flex items-center gap-2.5 text-sm"
+          >
             <CheckDot />
             {item}
           </li>

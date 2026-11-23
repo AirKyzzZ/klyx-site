@@ -84,7 +84,7 @@ export async function AuditDocument({ locale }: { locale: Locale }) {
               href={t("bpifrance.url")}
               target="_blank"
               rel="noopener"
-              className="text-text hover:text-accent mt-2 inline-flex w-fit items-center gap-1 text-sm font-medium underline decoration-1 underline-offset-[3px] transition-colors duration-(--d-fast)"
+              className="text-text hover:text-accent-text mt-2 inline-flex w-fit items-center gap-1 text-sm font-medium underline decoration-1 underline-offset-[3px] transition-colors duration-(--d-fast)"
             >
               {t("bpifrance.source")}
               <ArrowUpRight aria-hidden="true" className="size-3.5" />

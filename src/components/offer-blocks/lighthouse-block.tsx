@@ -53,7 +53,7 @@ export async function LighthouseBlock({ locale }: { locale: Locale }) {
           href={pageSpeedUrl(source.url)}
           target="_blank"
           rel="noopener"
-          className="text-text hover:text-accent inline-flex items-center gap-1 font-medium underline decoration-1 underline-offset-[3px] transition-colors duration-(--d-fast)"
+          className="text-text hover:text-accent-text inline-flex items-center gap-1 font-medium underline decoration-1 underline-offset-[3px] transition-colors duration-(--d-fast)"
         >
           {t("verify")}
           <ArrowUpRight aria-hidden="true" className="size-3.5" />

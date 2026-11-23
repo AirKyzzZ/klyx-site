@@ -287,7 +287,7 @@ function BudgetPills({
         {copy.options.map((option) => (
           <label
             key={option.value}
-            className="border-line bg-surface-1 text-text-2 hover:border-line-strong hover:text-text has-checked:border-accent has-checked:bg-accent-tint has-checked:text-accent has-focus-visible:outline-accent inline-flex h-9 cursor-pointer items-center rounded-[8px] border px-3.5 text-[0.8125rem] font-medium transition-colors duration-(--d-fast) has-focus-visible:outline-2 has-focus-visible:outline-offset-2"
+            className="border-line bg-surface-1 text-text-2 hover:border-line-strong hover:text-text has-checked:border-accent has-checked:bg-accent-tint has-checked:text-accent-text has-focus-visible:outline-accent inline-flex h-9 cursor-pointer items-center rounded-[8px] border px-3.5 text-[0.8125rem] font-medium transition-colors duration-(--d-fast) has-focus-visible:outline-2 has-focus-visible:outline-offset-2"
           >
             <input
               type="radio"

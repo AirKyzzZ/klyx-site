@@ -16,7 +16,7 @@
   --highlight: rgb(255 255 255 / 0.7);
   --text: #1a1917;
   --text-2: #5e5850;
-  --text-3: #8f887e;
+  --text-3: #6f685f;
   --sand-50: #f3efe7;
   --sand-200: #e3dccf;
   --ink: #1a1917;
@@ -26,6 +26,7 @@
   --accent-ink: #ffffff;
   --accent-soft: rgb(245 78 0 / 0.1);
   --accent-tint: #fff0e8;
+  --accent-text: #c23d00;
   --glow: rgb(245 78 0 / 0.18);
   --nav-fill: rgb(255 255 255 / 0.78);
   --inverse: #1a1917;
@@ -80,10 +81,11 @@
   --highlight: rgb(255 255 255 / 0.06);
   --text: #edeae3;
   --text-2: #a8a29a;
-  --text-3: #857f77;
+  --text-3: #948e85;
   --accent-ink: #141414;
   --accent-soft: rgb(245 78 0 / 0.14);
   --accent-tint: #2a1a11;
+  --accent-text: #f54e00;
   --glow: rgb(245 78 0 / 0.32);
   --nav-fill: rgb(26 25 24 / 0.78);
   --inverse: #edeae3;
@@ -114,6 +116,7 @@
   --color-accent-ink: var(--accent-ink);
   --color-accent-soft: var(--accent-soft);
   --color-accent-tint: var(--accent-tint);
+  --color-accent-text: var(--accent-text);
   --color-nav-fill: var(--nav-fill);
   --color-inverse: var(--inverse);
   --color-inverse-ink: var(--inverse-ink);
@@ -151,7 +154,8 @@
   --shadow-card: inset 0 1px 0 var(--highlight);
   --shadow-window:
     inset 0 1px 0 var(--highlight), 0 24px 48px -24px var(--shadow-color);
-  --shadow-soft: 0 1px 2px var(--shadow-color), 0 8px 24px -12px var(--shadow-color);
+  --shadow-soft:
+    0 1px 2px var(--shadow-color), 0 8px 24px -12px var(--shadow-color);
   --shadow-nav: 0 6px 20px rgb(31 23 13 / 0.05);
   --shadow-panel: 0 8px 24px -6px rgb(31 23 13 / 0.06);
   --shadow-tile: 0 6px 16px -2px rgb(31 23 13 / 0.09);

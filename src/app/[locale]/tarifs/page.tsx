@@ -40,7 +40,7 @@ const INCLUDED = {
 } as const;
 
 const LINK_CLASS =
-  "text-text hover:text-accent font-medium underline decoration-1 underline-offset-[3px] transition-colors duration-(--d-fast)";
+  "text-text hover:text-accent-text font-medium underline decoration-1 underline-offset-[3px] transition-colors duration-(--d-fast)";
 
 export async function generateMetadata({
   params,

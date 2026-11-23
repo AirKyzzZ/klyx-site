@@ -76,7 +76,7 @@ function ListPanel({
                 "mt-0.5 grid size-5 place-items-center rounded-full",
                 section.tone === "limit"
                   ? "bg-surface-2 text-text-3"
-                  : "bg-accent-tint text-accent",
+                  : "bg-accent-tint text-accent-text",
               )}
             >
               <Icon aria-hidden="true" className="size-3" strokeWidth={2.5} />
@@ -173,7 +173,7 @@ async function Booking({ config }: { config: OutreachPageConfig }) {
             {OUTREACH_EMAIL_LINE}{" "}
             <a
               href={`mailto:${site.email}`}
-              className="text-text hover:text-accent font-medium underline decoration-1 underline-offset-[3px] transition-colors duration-(--d-fast)"
+              className="text-text hover:text-accent-text font-medium underline decoration-1 underline-offset-[3px] transition-colors duration-(--d-fast)"
             >
               {site.email}
             </a>

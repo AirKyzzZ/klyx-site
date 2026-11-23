@@ -167,7 +167,7 @@ export default async function ContactPage({ params }: LocaleParams) {
                       </span>
                       <a
                         href={href}
-                        className="text-text hover:text-accent truncate text-[0.9375rem] font-medium transition-colors duration-(--d-fast)"
+                        className="text-text hover:text-accent-text truncate text-[0.9375rem] font-medium transition-colors duration-(--d-fast)"
                       >
                         {value}
                       </a>

@@ -70,7 +70,9 @@ export function UseCaseCard({
         <FlowRow from={from} to={to} agentLabel={agentLabel} />
       </div>
       <div className="flex flex-col gap-1.5">
-        <p className="text-accent text-[0.8125rem] font-medium">{category}</p>
+        <p className="text-accent-text text-[0.8125rem] font-medium">
+          {category}
+        </p>
         <h3 className="text-text text-[1.3125rem] leading-tight font-semibold tracking-[-0.4px]">
           {title}
         </h3>

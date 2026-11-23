@@ -34,7 +34,9 @@ export function PostCard({
         className,
       )}
     >
-      {tag && <p className="text-accent text-[0.8125rem] font-medium">{tag}</p>}
+      {tag && (
+        <p className="text-accent-text text-[0.8125rem] font-medium">{tag}</p>
+      )}
       <Heading className="text-text text-[1.3125rem] leading-[1.2] font-semibold tracking-[-0.4px] text-balance">
         {bindPunctuation(title)}
       </Heading>

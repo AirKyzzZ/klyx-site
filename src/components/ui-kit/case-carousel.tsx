@@ -126,7 +126,7 @@ export function CaseCarousel({
                     pathname: "/realisations/[slug]",
                     params: { slug: item.slug },
                   }}
-                  className="text-text hover:text-accent text-[0.9375rem] font-medium underline decoration-1 underline-offset-[3px] transition-colors duration-(--d-fast)"
+                  className="text-text hover:text-accent-text text-[0.9375rem] font-medium underline decoration-1 underline-offset-[3px] transition-colors duration-(--d-fast)"
                 >
                   {labels.read}
                 </Link>

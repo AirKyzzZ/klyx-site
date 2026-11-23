@@ -60,7 +60,7 @@ const BLOCKS: Record<
 };
 
 const LINK_CLASS =
-  "text-text hover:text-accent font-medium underline decoration-1 underline-offset-[3px] transition-colors duration-(--d-fast)";
+  "text-text hover:text-accent-text font-medium underline decoration-1 underline-offset-[3px] transition-colors duration-(--d-fast)";
 
 function caseLabels(study: CaseStudyMeta) {
   const [name, ...rest] = study.title.split(", ");

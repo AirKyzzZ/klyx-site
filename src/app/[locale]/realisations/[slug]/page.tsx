@@ -151,7 +151,7 @@ export default async function CasePage({ params }: CasePageProps) {
                     href={liveUrl}
                     target="_blank"
                     rel="noopener"
-                    className="text-text hover:text-accent inline-flex items-center gap-1 underline decoration-1 underline-offset-[3px] transition-colors duration-(--d-fast)"
+                    className="text-text hover:text-accent-text inline-flex items-center gap-1 underline decoration-1 underline-offset-[3px] transition-colors duration-(--d-fast)"
                   >
                     {hostOf(liveUrl)}
                     <ArrowUpRight aria-hidden="true" className="size-3.5" />

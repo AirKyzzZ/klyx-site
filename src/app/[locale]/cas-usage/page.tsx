@@ -21,7 +21,7 @@ import { COMMON_TASKS, SECTOR_KEYS, sectorPages } from "@/lib/sector-pages";
 import { buildMetadata } from "@/lib/seo";
 
 const textLink =
-  "text-text hover:text-accent inline-flex w-fit items-center gap-1.5 text-[0.9375rem] font-medium underline decoration-1 underline-offset-[3px] transition-colors duration-(--d-fast)";
+  "text-text hover:text-accent-text inline-flex w-fit items-center gap-1.5 text-[0.9375rem] font-medium underline decoration-1 underline-offset-[3px] transition-colors duration-(--d-fast)";
 
 export async function generateMetadata({
   params,
@@ -148,7 +148,7 @@ export default async function UseCasesPage({ params }: LocaleParams) {
                       </p>
                       <p className="text-text-2 pt-1 text-sm">{anchor.name}</p>
                     </div>
-                    <span className="text-accent inline-flex items-center gap-1 text-sm font-medium">
+                    <span className="text-accent-text inline-flex items-center gap-1 text-sm font-medium">
                       {t("labels.see")}
                       <ArrowRight
                         aria-hidden="true"

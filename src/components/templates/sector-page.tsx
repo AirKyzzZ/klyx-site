@@ -59,7 +59,7 @@ const TERM_ICONS: Record<string, LucideIcon> = {
 };
 
 const textLink =
-  "text-text hover:text-accent inline-flex items-center gap-1.5 font-medium underline decoration-1 underline-offset-[3px] transition-colors duration-(--d-fast)";
+  "text-text hover:text-accent-text inline-flex items-center gap-1.5 font-medium underline decoration-1 underline-offset-[3px] transition-colors duration-(--d-fast)";
 
 export async function buildSectorMetadata(
   config: SectorPageConfig,

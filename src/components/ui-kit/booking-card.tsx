@@ -105,9 +105,7 @@ export function BookingCard({
                 <span className="text-text-3 group-aria-pressed/day:text-bg text-xs">
                   {item.short}
                 </span>
-                <span className="text-base font-semibold">
-                  {item.date}
-                </span>
+                <span className="text-base font-semibold">{item.date}</span>
               </button>
             ))}
           </div>
@@ -118,7 +116,7 @@ export function BookingCard({
                 type="button"
                 aria-pressed={i === slot}
                 onClick={() => setSlot(i)}
-                className="border-line bg-surface-1 text-text-2 hover:border-line-strong aria-pressed:border-accent aria-pressed:bg-accent-tint aria-pressed:text-accent rounded-[8px] border py-[9px] text-[0.8125rem] font-medium transition-colors duration-(--d-fast)"
+                className="border-line bg-surface-1 text-text-2 hover:border-line-strong aria-pressed:border-accent aria-pressed:bg-accent-tint aria-pressed:text-accent-text rounded-[8px] border py-[9px] text-[0.8125rem] font-medium transition-colors duration-(--d-fast)"
               >
                 {time}
               </button>

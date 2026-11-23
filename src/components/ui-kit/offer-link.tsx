@@ -24,7 +24,7 @@ export function OfferLink({
       )}
     >
       <span className="flex flex-col gap-0.5">
-        <span className="text-text group-hover:text-accent font-semibold transition-colors duration-(--d-fast)">
+        <span className="text-text group-hover:text-accent-text font-semibold transition-colors duration-(--d-fast)">
           {name}
         </span>
         <span className="text-text-2 text-sm">{price}</span>

@@ -174,10 +174,10 @@ export default async function AboutPage({ params }: LocaleParams) {
                       href={sister.url}
                       target="_blank"
                       rel="noopener"
-                      className="group text-text hover:text-accent flex items-center justify-between gap-3 font-medium transition-colors duration-(--d-fast)"
+                      className="group text-text hover:text-accent-text flex items-center justify-between gap-3 font-medium transition-colors duration-(--d-fast)"
                     >
                       {sister.name}
-                      <span className="text-text-3 group-hover:text-accent inline-flex items-center gap-1.5 text-[0.8125rem] font-normal">
+                      <span className="text-text-3 group-hover:text-accent-text inline-flex items-center gap-1.5 text-[0.8125rem] font-normal">
                         {hostOf(sister.url)}
                         <ArrowUpRight aria-hidden="true" className="size-3.5" />
                       </span>

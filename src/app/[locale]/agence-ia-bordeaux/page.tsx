@@ -53,7 +53,7 @@ const CONSULTANT_ICONS = {
 } as const;
 
 const textLink =
-  "text-text hover:text-accent inline-flex w-fit items-center gap-1.5 font-medium underline decoration-1 underline-offset-[3px] transition-colors duration-(--d-fast)";
+  "text-text hover:text-accent-text inline-flex w-fit items-center gap-1.5 font-medium underline decoration-1 underline-offset-[3px] transition-colors duration-(--d-fast)";
 
 export async function generateMetadata({
   params,
