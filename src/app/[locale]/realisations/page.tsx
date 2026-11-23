@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 
 import { ChamferBreak } from "@/components/chamfer-break";
+import { JsonLd } from "@/components/json-ld";
 import { Section } from "@/components/section";
 import { CaseList } from "@/components/sections/case-grid";
 import { Cta } from "@/components/sections/cta";
@@ -10,6 +11,7 @@ import { SampleWindow } from "@/components/sections/process-timeline";
 import { Link } from "@/i18n/navigation";
 import { type LocaleParams, resolvePageLocale } from "@/i18n/page-locale";
 import { caseYears, getCaseStudies } from "@/lib/content";
+import { caseListJsonLd } from "@/lib/json-ld";
 import { buildMetadata } from "@/lib/seo";
 
 export async function generateMetadata({
@@ -32,6 +34,7 @@ export default async function CasesPage({ params }: LocaleParams) {
 
   return (
     <>
+      <JsonLd data={caseListJsonLd(locale, cases)} />
       <Hero
         title={t("hero.title")}
         emphasis={t("hero.titleEmphasis")}

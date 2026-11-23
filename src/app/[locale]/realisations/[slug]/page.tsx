@@ -8,6 +8,7 @@ import { hasLocale } from "next-intl";
 import { getTranslations } from "next-intl/server";
 
 import { ChamferBreak } from "@/components/chamfer-break";
+import { JsonLd } from "@/components/json-ld";
 import { BrowserFrame, hostOf } from "@/components/proof/browser-frame";
 import { Section } from "@/components/section";
 import {
@@ -21,6 +22,7 @@ import { Link } from "@/i18n/navigation";
 import { resolvePageLocale } from "@/i18n/page-locale";
 import { type Locale, routing } from "@/i18n/routing";
 import { getCaseStudies, getCaseStudy } from "@/lib/content";
+import { caseStudyJsonLd } from "@/lib/json-ld";
 import { getSiteShot } from "@/lib/proof";
 import { followingItems } from "@/lib/related-content";
 import { brandedTitle, buildMetadata } from "@/lib/seo";
@@ -85,6 +87,7 @@ export default async function CasePage({ params }: CasePageProps) {
 
   return (
     <>
+      <JsonLd data={caseStudyJsonLd(locale, meta)} />
       <Hero
         eyebrow={
           <Link
