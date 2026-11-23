@@ -123,6 +123,7 @@ export default async function HomePage({ params }: LocaleParams) {
     <>
       <CenteredHero
         data-home-hero
+        intro
         title={t("hero.title")}
         subtitle={t("hero.subtitle")}
         backdrop={

@@ -6,10 +6,7 @@ import { ArrowRight } from "lucide-react";
 
 import { ActionButton } from "@/components/action-button";
 import { KlyxMark } from "@/components/brand/klyx-mark";
-import {
-  LanguageMenu,
-  LanguageSwitcher,
-} from "@/components/language-switcher";
+import { LanguageMenu, LanguageSwitcher } from "@/components/language-switcher";
 import { PageViewToggle } from "@/components/machine-view/view-toggle";
 import {
   ThemeToggle,
@@ -68,7 +65,10 @@ export function SiteNav({
 
   return (
     <div className="fixed inset-x-0 top-3 z-50 px-3 md:px-(--page-x) lg:top-4">
-      <div className="border-line bg-nav-fill shadow-nav relative mx-auto flex h-14 max-w-(--container) items-center justify-between gap-4 rounded-[14px] border pr-2 pl-4 backdrop-blur-[16px] lg:pl-[18px]">
+      <div
+        data-site-nav
+        className="border-line bg-nav-fill shadow-nav relative mx-auto flex h-14 max-w-(--container) items-center justify-between gap-4 rounded-[14px] border pr-2 pl-4 backdrop-blur-[16px] lg:pl-[18px]"
+      >
         <Link
           href="/"
           aria-label={homeLabel}

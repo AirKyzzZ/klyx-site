@@ -114,6 +114,54 @@ test.describe("home hero", () => {
     });
   });
 
+  test("the intro leaves the h1 alone and settles within 1.4 s", async ({
+    page,
+  }) => {
+    await page.setViewportSize({ width: 1440, height: 900 });
+    await page.goto("/");
+    const intro = await page.evaluate(() => {
+      const seconds = (value: string) => Number.parseFloat(value) * 1000;
+      return [...document.querySelectorAll("*")].flatMap((el) =>
+        [null, "::after"].flatMap((pseudo) => {
+          const style = getComputedStyle(el, pseudo);
+          const names = style.animationName.split(", ");
+          const durations = style.animationDuration.split(", ");
+          const delays = style.animationDelay.split(", ");
+          return names.flatMap((name, i) =>
+            name.startsWith("intro-")
+              ? [
+                  {
+                    name,
+                    end:
+                      seconds(delays[i % delays.length]) +
+                      seconds(durations[i % durations.length]),
+                    inH1: el.closest("h1") !== null,
+                  },
+                ]
+              : [],
+          );
+        }),
+      );
+    });
+    expect(new Set(intro.map((item) => item.name))).toEqual(
+      new Set([
+        "intro-fade",
+        "intro-lift",
+        "intro-rise",
+        "intro-tile",
+        "intro-wire",
+        "intro-ignite",
+        "intro-ring",
+        "intro-settle",
+        "intro-drop",
+      ]),
+    );
+    expect(intro.filter((item) => item.inH1)).toEqual([]);
+    expect(Math.max(...intro.map((item) => item.end))).toBeLessThanOrEqual(
+      1400,
+    );
+  });
+
   test("the logos float, the dots pulse and the rail light runs", async ({
     page,
   }) => {

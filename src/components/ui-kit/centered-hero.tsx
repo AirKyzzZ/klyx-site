@@ -8,6 +8,7 @@ export function CenteredHero({
   actions,
   backdrop,
   footer,
+  intro,
   className,
   ...props
 }: {
@@ -16,10 +17,12 @@ export function CenteredHero({
   actions?: ReactNode;
   backdrop?: ReactNode;
   footer?: ReactNode;
+  intro?: boolean;
 } & Omit<ComponentProps<"section">, "title">) {
   return (
     <section
       data-shot="hero"
+      data-intro={intro || undefined}
       className={cn("relative z-1 overflow-hidden", className)}
       {...props}
     >
@@ -32,12 +35,12 @@ export function CenteredHero({
           )}
           <h1 className="type-hero max-w-[700px]">{title}</h1>
           {subtitle && (
-            <p className="type-subtitle text-text-2 mt-7 max-w-[580px]">
+            <p className="hero-subtitle type-subtitle text-text-2 mt-7 max-w-[580px]">
               {subtitle}
             </p>
           )}
           {actions && (
-            <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+            <div className="hero-actions mt-8 flex flex-wrap items-center justify-center gap-3">
               {actions}
             </div>
           )}
