@@ -1,5 +1,10 @@
 import type { CaseStudyMeta } from "@/lib/content";
-import { CONNECTED_TOOLS, TOOLS, type Tool, type ToolLogoId } from "@/lib/tools";
+import {
+  CONNECTED_TOOLS,
+  TOOLS,
+  type Tool,
+  type ToolLogoId,
+} from "@/lib/tools";
 
 const HOME_CASE_SLUGS = [
   "cronolyss",
@@ -11,7 +16,6 @@ const HOME_CASE_SLUGS = [
 
 export const HOME_CLIENTS = [
   "Cronolyss",
-  "CiteMe",
   "Hop Hop Immo",
   "2060.io",
   "PKBA",
@@ -64,7 +68,11 @@ export const HOME_USE_CASES = [
   { key: "sales", from: ["gmail"], to: ["hubspot", "slack"] },
   { key: "support", from: ["gmail"], to: ["notion", "slack"] },
   { key: "finance", from: ["gmail"], to: ["pennylane", "slack"] },
-  { key: "management", from: ["google-sheets"], to: ["notion", "microsoft-teams"] },
+  {
+    key: "management",
+    from: ["google-sheets"],
+    to: ["notion", "microsoft-teams"],
+  },
 ] as const satisfies readonly {
   key: string;
   from: readonly ToolLogoId[];

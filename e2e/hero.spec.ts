@@ -51,6 +51,7 @@ test.describe("home hero", () => {
         for (const client of HOME_CLIENTS) {
           await expect(hero.getByText(client, { exact: true })).toBeVisible();
         }
+        await expect(hero.getByText("CiteMe", { exact: true })).toHaveCount(0);
       });
     }
   });
