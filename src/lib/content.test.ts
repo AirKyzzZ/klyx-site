@@ -47,6 +47,22 @@ describe("case studies", () => {
     }
   });
 
+  it.each(["fr", "en"] as const)(
+    "%s gives the shortest case studies a 120 to 155 character meta description",
+    async (locale) => {
+      for (const slug of ["kenzi", "vertiflow", "reciproq"]) {
+        const { meta } = await getCaseStudy(slug, locale);
+        expect(meta.description, `${slug}.${locale}`).toBeDefined();
+      }
+      for (const slug of slugs) {
+        const { meta } = await getCaseStudy(slug, locale);
+        if (!meta.description) continue;
+        expect(meta.description.length, slug).toBeGreaterThanOrEqual(120);
+        expect(meta.description.length, slug).toBeLessThanOrEqual(155);
+      }
+    },
+  );
+
   it("sorts by order", async () => {
     const orders = (await getCaseStudies("fr")).map((s) => s.order);
     expect(orders).toEqual([...orders].sort((a, b) => a - b));
