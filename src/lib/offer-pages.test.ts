@@ -6,7 +6,6 @@ import { routing } from "@/i18n/routing";
 
 import { getOffer, getPriceValues } from "./offers";
 import { OFFER_PAGE_KEYS, type OfferPageKey, offerPages } from "./offer-pages";
-import { scenarios } from "./scenarios";
 
 const MESSAGES = { fr, en } as const;
 const REQUIRED = ["hero", "problem", "deliverables", "process", "faq", "cta"];
@@ -33,6 +32,39 @@ function fill(text: string, locale: keyof typeof MESSAGES) {
 
 const words = (text: string) => text.trim().split(/\s+/).length;
 
+const JARGON = [
+  /\b(FDE|PRs?)\b/,
+  /\b(workflows?|repo|runbook|backlog|lead engineer)\b/i,
+];
+
+const H1_KEYWORDS: Record<
+  keyof typeof MESSAGES,
+  Record<OfferPageKey, string>
+> = {
+  fr: {
+    sites: "Création de site web à Bordeaux",
+    agents: "agent IA pour votre entreprise",
+    fde: "développeur IA dédié",
+    audit: "audit IA",
+    automation: "Automatisation IA",
+    geo: "Référencement sur ChatGPT",
+  },
+  en: {
+    sites: "Website design in Bordeaux",
+    agents: "AI agent for your business",
+    fde: "dedicated AI developer",
+    audit: "AI audit",
+    automation: "AI automation",
+    geo: "ChatGPT search visibility",
+  },
+};
+
+function strings(value: unknown): string[] {
+  if (typeof value === "string") return [value];
+  if (typeof value !== "object" || value === null) return [];
+  return Object.values(value).flatMap(strings);
+}
+
 describe("offerPages", () => {
   it("covers the six offer pages with routed pathnames", () => {
     expect(OFFER_PAGE_KEYS).toHaveLength(6);
@@ -43,10 +75,11 @@ describe("offerPages", () => {
     }
   });
 
-  it("points each scenario back at its own page", () => {
+  it("anchors every hero price on an offer sold on that page", () => {
     for (const key of OFFER_PAGE_KEYS) {
-      const config = offerPages[key];
-      expect(scenarios[config.scenario].href, key).toBe(config.pathname);
+      expect(getOffer(offerPages[key].anchor).page, key).toBe(
+        offerPages[key].pathname,
+      );
     }
   });
 
@@ -57,17 +90,8 @@ describe("offerPages", () => {
     }
   });
 
-  it("anchors each new page on the offer that lives there", () => {
-    for (const key of NEW_PAGES) {
-      expect(getOffer(offerPages[key].anchor).page).toBe(
-        offerPages[key].pathname,
-      );
-    }
-  });
-
   it("shows no proof slot on audit and automation until a real case exists", () => {
     for (const key of ["audit", "automation"] as const) {
-      expect(offerPages[key].proofLink, key).toBeNull();
       expect(offerPages[key].proofSlugs, key).toEqual([]);
     }
   });
@@ -75,7 +99,7 @@ describe("offerPages", () => {
   describe.each(["fr", "en"] as const)("messages (%s)", (locale) => {
     it("has proof copy exactly where a proof slot renders", () => {
       for (const key of OFFER_PAGE_KEYS) {
-        const hasProof = offerPages[key].proofLink !== null;
+        const hasProof = offerPages[key].proofSlugs.length > 0;
         expect("proof" in namespace(locale, key), key).toBe(hasProof);
       }
     });
@@ -89,12 +113,33 @@ describe("offerPages", () => {
       }
     });
 
-    it("places each page's serif word in its h1", () => {
+    it("keeps each page's target keyword in its h1", () => {
       for (const key of OFFER_PAGE_KEYS) {
-        const { title, titleEmphasis, serif } = namespace(locale, key).hero;
-        expect(serif, key).toBeTruthy();
-        expect(`${title} ${titleEmphasis}`, key).toContain(serif);
+        expect(namespace(locale, key).hero.title.toLowerCase(), key).toContain(
+          H1_KEYWORDS[locale][key].toLowerCase(),
+        );
       }
+    });
+
+    it("keeps jargon out of the visible copy", () => {
+      for (const key of OFFER_PAGE_KEYS) {
+        const { definition, ...visible } = namespace(locale, key);
+        for (const text of strings(visible)) {
+          for (const pattern of JARGON) {
+            expect(text, key).not.toMatch(pattern);
+          }
+          expect(text, key).not.toContain("Forward Deployed Engineer");
+        }
+        expect(strings(definition).join(" "), key).not.toMatch(/\bFDE\b/);
+      }
+    });
+
+    it("names the Forward Deployed Engineer once, in the dedicated developer title", () => {
+      const meta = MESSAGES[locale].meta;
+      expect(meta.fde.title.match(/Forward Deployed Engineer/g)).toHaveLength(
+        1,
+      );
+      expect(meta.agents.title.toLowerCase()).not.toContain("automat");
     });
 
     it("keeps new FAQ answers between 40 and 80 words", () => {

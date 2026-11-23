@@ -54,38 +54,38 @@ const EXPECTATIONS: Record<AppPathname, Expectation> = {
     faqKeys: HOME_FAQ,
   },
   "/services/creation-site-web": {
-    h1: heroTitle("sites"),
+    h1: plainTitle("sites", "hero.title"),
     prices: ["landing", "site-ia", "site-custom"],
     faqNamespace: "sites",
   },
   "/services/agents-ia": {
-    h1: heroTitle("agents"),
+    h1: plainTitle("agents", "hero.title"),
     prices: ["audit-ia", "sprint-ia"],
     faqNamespace: "agents",
   },
   "/services/audit-ia": {
-    h1: heroTitle("audit"),
+    h1: plainTitle("audit", "hero.title"),
     prices: ["audit-ia", "automation", "sprint-ia"],
     faqNamespace: "audit",
   },
   "/services/automatisation-ia": {
-    h1: heroTitle("automation"),
+    h1: plainTitle("automation", "hero.title"),
     prices: ["automation", "automation-care", "sprint-ia"],
     faqNamespace: "automation",
   },
   "/services/geo-referencement-ia": {
-    h1: heroTitle("geo"),
+    h1: plainTitle("geo", "hero.title"),
     prices: ["geo", "geo-care", "site-ia"],
     faqNamespace: "geo",
   },
   "/forward-deployed-engineer": {
-    h1: heroTitle("fde"),
+    h1: plainTitle("fde", "hero.title"),
     prices: ["fde"],
     fdeMinimum: true,
     faqNamespace: "fde",
   },
   "/tarifs": {
-    h1: heroTitle("pricing"),
+    h1: plainTitle("pricing", "hero.title"),
     prices: [
       "landing",
       "site-ia",

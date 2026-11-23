@@ -1,118 +1,89 @@
 import { getTranslations } from "next-intl/server";
 
-import { Section, SectionHeading } from "@/components/section";
-import { SampleWindow } from "@/components/sections/process-timeline";
+import { PageSection } from "@/components/ui-kit/page-section";
+import { SectionHeader } from "@/components/ui-kit/section-header";
 import type { Locale } from "@/i18n/routing";
+import {
+  GEO_ENGINES,
+  GEO_SAMPLE,
+  type GeoState,
+  geoSampleCount,
+} from "@/lib/offer-block-data";
 import { cn } from "@/lib/utils";
 
-type State = "cited" | "competitor" | "absent";
+import { InfoCard, SampleBadge } from "./info-card";
 
-const ENGINES = ["ChatGPT", "Perplexity", "Gemini", "AI Overviews"] as const;
-
-const SAMPLE: { prompt: "a" | "b" | "c"; states: State[] }[] = [
-  { prompt: "a", states: ["cited", "cited", "competitor", "absent"] },
-  { prompt: "b", states: ["competitor", "cited", "absent", "competitor"] },
-  { prompt: "c", states: ["absent", "competitor", "absent", "absent"] },
-];
-
-const STATE_STYLES: Record<State, { dot: string; text: string }> = {
+const STATE_STYLES: Record<GeoState, { dot: string; text: string }> = {
   cited: { dot: "bg-ui-ok", text: "text-text" },
   competitor: { dot: "bg-text-3", text: "text-text-2" },
   absent: { dot: "border border-text-3", text: "text-text-3" },
 };
 
-export async function GeoVisibility({
-  locale,
-  index,
-  eyebrow,
-}: {
-  locale: Locale;
-  index: string;
-  eyebrow: string;
-}) {
+export async function GeoVisibility({ locale }: { locale: Locale }) {
   const t = await getTranslations({ locale, namespace: "geo.block" });
-  const all = SAMPLE.flatMap((row) => row.states);
-  const cited = all.filter((state) => state === "cited").length;
+  const page = await getTranslations({ locale, namespace: "offerPage" });
   const quote = (text: string) =>
-    locale === "fr" ? `« ${text} »` : `"${text}"`;
+    locale === "fr" ? `« ${text} »` : `“${text}”`;
 
   return (
-    <Section index={index} eyebrow={eyebrow}>
-      <div className="grid gap-12 lg:grid-cols-12 lg:gap-6">
-        <div className="reveal space-y-8 lg:col-span-4">
-          <SectionHeading lead={t("title")} rest={t("titleEmphasis")} />
-          <p className="text-text-2 max-w-[48ch]">{t("body")}</p>
-          <aside className="border-line bg-surface-1 shadow-card rounded-md border p-5 lg:p-6">
-            <p className="type-label text-text-3">{t("disclosure.label")}</p>
-            <p className="text-text-2 mt-3 text-[0.9375rem]">
-              {t("disclosure.body")}
-            </p>
-          </aside>
-        </div>
-        <div className="reveal min-w-0 lg:col-span-7 lg:col-start-6">
-          <SampleWindow file={t("card.file")} sample={t("card.sample")}>
-            <p className="text-text"># {t("card.site")}</p>
-            <div className="mt-5 overflow-x-auto">
-              <table className="w-full min-w-[36rem] text-left">
-                <thead>
-                  <tr className="border-line text-text-3 border-b">
-                    <th scope="col" className="py-2 pr-4 font-normal">
-                      {t("card.promptsLabel")}
-                    </th>
-                    {ENGINES.map((engine) => (
-                      <th
-                        key={engine}
-                        scope="col"
-                        className="py-2 pr-3 font-normal whitespace-nowrap last:pr-0"
-                      >
-                        {engine}
-                      </th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {SAMPLE.map((row) => (
-                    <tr
-                      key={row.prompt}
-                      className="border-line border-b last:border-b-0"
-                    >
-                      <th
-                        scope="row"
-                        className="text-text-2 py-3 pr-4 font-normal"
-                      >
-                        {quote(t(`card.prompts.${row.prompt}`))}
-                      </th>
-                      {row.states.map((state, i) => (
-                        <td key={ENGINES[i]} className="py-3 pr-3 last:pr-0">
-                          <span
-                            className={cn(
-                              "inline-flex items-center gap-2",
-                              STATE_STYLES[state].text,
-                            )}
-                          >
-                            <span
-                              aria-hidden="true"
-                              className={cn(
-                                "size-1.5 rounded-full",
-                                STATE_STYLES[state].dot,
-                              )}
-                            />
-                            {t(`card.states.${state}`)}
-                          </span>
-                        </td>
-                      ))}
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+    <PageSection id="mesure">
+      <SectionHeader title={t("title")} intro={t("intro")} />
+      <div className="mt-12 grid gap-5 lg:grid-cols-[minmax(0,1fr)_380px] lg:items-start">
+        <div className="border-line bg-surface-1 shadow-panel overflow-hidden rounded-[20px] border">
+          <div className="border-line flex items-start justify-between gap-4 border-b px-5 py-4 sm:px-6">
+            <div className="flex flex-col gap-0.5">
+              <p className="text-text text-base font-semibold">
+                {t("card.site")}
+              </p>
+              <p className="text-text-3 text-[0.8125rem]">{t("card.label")}</p>
             </div>
-            <p className="border-line text-text-3 mt-4 border-t pt-3 text-xs">
-              {t("card.summary", { cited, total: all.length })}
-            </p>
-          </SampleWindow>
-          <p className="type-label text-text-3 mt-4">{t("realData")}</p>
+            <SampleBadge label={page("sample")} />
+          </div>
+          <ul className="divide-line divide-y">
+            {GEO_SAMPLE.map((row) => (
+              <li
+                key={row.prompt}
+                className="flex flex-col gap-3 px-5 py-4 sm:px-6"
+              >
+                <p className="text-text text-[0.9375rem] leading-snug">
+                  {quote(t(`card.prompts.${row.prompt}`))}
+                </p>
+                <ul className="grid grid-cols-2 gap-2 sm:grid-cols-4">
+                  {row.states.map((state, i) => (
+                    <li
+                      key={GEO_ENGINES[i]}
+                      className="bg-surface-2 flex flex-col gap-1 rounded-[10px] px-3 py-2"
+                    >
+                      <span className="text-text-3 text-xs">
+                        {GEO_ENGINES[i]}
+                      </span>
+                      <span
+                        className={cn(
+                          "flex items-center gap-2 text-sm font-medium",
+                          STATE_STYLES[state].text,
+                        )}
+                      >
+                        <span
+                          aria-hidden="true"
+                          className={cn(
+                            "size-2 shrink-0 rounded-full",
+                            STATE_STYLES[state].dot,
+                          )}
+                        />
+                        {t(`card.states.${state}`)}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </li>
+            ))}
+          </ul>
+          <p className="border-line bg-surface-2 text-text-2 border-t px-5 py-3.5 text-[0.875rem] font-medium sm:px-6">
+            {t("card.summary", geoSampleCount())}
+          </p>
         </div>
+        <InfoCard title={t("disclosure.title")} body={t("disclosure.body")} />
       </div>
-    </Section>
+    </PageSection>
   );
 }

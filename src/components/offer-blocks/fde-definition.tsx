@@ -1,64 +1,58 @@
+import { ArrowRight } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 
-import { Section, SectionHeading } from "@/components/section";
+import { PageSection } from "@/components/ui-kit/page-section";
 import { messageStrings } from "@/i18n/message-list";
+import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
+import { FDE_DEFINITION_SLUG } from "@/lib/offer-block-data";
 
-export async function FdeDefinition({
-  locale,
-  index,
-  eyebrow,
-}: {
-  locale: Locale;
-  index: string;
-  eyebrow: string;
-}) {
+import { InfoCard } from "./info-card";
+
+export async function FdeDefinition({ locale }: { locale: Locale }) {
   const t = await getTranslations({ locale, namespace: "fde" });
 
   return (
-    <Section index={index} eyebrow={eyebrow}>
-      <div className="grid gap-12 lg:grid-cols-12 lg:gap-6">
-        <div className="reveal lg:col-span-7">
-          <SectionHeading
-            lead={t("definition.title")}
-            rest={t("definition.titleEmphasis")}
-          />
-          <dl className="border-line mt-10 border-l pl-6 md:mt-12">
-            <dt className="type-data text-text-3">{t("definition.term")}</dt>
-            <dd className="type-lead text-text mt-4 max-w-[60ch]">
-              {t("definition.body")}
-            </dd>
-          </dl>
+    <PageSection id="definition">
+      <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_400px] lg:gap-16">
+        <div className="flex flex-col gap-6">
+          <h2 className="type-section max-w-[680px]">
+            {t("definition.title")}
+          </h2>
+          <p className="type-intro text-text-2 max-w-[620px]">
+            {t("definition.body")}
+          </p>
+          <Link
+            href={{
+              pathname: "/blog/[slug]",
+              params: { slug: FDE_DEFINITION_SLUG },
+            }}
+            className="text-accent hover:text-accent-hover inline-flex w-fit items-center gap-1.5 text-[0.9375rem] font-medium underline decoration-1 underline-offset-[3px]"
+          >
+            {t("definition.link")}
+            <ArrowRight aria-hidden="true" className="size-4" />
+          </Link>
         </div>
-        <div className="reveal space-y-6 lg:col-span-4 lg:col-start-9 lg:pt-2">
-          <div className="border-line bg-surface-1 shadow-card rounded-md border p-5 lg:p-7">
-            <h3 className="type-h3">{t("audience.title")}</h3>
-            <p className="text-text-2 mt-2 text-[0.9375rem]">
-              {t("audience.body")}
-            </p>
-          </div>
-          <div className="border-line bg-surface-1 shadow-card rounded-md border p-5 lg:p-7">
-            <h3 className="type-h3">{t("limits.title")}</h3>
-            <p className="text-text-2 mt-2 text-[0.9375rem]">
-              {t("limits.body")}
-            </p>
-            <ul className="border-line type-data mt-5 space-y-2 border-t pt-4">
+        <div className="flex flex-col gap-5">
+          <InfoCard title={t("audience.title")} body={t("audience.body")} />
+          <InfoCard title={t("limits.title")} body={t("limits.body")}>
+            <ul className="border-line mt-3 flex flex-col gap-2 border-t pt-4">
               {messageStrings(t, "limits.items").map((item) => (
                 <li
                   key={item}
-                  className="text-text-2 flex items-baseline gap-3"
+                  className="text-text-2 flex items-center gap-2.5 text-[0.9375rem]"
                 >
                   <span
                     aria-hidden="true"
-                    className="border-text-3 size-2 shrink-0 rounded-[1px] border"
+                    className="bg-line-strong h-px w-3 shrink-0"
                   />
                   {item}
                 </li>
               ))}
             </ul>
-          </div>
+          </InfoCard>
         </div>
       </div>
-    </Section>
+    </PageSection>
   );
 }

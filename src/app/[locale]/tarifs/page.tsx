@@ -1,24 +1,46 @@
 import type { Metadata } from "next";
 
-import { ArrowUpRight, Check } from "lucide-react";
+import {
+  ArrowUpRight,
+  BookOpen,
+  FileText,
+  KeyRound,
+  Lock,
+  Receipt,
+  Wrench,
+} from "lucide-react";
 import { getTranslations } from "next-intl/server";
 
+import { ActionButton } from "@/components/action-button";
 import { JsonLd } from "@/components/json-ld";
 import { Cta } from "@/components/sections/cta";
 import { Faq } from "@/components/sections/faq";
-import { Hero } from "@/components/sections/hero";
+import { OfferPageHero } from "@/components/sections/offer-page-hero";
 import { PriceLedger } from "@/components/sections/price-ledger";
-import {
-  messageList,
-  messageStrings,
-  type Translate,
-} from "@/i18n/message-list";
+import { MethodSteps } from "@/components/ui-kit/method-steps";
+import { PageSection } from "@/components/ui-kit/page-section";
+import { SectionHeader } from "@/components/ui-kit/section-header";
+import { TrustGrid } from "@/components/ui-kit/trust-grid";
+import { messageList, type Translate } from "@/i18n/message-list";
+import { Link } from "@/i18n/navigation";
 import { type LocaleParams, resolvePageLocale } from "@/i18n/page-locale";
+import { getPosts } from "@/lib/content";
 import { pricingPageJsonLd } from "@/lib/json-ld";
 import { getPriceValues } from "@/lib/offers";
+import { PRICING_POST_SLUG } from "@/lib/related-content";
 import { buildMetadata } from "@/lib/seo";
 
-const MARKET_ROW = "tjm";
+const INCLUDED = {
+  quote: FileText,
+  fixed: Lock,
+  owned: KeyRound,
+  handover: BookOpen,
+  credit: Receipt,
+  tools: Wrench,
+} as const;
+
+const LINK_CLASS =
+  "text-text hover:text-accent font-medium underline decoration-1 underline-offset-[3px] transition-colors duration-(--d-fast)";
 
 export async function generateMetadata({
   params,
@@ -29,7 +51,7 @@ export async function generateMetadata({
     locale,
     pathname: "/tarifs",
     title: t("title"),
-    description: t("description"),
+    description: t("description", getPriceValues(locale)),
   });
 }
 
@@ -39,65 +61,100 @@ export default async function PricingPage({ params }: LocaleParams) {
     locale,
     namespace: "pricing",
   })) as Translate;
-  const offersT = (await getTranslations({
-    locale,
-    namespace: "offers",
-  })) as Translate;
+  const page = await getTranslations({ locale, namespace: "offerPage" });
+  const offersT = await getTranslations({ locale, namespace: "offers" });
+  const guide = (await getPosts(locale)).find(
+    (post) => post.slug === PRICING_POST_SLUG,
+  );
 
   return (
     <>
       <JsonLd data={pricingPageJsonLd(locale)} />
-      <Hero
+
+      <OfferPageHero
         title={t("hero.title")}
-        emphasis={t("hero.titleEmphasis")}
-        serif={t("hero.serif")}
         subtitle={t("hero.subtitle")}
-        meta={offersT("vatNote")}
-        aside={
-          <div className="border-line border-t pt-5 lg:border-t-0 lg:border-l lg:pt-0 lg:pl-6">
-            <h2 className="type-label text-text-3">{t("guarantees.title")}</h2>
-            <ul className="mt-4 space-y-3 text-[0.9375rem] leading-snug">
-              {messageStrings(t, "guarantees.items").map((item) => (
-                <li key={item} className="text-text-2 flex gap-3">
-                  <Check
-                    aria-hidden="true"
-                    className="text-text mt-1 size-3.5 shrink-0"
-                  />
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
+        actions={
+          <>
+            <ActionButton action="quote" size="xl" trackLocation="hero">
+              {page("actions.quote")}
+            </ActionButton>
+            <ActionButton
+              action="book"
+              variant="outline"
+              size="xl"
+              trackLocation="hero"
+            >
+              {page("actions.book")}
+            </ActionButton>
+          </>
         }
       >
-        <PriceLedger locale={locale} />
-        <p className="text-text-3 mt-6 max-w-[72ch] text-sm leading-relaxed">
-          {t("market.line", getPriceValues(locale))}{" "}
-          <a
-            href={t(`market.card.rows.${MARKET_ROW}.url`)}
-            target="_blank"
-            rel="noopener"
-            className="hover:text-text inline-flex items-center gap-1 underline underline-offset-4 transition-colors"
-          >
-            {t("market.sourceLabel")}
-            <ArrowUpRight aria-hidden="true" className="size-3" />
-          </a>
-        </p>
-      </Hero>
+        <PriceLedger locale={locale} className="mt-12 lg:mt-16" />
+        <p className="text-text-3 mt-4 text-sm">{offersT("vatNote")}</p>
+        <div className="text-text-2 mt-8 grid gap-4 text-[0.9375rem] leading-normal lg:grid-cols-2 lg:gap-16">
+          <p>
+            {t("market.line", getPriceValues(locale))}{" "}
+            <a
+              href={t("market.url")}
+              target="_blank"
+              rel="noopener"
+              className={`${LINK_CLASS} inline-flex items-center gap-1`}
+            >
+              {t("market.sourceLabel")}
+              <ArrowUpRight aria-hidden="true" className="size-3.5" />
+            </a>
+          </p>
+          {guide && (
+            <p>
+              {t("guide")}{" "}
+              <Link
+                href={{
+                  pathname: "/blog/[slug]",
+                  params: { slug: guide.slug },
+                }}
+                className={LINK_CLASS}
+              >
+                {guide.title}
+              </Link>
+            </p>
+          )}
+        </div>
+      </OfferPageHero>
+
+      <PageSection id="compris">
+        <SectionHeader
+          title={t("included.title")}
+          intro={t("included.intro")}
+        />
+        <TrustGrid
+          className="mt-12"
+          items={Object.entries(INCLUDED).map(([key, icon]) => ({
+            icon,
+            title: t(`included.items.${key}.title`),
+            body: t(`included.items.${key}.body`),
+          }))}
+        />
+      </PageSection>
+
+      <PageSection id="devis">
+        <SectionHeader title={t("quote.title")} intro={t("quote.intro")} />
+        <MethodSteps
+          className="mt-12"
+          steps={messageList(t, "quote.steps", ["title", "body"])}
+        />
+      </PageSection>
 
       <Faq
-        index="01"
-        eyebrow={t("eyebrows.faq")}
+        id="faq"
         title={t("faq.title")}
-        emphasis={t("faq.titleEmphasis")}
         items={messageList(t, "faq.items", ["question", "answer"])}
-        bookLabel={t("cta.ctaSecondary")}
+        bookLabel={page("actions.book")}
         openFirst
       />
 
       <Cta
         title={t("cta.title")}
-        emphasis={t("cta.titleEmphasis")}
         body={t("cta.body")}
         primary={{ action: "quote", label: t("cta.ctaPrimary") }}
         secondary={{ action: "book", label: t("cta.ctaSecondary") }}
