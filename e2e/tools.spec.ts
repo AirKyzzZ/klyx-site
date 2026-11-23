@@ -2,12 +2,8 @@ import { expect, type Page, test } from "@playwright/test";
 
 import en from "../messages/en.json";
 import fr from "../messages/fr.json";
-import {
-  AI_MODELS,
-  CONNECTED_TOOLS,
-  DEPLOYED_TECH,
-  type ToolGroup,
-} from "../src/lib/tools";
+import { HOME_TOOLS, OTHER_TOOL_COUNT } from "../src/lib/home-sections";
+import { AI_MODELS, DEPLOYED_TECH, type ToolGroup } from "../src/lib/tools";
 
 const VIEWPORTS = [
   { width: 1440, height: 900 },
@@ -71,23 +67,37 @@ for (const viewport of VIEWPORTS) {
     ["/", fr],
     ["/en", en],
   ] as const) {
-    test(`${path} tool map links every group and the grid names every tool at ${viewport.width}`, async ({
+    test(`${path} tools strip names each tool next to its decorative logo at ${viewport.width}`, async ({
       page,
     }) => {
       await page.setViewportSize(viewport);
       await page.goto(path);
-      const map = page.locator("[data-tools-map]");
-      await map.scrollIntoViewIfNeeded();
-      await expect(map).toBeVisible();
-      for (const name of names(CONNECTED_TOOLS)) {
-        await expect(map.getByText(name, { exact: true })).toHaveCount(1);
+      const strip = page.locator("[data-tools-strip]");
+      await strip.scrollIntoViewIfNeeded();
+      await expect(
+        strip.getByRole("heading", { name: messages.home.tools.title }),
+      ).toBeVisible();
+      const items = strip.locator("li[data-tool]");
+      await expect(items).toHaveCount(HOME_TOOLS.length);
+      for (const { name } of HOME_TOOLS) {
+        await expect(items.filter({ hasText: name })).toBeVisible();
       }
-      await expectStrip(
-        page,
-        names(CONNECTED_TOOLS),
-        messages.home.tools.label,
-        messages.home.tools.note,
+      await expect(
+        strip.getByText(
+          messages.home.tools.more.replace(
+            "{count}",
+            String(OTHER_TOOL_COUNT),
+          ),
+        ),
+      ).toBeVisible();
+      const logos = await items
+        .locator("[data-logo]")
+        .evaluateAll((els) => els.map((el) => el.getAttribute("aria-hidden")));
+      expect(logos).toEqual(HOME_TOOLS.map(() => "true"));
+      const overflow = await page.evaluate(
+        () => document.documentElement.scrollWidth - window.innerWidth,
       );
+      expect(overflow).toBeLessThanOrEqual(0);
     });
   }
 
@@ -119,7 +129,7 @@ test("offer pages outside agents and automation carry no stack strip", async ({
   await expect(page.locator("[data-tools]")).toHaveCount(0);
 });
 
-for (const path of ["/", "/services/automatisation-ia"]) {
+for (const path of ["/services/automatisation-ia"]) {
   test(`${path} hero logos are decorative and the AI step shows the model marks`, async ({
     page,
   }) => {
