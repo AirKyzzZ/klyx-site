@@ -29,13 +29,13 @@ export async function SiteHeader() {
               {
                 href: "/services/creation-site-web",
                 title: t("sites"),
-                description: cards("sites.outcome"),
+                description: cards("sites.audience"),
                 price: from(getOfferPrice("landing")),
               },
               {
                 href: "/services/agents-ia",
                 title: t("agents"),
-                description: cards("agents.outcome"),
+                description: cards("agents.audience"),
                 price: from(getOfferPrice("sprint-ia")),
               },
               {
@@ -64,7 +64,7 @@ export async function SiteHeader() {
               {
                 href: "/forward-deployed-engineer",
                 title: t("fde"),
-                description: cards("fde.outcome"),
+                description: cards("fde.audience"),
                 price: prices("perDay", {
                   price: formatPrice(getOfferPrice("fde"), locale),
                 }),

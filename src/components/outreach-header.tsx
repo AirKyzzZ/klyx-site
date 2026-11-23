@@ -13,14 +13,14 @@ export async function OutreachHeader() {
 
   return (
     <header className="fixed inset-x-0 top-3 z-50 px-3 md:px-(--page-x) lg:top-4">
-      <div className="border-line bg-nav-fill shadow-soft mx-auto flex h-14 max-w-(--container) items-center justify-between gap-4 rounded-[14px] border pr-2 pl-4 backdrop-blur-[14px] backdrop-saturate-150 lg:pl-5">
+      <div className="border-line bg-nav-fill shadow-nav mx-auto flex h-14 max-w-(--container) items-center justify-between gap-4 rounded-[14px] border pr-2 pl-4 backdrop-blur-[16px] lg:pl-[18px]">
         <Link
           href="/"
           aria-label={site.name}
-          className="flex shrink-0 items-center gap-2 rounded-sm"
+          className="flex shrink-0 items-center gap-[9px] rounded-sm"
         >
-          <KlyxMark className="size-5" />
-          <span className="text-[1.0625rem] leading-none font-semibold tracking-[-0.03em]">
+          <KlyxMark className="size-6" />
+          <span className="text-lg leading-none font-semibold tracking-[-0.4px]">
             {site.name}
           </span>
         </Link>
@@ -31,7 +31,7 @@ export async function OutreachHeader() {
           <ActionButton
             action="book"
             variant="inverse"
-            className="rounded-[10px]"
+            className="h-10 rounded-[10px] px-4"
           >
             {OUTREACH_CTA}
           </ActionButton>

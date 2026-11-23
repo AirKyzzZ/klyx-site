@@ -91,8 +91,8 @@ export function LanguageMenu({
 
   return (
     <details ref={ref} className={cn("group relative", className)}>
-      <summary className="text-text-2 hover:bg-surface-2 hover:text-text flex h-8 cursor-pointer list-none items-center gap-1.5 rounded-full px-2.5 text-sm transition-colors duration-(--d-fast) [&::-webkit-details-marker]:hidden">
-        <Globe aria-hidden="true" className="size-4" strokeWidth={1.75} />
+      <summary className="text-text-2 hover:bg-surface-2 hover:text-text flex h-[34px] cursor-pointer list-none items-center gap-[5px] rounded-full pr-2 pl-2.5 text-[0.8125rem] font-medium transition-colors duration-(--d-fast) [&::-webkit-details-marker]:hidden">
+        <Globe aria-hidden="true" className="size-3.5" strokeWidth={1.75} />
         <span className="sr-only">{label} </span>
         {current.locale.toUpperCase()}
         <ChevronDown

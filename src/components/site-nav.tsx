@@ -49,7 +49,7 @@ export type SiteNavProps = {
 };
 
 const pillLink =
-  "inline-flex h-8 items-center rounded-full px-3 text-sm text-text-2 transition-colors duration-(--d-fast) hover:bg-surface-2 hover:text-text aria-[current=page]:text-text";
+  "inline-flex h-8 items-center rounded-full px-3 text-sm font-medium text-text-2 transition-colors duration-(--d-fast) hover:bg-surface-2 hover:text-text aria-[current=page]:text-text";
 
 export function SiteNav({
   homeLabel,
@@ -68,23 +68,23 @@ export function SiteNav({
 
   return (
     <div className="fixed inset-x-0 top-3 z-50 px-3 md:px-(--page-x) lg:top-4">
-      <div className="border-line bg-nav-fill shadow-soft relative mx-auto flex h-14 max-w-(--container) items-center justify-between gap-4 rounded-[14px] border pr-2 pl-4 backdrop-blur-[14px] backdrop-saturate-150 lg:pl-5">
+      <div className="border-line bg-nav-fill shadow-nav relative mx-auto flex h-14 max-w-(--container) items-center justify-between gap-4 rounded-[14px] border pr-2 pl-4 backdrop-blur-[16px] lg:pl-[18px]">
         <Link
           href="/"
           aria-label={homeLabel}
-          className="flex shrink-0 items-center gap-2 rounded-sm"
+          className="flex shrink-0 items-center gap-[9px] rounded-sm xl:w-[330px]"
           onClick={closeMenu}
         >
-          <KlyxMark className="size-5" />
-          <span className="text-[1.0625rem] leading-none font-semibold tracking-[-0.03em]">
+          <KlyxMark className="size-6" />
+          <span className="text-lg leading-none font-semibold tracking-[-0.4px]">
             Klyx
           </span>
         </Link>
 
         <NavigationMenu className="max-lg:hidden">
-          <NavigationMenuList className="space-x-0">
+          <NavigationMenuList className="gap-0.5 space-x-0">
             <NavigationMenuItem>
-              <NavigationMenuTrigger className="text-text-2 hover:bg-surface-2 hover:text-text data-[state=open]:text-text h-8 rounded-full bg-transparent px-3 font-normal">
+              <NavigationMenuTrigger className="text-text-2 hover:bg-surface-2 hover:text-text data-[state=open]:text-text h-8 rounded-full bg-transparent px-3 font-medium">
                 {offersLabel}
               </NavigationMenuTrigger>
               <NavigationMenuContent>
@@ -136,14 +136,14 @@ export function SiteNav({
           </NavigationMenuList>
         </NavigationMenu>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center justify-end gap-2 xl:w-[330px]">
           <ThemeToggle labels={themeLabels} className="max-lg:hidden" />
           <LanguageMenu label={languageLabel} className="max-lg:hidden" />
           <ActionButton
             trackLocation="header"
             action="book"
             variant="inverse"
-            className="rounded-[10px] max-sm:hidden"
+            className="h-10 rounded-[10px] px-4 max-sm:hidden"
           >
             {bookLabel}
           </ActionButton>
