@@ -1,119 +1,130 @@
 import type { ReactNode } from "react";
 
-import { ArrowRight, Plus } from "lucide-react";
+import { Check, Clock } from "lucide-react";
 
 import { ActionButton } from "@/components/action-button";
-import { Section, SectionHeading } from "@/components/section";
+import { OfferRow } from "@/components/ui-kit/offer-card";
 import { Link } from "@/i18n/navigation";
 import type { OfferPathname } from "@/lib/offer-pages";
-
-const VISIBLE_FEATURES = 4;
+import { cn } from "@/lib/utils";
 
 export type Tier = {
   id: string;
   name: string;
-  price: string;
-  duration: string;
+  audience: string;
   summary: string;
+  priceLabel?: string;
+  price: string;
+  unit?: string;
+  duration: string;
   features: string[];
   href?: OfferPathname;
 };
 
-type TierCardsProps = {
-  index: string;
-  eyebrow: string;
-  title: string;
-  emphasis?: string;
-  subtitle?: string;
-  tiers: Tier[];
-  quoteLabel: string;
-  seeOfferLabel: string;
-  moreLabel: (count: number) => string;
-  footnote: string;
-  children?: ReactNode;
-  aside?: ReactNode;
-};
-
-export function FeatureList({ items }: { items: string[] }) {
+export function FeatureList({
+  items,
+  className,
+}: {
+  items: string[];
+  className?: string;
+}) {
   return (
-    <ul className="space-y-2.5">
-      {items.map((feature) => (
-        <li key={feature} className="flex gap-2.5 text-[0.9375rem]">
-          <Plus
+    <ul className={cn("flex flex-col gap-2.5", className)}>
+      {items.map((item) => (
+        <li
+          key={item}
+          className="text-text-2 flex gap-2.5 text-[0.9375rem] leading-snug"
+        >
+          <span
             aria-hidden="true"
-            className="text-text-3 mt-1 size-3.5 shrink-0"
-          />
-          <span className="text-text-2 leading-snug">{feature}</span>
+            className="bg-surface-2 text-ui-ok mt-px grid size-[18px] shrink-0 place-items-center rounded-full"
+          >
+            <Check className="size-[11px]" strokeWidth={2.5} />
+          </span>
+          {item}
         </li>
       ))}
     </ul>
   );
 }
 
+function PriceBlock({
+  label,
+  price,
+  unit,
+  duration,
+}: {
+  label?: string;
+  price: string;
+  unit?: string;
+  duration: string;
+}) {
+  return (
+    <div className="flex flex-col gap-1">
+      {label && <p className="text-text-3 text-[0.8125rem]">{label}</p>}
+      <p className="text-text flex flex-wrap items-baseline text-[1.875rem] leading-none font-semibold tracking-[-1px]">
+        {price}
+        {unit && (
+          <span className="text-text-2 ml-1 text-[0.9375rem] font-normal tracking-normal">
+            {unit}
+          </span>
+        )}
+      </p>
+      <p className="text-text-2 flex items-center gap-1.5 pt-1.5 text-sm">
+        <Clock aria-hidden="true" className="size-3.5 shrink-0" />
+        {duration}
+      </p>
+    </div>
+  );
+}
+
 function TierCard({
   tier,
-  position,
   quoteLabel,
   seeOfferLabel,
-  moreLabel,
 }: {
   tier: Tier;
-  position: number;
   quoteLabel: string;
   seeOfferLabel: string;
-  moreLabel: (count: number) => string;
 }) {
-  const visible = tier.features.slice(0, VISIBLE_FEATURES);
-  const rest = tier.features.slice(VISIBLE_FEATURES);
   return (
-    <article className="flex h-full flex-col p-5 lg:p-7">
-      <p className="type-label text-text-3">
-        <span className="text-text-2">{String(position).padStart(2, "0")}</span>{" "}
-        / {tier.duration}
-      </p>
-      <h3 className="type-h3 mt-6">{tier.name}</h3>
-      <p className="text-text-2 mt-2 max-w-[40ch] text-[0.9375rem] leading-normal">
-        {tier.summary}
-      </p>
-      <p className="border-line type-data text-text mt-6 border-y py-4 text-[0.9375rem]">
-        {tier.price}
-      </p>
-      <div className="mt-6 flex-1">
-        <FeatureList items={visible} />
-        {rest.length > 0 && (
-          <>
-            <div className="mt-2.5 hidden md:block">
-              <FeatureList items={rest} />
-            </div>
-            <details className="mt-3 md:hidden">
-              <summary className="type-label text-text-3 hover:text-text cursor-pointer list-none">
-                + {moreLabel(rest.length)}
-              </summary>
-              <div className="mt-2.5">
-                <FeatureList items={rest} />
-              </div>
-            </details>
-          </>
-        )}
+    <article data-tier-card className="flex flex-col gap-6 p-6 lg:p-8">
+      <div className="flex flex-col gap-2">
+        <h3 className="text-text text-[1.375rem] leading-tight font-semibold tracking-[-0.5px]">
+          {tier.name}
+        </h3>
+        <p className="text-text text-base leading-[1.4] font-medium">
+          {tier.audience}
+        </p>
+        <p className="text-text-2 text-[0.9375rem] leading-normal">
+          {tier.summary}
+        </p>
       </div>
-      <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-3">
+      <PriceBlock
+        label={tier.priceLabel}
+        price={tier.price}
+        unit={tier.unit}
+        duration={tier.duration}
+      />
+      <FeatureList
+        items={tier.features}
+        className="border-line flex-1 border-t pt-5"
+      />
+      <div className="flex flex-wrap items-center gap-x-5 gap-y-3">
         <ActionButton
           trackLocation="offer_page"
           action="quote"
-          variant="secondary"
+          variant="outline"
+          className="h-10 rounded-[10px] px-4"
         >
           {quoteLabel}
         </ActionButton>
         {tier.href && (
           <Link
             href={tier.href}
-            className="group text-text-2 hover:text-text inline-flex items-center gap-1.5 text-sm transition-colors duration-(--d-fast)"
+            className="text-accent hover:text-accent-hover text-sm font-medium underline decoration-1 underline-offset-[3px]"
           >
             {seeOfferLabel}
-            <ArrowRight
-              aria-hidden="true"
-              className="size-3.5 transition-transform duration-(--d-fast) group-hover:translate-x-0.5"
-            />
           </Link>
         )}
       </div>
@@ -122,57 +133,87 @@ function TierCard({
 }
 
 export function TierCards({
-  index,
-  eyebrow,
-  title,
-  emphasis,
-  subtitle,
   tiers,
   quoteLabel,
   seeOfferLabel,
-  moreLabel,
-  footnote,
-  children,
-  aside,
-}: TierCardsProps) {
+  className,
+}: {
+  tiers: Tier[];
+  quoteLabel: string;
+  seeOfferLabel: string;
+  className?: string;
+}) {
   return (
-    <Section index={index} eyebrow={eyebrow}>
-      <div className="reveal grid gap-6 lg:grid-cols-12 lg:items-end">
-        <SectionHeading
-          lead={title}
-          rest={emphasis}
-          className="lg:col-span-7"
-        />
-        {subtitle && (
-          <p className="text-text-2 max-w-[44ch] lg:col-span-4 lg:col-start-9">
-            {subtitle}
+    <div
+      className={className}
+      data-track-view="pricing_view"
+      data-track-location="offer_page"
+    >
+      <OfferRow>
+        {tiers.map((tier) => (
+          <TierCard
+            key={tier.id}
+            tier={tier}
+            quoteLabel={quoteLabel}
+            seeOfferLabel={seeOfferLabel}
+          />
+        ))}
+      </OfferRow>
+    </div>
+  );
+}
+
+export function TermsCard({
+  name,
+  audience,
+  features,
+  termsTitle,
+  terms,
+  action,
+  className,
+}: {
+  name: string;
+  audience: string;
+  features: string[];
+  termsTitle: string;
+  terms: string[];
+  action: ReactNode;
+  className?: string;
+}) {
+  return (
+    <div
+      className={cn(
+        "border-line bg-surface-1 divide-line grid overflow-hidden rounded-[16px] border max-lg:divide-y lg:grid-cols-2 lg:divide-x",
+        className,
+      )}
+      data-track-view="pricing_view"
+      data-track-location="offer_page"
+    >
+      <div className="flex flex-col gap-6 p-6 lg:p-8">
+        <div className="flex flex-col gap-2">
+          <h3 className="text-text text-[1.375rem] leading-tight font-semibold tracking-[-0.5px]">
+            {name}
+          </h3>
+          <p className="text-text text-base leading-[1.4] font-medium">
+            {audience}
           </p>
-        )}
+        </div>
+        <FeatureList items={features} className="flex-1" />
+        <div>{action}</div>
       </div>
-      {children ?? (
-        <ul
-          className="reveal border-line-strong bg-surface-1 shadow-card mt-12 grid items-stretch overflow-hidden rounded-md border md:mt-16 lg:grid-cols-3"
-          data-track-view="pricing_view"
-          data-track-location="offer_page"
-        >
-          {tiers.map((tier, i) => (
+      <div className="flex flex-col gap-4 p-6 lg:p-8">
+        <h3 className="text-text text-base font-semibold">{termsTitle}</h3>
+        <ul className="divide-line border-line divide-y border-t">
+          {terms.map((term) => (
             <li
-              key={tier.id}
-              className="border-line border-t first:border-t-0 lg:border-t-0 lg:border-l lg:first:border-l-0"
+              key={term}
+              className="text-text py-3.5 text-[0.9375rem] leading-normal last:pb-0"
             >
-              <TierCard
-                tier={tier}
-                position={i + 1}
-                quoteLabel={quoteLabel}
-                seeOfferLabel={seeOfferLabel}
-                moreLabel={moreLabel}
-              />
+              {term}
             </li>
           ))}
         </ul>
-      )}
-      <p className="type-label text-text-3 mt-6">{footnote}</p>
-      {aside}
-    </Section>
+      </div>
+    </div>
   );
 }

@@ -22,7 +22,22 @@ import {
   selectHomeCases,
 } from "@/lib/home-sections";
 import { getOfferCopy } from "@/lib/offer-copy";
+import {
+  AGENT_LOG,
+  AUDIT_COLUMNS,
+  AUTOMATION_EXAMPLES,
+  FDE_DEFINITION_SLUG,
+  formatDay,
+  formatSeconds,
+  GEO_ENGINES,
+  GEO_SAMPLE,
+  geoSampleCount,
+  getLighthouseProof,
+  LIGHTHOUSE_KEYS,
+  pageSpeedUrl,
+} from "@/lib/offer-block-data";
 import { type OfferPageConfig, offerPages } from "@/lib/offer-pages";
+import { OFFER_POST_SLUGS, PRICING_POST_SLUG } from "@/lib/related-content";
 import {
   formatPrice,
   getOfferPrice,
@@ -31,13 +46,8 @@ import {
 } from "@/lib/offers";
 import { type AppPathname, absoluteUrl } from "@/lib/seo";
 import { CREDITS } from "@/lib/credits";
-import {
-  getGithubContributions,
-  getSiteShot,
-  getVerifiedProof,
-} from "@/lib/proof";
+import { getGithubContributions, getSiteShot } from "@/lib/proof";
 import { faqThemes } from "@/lib/faq-page";
-import { scenarios } from "@/lib/scenarios";
 import {
   SECTOR_KEYS,
   type SectorPageConfig,
@@ -243,7 +253,11 @@ async function home(locale: Locale): Promise<string> {
     ...HOME_USE_CASES.flatMap(({ key }) => [
       `### ${t(`useCases.items.${key}.title`)} (${t(`useCases.items.${key}.category`)})`,
       list([
-        labelled(locale, t("useCases.before"), t(`useCases.items.${key}.before`)),
+        labelled(
+          locale,
+          t("useCases.before"),
+          t(`useCases.items.${key}.before`),
+        ),
         labelled(locale, t("useCases.after"), t(`useCases.items.${key}.after`)),
       ]),
     ]),
@@ -340,11 +354,6 @@ function rosterList(locale: Locale, roster: TeamRoster): string {
   );
 }
 
-function hasChild(t: Translate, key: string, child: string): boolean {
-  const raw = t.raw(key);
-  return typeof raw === "object" && raw !== null && child in raw;
-}
-
 function card(t: Translate, key: string, values?: Prices): Block[] {
   return [`### ${t(`${key}.title`)}`, t(`${key}.body`, values)];
 }
@@ -370,47 +379,73 @@ function blockMarkdown(
   locale: Locale,
   config: OfferPageConfig,
   t: Translate,
+  page: Translate,
 ): Block[] {
-  const root = getStaticTranslator(locale, "");
   switch (config.block) {
     case "trace": {
-      const scenario = scenarios[config.scenario];
+      const total = AGENT_LOG.at(-1)?.at ?? 0;
       return [
-        `## ${sectionTitle(t, "block")}`,
-        t("block.body"),
+        `## ${t("block.title")}`,
+        t("block.intro"),
+        `### ${t("block.log.title")} (${page("sample")})`,
+        list(
+          AGENT_LOG.map(
+            (line) =>
+              `${formatSeconds(locale, line.at)} s · ${t(`block.log.items.${line.key}`)}`,
+          ),
+        ),
+        t("block.log.total", { seconds: formatSeconds(locale, total) }),
         ...card(t, "credit"),
-        list(scenario.trace.map((line) => `${line.t} s · ${root(line.key)}`)),
       ];
     }
-    case "lighthouse":
-      return getVerifiedProof().some((source) => source.kind === "lighthouse")
-        ? [`## ${sectionTitle(t, "block")}`, t("block.body")]
-        : [];
+    case "lighthouse": {
+      const source = getLighthouseProof();
+      if (!source) return [];
+      return [
+        `## ${t("block.title")}`,
+        t("block.intro"),
+        list(
+          LIGHTHOUSE_KEYS.map((key) =>
+            labelled(
+              locale,
+              t(`block.scores.${key}`),
+              `${source.scores[key]}/100`,
+            ),
+          ),
+        ),
+        `${t("block.measured", {
+          host: new URL(source.url).host,
+          date: formatDay(locale, source.date),
+        })} ${link(t("block.verify"), pageSpeedUrl(source.url))}`,
+      ];
+    }
     case "fde-definition":
       return [
-        `## ${sectionTitle(t, "definition")}`,
-        `*${t("definition.term")}*`,
+        `## ${t("definition.title")}`,
         t("definition.body"),
-        `## ${t("audience.title")}`,
+        link(
+          t("definition.link"),
+          absoluteUrl(locale, "/blog/[slug]", { slug: FDE_DEFINITION_SLUG }),
+        ),
+        `### ${t("audience.title")}`,
         t("audience.body"),
-        `## ${t("limits.title")}`,
+        `### ${t("limits.title")}`,
         t("limits.body"),
         list(messageStrings(t, "limits.items")),
       ];
     case "audit-document": {
-      const columns = ["process", "hours", "offer", "risk", "when"];
       const rows = messageKeys(t.raw("block.document.rows"));
       return [
-        `## ${sectionTitle(t, "block")}`,
-        t("block.body"),
-        `### ${t("block.document.heading")} (${t("block.document.sample")})`,
+        `## ${t("block.title")}`,
+        t("block.intro"),
+        `### ${t("block.document.heading")} (${page("sample")})`,
         t("block.document.company"),
         [
-          `| ${columns.map((c) => cell(t(`block.document.columns.${c}`))).join(" | ")} |`,
-          `| ${columns.map(() => "---").join(" | ")} |`,
+          `| ${AUDIT_COLUMNS.map((c) => cell(t(`block.document.columns.${c}`))).join(" | ")} |`,
+          `| ${AUDIT_COLUMNS.map(() => "---").join(" | ")} |`,
           ...rows.map(
             (row) =>
-              `| ${columns.map((c) => cell(t(`block.document.rows.${row}.${c}`))).join(" | ")} |`,
+              `| ${AUDIT_COLUMNS.map((c) => cell(t(`block.document.rows.${row}.${c}`))).join(" | ")} |`,
           ),
         ].join("\n"),
         t("block.document.note"),
@@ -420,13 +455,46 @@ function blockMarkdown(
       ];
     }
     case "automation-examples":
-      return automationExampleBlocks(t);
+      return [
+        `## ${t("block.title")}`,
+        t("block.intro"),
+        ...AUTOMATION_EXAMPLES.flatMap(({ key }) => [
+          `### ${t(`block.examples.${key}.title`)} (${t(`block.examples.${key}.category`)})`,
+          list([
+            labelled(
+              locale,
+              t("block.before"),
+              t(`block.examples.${key}.before`),
+            ),
+            labelled(
+              locale,
+              t("block.after"),
+              t(`block.examples.${key}.after`),
+            ),
+          ]),
+        ]),
+        t("block.limit"),
+      ];
     case "geo-visibility":
       return [
-        `## ${sectionTitle(t, "block")}`,
-        t("block.body"),
-        `### ${t("block.disclosure.label")}`,
-        t("block.disclosure.body"),
+        `## ${t("block.title")}`,
+        t("block.intro"),
+        `### ${t("block.card.site")} (${t("block.card.label")})`,
+        [
+          `| ${["", ...GEO_ENGINES].map(cell).join(" | ")} |`,
+          `| ${["", ...GEO_ENGINES].map(() => "---").join(" | ")} |`,
+          ...GEO_SAMPLE.map(
+            (row) =>
+              `| ${[
+                t(`block.card.prompts.${row.prompt}`),
+                ...row.states.map((state) => t(`block.card.states.${state}`)),
+              ]
+                .map(cell)
+                .join(" | ")} |`,
+          ),
+        ].join("\n"),
+        t("block.card.summary", geoSampleCount()),
+        ...card(t, "block.disclosure"),
       ];
   }
 }
@@ -436,90 +504,109 @@ async function offerPageMarkdown(
   config: OfferPageConfig,
 ): Promise<string> {
   const t = getStaticTranslator(locale, config.namespace);
+  const page = getStaticTranslator(locale, "offerPage");
   const offersT = getStaticTranslator(locale, "offers");
+  const nav = getStaticTranslator(locale, "nav");
   const prices = getPriceValues(locale);
   const tiers = config.tiers.map((id) => getOfferCopy(offersT, locale, id));
-  const cases = (await getCaseStudies(locale)).filter((c) =>
-    config.proofSlugs.includes(c.slug),
+  const anchor = getOfferCopy(offersT, locale, config.anchor);
+  const studies = await getCaseStudies(locale);
+  const cases = config.proofSlugs.flatMap((slug) =>
+    studies.filter((study) => study.slug === slug),
   );
-  const proofUrl = absoluteUrl(locale, "/realisations");
+  const post = (await getPosts(locale)).find(
+    (item) => item.slug === OFFER_POST_SLUGS[config.key],
+  );
+  const problems = messageKeys(t.raw("problem.items")).map((key) =>
+    [
+      `**${t(`problem.items.${key}.title`)}**`,
+      labelled(
+        locale,
+        page("problem.before"),
+        t(`problem.items.${key}.before`),
+      ),
+      labelled(locale, page("problem.after"), t(`problem.items.${key}.after`)),
+    ].join(". "),
+  );
+  const steps = messageList(t, "process.steps", ["title", "body"]);
   const deliverables: Block[] =
     config.key === "fde"
       ? [
+          `### ${anchor.name}`,
+          anchor.summary,
           list(messageStrings(t, "deliverables.items")),
           `### ${t("terms.title")}`,
           list(messageStrings(t, "terms.items", prices)),
         ]
       : tiers.flatMap((tier) => [
           `### ${tier.name}`,
+          t(`deliverables.tiers.${tier.key}.audience`),
           `${tier.price} · ${tier.duration}`,
           tier.summary,
           list(messageStrings(t, `deliverables.tiers.${tier.key}.items`)),
         ]);
 
   return doc([
-    ...intro(locale, config.pathname, heroTitle(t)),
-    config.anchorLine
-      ? t("hero.anchor", prices)
-      : getOfferCopy(offersT, locale, config.anchor).price,
+    ...intro(locale, config.pathname, t("hero.title")),
     t("hero.subtitle", prices),
-    `## ${sectionTitle(t, "problem")}`,
-    t("problem.body"),
-    list(messageStrings(t, "problem.symptoms")),
-    `## ${sectionTitle(t, "deliverables")}`,
-    hasChild(t, "deliverables", "subtitle") && t("deliverables.subtitle"),
+    `${anchor.price} · ${t("hero.duration")}`,
+    t("hero.note", prices),
+    list([
+      link(page("actions.book"), actionUrl(locale, "book")),
+      link(page("actions.quote"), actionUrl(locale, "quote")),
+    ]),
+    `## ${t("problem.title")}`,
+    t("problem.intro"),
+    list(problems),
+    `## ${t("deliverables.title")}`,
+    t("deliverables.intro"),
     ...deliverables,
     offersT("vatNote"),
-    ...(config.process ? processBlocks(locale, t) : []),
-    ...blockMarkdown(locale, config, t),
+    `## ${t("process.title")}`,
+    t("process.intro"),
+    steps
+      .map(
+        (step, i) =>
+          `${i + 1}. ${labelled(locale, `**${step.title}**`, step.body)}`,
+      )
+      .join("\n"),
+    ...blockMarkdown(locale, config, t, page),
     ...(config.stack
-      ? toolBlocks(
-          locale,
-          getStaticTranslator(locale, "offerPage"),
-          "stack",
-          DEPLOYED_TECH,
-          `${getStaticTranslator(locale, "offerPage")("stack.title")} ${t("stack.titleEmphasis")}`,
-        )
+      ? toolBlocks(locale, page, "stack", DEPLOYED_TECH, page("stack.title"))
       : []),
-    ...(config.proofLink === null
-      ? []
-      : [
-          `## ${sectionTitle(t, "proof")}`,
-          t("proof.body"),
-          link(t("proof.link"), proofUrl),
-          caseList(locale, cases),
-        ]),
-    ...(config.pricing
+    ...(cases.length > 0
       ? [
-          `## ${sectionTitle(t, "pricing")}`,
-          t("pricing.body", prices),
-          list(
-            tiers.map((tier) =>
-              labelled(
-                locale,
-                link(tier.name, absoluteUrl(locale, tier.href)),
-                `${tier.price} · ${tier.duration}`,
-              ),
-            ),
-          ),
+          `## ${t("proof.title")}`,
+          t("proof.intro"),
+          link(t("proof.link"), absoluteUrl(locale, "/realisations")),
+          caseList(locale, cases),
         ]
       : []),
-    link(t("pricing.link"), absoluteUrl(locale, "/tarifs")),
-    config.sectors.length > 0 &&
-      labelled(
-        locale,
-        getStaticTranslator(locale, "offerPage")("sectors"),
-        config.sectors
-          .map((key) =>
-            link(
-              getStaticTranslator(locale, "nav")(key),
-              absoluteUrl(locale, sectorPages[key].pathname),
-            ),
-          )
-          .join(" · "),
+    `## ${t("pricing.title")}`,
+    t("pricing.body", prices),
+    list(
+      tiers.map((tier) =>
+        labelled(
+          locale,
+          link(tier.name, absoluteUrl(locale, tier.href)),
+          `${tier.price} · ${tier.duration}`,
+        ),
       ),
+    ),
+    link(t("pricing.link"), absoluteUrl(locale, "/tarifs")),
+    post &&
+      `${page("relatedPost")} ${link(
+        post.title,
+        absoluteUrl(locale, "/blog/[slug]", { slug: post.slug }),
+      )}`,
+    config.sectors.length > 0 &&
+      `${page("sectors")} ${config.sectors
+        .map((key) =>
+          link(nav(key), absoluteUrl(locale, sectorPages[key].pathname)),
+        )
+        .join(", ")}`,
     ...faqBlocks(
-      sectionTitle(t, "faq"),
+      t("faq.title"),
       messageList(t, "faq.items", ["question", "answer"], prices),
     ),
     ...ctaBlocks(locale, t, "cta", config.cta),
@@ -529,6 +616,10 @@ async function offerPageMarkdown(
 async function pricing(locale: Locale): Promise<string> {
   const t = getStaticTranslator(locale, "pricing");
   const offersT = getStaticTranslator(locale, "offers");
+  const page = getStaticTranslator(locale, "offerPage");
+  const guide = (await getPosts(locale)).find(
+    (post) => post.slug === PRICING_POST_SLUG,
+  );
   const header = [
     t("table.offer"),
     t("table.includes"),
@@ -537,10 +628,12 @@ async function pricing(locale: Locale): Promise<string> {
   ];
 
   return doc([
-    ...intro(locale, "/tarifs", heroTitle(t)),
+    ...intro(locale, "/tarifs", t("hero.title")),
     t("hero.subtitle"),
-    `## ${t("guarantees.title")}`,
-    list(messageStrings(t, "guarantees.items")),
+    list([
+      link(page("actions.quote"), actionUrl(locale, "quote")),
+      link(page("actions.book"), actionUrl(locale, "book")),
+    ]),
     offersT("vatNote"),
     ...PRICE_GROUPS.flatMap((group) => [
       `## ${t(`table.groups.${group.key}`)}`,
@@ -554,9 +647,30 @@ async function pricing(locale: Locale): Promise<string> {
         }),
       ].join("\n"),
     ]),
-    `${t("market.line", getPriceValues(locale))} ${link(t("market.sourceLabel"), t("market.card.rows.tjm.url"))}`,
+    `${t("market.line", getPriceValues(locale))} ${link(t("market.sourceLabel"), t("market.url"))}`,
+    guide &&
+      `${t("guide")} ${link(
+        guide.title,
+        absoluteUrl(locale, "/blog/[slug]", { slug: guide.slug }),
+      )}`,
+    `## ${t("included.title")}`,
+    t("included.intro"),
+    list(
+      messageKeys(t.raw("included.items")).map(
+        (key) =>
+          `**${t(`included.items.${key}.title`)}**. ${t(`included.items.${key}.body`)}`,
+      ),
+    ),
+    `## ${t("quote.title")}`,
+    t("quote.intro"),
+    messageList(t, "quote.steps", ["title", "body"])
+      .map(
+        (step, i) =>
+          `${i + 1}. ${labelled(locale, `**${step.title}**`, step.body)}`,
+      )
+      .join("\n"),
     ...faqBlocks(
-      sectionTitle(t, "faq"),
+      t("faq.title"),
       messageList(t, "faq.items", ["question", "answer"]),
     ),
     ...ctaBlocks(locale, t, "cta", ["quote", "book"]),
@@ -594,13 +708,7 @@ async function caseStudy(
       labelled(locale, t("labels.stack"), meta.stack.join(", ")),
       labelled(locale, t("labels.outcome"), t("labels.noOutcome")),
       ...(meta.status
-        ? [
-            labelled(
-              locale,
-              t("labels.status"),
-              t(`status.${meta.status}`),
-            ),
-          ]
+        ? [labelled(locale, t("labels.status"), t(`status.${meta.status}`))]
         : []),
     ]),
     meta.live !== false && link(t("labels.visit"), meta.url),
@@ -865,7 +973,11 @@ async function contact(locale: Locale): Promise<string> {
     t("booking.next"),
     link(t("booking.title"), actionUrl(locale, "book")),
     `## ${t("direct.title")}`,
-    list([link(site.email, `mailto:${site.email}`), link(site.phone, `tel:${site.phoneE164}`), t("direct.location")]),
+    list([
+      link(site.email, `mailto:${site.email}`),
+      link(site.phone, `tel:${site.phoneE164}`),
+      t("direct.location"),
+    ]),
     `## ${site.name}`,
     list(socialLinks.map((social) => link(social.name, social.href))),
     `## ${t("form.title")}`,

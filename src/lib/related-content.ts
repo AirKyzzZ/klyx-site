@@ -1,5 +1,7 @@
 import type { OfferPageKey } from "./offer-pages";
 
+export const PRICING_POST_SLUG = "cout-agent-ia-pme";
+
 export const OFFER_POST_SLUGS: Partial<Record<OfferPageKey, string>> = {
   agents: "cout-agent-ia-pme",
   fde: "forward-deployed-engineer-definition",

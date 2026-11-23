@@ -489,7 +489,7 @@
       },
       "siteIa": {
         "name": "Site IA",
-        "summary": "5 à 8 pages, référencées sur Google et lisibles par les moteurs IA (GEO).",
+        "summary": "5 à 8 pages, bien référencées sur Google et lisibles par les moteurs IA.",
         "duration": "3 à 4 semaines"
       },
       "siteCustom": {
@@ -498,43 +498,43 @@
         "duration": "Selon le périmètre"
       },
       "auditIa": {
-        "name": "Audit IA + roadmap",
-        "summary": "Vos process passés en revue, les automatisations classées, une roadmap sur 90 jours.",
+        "name": "Audit IA",
+        "summary": "Vos process passés en revue, les automatisations classées, un plan sur 90 jours.",
         "duration": "1 à 2 semaines"
       },
       "sprintIa": {
         "name": "Sprint IA",
-        "summary": "Un workflow en production, au périmètre fixé avant de commencer.",
+        "summary": "Un agent IA en service, au périmètre fixé avant de commencer.",
         "duration": "2 semaines"
       },
       "retainer": {
         "name": "Suivi mensuel",
-        "summary": "Le workflow surveillé et amélioré chaque mois.",
+        "summary": "L'agent surveillé et amélioré chaque mois.",
         "duration": "Mensuel",
         "price": "Sur devis"
       },
       "fde": {
-        "name": "Forward Deployed Engineer",
+        "name": "Développeur dédié",
         "summary": "2 à 3 jours par semaine dans votre équipe, à temps partagé.",
         "duration": "4 semaines minimum"
       },
       "automation": {
         "name": "Automatisation IA",
-        "summary": "Un workflow linéaire branché sur vos outils : déclencheur, étape IA, action.",
+        "summary": "Une automatisation simple branchée sur vos outils : déclencheur, étape IA, action.",
         "duration": "4 à 5 jours ouvrés"
       },
       "automationCare": {
         "name": "Suivi automatisation",
-        "summary": "Le workflow surveillé, avec 1 heure de modifications par mois.",
+        "summary": "L'automatisation surveillée, avec 1 heure de modifications par mois.",
         "duration": "Mensuel, 3 mois minimum"
       },
       "geo": {
-        "name": "Référencement IA (GEO)",
+        "name": "Référencement sur ChatGPT",
         "summary": "30 questions testées sur 4 moteurs IA, 5 pages corrigées, re-test à J+30.",
         "duration": "2 semaines"
       },
       "geoCare": {
-        "name": "Suivi GEO",
+        "name": "Suivi du référencement IA",
         "summary": "Les 30 questions relancées chaque mois, 2 contenus et un rapport.",
         "duration": "Mensuel, 3 mois minimum"
       }
@@ -542,61 +542,72 @@
   },
   "sites": {
     "hero": {
-      "eyebrow": "Sites et landing pages",
-      "title": "Création de site web à Bordeaux,",
-      "titleEmphasis": "au prix affiché.",
-      "subtitle": "Landing page à partir de {landingPrice}, site de 5 à 8 pages à partir de {siteIaPrice}. Des sites rapides, référencés sur Google et lisibles par ChatGPT ou Perplexity.",
-      "ctaPrimary": "Réserver un appel",
-      "ctaSecondary": "Demander un devis gratuit",
-      "serif": "affiché"
+      "title": "Création de site web à Bordeaux, au prix affiché.",
+      "subtitle": "Un site rapide et clair, que vous modifiez vous-même, bien référencé sur Google et lisible par ChatGPT. Pour les PME, les indépendants et les associations.",
+      "duration": "En ligne en 1 à 4 semaines",
+      "note": "Site de 5 à 8 pages à partir de {siteIaPrice}. Devis gratuit, prix fixé par écrit avant de commencer."
     },
     "problem": {
-      "title": "Pourquoi refaire",
-      "body": "Un site lent ou mal structuré perd ses visiteurs avant qu'ils aient lu votre offre. Et une partie de vos clients pose maintenant ses questions à ChatGPT ou Perplexity, qui citent surtout les sites qu'ils arrivent à lire. On construit des sites pensés pour les deux.",
-      "titleEmphasis": "votre site.",
-      "symptoms": {
-        "slow": "Un site qui met plus de 3 secondes à s'afficher sur mobile",
-        "noPrice": "Des pages qui ne disent ni le prix ni le délai",
-        "invisible": "Absent des réponses de ChatGPT et Perplexity"
+      "title": "Pourquoi refaire votre site.",
+      "intro": "Un site lent ou flou perd ses visiteurs avant qu'ils lisent votre offre. Et une partie de vos clients pose maintenant ses questions à ChatGPT.",
+      "items": {
+        "slow": {
+          "title": "Le site met du temps à s'afficher",
+          "before": "Plus de 3 secondes sur mobile : le visiteur repart avant d'avoir vu votre offre.",
+          "after": "Des pages qui s'affichent tout de suite, avec une vitesse mesurée avant la mise en ligne."
+        },
+        "noPrice": {
+          "title": "Le visiteur ne sait pas quoi faire",
+          "before": "Des pages qui ne disent ni le prix, ni le délai, ni comment vous contacter.",
+          "after": "Chaque page dit pour qui, quoi et combien, avec un contact clair."
+        },
+        "invisible": {
+          "title": "ChatGPT ne parle pas de vous",
+          "before": "Absent des réponses de ChatGPT et Perplexity, qui citent surtout les sites qu'ils arrivent à lire.",
+          "after": "Des pages structurées pour être comprises et citées par les moteurs IA."
+        }
       }
     },
     "deliverables": {
-      "title": "Ce que",
-      "subtitle": "Trois formules. Le prix de départ est affiché, le périmètre exact est écrit dans le devis.",
+      "title": "Trois formules, selon votre besoin.",
+      "intro": "Le prix de départ est affiché. Le périmètre exact est écrit dans le devis.",
       "tiers": {
         "landing": {
+          "audience": "Pour présenter une offre ou un lancement.",
           "items": {
             "page": "Une page, avec une structure et des textes travaillés avec vous",
             "contact": "Un formulaire de contact ou une prise de rendez-vous",
-            "seo": "Le SEO de base : titres, descriptions, données structurées",
+            "seo": "Le référencement de base : titres, descriptions, données structurées",
             "launch": "La mise en ligne sur votre nom de domaine"
           }
         },
         "siteIa": {
+          "audience": "Pour présenter toute votre activité.",
           "items": {
             "pages": "5 à 8 pages, design sur mesure",
             "stack": "Next.js ou WordPress, selon qui modifie le site au quotidien",
-            "geo": "SEO et GEO : données structurées, llms.txt, pages écrites pour être citées",
-            "speed": "Les Core Web Vitals vérifiés avant la mise en ligne",
-            "handover": "Une passation pour que vous sachiez modifier vos contenus"
+            "geo": "Des pages écrites pour Google et pour les moteurs IA",
+            "speed": "La vitesse vérifiée sur mobile avant la mise en ligne",
+            "handover": "Une prise en main pour modifier vos contenus seul"
           }
         },
         "siteCustom": {
+          "audience": "Pour un site avec des fonctions sur mesure.",
           "items": {
-            "scope": "Périmètre défini avec vous pendant le brief",
-            "integrations": "Intégrations : CRM, paiement, prise de rendez-vous, API",
-            "assistant": "Un assistant IA qui répond à partir de vos contenus, en option"
+            "scope": "Le périmètre défini avec vous dès le premier appel",
+            "integrations": "Branché sur vos outils : CRM, paiement, prise de rendez-vous",
+            "assistant": "En option, un assistant IA qui répond à partir de vos contenus"
           }
         }
-      },
-      "titleEmphasis": "vous recevez."
+      }
     },
     "process": {
-      "title": "Du brief à la mise en ligne,",
+      "title": "Du premier appel à la mise en ligne.",
+      "intro": "Quatre étapes. Vous validez chacune avant qu'on passe à la suivante.",
       "steps": {
         "brief": {
-          "title": "Brief",
-          "body": "Un appel pour cadrer vos objectifs, vos pages et vos contenus."
+          "title": "Un appel pour cadrer",
+          "body": "Vos objectifs, vos pages, vos contenus. On vous dit ce qui est utile, et ce qui ne l'est pas."
         },
         "design": {
           "title": "Structure et design",
@@ -604,238 +615,264 @@
         },
         "build": {
           "title": "Développement",
-          "body": "On construit le site, et vous suivez l'avancement sur une adresse de test."
+          "body": "On construit le site. Vous suivez l'avancement sur une adresse de test."
         },
         "launch": {
           "title": "Mise en ligne",
-          "body": "On branche le domaine, on vérifie les performances et on vous montre comment modifier vos contenus."
+          "body": "On branche votre domaine, on vérifie la vitesse et on vous montre comment modifier vos contenus."
         }
-      },
-      "titleEmphasis": "en quatre étapes."
+      }
     },
-    "pricing": {
-      "title": "Combien coûte",
-      "body": "Une landing page démarre à {landingPrice}, un site IA à {siteIaPrice} et un site sur mesure à {siteCustomPrice}. Le devis est gratuit, et le prix ne bouge pas une fois le périmètre signé.",
-      "link": "Voir tous les tarifs",
-      "titleEmphasis": "un site ?"
+    "block": {
+      "title": "Mesuré, pas promis.",
+      "intro": "Le score Lighthouse de klyx.fr, mesuré sur mobile avec l'outil de Google. On vise le même niveau pour votre site, et on vous montre la mesure avant la mise en ligne.",
+      "scores": {
+        "performance": "Performance",
+        "accessibility": "Accessibilité",
+        "bestPractices": "Bonnes pratiques",
+        "seo": "Référencement"
+      },
+      "measured": "Mesuré sur {host} le {date}, version mobile.",
+      "verify": "Refaire le test sur PageSpeed Insights"
     },
     "proof": {
-      "title": "Sites",
-      "body": "PKBA et VertiFlow : le site d'un club de parkour et celui d'une marque de vêtements de parkour, tous deux en ligne.",
-      "link": "Voir les réalisations",
-      "titleEmphasis": "livrés."
+      "title": "Des sites en ligne, à ouvrir vous-même.",
+      "intro": "Le site d'un club de parkour et celui d'une marque de vêtements, tous deux sur le Bassin d'Arcachon.",
+      "link": "Voir toutes les réalisations"
+    },
+    "pricing": {
+      "title": "Combien coûte un site ?",
+      "body": "Une landing page démarre à {landingPrice}, un site de 5 à 8 pages à {siteIaPrice} et un site sur mesure à {siteCustomPrice}. Le devis est gratuit, et le prix ne bouge plus une fois le périmètre signé.",
+      "link": "Voir tous les tarifs"
     },
     "faq": {
-      "title": "Questions",
+      "title": "Questions fréquentes.",
       "items": {
         "delay": {
-          "question": "Combien de temps faut-il pour créer un site ?",
-          "answer": "Comptez 1 à 2 semaines pour une landing page et 3 à 4 semaines pour un site IA de 5 à 8 pages. Le calendrier est écrit dans le devis."
+          "question": "Combien de temps faut-il pour créer un site ?",
+          "answer": "Comptez 1 à 2 semaines pour une landing page et 3 à 4 semaines pour un site de 5 à 8 pages. Le calendrier est écrit dans le devis."
         },
         "stack": {
-          "question": "Next.js ou WordPress ?",
-          "answer": "WordPress si votre équipe veut modifier les pages seule, sans passer par nous. Next.js si vous voulez le site le plus rapide possible ou des fonctionnalités sur mesure. On tranche ensemble pendant le brief."
+          "question": "Next.js ou WordPress ?",
+          "answer": "WordPress si votre équipe veut modifier les pages seule, sans passer par nous. Next.js si vous voulez le site le plus rapide possible ou des fonctions sur mesure. On tranche ensemble pendant le premier appel."
         },
         "geo": {
-          "question": "Qu'est-ce que le GEO ?",
-          "answer": "Le GEO (Generative Engine Optimization) consiste à rendre un site lisible et citable par les moteurs IA comme ChatGPT, Perplexity ou Gemini : contenus structurés, données structurées, réponses claires aux questions que posent vos clients."
+          "question": "Qu'est-ce que le GEO ?",
+          "answer": "Le GEO (Generative Engine Optimization) consiste à rendre un site lisible et citable par les moteurs IA comme ChatGPT, Perplexity ou Gemini : contenus structurés, données structurées, réponses claires aux questions que posent vos clients."
         },
         "content": {
-          "question": "Qui écrit les textes ?",
-          "answer": "On vous envoie un brief de contenu, puis on structure et on retravaille vos textes avec vous. Vous validez tout avant la mise en ligne."
+          "question": "Qui écrit les textes ?",
+          "answer": "On vous envoie une liste de questions sur votre activité, puis on structure et on retravaille vos textes avec vous. Vous validez tout avant la mise en ligne."
         },
         "ownership": {
-          "question": "Le site m'appartient-il ?",
+          "question": "Le site m'appartient-il ?",
           "answer": "Oui. Le code, le nom de domaine et les comptes d'hébergement sont à votre nom."
         },
         "after": {
-          "question": "Et après la mise en ligne ?",
-          "answer": "Vous modifiez vos contenus seul. Pour une nouvelle page ou une fonctionnalité, on vous envoie un devis."
+          "question": "Et après la mise en ligne ?",
+          "answer": "Vous modifiez vos contenus seul. Pour une nouvelle page ou une nouvelle fonction, on vous envoie un devis."
         }
-      },
-      "titleEmphasis": "fréquentes."
+      }
     },
     "cta": {
-      "title": "Votre site,",
-      "body": "Décrivez votre projet, on vous envoie un devis gratuit avec un prix fixe.",
+      "title": "Votre site, livré au prix annoncé.",
+      "body": "Décrivez votre projet. On vous répond avec un devis gratuit et un prix fixe.",
       "ctaPrimary": "Demander un devis gratuit",
-      "ctaSecondary": "Réserver un appel",
-      "titleEmphasis": "livré au prix annoncé."
-    },
-    "block": {
-      "title": "Des sites en ligne,",
-      "titleEmphasis": "à ouvrir vous-même.",
-      "body": "Des sites livrés pour des clients, avec leur adresse. Ouvrez-les et vérifiez la vitesse vous-même."
+      "ctaSecondary": "Réserver un appel de 30 min"
     }
   },
   "agents": {
     "hero": {
-      "eyebrow": "Agents IA",
-      "title": "Un agent IA en production",
-      "titleEmphasis": "en deux semaines.",
-      "subtitle": "Audit à partir de {auditPrice}, Sprint IA à partir de {sprintPrice}. Un workflow branché sur vos outils, avec le code dans votre repo et un journal de chaque action de l'agent.",
-      "ctaPrimary": "Réserver un appel",
-      "ctaSecondary": "Demander un devis gratuit",
-      "serif": "production",
-      "anchor": "Audit {auditPrice} · Sprint {sprintPrice}"
+      "title": "Un agent IA pour votre entreprise, en place en deux semaines.",
+      "subtitle": "Pour les PME dont l'équipe passe des heures à trier, recopier et relancer. On branche un agent IA sur vos outils, il fait ces tâches à votre place, et le code reste chez vous.",
+      "duration": "En place en 2 semaines",
+      "note": "Vous ne savez pas quoi automatiser en premier ? L'audit IA démarre à {auditPrice}."
     },
     "problem": {
-      "title": "Pourquoi les projets IA",
-      "body": "Votre équipe utilise déjà ChatGPT, mais rien n'est branché sur vos outils. Le prototype a marché en réunion, puis personne n'a eu le temps de le fiabiliser. C'est la partie qu'on prend en charge : on choisit un processus qui rapporte, on le branche sur vos vraies données et il tourne sous surveillance.",
-      "titleEmphasis": "restent au stade de la démo.",
-      "symptoms": {
-        "demo": "Un prototype qui a marché en réunion, puis plus rien",
-        "copy": "ChatGPT ouvert dans un onglet, rien de branché sur vos outils",
-        "owner": "Personne pour le fiabiliser ni le surveiller"
+      "title": "Pourquoi les projets IA restent au stade de la démo.",
+      "intro": "Votre équipe utilise déjà ChatGPT, mais rien n'est branché sur vos outils. On prend en charge ce qui manque : brancher, tester, surveiller.",
+      "items": {
+        "demo": {
+          "title": "Le prototype ne sert plus",
+          "before": "Un essai qui a marché en réunion, puis personne n'a eu le temps de le fiabiliser.",
+          "after": "Un agent branché sur vos vraies données, testé, que votre équipe utilise tous les jours."
+        },
+        "copy": {
+          "title": "ChatGPT dans un onglet",
+          "before": "On colle les e-mails dans ChatGPT, puis on recopie la réponse dans le CRM.",
+          "after": "L'agent lit la demande, remplit le CRM et prévient la bonne personne."
+        },
+        "owner": {
+          "title": "Personne pour surveiller",
+          "before": "Quand ça casse, personne ne s'en rend compte, ni ne sait le réparer.",
+          "after": "Un journal de chaque action, une alerte en cas d'erreur et un guide écrit pour votre équipe."
+        }
       }
     },
     "deliverables": {
-      "title": "Trois étapes,",
-      "subtitle": "Vous pouvez vous arrêter après chaque étape.",
+      "title": "Trois étapes, chacune payée à part.",
+      "intro": "Vous pouvez vous arrêter après chaque étape.",
       "tiers": {
         "auditIa": {
+          "audience": "Pour savoir quoi automatiser en premier.",
           "items": {
             "interviews": "Des entretiens avec votre équipe",
-            "map": "Une cartographie de vos process",
+            "map": "La carte de vos process et des outils qu'ils traversent",
             "ranking": "Les 3 automatisations les plus rentables, classées par temps gagné et par risque",
             "gdpr": "Les points RGPD à traiter",
-            "roadmap": "Une roadmap sur 90 jours, présentée en restitution"
+            "roadmap": "Un plan sur 90 jours, présenté en restitution"
           }
         },
         "sprintIa": {
+          "audience": "Pour mettre un agent en service.",
           "items": {
-            "workflow": "Un workflow en production : agent, assistant ou automatisation",
+            "workflow": "Un agent ou un assistant branché sur vos outils",
             "human": "Une validation humaine quand l'agent touche à des données sensibles",
             "log": "Un journal de chaque action de l'agent",
-            "evals": "Un jeu de tests pour vérifier les réponses",
-            "runbook": "Un runbook et une prise en main pour votre équipe",
-            "repo": "Le code dans votre repo"
+            "evals": "Des tests pour vérifier ses réponses",
+            "runbook": "Un guide écrit et une prise en main pour votre équipe",
+            "repo": "Le code chez vous, à votre nom"
           }
         },
         "retainer": {
+          "audience": "Pour que l'agent continue de bien tourner.",
           "items": {
-            "monitoring": "La surveillance du workflow",
-            "updates": "Les mises à jour des modèles et des prompts",
+            "monitoring": "La surveillance de l'agent",
+            "updates": "Les mises à jour des modèles et des consignes",
             "evals": "Les tests relancés après chaque changement",
             "report": "Un point chaque mois sur ce qui tourne"
           }
         }
-      },
-      "titleEmphasis": "chacune payée à part."
+      }
+    },
+    "process": {
+      "title": "Comment ça se passe.",
+      "intro": "Du premier appel à l'agent en service, en quatre étapes.",
+      "steps": {
+        "call": {
+          "title": "Un appel de 30 minutes",
+          "body": "On repère ensemble le processus qui vous coûte le plus de temps."
+        },
+        "audit": {
+          "title": "Un audit, si besoin",
+          "body": "On analyse vos process et on classe ce qu'on peut automatiser, par gain et par risque."
+        },
+        "sprint": {
+          "title": "Deux semaines de construction",
+          "body": "L'agent est branché sur vos outils et testé sur vos vraies données, avec un point à la fin de chaque semaine."
+        },
+        "run": {
+          "title": "Suivi ou passation",
+          "body": "On surveille et on améliore l'agent, ou votre équipe reprend la main avec le guide écrit."
+        }
+      }
+    },
+    "block": {
+      "title": "Chaque action de l'agent, notée.",
+      "intro": "Avec le Sprint IA, vous recevez un journal : ce que l'agent a fait, quand, et les erreurs rattrapées. Ici, un exemple fictif.",
+      "log": {
+        "title": "Tri d'une demande entrante",
+        "items": {
+          "watch": "E-mail reçu : demande de devis",
+          "classify": "L'agent le lit : c'est un prospect",
+          "score": "Demande sérieuse, priorité haute",
+          "update": "Création de la fiche dans le CRM",
+          "retry": "CRM lent, nouvel essai",
+          "updated": "Fiche ajoutée au CRM",
+          "post": "Message à l'équipe sur Slack",
+          "done": "Demande traitée"
+        },
+        "steps": "{count} étapes",
+        "total": "{seconds} s au total"
+      }
     },
     "credit": {
       "title": "L'audit est déduit du Sprint",
-      "body": "Si vous enchaînez sur un Sprint IA, le devis tient compte de l'audit déjà payé, et les conditions sont écrites avant que vous signiez."
-    },
-    "process": {
-      "title": "Comment ça se passe,",
-      "steps": {
-        "call": {
-          "title": "Appel",
-          "body": "30 minutes pour repérer le processus qui vous coûte le plus de temps."
-        },
-        "audit": {
-          "title": "Audit",
-          "body": "On analyse vos process et on classe les automatisations possibles par gain et par risque."
-        },
-        "sprint": {
-          "title": "Sprint",
-          "body": "Deux semaines pour mettre un workflow en production, avec une revue à la fin de chaque semaine."
-        },
-        "run": {
-          "title": "Suivi",
-          "body": "On surveille le workflow et on l'améliore, ou votre équipe reprend la main avec le runbook."
-        }
-      },
-      "titleEmphasis": "en quatre étapes."
-    },
-    "pricing": {
-      "title": "Combien coûte",
-      "body": "Un audit IA démarre à {auditPrice}. Un Sprint IA, qui met un workflow en production en deux semaines, démarre à {sprintPrice}. Les projets plus larges, avec plusieurs intégrations ou une recherche dans vos documents, font l'objet d'un devis.",
-      "link": "Voir tous les tarifs",
-      "titleEmphasis": "un agent IA ?"
+      "body": "Si vous enchaînez sur un Sprint IA, le devis tient compte de l'audit déjà payé. Les conditions sont écrites avant que vous signiez."
     },
     "proof": {
-      "title": "Déjà",
-      "body": "Hoppy, l'assistant IA de Hop Hop Immo, et CiteMe, cofondé par Maxime, notre lead engineer.",
-      "link": "Voir les réalisations",
-      "titleEmphasis": "en production."
+      "title": "Déjà en service.",
+      "intro": "Hoppy, l'assistant IA de Hop Hop Immo, et CiteMe, un outil cofondé par Maxime.",
+      "link": "Voir toutes les réalisations"
+    },
+    "pricing": {
+      "title": "Combien coûte un agent IA ?",
+      "body": "Un audit IA démarre à {auditPrice}. Un Sprint IA, qui met un agent en service en deux semaines, démarre à {sprintPrice}. Les projets plus larges, avec plusieurs outils à brancher ou une recherche dans vos documents, font l'objet d'un devis.",
+      "link": "Voir tous les tarifs"
     },
     "faq": {
-      "title": "Questions",
+      "title": "Questions fréquentes.",
       "items": {
         "agentVsAutomation": {
-          "question": "Quelle différence entre un agent IA et une automatisation ?",
-          "answer": "Une automatisation suit des règles fixes : quand un e-mail arrive, elle crée une ligne dans le CRM. Un agent IA lit, décide et agit dans un cadre que vous fixez, par exemple trier une demande client et rédiger une réponse. Beaucoup de projets combinent les deux."
+          "question": "Quelle différence entre un agent IA et une automatisation ?",
+          "answer": "Une automatisation suit des règles fixes : quand un e-mail arrive, elle crée une ligne dans le CRM. Un agent IA lit, décide et agit dans un cadre que vous fixez, par exemple trier une demande client et rédiger une réponse. Beaucoup de projets combinent les deux."
         },
         "tools": {
-          "question": "n8n, Make ou du code sur mesure ?",
+          "question": "n8n, Make ou du code sur mesure ?",
           "answer": "Ça dépend du processus et de qui le maintiendra. n8n ou Make conviennent quand votre équipe veut modifier les étapes elle-même. Le code sur mesure s'impose quand il faut des contrôles fins, des tests ou beaucoup de volume."
         },
         "nothingFound": {
-          "question": "Et si l'audit ne trouve rien d'utile ?",
-          "answer": "Vous repartez avec la cartographie de vos process et la roadmap, même si vous n'allez pas plus loin."
+          "question": "Et si l'audit ne trouve rien d'utile ?",
+          "answer": "Vous repartez avec la carte de vos process et le plan sur 90 jours, même si vous n'allez pas plus loin."
         },
         "bpifrance": {
-          "question": "Cet audit est-il un Diag Data IA de Bpifrance ?",
+          "question": "Cet audit est-il un Diag Data IA de Bpifrance ?",
           "answer": "Non. Le Diag Data IA est réalisé par des experts référencés par Bpifrance, ce que Klyx n'est pas. Notre audit est un audit privé, au forfait, avec un prix affiché."
         },
         "data": {
-          "question": "Nos données sont-elles en sécurité ?",
-          "answer": "Vos comptes et vos outils restent à votre nom, et on cartographie les données avant d'écrire le code. Les données traitées par l'agent passent par l'API du fournisseur de modèle, qui par défaut ne les utilise pas pour entraîner ses modèles. Si vous avez besoin d'un hébergement dans l'UE ou d'un modèle local, on le prévoit dans le devis."
+          "question": "Nos données sont-elles en sécurité ?",
+          "answer": "Vos comptes et vos outils restent à votre nom, et on fait la liste des données avant d'écrire le code. Les données traitées par l'agent passent par le fournisseur du modèle d'IA, qui par défaut ne les utilise pas pour entraîner ses modèles. Si vous avez besoin d'un hébergement dans l'UE ou d'un modèle local, on le prévoit dans le devis."
         },
         "maintenance": {
-          "question": "Qui maintient l'agent après le sprint ?",
-          "answer": "Votre équipe, avec le runbook et la prise en main prévus dans le sprint, ou nous, avec le suivi mensuel."
+          "question": "Qui s'occupe de l'agent après le Sprint ?",
+          "answer": "Votre équipe, avec le guide écrit et la prise en main prévus dans le Sprint, ou nous, avec le suivi mensuel."
         }
-      },
-      "titleEmphasis": "fréquentes."
+      }
     },
     "cta": {
-      "title": "Commencez par le processus",
-      "body": "Réservez un appel de 30 minutes. On regarde ensemble s'il vaut la peine d'être automatisé.",
-      "ctaPrimary": "Réserver un appel",
-      "ctaSecondary": "Demander un devis gratuit",
-      "titleEmphasis": "qui vous coûte le plus d'heures."
-    },
-    "block": {
-      "title": "Chaque action de l'agent,",
-      "titleEmphasis": "dans le journal.",
-      "body": "La vue que vous recevez avec le Sprint : chaque étape, sa durée, et les erreurs rattrapées. Ici sur un exemple fictif."
-    },
-    "stack": {
-      "titleEmphasis": "sous vos agents."
+      "title": "Commencez par le processus qui vous coûte le plus d'heures.",
+      "body": "30 minutes en visio. On regarde ensemble s'il vaut la peine d'être automatisé.",
+      "ctaPrimary": "Réserver un appel de 30 min",
+      "ctaSecondary": "Demander un devis gratuit"
     }
   },
   "fde": {
     "hero": {
-      "eyebrow": "Forward Deployed Engineer",
-      "title": "Un Forward Deployed Engineer",
-      "titleEmphasis": "à temps partagé.",
-      "subtitle": "Notre lead engineer rejoint votre équipe 2 à 3 jours par semaine pour livrer vos fonctionnalités IA. {fdeDayPrice} par jour, 4 semaines minimum, deux clients au plus en même temps.",
-      "ctaPrimary": "Réserver un appel",
-      "ctaSecondary": "Demander un devis gratuit",
-      "serif": "partagé"
+      "title": "Un développeur IA dédié dans votre équipe.",
+      "subtitle": "Pour les startups et les agences qui doivent livrer une fonctionnalité IA sans recruter. Maxime, le fondateur de Klyx, rejoint votre équipe 2 à 3 jours par semaine et livre dans votre code.",
+      "duration": "4 semaines minimum",
+      "note": "2 à 3 jours par semaine. Pour démarrer : {fdeMinimum} (2 jours × 4 semaines)."
     },
-    "definition": {
-      "title": "Qu'est-ce qu'un",
-      "body": "Un Forward Deployed Engineer (FDE) est un développeur qui travaille directement avec l'équipe du client, sur son code, pour mettre un produit en production. Le rôle vient d'éditeurs comme Palantir, et les labos d'IA l'utilisent aujourd'hui pour déployer leurs modèles chez leurs clients. Chez Klyx, c'est le même travail à temps partagé : notre lead engineer s'intègre à votre équipe quelques jours par semaine, sans recrutement à temps plein.",
-      "titleEmphasis": "Forward Deployed Engineer ?",
-      "term": "forward deployed engineer · nom masculin · FDE"
-    },
-    "audience": {
-      "title": "Pour qui",
-      "body": "Une startup de 2 à 4 personnes qui doit livrer une fonctionnalité IA avant sa prochaine levée et n'a pas le temps de recruter. Ou une agence qui a signé un projet IA et n'a personne pour le coder."
+    "problem": {
+      "title": "La fonctionnalité doit sortir, le recrutement prendra des mois.",
+      "intro": "Un freelance classique livre une mission et repart. Il vous faut quelqu'un qui travaille avec votre équipe, lit votre code et met en ligne.",
+      "items": {
+        "hiring": {
+          "title": "Un poste ouvert depuis des mois",
+          "before": "Vous cherchez un développeur IA, et la fonctionnalité attend.",
+          "after": "Un développeur dans l'équipe dès la première semaine, sans recrutement."
+        },
+        "backlog": {
+          "title": "Des tâches IA qui glissent",
+          "before": "Les tâches IA passent d'une semaine à l'autre sans avancer.",
+          "after": "Une partie de vos tâches prise en charge, de la conception à la mise en ligne."
+        },
+        "deadline": {
+          "title": "Une démo promise",
+          "before": "Une démo promise aux investisseurs, et personne pour la construire.",
+          "after": "Un point écrit chaque semaine, avec ce qui est livré et ce qui suit."
+        }
+      }
     },
     "deliverables": {
-      "title": "Ce qu'on fait",
+      "title": "Ce qu'on fait dans votre équipe.",
+      "intro": "On travaille avec vos outils et vos habitudes, et vous savez chaque semaine ce qui est livré.",
       "items": {
-        "tools": "On travaille dans votre Slack, votre repo et vos points d'équipe",
-        "backlog": "On prend en charge une partie du backlog, de la conception à la mise en production",
-        "weekly": "Chaque semaine, un point écrit avec la liste des PR livrées",
+        "tools": "On travaille dans votre Slack, votre code et vos réunions d'équipe",
+        "backlog": "On prend en charge une partie de vos tâches, de la conception à la mise en ligne",
+        "weekly": "Chaque semaine, un point écrit avec ce qui est livré",
         "handover": "Une documentation de passation à la fin de la mission"
-      },
-      "titleEmphasis": "dans votre équipe."
+      }
     },
     "terms": {
       "title": "Les conditions",
@@ -846,170 +883,173 @@
         "capacity": "Deux clients au plus en même temps"
       }
     },
-    "limits": {
-      "title": "Ce qu'on ne propose pas",
-      "body": "Pas d'astreinte 24 h/24, pas de certification SOC 2. Si votre projet en a besoin, on vous le dit dès le premier appel.",
-      "items": {
-        "capacity": "Deux clients au plus en même temps",
-        "oncall": "Pas d'astreinte 24 h/24",
-        "soc2": "Pas de certification SOC 2"
-      }
-    },
     "process": {
-      "title": "Un ingénieur dans votre équipe,",
+      "title": "Un développeur dans votre équipe, semaine après semaine.",
+      "intro": "De l'appel à la première livraison, en quatre étapes.",
       "steps": {
         "call": {
-          "title": "Appel",
+          "title": "Un appel",
           "body": "On parle de votre produit, de votre équipe et de ce qui doit sortir."
         },
         "scope": {
-          "title": "Périmètre",
-          "body": "On vous envoie par écrit les objectifs des 4 premières semaines et le nombre de jours par semaine."
+          "title": "Le périmètre, par écrit",
+          "body": "Les objectifs des 4 premières semaines et le nombre de jours par semaine, envoyés avant de commencer."
         },
         "onboarding": {
-          "title": "Arrivée",
-          "body": "Accès au repo, à Slack et à vos outils. On vise une première PR livrée dès la première semaine."
+          "title": "L'arrivée",
+          "body": "Accès à votre code, à Slack et à vos outils. On vise une première livraison dès la première semaine."
         },
         "weekly": {
           "title": "Chaque semaine",
-          "body": "Un point écrit avec les PR livrées et la suite. On ajuste le rythme si besoin."
+          "body": "Un point écrit avec ce qui est livré et la suite. On ajuste le rythme si besoin."
         }
-      },
-      "titleEmphasis": "semaine après semaine."
+      }
     },
-    "faq": {
-      "title": "Questions",
+    "definition": {
+      "title": "D'où vient ce rôle.",
+      "body": "En anglais, on parle de Forward Deployed Engineer : un développeur qui travaille directement avec l'équipe du client, sur son code, jusqu'à la mise en ligne. Chez Klyx, c'est le même travail à temps partagé, quelques jours par semaine, sans recrutement.",
+      "link": "Lire la définition complète"
+    },
+    "audience": {
+      "title": "Pour qui",
+      "body": "Une startup de 2 à 4 personnes qui doit livrer une fonctionnalité IA avant sa prochaine levée. Ou une agence qui a signé un projet IA et n'a personne pour le coder."
+    },
+    "limits": {
+      "title": "Ce qu'on ne propose pas",
+      "body": "Si votre projet en a besoin, on vous le dit dès le premier appel.",
       "items": {
-        "vsFreelance": {
-          "question": "Quelle différence avec un freelance classique ?",
-          "answer": "Un freelance livre souvent une mission définie à l'avance. En FDE, notre lead engineer travaille dans votre équipe sur vos priorités du moment, participe à vos points et livre chaque semaine."
-        },
-        "minimum": {
-          "question": "Pourquoi 4 semaines minimum ?",
-          "answer": "Il faut une à deux semaines pour bien connaître votre code et votre équipe. En dessous de quatre semaines, vous payez surtout cette mise en route."
-        },
-        "days": {
-          "question": "Peut-on passer à plus de 3 jours par semaine ?",
-          "answer": "Non. Trois jours par semaine, c'est notre maximum par client, pour garder le même niveau de travail sur chaque mission."
-        },
-        "remote": {
-          "question": "Travaillez-vous sur place ?",
-          "answer": "À distance par défaut. Si votre équipe est à Bordeaux, on peut venir dans vos locaux."
-        },
-        "vsSprint": {
-          "question": "FDE ou Sprint IA ?",
-          "answer": "Le Sprint IA livre un workflow précis au forfait, en deux semaines. Le FDE convient quand votre backlog bouge et que vous avez besoin de quelqu'un dans l'équipe pendant plusieurs semaines."
-        }
-      },
-      "titleEmphasis": "fréquentes."
-    },
-    "cta": {
-      "title": "Une fonctionnalité IA",
-      "body": "Réservez un appel. On vous dit vite si on peut prendre la mission, et sur quel rythme.",
-      "ctaPrimary": "Réserver un appel",
-      "ctaSecondary": "Demander un devis gratuit",
-      "titleEmphasis": "à livrer ce trimestre ?"
-    },
-    "problem": {
-      "title": "Votre fonctionnalité IA doit sortir,",
-      "titleEmphasis": "le recrutement prendra des mois.",
-      "body": "Recruter un développeur IA prend du temps, et la fonctionnalité doit sortir avant. Un freelance classique livre un ticket et repart. Il vous faut quelqu'un qui travaille avec votre équipe, lit votre code et met en production.",
-      "symptoms": {
-        "hiring": "Un poste ouvert depuis des mois",
-        "backlog": "Des tickets IA qui glissent de sprint en sprint",
-        "deadline": "Une démo promise aux investisseurs"
+        "capacity": "Deux clients au plus en même temps",
+        "oncall": "Pas d'astreinte 24 h/24",
+        "soc2": "Pas de certification SOC 2"
       }
     },
     "pricing": {
-      "title": "Combien coûte",
-      "titleEmphasis": "un Forward Deployed Engineer ?",
-      "body": "{fdeDayPrice} par jour, 2 à 3 jours par semaine, 4 semaines minimum : à partir de {fdeMinimum} pour démarrer (2 jours × 4 semaines).",
+      "title": "Combien coûte un développeur dédié ?",
+      "body": "{fdeDayPrice} par jour, 2 à 3 jours par semaine, 4 semaines minimum : à partir de {fdeMinimum} pour démarrer (2 jours × 4 semaines).",
       "link": "Voir tous les tarifs"
+    },
+    "faq": {
+      "title": "Questions fréquentes.",
+      "items": {
+        "vsFreelance": {
+          "question": "Quelle différence avec un freelance classique ?",
+          "answer": "Un freelance livre souvent une mission définie à l'avance. Un développeur dédié travaille dans votre équipe sur vos priorités du moment, participe à vos réunions et livre chaque semaine."
+        },
+        "minimum": {
+          "question": "Pourquoi 4 semaines minimum ?",
+          "answer": "Il faut une à deux semaines pour bien connaître votre code et votre équipe. En dessous de quatre semaines, vous payez surtout cette mise en route."
+        },
+        "days": {
+          "question": "Peut-on passer à plus de 3 jours par semaine ?",
+          "answer": "Non. Trois jours par semaine, c'est notre maximum par client, pour garder le même niveau de travail sur chaque mission."
+        },
+        "remote": {
+          "question": "Travaillez-vous sur place ?",
+          "answer": "À distance par défaut. Si votre équipe est à Bordeaux, on peut venir dans vos locaux."
+        },
+        "vsSprint": {
+          "question": "Développeur dédié ou Sprint IA ?",
+          "answer": "Le Sprint IA livre un agent précis au forfait, en deux semaines. Le développeur dédié convient quand vos priorités bougent et que vous avez besoin de quelqu'un dans l'équipe pendant plusieurs semaines."
+        }
+      }
+    },
+    "cta": {
+      "title": "Une fonctionnalité IA à livrer ce trimestre ?",
+      "body": "30 minutes en visio. On vous dit vite si on peut prendre la mission, et à quel rythme.",
+      "ctaPrimary": "Réserver un appel de 30 min",
+      "ctaSecondary": "Demander un devis gratuit"
     }
   },
   "audit": {
     "hero": {
-      "eyebrow": "Audit IA",
-      "title": "Un audit IA de votre PME,",
-      "titleEmphasis": "avec une roadmap sur 90 jours.",
-      "serif": "roadmap",
-      "subtitle": "À partir de {auditPrice}, en 1 à 2 semaines. On interroge votre équipe, on cartographie vos process et on classe les automatisations possibles par heures gagnées et par risque. Vous gardez la roadmap, même si vous n'allez pas plus loin.",
-      "ctaPrimary": "Réserver un appel",
-      "ctaSecondary": "Demander un devis gratuit"
+      "title": "Un audit IA de votre PME, avec un plan sur 90 jours.",
+      "subtitle": "Pour les PME de 10 à 50 personnes qui veulent savoir quoi automatiser en premier. On interroge votre équipe, on cartographie vos process et on classe les automatisations possibles par heures gagnées et par risque.",
+      "duration": "1 à 2 semaines",
+      "note": "Vous gardez le plan, même si vous n'allez pas plus loin."
     },
     "problem": {
-      "title": "On vous parle d'IA partout,",
-      "titleEmphasis": "personne ne vous dit par où commencer.",
-      "body": "Vous savez que votre équipe perd des heures sur les devis, les factures ou les relances. Entre les outils, les prestataires et les promesses, il reste difficile de savoir quel processus automatiser d'abord, pour quel budget et avec quel risque. L'audit répond à ces questions avant que vous engagiez un développement.",
-      "symptoms": {
-        "quotes": "Des devis ressaisis à la main dans deux logiciels",
-        "trial": "Un essai ChatGPT resté dans un onglet",
-        "quotesCompared": "Trois devis d'agences impossibles à comparer"
+      "title": "On vous parle d'IA partout, personne ne vous dit par où commencer.",
+      "intro": "L'audit répond à trois questions avant tout développement : quel processus automatiser d'abord, pour quel budget, avec quel risque.",
+      "items": {
+        "quotes": {
+          "title": "Des saisies en double",
+          "before": "Des devis ressaisis à la main dans deux logiciels.",
+          "after": "Le processus repéré, son temps chiffré en heures par semaine, et une solution notée."
+        },
+        "trial": {
+          "title": "Un essai resté sans suite",
+          "before": "Un essai ChatGPT resté dans un onglet, sans lien avec vos outils.",
+          "after": "La liste de ce que l'IA peut faire chez vous, et de ce qu'elle ne fera pas."
+        },
+        "quotesCompared": {
+          "title": "Des devis impossibles à comparer",
+          "before": "Trois propositions d'agences, trois périmètres différents.",
+          "after": "Un plan écrit, que vous pouvez confier à nous ou à un autre prestataire."
+        }
       }
     },
     "deliverables": {
-      "title": "Ce que vous recevez,",
-      "titleEmphasis": "et ce qui peut suivre.",
-      "subtitle": "L'audit se vend seul. Si un projet en sort, vous choisissez la suite : une automatisation simple ou un Sprint IA.",
+      "title": "Ce que vous recevez, et ce qui peut suivre.",
+      "intro": "L'audit se vend seul. Si un projet en sort, vous choisissez la suite : une automatisation simple ou un Sprint IA.",
       "tiers": {
         "auditIa": {
+          "audience": "Pour savoir quoi automatiser en premier.",
           "items": {
             "interviews": "Des entretiens avec les personnes qui font le travail",
             "map": "La carte de vos process et des outils qu'ils traversent",
-            "score": "Chaque automatisation possible notée : heures gagnées par semaine, coût, risque",
+            "score": "Chaque automatisation possible notée : heures gagnées par semaine, coût, risque",
             "gdpr": "Les points RGPD et sécurité à régler avant de coder",
-            "roadmap": "Une roadmap sur 90 jours, présentée en restitution"
+            "roadmap": "Un plan sur 90 jours, présenté en restitution"
           }
         },
         "automation": {
+          "audience": "Pour un premier processus simple.",
           "items": {
-            "workflow": "Un workflow linéaire : un déclencheur, une étape IA, une action",
+            "workflow": "Une automatisation simple : un déclencheur, une étape IA, une action",
             "speed": "En ligne en 4 à 5 jours ouvrés",
-            "fit": "Pour le premier processus de la roadmap, quand il est simple"
+            "fit": "Pour le premier processus du plan, quand il est simple"
           }
         },
         "sprintIa": {
+          "audience": "Pour un agent qui prend des décisions.",
           "items": {
-            "agent": "Un agent ou un workflow à plusieurs étapes, qui prend des décisions",
+            "agent": "Un agent qui enchaîne plusieurs étapes et prend des décisions",
             "log": "Une validation humaine et un journal de chaque action",
-            "repo": "Le code dans votre repo, en 2 semaines"
+            "repo": "Le code chez vous, en 2 semaines"
           }
         }
       }
     },
     "process": {
-      "title": "Comment ça se passe,",
-      "titleEmphasis": "en quatre étapes.",
+      "title": "Comment ça se passe.",
+      "intro": "Une à deux semaines entre le premier entretien et la restitution.",
       "steps": {
         "call": {
-          "title": "Appel",
-          "body": "30 minutes pour vérifier qu'un audit vous sera utile. Si ce n'est pas le cas, on vous le dit."
+          "title": "Un appel de 30 minutes",
+          "body": "On vérifie qu'un audit vous sera utile. Si ce n'est pas le cas, on vous le dit."
         },
         "interviews": {
-          "title": "Entretiens",
+          "title": "Les entretiens",
           "body": "On rencontre les personnes qui font le travail, à Bordeaux ou en visio, et on regarde leurs outils."
         },
         "analysis": {
-          "title": "Analyse",
+          "title": "L'analyse",
           "body": "On cartographie vos process et on note chaque automatisation possible."
         },
         "restitution": {
-          "title": "Restitution",
-          "body": "On vous présente la roadmap. Vous décidez de la suite, avec nous ou avec quelqu'un d'autre."
+          "title": "La restitution",
+          "body": "On vous présente le plan. Vous décidez de la suite, avec nous ou avec quelqu'un d'autre."
         }
       }
     },
     "block": {
-      "title": "Le livrable,",
-      "titleEmphasis": "à quoi il ressemble.",
-      "body": "Un document écrit que vous pouvez transmettre à votre direction ou à un autre prestataire. Ci-dessous, un extrait de roadmap pour une PME fictive.",
+      "title": "Le document que vous recevez.",
+      "intro": "Un document écrit, que vous pouvez transmettre à votre direction ou à un autre prestataire. Ci-dessous, un extrait du plan pour une PME fictive.",
       "document": {
-        "file": "roadmap-audit-ia.md",
-        "sample": "Exemple",
-        "heading": "Roadmap · 90 jours",
-        "company": "PME fictive · 25 personnes · 9 process passés en revue",
+        "heading": "Plan sur 90 jours",
+        "company": "PME fictive, 25 personnes, 9 process passés en revue",
         "columns": {
-          "process": "Process",
+          "process": "Processus",
           "hours": "Temps perdu",
           "offer": "Réponse",
           "risk": "Risque",
@@ -1018,113 +1058,117 @@
         "rows": {
           "quotes": {
             "process": "Relance des devis",
-            "hours": "~6 h / sem.",
+            "hours": "~6 h / sem.",
             "offer": "Automatisation IA",
             "risk": "Faible",
             "when": "Mois 1"
           },
           "invoices": {
             "process": "Saisie des factures fournisseurs",
-            "hours": "~4 h / sem.",
+            "hours": "~4 h / sem.",
             "offer": "Automatisation IA",
             "risk": "Moyen",
             "when": "Mois 2"
           },
           "emails": {
             "process": "Tri des e-mails clients",
-            "hours": "~3 h / sem.",
+            "hours": "~3 h / sem.",
             "offer": "Sprint IA",
             "risk": "Moyen",
             "when": "Mois 3"
           }
         },
-        "note": "Les heures sont estimées pendant les entretiens, puis vérifiées après la mise en production."
+        "note": "Les heures sont estimées pendant les entretiens, puis vérifiées après la mise en service."
       },
       "credit": {
         "title": "L'audit est déduit de la suite",
-        "body": "Si vous enchaînez sur une Automatisation IA ou un Sprint IA, le devis tient compte de l'audit déjà payé, et les conditions sont écrites avant que vous signiez."
+        "body": "Si vous enchaînez sur une Automatisation IA ou un Sprint IA, le devis tient compte de l'audit déjà payé. Les conditions sont écrites avant que vous signiez."
       },
       "bpifrance": {
-        "label": "Contexte",
-        "title": "Et le Diagnostic Data IA de Bpifrance ?",
-        "body": "Bpifrance propose un Diagnostic Data IA, réalisé par des experts qu'elle référence, dans le cadre du plan Osez l'IA. Klyx n'est pas référencé : notre audit est privé, plus court, et son prix est affiché.",
+        "title": "Et le Diagnostic Data IA de Bpifrance ?",
+        "body": "Bpifrance propose un Diagnostic Data IA, réalisé par des experts qu'elle référence, dans le cadre du plan Osez l'IA. Klyx n'est pas référencé : notre audit est privé, plus court, et son prix est affiché.",
         "source": "Le dispositif sur entreprises.gouv.fr",
         "url": "https://www.entreprises.gouv.fr/osez-lia"
       }
     },
     "pricing": {
-      "title": "Combien coûte",
-      "titleEmphasis": "un audit IA ?",
+      "title": "Combien coûte un audit IA ?",
       "body": "L'audit IA démarre à {auditPrice}, pour 1 à 2 semaines. Si une automatisation en sort, une Automatisation IA démarre à {automationPrice} et un Sprint IA à {sprintPrice}.",
       "link": "Voir tous les tarifs"
     },
     "faq": {
-      "title": "Questions",
-      "titleEmphasis": "sur l'audit.",
+      "title": "Questions sur l'audit.",
       "items": {
         "pme": {
-          "question": "Un audit IA est-il utile pour une PME de 15 personnes ?",
+          "question": "Un audit IA est-il utile pour une PME de 15 personnes ?",
           "answer": "Oui, c'est souvent là qu'il rapporte le plus vite. Dans une PME de 10 à 50 personnes, quelques tâches répétitives (devis, factures, relances, tri des e-mails) occupent une ou deux personnes plusieurs heures par semaine. L'audit sert à les repérer, à chiffrer ce temps et à vérifier qu'une automatisation coûte moins cher que ce qu'elle fait gagner."
         },
         "duration": {
-          "question": "Combien de temps dure l'audit ?",
-          "answer": "Une à deux semaines entre le premier entretien et la restitution. Les entretiens prennent environ une heure par personne, et nous demandons à votre équipe de nous montrer ses outils tels qu'elle les utilise. Le reste se fait de notre côté : cartographie, notation des automatisations possibles et rédaction de la roadmap. Vous n'avez rien à préparer avant."
+          "question": "Combien de temps dure l'audit ?",
+          "answer": "Une à deux semaines entre le premier entretien et la restitution. Les entretiens prennent environ une heure par personne, et nous demandons à votre équipe de nous montrer ses outils tels qu'elle les utilise. Le reste se fait de notre côté : cartographie, notation des automatisations possibles et rédaction du plan. Vous n'avez rien à préparer avant."
         },
         "deliverable": {
-          "question": "Qu'est-ce que je reçois à la fin ?",
-          "answer": "Un document écrit, pas un diaporama : la carte de vos process, les automatisations possibles notées par heures gagnées, coût et risque, les points RGPD à régler et une roadmap sur 90 jours. On le parcourt ensemble pendant la restitution. Il vous appartient, et vous pouvez le confier à un autre prestataire si vous préférez."
+          "question": "Qu'est-ce que je reçois à la fin ?",
+          "answer": "Un document écrit, pas un diaporama : la carte de vos process, les automatisations possibles notées par heures gagnées, coût et risque, les points RGPD à régler et un plan sur 90 jours. On le parcourt ensemble pendant la restitution. Il vous appartient, et vous pouvez le confier à un autre prestataire si vous préférez."
         },
         "bpifrance": {
-          "question": "Votre audit peut-il être financé par Bpifrance ?",
+          "question": "Votre audit peut-il être financé par Bpifrance ?",
           "answer": "Pas celui-ci. Le Diagnostic Data IA de Bpifrance passe par des experts qu'elle référence, et Klyx n'en fait pas partie. Si ce financement compte pour vous, adressez-vous à un expert référencé. Si vous voulez une réponse en deux semaines, avec un prix fixe et sans dossier à monter, notre audit privé est fait pour ça."
         },
         "noTech": {
-          "question": "Faut-il une équipe technique pour suivre la roadmap ?",
-          "answer": "Non. La plupart des PME qu'on accompagne n'ont pas de développeur en interne. Nous écrivons la roadmap pour la personne qui décide, sans jargon, et chaque recommandation dit qui peut la réaliser : vous avec un outil comme Make ou n8n, nous, ou un autre prestataire. Quand un point demande une vraie compétence technique, on le précise."
+          "question": "Faut-il une équipe technique pour suivre le plan ?",
+          "answer": "Non. La plupart des PME qu'on accompagne n'ont pas de développeur en interne. Nous écrivons le plan pour la personne qui décide, sans jargon, et chaque recommandation dit qui peut la réaliser : vous avec un outil comme Make ou n8n, nous, ou un autre prestataire. Quand un point demande une vraie compétence technique, on le précise."
         },
         "next": {
-          "question": "Dois-je vous confier la suite ?",
-          "answer": "Non. L'audit est payé à part et la roadmap vous appartient. Une partie des recommandations se fait souvent avec les outils que vous avez déjà. Si vous nous confiez la suite, on tient compte de l'audit déjà payé dans le devis, et les conditions sont écrites avant que vous signiez."
+          "question": "Dois-je vous confier la suite ?",
+          "answer": "Non. L'audit est payé à part et le plan vous appartient. Une partie des recommandations se fait souvent avec les outils que vous avez déjà. Si vous nous confiez la suite, on tient compte de l'audit déjà payé dans le devis, et les conditions sont écrites avant que vous signiez."
         }
       }
     },
     "cta": {
-      "title": "Un appel de 30 minutes",
-      "titleEmphasis": "pour savoir si l'audit vaut le coup.",
+      "title": "Un appel de 30 minutes pour savoir si l'audit vaut le coup.",
       "body": "On regarde vos process ensemble. Si un audit ne vous apporte rien, on vous le dit.",
-      "ctaPrimary": "Réserver un appel",
+      "ctaPrimary": "Réserver un appel de 30 min",
       "ctaSecondary": "Demander un devis gratuit"
     }
   },
   "automation": {
     "hero": {
-      "eyebrow": "Automatisation IA",
-      "title": "Automatisation IA pour PME :",
-      "titleEmphasis": "un workflow en une semaine.",
-      "serif": "semaine",
-      "subtitle": "À partir de {automationPrice}. On branche un workflow sur vos outils : un déclencheur, une étape IA, une action. Factures, devis ou relances, en ligne en 4 à 5 jours ouvrés, avec une validation humaine là où une erreur coûte cher.",
-      "ctaPrimary": "Réserver un appel",
-      "ctaSecondary": "Demander un devis gratuit"
+      "title": "Automatisation IA pour PME, en ligne en une semaine.",
+      "subtitle": "Pour les équipes qui recopient des factures, des devis ou des relances à la main. On branche une automatisation sur vos outils, avec une validation humaine là où une erreur coûte cher.",
+      "duration": "En ligne en 4 à 5 jours ouvrés",
+      "note": "Suivi en option à {automationCarePrice} par mois. Devis gratuit, prix fixe."
     },
     "problem": {
-      "title": "Votre équipe recopie",
-      "titleEmphasis": "ce qu'une machine sait lire.",
-      "body": "Une facture arrive par e-mail. Quelqu'un ouvre le PDF, recopie le montant et la TVA dans le logiciel comptable, puis l'archive. Les devis et les relances suivent le même chemin. Chaque tâche prend deux minutes, mais elle revient toute la journée. Une automatisation avec une étape IA fait très bien ce travail, à condition d'être cadrée.",
-      "symptoms": {
-        "pdf": "Des PDF recopiés à la main dans l'ERP",
-        "reminders": "Des relances envoyées quand quelqu'un y pense",
-        "zapier": "Un Zap monté il y a deux ans, que personne n'ose modifier"
+      "title": "Votre équipe recopie ce qu'une machine sait lire.",
+      "intro": "Chaque tâche prend deux minutes, mais elle revient toute la journée. Une automatisation avec une étape IA fait très bien ce travail, à condition d'être cadrée.",
+      "items": {
+        "pdf": {
+          "title": "Des PDF recopiés",
+          "before": "Quelqu'un ouvre chaque facture, recopie le montant et la TVA, puis l'archive.",
+          "after": "Les champs sont lus automatiquement et proposés dans votre logiciel comptable."
+        },
+        "reminders": {
+          "title": "Des relances oubliées",
+          "before": "Les relances partent quand quelqu'un y pense.",
+          "after": "Chaque échéance déclenche une relance prête à envoyer."
+        },
+        "zapier": {
+          "title": "Une automatisation fragile",
+          "before": "Une automatisation montée il y a deux ans, que personne n'ose modifier.",
+          "after": "Une automatisation documentée, qui vous prévient quand elle échoue."
+        }
       }
     },
     "deliverables": {
-      "title": "Ce que vous recevez,",
-      "titleEmphasis": "au forfait.",
-      "subtitle": "Un workflow simple à prix fixe, un suivi léger si vous le voulez, et le Sprint IA quand le besoin dépasse un workflow.",
+      "title": "Ce que vous recevez, au forfait.",
+      "intro": "Une automatisation simple à prix fixe, un suivi léger si vous le voulez, et le Sprint IA quand le besoin va plus loin.",
       "tiers": {
         "automation": {
+          "audience": "Pour un processus simple et répétitif.",
           "items": {
             "kickoff": "Un appel de cadrage de 45 minutes",
-            "workflow": "Un workflow linéaire dans votre compte n8n ou Make : déclencheur, étape IA, action",
+            "workflow": "Une automatisation dans votre compte n8n ou Make : déclencheur, étape IA, action",
             "tests": "L'étape IA testée sur 10 de vos vrais documents",
             "alert": "Une alerte par e-mail si une exécution échoue",
             "doc": "Une page de documentation et 30 minutes de prise en main",
@@ -1132,165 +1176,159 @@
           }
         },
         "automationCare": {
+          "audience": "Pour garder l'automatisation à jour.",
           "items": {
-            "monitoring": "La surveillance des exécutions",
+            "monitoring": "La surveillance de chaque exécution",
             "hour": "1 heure de modifications par mois",
-            "costs": "Un relevé mensuel des coûts d'API",
+            "costs": "Un relevé mensuel des coûts des outils d'IA",
             "minimum": "3 mois minimum, puis 30 jours de préavis"
           }
         },
         "sprintIa": {
+          "audience": "Quand une seule automatisation ne suffit plus.",
           "items": {
-            "agent": "Un agent qui décide, ou un flux qui traverse plusieurs outils",
-            "evals": "Un jeu de tests de 20 à 50 cas et un journal des actions",
+            "agent": "Un agent qui décide, ou un processus qui traverse plusieurs outils",
+            "evals": "20 à 50 cas de test et un journal des actions",
             "credit": "Le prix de l'Automatisation IA déduit à 100 % si le Sprint est signé sous 60 jours"
           }
         }
       }
     },
     "process": {
-      "title": "Comment ça se passe,",
-      "titleEmphasis": "en une semaine.",
+      "title": "Comment ça se passe.",
+      "intro": "Une semaine entre le cadrage et la mise en ligne.",
       "steps": {
         "call": {
-          "title": "Appel",
-          "body": "30 minutes pour choisir le workflow et vérifier qu'il tient dans le forfait."
+          "title": "Un appel de 30 minutes",
+          "body": "On choisit le processus et on vérifie qu'il tient dans le forfait."
         },
         "scope": {
-          "title": "Cadrage",
+          "title": "Le cadrage",
           "body": "45 minutes pour lister les outils, les accès et 10 documents réels qui serviront aux tests."
         },
         "build": {
-          "title": "Construction",
+          "title": "La construction",
           "body": "4 à 5 jours ouvrés. On teste l'étape IA sur vos documents avant de brancher l'action."
         },
         "launch": {
-          "title": "Mise en ligne",
-          "body": "Le workflow tourne. Vous recevez la documentation et 30 minutes de prise en main."
+          "title": "La mise en ligne",
+          "body": "L'automatisation tourne. Vous recevez la documentation et 30 minutes de prise en main."
         }
       }
     },
     "block": {
-      "title": "Trois exemples,",
-      "titleEmphasis": "avec une personne dans la boucle.",
-      "body": "Chaque workflow garde une validation humaine là où une erreur coûte cher. Ce sont des exemples types, pas des projets clients.",
-      "human": "validation humaine",
+      "title": "Trois exemples, avec une personne dans la boucle.",
+      "intro": "Chaque automatisation garde une validation humaine là où une erreur coûte cher. Ce sont des exemples types, pas des projets clients.",
+      "agent": "Étape IA",
+      "before": "Avant",
+      "after": "Avec l'automatisation",
       "examples": {
         "invoices": {
+          "category": "Comptabilité",
           "title": "Factures fournisseurs",
-          "body": "Le PDF reçu par e-mail devient un brouillon dans le logiciel comptable.",
-          "steps": {
-            "trigger": "E-mail + PDF",
-            "ai": "Extraction IA",
-            "human": "Contrôle compta",
-            "action": "Saisie ERP"
-          }
+          "before": "Chaque PDF reçu par e-mail est ouvert et recopié dans le logiciel comptable.",
+          "after": "L'IA lit le PDF et prépare un brouillon. La comptable vérifie, puis valide."
         },
         "quotes": {
+          "category": "Commercial",
           "title": "Devis",
-          "body": "La demande du formulaire devient un devis prérempli, relu avant l'envoi.",
-          "steps": {
-            "trigger": "Formulaire",
-            "ai": "Brouillon IA",
-            "human": "Relecture",
-            "action": "Envoi client"
-          }
+          "before": "Chaque demande du formulaire est retapée dans un modèle de devis.",
+          "after": "La demande devient un devis prérempli, que vous relisez avant l'envoi."
         },
         "reminders": {
-          "title": "Relances",
-          "body": "Une facture échue déclenche une relance rédigée selon l'historique du client.",
-          "steps": {
-            "trigger": "Échéance",
-            "ai": "Relance rédigée",
-            "human": "Accord du gérant",
-            "action": "E-mail envoyé"
-          }
+          "category": "Relances",
+          "title": "Factures en retard",
+          "before": "Les relances partent quand quelqu'un y pense, avec le même message pour tous.",
+          "after": "Une facture échue déclenche une relance adaptée au client, envoyée après votre accord."
         }
       },
-      "limit": "Un agent autonome, un jeu de tests ou une intégration entre plusieurs outils sortent du forfait : c'est le Sprint IA."
+      "limit": "Un agent qui décide seul, des tests poussés ou plusieurs outils à relier sortent du forfait : c'est le Sprint IA."
     },
     "pricing": {
-      "title": "Combien coûte",
-      "titleEmphasis": "une automatisation IA ?",
-      "body": "Un workflow simple démarre à {automationPrice}. Le suivi coûte {automationCarePrice} par mois, 3 mois minimum. Les abonnements aux outils (n8n, Make, API du modèle) sont à votre nom et facturés directement par les éditeurs.",
+      "title": "Combien coûte une automatisation IA ?",
+      "body": "Une automatisation simple démarre à {automationPrice}. Le suivi coûte {automationCarePrice} par mois, 3 mois minimum. Les abonnements aux outils (n8n, Make, modèle d'IA) sont à votre nom et facturés directement par les éditeurs.",
       "link": "Voir tous les tarifs"
     },
     "faq": {
-      "title": "Questions",
-      "titleEmphasis": "sur l'automatisation.",
+      "title": "Questions sur l'automatisation.",
       "items": {
         "vsSprint": {
-          "question": "Quelle différence entre l'Automatisation IA et le Sprint IA ?",
-          "answer": "L'Automatisation IA, c'est un seul workflow linéaire : un déclencheur, une étape IA qui lit ou rédige, une action. L'IA n'y prend pas de décision seule et le workflow ne relie pas cinq logiciels. Dès que le processus demande de choisir entre plusieurs actions, ou d'agir dans plusieurs outils avec un jeu de tests, c'est un Sprint IA, livré en deux semaines."
+          "question": "Quelle différence entre l'Automatisation IA et le Sprint IA ?",
+          "answer": "L'Automatisation IA, c'est une seule chaîne simple : un déclencheur, une étape IA qui lit ou rédige, une action. L'IA n'y prend pas de décision seule et l'automatisation ne relie pas cinq logiciels. Dès que le processus demande de choisir entre plusieurs actions, ou d'agir dans plusieurs outils avec des tests poussés, c'est un Sprint IA, livré en deux semaines."
         },
         "tools": {
-          "question": "Dans quel outil le workflow tourne-t-il ?",
-          "answer": "Dans votre compte n8n ou Make, à votre nom, pour que vous gardiez la main. Si vous n'avez pas encore d'outil, on vous aide à en choisir un et à ouvrir le compte. On vous livre aussi l'export du workflow, que vous pouvez confier à un autre prestataire si vous changez un jour de partenaire."
+          "question": "Dans quel outil l'automatisation tourne-t-elle ?",
+          "answer": "Dans votre compte n8n ou Make, à votre nom, pour que vous gardiez la main. Si vous n'avez pas encore d'outil, on vous aide à en choisir un et à ouvrir le compte. On vous livre aussi l'export de l'automatisation, que vous pouvez confier à un autre prestataire si vous changez un jour de partenaire."
         },
         "runCost": {
-          "question": "Combien coûte le workflow une fois en ligne ?",
-          "answer": "Vous payez directement les éditeurs : l'outil d'automatisation, comme n8n ou Make, et l'API du modèle d'IA. Pour un petit volume, ces abonnements restent en général modestes, mais ils dépendent du nombre de documents traités. On vous donne une estimation chiffrée pour votre cas pendant le cadrage, avant de commencer."
+          "question": "Combien coûte l'automatisation une fois en ligne ?",
+          "answer": "Vous payez directement les éditeurs : l'outil d'automatisation, comme n8n ou Make, et le modèle d'IA. Pour un petit volume, ces abonnements restent en général modestes, mais ils dépendent du nombre de documents traités. On vous donne une estimation chiffrée pour votre cas pendant le cadrage, avant de commencer."
         },
         "errors": {
-          "question": "Et si l'IA se trompe sur une facture ?",
-          "answer": "C'est prévu. On ajoute une validation humaine à chaque étape où une erreur coûte cher : la personne voit les champs extraits, corrige si besoin et valide. Le workflow vous prévient aussi par e-mail quand une exécution échoue. Avant la mise en ligne, on teste l'étape IA sur 10 de vos vrais documents pour voir où elle se trompe."
+          "question": "Et si l'IA se trompe sur une facture ?",
+          "answer": "C'est prévu. On ajoute une validation humaine à chaque étape où une erreur coûte cher : la personne voit les champs extraits, corrige si besoin et valide. L'automatisation vous prévient aussi par e-mail quand une exécution échoue. Avant la mise en ligne, on teste l'étape IA sur 10 de vos vrais documents pour voir où elle se trompe."
         },
         "data": {
-          "question": "Mes documents partent-ils chez OpenAI ?",
-          "answer": "L'étape IA envoie le contenu du document à l'API d'un fournisseur de modèle. Par défaut, ces API professionnelles ne servent pas à entraîner les modèles. Si vos documents sont sensibles, on choisit un fournisseur hébergé dans l'UE ou on masque certains champs avant l'envoi. On tranche ce point au cadrage, avant d'écrire la première étape."
+          "question": "Mes documents partent-ils chez OpenAI ?",
+          "answer": "L'étape IA envoie le contenu du document à un fournisseur de modèle d'IA. Par défaut, ces offres professionnelles ne servent pas à entraîner les modèles. Si vos documents sont sensibles, on choisit un fournisseur hébergé dans l'UE ou on masque certains champs avant l'envoi. On tranche ce point au cadrage, avant d'écrire la première étape."
         },
         "upgrade": {
-          "question": "Et si j'ai besoin de plus ensuite ?",
-          "answer": "Le prix de l'Automatisation IA est déduit à 100 % d'un Sprint IA signé dans les 60 jours. Vous pouvez donc commencer petit, voir le workflow tourner sur vos vrais documents, puis passer à un agent plus complet sans payer deux fois la découverte de vos process. Au-delà de 60 jours, les deux restent des forfaits séparés."
+          "question": "Et si j'ai besoin de plus ensuite ?",
+          "answer": "Le prix de l'Automatisation IA est déduit à 100 % d'un Sprint IA signé dans les 60 jours. Vous pouvez donc commencer petit, voir l'automatisation tourner sur vos vrais documents, puis passer à un agent plus complet sans payer deux fois la découverte de vos process. Au-delà de 60 jours, les deux restent des forfaits séparés."
         }
       }
     },
     "cta": {
-      "title": "Quel processus",
-      "titleEmphasis": "recopiez-vous encore à la main ?",
-      "body": "Réservez un appel de 30 minutes. On vous dit s'il tient dans un workflow simple, et pour quel prix.",
-      "ctaPrimary": "Réserver un appel",
+      "title": "Quel processus recopiez-vous encore à la main ?",
+      "body": "30 minutes en visio. On vous dit s'il tient dans une automatisation simple, et pour quel prix.",
+      "ctaPrimary": "Réserver un appel de 30 min",
       "ctaSecondary": "Demander un devis gratuit"
-    },
-    "stack": {
-      "titleEmphasis": "sous vos automatisations."
     }
   },
   "geo": {
     "hero": {
-      "eyebrow": "Référencement IA (GEO)",
-      "title": "Référencement ChatGPT,",
-      "titleEmphasis": "pour être cité par les IA.",
-      "serif": "cité",
-      "subtitle": "À partir de {geoPrice}, en 2 semaines, pour un site existant. On pose 30 questions de vos clients à 4 moteurs IA, on corrige 5 pages clés de votre site, puis on refait le test à J+30.",
-      "ctaPrimary": "Réserver un appel",
-      "ctaSecondary": "Demander un devis gratuit"
+      "title": "Référencement sur ChatGPT, pour que les IA citent votre site.",
+      "subtitle": "Pour les entreprises qui ont déjà un site. On pose 30 questions de vos clients à 4 moteurs IA, on corrige 5 pages clés, puis on refait le test 30 jours plus tard.",
+      "duration": "2 semaines, puis un nouveau test à 30 jours",
+      "note": "Suivi mensuel en option à {geoCarePrice} par mois."
     },
     "problem": {
-      "title": "Vos clients posent la question à ChatGPT.",
-      "titleEmphasis": "Vous ne savez pas ce qu'il répond.",
-      "body": "Une partie des recherches passe maintenant par ChatGPT, Perplexity, Gemini ou les AI Overviews de Google. Ces moteurs répondent avec quelques sources, pas dix liens. Si votre site est mal structuré ou muet sur vos prix, il n'apparaît pas dans la réponse, et aucun outil SEO classique ne vous le montre.",
-      "symptoms": {
-        "competitor": "Un concurrent plus petit cité à votre place",
-        "pages": "Des pages de services sans prix ni réponse claire",
-        "blind": "Aucune idée de ce que ChatGPT dit de vous"
+      "title": "Vos clients posent la question à ChatGPT. Vous ne savez pas ce qu'il répond.",
+      "intro": "ChatGPT, Perplexity, Gemini ou les réponses IA de Google citent quelques sources, pas dix liens. Aucun outil de référencement classique ne vous dit si vous en faites partie.",
+      "items": {
+        "competitor": {
+          "title": "Un concurrent cité à votre place",
+          "before": "Un concurrent plus petit apparaît dans la réponse, pas vous.",
+          "after": "Vous savez sur quelles questions vous êtes cité, et qui l'est à votre place."
+        },
+        "pages": {
+          "title": "Des pages muettes",
+          "before": "Des pages de services sans prix ni réponse claire.",
+          "after": "5 pages clés réécrites, avec des réponses directes et des données structurées."
+        },
+        "blind": {
+          "title": "Aucune mesure",
+          "before": "Aucune idée de ce que ChatGPT dit de vous.",
+          "after": "La même mesure avant et après, sur les mêmes questions et les mêmes moteurs."
+        }
       }
     },
     "deliverables": {
-      "title": "Ce que vous recevez,",
-      "titleEmphasis": "mesuré avant et après.",
-      "subtitle": "Pour un site existant. Si vous refaites votre site, le Site IA inclut déjà le GEO.",
+      "title": "Ce que vous recevez, mesuré avant et après.",
+      "intro": "Pour un site existant. Si vous refaites votre site, le Site IA inclut déjà ce travail.",
       "tiers": {
         "geo": {
+          "audience": "Pour un site existant qui n'est pas cité.",
           "items": {
-            "baseline": "30 questions testées sur ChatGPT, Perplexity, Gemini et Google AI Overviews",
-            "technical": "La revue technique : robots, crawlers IA, sitemap, données structurées, llms.txt",
-            "pages": "5 pages clés réécrites et balisées (Schema.org, FAQ)",
+            "baseline": "30 questions testées sur ChatGPT, Perplexity, Gemini et les réponses IA de Google",
+            "technical": "La revue technique : accès des robots IA, plan du site, données structurées, fichier llms.txt",
+            "pages": "5 pages clés réécrites et balisées",
             "article": "Un article écrit pour être cité",
-            "retest": "Le même test refait à J+30, avec un rapport"
+            "retest": "Le même test refait à 30 jours, avec un rapport"
           }
         },
         "geoCare": {
+          "audience": "Pour suivre vos citations chaque mois.",
           "items": {
             "content": "2 contenus ou mises à jour de page par mois",
             "rerun": "Les 30 questions relancées chaque mois",
@@ -1299,45 +1337,43 @@
           }
         },
         "siteIa": {
+          "audience": "Quand le site est à refaire plutôt qu'à corriger.",
           "items": {
             "rebuild": "Un site de 5 à 8 pages construit pour les moteurs IA",
-            "included": "Le GEO inclus dès la mise en ligne",
-            "when": "Quand le site est à refaire plutôt qu'à corriger"
+            "included": "Le référencement IA inclus dès la mise en ligne",
+            "stack": "Next.js ou WordPress, selon qui modifie le site"
           }
         }
       }
     },
     "process": {
-      "title": "Comment ça se passe,",
-      "titleEmphasis": "en deux semaines.",
+      "title": "Comment ça se passe.",
+      "intro": "Deux semaines de travail, puis une nouvelle mesure 30 jours plus tard.",
       "steps": {
         "call": {
-          "title": "Appel",
-          "body": "30 minutes pour choisir les questions que vos clients posent vraiment."
+          "title": "Un appel de 30 minutes",
+          "body": "On choisit les questions que vos clients posent vraiment."
         },
         "baseline": {
-          "title": "Mesure",
-          "body": "On pose 30 questions à 4 moteurs IA et on note qui est cité : vous, ou les autres."
+          "title": "La mesure",
+          "body": "On pose 30 questions à 4 moteurs IA et on note qui est cité : vous, ou les autres."
         },
         "fix": {
-          "title": "Corrections",
+          "title": "Les corrections",
           "body": "On corrige 5 pages clés et on écrit un article, directement dans votre site si l'accès le permet."
         },
         "retest": {
-          "title": "Re-test",
-          "body": "À J+30, on repose les mêmes questions et on vous montre ce qui a bougé."
+          "title": "Le nouveau test",
+          "body": "30 jours plus tard, on repose les mêmes questions et on vous montre ce qui a bougé."
         }
       }
     },
     "block": {
-      "title": "Comment on mesure",
-      "titleEmphasis": "une citation.",
-      "body": "Une citation, c'est votre site listé comme source dans la réponse d'un moteur IA. On pose les mêmes questions avant et après, sur les mêmes moteurs, et on compte. Exemple de rapport ci-dessous, avec des valeurs fictives.",
+      "title": "Comment on mesure une citation.",
+      "intro": "Une citation, c'est votre site listé comme source dans la réponse d'un moteur IA. On pose les mêmes questions avant et après, sur les mêmes moteurs, et on compte.",
       "card": {
-        "file": "rapport-geo.md",
-        "sample": "Exemple",
         "site": "cabinet-exemple.fr",
-        "promptsLabel": "Question",
+        "label": "Exemple de rapport, valeurs fictives",
         "prompts": {
           "a": "expert-comptable pour startup à Bordeaux",
           "b": "combien coûte un expert-comptable pour une SAS",
@@ -1350,68 +1386,61 @@
         },
         "summary": "{cited} réponses sur {total} citent le site"
       },
-      "realData": "Valeurs fictives, à titre d'exemple.",
       "disclosure": {
-        "label": "Transparence",
-        "body": "Maxime Mansiet, notre lead engineer, a cofondé CiteMe, un outil qui mesure la visibilité d'une marque dans les moteurs IA. On vous le dit pour que le lien soit clair. Vous n'avez pas besoin d'un abonnement CiteMe, et le rapport vous appartient."
+        "title": "Le lien avec CiteMe",
+        "body": "Maxime a cofondé CiteMe, un outil qui mesure la visibilité d'une marque dans les moteurs IA. On vous le dit pour que le lien soit clair. Vous n'avez pas besoin d'un abonnement CiteMe, et le rapport vous appartient."
       }
     },
     "proof": {
-      "title": "Un outil GEO",
-      "titleEmphasis": "cofondé par Maxime.",
-      "body": "CiteMe suit les citations d'une marque dans ChatGPT, Gemini et Perplexity. La méthode de mesure de cette offre vient de là.",
-      "link": "Voir les réalisations"
+      "title": "Un outil de mesure cofondé par Maxime.",
+      "intro": "CiteMe suit les citations d'une marque dans ChatGPT, Gemini et Perplexity. La méthode de mesure de cette offre vient de là.",
+      "link": "Voir toutes les réalisations"
     },
     "pricing": {
-      "title": "Combien coûte",
-      "titleEmphasis": "le référencement IA ?",
-      "body": "L'audit et la mise en place démarrent à {geoPrice}, en 2 semaines. Le suivi GEO coûte {geoCarePrice} par mois, 3 mois minimum. Pour un nouveau site, le Site IA à partir de {siteIaPrice} inclut déjà le GEO.",
+      "title": "Combien coûte le référencement sur ChatGPT ?",
+      "body": "L'audit et la mise en place démarrent à {geoPrice}, en 2 semaines. Le suivi coûte {geoCarePrice} par mois, 3 mois minimum. Pour un nouveau site, le Site IA à partir de {siteIaPrice} inclut déjà ce travail.",
       "link": "Voir tous les tarifs"
     },
     "faq": {
-      "title": "Questions",
-      "titleEmphasis": "sur le GEO.",
+      "title": "Questions sur le GEO.",
       "items": {
         "whatIs": {
-          "question": "Le GEO, c'est du SEO pour ChatGPT ?",
-          "answer": "En partie. GEO veut dire Generative Engine Optimization : le travail qui rend un site lisible et citable par les moteurs IA comme ChatGPT, Perplexity, Gemini ou les AI Overviews de Google. Le SEO vise un classement dans une liste de liens. Le GEO vise une place parmi les quelques sources qu'un moteur IA cite dans sa réponse. Les deux se recoupent largement."
+          "question": "Le GEO, c'est du SEO pour ChatGPT ?",
+          "answer": "En partie. GEO veut dire Generative Engine Optimization : le travail qui rend un site lisible et citable par les moteurs IA comme ChatGPT, Perplexity, Gemini ou les réponses IA de Google. Le SEO vise un classement dans une liste de liens. Le GEO vise une place parmi les quelques sources qu'un moteur IA cite dans sa réponse. Les deux se recoupent largement."
         },
         "guarantee": {
-          "question": "Pouvez-vous garantir que ChatGPT me citera ?",
-          "answer": "Non, et personne ne peut le garantir honnêtement. Les moteurs IA changent leurs réponses d'une semaine à l'autre et ne publient pas leurs règles. On s'engage sur la méthode : une mesure avant, des corrections documentées sur vos pages, et la même mesure à J+30 sur les mêmes questions. Vous voyez ce qui a bougé, chiffres à l'appui."
+          "question": "Pouvez-vous garantir que ChatGPT me citera ?",
+          "answer": "Non, et personne ne peut le garantir honnêtement. Les moteurs IA changent leurs réponses d'une semaine à l'autre et ne publient pas leurs règles. On s'engage sur la méthode : une mesure avant, des corrections documentées sur vos pages, et la même mesure 30 jours plus tard sur les mêmes questions. Vous voyez ce qui a bougé, chiffres à l'appui."
         },
         "vsSeo": {
-          "question": "Faut-il arrêter le SEO classique ?",
-          "answer": "Non. Les moteurs IA s'appuient en grande partie sur les mêmes signaux que Google : des pages rapides, bien structurées, avec des réponses claires et des faits vérifiables. Un bon SEO reste la base. Le GEO ajoute des réponses directes en haut de page, des données structurées, un fichier llms.txt et un suivi de ce que les moteurs IA disent de vous."
+          "question": "Faut-il arrêter le SEO classique ?",
+          "answer": "Non. Les moteurs IA s'appuient en grande partie sur les mêmes signaux que Google : des pages rapides, bien structurées, avec des réponses claires et des faits vérifiables. Un bon SEO reste la base. Le GEO ajoute des réponses directes en haut de page, des données structurées, un fichier llms.txt et un suivi de ce que les moteurs IA disent de vous."
         },
         "platforms": {
-          "question": "Mon site est sous WordPress ou Webflow, ça marche ?",
+          "question": "Mon site est sous WordPress ou Webflow, ça marche ?",
           "answer": "En général, oui. L'offre est faite pour les sites existants. Il nous faut un accès éditeur pour modifier les 5 pages clés et ajouter les données structurées. Si votre outil ne le permet pas, on vous livre les textes et le balisage prêts à coller, et vous les publiez vous-même. On vérifie votre plateforme pendant l'appel, avant de signer."
         },
         "citeme": {
-          "question": "Quel lien entre cette offre et CiteMe ?",
-          "answer": "Maxime Mansiet, notre lead engineer, a cofondé CiteMe, un outil qui mesure la présence d'une marque dans les réponses des moteurs IA. On vous le dit pour que le lien soit clair avant de signer. Vous n'avez pas à vous abonner : le rapport, les questions suivies et les pages corrigées vous appartiennent, et vous pouvez refaire les tests vous-même."
+          "question": "Quel lien entre cette offre et CiteMe ?",
+          "answer": "Maxime Mansiet, le fondateur de Klyx, a cofondé CiteMe, un outil qui mesure la présence d'une marque dans les réponses des moteurs IA. On vous le dit pour que le lien soit clair avant de signer. Vous n'avez pas à vous abonner : le rapport, les questions suivies et les pages corrigées vous appartiennent, et vous pouvez refaire les tests vous-même."
         },
         "delay": {
-          "question": "En combien de temps voit-on un effet ?",
-          "answer": "Les corrections sont en ligne en 2 semaines. Les moteurs qui cherchent sur le web en direct, comme Perplexity, peuvent en tenir compte en quelques jours. D'autres s'appuient sur des données plus anciennes et mettent plus longtemps. C'est pour ça qu'on refait le test à J+30, puis chaque mois si vous prenez le suivi GEO."
+          "question": "En combien de temps voit-on un effet ?",
+          "answer": "Les corrections sont en ligne en 2 semaines. Les moteurs qui cherchent sur le web en direct, comme Perplexity, peuvent en tenir compte en quelques jours. D'autres s'appuient sur des données plus anciennes et mettent plus longtemps. C'est pour ça qu'on refait le test 30 jours plus tard, puis chaque mois si vous prenez le suivi."
         }
       }
     },
     "cta": {
-      "title": "Que répond ChatGPT",
-      "titleEmphasis": "quand on l'interroge sur votre métier ?",
-      "body": "Réservez un appel de 30 minutes. On pose ensemble trois questions de vos clients, en direct.",
-      "ctaPrimary": "Réserver un appel",
+      "title": "Que répond ChatGPT quand on l'interroge sur votre métier ?",
+      "body": "30 minutes en visio. On pose ensemble trois questions de vos clients, en direct.",
+      "ctaPrimary": "Réserver un appel de 30 min",
       "ctaSecondary": "Demander un devis gratuit"
     }
   },
   "pricing": {
     "hero": {
-      "title": "Tous nos tarifs,",
-      "titleEmphasis": "affichés.",
-      "subtitle": "Prix en € HT, « à partir de ». Le prix final dépend du périmètre, écrit dans le devis gratuit avant de commencer.",
-      "serif": "affichés"
+      "title": "Tarifs",
+      "subtitle": "Le prix de départ de chaque offre, en € HT. Le prix final dépend du périmètre, écrit dans un devis gratuit avant de commencer."
     },
     "table": {
       "offer": "Offre",
@@ -1419,67 +1448,83 @@
       "duration": "Durée",
       "price": "Prix",
       "groups": {
-        "sites": "Sites",
-        "ai": "Agents IA",
-        "fde": "Forward Deployed Engineer"
-      }
-    },
-    "guarantees": {
-      "title": "Ce qui est garanti",
-      "items": {
-        "quote": "Le devis est gratuit.",
-        "credit": "Si vous continuez après l'audit IA, le devis tient compte de l'audit déjà payé."
+        "sites": "Sites et référencement",
+        "ai": "Agents et automatisations",
+        "fde": "Développeur dédié"
       }
     },
     "market": {
-      "title": "Comment ces prix",
-      "body": "La plupart des agences IA en France ne publient pas leurs prix. Les fourchettes publiées pour un développeur IA freelance vont en général de 600 à 900 € par jour.",
-      "card": {
-        "title": "marche.csv",
-        "columns": {
-          "item": "Prestation",
-          "market": "Marché",
-          "klyx": "Klyx",
-          "source": "Source"
+      "line": "La plupart des agences IA en France ne publient pas leurs prix. Pour comparer, les fourchettes publiées pour un développeur IA freelance vont en général de 600 à 900 € par jour (relevé le 3 novembre 2026). Notre développeur dédié est à {fdeDayPrice} par jour.",
+      "sourceLabel": "Source : Studeria",
+      "url": "https://www.studeria.fr/articles-de-blog/tjm-consultant-ia-2026-tarifs-grille"
+    },
+    "guide": "Pour comprendre ce qui fait varier le prix d'un agent IA, lisez notre guide :",
+    "included": {
+      "title": "Ce qui est compris dans chaque prix.",
+      "intro": "Quelle que soit l'offre, ces points ne sont pas en supplément.",
+      "items": {
+        "quote": {
+          "title": "Un devis gratuit",
+          "body": "Vous recevez par écrit ce qui est inclus, ce qui ne l'est pas, le délai et le prix. Sans engagement."
         },
-        "rows": {
-          "tjm": {
-            "label": "Développeur IA freelance, par jour",
-            "range": "600-900 €",
-            "source": "Studeria",
-            "url": "https://www.studeria.fr/articles-de-blog/tjm-consultant-ia-2026-tarifs-grille"
-          }
+        "fixed": {
+          "title": "Un prix qui ne bouge plus",
+          "body": "Le prix couvre le périmètre signé. Tout ajout passe par un devis complémentaire, avant d'être fait."
         },
-        "note": "Fourchettes relevées le 3 novembre 2026."
-      },
-      "titleEmphasis": "se situent.",
-      "line": "La plupart des agences IA en France ne publient pas leurs prix. Pour comparer, les fourchettes publiées pour un développeur IA freelance vont en général de 600 à 900 € par jour (relevé le 3 novembre 2026). Notre Forward Deployed Engineer est à {fdeDayPrice} par jour.",
-      "sourceLabel": "Source : Studeria"
+        "owned": {
+          "title": "Tout est à votre nom",
+          "body": "Le code, le nom de domaine et les comptes vous appartiennent. Vous pouvez changer de prestataire quand vous voulez."
+        },
+        "handover": {
+          "title": "Une prise en main",
+          "body": "À la mise en ligne, on vous montre comment tout fonctionne et on vous laisse un guide écrit."
+        },
+        "credit": {
+          "title": "L'audit déduit de la suite",
+          "body": "Si vous continuez après l'audit IA, le devis tient compte de l'audit déjà payé."
+        },
+        "tools": {
+          "title": "Les outils au prix des éditeurs",
+          "body": "Les abonnements (hébergement, outils d'automatisation, modèles d'IA) sont à votre nom et facturés directement par les éditeurs."
+        }
+      }
+    },
+    "quote": {
+      "title": "Comment se passe le devis.",
+      "intro": "Trois étapes, gratuites, avant de vous engager.",
+      "steps": {
+        "call": {
+          "title": "Un appel de 30 minutes",
+          "body": "Vous nous montrez ce que vous voulez faire. On vous dit franchement ce qui vaut le coup."
+        },
+        "quote": {
+          "title": "Un devis écrit",
+          "body": "Le périmètre, le délai et le prix, par écrit. Vous avez le temps de comparer."
+        },
+        "start": {
+          "title": "Vous signez, on commence",
+          "body": "Le prix est fixé. Un point chaque semaine vous dit où on en est."
+        }
+      }
     },
     "faq": {
-      "title": "Questions",
+      "title": "Questions sur les prix.",
       "items": {
         "sprintVsFde": {
-          "question": "Pourquoi le Sprint IA coûte-t-il moins cher que 10 jours de FDE ?",
-          "answer": "Le Sprint IA est vendu au résultat : un seul workflow, avec un périmètre fixé avant de commencer. On réutilise des briques déjà construites, et les deux semaines servent à ce seul livrable. En FDE, vous payez du temps passé dans votre équipe sur un backlog ouvert, qui change d'une semaine à l'autre."
+          "question": "Pourquoi le Sprint IA coûte-t-il moins cher que 10 jours de développeur dédié ?",
+          "answer": "Le Sprint IA est vendu au résultat : un seul agent, avec un périmètre fixé avant de commencer. On réutilise des briques déjà construites, et les deux semaines servent à ce seul livrable. Avec un développeur dédié, vous payez du temps passé dans votre équipe sur une liste de tâches ouverte, qui change d'une semaine à l'autre."
         },
         "final": {
-          "question": "Le prix peut-il augmenter en cours de projet ?",
+          "question": "Le prix peut-il augmenter en cours de projet ?",
           "answer": "Pas sans votre accord. Le prix couvre le périmètre écrit dans le devis. Si vous ajoutez quelque chose, on vous envoie un devis complémentaire avant de le faire."
         }
-      },
-      "titleEmphasis": "sur les prix."
+      }
     },
     "cta": {
-      "title": "Pour un prix précis,",
-      "body": "Décrivez votre projet, on vous envoie un devis gratuit.",
+      "title": "Pour un prix précis, demandez un devis.",
+      "body": "Décrivez votre projet. On vous envoie un devis gratuit, avec un prix fixe.",
       "ctaPrimary": "Demander un devis gratuit",
-      "ctaSecondary": "Réserver un appel",
-      "titleEmphasis": "demandez un devis."
-    },
-    "eyebrows": {
-      "market": "Marché",
-      "faq": "Questions"
+      "ctaSecondary": "Réserver un appel de 30 min"
     }
   },
   "cases": {
@@ -2533,19 +2578,19 @@
     },
     "sites": {
       "title": "Création de site web à Bordeaux, prix affichés | Klyx",
-      "description": "Landing page dès {landingPrice}, site de 5 à 8 pages dès {siteIaPrice}. Des sites rapides, référencés sur Google et lisibles par ChatGPT."
+      "description": "Landing page dès {landingPrice}, site de 5 à 8 pages dès {siteIaPrice}. Des sites rapides, bien référencés sur Google et lisibles par ChatGPT."
     },
     "agents": {
-      "title": "Agents IA et automatisation pour entreprises | Klyx",
-      "description": "Audit IA dès {auditPrice}, Sprint IA dès {sprintPrice} : un workflow en production en deux semaines, avec le code dans votre repo."
+      "title": "Agent IA pour entreprise, en place en 2 semaines | Klyx",
+      "description": "Un agent IA branché sur vos outils, en place en deux semaines dès {sprintPrice}. Audit IA dès {auditPrice}. Le code reste chez vous."
     },
     "fde": {
-      "title": "Forward Deployed Engineer à temps partagé | Klyx",
-      "description": "Qu'est-ce qu'un Forward Deployed Engineer ? Un développeur IA dans votre équipe 2 à 3 jours par semaine, dès {fdeDayPrice} par jour."
+      "title": "Développeur IA dédié (Forward Deployed Engineer) | Klyx",
+      "description": "Un développeur IA dédié à temps partagé dans votre équipe, 2 à 3 jours par semaine : {fdeDayPrice} par jour, 4 semaines minimum."
     },
     "pricing": {
-      "title": "Tarifs : prix d'un site et d'un agent IA | Klyx",
-      "description": "Tous les prix Klyx en € HT : landing page, site IA, audit IA, Sprint IA et Forward Deployed Engineer. Devis gratuit."
+      "title": "Tarifs : prix d'un site web et d'un agent IA | Klyx",
+      "description": "Tous les prix Klyx en € HT : site web dès {landingPrice}, audit IA dès {auditPrice}, agent IA dès {sprintPrice}, développeur dédié à {fdeDayPrice} par jour. Devis gratuit."
     },
     "cases": {
       "title": "Réalisations : sites et agents IA livrés | Klyx",
@@ -2577,15 +2622,15 @@
     },
     "audit": {
       "title": "Audit IA pour PME, prix affiché | Klyx",
-      "description": "Audit IA de votre PME dès {auditPrice} : vos process cartographiés, les automatisations classées par temps gagné et une roadmap sur 90 jours."
+      "description": "Audit IA de votre PME dès {auditPrice} : vos process cartographiés, les automatisations classées par temps gagné et un plan sur 90 jours."
     },
     "automation": {
       "title": "Automatisation IA pour PME, prix fixe | Klyx",
-      "description": "Un workflow IA branché sur vos outils dès {automationPrice} : factures, devis, relances. En ligne en 4 à 5 jours, avec validation humaine."
+      "description": "Une automatisation IA branchée sur vos outils dès {automationPrice} : factures, devis, relances. En ligne en 4 à 5 jours, avec validation humaine."
     },
     "geo": {
-      "title": "Référencement ChatGPT et Perplexity (GEO) | Klyx",
-      "description": "Être cité par ChatGPT, Perplexity et Gemini : 30 questions testées et 5 pages corrigées dès {geoPrice}, re-test à J+30. Pour un site existant."
+      "title": "Référencement sur ChatGPT et Perplexity (GEO) | Klyx",
+      "description": "Être cité par ChatGPT, Perplexity et Gemini : 30 questions testées et 5 pages corrigées dès {geoPrice}, nouveau test à 30 jours. Pour un site existant."
     },
     "useCases": {
       "title": "Cas d'usage de l'IA en PME, par secteur | Klyx",
@@ -2954,50 +2999,34 @@
     "tokensApprox": "≈{count} tokens"
   },
   "offerPage": {
-    "relatedPost": "À lire aussi",
-    "breadcrumb": "Fil d'Ariane",
-    "symptoms": "Symptômes",
-    "seeOffer": "Voir l'offre",
-    "moreFeatures": "{count, plural, one {# autre élément inclus} other {# autres éléments inclus}}",
-    "eyebrows": {
-      "problem": "Le problème",
-      "deliverables": "Offres",
-      "process": "Méthode",
-      "proof": "Réalisations",
-      "pricing": "Prix",
-      "faq": "Questions",
-      "block": {
-        "trace": "Journal",
-        "lighthouse": "Preuves",
-        "fde-definition": "Définition",
-        "audit-document": "Livrable",
-        "automation-examples": "Exemples",
-        "geo-visibility": "Mesure"
-      },
-      "stack": "Stack"
+    "from": "À partir de",
+    "perDay": "/ jour",
+    "perMonth": "/ mois",
+    "actions": {
+      "book": "Réserver un appel de 30 min",
+      "quote": "Demander un devis gratuit"
     },
-    "ledger": {
-      "offer": "Offre",
-      "duration": "Durée",
-      "price": "Prix"
+    "problem": {
+      "before": "Aujourd'hui",
+      "after": "Avec Klyx"
     },
-    "trace": {
-      "file": "trace · {title}",
-      "total": "total",
-      "steps": "{count} étapes"
+    "tiers": {
+      "seeOffer": "Voir l'offre",
+      "quote": "Demander un devis"
     },
+    "sample": "Exemple",
+    "sectors": "Exemples par secteur :",
+    "relatedPost": "À lire aussi :",
     "stack": {
-      "title": "Ce qui tourne",
-      "titleEmphasis": "sous vos agents.",
-      "body": "Les briques qu'on assemble pour vos agents et vos automatisations. On choisit le modèle selon la tâche, le coût et l'endroit où vos données doivent rester.",
+      "title": "Les outils et modèles qu'on déploie",
+      "body": "On choisit le modèle selon la tâche, le coût et l'endroit où vos données doivent rester.",
       "label": "Technologies que nous déployons",
       "groups": {
         "agents": "Agents",
         "models": "Modèles",
         "plumbing": "Connexions"
       },
-      "note": "Les marques citées appartiennent à leurs propriétaires respectifs. Klyx n'est ni affilié ni partenaire de ces éditeurs."
-    },
-    "sectors": "Par secteur"
+      "note": "Les marques citées appartiennent à leurs propriétaires. Klyx n'est ni affilié ni partenaire de ces éditeurs."
+    }
   }
 }
