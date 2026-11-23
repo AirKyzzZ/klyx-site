@@ -19,7 +19,7 @@ export function SplitHero({
 }) {
   return (
     <section data-shot="hero" className={cn("relative z-1", className)}>
-      <div className="relative container grid gap-12 pt-32 pb-16 md:pt-36 lg:grid-cols-[minmax(0,1fr)_440px] lg:items-center lg:gap-16 lg:pt-44 lg:pb-24">
+      <div className="relative container grid gap-12 pt-32 pb-16 md:pt-36 lg:grid-cols-[minmax(0,1fr)_440px] lg:items-start lg:gap-16 lg:pt-44 lg:pb-24">
         <div className="flex min-w-0 flex-col items-start">
           {breadcrumb && <div className="mb-6">{breadcrumb}</div>}
           <h1 className="type-hero max-w-[680px]">{title}</h1>

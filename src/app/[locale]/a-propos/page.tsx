@@ -89,7 +89,7 @@ export default async function AboutPage({ params }: LocaleParams) {
           title={t("hero.title")}
           intro={t("hero.subtitle")}
         >
-          <div className="flex flex-wrap gap-3">
+          <div className="grid gap-3 sm:max-lg:flex sm:max-lg:flex-wrap">
             <ActionButton action="book" size="xl" trackLocation="hero">
               {t("hero.ctaPrimary")}
             </ActionButton>

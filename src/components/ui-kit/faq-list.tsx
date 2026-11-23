@@ -36,7 +36,7 @@ export function FaqList({
       )}
     >
       <div className="flex flex-col gap-4 lg:sticky lg:top-28 lg:self-start">
-        <h2 className="type-section max-w-[11ch]">{title}</h2>
+        <h2 className="type-section lg:max-w-[11ch]">{title}</h2>
         {intro && <p className="type-intro text-text-2">{intro}</p>}
         {aside}
       </div>
