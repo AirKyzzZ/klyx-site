@@ -1,5 +1,7 @@
 import { describe, expect, it } from "vitest";
 
+import { site } from "@/lib/site";
+
 import { GET } from "./route";
 
 describe("blog rss", () => {
@@ -14,5 +16,6 @@ describe("blog rss", () => {
     );
     expect(body).toContain('<rss version="2.0"');
     expect(body).toContain("<link>https://klyx.fr/blog</link>");
+    expect(body).toContain(`<description>${site.description}</description>`);
   });
 });
