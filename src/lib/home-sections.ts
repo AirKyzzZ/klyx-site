@@ -1,4 +1,4 @@
-import type { CaseStudyMeta } from "@/lib/content";
+import type { CaseStudyMeta, PostMeta } from "@/lib/content";
 import { CONNECTED_TOOLS, type Tool, type ToolLogoId } from "@/lib/tools";
 
 const HOME_CASE_SLUGS = [
@@ -115,6 +115,11 @@ export const HOME_FAQ = [
   "remote",
 ] as const;
 
+export const HOME_GUIDES = [
+  "cout-agent-ia-pme",
+  "integrer-ia-pme-methode",
+] as const;
+
 export const HOME_TRUST = [
   "owned",
   "training",
@@ -128,6 +133,12 @@ export const HOME_CASE_ROWS = [
   { slug: "2060-io", name: "2060.io" },
   { slug: "pkba", name: "PKBA" },
 ] as const;
+
+export function selectHomeGuides(posts: PostMeta[]): PostMeta[] {
+  return HOME_GUIDES.flatMap((slug) =>
+    posts.filter((post) => post.slug === slug),
+  );
+}
 
 export function selectHomeCases(cases: CaseStudyMeta[]): CaseStudyMeta[] {
   return HOME_CASE_SLUGS.flatMap((slug) =>

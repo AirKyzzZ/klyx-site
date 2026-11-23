@@ -26,6 +26,7 @@ import {
   HOME_TRUST,
   HOME_USE_CASES,
   selectHomeCases,
+  selectHomeGuides,
 } from "@/lib/home-sections";
 import { getOfferCopy } from "@/lib/offer-copy";
 import {
@@ -369,6 +370,18 @@ async function home(locale: Locale): Promise<string> {
       })),
     ),
     t("faq.intro"),
+    labelled(
+      locale,
+      t("faq.further"),
+      selectHomeGuides(await getPosts(locale))
+        .map((post) =>
+          link(
+            post.title,
+            absoluteUrl(locale, "/blog/[slug]", { slug: post.slug }),
+          ),
+        )
+        .join(" · "),
+    ),
     `## ${t("cta.title")}`,
     t("cta.body"),
     list([

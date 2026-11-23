@@ -14,7 +14,12 @@ import {
 } from "@/lib/offers";
 import type { AppPathname } from "@/lib/seo";
 import { faqPageItems } from "@/lib/faq-page";
-import { HOME_FAQ, HOME_TOOLS } from "@/lib/home-sections";
+import {
+  HOME_FAQ,
+  HOME_GUIDES,
+  HOME_TOOLS,
+  selectHomeGuides,
+} from "@/lib/home-sections";
 import { getGithubContributions } from "@/lib/proof";
 import { DEPLOYED_TECH, type ToolGroup } from "@/lib/tools";
 
@@ -263,6 +268,13 @@ describe.each(routing.locales)("pageMarkdown (%s)", (locale) => {
         new Intl.NumberFormat(locale).format(contributions.total),
       );
     }
+  });
+
+  it("links the pillar guides under the home faq", async () => {
+    const home = await pageMarkdown(locale, { pathname: "/" });
+    const guides = selectHomeGuides(await getPosts(locale));
+    expect(guides).toHaveLength(HOME_GUIDES.length);
+    for (const post of guides) expect(home).toContain(post.title);
   });
 
   it("names the tools on home and the deployed stack on agent pages", async () => {

@@ -40,7 +40,7 @@ import { TrustGrid } from "@/components/ui-kit/trust-grid";
 import { UseCaseCard } from "@/components/ui-kit/use-case-card";
 import { Link } from "@/i18n/navigation";
 import { type LocaleParams, resolvePageLocale } from "@/i18n/page-locale";
-import { getCaseStudies } from "@/lib/content";
+import { getCaseStudies, getPosts } from "@/lib/content";
 import {
   ALSO_OFFERS,
   HERO_DESTINATIONS,
@@ -53,6 +53,7 @@ import {
   HOME_TRUST,
   HOME_USE_CASES,
   selectHomeCases,
+  selectHomeGuides,
 } from "@/lib/home-sections";
 import { faqJsonLd } from "@/lib/json-ld";
 import { getPriceValues } from "@/lib/offers";
@@ -85,6 +86,7 @@ export default async function HomePage({ params }: LocaleParams) {
   const t = await getTranslations({ locale, namespace: "home" });
   const cases = selectHomeCases(await getCaseStudies(locale));
   const prices = getPriceValues(locale);
+  const guides = selectHomeGuides(await getPosts(locale));
 
   const casesBySlug = new Map(cases.map((study) => [study.slug, study]));
   const carousel = HOME_CAROUSEL.filter(({ slug }) => casesBySlug.has(slug));
@@ -333,6 +335,14 @@ export default async function HomePage({ params }: LocaleParams) {
 
       <PageSection id="faq">
         <FaqList title={t("faq.title")} intro={t("faq.intro")} items={faq} />
+        <CatalogueLinks
+          className="mt-10"
+          label={t("faq.further")}
+          items={guides.map((post) => ({
+            label: post.title,
+            href: { pathname: "/blog/[slug]", params: { slug: post.slug } },
+          }))}
+        />
       </PageSection>
 
       <SiteCta />

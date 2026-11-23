@@ -138,7 +138,8 @@
           "answer": "Non. On branche l'IA sur ce que vous utilisez déjà : votre messagerie, vos tableurs, votre CRM, votre compta. Votre équipe garde ses habitudes."
         }
       },
-      "intro": "Une autre question ? Posez-la pendant l'appel."
+      "intro": "Une autre question ? Posez-la pendant l'appel.",
+      "further": "Pour aller plus loin"
     },
     "useCases": {
       "title": "Ce que l'IA peut faire dans votre entreprise.",
