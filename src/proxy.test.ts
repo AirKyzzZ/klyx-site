@@ -57,7 +57,11 @@ describe("proxy canonical redirects", () => {
     ["/fr/tarifs", "https://klyx.fr/tarifs"],
     ["/fr", "https://klyx.fr/"],
     ["/en/tarifs", "https://klyx.fr/en/pricing"],
-  ])("answers %s with a 308 to %s", (path, destination) => {
+    ["/fr/", "https://klyx.fr/"],
+    ["/fr/tarifs/", "https://klyx.fr/tarifs"],
+    ["/fr/tarifs/?ref=x", "https://klyx.fr/tarifs?ref=x"],
+    ["/en/tarifs/", "https://klyx.fr/en/pricing"],
+  ])("answers %s with a single 308 to %s", (path, destination) => {
     const response = run(path);
     expect(response.status).toBe(308);
     expect(response.headers.get("location")).toBe(destination);
