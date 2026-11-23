@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import Link from "next/link";
+import { getLocale } from "next-intl/server";
 
 import { NotFoundLocale } from "@/components/not-found-locale";
 import { NotFoundView } from "@/components/not-found-view";
@@ -16,9 +17,10 @@ export const viewport: Viewport = {
   themeColor: THEME_COLORS.light,
 };
 
-export const metadata: Metadata = {
-  title: `${fr.notFound.title} | Klyx`,
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const { notFound } = (await getLocale()) === "en" ? en : fr;
+  return { title: `${notFound.title} | Klyx` };
+}
 
 const OTHER: Record<Locale, { href: string; label: string; lang: Locale }> = {
   fr: { href: "/en", label: fr.notFound.english, lang: "en" },
@@ -58,11 +60,7 @@ export default function GlobalNotFound() {
       </head>
       <body>
         <main className="relative">
-          <NotFoundLocale
-            fr={renderView("fr")}
-            en={renderView("en")}
-            enTitle={`${en.notFound.title} | Klyx`}
-          />
+          <NotFoundLocale fr={renderView("fr")} en={renderView("en")} />
         </main>
       </body>
     </html>
