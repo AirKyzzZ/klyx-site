@@ -27,11 +27,11 @@ export function CaseRow({
       href={{ pathname: "/realisations/[slug]", params: { slug } }}
       data-case-row
       className={cn(
-        "group border-line grid grid-cols-[6rem_1fr_auto] items-center gap-4 border-b py-5 sm:grid-cols-[9rem_1fr_auto] sm:gap-7 lg:grid-cols-[9rem_minmax(0,300px)_minmax(0,420px)_1fr_auto]",
+        "group border-line grid grid-cols-[1fr_auto] items-center gap-4 border-b py-5 sm:grid-cols-[9rem_1fr_auto] sm:gap-7 lg:grid-cols-[9rem_minmax(0,300px)_minmax(0,420px)_1fr_auto]",
         className,
       )}
     >
-      <div className="border-line bg-surface-2 aspect-[16/10] overflow-hidden rounded-[8px] border">
+      <div className="border-line bg-surface-2 aspect-[16/10] overflow-hidden rounded-[8px] border max-sm:hidden">
         <Image
           src={image}
           alt=""
