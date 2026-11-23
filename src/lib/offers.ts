@@ -103,26 +103,39 @@ export const offers: Offer[] = [
   },
 ];
 
-export const PRICE_GROUPS: {
-  key: "sites" | "ai" | "fde";
-  offers: OfferId[];
+export type PriceGroupKey = "sites" | "ai" | "fde";
+
+export type CatalogueEntry = { id: OfferId; care?: OfferId };
+
+export const PRICE_CATALOGUE: {
+  key: PriceGroupKey;
+  cards: CatalogueEntry[];
 }[] = [
   {
     key: "sites",
-    offers: ["landing", "site-ia", "site-custom", "geo", "geo-care"],
+    cards: [
+      { id: "landing" },
+      { id: "site-ia" },
+      { id: "site-custom" },
+      { id: "geo", care: "geo-care" },
+    ],
   },
   {
     key: "ai",
-    offers: [
-      "audit-ia",
-      "automation",
-      "automation-care",
-      "sprint-ia",
-      "retainer",
+    cards: [
+      { id: "audit-ia" },
+      { id: "automation", care: "automation-care" },
+      { id: "sprint-ia", care: "retainer" },
     ],
   },
-  { key: "fde", offers: ["fde"] },
+  { key: "fde", cards: [{ id: "fde" }] },
 ];
+
+export const PRICE_GROUPS: { key: PriceGroupKey; offers: OfferId[] }[] =
+  PRICE_CATALOGUE.map(({ key, cards }) => ({
+    key,
+    offers: cards.flatMap(({ id, care }) => (care ? [id, care] : [id])),
+  }));
 
 export function formatPrice(amount: number, locale: Locale): string {
   const formatted = new Intl.NumberFormat(locale === "fr" ? "fr-FR" : "en-GB", {

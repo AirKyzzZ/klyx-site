@@ -17,6 +17,8 @@ export type OfferCardProps = {
   href: Offer["page"];
   linkLabel: string;
   illustration?: ReactNode;
+  extra?: ReactNode;
+  as?: "h2" | "h3" | "h4";
   className?: string;
 };
 
@@ -31,6 +33,8 @@ export function OfferCard({
   href,
   linkLabel,
   illustration,
+  extra,
+  as: Heading = "h3",
   className,
 }: OfferCardProps) {
   return (
@@ -47,13 +51,14 @@ export function OfferCard({
         </div>
       )}
       <div className="flex flex-1 flex-col gap-2">
-        <h3 className="text-text text-[1.375rem] leading-none font-semibold tracking-[-0.5px]">
+        <Heading className="text-text text-[1.375rem] leading-[1.1] font-semibold tracking-[-0.5px]">
           {name}
-        </h3>
+        </Heading>
         <p className="text-text mt-1 text-base leading-[1.4] font-medium">
           {audience}
         </p>
         <p className="text-text-2 text-[0.9375rem] leading-normal">{body}</p>
+        {extra && <div className="mt-auto pt-4">{extra}</div>}
       </div>
       <div className="mt-5 flex flex-col gap-1">
         {priceLabel && (

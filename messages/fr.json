@@ -1339,15 +1339,32 @@
       "title": "Tarifs",
       "subtitle": "Le prix de départ de chaque offre, en € HT. Le prix final dépend du périmètre, écrit dans un devis gratuit avant de commencer."
     },
-    "table": {
-      "offer": "Offre",
-      "includes": "Ce que vous avez",
-      "duration": "Durée",
-      "price": "Prix",
+    "catalogue": {
+      "title": "Toutes les offres, avec leur prix.",
+      "intro": "Pour chaque offre : le prix de départ, ce qui est compris et le délai. Les suivis mensuels sont en option.",
       "groups": {
         "sites": "Sites et référencement",
         "ai": "Agents et automatisations",
         "fde": "Développeur dédié"
+      },
+      "notes": {
+        "sites": "Un site que vous modifiez vous-même, trouvé sur Google et cité par ChatGPT."
+      },
+      "option": "En option",
+      "compare": "Pour comparer",
+      "units": {
+        "day": "/ jour",
+        "month": "/ mois"
+      },
+      "audience": {
+        "landing": "Pour présenter une offre ou lancer une activité.",
+        "siteIa": "Pour une entreprise qui veut être trouvée en ligne.",
+        "siteCustom": "Pour un projet qui ne rentre pas dans un modèle.",
+        "geo": "Pour être cité quand vos clients posent la question à ChatGPT.",
+        "auditIa": "Pour savoir quoi automatiser en premier.",
+        "automation": "Pour une tâche simple qui revient chaque jour.",
+        "sprintIa": "Pour confier une tâche entière à l'IA.",
+        "fde": "Pour avancer vite sur vos projets IA."
       }
     },
     "market": {

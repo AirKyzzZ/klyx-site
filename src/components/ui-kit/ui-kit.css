@@ -19,6 +19,13 @@
   opacity: 0.6;
 }
 
+.constellation-wire-reveal {
+  fill: none;
+  stroke: #fff;
+  stroke-width: 1.2;
+  stroke-dasharray: 1 1;
+}
+
 .constellation-dot {
   position: absolute;
   width: 6px;
@@ -32,6 +39,15 @@
     width: 8px;
     height: 8px;
     box-shadow: 0 0 0 6px rgb(245 79 0 / 0.15);
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: -4px;
+    border: 1.5px solid var(--accent);
+    border-radius: inherit;
+    opacity: 0;
   }
 }
 
@@ -65,8 +81,133 @@
   }
 
   .constellation-dot {
-    animation: dot-pulse 2.4s var(--ease-in-out) var(--pulse-delay, 0s)
-      infinite;
+    animation: dot-pulse 2.4s var(--ease-in-out) var(--pulse-delay, 0s) infinite;
+  }
+}
+
+.client-logo-mark {
+  display: block;
+  height: calc(var(--logo-h) * 0.8);
+  background-color: currentColor;
+  mask: var(--logo) center / contain no-repeat;
+
+  @media (width >= 768px) {
+    height: var(--logo-h);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  [data-intro] .constellation-grid {
+    animation: intro-fade 900ms var(--ease-intro) both;
+  }
+
+  [data-intro] .constellation-logo {
+    animation: intro-tile 640ms var(--ease-intro) var(--intro-delay) backwards;
+  }
+
+  [data-intro] .constellation-wire-reveal {
+    animation: intro-wire 520ms var(--ease-intro) var(--intro-delay) backwards;
+  }
+
+  [data-intro] .constellation-dot {
+    animation:
+      intro-ignite 480ms var(--ease-intro) var(--intro-delay) backwards,
+      dot-pulse 2.4s var(--ease-in-out) var(--pulse-delay, 0s) infinite;
+  }
+
+  [data-intro] .constellation-dot::after {
+    animation: intro-ring 560ms var(--ease-out) calc(var(--intro-delay) + 40ms);
+  }
+
+  [data-intro] .hero-subtitle {
+    animation: intro-lift 700ms var(--ease-intro) 80ms backwards;
+  }
+
+  [data-intro] .hero-actions {
+    animation: intro-rise 700ms var(--ease-intro) 170ms backwards;
+  }
+
+  [data-intro] .clients-label {
+    animation: intro-settle 520ms var(--ease-intro) 660ms backwards;
+  }
+
+  [data-intro] .client-logo {
+    animation: intro-settle 520ms var(--ease-intro)
+      calc(720ms + var(--intro-i, 0) * 50ms) backwards;
+  }
+
+  body:has([data-intro]) [data-site-nav] {
+    animation: intro-drop 640ms var(--ease-intro) 640ms backwards;
+  }
+}
+
+@keyframes intro-fade {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes intro-lift {
+  from {
+    transform: translateY(8px);
+  }
+}
+
+@keyframes intro-rise {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+    filter: blur(4px);
+  }
+}
+
+@keyframes intro-settle {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
+@keyframes intro-drop {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes intro-tile {
+  from {
+    opacity: 0;
+    transform: translateX(var(--intro-x, 0)) scale(0.6);
+    filter: blur(6px);
+  }
+}
+
+@keyframes intro-wire {
+  from {
+    stroke-dashoffset: 1;
+  }
+}
+
+@keyframes intro-ignite {
+  from {
+    opacity: 0;
+    transform: scale(0.2);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.35);
+  }
+}
+
+@keyframes intro-ring {
+  from {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(3.2);
   }
 }
 
@@ -102,7 +243,9 @@
 }
 
 .carousel-panel {
-  transition: opacity var(--d-swap) var(--ease-out), visibility 0s linear var(--d-swap);
+  transition:
+    opacity var(--d-swap) var(--ease-out),
+    visibility 0s linear var(--d-swap);
 
   &[data-active] {
     transition-delay: 0s;

@@ -1339,15 +1339,32 @@
       "title": "Pricing",
       "subtitle": "The starting price of every offer, excluding VAT. The final price depends on scope, written into a free quote before work starts."
     },
-    "table": {
-      "offer": "Offer",
-      "includes": "What you get",
-      "duration": "Timeline",
-      "price": "Price",
+    "catalogue": {
+      "title": "Every offer, with its price.",
+      "intro": "For each offer: the starting price, what's included and the timeline. Monthly follow-ups are optional.",
       "groups": {
         "sites": "Websites and AI search",
         "ai": "Agents and automations",
         "fde": "Dedicated developer"
+      },
+      "notes": {
+        "sites": "A site you can edit yourself, found on Google and cited by ChatGPT."
+      },
+      "option": "Optional",
+      "compare": "For comparison",
+      "units": {
+        "day": "/ day",
+        "month": "/ month"
+      },
+      "audience": {
+        "landing": "To present one offer or launch a business.",
+        "siteIa": "For a business that wants to be found online.",
+        "siteCustom": "For a project that doesn't fit a template.",
+        "geo": "To be cited when your customers ask ChatGPT.",
+        "auditIa": "To know what to automate first.",
+        "automation": "For one simple task that comes back every day.",
+        "sprintIa": "To hand a whole task over to AI.",
+        "fde": "To move fast on your AI projects."
       }
     },
     "market": {

@@ -222,7 +222,7 @@ export function pricingPageJsonLd(locale: Locale): JsonLdObject[] {
       url,
       itemListElement: PRICE_GROUPS.map((group) => ({
         "@type": "OfferCatalog",
-        name: t(`table.groups.${group.key}`),
+        name: t(`catalogue.groups.${group.key}`),
         itemListElement: group.offers.map((id) =>
           catalogOfferJsonLd(id, locale, offersT),
         ),

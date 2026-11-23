@@ -208,7 +208,7 @@ describe("page JSON-LD", () => {
       url: "https://klyx.fr/tarifs",
     });
     expect(groups.map((group) => group.name)).toEqual(
-      PRICE_GROUPS.map((group) => fr.pricing.table.groups[group.key]),
+      PRICE_GROUPS.map((group) => fr.pricing.catalogue.groups[group.key]),
     );
     const offers = groups.flatMap((group) => group.itemListElement);
     expect(offers).toHaveLength(

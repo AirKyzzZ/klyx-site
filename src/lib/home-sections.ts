@@ -14,12 +14,44 @@ const HOME_CASE_SLUGS = [
   "pkba",
 ];
 
+export type ClientLogo = {
+  name: string;
+  slug: string;
+  logo: string;
+  ratio: number;
+  height: number;
+};
+
 export const HOME_CLIENTS = [
-  "Cronolyss",
-  "Hop Hop Immo",
-  "2060.io",
-  "PKBA",
-] as const;
+  {
+    name: "Cronolyss",
+    slug: "cronolyss",
+    logo: "/clients/cronolyss.svg",
+    ratio: 1000 / 215,
+    height: 28,
+  },
+  {
+    name: "Hop Hop Immo",
+    slug: "hop-hop-immo",
+    logo: "/clients/hop-hop-immo.svg",
+    ratio: 640 / 688,
+    height: 44,
+  },
+  {
+    name: "2060.io",
+    slug: "2060-io",
+    logo: "/clients/2060-io.svg",
+    ratio: 162.566 / 60.09,
+    height: 22,
+  },
+  {
+    name: "PKBA",
+    slug: "pkba",
+    logo: "/clients/pkba.svg",
+    ratio: 640 / 338,
+    height: 28,
+  },
+] as const satisfies readonly ClientLogo[];
 
 export const HERO_SOURCES: ToolLogoId[] = [
   "gmail",

@@ -26,6 +26,12 @@ test.describe("home hero", () => {
         .locator("main")
         .getByRole("link", { name: en.home.hero.ctaSecondary }),
     ).toHaveAttribute("href", "/en/work");
+    const clients = page.locator("[data-home-hero] [data-clients]");
+    for (const client of HOME_CLIENTS) {
+      await expect(
+        clients.getByRole("link", { name: client.name, exact: true }),
+      ).toHaveAttribute("href", `/en/work/${client.slug}`);
+    }
   });
 
   test.describe("without JavaScript", () => {
@@ -35,7 +41,7 @@ test.describe("home hero", () => {
       { width: 1440, height: 900 },
       { width: 390, height: 844 },
     ]) {
-      test(`shows the subtitle, both CTAs and the client names at ${viewport.width}`, async ({
+      test(`shows the subtitle, both CTAs and the client logos at ${viewport.width}`, async ({
         page,
       }) => {
         await page.setViewportSize(viewport);
@@ -48,8 +54,27 @@ test.describe("home hero", () => {
         ]) {
           await expect(hero.getByRole("link", { name })).toBeVisible();
         }
+        const clients = hero.locator("[data-clients]");
+        await expect(clients.getByRole("link")).toHaveCount(
+          HOME_CLIENTS.length,
+        );
         for (const client of HOME_CLIENTS) {
-          await expect(hero.getByText(client, { exact: true })).toBeVisible();
+          const link = clients.getByRole("link", {
+            name: client.name,
+            exact: true,
+          });
+          await expect(link).toHaveAttribute(
+            "href",
+            `/realisations/${client.slug}`,
+          );
+          const mark = link.locator(".client-logo-mark");
+          await expect(mark).toBeVisible();
+          const box = await mark.boundingBox();
+          expect(box!.height, client.name).toBeGreaterThanOrEqual(16);
+          expect(box!.width / box!.height, client.name).toBeCloseTo(
+            client.ratio,
+            1,
+          );
         }
         await expect(hero.getByText("CiteMe", { exact: true })).toHaveCount(0);
       });
@@ -87,6 +112,54 @@ test.describe("home hero", () => {
         0,
       );
     });
+  });
+
+  test("the intro leaves the h1 alone and settles within 1.4 s", async ({
+    page,
+  }) => {
+    await page.setViewportSize({ width: 1440, height: 900 });
+    await page.goto("/");
+    const intro = await page.evaluate(() => {
+      const seconds = (value: string) => Number.parseFloat(value) * 1000;
+      return [...document.querySelectorAll("*")].flatMap((el) =>
+        [null, "::after"].flatMap((pseudo) => {
+          const style = getComputedStyle(el, pseudo);
+          const names = style.animationName.split(", ");
+          const durations = style.animationDuration.split(", ");
+          const delays = style.animationDelay.split(", ");
+          return names.flatMap((name, i) =>
+            name.startsWith("intro-")
+              ? [
+                  {
+                    name,
+                    end:
+                      seconds(delays[i % delays.length]) +
+                      seconds(durations[i % durations.length]),
+                    inH1: el.closest("h1") !== null,
+                  },
+                ]
+              : [],
+          );
+        }),
+      );
+    });
+    expect(new Set(intro.map((item) => item.name))).toEqual(
+      new Set([
+        "intro-fade",
+        "intro-lift",
+        "intro-rise",
+        "intro-tile",
+        "intro-wire",
+        "intro-ignite",
+        "intro-ring",
+        "intro-settle",
+        "intro-drop",
+      ]),
+    );
+    expect(intro.filter((item) => item.inH1)).toEqual([]);
+    expect(Math.max(...intro.map((item) => item.end))).toBeLessThanOrEqual(
+      1400,
+    );
   });
 
   test("the logos float, the dots pulse and the rail light runs", async ({
@@ -139,8 +212,7 @@ test.describe("home hero", () => {
         const win = window as Window & { __lcp?: string };
         new PerformanceObserver((list) => {
           const last = list.getEntries().at(-1) as
-            | (PerformanceEntry & { element?: Element | null })
-            | undefined;
+            (PerformanceEntry & { element?: Element | null }) | undefined;
           win.__lcp = last?.element?.closest("h1")
             ? "h1"
             : (last?.element?.tagName ?? "none");
@@ -158,10 +230,7 @@ test.describe("home hero", () => {
 
     test("h1 and both CTAs fit in the first screen", async ({ page }) => {
       await page.goto("/");
-      for (const name of [
-        fr.home.hero.ctaPrimary,
-        fr.home.hero.ctaSecondary,
-      ]) {
+      for (const name of [fr.home.hero.ctaPrimary, fr.home.hero.ctaSecondary]) {
         const box = await page
           .locator("main")
           .getByRole("link", { name })

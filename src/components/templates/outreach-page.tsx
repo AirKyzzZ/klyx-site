@@ -229,7 +229,7 @@ export function OutreachPage({ config }: { config: OutreachPageConfig }) {
           </>
         }
         footer={
-          <ClientsRow label={OUTREACH_CLIENTS_LABEL} names={HOME_CLIENTS} />
+          <ClientsRow label={OUTREACH_CLIENTS_LABEL} clients={HOME_CLIENTS} />
         }
       />
       {config.sections.map((section) => (

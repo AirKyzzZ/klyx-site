@@ -45,7 +45,7 @@ for (const path of [...OFFER_PAGES, "/tarifs", "/en/pricing"]) {
       }
       const priced = OFFER_PAGES.includes(path)
         ? hero.locator("[data-price-card]")
-        : hero.locator("table");
+        : hero.locator("[data-offer-card]").first();
       await expect(priced).toBeVisible();
       await expect(priced).toContainText(PRICE);
       const clipped = await hero

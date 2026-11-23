@@ -39,6 +39,13 @@ const RIGHT: Side = {
   ],
 };
 
+const TILE_START_MS = 60;
+const TILE_STEP_MS = 70;
+const WIRE_LAG_MS = 200;
+const DOT_IGNITE_MS = 560;
+const DOT_STEP_MS = 40;
+const NODE_IGNITE_MS = 780;
+
 function wire(from: Point, to: Point) {
   const mid = from.x + (to.x - from.x) * 0.6;
   return `M ${from.x} ${from.y} C ${mid} ${from.y}, ${to.x} ${from.y + (to.y - from.y) * 0.4}, ${to.x} ${to.y}`;
@@ -61,17 +68,35 @@ export function ConstellationBackdrop({
   const sides = [
     { side: LEFT, logos: sources },
     { side: RIGHT, logos: destinations },
-  ].map(({ side, logos }) => ({
-    node: side.node,
-    extra: side.extra ?? [],
-    slots: side.slots.slice(0, logos.length).map((slot, i) => ({
-      ...slot,
-      logo: logos[i],
-    })),
-  }));
+  ].map(({ side, logos }) => {
+    const slots = side.slots.slice(0, logos.length);
+    const outward = [...slots].sort(
+      (a, b) => Math.abs(b.x - side.node.x) - Math.abs(a.x - side.node.x),
+    );
+    return {
+      node: side.node,
+      extra: side.extra ?? [],
+      slots: slots.map((slot, i) => ({
+        ...slot,
+        logo: logos[i],
+        delay: TILE_START_MS + outward.indexOf(slot) * TILE_STEP_MS,
+      })),
+    };
+  });
+  const wires = sides.flatMap(({ node, slots }) =>
+    slots
+      .filter((slot) => !slot.far)
+      .map((slot) => ({
+        id: slot.logo,
+        d: wire(slot, node),
+        delay: slot.delay + WIRE_LAG_MS,
+      })),
+  );
   const dots = sides.flatMap(({ node, slots, extra }) => [
     { ...node, node: true },
-    ...slots.flatMap((slot) => (slot.via ? [{ ...slot.via, node: false }] : [])),
+    ...slots.flatMap((slot) =>
+      slot.via ? [{ ...slot.via, node: false }] : [],
+    ),
     ...extra.map((dot) => ({ ...dot, node: false })),
   ]);
 
@@ -91,18 +116,35 @@ export function ConstellationBackdrop({
           preserveAspectRatio="none"
           className="absolute inset-0 size-full overflow-visible"
         >
-          {sides.flatMap(({ node, slots }) =>
-            slots
-              .filter((slot) => !slot.far)
-              .map((slot) => (
+          <defs>
+            {wires.map(({ id, d, delay }) => (
+              <mask
+                key={id}
+                id={`constellation-wire-${id}`}
+                maskUnits="userSpaceOnUse"
+                x="-10"
+                y="-10"
+                width="120"
+                height="120"
+              >
                 <path
-                  key={slot.logo}
-                  d={wire(slot, node)}
-                  className="constellation-wire"
-                  vectorEffect="non-scaling-stroke"
+                  d={d}
+                  pathLength={1}
+                  className="constellation-wire-reveal"
+                  style={{ "--intro-delay": `${delay}ms` } as CSSProperties}
                 />
-              )),
-          )}
+              </mask>
+            ))}
+          </defs>
+          {wires.map(({ id, d }) => (
+            <path
+              key={id}
+              d={d}
+              mask={`url(#constellation-wire-${id})`}
+              className="constellation-wire"
+              vectorEffect="non-scaling-stroke"
+            />
+          ))}
         </svg>
         {dots.map((dot, i) => (
           <span
@@ -111,7 +153,13 @@ export function ConstellationBackdrop({
               "constellation-dot",
               dot.node && "constellation-dot--node",
             )}
-            style={{ ...at(dot), "--pulse-delay": `${i * 0.6}s` } as CSSProperties}
+            style={
+              {
+                ...at(dot),
+                "--pulse-delay": `${i * 0.6}s`,
+                "--intro-delay": `${dot.node ? NODE_IGNITE_MS : DOT_IGNITE_MS + i * DOT_STEP_MS}ms`,
+              } as CSSProperties
+            }
           />
         ))}
         {sides.flatMap(({ slots }, side) =>
@@ -126,6 +174,8 @@ export function ConstellationBackdrop({
                     ...at(slot),
                     "--float-duration": `${5 + ((index * 7) % 5) * 0.7}s`,
                     "--float-delay": `${-((index * 13) % 7) * 0.8}s`,
+                    "--intro-delay": `${slot.delay}ms`,
+                    "--intro-x": side === 0 ? "-28px" : "28px",
                   } as CSSProperties
                 }
               >
