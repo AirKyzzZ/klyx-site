@@ -20,10 +20,10 @@ import {
   websiteJsonLd,
 } from "./json-ld";
 import { PRICE_GROUPS } from "./offers";
-import { site } from "./site";
+import { SITE_DESCRIPTIONS, site } from "./site";
 
 describe("serviceJsonLd", () => {
-  it("emits an EUR offer excluding VAT with the public price", () => {
+  it("emits an EUR offer excluding VAT from the public price", () => {
     const [service] = serviceJsonLd(["sprint-ia"], "fr");
     expect(service).toMatchObject({
       "@type": "Service",
@@ -32,22 +32,29 @@ describe("serviceJsonLd", () => {
       provider: { "@id": "https://klyx.fr/#organization" },
       offers: {
         "@type": "Offer",
-        price: 4500,
         priceCurrency: "EUR",
         priceSpecification: {
-          price: 4500,
+          "@type": "PriceSpecification",
+          minPrice: 4500,
           priceCurrency: "EUR",
           valueAddedTaxIncluded: false,
         },
       },
     });
+    expect(service.offers).not.toHaveProperty("price");
   });
 
   it("localizes names and urls", () => {
     const [service] = serviceJsonLd(["fde"], "en");
     expect(service).toMatchObject({
       url: "https://klyx.fr/en/forward-deployed-engineer",
-      offers: { price: 700, priceSpecification: { unitCode: "DAY" } },
+      offers: {
+        priceSpecification: {
+          "@type": "UnitPriceSpecification",
+          minPrice: 700,
+          unitCode: "DAY",
+        },
+      },
     });
   });
 
@@ -58,25 +65,29 @@ describe("serviceJsonLd", () => {
     );
     expect(audit).toMatchObject({
       url: "https://klyx.fr/en/services/ai-audit",
-      offers: { price: 1500 },
+      offers: { priceSpecification: { minPrice: 1500 } },
     });
     expect(automation).toMatchObject({
       url: "https://klyx.fr/en/services/ai-automation",
-      offers: { price: 2400 },
+      offers: { priceSpecification: { minPrice: 2400 } },
     });
     expect(geoCare).toMatchObject({
       url: "https://klyx.fr/en/services/ai-search-visibility",
-      offers: { price: 590, priceSpecification: { unitCode: "MON" } },
+      offers: { priceSpecification: { minPrice: 590, unitCode: "MON" } },
     });
   });
 
-  it("omits the price of offers without a public price", () => {
-    const [service] = serviceJsonLd(["retainer"], "fr");
-    expect(service.offers).not.toHaveProperty("price");
-    expect(service.offers).toMatchObject({
-      priceCurrency: "EUR",
-      priceSpecification: { valueAddedTaxIncluded: false },
+  it("says on quote instead of an empty price for offers without a public price", () => {
+    const [fr, en] = [
+      serviceJsonLd(["retainer"], "fr")[0],
+      serviceJsonLd(["retainer"], "en")[0],
+    ];
+    expect(fr.offers).toEqual({
+      "@type": "Offer",
+      url: "https://klyx.fr/services/agents-ia",
+      description: "Sur devis",
     });
+    expect(en.offers).toMatchObject({ description: "On quote" });
   });
 });
 
@@ -114,7 +125,7 @@ describe("breadcrumbJsonLd", () => {
 
 describe("organizationJsonLd", () => {
   it("describes Klyx as a professional service in Bordeaux", () => {
-    const organization = organizationJsonLd();
+    const organization = organizationJsonLd("fr");
     expect(organization).toMatchObject({
       "@type": ["Organization", "ProfessionalService"],
       "@id": "https://klyx.fr/#organization",
@@ -122,6 +133,8 @@ describe("organizationJsonLd", () => {
       legalName: site.legalName,
       description: site.description,
       url: "https://klyx.fr",
+      priceRange: "€€",
+      hasOfferCatalog: { "@id": "https://klyx.fr/tarifs#catalog" },
       founder: { "@id": "https://klyx.fr/#person", name: "Maxime Mansiet" },
     });
     expect(organization).not.toHaveProperty("foundingDate");
@@ -139,8 +152,18 @@ describe("organizationJsonLd", () => {
     ]);
   });
 
+  it("describes Klyx in English on English pages", () => {
+    expect(organizationJsonLd("en")).toMatchObject({
+      description: SITE_DESCRIPTIONS.en,
+      hasOfferCatalog: { "@id": "https://klyx.fr/en/pricing#catalog" },
+    });
+    expect(websiteJsonLd("en")).toMatchObject({
+      description: SITE_DESCRIPTIONS.en,
+    });
+  });
+
   it("lists company profiles only in sameAs", () => {
-    expect(organizationJsonLd().sameAs).toEqual([
+    expect(organizationJsonLd("fr").sameAs).toEqual([
       site.socials.linkedinCompany,
       site.socials.instagram,
     ]);
@@ -149,7 +172,7 @@ describe("organizationJsonLd", () => {
 
 describe("websiteJsonLd", () => {
   it("names the site and points at the organization", () => {
-    expect(websiteJsonLd()).toMatchObject({
+    expect(websiteJsonLd("fr")).toMatchObject({
       "@type": "WebSite",
       "@id": "https://klyx.fr/#website",
       url: "https://klyx.fr",
@@ -216,8 +239,8 @@ describe("page JSON-LD", () => {
     );
     expect(offers).toContainEqual(
       expect.objectContaining({
-        price: 4500,
         priceCurrency: "EUR",
+        priceSpecification: expect.objectContaining({ minPrice: 4500 }),
         offeredBy: { "@id": "https://klyx.fr/#organization" },
         itemOffered: expect.objectContaining({
           "@id": "https://klyx.fr/services/agents-ia#sprint-ia",

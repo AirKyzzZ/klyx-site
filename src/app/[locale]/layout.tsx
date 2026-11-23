@@ -66,7 +66,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
         <ThemeScript />
       </head>
       <body>
-        <JsonLd data={[organizationJsonLd(), websiteJsonLd()]} />
+        <JsonLd data={[organizationJsonLd(locale), websiteJsonLd(locale)]} />
         <NextIntlClientProvider messages={{ machine }}>
           <div className="relative isolate">
             <Rails />

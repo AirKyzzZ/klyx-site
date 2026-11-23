@@ -7,7 +7,7 @@ import { getOfferCopy } from "./offer-copy";
 import type { OfferPageKey } from "./offer-pages";
 import { getOffer, type OfferId, PRICE_GROUPS } from "./offers";
 import { type AppPathname, absoluteUrl, ogImageUrl } from "./seo";
-import { site } from "./site";
+import { SITE_DESCRIPTIONS, site } from "./site";
 
 export type JsonLdObject = Record<string, unknown>;
 
@@ -40,7 +40,7 @@ const FOUNDER_KNOWS_ABOUT = [
   "Référencement IA (GEO)",
 ];
 
-export function organizationJsonLd(): JsonLdObject {
+export function organizationJsonLd(locale: Locale): JsonLdObject {
   return {
     "@context": CONTEXT,
     "@type": ["Organization", "ProfessionalService"],
@@ -50,11 +50,13 @@ export function organizationJsonLd(): JsonLdObject {
     url: site.url,
     logo: `${site.url}/brand/klyx-black.png`,
     image: `${site.url}/brand/klyx-black.png`,
-    description: site.description,
+    description: SITE_DESCRIPTIONS[locale],
     email: site.email,
     telephone: site.phoneE164,
     address: ADDRESS,
     areaServed: AREA_SERVED,
+    priceRange: "€€",
+    hasOfferCatalog: { "@id": catalogId(locale) },
     identifier: {
       "@type": "PropertyValue",
       propertyID: "SIRET",
@@ -69,14 +71,18 @@ export function organizationJsonLd(): JsonLdObject {
   };
 }
 
-export function websiteJsonLd(): JsonLdObject {
+function catalogId(locale: Locale): string {
+  return `${absoluteUrl(locale, "/tarifs")}#catalog`;
+}
+
+export function websiteJsonLd(locale: Locale): JsonLdObject {
   return {
     "@context": CONTEXT,
     "@type": "WebSite",
     "@id": WEBSITE_ID,
     url: site.url,
     name: site.name,
-    description: site.description,
+    description: SITE_DESCRIPTIONS[locale],
     inLanguage: [...routing.locales],
     publisher: { "@id": ORGANIZATION_ID },
   };
@@ -135,22 +141,28 @@ export function contactPageJsonLd(locale: Locale): JsonLdObject {
   });
 }
 
-function offerJsonLd(id: OfferId, url: string): JsonLdObject {
+function offerJsonLd(id: OfferId, url: string, t: Translate): JsonLdObject {
   const offer = getOffer(id);
-  const price = offer.priceFrom === null ? {} : { price: offer.priceFrom };
-  const unitCode =
-    offer.unit === "project" ? {} : { unitCode: UNIT_CODES[offer.unit] };
+  if (offer.priceFrom === null) {
+    return {
+      "@type": "Offer",
+      url,
+      description: t(`items.${offer.durationKey}.price`),
+    };
+  }
+  const priceSpecification =
+    offer.unit === "project"
+      ? { "@type": "PriceSpecification" }
+      : { "@type": "UnitPriceSpecification", unitCode: UNIT_CODES[offer.unit] };
   return {
     "@type": "Offer",
     url,
-    ...price,
     priceCurrency: "EUR",
     priceSpecification: {
-      "@type": "UnitPriceSpecification",
-      ...price,
+      ...priceSpecification,
+      minPrice: offer.priceFrom,
       priceCurrency: "EUR",
       valueAddedTaxIncluded: false,
-      ...unitCode,
     },
   };
 }
@@ -172,7 +184,7 @@ export function serviceJsonLd(
       url,
       provider: { "@id": ORGANIZATION_ID },
       areaServed: AREA_SERVED,
-      offers: offerJsonLd(id, url),
+      offers: offerJsonLd(id, url, t),
     };
   });
 }
@@ -185,7 +197,7 @@ function catalogOfferJsonLd(
   const copy = getOfferCopy(t, locale, id);
   const url = absoluteUrl(locale, getOffer(id).page);
   return {
-    ...offerJsonLd(id, url),
+    ...offerJsonLd(id, url, t),
     offeredBy: { "@id": ORGANIZATION_ID },
     itemOffered: {
       "@type": "Service",
@@ -217,7 +229,7 @@ export function pricingPageJsonLd(locale: Locale): JsonLdObject[] {
     {
       "@context": CONTEXT,
       "@type": "OfferCatalog",
-      "@id": `${url}#catalog`,
+      "@id": catalogId(locale),
       name: meta("title"),
       url,
       itemListElement: PRICE_GROUPS.map((group) => ({
