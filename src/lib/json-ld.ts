@@ -25,7 +25,6 @@ export const AREA_SERVED = [
 
 const ADDRESS = {
   "@type": "PostalAddress",
-  streetAddress: site.address.street,
   postalCode: site.address.postalCode,
   addressLocality: site.address.locality,
   addressCountry: "FR",
@@ -52,7 +51,6 @@ export function organizationJsonLd(locale: Locale): JsonLdObject {
     image: `${site.url}/brand/klyx-black.png`,
     description: SITE_DESCRIPTIONS[locale],
     email: site.email,
-    telephone: site.phoneE164,
     address: ADDRESS,
     areaServed: AREA_SERVED,
     priceRange: "€€",

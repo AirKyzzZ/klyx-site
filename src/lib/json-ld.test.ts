@@ -138,9 +138,9 @@ describe("organizationJsonLd", () => {
       founder: { "@id": "https://klyx.fr/#person", name: "Maxime Mansiet" },
     });
     expect(organization).not.toHaveProperty("foundingDate");
+    expect(organization).not.toHaveProperty("telephone");
     expect(organization.address).toEqual({
       "@type": "PostalAddress",
-      streetAddress: "22 avenue Victor Hugo",
       postalCode: "33120",
       addressLocality: "Arcachon",
       addressCountry: "FR",

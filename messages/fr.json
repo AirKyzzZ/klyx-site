@@ -1900,7 +1900,6 @@
     "direct": {
       "title": "Ou en direct",
       "email": "E-mail",
-      "phone": "Téléphone",
       "location": "Klyx, Bordeaux",
       "socials": "Klyx sur les réseaux"
     }
@@ -1954,10 +1953,9 @@
     "title": "Mentions légales",
     "publisher": {
       "title": "Éditeur du site",
-      "body": "Klyx, activité de Maxime Mansiet, entrepreneur individuel, 22 avenue Victor Hugo, 33120 Arcachon, France.",
+      "body": "Klyx, activité de Maxime Mansiet, entrepreneur individuel, 33120 Arcachon, France.",
       "siret": "SIRET : {siret}",
       "email": "Contact : {email}",
-      "phone": "Téléphone : {phone}",
       "director": "Directeur de la publication : Maxime Mansiet"
     },
     "hosting": {

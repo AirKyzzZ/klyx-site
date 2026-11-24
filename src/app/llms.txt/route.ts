@@ -52,13 +52,13 @@ export async function GET() {
       `- [${title}](${absoluteUrl("fr", "/blog/[slug]", { slug })}) (Markdown : ${markdownUrl("/blog/[slug]", { slug })})`,
   );
 
-  const { street, postalCode, locality } = site.address;
+  const { postalCode, locality } = site.address;
   const lines = [
     `# ${site.name}`,
     "",
     `> ${meta("home.description")}`,
     "",
-    `${site.description} Fondateur : ${site.founder}. Adresse légale : ${street}, ${postalCode} ${locality} (${site.legalName}, SIRET ${site.siret}). Zone servie : ${AREA_SERVED.map((area) => area.name).join(", ")}.`,
+    `${site.description} Fondateur : ${site.founder}. Adresse légale : ${postalCode} ${locality} (${site.legalName}, SIRET ${site.siret}). Zone servie : ${AREA_SERVED.map((area) => area.name).join(", ")}.`,
     "",
     `Markdown : ${markdownUrl("/")}`,
     "",
@@ -79,7 +79,6 @@ export async function GET() {
     "## Contact",
     "",
     `- E-mail : ${site.email}`,
-    `- Téléphone : ${site.phone}`,
     `- [${nav("quote")}](${absoluteUrl("fr", "/contact")})`,
     ...(site.calUrl ? [`- [${nav("book")}](${site.calUrl})`] : []),
     "",
