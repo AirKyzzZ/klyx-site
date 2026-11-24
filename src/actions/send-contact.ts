@@ -124,9 +124,14 @@ function readFields(formData: FormData) {
   ) as Partial<Record<(typeof FIELDS)[number], string>>;
 }
 
+const needLabel = getStaticTranslator("fr", "contact.form.fields.need.options");
+
 function subjectFor(data: ContactInput): string {
   const who = data.company ? `${data.name} (${data.company})` : data.name;
-  return `Nouvelle demande ${data.need} : ${who}`.replace(/\s+/g, " ");
+  return `Nouvelle demande (${needLabel(data.need)}) : ${who}`.replace(
+    /\s+/g,
+    " ",
+  );
 }
 
 function bodyFor(data: ContactInput): string {

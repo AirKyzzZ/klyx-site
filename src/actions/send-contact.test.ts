@@ -63,6 +63,8 @@ describe("sendContact", () => {
       from: "Klyx <contact@send.klyx.fr>",
       to: "inbox@klyx.fr",
       replyTo: "ada@example.com",
+      subject:
+        "Nouvelle demande (Un agent IA ou une automatisation) : Ada Lovelace (Analytical)",
     });
     expect(send.mock.calls[0][0].text).toContain(
       "Nous voulons automatiser nos devis.",
