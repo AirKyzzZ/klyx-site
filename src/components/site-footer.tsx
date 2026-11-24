@@ -136,14 +136,6 @@ export async function SiteFooter() {
         <div className="border-line text-text-3 flex flex-col gap-3 border-t py-5 text-[0.8125rem] md:flex-row md:items-center md:justify-between">
           <p>{t("copyright", { year: new Date().getFullYear() })}</p>
           <ul className="flex flex-wrap items-center gap-x-5 gap-y-2">
-            <li className="tabular-nums">
-              <a
-                href={`tel:${site.phoneE164}`}
-                className="hover:text-text transition-colors duration-(--d-fast)"
-              >
-                {site.phone}
-              </a>
-            </li>
             <li>
               <a
                 href={`mailto:${site.email}`}

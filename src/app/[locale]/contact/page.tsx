@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 
-import { CircleCheck, Mail, MapPin, Phone, Video, X } from "lucide-react";
+import { CircleCheck, Mail, MapPin, Video, X } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import { FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa6";
 
@@ -62,12 +62,6 @@ export default async function ContactPage({ params }: LocaleParams) {
       label: t("direct.email"),
       value: site.email,
       href: `mailto:${site.email}`,
-    },
-    {
-      icon: Phone,
-      label: t("direct.phone"),
-      value: site.phone,
-      href: `tel:${site.phoneE164}`,
     },
   ];
 

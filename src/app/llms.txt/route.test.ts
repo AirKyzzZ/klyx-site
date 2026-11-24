@@ -47,7 +47,8 @@ describe("llms.txt", () => {
     const body = await (await GET()).text();
     expect(body).toContain(site.description);
     expect(body).toContain(`Fondateur : ${site.founder}`);
-    expect(body).toContain("22 avenue Victor Hugo, 33120 Arcachon");
+    expect(body).toContain("Adresse légale : 33120 Arcachon (");
+    expect(body).not.toContain("Téléphone");
     expect(body).toContain("Zone servie : Bordeaux, Gironde, France.");
   });
 
